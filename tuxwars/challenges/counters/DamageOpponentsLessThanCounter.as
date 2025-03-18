@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class DamageOpponentsLessThanCounter extends CounterLessThan
    {
-       
-      
       public function DamageOpponentsLessThanCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -33,8 +31,8 @@ package tuxwars.challenges.counters
       {
          var damage:int = 0;
          var i:int = 0;
-         var _loc2_:* = null;
-         var _loc4_:int = msg.affectedGameObjects.length;
+         var _loc2_:PlayerGameObject = null;
+         var _loc4_:int = int(msg.affectedGameObjects.length);
          for(i = 0; i < _loc4_; )
          {
             _loc2_ = msg.affectedGameObjects[i] as PlayerGameObject;
@@ -49,3 +47,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.challenges.events
    
    public class ChallengeWeaponUsedMessage extends Message
    {
-       
-      
       public function ChallengeWeaponUsedMessage(weapon:Weapon)
       {
          super("ChallengeWeaponUsed",weapon);
@@ -18,3 +16,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

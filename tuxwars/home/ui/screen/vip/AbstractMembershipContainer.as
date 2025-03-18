@@ -9,8 +9,6 @@ package tuxwars.home.ui.screen.vip
    
    public class AbstractMembershipContainer extends UIContainer
    {
-       
-      
       private var _membershipText:UIAutoTextField;
       
       private var _statusText:UIAutoTextField;
@@ -53,3 +51,4 @@ package tuxwars.home.ui.screen.vip
       }
    }
 }
+

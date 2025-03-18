@@ -7,11 +7,10 @@ package tuxwars.home.states.help
    
    public class HelpUISubState extends TuxUIState
    {
-       
-      
       public function HelpUISubState(game:TuxWarsGame, params:* = null)
       {
          super(HelpScreen,HelpLogic,game,params);
       }
    }
 }
+

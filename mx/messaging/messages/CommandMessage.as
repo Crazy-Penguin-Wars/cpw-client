@@ -5,7 +5,6 @@ package mx.messaging.messages
    
    public class CommandMessage extends AsyncMessage
    {
-      
       public static const SUBSCRIBE_OPERATION:uint = 0;
       
       public static const UNSUBSCRIBE_OPERATION:uint = 1;
@@ -61,7 +60,6 @@ package mx.messaging.messages
       private static const OPERATION_FLAG:uint = 1;
       
       private static var operationTexts:Object = null;
-       
       
       public var operation:uint;
       
@@ -162,3 +160,4 @@ package mx.messaging.messages
       }
    }
 }
+

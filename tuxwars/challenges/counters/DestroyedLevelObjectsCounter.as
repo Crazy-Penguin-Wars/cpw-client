@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class DestroyedLevelObjectsCounter extends Counter
    {
-       
-      
       public function DestroyedLevelObjectsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -16,7 +14,7 @@ package tuxwars.challenges.counters
       
       override public function handleLevelObjectDestroyed(msg:ChallengeLevelObjectDestroyed) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Tagger = null;
          if(msg.levelObject)
          {
             _loc2_ = msg.levelObject.tag.findLatestPlayerTagger();
@@ -32,3 +30,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

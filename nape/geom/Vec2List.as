@@ -8,8 +8,6 @@ package nape.geom
    
    public class Vec2List
    {
-       
-      
       public var zpp_inner:ZPP_Vec2List;
       
       public function Vec2List()
@@ -33,7 +31,7 @@ package nape.geom
          }
          var _loc2_:Vec2List = new Vec2List();
          var _loc3_:int = 0;
-         while(_loc3_ < param1.length)
+         while(_loc3_ < int(param1.length))
          {
             _loc4_ = param1[_loc3_];
             _loc3_++;
@@ -745,7 +743,7 @@ package nape.geom
          {
             while(zpp_inner.at_index != param1)
             {
-               zpp_inner.at_index = zpp_inner.at_index + 1;
+               ++zpp_inner.at_index;
                zpp_inner.at_ite = zpp_inner.at_ite.next;
             }
          }
@@ -775,3 +773,4 @@ package nape.geom
       }
    }
 }
+

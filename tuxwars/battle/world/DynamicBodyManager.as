@@ -1,9 +1,8 @@
 package tuxwars.battle.world
 {
+   import avmplus.getQualifiedClassName;
    import com.dchoc.resources.DCResourceManager;
-   import com.dchoc.utils.DCUtils;
-   import com.dchoc.utils.LogUtils;
-   import com.dchoc.utils.MathUtils;
+   import com.dchoc.utils.*;
    import flash.xml.XMLDocument;
    import mx.rpc.xml.SimpleXMLDecoder;
    import mx.utils.StringUtil;
@@ -18,11 +17,9 @@ package tuxwars.battle.world
    
    public class DynamicBodyManager
    {
-      
       private static const SHAPE_CIRCLE:String = "CIRCLE";
       
       private static const SHAPE_POLYGON:String = "POLYGON";
-       
       
       private var _id:String;
       
@@ -34,7 +31,7 @@ package tuxwars.battle.world
       
       public function DynamicBodyManager(id:String, file:String)
       {
-         var _loc3_:* = null;
+         var _loc3_:String = null;
          super();
          _id = id;
          this.file = file;
@@ -141,17 +138,17 @@ package tuxwars.battle.world
       
       public function getShapes(resourceName:String) : Array
       {
-         var message:* = null;
-         var containedShapeInfo:* = null;
-         var shapes:* = null;
-         var _loc11_:* = null;
-         var _loc8_:* = null;
-         var polygons:* = null;
+         var message:String = null;
+         var containedShapeInfo:Array = null;
+         var shapes:Array = null;
+         var _loc11_:Material = null;
+         var _loc8_:Circle = null;
+         var polygons:Array = null;
          var _loc2_:* = undefined;
-         var a:* = null;
+         var a:Array = null;
          var index:int = 0;
-         var _loc14_:* = null;
-         var _loc18_:* = null;
+         var _loc14_:Vec2 = null;
+         var _loc18_:Polygon = null;
          if(materialCache[resourceName] != null)
          {
             return materialCache[resourceName];
@@ -300,3 +297,4 @@ package tuxwars.battle.world
       }
    }
 }
+

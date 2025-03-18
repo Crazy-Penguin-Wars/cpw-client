@@ -6,6 +6,7 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.states.crafting.CraftingState;
    import tuxwars.home.states.equipment.EquipmentState;
@@ -22,7 +23,6 @@ package tuxwars.home.ui.screen.home
    
    public class NavigationButtonsElementScreen extends TuxUIElementScreen
    {
-      
       private static const BUTTON_CHARACTER:String = "Button_Character";
       
       private static const BUTTON_CRAFTING:String = "Button_Crafting";
@@ -30,7 +30,6 @@ package tuxwars.home.ui.screen.home
       private static const BUTTON_SUPPLIES:String = "Button_Supplies";
       
       private static const BUTTON_LEADERBOARD:String = "Button_Teams";
-       
       
       private var character:UIButton;
       
@@ -42,6 +41,7 @@ package tuxwars.home.ui.screen.home
       
       public function NavigationButtonsElementScreen(whereToAdd:MovieClip, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] NavigationButtonsElementScreen is the cause (GOT YOU :troll:)");
          var _loc3_:Boolean = false;
          var _loc4_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/home_screen.swf","home_screen");
          super(_loc4_,game);
@@ -162,3 +162,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

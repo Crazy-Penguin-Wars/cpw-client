@@ -17,6 +17,7 @@ package tuxwars.home.states.homestate
    import tuxwars.home.states.dailynews.DailyNewsState;
    import tuxwars.home.states.equipment.EquipmentState;
    import tuxwars.home.states.gifts.GiftState;
+   import tuxwars.home.states.matchloading.PracticeMatchLoadingSubState;
    import tuxwars.home.states.oldcustomgame.OldCustomGameState;
    import tuxwars.home.states.shop.ShopState;
    import tuxwars.home.states.slotmachine.SlotMachineState;
@@ -35,8 +36,6 @@ package tuxwars.home.states.homestate
    
    public class HomeState extends TuxUIState
    {
-       
-      
       private var updateInbox:Boolean;
       
       private var movieMonitor:MovieMonitor;
@@ -126,7 +125,8 @@ package tuxwars.home.states.homestate
                changeState(new VIPState(tuxGame));
             }
          }
-         LogUtils.log("Loading speed: " + DCResourceManager.instance.calculateAverageDownloadSpeed() + " kB/s",this,1,"Assets");
+         LogUtils.log("Loading speed: " + int(DCResourceManager.instance.calculateAverageDownloadSpeed()) + " kB/s",this,1,"Assets");
+         changeState(new PracticeMatchLoadingSubState(tuxGame));
       }
       
       override public function exit() : void
@@ -234,7 +234,7 @@ package tuxwars.home.states.homestate
       
       private function keyUp(event:KeyboardEvent) : void
       {
-         switch(event.keyCode - 67)
+         switch(int(event.keyCode) - 67)
          {
             case 0:
                changeState(new OldCustomGameState(tuxGame));
@@ -244,26 +244,22 @@ package tuxwars.home.states.homestate
                {
                   LogUtils.log("All debug cleared",this,0,"All",false,false,true);
                   LogUtils.clearAll();
-                  break;
                }
                break;
             case 2:
                if(Config.debugMode && event.ctrlKey && event.shiftKey && event.altKey)
                {
                   MessageCenter.sendEvent(new ErrorMessage("UserGenerated","HomeState","HomeState: User Generated Error0",null,new Error("User Generated Error0")));
-                  break;
                }
                break;
             case 9:
                if(Config.debugMode && event.ctrlKey && !event.shiftKey)
                {
                   MessageCenter.displayListeners();
-                  break;
                }
-               if(Config.debugMode && event.ctrlKey && event.shiftKey)
+               else if(Config.debugMode && event.ctrlKey && event.shiftKey)
                {
                   LogUtils.log(LogicUpdater.toString(),"LogicUpdater",0,"ListenerDebug",false,false,true);
-                  break;
                }
                break;
             case 10:
@@ -272,18 +268,20 @@ package tuxwars.home.states.homestate
                   movieMonitor.dispose();
                   DCGame.getMainMovieClip().removeChild(movieMonitor);
                   movieMonitor = null;
-                  break;
                }
-               movieMonitor = new MovieMonitor();
-               DCGame.getMainMovieClip().addChild(movieMonitor);
+               else
+               {
+                  movieMonitor = new MovieMonitor();
+                  DCGame.getMainMovieClip().addChild(movieMonitor);
+               }
                break;
             case 16:
                if(Config.debugMode && event.ctrlKey)
                {
                   Olog.traceDisplayList();
-                  break;
                }
          }
       }
    }
 }
+

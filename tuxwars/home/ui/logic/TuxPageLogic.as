@@ -1,7 +1,8 @@
 package tuxwars.home.ui.logic
 {
    import avmplus.getQualifiedClassName;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import no.olog.utilfunctions.assert;
    import tuxwars.TuxWarsGame;
@@ -9,8 +10,6 @@ package tuxwars.home.ui.logic
    
    public class TuxPageLogic extends TuxUILogic
    {
-       
-      
       private const DEFAULT_PAGE:String = "DefaultPage";
       
       private const PAGES:String = "Page";
@@ -20,13 +19,14 @@ package tuxwars.home.ui.logic
       public function TuxPageLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
+         var _loc5_:String = "DefaultPage";
          var _loc3_:* = getData();
          §§push(§§findproperty(setCurrentPage));
-         if(!_loc3_._cache["DefaultPage"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["DefaultPage"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","DefaultPage");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc4_:* = _loc3_._cache["DefaultPage"];
+         var _loc4_:* = _loc3_._cache[_loc5_];
          §§pop().setCurrentPage(_loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value);
       }
       
@@ -49,14 +49,16 @@ package tuxwars.home.ui.logic
       
       public function getPages() : Array
       {
+         var _loc4_:String = "Page";
          var _loc2_:* = getData();
-         if(!_loc2_._cache["Page"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Page"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Page");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc3_:* = _loc2_._cache["Page"];
+         var _loc3_:* = _loc2_._cache[_loc4_];
          var _loc1_:* = _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value;
          return _loc1_ is Array ? _loc1_ : [_loc1_];
       }
    }
 }
+

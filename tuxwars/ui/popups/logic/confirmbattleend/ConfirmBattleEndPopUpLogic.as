@@ -13,8 +13,6 @@ package tuxwars.ui.popups.logic.confirmbattleend
    
    public class ConfirmBattleEndPopUpLogic extends MessagePopUpLogic
    {
-       
-      
       private var battleResults:BattleResults;
       
       protected var showResultScreen:Boolean = true;
@@ -71,3 +69,4 @@ package tuxwars.ui.popups.logic.confirmbattleend
       }
    }
 }
+

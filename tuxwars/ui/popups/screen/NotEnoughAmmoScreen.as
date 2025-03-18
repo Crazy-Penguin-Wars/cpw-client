@@ -10,8 +10,6 @@ package tuxwars.ui.popups.screen
    
    public class NotEnoughAmmoScreen extends PopUpBaseImageScreen
    {
-       
-      
       public function NotEnoughAmmoScreen(game:TuxWarsGame, swf:String = "flash/ui/popups.swf", exportName:String = "popup_message")
       {
          super(game,swf,exportName);
@@ -33,3 +31,4 @@ package tuxwars.ui.popups.screen
       }
    }
 }
+

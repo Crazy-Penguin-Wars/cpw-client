@@ -7,8 +7,6 @@ package mx.core
    
    public interface IUIComponent extends IFlexDisplayObject
    {
-       
-      
       function get baselinePosition() : Number;
       
       function get document() : Object;
@@ -96,3 +94,4 @@ package mx.core
       function owns(param1:DisplayObject) : Boolean;
    }
 }
+

@@ -6,9 +6,7 @@ package tuxwars.data
    
    public class TuxGameData extends GameData
    {
-      
       private static const TID:String = "TID";
-       
       
       public function TuxGameData(row:Row)
       {
@@ -23,3 +21,4 @@ package tuxwars.data
       }
    }
 }
+

@@ -6,8 +6,6 @@ package starling.display
    
    public class Sprite extends DisplayObjectContainer
    {
-       
-      
       private var mFlattenedContents:Vector.<QuadBatch>;
       
       private var mFlattenRequested:Boolean;
@@ -29,7 +27,7 @@ package starling.display
          var max:int = 0;
          if(Boolean(this.mFlattenedContents))
          {
-            for(i = 0,max = this.mFlattenedContents.length; i < max; i++)
+            for(i = 0,max = int(this.mFlattenedContents.length); i < max; i++)
             {
                this.mFlattenedContents[i].dispose();
             }
@@ -74,7 +72,7 @@ package starling.display
                this.mFlattenRequested = false;
             }
             alpha = parentAlpha * this.alpha;
-            numBatches = this.mFlattenedContents.length;
+            numBatches = int(this.mFlattenedContents.length);
             mvpMatrix = support.mvpMatrix;
             support.finishQuadBatch();
             support.raiseDrawCount(numBatches);
@@ -92,3 +90,4 @@ package starling.display
       }
    }
 }
+

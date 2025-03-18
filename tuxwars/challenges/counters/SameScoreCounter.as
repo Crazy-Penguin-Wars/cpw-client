@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class SameScoreCounter extends Counter
    {
-       
-      
       public function SameScoreCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -45,3 +43,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

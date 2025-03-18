@@ -5,8 +5,6 @@ package nape.dynamics
    
    public final class ArbiterType
    {
-       
-      
       public function ArbiterType()
       {
          if(Boot.skip_constructor)
@@ -92,3 +90,4 @@ package nape.dynamics
       }
    }
 }
+

@@ -6,9 +6,6 @@ package com.dchoc.projectdata
    
    public class ProjectData
    {
-      
-      private static const CACHE:Object = {};
-      
       private static const DATA_TYPE_ROW:String = "$DATA_TYPE";
       
       private static const ID_COLUMN:String = "ID";
@@ -21,8 +18,9 @@ package com.dchoc.projectdata
       
       internal static const TEXTS_TABLE:String = "TID";
       
+      private static const CACHE:Object = {};
+      
       private static const NEW_LINE_REG_EXP:RegExp = new RegExp("/\\n/g");
-       
       
       private const tables:Array = [];
       
@@ -52,7 +50,7 @@ package com.dchoc.projectdata
       
       private function loadTables(data:Object) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Table = null;
          for(var tableName in data)
          {
             _loc3_ = new Table(tableName);
@@ -112,7 +110,7 @@ package com.dchoc.projectdata
       
       private function createNewField(rowData:Object, fieldName:String, row:Row) : Field
       {
-         var _loc8_:* = null;
+         var _loc8_:Array = null;
          var _loc5_:* = rowData[fieldName];
          var _loc4_:Field = new Field(row,fieldName);
          var _loc7_:Boolean = _loc5_ is String && _loc5_.search(",") != -1;
@@ -139,10 +137,10 @@ package com.dchoc.projectdata
       public function link(languageCode:String) : void
       {
          var _loc12_:* = undefined;
-         var _loc13_:* = null;
-         var linkTableTemp:* = null;
-         var linkRowTemp:* = null;
-         var linkFieldTemp:* = null;
+         var _loc13_:Object = null;
+         var linkTableTemp:Table = null;
+         var linkRowTemp:Row = null;
+         var linkFieldTemp:Field = null;
          var linkValueTemp:* = undefined;
          var _loc3_:Array = [];
          for each(var table in tables)
@@ -272,11 +270,11 @@ package com.dchoc.projectdata
       
       private function createLink(languageCode:String, linkTable:Array, value:String, tableName:Object, rowName:Object, fieldName:Object, arrayIndex:Object = null) : void
       {
-         var _loc10_:* = null;
-         var _loc12_:* = null;
-         var _loc9_:* = null;
-         var _loc11_:* = null;
-         var _loc8_:* = null;
+         var _loc10_:String = null;
+         var _loc12_:Array = null;
+         var _loc9_:String = null;
+         var _loc11_:Object = null;
+         var _loc8_:String = null;
          if(value)
          {
             _loc10_ = StringUtil.trim(value);
@@ -353,3 +351,4 @@ package com.dchoc.projectdata
       }
    }
 }
+

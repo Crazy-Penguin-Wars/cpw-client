@@ -12,15 +12,15 @@ package starling.display
    import starling.filters.FragmentFilter;
    import starling.utils.MatrixUtil;
    
+   use namespace starling_internal;
+   
    public class DisplayObjectContainer extends DisplayObject
    {
-      
       private static var sHelperMatrix:Matrix = new Matrix();
       
       private static var sHelperPoint:Point = new Point();
       
       private static var sBroadcastListeners:Vector.<DisplayObject> = new Vector.<DisplayObject>(0);
-       
       
       private var mChildren:Vector.<DisplayObject>;
       
@@ -52,7 +52,7 @@ package starling.display
       public function addChildAt(child:DisplayObject, index:int) : DisplayObject
       {
          var container:DisplayObjectContainer = null;
-         var numChildren:int = this.mChildren.length;
+         var numChildren:int = int(this.mChildren.length);
          if(index >= 0 && index <= numChildren)
          {
             child.removeFromParent();
@@ -114,7 +114,7 @@ package starling.display
                }
             }
             child.setParent(null);
-            index = this.mChildren.indexOf(child);
+            index = int(this.mChildren.indexOf(child));
             if(index >= 0)
             {
                this.mChildren.splice(index,1);
@@ -151,7 +151,7 @@ package starling.display
       
       public function getChildByName(name:String) : DisplayObject
       {
-         var numChildren:int = this.mChildren.length;
+         var numChildren:int = int(this.mChildren.length);
          for(var i:int = 0; i < numChildren; i++)
          {
             if(this.mChildren[i].name == name)
@@ -226,7 +226,7 @@ package starling.display
          {
             resultRect = new Rectangle();
          }
-         var numChildren:int = this.mChildren.length;
+         var numChildren:int = int(this.mChildren.length);
          if(numChildren == 0)
          {
             getTransformationMatrix(targetSpace,sHelperMatrix);
@@ -264,7 +264,7 @@ package starling.display
          }
          var localX:Number = localPoint.x;
          var localY:Number = localPoint.y;
-         var numChildren:int = this.mChildren.length;
+         var numChildren:int = int(this.mChildren.length);
          for(var i:int = numChildren - 1; i >= 0; i--)
          {
             child = this.mChildren[i];
@@ -284,7 +284,7 @@ package starling.display
          var child:DisplayObject = null;
          var filter:FragmentFilter = null;
          var alpha:Number = parentAlpha * this.alpha;
-         var numChildren:int = this.mChildren.length;
+         var numChildren:int = int(this.mChildren.length);
          var blendMode:String = support.blendMode;
          for(var i:int = 0; i < numChildren; i++)
          {
@@ -315,9 +315,9 @@ package starling.display
          {
             throw new ArgumentError("Broadcast of bubbling events is prohibited");
          }
-         var fromIndex:int = sBroadcastListeners.length;
+         var fromIndex:int = int(sBroadcastListeners.length);
          this.getChildEventListeners(this,event.type,sBroadcastListeners);
-         var toIndex:int = sBroadcastListeners.length;
+         var toIndex:int = int(sBroadcastListeners.length);
          for(var i:int = fromIndex; i < toIndex; i++)
          {
             sBroadcastListeners[i].dispatchEvent(event);
@@ -345,7 +345,7 @@ package starling.display
          if(Boolean(container))
          {
             children = container.mChildren;
-            numChildren = children.length;
+            numChildren = int(children.length);
             for(i = 0; i < numChildren; i++)
             {
                this.getChildEventListeners(children[i],eventType,listeners);
@@ -359,3 +359,4 @@ package starling.display
       }
    }
 }
+

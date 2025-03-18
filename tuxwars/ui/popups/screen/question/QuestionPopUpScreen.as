@@ -9,11 +9,9 @@ package tuxwars.ui.popups.screen.question
    
    public class QuestionPopUpScreen extends PopUpBaseScreen
    {
-      
       private static const BUTTON_LEFT:String = "Button_Negative";
       
       private static const BUTTON_RIGHT:String = "Button_Positive";
-       
       
       private var leftButton:UIButton;
       
@@ -59,3 +57,4 @@ package tuxwars.ui.popups.screen.question
       }
    }
 }
+

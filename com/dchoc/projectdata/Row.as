@@ -4,8 +4,6 @@ package com.dchoc.projectdata
    
    public class Row
    {
-       
-      
       private const _cache:Object = {};
       
       private const _fields:Array = [];
@@ -46,3 +44,4 @@ package com.dchoc.projectdata
       }
    }
 }
+

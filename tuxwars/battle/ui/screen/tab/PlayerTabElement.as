@@ -12,7 +12,6 @@ package tuxwars.battle.ui.screen.tab
    
    public class PlayerTabElement extends UIContainer
    {
-      
       private static const TEXT_NAME:String = "Text_Name";
       
       private static const TEXT_SCORE:String = "Text_Scores";
@@ -22,7 +21,6 @@ package tuxwars.battle.ui.screen.tab
       private static const LAUREL:String = "Icon_Laurel";
       
       private static const CHARACTER_CONTAINER:String = "Container_Character";
-       
       
       private var firstPlaceLaurel:MovieClip;
       
@@ -78,3 +76,4 @@ package tuxwars.battle.ui.screen.tab
       }
    }
 }
+

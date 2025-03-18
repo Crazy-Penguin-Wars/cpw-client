@@ -41,8 +41,6 @@ package zpp_nape.util
    
    public class ZPP_BitmapDebug extends ZPP_Debug
    {
-       
-      
       public var transp:Boolean;
       
       public var shapeList:ShapeList;
@@ -370,30 +368,30 @@ package zpp_nape.util
          var _loc33_:Number = NaN;
          if(outer.colour == null)
          {
-            _loc6_ = 16777215 * Math.exp(-(param1.id % 500) / 1500);
+            _loc6_ = int(16777215 * Math.exp(-(int(param1.id % 500)) / 1500));
          }
          else
          {
             _loc6_ = outer.colour(param1.id);
          }
-         _loc7_ = ((_loc6_ & 16711680) >> 16) * 0.7;
-         _loc8_ = ((_loc6_ & 65280) >> 8) * 0.7;
-         _loc9_ = (_loc6_ & 255) * 0.7;
-         var _loc5_:int = -16777216 | _loc7_ << 16 | _loc8_ << 8 | _loc9_;
+         _loc7_ = ((_loc6_ & 0xFF0000) >> 16) * 0.7;
+         _loc8_ = ((_loc6_ & 0xFF00) >> 8) * 0.7;
+         _loc9_ = (_loc6_ & 0xFF) * 0.7;
+         var _loc5_:int = -16777216 | int(_loc7_) << 16 | int(_loc8_) << 8 | int(_loc9_);
          var _loc10_:ZPP_Body = param1.body;
          if(_loc10_ != null)
          {
             if(outer.colour == null)
             {
-               _loc11_ = 16777215 * Math.exp(-(_loc10_.id % 500) / 1500);
+               _loc11_ = int(16777215 * Math.exp(-(int(_loc10_.id % 500)) / 1500));
             }
             else
             {
                _loc11_ = outer.colour(_loc10_.id);
             }
-            _loc7_ = ((_loc11_ & 16711680) >> 16) * 0.7;
-            _loc8_ = ((_loc11_ & 65280) >> 8) * 0.7;
-            _loc9_ = (_loc11_ & 255) * 0.7;
+            _loc7_ = ((_loc11_ & 0xFF0000) >> 16) * 0.7;
+            _loc8_ = ((_loc11_ & 0xFF00) >> 8) * 0.7;
+            _loc9_ = (_loc11_ & 0xFF) * 0.7;
             §§push(false);
             if(_loc10_.space != null)
             {
@@ -412,13 +410,13 @@ package zpp_nape.util
                _loc8_ = 0.4 * _loc8_ + 0.6 * bg_g;
                _loc9_ = 0.4 * _loc9_ + 0.6 * bg_b;
             }
-            _loc6_ = -16777216 | _loc7_ << 16 | _loc8_ << 8 | _loc9_;
+            _loc6_ = -16777216 | int(_loc7_) << 16 | int(_loc8_) << 8 | int(_loc9_);
             _loc11_ = _loc5_;
             _loc13_ = _loc6_;
             _loc7_ = 0.2;
-            _loc14_ = (_loc11_ >> 16 & 255) * _loc7_ + (_loc13_ >> 16 & 255) * (1 - _loc7_);
-            _loc15_ = (_loc11_ >> 8 & 255) * _loc7_ + (_loc13_ >> 8 & 255) * (1 - _loc7_);
-            _loc16_ = (_loc11_ & 255) * _loc7_ + (_loc13_ & 255) * (1 - _loc7_);
+            _loc14_ = int((_loc11_ >> 16 & 0xFF) * _loc7_ + (_loc13_ >> 16 & 0xFF) * (1 - _loc7_));
+            _loc15_ = int((_loc11_ >> 8 & 0xFF) * _loc7_ + (_loc13_ >> 8 & 0xFF) * (1 - _loc7_));
+            _loc16_ = int((_loc11_ & 0xFF) * _loc7_ + (_loc13_ & 0xFF) * (1 - _loc7_));
             _loc5_ = -16777216 | _loc14_ << 16 | _loc15_ << 8 | _loc16_;
             colour = _loc5_;
             if(param1.type == ZPP_Flags.id_ShapeType_CIRCLE)
@@ -444,6 +442,7 @@ package zpp_nape.util
                            {
                               _loc18_.localCOMx = _loc18_.lverts.next.x;
                               _loc18_.localCOMy = _loc18_.lverts.next.y;
+                              null;
                            }
                            else if(_loc18_.lverts.next.next.next == null)
                            {
@@ -504,6 +503,7 @@ package zpp_nape.util
                         _loc24_.zip_axis = false;
                         _loc24_.axisx = Math.sin(_loc24_.rot);
                         _loc24_.axisy = Math.cos(_loc24_.rot);
+                        null;
                      }
                      _loc17_.worldCOMx = _loc17_.body.posx + (_loc17_.body.axisy * _loc17_.localCOMx - _loc17_.body.axisx * _loc17_.localCOMy);
                      _loc17_.worldCOMy = _loc17_.body.posy + (_loc17_.localCOMx * _loc17_.body.axisx + _loc17_.localCOMy * _loc17_.body.axisy);
@@ -517,9 +517,9 @@ package zpp_nape.util
                   _loc8_ = param2.c * _loc7_ + param2.d * _loc8_ + param2.ty;
                   _loc7_ = _loc9_;
                }
-               penx = _loc7_ + 0.5;
-               peny = _loc8_ + 0.5;
-               __circle(penx,peny,_loc17_.radius * param3 + 0.5,colour);
+               penx = int(_loc7_ + 0.5);
+               peny = int(_loc8_ + 0.5);
+               __circle(penx,peny,int(_loc17_.radius * param3 + 0.5),colour);
                if(outer.drawShapeAngleIndicators)
                {
                   _loc9_ = _loc17_.worldCOMx + 0.3 * _loc17_.radius * _loc10_.axisy;
@@ -538,10 +538,10 @@ package zpp_nape.util
                      _loc27_ = param2.c * _loc26_ + param2.d * _loc27_ + param2.ty;
                      _loc26_ = _loc28_;
                   }
-                  penx = _loc9_ + 0.5;
-                  peny = _loc25_ + 0.5;
-                  _loc11_ = _loc26_ + 0.5;
-                  _loc13_ = _loc27_ + 0.5;
+                  penx = int(_loc9_ + 0.5);
+                  peny = int(_loc25_ + 0.5);
+                  _loc11_ = int(_loc26_ + 0.5);
+                  _loc13_ = int(_loc27_ + 0.5);
                   __line(penx,peny,_loc11_,_loc13_,colour);
                   penx = _loc11_;
                   peny = _loc13_;
@@ -562,6 +562,7 @@ package zpp_nape.util
                         _loc24_.zip_axis = false;
                         _loc24_.axisx = Math.sin(_loc24_.rot);
                         _loc24_.axisy = Math.cos(_loc24_.rot);
+                        null;
                      }
                      _loc19_ = _loc18_.lverts.next;
                      _loc20_ = _loc18_.gverts.next;
@@ -585,8 +586,8 @@ package zpp_nape.util
                   _loc8_ = param2.c * _loc7_ + param2.d * _loc8_ + param2.ty;
                   _loc7_ = _loc9_;
                }
-               penx = _loc7_ + 0.5;
-               peny = _loc8_ + 0.5;
+               penx = int(_loc7_ + 0.5);
+               peny = int(_loc8_ + 0.5);
                _loc9_ = _loc7_;
                _loc25_ = _loc8_;
                _loc20_ = _loc18_.gverts.next.next;
@@ -601,15 +602,15 @@ package zpp_nape.util
                      _loc8_ = param2.c * _loc7_ + param2.d * _loc8_ + param2.ty;
                      _loc7_ = _loc26_;
                   }
-                  _loc11_ = _loc7_ + 0.5;
-                  _loc13_ = _loc8_ + 0.5;
+                  _loc11_ = int(_loc7_ + 0.5);
+                  _loc13_ = int(_loc8_ + 0.5);
                   __line(penx,peny,_loc11_,_loc13_,colour);
                   penx = _loc11_;
                   peny = _loc13_;
                   _loc20_ = _loc20_.next;
                }
-               _loc11_ = _loc9_ + 0.5;
-               _loc13_ = _loc25_ + 0.5;
+               _loc11_ = int(_loc9_ + 0.5);
+               _loc13_ = int(_loc25_ + 0.5);
                __line(penx,peny,_loc11_,_loc13_,colour);
                penx = _loc11_;
                peny = _loc13_;
@@ -635,6 +636,7 @@ package zpp_nape.util
                               {
                                  _loc29_.localCOMx = _loc29_.lverts.next.x;
                                  _loc29_.localCOMy = _loc29_.lverts.next.y;
+                                 null;
                               }
                               else if(_loc29_.lverts.next.next.next == null)
                               {
@@ -695,6 +697,7 @@ package zpp_nape.util
                            _loc24_.zip_axis = false;
                            _loc24_.axisx = Math.sin(_loc24_.rot);
                            _loc24_.axisy = Math.cos(_loc24_.rot);
+                           null;
                         }
                         _loc18_.worldCOMx = _loc18_.body.posx + (_loc18_.body.axisy * _loc18_.localCOMx - _loc18_.body.axisx * _loc18_.localCOMy);
                         _loc18_.worldCOMy = _loc18_.body.posy + (_loc18_.localCOMx * _loc18_.body.axisx + _loc18_.localCOMy * _loc18_.body.axisy);
@@ -710,10 +713,10 @@ package zpp_nape.util
                      _loc7_ = param2.a * _loc18_.worldCOMx + param2.b * _loc18_.worldCOMy + param2.tx;
                      _loc8_ = param2.c * _loc18_.worldCOMx + param2.d * _loc18_.worldCOMy + param2.ty;
                   }
-                  penx = _loc7_ + 0.5;
-                  peny = _loc8_ + 0.5;
-                  _loc11_ = _loc9_ + 0.5;
-                  _loc13_ = _loc25_ + 0.5;
+                  penx = int(_loc7_ + 0.5);
+                  peny = int(_loc8_ + 0.5);
+                  _loc11_ = int(_loc9_ + 0.5);
+                  _loc13_ = int(_loc25_ + 0.5);
                   __line(penx,peny,_loc11_,_loc13_,colour);
                   penx = _loc11_;
                   peny = _loc13_;
@@ -741,6 +744,7 @@ package zpp_nape.util
                            {
                               _loc18_.localCOMx = _loc18_.lverts.next.x;
                               _loc18_.localCOMy = _loc18_.lverts.next.y;
+                              null;
                            }
                            else if(_loc18_.lverts.next.next.next == null)
                            {
@@ -801,6 +805,7 @@ package zpp_nape.util
                         _loc24_.zip_axis = false;
                         _loc24_.axisx = Math.sin(_loc24_.rot);
                         _loc24_.axisy = Math.cos(_loc24_.rot);
+                        null;
                      }
                      param1.worldCOMx = param1.body.posx + (param1.body.axisy * param1.localCOMx - param1.body.axisx * param1.localCOMy);
                      param1.worldCOMy = param1.body.posy + (param1.localCOMx * param1.body.axisx + param1.localCOMy * param1.body.axisy);
@@ -809,9 +814,9 @@ package zpp_nape.util
                _loc11_ = _loc5_;
                _loc13_ = 16711680;
                _loc7_ = 0.8;
-               _loc14_ = (_loc11_ >> 16 & 255) * _loc7_ + (_loc13_ >> 16 & 255) * (1 - _loc7_);
-               _loc15_ = (_loc11_ >> 8 & 255) * _loc7_ + (_loc13_ >> 8 & 255) * (1 - _loc7_);
-               _loc16_ = (_loc11_ & 255) * _loc7_ + (_loc13_ & 255) * (1 - _loc7_);
+               _loc14_ = int((_loc11_ >> 16 & 0xFF) * _loc7_ + (_loc13_ >> 16 & 0xFF) * (1 - _loc7_));
+               _loc15_ = int((_loc11_ >> 8 & 0xFF) * _loc7_ + (_loc13_ >> 8 & 0xFF) * (1 - _loc7_));
+               _loc16_ = int((_loc11_ & 0xFF) * _loc7_ + (_loc13_ & 0xFF) * (1 - _loc7_));
                colour = -16777216 | _loc14_ << 16 | _loc15_ << 8 | _loc16_;
                _loc7_ = 0;
                _loc8_ = 0;
@@ -825,9 +830,9 @@ package zpp_nape.util
                   _loc7_ = param2.a * param1.worldCOMx + param2.b * param1.worldCOMy + param2.tx;
                   _loc8_ = param2.c * param1.worldCOMx + param2.d * param1.worldCOMy + param2.ty;
                }
-               penx = _loc7_ + 0.5;
-               peny = _loc8_ + 0.5;
-               __circle(penx,peny,1.5,colour);
+               penx = int(_loc7_ + 0.5);
+               peny = int(_loc8_ + 0.5);
+               __circle(penx,peny,int(1.5),colour);
                if(param1.zip_aabb)
                {
                   if(param1.body != null)
@@ -856,6 +861,7 @@ package zpp_nape.util
                                     {
                                        _loc18_.localCOMx = _loc18_.lverts.next.x;
                                        _loc18_.localCOMy = _loc18_.lverts.next.y;
+                                       null;
                                     }
                                     else if(_loc18_.lverts.next.next.next == null)
                                     {
@@ -916,6 +922,7 @@ package zpp_nape.util
                                  _loc24_.zip_axis = false;
                                  _loc24_.axisx = Math.sin(_loc24_.rot);
                                  _loc24_.axisy = Math.cos(_loc24_.rot);
+                                 null;
                               }
                               _loc17_.worldCOMx = _loc17_.body.posx + (_loc17_.body.axisy * _loc17_.localCOMx - _loc17_.body.axisx * _loc17_.localCOMy);
                               _loc17_.worldCOMy = _loc17_.body.posy + (_loc17_.localCOMx * _loc17_.body.axisx + _loc17_.localCOMy * _loc17_.body.axisy);
@@ -943,6 +950,7 @@ package zpp_nape.util
                                  _loc24_.zip_axis = false;
                                  _loc24_.axisx = Math.sin(_loc24_.rot);
                                  _loc24_.axisy = Math.cos(_loc24_.rot);
+                                 null;
                               }
                               _loc19_ = _loc18_.lverts.next;
                               _loc20_ = _loc18_.gverts.next;
@@ -1014,25 +1022,25 @@ package zpp_nape.util
                   _loc33_ = param2.a * _loc28_ + param2.b * _loc32_;
                   _loc32_ = param2.c * _loc28_ + param2.d * _loc32_;
                   _loc28_ = _loc33_;
-                  penx = _loc9_ + 0.5;
-                  peny = _loc25_ + 0.5;
-                  _loc11_ = _loc9_ + _loc26_ + 0.5;
-                  _loc13_ = _loc25_ + _loc27_ + 0.5;
+                  penx = int(_loc9_ + 0.5);
+                  peny = int(_loc25_ + 0.5);
+                  _loc11_ = int(_loc9_ + _loc26_ + 0.5);
+                  _loc13_ = int(_loc25_ + _loc27_ + 0.5);
                   __line(penx,peny,_loc11_,_loc13_,colour);
                   penx = _loc11_;
                   peny = _loc13_;
-                  _loc11_ = _loc9_ + _loc26_ + _loc28_ + 0.5;
-                  _loc13_ = _loc25_ + _loc27_ + _loc32_ + 0.5;
+                  _loc11_ = int(_loc9_ + _loc26_ + _loc28_ + 0.5);
+                  _loc13_ = int(_loc25_ + _loc27_ + _loc32_ + 0.5);
                   __line(penx,peny,_loc11_,_loc13_,colour);
                   penx = _loc11_;
                   peny = _loc13_;
-                  _loc11_ = _loc9_ + _loc28_ + 0.5;
-                  _loc13_ = _loc25_ + _loc32_ + 0.5;
+                  _loc11_ = int(_loc9_ + _loc28_ + 0.5);
+                  _loc13_ = int(_loc25_ + _loc32_ + 0.5);
                   __line(penx,peny,_loc11_,_loc13_,colour);
                   penx = _loc11_;
                   peny = _loc13_;
-                  _loc11_ = _loc9_ + 0.5;
-                  _loc13_ = _loc25_ + 0.5;
+                  _loc11_ = int(_loc9_ + 0.5);
+                  _loc13_ = int(_loc25_ + 0.5);
                   __line(penx,peny,_loc11_,_loc13_,colour);
                   penx = _loc11_;
                   peny = _loc13_;
@@ -1118,15 +1126,15 @@ package zpp_nape.util
          {
             if(outer.colour == null)
             {
-               _loc8_ = 16777215 * Math.exp(-(param1.id % 500) / 1500);
+               _loc8_ = int(16777215 * Math.exp(-(int(param1.id % 500)) / 1500));
             }
             else
             {
                _loc8_ = outer.colour(param1.id);
             }
-            _loc9_ = ((_loc8_ & 16711680) >> 16) * 0.7;
-            _loc10_ = ((_loc8_ & 65280) >> 8) * 0.7;
-            _loc11_ = (_loc8_ & 255) * 0.7;
+            _loc9_ = ((_loc8_ & 0xFF0000) >> 16) * 0.7;
+            _loc10_ = ((_loc8_ & 0xFF00) >> 8) * 0.7;
+            _loc11_ = (_loc8_ & 0xFF) * 0.7;
             §§push(false);
             if(param1.space != null)
             {
@@ -1145,13 +1153,13 @@ package zpp_nape.util
                _loc10_ = 0.4 * _loc10_ + 0.6 * bg_g;
                _loc11_ = 0.4 * _loc11_ + 0.6 * bg_b;
             }
-            _loc7_ = -16777216 | _loc9_ << 16 | _loc10_ << 8 | _loc11_;
+            _loc7_ = -16777216 | int(_loc9_) << 16 | int(_loc10_) << 8 | int(_loc11_);
             _loc8_ = _loc7_;
             _loc13_ = 16711680;
             _loc9_ = 0.8;
-            _loc14_ = (_loc8_ >> 16 & 255) * _loc9_ + (_loc13_ >> 16 & 255) * (1 - _loc9_);
-            _loc15_ = (_loc8_ >> 8 & 255) * _loc9_ + (_loc13_ >> 8 & 255) * (1 - _loc9_);
-            _loc16_ = (_loc8_ & 255) * _loc9_ + (_loc13_ & 255) * (1 - _loc9_);
+            _loc14_ = int((_loc8_ >> 16 & 0xFF) * _loc9_ + (_loc13_ >> 16 & 0xFF) * (1 - _loc9_));
+            _loc15_ = int((_loc8_ >> 8 & 0xFF) * _loc9_ + (_loc13_ >> 8 & 0xFF) * (1 - _loc9_));
+            _loc16_ = int((_loc8_ & 0xFF) * _loc9_ + (_loc13_ & 0xFF) * (1 - _loc9_));
             colour = -16777216 | _loc14_ << 16 | _loc15_ << 8 | _loc16_;
             _loc9_ = 0;
             _loc10_ = 0;
@@ -1170,9 +1178,9 @@ package zpp_nape.util
                   _loc9_ = param2.a * param1.worldCOMx + param2.b * param1.worldCOMy + param2.tx;
                   _loc10_ = param2.c * param1.worldCOMx + param2.d * param1.worldCOMy + param2.ty;
                }
-               penx = _loc9_ + 0.5;
-               peny = _loc10_ + 0.5;
-               __circle(penx,peny,1.5,colour);
+               penx = int(_loc9_ + 0.5);
+               peny = int(_loc10_ + 0.5);
+               __circle(penx,peny,int(1.5),colour);
                if(param1.shapes.head == null)
                {
                   Boot.lastError = new Error();
@@ -1217,6 +1225,7 @@ package zpp_nape.util
                                           {
                                              _loc19_.localCOMx = _loc19_.lverts.next.x;
                                              _loc19_.localCOMy = _loc19_.lverts.next.y;
+                                             null;
                                           }
                                           else if(_loc19_.lverts.next.next.next == null)
                                           {
@@ -1277,6 +1286,7 @@ package zpp_nape.util
                                        _loc27_.zip_axis = false;
                                        _loc27_.axisx = Math.sin(_loc27_.rot);
                                        _loc27_.axisy = Math.cos(_loc27_.rot);
+                                       null;
                                     }
                                     _loc18_.worldCOMx = _loc18_.body.posx + (_loc18_.body.axisy * _loc18_.localCOMx - _loc18_.body.axisx * _loc18_.localCOMy);
                                     _loc18_.worldCOMy = _loc18_.body.posy + (_loc18_.localCOMx * _loc18_.body.axisx + _loc18_.localCOMy * _loc18_.body.axisy);
@@ -1304,6 +1314,7 @@ package zpp_nape.util
                                        _loc27_.zip_axis = false;
                                        _loc27_.axisx = Math.sin(_loc27_.rot);
                                        _loc27_.axisy = Math.cos(_loc27_.rot);
+                                       null;
                                     }
                                     _loc21_ = _loc19_.lverts.next;
                                     _loc22_ = _loc19_.gverts.next;
@@ -1396,25 +1407,25 @@ package zpp_nape.util
                   _loc34_ = param2.a * _loc32_ + param2.b * _loc33_;
                   _loc33_ = param2.c * _loc32_ + param2.d * _loc33_;
                   _loc32_ = _loc34_;
-                  penx = _loc20_ + 0.5;
-                  peny = _loc25_ + 0.5;
-                  _loc8_ = _loc20_ + _loc30_ + 0.5;
-                  _loc13_ = _loc25_ + _loc31_ + 0.5;
+                  penx = int(_loc20_ + 0.5);
+                  peny = int(_loc25_ + 0.5);
+                  _loc8_ = int(_loc20_ + _loc30_ + 0.5);
+                  _loc13_ = int(_loc25_ + _loc31_ + 0.5);
                   __line(penx,peny,_loc8_,_loc13_,colour);
                   penx = _loc8_;
                   peny = _loc13_;
-                  _loc8_ = _loc20_ + _loc30_ + _loc32_ + 0.5;
-                  _loc13_ = _loc25_ + _loc31_ + _loc33_ + 0.5;
+                  _loc8_ = int(_loc20_ + _loc30_ + _loc32_ + 0.5);
+                  _loc13_ = int(_loc25_ + _loc31_ + _loc33_ + 0.5);
                   __line(penx,peny,_loc8_,_loc13_,colour);
                   penx = _loc8_;
                   peny = _loc13_;
-                  _loc8_ = _loc20_ + _loc32_ + 0.5;
-                  _loc13_ = _loc25_ + _loc33_ + 0.5;
+                  _loc8_ = int(_loc20_ + _loc32_ + 0.5);
+                  _loc13_ = int(_loc25_ + _loc33_ + 0.5);
                   __line(penx,peny,_loc8_,_loc13_,colour);
                   penx = _loc8_;
                   peny = _loc13_;
-                  _loc8_ = _loc20_ + 0.5;
-                  _loc13_ = _loc25_ + 0.5;
+                  _loc8_ = int(_loc20_ + 0.5);
+                  _loc13_ = int(_loc25_ + 0.5);
                   __line(penx,peny,_loc8_,_loc13_,colour);
                   penx = _loc8_;
                   peny = _loc13_;
@@ -1440,27 +1451,2534 @@ package zpp_nape.util
                _loc9_ = param2.a * param1.posx + param2.b * param1.posy + param2.tx;
                _loc10_ = param2.c * param1.posx + param2.d * param1.posy + param2.ty;
             }
-            penx = _loc11_ + 0.5;
-            peny = _loc17_ + 0.5;
-            _loc8_ = _loc9_ + 0.5;
-            _loc13_ = _loc10_ + 0.5;
+            penx = int(_loc11_ + 0.5);
+            peny = int(_loc17_ + 0.5);
+            _loc8_ = int(_loc9_ + 0.5);
+            _loc13_ = int(_loc10_ + 0.5);
             __line(penx,peny,_loc8_,_loc13_,colour);
             penx = _loc8_;
             peny = _loc13_;
-            penx = _loc9_ + 0.5;
-            peny = _loc10_ + 0.5;
-            __circle(penx,peny,1.5,colour);
+            penx = int(_loc9_ + 0.5);
+            peny = int(_loc10_ + 0.5);
+            __circle(penx,peny,int(1.5),colour);
          }
       }
       
       public function draw_arbiter(param1:ZPP_Arbiter, param2:ZPP_Mat23, param3:Number, param4:Boolean) : void
       {
-         /*
-          * Decompilatie fout
-          * Timeout (1 minuut) werd bereikt
-          * Instruction count: 8345
-          */
-         throw new flash.errors.IllegalOperationError("Niet gedecompileerd vanwege timeout");
+         var _loc7_:* = null as Arbiter;
+         var _loc8_:int = 0;
+         var _loc9_:int = 0;
+         var _loc10_:Number = NaN;
+         var _loc11_:int = 0;
+         var _loc12_:int = 0;
+         var _loc13_:int = 0;
+         var _loc14_:* = null as Vec2;
+         var _loc15_:* = null as Shape;
+         var _loc16_:Number = NaN;
+         var _loc17_:Boolean = false;
+         var _loc18_:* = null as Vec2;
+         var _loc19_:Boolean = false;
+         var _loc20_:* = null as ZPP_Vec2;
+         var _loc21_:* = null as FluidArbiter;
+         var _loc22_:* = null as CollisionArbiter;
+         var _loc23_:* = null as ContactList;
+         var _loc24_:* = null as ZPP_Contact;
+         var _loc25_:* = null as ZPP_Contact;
+         var _loc26_:* = null as Contact;
+         var _loc27_:* = null as Vec2;
+         var _loc28_:Number = NaN;
+         var _loc29_:Number = NaN;
+         var _loc30_:Number = NaN;
+         var _loc5_:Number = 0;
+         var _loc6_:Number = 0;
+         if(param1.outer.zpp_inner.type == ZPP_Arbiter.SENSOR)
+         {
+            if(outer.drawSensorArbiters)
+            {
+               _loc7_ = param1.outer;
+               _loc8_ = 65280;
+               _loc9_ = ~bg_col;
+               _loc10_ = 0.7;
+               _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc10_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc10_));
+               _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc10_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc10_));
+               _loc13_ = int((_loc8_ & 0xFF) * _loc10_ + (_loc9_ & 0xFF) * (1 - _loc10_));
+               colour = -16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_;
+               if(param4)
+               {
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws2.outer : _loc7_.zpp_inner.ws1.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = _loc14_.zpp_inner.x;
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws2.outer : _loc7_.zpp_inner.ws1.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = _loc14_.zpp_inner.y;
+               }
+               else
+               {
+                  §§push(param2.a);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws2.outer : _loc7_.zpp_inner.ws1.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc14_.zpp_inner.x);
+                  §§push(param2.b);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws2.outer : _loc7_.zpp_inner.ws1.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = §§pop() + §§pop() * _loc14_.zpp_inner.y + param2.tx;
+                  §§push(param2.c);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws2.outer : _loc7_.zpp_inner.ws1.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc14_.zpp_inner.x);
+                  §§push(param2.d);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws2.outer : _loc7_.zpp_inner.ws1.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = §§pop() + §§pop() * _loc14_.zpp_inner.y + param2.ty;
+               }
+               penx = int(_loc5_ + 0.5);
+               peny = int(_loc6_ + 0.5);
+               if(param4)
+               {
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws1.outer : _loc7_.zpp_inner.ws2.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = _loc14_.zpp_inner.x;
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws1.outer : _loc7_.zpp_inner.ws2.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = _loc14_.zpp_inner.y;
+               }
+               else
+               {
+                  §§push(param2.a);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws1.outer : _loc7_.zpp_inner.ws2.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc14_.zpp_inner.x);
+                  §§push(param2.b);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws1.outer : _loc7_.zpp_inner.ws2.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = §§pop() + §§pop() * _loc14_.zpp_inner.y + param2.tx;
+                  §§push(param2.c);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws1.outer : _loc7_.zpp_inner.ws2.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc14_.zpp_inner.x);
+                  §§push(param2.d);
+                  if(!_loc7_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  _loc15_ = _loc7_.zpp_inner.ws1.id > _loc7_.zpp_inner.ws2.id ? _loc7_.zpp_inner.ws1.outer : _loc7_.zpp_inner.ws2.outer;
+                  if(_loc15_.zpp_inner.wrap_worldCOM == null)
+                  {
+                     _loc10_ = _loc15_.zpp_inner.worldCOMx;
+                     _loc16_ = _loc15_.zpp_inner.worldCOMy;
+                     _loc17_ = false;
+                     §§push(_loc15_.zpp_inner);
+                     if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                     {
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
+                     }
+                     if(ZPP_PubPool.poolVec2 == null)
+                     {
+                        _loc18_ = new Vec2();
+                     }
+                     else
+                     {
+                        _loc18_ = ZPP_PubPool.poolVec2;
+                        ZPP_PubPool.poolVec2 = _loc18_.zpp_pool;
+                        _loc18_.zpp_pool = null;
+                        _loc18_.zpp_disp = false;
+                        if(_loc18_ == ZPP_PubPool.nextVec2)
+                        {
+                           ZPP_PubPool.nextVec2 = null;
+                        }
+                     }
+                     if(_loc18_.zpp_inner == null)
+                     {
+                        _loc19_ = false;
+                        §§push(_loc18_);
+                        if(ZPP_Vec2.zpp_pool == null)
+                        {
+                           _loc20_ = new ZPP_Vec2();
+                        }
+                        else
+                        {
+                           _loc20_ = ZPP_Vec2.zpp_pool;
+                           ZPP_Vec2.zpp_pool = _loc20_.next;
+                           _loc20_.next = null;
+                        }
+                        _loc20_.weak = false;
+                        _loc20_._immutable = _loc19_;
+                        _loc20_.x = _loc10_;
+                        _loc20_.y = _loc16_;
+                        §§pop().zpp_inner = _loc20_;
+                        _loc18_.zpp_inner.outer = _loc18_;
+                     }
+                     else
+                     {
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._immutable)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 is immutable";
+                        }
+                        if(_loc20_._isimmutable != null)
+                        {
+                           _loc20_._isimmutable();
+                        }
+                        if(_loc10_ != _loc10_ || _loc16_ != _loc16_)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: Vec2 components cannot be NaN";
+                        }
+                        §§push(false);
+                        if(_loc18_ != null && _loc18_.zpp_disp)
+                        {
+                           Boot.lastError = new Error();
+                           throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                        }
+                        _loc20_ = _loc18_.zpp_inner;
+                        if(_loc20_._validate != null)
+                        {
+                           _loc20_._validate();
+                        }
+                        if(_loc18_.zpp_inner.x == _loc10_)
+                        {
+                           §§pop();
+                           if(_loc18_ != null && _loc18_.zpp_disp)
+                           {
+                              Boot.lastError = new Error();
+                              throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                           }
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._validate != null)
+                           {
+                              _loc20_._validate();
+                           }
+                           §§push(_loc18_.zpp_inner.y == _loc16_);
+                        }
+                        if(!§§pop())
+                        {
+                           _loc18_.zpp_inner.x = _loc10_;
+                           _loc18_.zpp_inner.y = _loc16_;
+                           _loc20_ = _loc18_.zpp_inner;
+                           if(_loc20_._invalidate != null)
+                           {
+                              _loc20_._invalidate(_loc20_);
+                           }
+                        }
+                        _loc18_;
+                     }
+                     _loc18_.zpp_inner.weak = _loc17_;
+                     §§pop().wrap_worldCOM = _loc18_;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._inuse = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._immutable = true;
+                     _loc15_.zpp_inner.wrap_worldCOM.zpp_inner._validate = _loc15_.zpp_inner.getworldCOM;
+                  }
+                  _loc14_ = _loc15_.zpp_inner.wrap_worldCOM;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = §§pop() + §§pop() * _loc14_.zpp_inner.y + param2.ty;
+               }
+               _loc8_ = int(_loc5_ + 0.5);
+               _loc9_ = int(_loc6_ + 0.5);
+               __line(penx,peny,_loc8_,_loc9_,colour);
+               penx = _loc8_;
+               peny = _loc9_;
+            }
+         }
+         else if(param1.outer.zpp_inner.type == ZPP_Arbiter.FLUID)
+         {
+            if(outer.drawFluidArbiters)
+            {
+               _loc7_ = param1.outer;
+               _loc21_ = _loc7_.zpp_inner.type == ZPP_Arbiter.FLUID ? _loc7_.zpp_inner.fluidarb.outer_zn : null;
+               _loc8_ = 255;
+               _loc9_ = ~bg_col;
+               _loc10_ = 0.7;
+               _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc10_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc10_));
+               _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc10_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc10_));
+               _loc13_ = int((_loc8_ & 0xFF) * _loc10_ + (_loc9_ & 0xFF) * (1 - _loc10_));
+               colour = -16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_;
+               if(param4)
+               {
+                  if(!_loc21_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc21_.zpp_inner.fluidarb.wrap_position == null)
+                  {
+                     _loc21_.zpp_inner.fluidarb.getposition();
+                  }
+                  _loc14_ = _loc21_.zpp_inner.fluidarb.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = _loc14_.zpp_inner.x;
+                  if(!_loc21_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc21_.zpp_inner.fluidarb.wrap_position == null)
+                  {
+                     _loc21_.zpp_inner.fluidarb.getposition();
+                  }
+                  _loc14_ = _loc21_.zpp_inner.fluidarb.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = _loc14_.zpp_inner.y;
+               }
+               else
+               {
+                  §§push(param2.a);
+                  if(!_loc21_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc21_.zpp_inner.fluidarb.wrap_position == null)
+                  {
+                     _loc21_.zpp_inner.fluidarb.getposition();
+                  }
+                  _loc14_ = _loc21_.zpp_inner.fluidarb.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc14_.zpp_inner.x);
+                  §§push(param2.b);
+                  if(!_loc21_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc21_.zpp_inner.fluidarb.wrap_position == null)
+                  {
+                     _loc21_.zpp_inner.fluidarb.getposition();
+                  }
+                  _loc14_ = _loc21_.zpp_inner.fluidarb.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = §§pop() + §§pop() * _loc14_.zpp_inner.y + param2.tx;
+                  §§push(param2.c);
+                  if(!_loc21_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc21_.zpp_inner.fluidarb.wrap_position == null)
+                  {
+                     _loc21_.zpp_inner.fluidarb.getposition();
+                  }
+                  _loc14_ = _loc21_.zpp_inner.fluidarb.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc14_.zpp_inner.x);
+                  §§push(param2.d);
+                  if(!_loc21_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc21_.zpp_inner.fluidarb.wrap_position == null)
+                  {
+                     _loc21_.zpp_inner.fluidarb.getposition();
+                  }
+                  _loc14_ = _loc21_.zpp_inner.fluidarb.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = §§pop() + §§pop() * _loc14_.zpp_inner.y + param2.ty;
+               }
+               penx = int(_loc5_ + 0.5);
+               peny = int(_loc6_ + 0.5);
+               __circle(penx,peny,int(1.25),colour);
+            }
+         }
+         else if(outer.drawCollisionArbiters)
+         {
+            _loc7_ = param1.outer;
+            _loc22_ = _loc7_.zpp_inner.type == ZPP_Arbiter.COL ? _loc7_.zpp_inner.colarb.outer_zn : null;
+            if(!_loc22_.zpp_inner.active)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Arbiter not currently in use";
+            }
+            if(_loc22_.zpp_inner.colarb.wrap_contacts == null)
+            {
+               _loc22_.zpp_inner.colarb.setupcontacts();
+            }
+            _loc23_ = _loc22_.zpp_inner.colarb.wrap_contacts;
+            _loc23_.zpp_inner.valmod();
+            if(_loc23_.zpp_inner.zip_length)
+            {
+               _loc23_.zpp_inner.zip_length = false;
+               _loc23_.zpp_inner.user_length = 0;
+               _loc24_ = _loc23_.zpp_inner.inner.next;
+               while(_loc24_ != null)
+               {
+                  _loc25_ = _loc24_;
+                  if(_loc25_.active && _loc25_.arbiter.active)
+                  {
+                     ++_loc23_.zpp_inner.user_length;
+                  }
+                  _loc24_ = _loc24_.next;
+               }
+            }
+            if(_loc23_.zpp_inner.user_length != 0)
+            {
+               _loc10_ = 0;
+               _loc16_ = 0;
+               if(!_loc22_.zpp_inner.active)
+               {
+                  Boot.lastError = new Error();
+                  throw "Error: Arbiter not currently in use";
+               }
+               if(_loc22_.zpp_inner.colarb.wrap_contacts == null)
+               {
+                  _loc22_.zpp_inner.colarb.setupcontacts();
+               }
+               _loc23_ = _loc22_.zpp_inner.colarb.wrap_contacts;
+               _loc23_.zpp_inner.valmod();
+               if(_loc23_.zpp_inner.zip_length)
+               {
+                  _loc23_.zpp_inner.zip_length = false;
+                  _loc23_.zpp_inner.user_length = 0;
+                  _loc24_ = _loc23_.zpp_inner.inner.next;
+                  while(_loc24_ != null)
+                  {
+                     _loc25_ = _loc24_;
+                     if(_loc25_.active && _loc25_.arbiter.active)
+                     {
+                        ++_loc23_.zpp_inner.user_length;
+                     }
+                     _loc24_ = _loc24_.next;
+                  }
+               }
+               if(_loc23_.zpp_inner.user_length == 2)
+               {
+                  if(!_loc22_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc22_.zpp_inner.colarb.wrap_contacts == null)
+                  {
+                     _loc22_.zpp_inner.colarb.setupcontacts();
+                  }
+                  _loc26_ = _loc22_.zpp_inner.colarb.wrap_contacts.at(0);
+                  if(_loc26_.zpp_inner.inactiveme())
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Contact not currently in use";
+                  }
+                  if(_loc26_.zpp_inner.wrap_position == null)
+                  {
+                     _loc26_.zpp_inner.getposition();
+                  }
+                  _loc14_ = _loc26_.zpp_inner.wrap_position;
+                  if(!_loc22_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc22_.zpp_inner.colarb.wrap_contacts == null)
+                  {
+                     _loc22_.zpp_inner.colarb.setupcontacts();
+                  }
+                  _loc26_ = _loc22_.zpp_inner.colarb.wrap_contacts.at(1);
+                  if(_loc26_.zpp_inner.inactiveme())
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Contact not currently in use";
+                  }
+                  if(_loc26_.zpp_inner.wrap_position == null)
+                  {
+                     _loc26_.zpp_inner.getposition();
+                  }
+                  _loc18_ = _loc26_.zpp_inner.wrap_position;
+                  if(!_loc22_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc22_.zpp_inner.colarb.wrap_normal == null)
+                  {
+                     _loc22_.zpp_inner.colarb.getnormal();
+                  }
+                  _loc27_ = _loc22_.zpp_inner.colarb.wrap_normal;
+                  _loc28_ = 0.661437828;
+                  _loc29_ = 0.75;
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc27_.zpp_inner.y);
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc14_.zpp_inner.x);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc27_.zpp_inner.x);
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() - §§pop() * _loc14_.zpp_inner.y);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc27_.zpp_inner.y);
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() * _loc18_.zpp_inner.x);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc27_.zpp_inner.x);
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  if(§§pop() < §§pop() - §§pop() * _loc18_.zpp_inner.y)
+                  {
+                     _loc28_ = -_loc28_;
+                     _loc29_ = -_loc29_;
+                  }
+                  _loc8_ = 255;
+                  _loc9_ = ~bg_col;
+                  _loc30_ = 0.7;
+                  _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc30_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc30_));
+                  _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc30_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc30_));
+                  _loc13_ = int((_loc8_ & 0xFF) * _loc30_ + (_loc9_ & 0xFF) * (1 - _loc30_));
+                  colour = -16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc14_.zpp_inner.x);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() + _loc27_.zpp_inner.x * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = §§pop() - _loc27_.zpp_inner.y * _loc28_;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc14_.zpp_inner.y);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() + _loc27_.zpp_inner.y * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = §§pop() + _loc27_.zpp_inner.x * _loc28_;
+                  if(!param4)
+                  {
+                     _loc30_ = param2.a * _loc5_ + param2.b * _loc6_ + param2.tx;
+                     _loc6_ = param2.c * _loc5_ + param2.d * _loc6_ + param2.ty;
+                     _loc5_ = _loc30_;
+                  }
+                  penx = int(_loc5_ + 0.5);
+                  peny = int(_loc6_ + 0.5);
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc18_.zpp_inner.x);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() + _loc27_.zpp_inner.x * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = §§pop() + _loc27_.zpp_inner.y * _loc28_;
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc18_.zpp_inner.y);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() + _loc27_.zpp_inner.y * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = §§pop() - _loc27_.zpp_inner.x * _loc28_;
+                  if(!param4)
+                  {
+                     _loc30_ = param2.a * _loc5_ + param2.b * _loc6_ + param2.tx;
+                     _loc6_ = param2.c * _loc5_ + param2.d * _loc6_ + param2.ty;
+                     _loc5_ = _loc30_;
+                  }
+                  _loc8_ = int(_loc5_ + 0.5);
+                  _loc9_ = int(_loc6_ + 0.5);
+                  __line(penx,peny,_loc8_,_loc9_,colour);
+                  penx = _loc8_;
+                  peny = _loc9_;
+                  _loc8_ = 16711680;
+                  _loc9_ = ~bg_col;
+                  _loc30_ = 0.7;
+                  _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc30_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc30_));
+                  _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc30_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc30_));
+                  _loc13_ = int((_loc8_ & 0xFF) * _loc30_ + (_loc9_ & 0xFF) * (1 - _loc30_));
+                  colour = -16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc14_.zpp_inner.x);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() - _loc27_.zpp_inner.x * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = §§pop() - _loc27_.zpp_inner.y * _loc28_;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc14_.zpp_inner.y);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() - _loc27_.zpp_inner.y * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = §§pop() + _loc27_.zpp_inner.x * _loc28_;
+                  if(!param4)
+                  {
+                     _loc30_ = param2.a * _loc5_ + param2.b * _loc6_ + param2.tx;
+                     _loc6_ = param2.c * _loc5_ + param2.d * _loc6_ + param2.ty;
+                     _loc5_ = _loc30_;
+                  }
+                  penx = int(_loc5_ + 0.5);
+                  peny = int(_loc6_ + 0.5);
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc18_.zpp_inner.x);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() - _loc27_.zpp_inner.x * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc5_ = §§pop() + _loc27_.zpp_inner.y * _loc28_;
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc18_.zpp_inner.y);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(§§pop() - _loc27_.zpp_inner.y * _loc29_);
+                  if(_loc27_ != null && _loc27_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc27_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc6_ = §§pop() - _loc27_.zpp_inner.x * _loc28_;
+                  if(!param4)
+                  {
+                     _loc30_ = param2.a * _loc5_ + param2.b * _loc6_ + param2.tx;
+                     _loc6_ = param2.c * _loc5_ + param2.d * _loc6_ + param2.ty;
+                     _loc5_ = _loc30_;
+                  }
+                  _loc8_ = int(_loc5_ + 0.5);
+                  _loc9_ = int(_loc6_ + 0.5);
+                  __line(penx,peny,_loc8_,_loc9_,colour);
+                  penx = _loc8_;
+                  peny = _loc9_;
+                  §§push(0.5);
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc14_.zpp_inner.x);
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc10_ = §§pop() * (§§pop() + _loc18_.zpp_inner.x);
+                  §§push(0.5);
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  §§push(_loc14_.zpp_inner.y);
+                  if(_loc18_ != null && _loc18_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc18_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc16_ = §§pop() * (§§pop() + _loc18_.zpp_inner.y);
+                  if(!param4)
+                  {
+                     _loc30_ = param2.a * _loc10_ + param2.b * _loc16_ + param2.tx;
+                     _loc16_ = param2.c * _loc10_ + param2.d * _loc16_ + param2.ty;
+                     _loc10_ = _loc30_;
+                  }
+               }
+               else
+               {
+                  if(!_loc22_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc22_.zpp_inner.colarb.wrap_contacts == null)
+                  {
+                     _loc22_.zpp_inner.colarb.setupcontacts();
+                  }
+                  _loc26_ = _loc22_.zpp_inner.colarb.wrap_contacts.at(0);
+                  if(_loc26_.zpp_inner.inactiveme())
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Contact not currently in use";
+                  }
+                  if(_loc26_.zpp_inner.wrap_position == null)
+                  {
+                     _loc26_.zpp_inner.getposition();
+                  }
+                  _loc14_ = _loc26_.zpp_inner.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc10_ = _loc14_.zpp_inner.x;
+                  if(!_loc22_.zpp_inner.active)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Arbiter not currently in use";
+                  }
+                  if(_loc22_.zpp_inner.colarb.wrap_contacts == null)
+                  {
+                     _loc22_.zpp_inner.colarb.setupcontacts();
+                  }
+                  _loc26_ = _loc22_.zpp_inner.colarb.wrap_contacts.at(0);
+                  if(_loc26_.zpp_inner.inactiveme())
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: Contact not currently in use";
+                  }
+                  if(_loc26_.zpp_inner.wrap_position == null)
+                  {
+                     _loc26_.zpp_inner.getposition();
+                  }
+                  _loc14_ = _loc26_.zpp_inner.wrap_position;
+                  if(_loc14_ != null && _loc14_.zpp_disp)
+                  {
+                     Boot.lastError = new Error();
+                     throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+                  }
+                  _loc20_ = _loc14_.zpp_inner;
+                  if(_loc20_._validate != null)
+                  {
+                     _loc20_._validate();
+                  }
+                  _loc16_ = _loc14_.zpp_inner.y;
+                  if(!param4)
+                  {
+                     _loc28_ = param2.a * _loc10_ + param2.b * _loc16_ + param2.tx;
+                     _loc16_ = param2.c * _loc10_ + param2.d * _loc16_ + param2.ty;
+                     _loc10_ = _loc28_;
+                  }
+                  _loc8_ = 16711935;
+                  _loc9_ = ~bg_col;
+                  _loc28_ = 0.7;
+                  _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc28_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc28_));
+                  _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc28_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc28_));
+                  _loc13_ = int((_loc8_ & 0xFF) * _loc28_ + (_loc9_ & 0xFF) * (1 - _loc28_));
+                  colour = -16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_;
+                  penx = int(_loc10_ + 0.5);
+                  peny = int(_loc16_ + 0.5);
+                  __circle(penx,peny,int(1.5),colour);
+               }
+               _loc8_ = ~bg_col;
+               _loc9_ = bg_col;
+               _loc28_ = 0.7;
+               _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc28_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc28_));
+               _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc28_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc28_));
+               _loc13_ = int((_loc8_ & 0xFF) * _loc28_ + (_loc9_ & 0xFF) * (1 - _loc28_));
+               colour = -16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_;
+               penx = int(_loc10_ + 0.5);
+               peny = int(_loc16_ + 0.5);
+               if(!_loc22_.zpp_inner.active)
+               {
+                  Boot.lastError = new Error();
+                  throw "Error: Arbiter not currently in use";
+               }
+               if(_loc22_.zpp_inner.colarb.wrap_normal == null)
+               {
+                  _loc22_.zpp_inner.colarb.getnormal();
+               }
+               _loc14_ = _loc22_.zpp_inner.colarb.wrap_normal;
+               if(_loc14_ != null && _loc14_.zpp_disp)
+               {
+                  Boot.lastError = new Error();
+                  throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+               }
+               _loc20_ = _loc14_.zpp_inner;
+               if(_loc20_._validate != null)
+               {
+                  _loc20_._validate();
+               }
+               _loc5_ = _loc14_.zpp_inner.x * 5;
+               if(!_loc22_.zpp_inner.active)
+               {
+                  Boot.lastError = new Error();
+                  throw "Error: Arbiter not currently in use";
+               }
+               if(_loc22_.zpp_inner.colarb.wrap_normal == null)
+               {
+                  _loc22_.zpp_inner.colarb.getnormal();
+               }
+               _loc14_ = _loc22_.zpp_inner.colarb.wrap_normal;
+               if(_loc14_ != null && _loc14_.zpp_disp)
+               {
+                  Boot.lastError = new Error();
+                  throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+               }
+               _loc20_ = _loc14_.zpp_inner;
+               if(_loc20_._validate != null)
+               {
+                  _loc20_._validate();
+               }
+               _loc6_ = _loc14_.zpp_inner.y * 5;
+               if(!param4)
+               {
+                  _loc28_ = param2.a * _loc5_ + param2.b * _loc6_;
+                  _loc6_ = param2.c * _loc5_ + param2.d * _loc6_;
+                  _loc5_ = _loc28_;
+               }
+               _loc8_ = int(_loc10_ + _loc5_ + 0.5);
+               _loc9_ = int(_loc16_ + _loc6_ + 0.5);
+               __line(penx,peny,_loc8_,_loc9_,colour);
+               penx = _loc8_;
+               peny = _loc9_;
+            }
+         }
       }
       
       public function clear() : void
@@ -1503,7 +4021,7 @@ package zpp_nape.util
          {
             _loc6_._validate();
          }
-         var _loc5_:int = param1.zpp_inner.x + 0.5;
+         var _loc5_:int = int(param1.zpp_inner.x + 0.5);
          if(param1 != null && param1.zpp_disp)
          {
             Boot.lastError = new Error();
@@ -1514,7 +4032,7 @@ package zpp_nape.util
          {
             _loc6_._validate();
          }
-         var _loc7_:int = param1.zpp_inner.y + 0.5;
+         var _loc7_:int = int(param1.zpp_inner.y + 0.5);
          if(param2 != null && param2.zpp_disp)
          {
             Boot.lastError = new Error();
@@ -1525,7 +4043,7 @@ package zpp_nape.util
          {
             _loc6_._validate();
          }
-         var _loc8_:int = param2.zpp_inner.x + 0.5;
+         var _loc8_:int = int(param2.zpp_inner.x + 0.5);
          if(param2 != null && param2.zpp_disp)
          {
             Boot.lastError = new Error();
@@ -1536,7 +4054,7 @@ package zpp_nape.util
          {
             _loc6_._validate();
          }
-         var _loc9_:int = param2.zpp_inner.y + 0.5;
+         var _loc9_:int = int(param2.zpp_inner.y + 0.5);
          if(param3 != null && param3.zpp_disp)
          {
             Boot.lastError = new Error();
@@ -1547,7 +4065,7 @@ package zpp_nape.util
          {
             _loc6_._validate();
          }
-         var _loc10_:int = param3.zpp_inner.x + 0.5;
+         var _loc10_:int = int(param3.zpp_inner.x + 0.5);
          if(param3 != null && param3.zpp_disp)
          {
             Boot.lastError = new Error();
@@ -1558,7 +4076,7 @@ package zpp_nape.util
          {
             _loc6_._validate();
          }
-         var _loc11_:int = param3.zpp_inner.y + 0.5;
+         var _loc11_:int = int(param3.zpp_inner.y + 0.5);
          if(!xnull)
          {
             if(param1 != null && param1.zpp_disp)
@@ -1754,8 +4272,8 @@ package zpp_nape.util
                   {
                      _loc17_ = _loc16_++;
                      _loc20_ = _loc17_ - _loc7_;
-                     _loc21_ = _loc5_ + _loc20_ * _loc19_ + 0.5;
-                     _loc22_ = _loc5_ + _loc20_ * _loc18_ + 0.5;
+                     _loc21_ = int(_loc5_ + _loc20_ * _loc19_ + 0.5);
+                     _loc22_ = int(_loc5_ + _loc20_ * _loc18_ + 0.5);
                      if(_loc21_ < 0)
                      {
                         _loc21_ = 0;
@@ -1794,8 +4312,8 @@ package zpp_nape.util
                   while(_loc16_ < _loc17_)
                   {
                      _loc20_ = _loc16_++;
-                     _loc21_ = _loc8_ + (_loc20_ - _loc9_) * _loc19_ + 0.5;
-                     _loc22_ = _loc5_ + (_loc20_ - _loc7_) * _loc18_ + 0.5;
+                     _loc21_ = int(_loc8_ + (_loc20_ - _loc9_) * _loc19_ + 0.5);
+                     _loc22_ = int(_loc5_ + (_loc20_ - _loc7_) * _loc18_ + 0.5);
                      if(_loc21_ < 0)
                      {
                         _loc21_ = 0;
@@ -1838,8 +4356,8 @@ package zpp_nape.util
                   {
                      _loc17_ = _loc16_++;
                      _loc20_ = _loc17_ - _loc7_;
-                     _loc21_ = _loc5_ + _loc20_ * _loc19_ + 0.5;
-                     _loc22_ = _loc5_ + _loc20_ * _loc18_ + 0.5;
+                     _loc21_ = int(_loc5_ + _loc20_ * _loc19_ + 0.5);
+                     _loc22_ = int(_loc5_ + _loc20_ * _loc18_ + 0.5);
                      if(_loc22_ < 0)
                      {
                         _loc22_ = 0;
@@ -1878,8 +4396,8 @@ package zpp_nape.util
                   while(_loc16_ < _loc17_)
                   {
                      _loc20_ = _loc16_++;
-                     _loc21_ = _loc8_ + (_loc20_ - _loc9_) * _loc19_ + 0.5;
-                     _loc22_ = _loc5_ + (_loc20_ - _loc7_) * _loc18_ + 0.5;
+                     _loc21_ = int(_loc8_ + (_loc20_ - _loc9_) * _loc19_ + 0.5);
+                     _loc22_ = int(_loc5_ + (_loc20_ - _loc7_) * _loc18_ + 0.5);
                      if(_loc22_ < 0)
                      {
                         _loc22_ = 0;
@@ -1906,7 +4424,7 @@ package zpp_nape.util
       
       public function __round(param1:Number) : int
       {
-         return param1 + 0.5;
+         return int(param1 + 0.5);
       }
       
       public function __line(param1:int, param2:int, param3:int, param4:int, param5:int) : void
@@ -2310,7 +4828,7 @@ package zpp_nape.util
             {
                _loc6_._validate();
             }
-            §§push(param1.zpp_inner.x + 0.5);
+            §§push(int(param1.zpp_inner.x + 0.5));
             if(param1 != null && param1.zpp_disp)
             {
                Boot.lastError = new Error();
@@ -2321,7 +4839,7 @@ package zpp_nape.util
             {
                _loc6_._validate();
             }
-            §§push(param1.zpp_inner.y + 0.5);
+            §§push(int(param1.zpp_inner.y + 0.5));
             if(param3 != null && param3.zpp_disp)
             {
                Boot.lastError = new Error();
@@ -2332,7 +4850,7 @@ package zpp_nape.util
             {
                _loc6_._validate();
             }
-            §§push(param3.zpp_inner.x + 0.5);
+            §§push(int(param3.zpp_inner.x + 0.5));
             if(param3 != null && param3.zpp_disp)
             {
                Boot.lastError = new Error();
@@ -2343,7 +4861,7 @@ package zpp_nape.util
             {
                _loc6_._validate();
             }
-            §§pop().__line(§§pop(),§§pop(),§§pop(),param3.zpp_inner.y + 0.5,param4);
+            §§pop().__line(§§pop(),§§pop(),§§pop(),int(param3.zpp_inner.y + 0.5),param4);
          }
          else
          {
@@ -3084,10 +5602,10 @@ package zpp_nape.util
          var _loc4_:Boolean = param1.maxx < 1.79e+308;
          var _loc5_:Boolean = param1.miny > -1.79e+308;
          var _loc6_:Boolean = param1.maxy < 1.79e+308;
-         var _loc7_:int = _loc3_ ? param1.minx + 0.5 : 0;
-         var _loc8_:int = _loc4_ ? param1.maxx + 0.5 : width;
-         var _loc9_:int = _loc5_ ? param1.miny + 0.5 : 0;
-         var _loc10_:int = _loc6_ ? param1.maxy + 0.5 : height;
+         var _loc7_:int = _loc3_ ? int(param1.minx + 0.5) : 0;
+         var _loc8_:int = _loc4_ ? int(param1.maxx + 0.5) : width;
+         var _loc9_:int = _loc5_ ? int(param1.miny + 0.5) : 0;
+         var _loc10_:int = _loc6_ ? int(param1.maxy + 0.5) : height;
          if(_loc3_)
          {
             __line(_loc7_,_loc9_,_loc7_,_loc10_,param2);
@@ -3107,3 +5625,4 @@ package zpp_nape.util
       }
    }
 }
+

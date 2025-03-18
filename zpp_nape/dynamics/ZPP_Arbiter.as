@@ -10,15 +10,13 @@ package zpp_nape.dynamics
    
    public class ZPP_Arbiter
    {
+      public static var §internal§:Boolean;
       
-      public static var §internal§:Boolean = false;
+      public static var COL:int;
       
-      public static var COL:int = 1;
+      public static var FLUID:int;
       
-      public static var FLUID:int = 4;
-      
-      public static var SENSOR:int = 2;
-       
+      public static var SENSOR:int;
       
       public var ws2:ZPP_Shape;
       
@@ -135,3 +133,4 @@ package zpp_nape.dynamics
       }
    }
 }
+

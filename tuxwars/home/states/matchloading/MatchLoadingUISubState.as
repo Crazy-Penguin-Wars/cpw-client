@@ -6,11 +6,10 @@ package tuxwars.home.states.matchloading
    
    public class MatchLoadingUISubState extends TuxUIState
    {
-       
-      
       public function MatchLoadingUISubState(game:TuxWarsGame, logicClass:Class, params:* = null)
       {
          super(MatchLoadingScreen,logicClass,game,params);
       }
    }
 }
+

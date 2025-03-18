@@ -5,8 +5,6 @@ package tuxwars.home.states.inbox
    
    public class InboxState extends TuxState
    {
-       
-      
       public function InboxState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.inbox
       }
    }
 }
+

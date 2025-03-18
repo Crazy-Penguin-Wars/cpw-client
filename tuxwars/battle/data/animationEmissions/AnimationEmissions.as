@@ -1,18 +1,16 @@
 package tuxwars.battle.data.animationEmissions
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class AnimationEmissions
    {
-      
       private static const ANIMATIONS_TABLE:String = "Animation";
       
-      private static const ANIMATIONS_CACHE:Object = {};
-      
       private static var animationsTable:Table;
-       
+      
+      private static const ANIMATIONS_CACHE:Object = {};
       
       public function AnimationEmissions()
       {
@@ -47,10 +45,12 @@ package tuxwars.battle.data.animationEmissions
       {
          if(!animationsTable)
          {
+            var _loc2_:String = "Animation";
             var _loc1_:ProjectManager = ProjectManager;
-            animationsTable = com.dchoc.projectdata.ProjectManager.projectData.findTable("Animation");
+            animationsTable = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return animationsTable;
       }
    }
 }
+

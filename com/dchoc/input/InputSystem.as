@@ -10,8 +10,6 @@ package com.dchoc.input
    
    public class InputSystem implements InputEventHandler
    {
-       
-      
       private const newActions:Vector.<InputAction> = new Vector.<InputAction>();
       
       private const actions:Object = {};
@@ -62,7 +60,7 @@ package com.dchoc.input
       
       private function activateInputAction(action:InputAction) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          if(action)
          {
             _loc2_ = actions.hasOwnProperty(action.getType()) && actions[action.getType()] != null ? actions[action.getType()] : [];
@@ -77,12 +75,12 @@ package com.dchoc.input
       
       public function removeInputAction(action:InputAction) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Array = null;
          var _loc2_:int = 0;
          if(action)
          {
             _loc3_ = actions.hasOwnProperty(action.getType()) && actions[action.getType()] != null ? actions[action.getType()] : [];
-            _loc2_ = _loc3_.indexOf(action);
+            _loc2_ = int(_loc3_.indexOf(action));
             if(_loc2_ != -1)
             {
                _loc3_.splice(_loc2_,1);
@@ -110,7 +108,7 @@ package com.dchoc.input
       
       private function handleMouseEvent(event:MouseEvent) : void
       {
-         var _loc3_:Array = actions.hasOwnProperty(event.type) ? actions[event.type] : [];
+         var _loc3_:Array = !!actions.hasOwnProperty(event.type) ? actions[event.type] : [];
          for each(var action in _loc3_)
          {
             action.execute(event);
@@ -119,7 +117,7 @@ package com.dchoc.input
       
       private function handleKeyboardEvent(event:KeyboardEvent) : void
       {
-         var _loc3_:Array = actions.hasOwnProperty(event.type) ? actions[event.type] : [];
+         var _loc3_:Array = !!actions.hasOwnProperty(event.type) ? actions[event.type] : [];
          for each(var action in _loc3_)
          {
             if(action.keyCode == event.keyCode || action.keyCode == -1)
@@ -131,7 +129,7 @@ package com.dchoc.input
       
       private function handleEvent(event:Event) : void
       {
-         var _loc3_:Array = actions.hasOwnProperty(event.type) ? actions[event.type] : [];
+         var _loc3_:Array = !!actions.hasOwnProperty(event.type) ? actions[event.type] : [];
          for each(var action in _loc3_)
          {
             action.execute(event);
@@ -139,3 +137,4 @@ package com.dchoc.input
       }
    }
 }
+

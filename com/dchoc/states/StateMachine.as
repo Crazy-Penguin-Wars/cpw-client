@@ -6,13 +6,11 @@ package com.dchoc.states
    
    public class StateMachine extends EventDispatcher implements IStateMachine
    {
-      
       public static const STATE_CHANGED:String = "StateChanged";
       
       public static const STATE_ENTERED:String = "StateEntered";
       
       public static const STATE_EXITED:String = "StateExited";
-       
       
       private const stateQueue:StateQueue = new StateQueue();
       
@@ -30,7 +28,7 @@ package com.dchoc.states
       
       public function logicUpdate(deltaTime:int) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:State = null;
          if(stateQueue.hasStates())
          {
             _loc2_ = stateQueue.getNextState();
@@ -98,3 +96,4 @@ package com.dchoc.states
       }
    }
 }
+

@@ -9,8 +9,6 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SlotMachineAwardContainer extends UIContainer
    {
-       
-      
       private var _textField:UIAutoTextField;
       
       private var _text:String;
@@ -28,3 +26,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

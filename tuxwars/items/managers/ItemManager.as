@@ -1,9 +1,7 @@
 package tuxwars.items.managers
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import tuxwars.items.BoosterItem;
    import tuxwars.items.ClothingItem;
@@ -42,10 +40,11 @@ package tuxwars.items.managers
    
    public class ItemManager
    {
-      
       private static const TABLE:String = "Item";
       
       private static const TYPE:String = "Type";
+      
+      private static var table:Table;
       
       private static const ITEM_CLASSES:Object = {};
       
@@ -57,40 +56,36 @@ package tuxwars.items.managers
       
       private static const UNLOCKED_ITEMS:Vector.<String> = new Vector.<String>();
       
-      private static var table:Table;
-      
-      {
-         ITEM_CLASSES["Trophy"] = TrophyItem;
-         ITEM_CLASSES["Crafting"] = CraftingItem;
-         ITEM_CLASSES["Weapon"] = WeaponItem;
-         ITEM_CLASSES["Booster"] = BoosterItem;
-         ITEM_CLASSES["Clothing"] = ClothingItem;
-         ITEM_CLASSES["Emoticon"] = EmoticonItem;
-         ITEM_CLASSES["Recipe"] = RecipeItem;
-         ITEM_CLASSES["Customization"] = CustomizationItem;
-         ITEM_CLASSES["MegaPack"] = MegaPackItem;
-         ITEM_CLASSES["Coupon"] = CouponItem;
-         ITEM_DEFS["Trophy"] = TrophyDef;
-         ITEM_DEFS["Crafting"] = CraftingDef;
-         ITEM_DEFS["Weapon"] = WeaponDef;
-         ITEM_DEFS["Booster"] = BoosterDef;
-         ITEM_DEFS["Clothing"] = ClothingDef;
-         ITEM_DEFS["Emoticon"] = EmoticonDef;
-         ITEM_DEFS["Recipe"] = RecipeDef;
-         ITEM_DEFS["Customization"] = CustomizationDef;
-         ITEM_DEFS["MegaPack"] = MegaPackDef;
-         ITEM_DEFS["Coupon"] = CouponDef;
-         ITEM_DATA["Trophy"] = TrophyData;
-         ITEM_DATA["Crafting"] = CraftingData;
-         ITEM_DATA["Weapon"] = WeaponData;
-         ITEM_DATA["Booster"] = BoosterData;
-         ITEM_DATA["Clothing"] = ClothingData;
-         ITEM_DATA["Emoticon"] = EmoticonData;
-         ITEM_DATA["Recipe"] = RecipeData;
-         ITEM_DATA["Customization"] = CustomizationData;
-         ITEM_DATA["MegaPack"] = MegaPackData;
-         ITEM_DATA["Coupon"] = CouponData;
-      }
+      ITEM_CLASSES["Trophy"] = TrophyItem;
+      ITEM_CLASSES["Crafting"] = CraftingItem;
+      ITEM_CLASSES["Weapon"] = WeaponItem;
+      ITEM_CLASSES["Booster"] = BoosterItem;
+      ITEM_CLASSES["Clothing"] = ClothingItem;
+      ITEM_CLASSES["Emoticon"] = EmoticonItem;
+      ITEM_CLASSES["Recipe"] = RecipeItem;
+      ITEM_CLASSES["Customization"] = CustomizationItem;
+      ITEM_CLASSES["MegaPack"] = MegaPackItem;
+      ITEM_CLASSES["Coupon"] = CouponItem;
+      ITEM_DEFS["Trophy"] = TrophyDef;
+      ITEM_DEFS["Crafting"] = CraftingDef;
+      ITEM_DEFS["Weapon"] = WeaponDef;
+      ITEM_DEFS["Booster"] = BoosterDef;
+      ITEM_DEFS["Clothing"] = ClothingDef;
+      ITEM_DEFS["Emoticon"] = EmoticonDef;
+      ITEM_DEFS["Recipe"] = RecipeDef;
+      ITEM_DEFS["Customization"] = CustomizationDef;
+      ITEM_DEFS["MegaPack"] = MegaPackDef;
+      ITEM_DEFS["Coupon"] = CouponDef;
+      ITEM_DATA["Trophy"] = TrophyData;
+      ITEM_DATA["Crafting"] = CraftingData;
+      ITEM_DATA["Weapon"] = WeaponData;
+      ITEM_DATA["Booster"] = BoosterData;
+      ITEM_DATA["Clothing"] = ClothingData;
+      ITEM_DATA["Emoticon"] = EmoticonData;
+      ITEM_DATA["Recipe"] = RecipeData;
+      ITEM_DATA["Customization"] = CustomizationData;
+      ITEM_DATA["MegaPack"] = MegaPackData;
+      ITEM_DATA["Coupon"] = CouponData;
       
       public function ItemManager()
       {
@@ -112,17 +107,18 @@ package tuxwars.items.managers
       
       public static function findItemDatas(type:String) : Vector.<ItemData>
       {
-         var _loc2_:* = null;
+         var _loc2_:Field = null;
          var _loc3_:Vector.<ItemData> = new Vector.<ItemData>();
          var _loc5_:* = getTable();
          for each(var row in _loc5_._rows)
          {
+            var _loc10_:String = "Type";
             var _loc6_:* = row;
-            if(!_loc6_._cache["Type"])
+            if(!_loc6_._cache[_loc10_])
             {
-               _loc6_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","Type");
+               _loc6_._cache[_loc10_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc10_);
             }
-            _loc2_ = _loc6_._cache["Type"];
+            _loc2_ = _loc6_._cache[_loc10_];
             if(_loc2_ && (_loc7_.overrideValue != null ? _loc7_.overrideValue : _loc7_._value) == type)
             {
                _loc3_.push(getItemData(row.id));
@@ -133,17 +129,18 @@ package tuxwars.items.managers
       
       public static function findAllItems() : Vector.<ItemData>
       {
-         var _loc1_:* = null;
+         var _loc1_:Field = null;
          var _loc2_:Vector.<ItemData> = new Vector.<ItemData>();
          var _loc4_:* = getTable();
          for each(var row in _loc4_._rows)
          {
+            var _loc8_:String = "Type";
             var _loc5_:* = row;
-            if(!_loc5_._cache["Type"])
+            if(!_loc5_._cache[_loc8_])
             {
-               _loc5_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","Type");
+               _loc5_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc8_);
             }
-            _loc1_ = _loc5_._cache["Type"];
+            _loc1_ = _loc5_._cache[_loc8_];
             if(_loc1_)
             {
                _loc2_.push(getItemData(row.id));
@@ -165,17 +162,18 @@ package tuxwars.items.managers
       
       public static function getItemsUnlockedAtLevel(level:int) : Vector.<ItemData>
       {
-         var field:* = null;
+         var field:Field = null;
          var _loc3_:Vector.<ItemData> = new Vector.<ItemData>();
          var _loc5_:* = getTable();
          for each(var row in _loc5_._rows)
          {
+            var _loc10_:String = "RequiredLevel";
             var _loc6_:* = row;
-            if(!_loc6_._cache["RequiredLevel"])
+            if(!_loc6_._cache[_loc10_])
             {
-               _loc6_._cache["RequiredLevel"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","RequiredLevel");
+               _loc6_._cache[_loc10_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc10_);
             }
-            field = _loc6_._cache["RequiredLevel"];
+            field = _loc6_._cache[_loc10_];
             if(field && (_loc7_.overrideValue != null ? _loc7_.overrideValue : _loc7_._value) == level && !isUnlocked(row.id))
             {
                _loc3_.push(getItemData(row.id));
@@ -207,8 +205,9 @@ package tuxwars.items.managers
       {
          if(!table)
          {
+            var _loc2_:String = "Item";
             var _loc1_:ProjectManager = ProjectManager;
-            table = com.dchoc.projectdata.ProjectManager.projectData.findTable("Item");
+            table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return table;
       }
@@ -251,19 +250,20 @@ package tuxwars.items.managers
       
       private static function getType(row:Row) : String
       {
+         var _loc4_:String = "Type";
          var _loc2_:* = row;
-         if(!_loc2_._cache["Type"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Type");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc3_:* = _loc2_._cache["Type"];
+         var _loc3_:* = _loc2_._cache[_loc4_];
          return _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value;
       }
       
       public static function sortByItemTypeAndPriority(a:ItemData, b:ItemData) : int
       {
-         var indexA:int = SORT_ORDER_ITEM_TYPE.indexOf(a.type);
-         var indexB:int = SORT_ORDER_ITEM_TYPE.indexOf(b.type);
+         var indexA:int = int(SORT_ORDER_ITEM_TYPE.indexOf(a.type));
+         var indexB:int = int(SORT_ORDER_ITEM_TYPE.indexOf(b.type));
          if(indexA == indexB)
          {
             indexA = a.sortPriority;
@@ -273,3 +273,4 @@ package tuxwars.items.managers
       }
    }
 }
+

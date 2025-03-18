@@ -1,17 +1,14 @@
 package tuxwars.battle.data
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
    import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class Levels
    {
-      
       private static const TABLE_NAME:String = "Level";
       
       private static const LEVELS:Vector.<LevelData> = new Vector.<LevelData>();
-       
       
       public function Levels()
       {
@@ -63,8 +60,9 @@ package tuxwars.battle.data
       
       private static function getTable() : Table
       {
+         var _loc2_:String = "Level";
          var _loc1_:ProjectManager = ProjectManager;
-         return com.dchoc.projectdata.ProjectManager.projectData.findTable("Level");
+         return com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
       }
       
       private static function getRow(rowName:String) : Row
@@ -84,3 +82,4 @@ package tuxwars.battle.data
       }
    }
 }
+

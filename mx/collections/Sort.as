@@ -8,9 +8,10 @@ package mx.collections
    import mx.resources.ResourceManager;
    import mx.utils.ObjectUtil;
    
+   use namespace mx_internal;
+   
    public class Sort extends EventDispatcher implements ISort
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const ANY_INDEX_MODE:String = "any";
@@ -18,9 +19,8 @@ package mx.collections
       public static const FIRST_INDEX_MODE:String = "first";
       
       public static const LAST_INDEX_MODE:String = "last";
-       
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _compareFunction:Function;
       
@@ -28,7 +28,7 @@ package mx.collections
       
       private var _fields:Array;
       
-      private var fieldList:Array;
+      private var fieldList:Array = [];
       
       private var _unique:Boolean;
       
@@ -38,8 +38,6 @@ package mx.collections
       
       public function Sort()
       {
-         this.resourceManager = ResourceManager.getInstance();
-         this.fieldList = [];
          super();
       }
       
@@ -175,6 +173,7 @@ package mx.collections
                   catch(initSortError:SortError)
                   {
                   }
+                  i++;
                }
                message = this.resourceManager.getString("collections","findCondition",[fieldName]);
                throw new SortError(message);
@@ -333,7 +332,7 @@ package mx.collections
                {
                   if(Boolean(sortArgs) && fields.length == 1)
                   {
-                     uniqueRet2 = items.sortOn(sortArgs.fields[0],Number(sortArgs.options[0]) | Array.UNIQUESORT);
+                     uniqueRet2 = items.sortOn(sortArgs.fields[0],sortArgs.options[0] | Array.UNIQUESORT);
                   }
                   else
                   {
@@ -405,7 +404,7 @@ package mx.collections
          else
          {
             i = 0;
-            len = Boolean(fields) ? fields.length : this._fields.length;
+            len = Boolean(fields) ? int(fields.length) : int(this._fields.length);
             while(result == 0 && i < len)
             {
                sf = ISortField(this._fields[i]);
@@ -446,3 +445,4 @@ package mx.collections
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class UseDifferentWeaponCounter extends Counter
    {
-       
-      
       private const weaponsUsed:Vector.<String> = new Vector.<String>();
       
       private var invalidated:Boolean;
@@ -58,3 +56,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

@@ -2,8 +2,6 @@ package mx.styles
 {
    public class CSSCondition
    {
-       
-      
       private var _kind:String;
       
       private var _value:String;
@@ -102,3 +100,4 @@ package mx.styles
       }
    }
 }
+

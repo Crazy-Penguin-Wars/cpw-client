@@ -1,25 +1,20 @@
 package tuxwars.battle.world
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
    import com.dchoc.utils.DCUtils;
    import flash.events.TimerEvent;
    
    public class DynamicBodyManagerPreLoader
    {
-      
       private static const TABLE:String = "PhysicsPreLoad";
       
       private static const COLUMN:String = "Column";
       
+      private static var loaded:Boolean;
+      
       private static const managers:Object = {};
       
       private static const loadingFiles:Object = {};
-      
-      private static var loaded:Boolean;
-       
       
       public function DynamicBodyManagerPreLoader()
       {
@@ -37,16 +32,17 @@ package tuxwars.battle.world
       
       public static function preLoad() : void
       {
-         var tablePreLoad:* = null;
-         var fieldPreLoad:* = null;
-         var columnNameForXML:* = null;
-         var table:* = null;
-         var field:* = null;
-         var xmlFileName:* = null;
+         var tablePreLoad:Table = null;
+         var fieldPreLoad:Field = null;
+         var columnNameForXML:String = null;
+         var table:Table = null;
+         var field:Field = null;
+         var xmlFileName:String = null;
          if(!loaded)
          {
+            var _loc21_:String = "PhysicsPreLoad";
             var _loc9_:ProjectManager = ProjectManager;
-            tablePreLoad = com.dchoc.projectdata.ProjectManager.projectData.findTable("PhysicsPreLoad");
+            tablePreLoad = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc21_);
             if(tablePreLoad)
             {
                var _loc10_:* = tablePreLoad;
@@ -54,12 +50,13 @@ package tuxwars.battle.world
                {
                   if(rowPreLoad)
                   {
+                     var _loc22_:String = "Column";
                      var _loc11_:* = rowPreLoad;
-                     if(!_loc11_._cache["Column"])
+                     if(!_loc11_._cache[_loc22_])
                      {
-                        _loc11_._cache["Column"] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name","Column");
+                        _loc11_._cache[_loc22_] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name",_loc22_);
                      }
-                     fieldPreLoad = _loc11_._cache["Column"];
+                     fieldPreLoad = _loc11_._cache[_loc22_];
                      if(fieldPreLoad)
                      {
                         var _loc12_:* = fieldPreLoad;
@@ -113,3 +110,4 @@ package tuxwars.battle.world
       }
    }
 }
+

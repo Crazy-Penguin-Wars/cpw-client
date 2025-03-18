@@ -6,8 +6,6 @@ package com.dchoc.utils
    
    public class FpsCounter extends MovieClip
    {
-       
-      
       private var mStartTick:Number;
       
       private var mSecondTick:Number;
@@ -147,3 +145,4 @@ package com.dchoc.utils
       }
    }
 }
+

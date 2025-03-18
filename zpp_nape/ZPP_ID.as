@@ -2,25 +2,23 @@ package zpp_nape
 {
    public class ZPP_ID
    {
+      public static var _Constraint:int;
       
-      public static var _Constraint:int = 0;
+      public static var _Interactor:int;
       
-      public static var _Interactor:int = 0;
+      public static var _CbType:int;
       
-      public static var _CbType:int = 0;
+      public static var _Listener:int;
       
-      public static var _Listener:int = 0;
+      public static var _CbSet:int;
       
-      public static var _CbSet:int = 0;
+      public static var _ZPP_SimpleVert:int;
       
-      public static var _ZPP_SimpleVert:int = 0;
+      public static var _ZPP_SimpleSeg:int;
       
-      public static var _ZPP_SimpleSeg:int = 0;
+      public static var _InteractionGroup:int;
       
-      public static var _InteractionGroup:int = 0;
-      
-      public static var _Space:int = 0;
-       
+      public static var _Space:int;
       
       public function ZPP_ID()
       {
@@ -90,3 +88,4 @@ package zpp_nape
       }
    }
 }
+

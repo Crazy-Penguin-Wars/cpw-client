@@ -4,7 +4,6 @@ package earcutting
    
    public class EarCutting
    {
-      
       private static var p:Point;
       
       private static var p0:Point;
@@ -40,7 +39,6 @@ package earcutting
       private static var segments:Array = [];
       
       private static var triangles:Array = [];
-       
       
       public function EarCutting()
       {
@@ -128,7 +126,7 @@ package earcutting
       
       private static function getDirection(tmp:Array) : Boolean
       {
-         var ip:* = null;
+         var ip:Point = null;
          var i:int = tmp.length - 1;
          p0 = tmp[i];
          p1 = !!tmp[i + 1] ? tmp[i + 1] : tmp[0];
@@ -163,7 +161,7 @@ package earcutting
       public static function selfIntersection() : Boolean
       {
          var ss:* = null;
-         var ip:* = null;
+         var ip:Point = null;
          for each(s in segments)
          {
             for each(ss in segments)
@@ -199,7 +197,7 @@ package earcutting
       private static function triangleContainsPoints(t:Triangle, pts:Array) : Boolean
       {
          var i:int = 0;
-         var PL:int = pts.length;
+         var PL:int = int(pts.length);
          for(i = 0; i < PL; )
          {
             p = pts[i];
@@ -221,3 +219,4 @@ package earcutting
       }
    }
 }
+

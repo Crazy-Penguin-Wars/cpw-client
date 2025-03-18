@@ -2,8 +2,6 @@ package tuxwars.battle.rewards
 {
    public class LootItem
    {
-       
-      
       private var _id:String;
       
       private var _amount:int;
@@ -31,3 +29,4 @@ package tuxwars.battle.rewards
       }
    }
 }
+

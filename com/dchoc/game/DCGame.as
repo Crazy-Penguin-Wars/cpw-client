@@ -12,17 +12,15 @@ package com.dchoc.game
    
    public class DCGame implements IStateMachine
    {
-      
       private static const FRAME_RATE:int = 25;
-      
-      private static const mainMovieClip:MovieClip = new MovieClip();
-      
-      private static const _infoLayer:Sprite = new Sprite();
       
       private static var gameTime:int;
       
       private static var _stage:Stage;
-       
+      
+      private static const mainMovieClip:MovieClip = new MovieClip();
+      
+      private static const _infoLayer:Sprite = new Sprite();
       
       private const stateMachine:StateMachine = new StateMachine();
       
@@ -178,3 +176,4 @@ package com.dchoc.game
       }
    }
 }
+

@@ -10,8 +10,6 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SlotMachineReel
    {
-       
-      
       private var _design:MovieClip;
       
       private var _reelNumber:int;
@@ -50,7 +48,7 @@ package tuxwars.home.ui.screen.slotmachine
       public function playStopSound() : void
       {
          var stopReel1:int = 0;
-         var sound:* = null;
+         var sound:SoundReference = null;
          if(_design != null)
          {
             stopReel1 = DCUtils.indexOfLabel(_design,"Reel_Stop_01");
@@ -117,3 +115,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

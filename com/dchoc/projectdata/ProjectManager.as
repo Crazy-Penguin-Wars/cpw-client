@@ -2,16 +2,15 @@ package com.dchoc.projectdata
 {
    import com.dchoc.resources.DCResourceManager;
    import com.dchoc.ui.UIConfig;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import tuxwars.Assets;
    
    public class ProjectManager
    {
-      
       private static var projectData:ProjectData;
       
       private static var projectTexts:ProjectTexts;
-       
       
       public function ProjectManager()
       {
@@ -55,8 +54,8 @@ package com.dchoc.projectdata
       
       private static function initUiConfig() : void
       {
-         var content:* = null;
-         var c:* = null;
+         var content:Array = null;
+         var c:Array = null;
          var _loc50_:String = "UiTransition";
          var _loc14_:* = ProjectManager;
          var configTable:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc50_);
@@ -80,59 +79,63 @@ package com.dchoc.projectdata
                      else
                      {
                         var _loc19_:* = field;
+                        var _loc51_:String = "Value";
                         var _loc20_:* = Row(_loc19_.overrideValue != null ? _loc19_.overrideValue : _loc19_._value);
                         §§push(content);
                         §§push(0);
                         §§push(Field);
                         §§push(global);
-                        if(!_loc20_._cache["Value"])
+                        if(!_loc20_._cache[_loc51_])
                         {
-                           _loc20_._cache["Value"] = com.dchoc.utils.DCUtils.find(_loc20_._fields,"name","Value");
+                           _loc20_._cache[_loc51_] = com.dchoc.utils.DCUtils.find(_loc20_._fields,"name",_loc51_);
                         }
-                        var _loc21_:* = §§pop()(_loc20_._cache["Value"]);
+                        var _loc21_:* = §§pop()(_loc20_._cache[_loc51_]);
                         §§pop()[§§pop()] = _loc21_.overrideValue != null ? _loc21_.overrideValue : _loc21_._value;
                      }
                      break;
                   case "From":
                      var _loc22_:* = field;
+                     var _loc52_:String = "Value";
                      var _loc23_:* = Row(_loc22_.overrideValue != null ? _loc22_.overrideValue : _loc22_._value);
                      §§push(content);
                      §§push(1);
                      §§push(Field);
                      §§push(global);
-                     if(!_loc23_._cache["Value"])
+                     if(!_loc23_._cache[_loc52_])
                      {
-                        _loc23_._cache["Value"] = com.dchoc.utils.DCUtils.find(_loc23_._fields,"name","Value");
+                        _loc23_._cache[_loc52_] = com.dchoc.utils.DCUtils.find(_loc23_._fields,"name",_loc52_);
                      }
-                     var _loc24_:* = §§pop()(_loc23_._cache["Value"]);
+                     var _loc24_:* = §§pop()(_loc23_._cache[_loc52_]);
                      §§pop()[§§pop()] = _loc24_.overrideValue != null ? _loc24_.overrideValue : _loc24_._value;
                      break;
                   case "To":
                      var _loc25_:* = field;
+                     var _loc53_:String = "Value";
                      var _loc26_:* = Row(_loc25_.overrideValue != null ? _loc25_.overrideValue : _loc25_._value);
                      §§push(content);
                      §§push(2);
                      §§push(Field);
                      §§push(global);
-                     if(!_loc26_._cache["Value"])
+                     if(!_loc26_._cache[_loc53_])
                      {
-                        _loc26_._cache["Value"] = com.dchoc.utils.DCUtils.find(_loc26_._fields,"name","Value");
+                        _loc26_._cache[_loc53_] = com.dchoc.utils.DCUtils.find(_loc26_._fields,"name",_loc53_);
                      }
-                     var _loc27_:* = §§pop()(_loc26_._cache["Value"]);
+                     var _loc27_:* = §§pop()(_loc26_._cache[_loc53_]);
                      §§pop()[§§pop()] = _loc27_.overrideValue != null ? _loc27_.overrideValue : _loc27_._value;
                      break;
                   case "TransitionType":
                      var _loc28_:* = field;
+                     var _loc54_:String = "Value";
                      var _loc29_:* = Row(_loc28_.overrideValue != null ? _loc28_.overrideValue : _loc28_._value);
                      §§push(content);
                      §§push(3);
                      §§push(Field);
                      §§push(global);
-                     if(!_loc29_._cache["Value"])
+                     if(!_loc29_._cache[_loc54_])
                      {
-                        _loc29_._cache["Value"] = com.dchoc.utils.DCUtils.find(_loc29_._fields,"name","Value");
+                        _loc29_._cache[_loc54_] = com.dchoc.utils.DCUtils.find(_loc29_._fields,"name",_loc54_);
                      }
-                     var _loc30_:* = §§pop()(_loc29_._cache["Value"]);
+                     var _loc30_:* = §§pop()(_loc29_._cache[_loc54_]);
                      §§pop()[§§pop()] = _loc30_.overrideValue != null ? _loc30_.overrideValue : _loc30_._value;
                      break;
                   case "GfxFile":
@@ -155,7 +158,9 @@ package com.dchoc.projectdata
                configArray.push(s);
             }
          }
-         var t:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable("UiTransitionID");
+         var _loc55_:String = "UiTransitionID";
+         var _loc39_:* = ProjectManager;
+         var t:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc55_);
          var transitionIDs:Array = [];
          var _loc40_:* = t;
          for each(var r in _loc40_._rows)
@@ -187,3 +192,4 @@ package com.dchoc.projectdata
       }
    }
 }
+

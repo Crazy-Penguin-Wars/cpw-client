@@ -7,13 +7,11 @@ package mx.messaging.messages
    
    public class AsyncMessage extends AbstractMessage implements ISmallMessage
    {
-      
       public static const SUBTOPIC_HEADER:String = "DSSubtopic";
       
       private static const CORRELATION_ID_FLAG:uint = 1;
       
       private static const CORRELATION_ID_BYTES_FLAG:uint = 2;
-       
       
       private var _correlationId:String;
       
@@ -125,3 +123,4 @@ package mx.messaging.messages
       }
    }
 }
+

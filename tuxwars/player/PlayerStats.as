@@ -5,8 +5,6 @@ package tuxwars.player
    
    public class PlayerStats extends Stats
    {
-       
-      
       public function PlayerStats()
       {
          super();
@@ -48,3 +46,4 @@ package tuxwars.player
       }
    }
 }
+

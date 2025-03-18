@@ -3,25 +3,24 @@ package mx.resources
    import flash.system.ApplicationDomain;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class ResourceBundle implements IResourceBundle
    {
-      
-      mx_internal static const VERSION:String = "4.5.1.21489";
-      
       mx_internal static var locale:String;
       
       mx_internal static var backupApplicationDomain:ApplicationDomain;
-       
+      
+      mx_internal static const VERSION:String = "4.5.1.21489";
       
       mx_internal var _bundleName:String;
       
-      private var _content:Object;
+      private var _content:Object = {};
       
       mx_internal var _locale:String;
       
       public function ResourceBundle(locale:String = null, bundleName:String = null)
       {
-         this._content = {};
          super();
          this.mx_internal::_locale = locale;
          this.mx_internal::_bundleName = bundleName;
@@ -69,3 +68,4 @@ package mx.resources
       }
    }
 }
+

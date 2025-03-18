@@ -2,9 +2,7 @@ package com.adobe.utils
 {
    public class IntUtil
    {
-      
       private static var hexChars:String = "0123456789abcdef";
-       
       
       public function IntUtil()
       {
@@ -31,17 +29,18 @@ package com.adobe.utils
          {
             for(i = 0; i < 4; i++)
             {
-               s += hexChars.charAt(n >> (3 - i) * 8 + 4 & 15) + hexChars.charAt(n >> (3 - i) * 8 & 15);
+               s += hexChars.charAt(n >> (3 - i) * 8 + 4 & 0x0F) + hexChars.charAt(n >> (3 - i) * 8 & 0x0F);
             }
          }
          else
          {
             for(x = 0; x < 4; x++)
             {
-               s += hexChars.charAt(n >> x * 8 + 4 & 15) + hexChars.charAt(n >> x * 8 & 15);
+               s += hexChars.charAt(n >> x * 8 + 4 & 0x0F) + hexChars.charAt(n >> x * 8 & 0x0F);
             }
          }
          return s;
       }
    }
 }
+

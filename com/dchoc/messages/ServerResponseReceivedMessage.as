@@ -4,8 +4,6 @@ package com.dchoc.messages
    
    public class ServerResponseReceivedMessage extends Message
    {
-       
-      
       public function ServerResponseReceivedMessage(type:String, response:ServerResponse)
       {
          super(type,response);
@@ -17,3 +15,4 @@ package com.dchoc.messages
       }
    }
 }
+

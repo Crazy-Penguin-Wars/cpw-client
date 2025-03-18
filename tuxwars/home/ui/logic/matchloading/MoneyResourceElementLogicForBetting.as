@@ -9,8 +9,6 @@ package tuxwars.home.ui.logic.matchloading
    
    public class MoneyResourceElementLogicForBetting extends MoneyResourceElementLogic
    {
-       
-      
       private var cashBet:int;
       
       private var coinBet:int;
@@ -75,3 +73,4 @@ package tuxwars.home.ui.logic.matchloading
       }
    }
 }
+

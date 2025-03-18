@@ -4,13 +4,11 @@ package starling.utils
    
    public final class HAlign
    {
-      
       public static const LEFT:String = "left";
       
       public static const CENTER:String = "center";
       
       public static const RIGHT:String = "right";
-       
       
       public function HAlign()
       {
@@ -24,3 +22,4 @@ package starling.utils
       }
    }
 }
+

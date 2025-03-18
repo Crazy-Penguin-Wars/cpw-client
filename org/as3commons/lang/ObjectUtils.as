@@ -8,7 +8,6 @@ package org.as3commons.lang
    
    public final class ObjectUtils
    {
-      
       public static const DOT:String = ".";
       
       public static const NUMBER_CLASSNAME:String = "number";
@@ -20,7 +19,6 @@ package org.as3commons.lang
       public static const OBJECT_FIELD_NAME:String = "object";
       
       public static const VARIABLE_ELEMENT_NAME:String = "variable";
-       
       
       public function ObjectUtils()
       {
@@ -66,7 +64,7 @@ package org.as3commons.lang
       
       public static function getNumProperties(object:Object) : int
       {
-         var p:* = null;
+         var p:String = null;
          var result:int = 0;
          for(p in object)
          {
@@ -156,7 +154,7 @@ package org.as3commons.lang
       
       public static function merge(objectA:Object, objectB:Object) : Object
       {
-         var prop:* = null;
+         var prop:String = null;
          var result:Object = {};
          for(prop in objectB)
          {
@@ -170,3 +168,4 @@ package org.as3commons.lang
       }
    }
 }
+

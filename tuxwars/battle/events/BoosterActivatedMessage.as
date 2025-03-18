@@ -5,8 +5,6 @@ package tuxwars.battle.events
    
    public class BoosterActivatedMessage extends Message
    {
-       
-      
       private var _boosterItem:BoosterItem;
       
       public function BoosterActivatedMessage(playerId:String, boosterItem:BoosterItem)
@@ -26,3 +24,4 @@ package tuxwars.battle.events
       }
    }
 }
+

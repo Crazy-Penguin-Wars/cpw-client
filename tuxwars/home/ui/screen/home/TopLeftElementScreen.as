@@ -3,15 +3,14 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.resources.DCResourceManager;
    import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.ui.components.TopBarLeftElement;
    import tuxwars.utils.TuxUiUtils;
    
    public class TopLeftElementScreen
    {
-      
       private static const LEVEL:String = "HUD_Level";
-       
       
       private var challengeWindowElement:ChallengesWindowElementScreen;
       
@@ -23,6 +22,7 @@ package tuxwars.home.ui.screen.home
       
       public function TopLeftElementScreen(whereToAdd:MovieClip, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] TopLeftElementScreen is the cause (GOT YOU :troll:)");
          super();
          var _loc3_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/home_screen.swf","home_screen");
          DCUtils.stopMovieClip(_loc3_);
@@ -66,3 +66,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

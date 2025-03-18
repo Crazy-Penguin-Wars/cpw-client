@@ -22,9 +22,7 @@ package zpp_nape.callbacks
    
    public class ZPP_CbSet
    {
-      
-      public static var zpp_pool:ZPP_CbSet = null;
-       
+      public static var zpp_pool:ZPP_CbSet;
       
       public var zip_listeners:Boolean;
       
@@ -131,6 +129,7 @@ package zpp_nape.callbacks
             ZPP_CbSet.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          var _loc3_:ZNPNode_ZPP_CbType = null;
          var _loc4_:ZNPNode_ZPP_CbType = param1.head;
          while(_loc4_ != null)
@@ -398,6 +397,7 @@ package zpp_nape.callbacks
                         ZNPNode_ZPP_InteractionListener.zpp_pool = _loc10_.next;
                         _loc10_.next = null;
                      }
+                     null;
                      _loc10_.elt = _loc6_;
                      _loc9_ = _loc10_;
                      if(_loc3_ == null)
@@ -411,7 +411,7 @@ package zpp_nape.callbacks
                         _loc3_.next = _loc9_;
                      }
                      _loc8_.pushmod = _loc8_.modified = true;
-                     _loc8_.length = _loc8_.length + 1;
+                     ++_loc8_.length;
                      _loc3_ = _loc9_;
                   }
                   _loc5_ = _loc5_.next;
@@ -472,6 +472,7 @@ package zpp_nape.callbacks
                         ZNPNode_ZPP_ConstraintListener.zpp_pool = _loc11_.next;
                         _loc11_.next = null;
                      }
+                     null;
                      _loc11_.elt = _loc6_;
                      _loc10_ = _loc11_;
                      if(_loc3_ == null)
@@ -485,7 +486,7 @@ package zpp_nape.callbacks
                         _loc3_.next = _loc10_;
                      }
                      _loc9_.pushmod = _loc9_.modified = true;
-                     _loc9_.length = _loc9_.length + 1;
+                     ++_loc9_.length;
                      _loc3_ = _loc10_;
                   }
                   _loc5_ = _loc5_.next;
@@ -546,6 +547,7 @@ package zpp_nape.callbacks
                         ZNPNode_ZPP_BodyListener.zpp_pool = _loc11_.next;
                         _loc11_.next = null;
                      }
+                     null;
                      _loc11_.elt = _loc6_;
                      _loc10_ = _loc11_;
                      if(_loc3_ == null)
@@ -559,7 +561,7 @@ package zpp_nape.callbacks
                         _loc3_.next = _loc10_;
                      }
                      _loc9_.pushmod = _loc9_.modified = true;
-                     _loc9_.length = _loc9_.length + 1;
+                     ++_loc9_.length;
                      _loc3_ = _loc10_;
                   }
                   _loc5_ = _loc5_.next;
@@ -592,3 +594,4 @@ package zpp_nape.callbacks
       }
    }
 }
+

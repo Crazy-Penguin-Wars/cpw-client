@@ -6,8 +6,6 @@ package tuxwars.home.states.leaderboard
    
    public class LeaderboardLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function LeaderboardLoadAssetsSubState(game:TuxWarsGame, params:* = null)
       {
          var _loc3_:AssetsData = AssetsData;
@@ -20,3 +18,4 @@ package tuxwars.home.states.leaderboard
       }
    }
 }
+

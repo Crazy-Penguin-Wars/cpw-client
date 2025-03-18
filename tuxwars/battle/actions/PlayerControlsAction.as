@@ -7,8 +7,6 @@ package tuxwars.battle.actions
    
    public class PlayerControlsAction extends AbstractInputAction implements MouseInputAction, KeyboardInputAction
    {
-       
-      
       protected var moveControls:PlayerMoveControls;
       
       private var _keyCode:int;
@@ -26,3 +24,4 @@ package tuxwars.battle.actions
       }
    }
 }
+

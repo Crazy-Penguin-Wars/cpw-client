@@ -6,9 +6,7 @@ package mx.utils
    
    public class DensityUtil
    {
-      
       private static var runtimeDPI:Number;
-       
       
       public function DensityUtil()
       {
@@ -41,3 +39,4 @@ package mx.utils
       }
    }
 }
+

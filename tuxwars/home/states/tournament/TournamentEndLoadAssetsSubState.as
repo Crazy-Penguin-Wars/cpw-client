@@ -6,8 +6,6 @@ package tuxwars.home.states.tournament
    
    public class TournamentEndLoadAssetsSubState extends BattleLoadAssetsSubState
    {
-       
-      
       public function TournamentEndLoadAssetsSubState(game:TuxWarsGame, params:* = null)
       {
          var _loc3_:AssetsData = AssetsData;
@@ -20,3 +18,4 @@ package tuxwars.home.states.tournament
       }
    }
 }
+

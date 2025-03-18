@@ -3,13 +3,13 @@ package mx.utils
    import flash.utils.ByteArray;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class RPCUIDUtil
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21328";
       
       private static const ALPHA_CHAR_CODES:Array = [48,49,50,51,52,53,54,55,56,57,65,66,67,68,69,70];
-       
       
       public function RPCUIDUtil()
       {
@@ -39,7 +39,7 @@ package mx.utils
          }
          _loc7_ = index++;
          uid[_loc7_] = 45;
-         var time:Number = new Date().getTime();
+         var time:Number = Number(new Date().getTime());
          var timeString:String = ("0000000" + time.toString(16).toUpperCase()).substr(-8);
          for(i = 0; i < 8; i++)
          {
@@ -73,9 +73,9 @@ package mx.utils
                }
                b = ba.readByte();
                _loc6_ = index++;
-               chars[_loc6_] = ALPHA_CHAR_CODES[(b & 240) >>> 4];
+               chars[_loc6_] = ALPHA_CHAR_CODES[(b & 0xF0) >>> 4];
                var _loc7_:* = index++;
-               chars[_loc7_] = ALPHA_CHAR_CODES[b & 15];
+               chars[_loc7_] = ALPHA_CHAR_CODES[b & 0x0F];
             }
             return String.fromCharCode.apply(null,chars);
          }
@@ -90,7 +90,7 @@ package mx.utils
          {
             for(i = 0; i < 36; i++)
             {
-               c = uid.charCodeAt(i);
+               c = Number(uid.charCodeAt(i));
                if(i == 8 || i == 13 || i == 18 || i == 23)
                {
                   if(c != 45)
@@ -126,7 +126,7 @@ package mx.utils
                   h1 = getDigit(c);
                   i++;
                   h2 = getDigit(uid.charAt(i));
-                  result.writeByte((h1 << 4 | h2) & 255);
+                  result.writeByte((h1 << 4 | h2) & 0xFF);
                }
             }
             result.position = 0;
@@ -163,3 +163,4 @@ package mx.utils
       }
    }
 }
+

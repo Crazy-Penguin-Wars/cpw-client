@@ -2,13 +2,12 @@ package tuxwars.items.references
 {
    import com.dchoc.gameobjects.stats.Stat;
    import com.dchoc.gameobjects.stats.StatTypes;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import tuxwars.battle.data.stats.StatReference;
    
    public class StatBonusReference
    {
-      
       public static const ATTACK:String = "Attack";
       
       public static const DEFENCE:String = "Defence";
@@ -40,7 +39,6 @@ package tuxwars.items.references
       public static const RESTITUTION:String = "Restitution";
       
       public static const FRICTION:String = "Friction";
-       
       
       private var row:Row;
       
@@ -68,7 +66,7 @@ package tuxwars.items.references
       public function getStat(name:String) : Stat
       {
          var value:* = undefined;
-         var statReference:* = null;
+         var statReference:StatReference = null;
          if(row == null)
          {
             return null;
@@ -95,3 +93,4 @@ package tuxwars.items.references
       }
    }
 }
+

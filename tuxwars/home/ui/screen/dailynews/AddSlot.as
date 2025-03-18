@@ -13,9 +13,7 @@ package tuxwars.home.ui.screen.dailynews
    
    public class AddSlot implements IResourceLoaderURL
    {
-      
       private static const DEFAULT_IMAGE_URL:String = Config.getDataDir() + "flash/ui/png/daily_news/default.png";
-       
       
       private const header:UIAutoTextField = new UIAutoTextField();
       
@@ -68,7 +66,7 @@ package tuxwars.home.ui.screen.dailynews
       
       private function showAdd() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:AddData = null;
          if(addDatas.length > 0)
          {
             _loc1_ = addDatas[currentAddIndex];
@@ -111,3 +109,4 @@ package tuxwars.home.ui.screen.dailynews
       }
    }
 }
+

@@ -11,6 +11,7 @@ package tuxwars.battle.missiles
    import nape.geom.Vec2;
    import nape.phys.Body;
    import org.odefu.flash.display.OdefuMovieClip;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.data.particles.ParticleReference;
    import tuxwars.battle.emitters.FiringDirection;
    import tuxwars.battle.gameobjects.PhysicsEmissionGameObject;
@@ -20,13 +21,11 @@ package tuxwars.battle.missiles
    
    public class Missile extends PhysicsEmissionGameObject implements FiringDirection
    {
-      
       private static const BULLET_HIT:String = "hit";
-       
       
-      private var missileTailLocation:Point;
+      private var missileTailLocation:Point = new Point(-2147483648,-2147483648);
       
-      private var previousLocation:Point;
+      private var previousLocation:Point = new Point(-2147483648,-2147483648);
       
       protected var _markedForExplosion:Boolean;
       
@@ -44,8 +43,6 @@ package tuxwars.battle.missiles
       
       public function Missile(def:MissileDef, game:DCGame)
       {
-         missileTailLocation = new Point(-2147483648,-2147483648);
-         previousLocation = new Point(-2147483648,-2147483648);
          super(def,game);
          _particleEffect = def.particleEffect;
          _particleStreamSpawnDistance = def.particleStreamSpawnDistance;
@@ -151,7 +148,6 @@ package tuxwars.battle.missiles
          switch(type)
          {
             case "weapon":
-               break;
             case "missile":
                break;
             default:
@@ -162,7 +158,7 @@ package tuxwars.battle.missiles
       
       override protected function handleCollision(otherBody:Body, arbiterList:ArbiterList) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:OdefuMovieClip = null;
          var _loc4_:Vec2 = findFirstCollisionPosition(arbiterList);
          super.handleCollision(otherBody,arbiterList);
          if(!_markedForExplosion)
@@ -187,7 +183,7 @@ package tuxwars.battle.missiles
       
       override public function triggerEmission() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:MovieClip = null;
          if(!_markedForExplosion)
          {
             if(body.isBullet)
@@ -243,3 +239,4 @@ package tuxwars.battle.missiles
       }
    }
 }
+

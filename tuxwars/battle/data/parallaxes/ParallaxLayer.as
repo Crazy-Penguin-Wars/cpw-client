@@ -8,7 +8,6 @@ package tuxwars.battle.data.parallaxes
    
    public class ParallaxLayer
    {
-      
       private static const COORD_X:String = "x";
       
       private static const COORD_Y:String = "y";
@@ -24,7 +23,6 @@ package tuxwars.battle.data.parallaxes
       private static const TILE_HORIZONTALLY:String = "tile_horizontally";
       
       private static const GAP:String = "gap";
-       
       
       private var _originalX:int;
       
@@ -138,7 +136,7 @@ package tuxwars.battle.data.parallaxes
       
       private function createMovieClip() : void
       {
-         var clipChild:* = null;
+         var clipChild:ParallaxSprite = null;
          for each(var childBitmap in graphics)
          {
             if(!childBitmap)
@@ -186,3 +184,4 @@ package tuxwars.battle.data.parallaxes
       }
    }
 }
+

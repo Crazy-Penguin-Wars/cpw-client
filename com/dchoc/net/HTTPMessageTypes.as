@@ -2,7 +2,6 @@ package com.dchoc.net
 {
    public class HTTPMessageTypes
    {
-      
       public static const SEND_REQUEST:String = "SendRequest";
       
       public static const DATA_RECEIVED:String = "DataReceived";
@@ -10,7 +9,6 @@ package com.dchoc.net
       public static const RESPONSE_RECEIVED:String = "ResponseReceived_";
       
       public static const RESPONSE_ERROR:String = "ResponseError";
-       
       
       public function HTTPMessageTypes()
       {
@@ -19,3 +17,4 @@ package com.dchoc.net
       }
    }
 }
+

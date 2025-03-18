@@ -4,8 +4,6 @@ package com.dchoc.events
    
    public class EventQueue
    {
-       
-      
       private const events:Array = [];
       
       private const _addToQueue:Array = [];
@@ -45,3 +43,4 @@ package com.dchoc.events
       }
    }
 }
+

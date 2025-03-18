@@ -4,8 +4,6 @@ package com.dchoc.input
    
    public class AbstractInputAction implements InputAction
    {
-       
-      
       private var type:String;
       
       public function AbstractInputAction(type:String)
@@ -28,3 +26,4 @@ package com.dchoc.input
       }
    }
 }
+

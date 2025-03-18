@@ -5,8 +5,6 @@ package tuxwars.home.states.gifts
    
    public class GiftState extends TuxState
    {
-       
-      
       public function GiftState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.gifts
       }
    }
 }
+

@@ -20,11 +20,9 @@ package tuxwars.battle.simplescript.scripts
    
    public class Ray implements SimpleScriptCore
    {
-      
       private static const UNLIMITED_HITS:int = -1;
       
       private static var tuxGame:TuxWarsGame;
-       
       
       private const hits:Vector.<Array> = new Vector.<Array>();
       
@@ -47,17 +45,17 @@ package tuxwars.battle.simplescript.scripts
       
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var _loc6_:* = null;
-         var _loc13_:* = null;
-         var _loc4_:* = null;
-         var _loc11_:* = null;
-         var _loc14_:* = null;
-         var _loc12_:* = null;
+         var _loc6_:Vec2 = null;
+         var _loc13_:Vec2 = null;
+         var _loc4_:nape.geom.Ray = null;
+         var _loc11_:RayResultList = null;
+         var _loc14_:Object = null;
+         var _loc12_:Vec2 = null;
          var _loc15_:int = 0;
          var i:int = 0;
-         var _loc3_:* = null;
-         var _loc8_:* = null;
-         var _loc9_:* = null;
+         var _loc3_:RayResult = null;
+         var _loc8_:Vec2 = null;
+         var _loc9_:EmissionSpawn = null;
          assert("Must be an Missile",true,scriptObject is Missile);
          assert("No variables",true,scriptObject.variables != null);
          assert("Not correct amount of variables",true,scriptObject.variables.length >= 3);
@@ -114,3 +112,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

@@ -4,8 +4,6 @@ package mx.collections
    
    public interface IList extends IEventDispatcher
    {
-       
-      
       function get length() : int;
       
       function addItem(param1:Object) : void;
@@ -27,3 +25,4 @@ package mx.collections
       function toArray() : Array;
    }
 }
+

@@ -2,8 +2,9 @@ package tuxwars.battle.ui.logic.weaponselection
 {
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.GameSettings;
    import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
@@ -17,7 +18,6 @@ package tuxwars.battle.ui.logic.weaponselection
    
    public class WeaponSelectionLogic extends TuxPageSubTabLogic
    {
-      
       private static const TABLE:String = "Screen";
       
       private static const WEAPON_SELECTION:String = "WeaponSelection";
@@ -25,7 +25,6 @@ package tuxwars.battle.ui.logic.weaponselection
       private static const WEAPON_SELECTION_PRACTICE:String = "WeaponSelectionPractice";
       
       private static const WEAPON_SELECTION_TUTORIAL:String = "WeaponSelectionTutorial";
-       
       
       public function WeaponSelectionLogic(game:TuxWarsGame, state:TuxState)
       {
@@ -34,7 +33,7 @@ package tuxwars.battle.ui.logic.weaponselection
       
       public static function getStaticData() : Row
       {
-         var rowName:* = null;
+         var rowName:String = null;
          var _loc2_:Tutorial = Tutorial;
          if(tuxwars.tutorial.Tutorial._tutorial)
          {
@@ -48,9 +47,10 @@ package tuxwars.battle.ui.logic.weaponselection
          {
             rowName = "WeaponSelection";
          }
+         var _loc5_:String = "Screen";
          var _loc3_:ProjectManager = ProjectManager;
          var _loc6_:* = rowName;
-         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Screen");
+         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc5_);
          if(!_loc4_._cache[_loc6_])
          {
             var _loc7_:Row = com.dchoc.utils.DCUtils.find(_loc4_.rows,"id",_loc6_);
@@ -120,3 +120,4 @@ package tuxwars.battle.ui.logic.weaponselection
       }
    }
 }
+

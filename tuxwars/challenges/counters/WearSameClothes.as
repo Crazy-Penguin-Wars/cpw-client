@@ -8,9 +8,7 @@ package tuxwars.challenges.counters
    
    public class WearSameClothes extends Counter
    {
-      
       private static const SLOTS_TO_COUNT:Array = ["Head","Torso","Feet"];
-       
       
       public function WearSameClothes(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
@@ -60,3 +58,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

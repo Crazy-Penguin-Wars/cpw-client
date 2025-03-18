@@ -14,8 +14,6 @@ package nape.constraint
    
    public final class WeldJoint extends Constraint
    {
-       
-      
       public var zpp_inner_zn:ZPP_WeldJoint;
       
       public function WeldJoint(param1:Body, param2:Body, param3:Vec2, param4:Vec2, param5:Number = 0)
@@ -45,7 +43,7 @@ package nape.constraint
             {
                if(zpp_inner_zn.b1 != null)
                {
-                  if(false)
+                  if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && zpp_inner_zn.b2 != zpp_inner_zn.b1)
                   {
                      if(zpp_inner_zn.b1 != null)
                      {
@@ -58,7 +56,7 @@ package nape.constraint
                   }
                }
                zpp_inner_zn.b1 = _loc8_;
-               if(false && zpp_inner_zn.b2 != _loc8_)
+               if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && _loc8_ != null && zpp_inner_zn.b2 != _loc8_)
                {
                   if(_loc8_ != null)
                   {
@@ -74,7 +72,11 @@ package nape.constraint
                   }
                }
             }
-            if(zpp_inner_zn.b1 != null)
+            if(zpp_inner_zn.b1 == null)
+            {
+               null;
+            }
+            else
             {
                zpp_inner_zn.b1.outer;
             }
@@ -84,7 +86,7 @@ package nape.constraint
             {
                if(zpp_inner_zn.b2 != null)
                {
-                  if(false)
+                  if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && zpp_inner_zn.b1 != zpp_inner_zn.b2)
                   {
                      if(zpp_inner_zn.b2 != null)
                      {
@@ -97,7 +99,7 @@ package nape.constraint
                   }
                }
                zpp_inner_zn.b2 = _loc8_;
-               if(false && zpp_inner_zn.b1 != _loc8_)
+               if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && _loc8_ != null && zpp_inner_zn.b1 != _loc8_)
                {
                   if(_loc8_ != null)
                   {
@@ -113,7 +115,11 @@ package nape.constraint
                   }
                }
             }
-            if(zpp_inner_zn.b2 != null)
+            if(zpp_inner_zn.b2 == null)
+            {
+               null;
+            }
+            else
             {
                zpp_inner_zn.b2.outer;
             }
@@ -284,6 +290,11 @@ package nape.constraint
                _loc15_._invalidate = null;
                _loc15_.next = ZPP_Vec2.zpp_pool;
                ZPP_Vec2.zpp_pool = _loc15_;
+               true;
+            }
+            else
+            {
+               false;
             }
             _loc11_;
             if(zpp_inner_zn.wrap_a1 == null)
@@ -458,6 +469,11 @@ package nape.constraint
                _loc15_._invalidate = null;
                _loc15_.next = ZPP_Vec2.zpp_pool;
                ZPP_Vec2.zpp_pool = _loc15_;
+               true;
+            }
+            else
+            {
+               false;
             }
             _loc11_;
             if(zpp_inner_zn.wrap_a2 == null)
@@ -483,7 +499,11 @@ package nape.constraint
       
       override public function visitBodies(param1:Function) : void
       {
-         if(false)
+         if((zpp_inner_zn.b1 == null ? null : zpp_inner_zn.b1.outer) != null)
+         {
+            param1(zpp_inner_zn.b1 == null ? null : zpp_inner_zn.b1.outer);
+         }
+         if((zpp_inner_zn.b2 == null ? null : zpp_inner_zn.b2.outer) != null && (zpp_inner_zn.b2 == null ? null : zpp_inner_zn.b2.outer) != (zpp_inner_zn.b1 == null ? null : zpp_inner_zn.b1.outer))
          {
             param1(zpp_inner_zn.b2 == null ? null : zpp_inner_zn.b2.outer);
          }
@@ -513,7 +533,7 @@ package nape.constraint
          {
             if(zpp_inner_zn.b2 != null)
             {
-               if(false)
+               if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && zpp_inner_zn.b1 != zpp_inner_zn.b2)
                {
                   if(zpp_inner_zn.b2 != null)
                   {
@@ -526,7 +546,7 @@ package nape.constraint
                }
             }
             zpp_inner_zn.b2 = _loc2_;
-            if(false && zpp_inner_zn.b1 != _loc2_)
+            if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && _loc2_ != null && zpp_inner_zn.b1 != _loc2_)
             {
                if(_loc2_ != null)
                {
@@ -553,7 +573,7 @@ package nape.constraint
          {
             if(zpp_inner_zn.b1 != null)
             {
-               if(false)
+               if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && zpp_inner_zn.b2 != zpp_inner_zn.b1)
                {
                   if(zpp_inner_zn.b1 != null)
                   {
@@ -566,7 +586,7 @@ package nape.constraint
                }
             }
             zpp_inner_zn.b1 = _loc2_;
-            if(false && zpp_inner_zn.b2 != _loc2_)
+            if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null && _loc2_ != null && zpp_inner_zn.b2 != _loc2_)
             {
                if(_loc2_ != null)
                {
@@ -757,6 +777,11 @@ package nape.constraint
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner_zn.wrap_a2 == null)
@@ -938,6 +963,11 @@ package nape.constraint
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner_zn.wrap_a1 == null)
@@ -1024,3 +1054,4 @@ package nape.constraint
       }
    }
 }
+

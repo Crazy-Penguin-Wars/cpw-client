@@ -16,23 +16,21 @@ package zpp_nape.callbacks
    
    public class ZPP_CbType
    {
+      public static var ANY_SHAPE:nape.callbacks.CbType;
       
-      public static var ANY_SHAPE:CbType = new CbType();
+      public static var ANY_BODY:nape.callbacks.CbType;
       
-      public static var ANY_BODY:CbType = new CbType();
+      public static var ANY_COMPOUND:nape.callbacks.CbType;
       
-      public static var ANY_COMPOUND:CbType = new CbType();
-      
-      public static var ANY_CONSTRAINT:CbType = new CbType();
-       
+      public static var ANY_CONSTRAINT:nape.callbacks.CbType;
       
       public var wrap_interactors:InteractorList;
       
       public var wrap_constraints:ConstraintList;
       
-      public var userData;
+      public var userData:*;
       
-      public var outer:CbType;
+      public var outer:nape.callbacks.CbType;
       
       public var listeners:ZNPList_ZPP_InteractionListener;
       
@@ -91,3 +89,6 @@ package zpp_nape.callbacks
       }
    }
 }
+
+import nape.callbacks.§nape.callbacks.CbType§;
+

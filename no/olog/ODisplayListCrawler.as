@@ -5,11 +5,9 @@ package no.olog
    
    internal class ODisplayListCrawler
    {
-      
       private static const TAB:String = " . ";
       
       private static var _numInstances:uint;
-       
       
       public function ODisplayListCrawler()
       {
@@ -18,9 +16,9 @@ package no.olog
       
       internal static function getTree(root:DisplayObjectContainer, currentDepth:uint = 0, maxDepth:uint = 10, property:String = null, rootsChildIndex:int = -1) : String
       {
-         var child:* = null;
+         var child:DisplayObject = null;
          var j:int = 0;
-         var rootsChildIndexString:* = null;
+         var rootsChildIndexString:String = null;
          var i:int = 0;
          var tabs:String = "";
          var tree:String = "";
@@ -29,7 +27,7 @@ package no.olog
          {
             _numInstances = 1;
          }
-         for(j = currentDepth; j > 0; )
+         for(j = int(currentDepth); j > 0; )
          {
             tabs += " . ";
             j--;
@@ -105,3 +103,4 @@ package no.olog
       }
    }
 }
+

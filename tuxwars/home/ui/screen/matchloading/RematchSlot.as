@@ -7,7 +7,6 @@ package tuxwars.home.ui.screen.matchloading
    
    public class RematchSlot
    {
-      
       private static const SLOT_WAITING:String = "Slot_Waiting";
       
       private static const SLOT_READY:String = "Slot_Ready";
@@ -15,7 +14,6 @@ package tuxwars.home.ui.screen.matchloading
       private static const SLOT_NEW:String = "Slot_New";
       
       private static const CHARACTER_CONTAINER:String = "Container_Character";
-       
       
       private var _design:MovieClip;
       
@@ -52,7 +50,7 @@ package tuxwars.home.ui.screen.matchloading
       
       public function set status(value:int) : void
       {
-         var nameTF:* = null;
+         var nameTF:TextField = null;
          _status = value;
          _slotWaiting.visible = value == 0;
          _slotReady.visible = value == 1;
@@ -108,3 +106,4 @@ package tuxwars.home.ui.screen.matchloading
       }
    }
 }
+

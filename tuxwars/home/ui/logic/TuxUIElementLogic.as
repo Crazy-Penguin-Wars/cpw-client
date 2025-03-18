@@ -4,13 +4,11 @@ package tuxwars.home.ui.logic
    
    public class TuxUIElementLogic
    {
-       
-      
       private var _game:TuxWarsGame;
       
-      private var _params;
+      private var _params:*;
       
-      private var _screen;
+      private var _screen:*;
       
       public function TuxUIElementLogic(game:TuxWarsGame)
       {
@@ -55,3 +53,4 @@ package tuxwars.home.ui.logic
       }
    }
 }
+

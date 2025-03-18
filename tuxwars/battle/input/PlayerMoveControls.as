@@ -14,6 +14,7 @@ package tuxwars.battle.input
    import nape.dynamics.Contact;
    import nape.dynamics.ContactList;
    import nape.geom.Vec2;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.actions.PlayerControlMouseDownAction;
    import tuxwars.battle.actions.PlayerControlsMouseUpAction;
@@ -32,7 +33,6 @@ package tuxwars.battle.input
    
    public class PlayerMoveControls
    {
-      
       private static const MOVEMENT_UI:String = "move_ui";
       
       private static const JUMP:String = "Jump";
@@ -45,8 +45,6 @@ package tuxwars.battle.input
       
       private static const LEFT:String = "Left";
       
-      private static const DIRECTIONS:Array = ["Right","Left"];
-      
       private static const VISIBLE:String = "Visible";
       
       private static const HOVER:String = "Hover";
@@ -54,7 +52,8 @@ package tuxwars.battle.input
       private static const DELIM:String = "_";
       
       private static const JUMP_COOLDOWN:int = 1000;
-       
+      
+      private static const DIRECTIONS:Array = ["Right","Left"];
       
       private const controlsClip:MovieClip = new MovieClip();
       
@@ -260,9 +259,9 @@ package tuxwars.battle.input
       
       public function applyActionResponse(response:ActionResponse) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:SoundReference = null;
+         var _loc2_:SoundReference = null;
+         var _loc4_:SoundReference = null;
          switch(response.responseType - 3)
          {
             case 0:
@@ -283,9 +282,7 @@ package tuxwars.battle.input
                   if(_loc4_)
                   {
                      MessageCenter.sendEvent(new SoundMessage("PlaySound",_loc4_.getMusicID(),_loc4_.getStart(),_loc4_.getType()));
-                     break;
                   }
-                  break;
                }
                break;
             case 2:
@@ -301,14 +298,11 @@ package tuxwars.battle.input
                   if(walking && !isFallingDown())
                   {
                      MessageCenter.sendEvent(new SoundMessage("LoopSound",_loc3_.getMusicID(),_loc3_.getStart(),_loc3_.getType()));
-                     break;
                   }
-                  if(isFallingDown())
+                  else if(isFallingDown())
                   {
                      MessageCenter.sendEvent(new SoundMessage("StopSound",Sounds.getWalk(),_loc3_.getLoop(),_loc3_.getType(),"LoopSound"));
-                     break;
                   }
-                  break;
                }
          }
       }
@@ -380,10 +374,10 @@ package tuxwars.battle.input
       
       private function updateActionClip() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:Vec2 = null;
          var _loc4_:Number = NaN;
          var _loc2_:Number = NaN;
-         var _loc3_:* = null;
+         var _loc3_:MovieClip = null;
          if(controlsVisible())
          {
             _loc1_ = new Vec2(player.container.mouseX,player.container.mouseY);
@@ -392,7 +386,7 @@ package tuxwars.battle.input
                _loc1_.normalise();
             }
             _loc4_ = Math.acos(_loc1_.dot(Config.VEC_UP));
-            _loc2_ = Number(_loc1_.x >= 0 ? MathUtils.radiansToDegrees(_loc4_) : -MathUtils.radiansToDegrees(_loc4_));
+            _loc2_ = _loc1_.x >= 0 ? MathUtils.radiansToDegrees(_loc4_) : -MathUtils.radiansToDegrees(_loc4_);
             arrowClip.rotation = _loc2_;
             jumpClip.gotoAndStop("Visible");
             walkLeftClip.gotoAndStop("Visible");
@@ -452,7 +446,7 @@ package tuxwars.battle.input
       
       private function initControls() : void
       {
-         var _loc3_:* = null;
+         var _loc3_:MovieClip = null;
          var _loc2_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/character_ui.swf","move_ui");
          for each(var dir in DIRECTIONS)
          {
@@ -574,7 +568,7 @@ package tuxwars.battle.input
       private function findValidContactPoints() : Array
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:CollisionArbiter = null;
          var ret:Array = [];
          var _loc3_:ArbiterList = player.body.arbiters;
          for(i = 0; i < _loc3_.length; )
@@ -592,7 +586,7 @@ package tuxwars.battle.input
       private function getValidPoints(contacts:ContactList) : Array
       {
          var i:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:Contact = null;
          var _loc2_:Array = [];
          var _loc3_:Vec2 = player.body.position;
          for(i = 0; i < contacts.length; )
@@ -608,3 +602,4 @@ package tuxwars.battle.input
       }
    }
 }
+

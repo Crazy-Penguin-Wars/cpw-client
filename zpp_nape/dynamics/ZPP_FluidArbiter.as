@@ -8,9 +8,7 @@ package zpp_nape.dynamics
    
    public class ZPP_FluidArbiter extends ZPP_Arbiter
    {
-      
-      public static var zpp_pool:ZPP_FluidArbiter = null;
-       
+      public static var zpp_pool:ZPP_FluidArbiter;
       
       public var wrap_position:Vec2;
       
@@ -126,7 +124,15 @@ package zpp_nape.dynamics
          var _loc4_:* = null as Vec2;
          var _loc5_:Boolean = false;
          var _loc6_:* = null as ZPP_Vec2;
+         var _loc1_:Number = 0;
+         var _loc2_:Number = 0;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_position));
+         if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Vec2 components cannot be NaN";
+         }
          if(ZPP_PubPool.poolVec2 == null)
          {
             _loc4_ = new Vec2();
@@ -158,8 +164,8 @@ package zpp_nape.dynamics
             }
             _loc6_.weak = false;
             _loc6_._immutable = _loc5_;
-            _loc6_.x = 0;
-            _loc6_.y = 0;
+            _loc6_.x = _loc1_;
+            _loc6_.y = _loc2_;
             §§pop().zpp_inner = _loc6_;
             _loc4_.zpp_inner.outer = _loc4_;
          }
@@ -180,6 +186,11 @@ package zpp_nape.dynamics
             {
                _loc6_._isimmutable();
             }
+            if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Vec2 components cannot be NaN";
+            }
             §§push(false);
             if(_loc4_ != null && _loc4_.zpp_disp)
             {
@@ -191,7 +202,7 @@ package zpp_nape.dynamics
             {
                _loc6_._validate();
             }
-            if(_loc4_.zpp_inner.x == 0)
+            if(_loc4_.zpp_inner.x == _loc1_)
             {
                §§pop();
                if(_loc4_ != null && _loc4_.zpp_disp)
@@ -204,12 +215,12 @@ package zpp_nape.dynamics
                {
                   _loc6_._validate();
                }
-               §§push(_loc4_.zpp_inner.y == 0);
+               §§push(_loc4_.zpp_inner.y == _loc2_);
             }
             if(!§§pop())
             {
-               _loc4_.zpp_inner.x = 0;
-               _loc4_.zpp_inner.y = 0;
+               _loc4_.zpp_inner.x = _loc1_;
+               _loc4_.zpp_inner.y = _loc2_;
                _loc6_ = _loc4_.zpp_inner;
                if(_loc6_._invalidate != null)
                {
@@ -218,7 +229,7 @@ package zpp_nape.dynamics
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_position = _loc4_;
          wrap_position.zpp_inner._inuse = true;
          wrap_position.zpp_inner._immutable = !mutable;
@@ -227,3 +238,4 @@ package zpp_nape.dynamics
       }
    }
 }
+

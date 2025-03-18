@@ -1,14 +1,12 @@
 package tuxwars.home.ui.logic.slotmachine
 {
    import com.dchoc.data.GraphicsReference;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    
    public class SlotWinReference
    {
-      
       public static const TABLE:String = "SlotWin";
       
       private static const WINREEL1:String = "WinResult1";
@@ -32,7 +30,6 @@ package tuxwars.home.ui.logic.slotmachine
       private static const REWARD_CASH:String = "RewardCash";
       
       private static const REWARD_ITEM:String = "RewardItem";
-       
       
       private var _row:Row;
       
@@ -52,12 +49,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "WinResult1";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["WinResult1"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["WinResult1"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","WinResult1");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["WinResult1"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -72,12 +70,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "WinResult2";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["WinResult2"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["WinResult2"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","WinResult2");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["WinResult2"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -92,12 +91,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "WinResult3";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["WinResult3"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["WinResult3"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","WinResult3");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["WinResult3"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -112,12 +112,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "Title";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["Title"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["Title"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Title");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["Title"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -132,12 +133,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "Picture";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["Picture"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["Picture"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Picture");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["Picture"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -152,12 +154,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "Description";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["Description"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["Description"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Description");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["Description"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -172,12 +175,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "SortOrder";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["SortOrder"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["SortOrder"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SortOrder");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["SortOrder"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -192,12 +196,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "RewardXP";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["RewardXP"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["RewardXP"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardXP");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["RewardXP"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -212,12 +217,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "RewardCoin";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["RewardCoin"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["RewardCoin"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardCoin");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["RewardCoin"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -232,12 +238,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "RewardCash";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["RewardCash"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["RewardCash"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardCash");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["RewardCash"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -250,14 +257,16 @@ package tuxwars.home.ui.logic.slotmachine
       
       public function get rewardItems() : Array
       {
+         var _loc4_:String = "RewardItem";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["RewardItem"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["RewardItem"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardItem");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["RewardItem"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
    }
 }
+

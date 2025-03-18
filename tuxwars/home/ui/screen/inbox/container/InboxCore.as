@@ -14,9 +14,7 @@ package tuxwars.home.ui.screen.inbox.container
    
    public class InboxCore extends UIContainer implements IResourceLoaderURL
    {
-      
       private static const PICTURE_CONTAINER:String = "Container_Profile_Picture";
-       
       
       private var data:RequestData;
       
@@ -94,3 +92,4 @@ package tuxwars.home.ui.screen.inbox.container
       }
    }
 }
+

@@ -6,8 +6,6 @@ package tuxwars.battle.ui.states.couponfound
    
    public class CouponFoundLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function CouponFoundLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getPopupAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.battle.ui.states.couponfound
       }
    }
 }
+

@@ -9,19 +9,19 @@ package mx.styles
    import mx.core.mx_internal;
    import mx.managers.SystemManagerGlobals;
    
+   use namespace mx_internal;
+   
    public class StyleManager
    {
-      
-      mx_internal static const VERSION:String = "4.5.1.21489";
-      
-      public static const NOT_A_COLOR:uint = 4294967295;
-      
       private static var implClassDependency:StyleManagerImpl;
       
       private static var _impl:IStyleManager2;
       
       private static var styleManagerDictionary:Dictionary;
-       
+      
+      mx_internal static const VERSION:String = "4.5.1.21489";
+      
+      public static const NOT_A_COLOR:uint = 4294967295;
       
       public function StyleManager()
       {
@@ -40,7 +40,7 @@ package mx.styles
       public static function getStyleManager(moduleFactory:IFlexModuleFactory) : IStyleManager2
       {
          var styleManager:IStyleManager2 = null;
-         var o:* = null;
+         var o:Object = null;
          if(!moduleFactory)
          {
             moduleFactory = SystemManagerGlobals.topLevelSystemManagers[0];
@@ -224,3 +224,4 @@ package mx.styles
       }
    }
 }
+

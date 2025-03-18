@@ -11,8 +11,6 @@ package tuxwars.battle.rewards
    
    public class CumulativeDamage
    {
-       
-      
       private var lifeTime:int;
       
       private var player:PlayerGameObject;
@@ -21,11 +19,10 @@ package tuxwars.battle.rewards
       
       private var world:TuxWorld;
       
-      private var _damageSources:Vector.<Damage>;
+      private var _damageSources:Vector.<Damage> = new Vector.<Damage>();
       
       public function CumulativeDamage(targetObject:PhysicsGameObject, damageSource:Damage, world:TuxWorld)
       {
-         _damageSources = new Vector.<Damage>();
          super();
          this.lifeTime = RewardConfig.getDamageCollectionTime();
          this.player = damageSource.taggingPlayer;
@@ -92,9 +89,9 @@ package tuxwars.battle.rewards
       {
          var _loc3_:Boolean = false;
          var damage:int = 0;
-         var _loc5_:* = null;
-         var textEffect:* = null;
-         var _loc6_:* = null;
+         var _loc5_:AvatarGameObject = null;
+         var textEffect:TextEffect = null;
+         var _loc6_:String = null;
          lifeTime -= deltaTime;
          if(targetObject != null)
          {
@@ -168,3 +165,4 @@ package tuxwars.battle.rewards
       }
    }
 }
+

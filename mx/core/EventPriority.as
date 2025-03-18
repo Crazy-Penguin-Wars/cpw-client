@@ -1,8 +1,9 @@
 package mx.core
 {
+   use namespace mx_internal;
+   
    public final class EventPriority
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const CURSOR_MANAGEMENT:int = 200;
@@ -14,7 +15,6 @@ package mx.core
       public static const DEFAULT_HANDLER:int = -50;
       
       public static const EFFECT:int = -100;
-       
       
       public function EventPriority()
       {
@@ -22,3 +22,4 @@ package mx.core
       }
    }
 }
+

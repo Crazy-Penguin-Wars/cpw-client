@@ -18,8 +18,6 @@ package tuxwars.home.ui.screen.leaderboard
    
    public class BarElement extends UIStateComponent
    {
-       
-      
       private var slider:UIProgressIndicator;
       
       private var friendSlot:FriendSlot;
@@ -41,7 +39,7 @@ package tuxwars.home.ui.screen.leaderboard
          {
             friend = game.player.friends.getFriend(statObj.dcgId) as TuxFriend;
             _loc9_ = maxValue < 100 ? 100 : 1;
-            value = Number(statObj.value) * _loc9_;
+            value = statObj.value * _loc9_;
             max = maxValue * _loc9_;
             if(stat == "avg_position")
             {
@@ -109,7 +107,7 @@ package tuxwars.home.ui.screen.leaderboard
       
       private function setupAvatar(wornItems:Object) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Array = null;
          avatar = new TuxAvatar(Players.getPlayerData().graphics.swf);
          avatar.animate(new AvatarAnimation("idle"));
          var _loc4_:UIProgressIndicator = slider;
@@ -160,3 +158,4 @@ package tuxwars.home.ui.screen.leaderboard
       }
    }
 }
+

@@ -7,19 +7,17 @@ package zpp_nape.geom
    
    public class ZPP_SimpleSeg
    {
-      
-      public static var zpp_pool:ZPP_SimpleSeg = null;
-       
+      public static var zpp_pool:zpp_nape.geom.ZPP_SimpleSeg;
       
       public var vertices:ZPP_Set_ZPP_SimpleVert;
       
       public var right:ZPP_SimpleVert;
       
-      public var prev:ZPP_SimpleSeg;
+      public var prev:zpp_nape.geom.ZPP_SimpleSeg;
       
       public var node:ZPP_Set_ZPP_SimpleSeg;
       
-      public var next:ZPP_SimpleSeg;
+      public var next:zpp_nape.geom.ZPP_SimpleSeg;
       
       public var left:ZPP_SimpleVert;
       
@@ -49,22 +47,24 @@ package zpp_nape.geom
             ZPP_Set_ZPP_SimpleVert.zpp_pool = vertices.next;
             vertices.next = null;
          }
+         null;
          vertices.lt = less_xy;
       }
       
-      public static function get(param1:ZPP_SimpleVert, param2:ZPP_SimpleVert) : ZPP_SimpleSeg
+      public static function get(param1:ZPP_SimpleVert, param2:ZPP_SimpleVert) : zpp_nape.geom.ZPP_SimpleSeg
       {
-         var _loc3_:* = null as ZPP_SimpleSeg;
-         if(ZPP_SimpleSeg.zpp_pool == null)
+         var _loc3_:* = null as zpp_nape.geom.ZPP_SimpleSeg;
+         if(zpp_nape.geom.ZPP_SimpleSeg.zpp_pool == null)
          {
-            _loc3_ = new ZPP_SimpleSeg();
+            _loc3_ = new zpp_nape.geom.ZPP_SimpleSeg();
          }
          else
          {
-            _loc3_ = ZPP_SimpleSeg.zpp_pool;
-            ZPP_SimpleSeg.zpp_pool = _loc3_.next;
+            _loc3_ = zpp_nape.geom.ZPP_SimpleSeg.zpp_pool;
+            zpp_nape.geom.ZPP_SimpleSeg.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.left = param1;
          _loc3_.right = param2;
          _loc3_.vertices.insert(param1);
@@ -78,3 +78,4 @@ package zpp_nape.geom
       }
    }
 }
+

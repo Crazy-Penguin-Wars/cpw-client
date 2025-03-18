@@ -11,7 +11,6 @@ package tuxwars.items
    
    public class Item extends Equippable
    {
-      
       public static const TYPE_CRAFTING:String = "Crafting";
       
       public static const TYPE_WEAPON:String = "Weapon";
@@ -39,7 +38,6 @@ package tuxwars.items
       public static const SPECIAL_CLOTHING_SET:String = "ClothingSet";
       
       public static const CATEGORY_PRACTICE:String = "Practice";
-       
       
       private var _special:SpecialReference;
       
@@ -141,3 +139,4 @@ package tuxwars.items
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.home.states.vip
    
    public class VIPState extends TuxState
    {
-       
-      
       public function VIPState(game:TuxWarsGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.vip
       }
    }
 }
+

@@ -2,13 +2,10 @@ package com.logicom.geom
 {
    public class Polygon
    {
-       
-      
-      private var _points:Vector.<IntPoint>;
+      private var _points:Vector.<IntPoint> = new Vector.<IntPoint>();
       
       public function Polygon()
       {
-         _points = new Vector.<IntPoint>();
          super();
       }
       
@@ -38,3 +35,4 @@ package com.logicom.geom
       }
    }
 }
+

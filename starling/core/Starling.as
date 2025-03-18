@@ -40,17 +40,15 @@ package starling.core
    
    public class Starling extends EventDispatcher
    {
+      private static var sCurrent:Starling;
+      
+      private static var sHandleLostContext:Boolean;
       
       public static const VERSION:String = "1.3";
       
       private static const PROGRAM_DATA_NAME:String = "Starling.programs";
       
-      private static var sCurrent:Starling;
-      
-      private static var sHandleLostContext:Boolean;
-      
       private static var sContextData:Dictionary = new Dictionary(true);
-       
       
       private var mStage3D:Stage3D;
       
@@ -782,3 +780,4 @@ package starling.core
       }
    }
 }
+

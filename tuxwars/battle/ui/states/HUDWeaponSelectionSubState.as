@@ -10,8 +10,6 @@ package tuxwars.battle.ui.states
    
    public class HUDWeaponSelectionSubState extends TuxState
    {
-       
-      
       private var screenHandler:ScreenHandler;
       
       public function HUDWeaponSelectionSubState(game:TuxWarsGame, params:* = null)
@@ -44,3 +42,4 @@ package tuxwars.battle.ui.states
       }
    }
 }
+

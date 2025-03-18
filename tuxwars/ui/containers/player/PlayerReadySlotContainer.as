@@ -17,8 +17,6 @@ package tuxwars.ui.containers.player
    
    public class PlayerReadySlotContainer extends UIContainer implements IResourceLoaderURL
    {
-       
-      
       private var avatar:TuxAvatar;
       
       private var pictureUrl:String;
@@ -84,3 +82,4 @@ package tuxwars.ui.containers.player
       }
    }
 }
+

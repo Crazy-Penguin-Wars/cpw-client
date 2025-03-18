@@ -8,8 +8,6 @@ package tuxwars.home.states.vipend
    
    public class VipEndPopupSubState extends PopUpBaseSubState
    {
-       
-      
       public function VipEndPopupSubState(game:DCGame)
       {
          super("MessageType",game,VipEndPopUpScreen,VipEndPopUpLogic,AssetsData.getPopupAssets());
@@ -21,3 +19,4 @@ package tuxwars.home.states.vipend
       }
    }
 }
+

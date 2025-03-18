@@ -4,11 +4,10 @@ package com.dchoc.game
    
    public class WorldObjectContainer extends Sprite
    {
-       
-      
       public function WorldObjectContainer()
       {
          super();
       }
    }
 }
+

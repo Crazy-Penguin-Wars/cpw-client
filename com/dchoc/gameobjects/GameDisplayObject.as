@@ -6,9 +6,7 @@ package com.dchoc.gameobjects
    
    public class GameDisplayObject extends Sprite
    {
-      
       private static var counter:int = 1;
-       
       
       private const globalPoint:Point = new Point();
       
@@ -45,3 +43,4 @@ package com.dchoc.gameobjects
       }
    }
 }
+

@@ -9,21 +9,19 @@ package zpp_nape.phys
    
    public class ZPP_Material
    {
+      public static var zpp_pool:ZPP_Material;
       
-      public static var zpp_pool:ZPP_Material = null;
+      public static var WAKE:int;
       
-      public static var WAKE:int = 1;
+      public static var PROPS:int;
       
-      public static var PROPS:int = 2;
+      public static var ANGDRAG:int;
       
-      public static var ANGDRAG:int = 4;
-      
-      public static var ARBITERS:int = 8;
-       
+      public static var ARBITERS:int;
       
       public var wrap_shapes:ShapeList;
       
-      public var userData;
+      public var userData:*;
       
       public var staticFriction:Number;
       
@@ -118,3 +116,4 @@ package zpp_nape.phys
       }
    }
 }
+

@@ -3,6 +3,7 @@ package tuxwars.battle.gameobjects.player
    import com.dchoc.gameobjects.stats.Stats;
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.utils.LogUtils;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.effects.BoosterEffect;
    import tuxwars.battle.effects.TextEffect;
    import tuxwars.battle.events.BoosterActivatedMessage;
@@ -24,8 +25,6 @@ package tuxwars.battle.gameobjects.player
    
    public class PlayerBoosters
    {
-       
-      
       private const activatedBoosters:Vector.<BoosterItem> = new Vector.<BoosterItem>();
       
       private var player:PlayerGameObject;
@@ -42,7 +41,7 @@ package tuxwars.battle.gameobjects.player
       
       public function addBooster(boosterId:String) : void
       {
-         var _loc6_:* = null;
+         var _loc6_:TextEffect = null;
          if(player.isAI())
          {
             return;
@@ -247,3 +246,4 @@ package tuxwars.battle.gameobjects.player
       }
    }
 }
+

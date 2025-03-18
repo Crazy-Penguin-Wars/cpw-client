@@ -6,8 +6,6 @@ package tuxwars.challenges.counters
    
    public class DeathsCounter extends Counter
    {
-       
-      
       public function DeathsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -23,3 +21,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

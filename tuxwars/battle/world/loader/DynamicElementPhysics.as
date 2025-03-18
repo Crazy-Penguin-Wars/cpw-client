@@ -11,8 +11,6 @@ package tuxwars.battle.world.loader
    
    public class DynamicElementPhysics
    {
-       
-      
       private var angle:Number;
       
       private var theme:MaterialTheme;
@@ -108,3 +106,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

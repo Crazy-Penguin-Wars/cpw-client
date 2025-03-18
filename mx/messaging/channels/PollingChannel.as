@@ -17,9 +17,10 @@ package mx.messaging.channels
    import mx.resources.IResourceManager;
    import mx.resources.ResourceManager;
    
+   use namespace mx_internal;
+   
    public class PollingChannel extends Channel
    {
-      
       protected static const POLLING_ENABLED:String = "polling-enabled";
       
       protected static const POLLING_INTERVAL_MILLIS:String = "polling-interval-millis";
@@ -31,7 +32,6 @@ package mx.messaging.channels
       protected static const LOGIN_AFTER_DISCONNECT:String = "login-after-disconnect";
       
       private static const DEFAULT_POLLING_INTERVAL:int = 3000;
-       
       
       mx_internal var _pollingInterval:int;
       
@@ -43,7 +43,7 @@ package mx.messaging.channels
       
       mx_internal var _timer:Timer;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       protected var _loginAfterDisconnect:Boolean;
       
@@ -53,7 +53,6 @@ package mx.messaging.channels
       
       public function PollingChannel(id:String = null, uri:String = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super(id,uri);
          this._pollingEnabled = true;
          this.mx_internal::_shouldPoll = false;
@@ -368,13 +367,13 @@ package mx.messaging.channels
    }
 }
 
+import flash.net.Responder;
 import mx.core.mx_internal;
 import mx.events.PropertyChangeEvent;
 import mx.logging.ILogger;
 import mx.logging.Log;
 import mx.messaging.MessageAgent;
 import mx.messaging.MessageResponder;
-import mx.messaging.channels.PollingChannel;
 import mx.messaging.events.ChannelFaultEvent;
 import mx.messaging.events.MessageEvent;
 import mx.messaging.messages.AcknowledgeMessage;
@@ -385,19 +384,18 @@ import mx.messaging.messages.MessagePerformanceUtils;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
+use namespace mx_internal;
+
 class PollCommandMessageResponder extends MessageResponder
 {
-    
-   
    private var _log:ILogger;
    
-   private var resourceManager:IResourceManager;
+   private var resourceManager:IResourceManager = ResourceManager.getInstance();
    
    private var suppressHandlers:Boolean;
    
    public function PollCommandMessageResponder(agent:MessageAgent, msg:IMessage, channel:PollingChannel, log:ILogger)
    {
-      this.resourceManager = ResourceManager.getInstance();
       super(agent,msg,channel);
       this._log = log;
       channel.addEventListener(PropertyChangeEvent.PROPERTY_CHANGE,this.channelPropertyChangeHandler);
@@ -430,8 +428,9 @@ class PollCommandMessageResponder extends MessageResponder
          if(msg.body != null)
          {
             messageList = msg.body as Array;
-            for each(message in messageList)
+            for(var _loc3_:int = 0,var _loc4_:* = messageList; §§hasnext(_loc4_,_loc3_); channel.dispatchEvent(MessageEvent.createEvent(MessageEvent.MESSAGE,message)))
             {
+               message = §§nextvalue(_loc3_,_loc4_);
                if(Log.isDebug())
                {
                   this._log.debug("\'{0}\' channel got message\n{1}\n",channel.id,message.toString());
@@ -446,9 +445,9 @@ class PollCommandMessageResponder extends MessageResponder
                      {
                         _log.debug("Could not get message performance information for: " + msg.toString());
                      }
+                     continue;
                   }
                }
-               channel.dispatchEvent(MessageEvent.createEvent(MessageEvent.MESSAGE,message));
             }
          }
       }

@@ -2,8 +2,6 @@ package com.dchoc.avatar
 {
    public interface IAvatar
    {
-       
-      
       function putOnItem(param1:WearableItem) : Boolean;
       
       function takeOffItem(param1:WearableItem) : void;
@@ -21,3 +19,4 @@ package com.dchoc.avatar
       function set color(param1:IAvatarColor) : void;
    }
 }
+

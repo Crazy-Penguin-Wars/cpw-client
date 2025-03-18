@@ -10,8 +10,6 @@ package tuxwars.ui.popups.screen.loot
    
    public class LootPopUpScreen extends PopUpBaseScreen
    {
-       
-      
       private var icon:MovieClip;
       
       public function LootPopUpScreen(game:TuxWarsGame)
@@ -54,3 +52,4 @@ package tuxwars.ui.popups.screen.loot
       }
    }
 }
+

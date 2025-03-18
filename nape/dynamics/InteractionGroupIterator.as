@@ -5,9 +5,7 @@ package nape.dynamics
    
    public final class InteractionGroupIterator
    {
-      
-      public static var zpp_pool:InteractionGroupIterator = null;
-       
+      public static var zpp_pool:InteractionGroupIterator;
       
       public var zpp_next:InteractionGroupIterator;
       
@@ -75,3 +73,4 @@ package nape.dynamics
       }
    }
 }
+

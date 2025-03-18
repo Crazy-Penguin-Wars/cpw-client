@@ -1,8 +1,8 @@
 package tuxwars.challenges
 {
    import com.dchoc.game.DCGame;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import tuxwars.battle.gameobjects.LevelGameObject;
    import tuxwars.battle.gameobjects.PowerUpGameObject;
@@ -11,8 +11,6 @@ package tuxwars.challenges
    
    public class ChallengeParamReference
    {
-       
-      
       private var WEAPON_ID:String = "WeaponID";
       
       private var BOOSTER_ID:String = "BoosterID";
@@ -85,7 +83,6 @@ package tuxwars.challenges
             case "ice":
             case "metal":
             case "stone":
-               break;
             case "wood":
                break;
             case "levelobject":
@@ -259,3 +256,4 @@ package tuxwars.challenges
       }
    }
 }
+

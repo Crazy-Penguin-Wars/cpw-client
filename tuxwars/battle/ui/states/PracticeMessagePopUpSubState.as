@@ -7,8 +7,6 @@ package tuxwars.battle.ui.states
    
    public class PracticeMessagePopUpSubState extends MessagePopUpSubState
    {
-       
-      
       public function PracticeMessagePopUpSubState(game:TuxWarsGame)
       {
          super(game,PracticeMessagePopUpLogic);
@@ -30,3 +28,4 @@ package tuxwars.battle.ui.states
       }
    }
 }
+

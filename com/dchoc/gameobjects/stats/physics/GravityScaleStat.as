@@ -4,8 +4,6 @@ package com.dchoc.gameobjects.stats.physics
    
    public class GravityScaleStat extends PhysicsStat
    {
-       
-      
       public function GravityScaleStat(statName:String, body:Body, value:Number = 0, group:String = "Group_Base", type:String = "Normal", includeBase:Boolean = true)
       {
          super(statName,body,value,group,type,includeBase);
@@ -17,3 +15,4 @@ package com.dchoc.gameobjects.stats.physics
       }
    }
 }
+

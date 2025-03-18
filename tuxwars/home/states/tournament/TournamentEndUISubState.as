@@ -7,11 +7,10 @@ package tuxwars.home.states.tournament
    
    public class TournamentEndUISubState extends TuxUIState
    {
-       
-      
       public function TournamentEndUISubState(game:TuxWarsGame, params:* = null)
       {
          super(TournamentEndScreen,TournamentEndLogic,game,params);
       }
    }
 }
+

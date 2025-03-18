@@ -2,8 +2,6 @@ package tuxwars.home.ui.screen.friendselector
 {
    public class MultipleFriendSelectorFriendsCollection extends CellList
    {
-       
-      
       private var copyList:Vector.<Object>;
       
       private var searchResultList:Vector.<Object>;
@@ -21,7 +19,7 @@ package tuxwars.home.ui.screen.friendselector
       {
          var i:* = 0;
          var max:* = 0;
-         var _loc4_:* = null;
+         var _loc4_:String = null;
          cancelSearch();
          if(!copyList)
          {
@@ -105,3 +103,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

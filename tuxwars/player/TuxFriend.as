@@ -4,8 +4,6 @@ package tuxwars.player
    
    public class TuxFriend extends Friend
    {
-       
-      
       private var _wornItemsContainer:WornItems;
       
       private var _inventory:Inventory;
@@ -36,3 +34,4 @@ package tuxwars.player
       }
    }
 }
+

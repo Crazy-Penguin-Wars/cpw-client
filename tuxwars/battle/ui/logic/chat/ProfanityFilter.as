@@ -5,23 +5,23 @@ package tuxwars.battle.ui.logic.chat
    
    public class ProfanityFilter
    {
-      
       private static const NUM_ASTERISK_WORDS:int = 30;
       
       private static var _instance:ProfanityFilter;
-       
       
-      private const profaneWords:Vector.<String> = new Vector.<String>();
+      private const profaneWords:Vector.<String>;
       
-      private const asteriskMarks:Vector.<String> = new Vector.<String>(30,true);
+      private const asteriskMarks:Vector.<String>;
       
       private var profanity_en:Class;
       
       public function ProfanityFilter()
       {
          var i:int = 0;
-         var str:* = null;
+         var str:String = null;
          var j:int = 0;
+         profaneWords = new Vector.<String>();
+         asteriskMarks = new Vector.<String>(30,true);
          profanity_en = profanity_en$f3a38b021c6e01c779432428ed5865942102194730;
          super();
          var _loc2_:Array = getTextFromBAClass(profanity_en).split(",");
@@ -54,7 +54,7 @@ package tuxwars.battle.ui.logic.chat
       public function filterString(str:String) : String
       {
          var i:int = 0;
-         var word:* = null;
+         var word:String = null;
          var j:int = 0;
          var _loc2_:int = 0;
          var _loc3_:Array = str.split(" ");
@@ -65,7 +65,7 @@ package tuxwars.battle.ui.logic.chat
             {
                while(true)
                {
-                  _loc2_ = word.indexOf(profaneWords[j]);
+                  _loc2_ = int(word.indexOf(profaneWords[j]));
                   if(_loc2_ == -1)
                   {
                      break;
@@ -88,3 +88,4 @@ package tuxwars.battle.ui.logic.chat
       }
    }
 }
+

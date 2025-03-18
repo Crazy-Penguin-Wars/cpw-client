@@ -11,7 +11,6 @@ package tuxwars.battle.gameobjects
    
    public class TuxGameObject extends GameObject implements StatsInterface
    {
-      
       public static const AFFECTS_ALL:String = "all";
       
       public static const AFFECTS_PENGUIN:String = "penguin";
@@ -57,7 +56,6 @@ package tuxwars.battle.gameobjects
       public static const WEAPON_LIST:Array = ["weapon","missile","mine","enviroment","grenade","timermissile"];
       
       public static const AFFECTS_LIST:Array = ["all","penguin","player","enemy","object","terrain","stone","ice","metal","wood","powerup","levelobject","weapon","missile","mine","grenade","timermissile","enviroment","water","follower"];
-       
       
       private var _stats:Stats;
       
@@ -85,7 +83,8 @@ package tuxwars.battle.gameobjects
          stats.create("Defence",null,0,false);
          stats.create("Attack",null,0,false);
          stats.create("Luck",null,0,false);
-         _hasHPs = (!!this.stats ? this.stats.getStat("HP") : null) != null;
+         var _loc3_:String = "HP";
+         _hasHPs = (!!this.stats ? this.stats.getStat(_loc3_) : null) != null;
       }
       
       override public function dispose() : void
@@ -116,7 +115,8 @@ package tuxwars.battle.gameobjects
          {
             cachedHPType = type;
             cahcedHPIncludeTemp = includeTemp;
-            cahcedHP = (!!this.stats ? this.stats.getStat("HP") : null).calculateValue(null,null,type,includeTemp,debugCalculation);
+            var _loc4_:String = "HP";
+            cahcedHP = (!!this.stats ? this.stats.getStat(_loc4_) : null).calculateValue(null,null,type,includeTemp,debugCalculation);
          }
          return cahcedHP;
       }
@@ -142,7 +142,8 @@ package tuxwars.battle.gameobjects
          }
          else if(damageSource.amount != 0 && _hasHPs)
          {
-            (!!this.stats ? this.stats.getStat("HP") : null).addModifier(damageSource);
+            var _loc3_:String = "HP";
+            (!!this.stats ? this.stats.getStat(_loc3_) : null).addModifier(damageSource);
             resetCahcedHP();
             _loc2_ = calculateHitPoints();
             LogUtils.log("ReduceHitpoints: " + shortName + " takes " + damageSource.amount + " amount of " + damageSource.idsOfDamageWithDamage.toString() + " uids: " + damageSource.uniquesIdsOfDamage.toString() + " hitPoints remaining: " + _loc2_ + ", tagging player: " + damageSource.taggingPlayer,this,0,"DamageApply",false,false,false);
@@ -153,26 +154,30 @@ package tuxwars.battle.gameobjects
       {
          if(cachedMaxHP == -2147483648)
          {
-            cachedMaxHP = (!!this.stats ? this.stats.getStat("HP") : null).calculateValue(null,null,"Calculate_All",false);
+            var _loc1_:String = "HP";
+            cachedMaxHP = (!!this.stats ? this.stats.getStat(_loc1_) : null).calculateValue(null,null,"Calculate_All",false);
          }
          return cachedMaxHP;
       }
       
       public function get defence() : Stat
       {
-         return !!this.stats ? this.stats.getStat("Defence") : null;
+         var _loc1_:String = "Defence";
+         return !!this.stats ? this.stats.getStat(_loc1_) : null;
       }
       
       public function get attack() : Stat
       {
-         return !!this.stats ? this.stats.getStat("Attack") : null;
+         var _loc1_:String = "Attack";
+         return !!this.stats ? this.stats.getStat(_loc1_) : null;
       }
       
       public function clearTempHpModifiers() : void
       {
          if(_hasHPs)
          {
-            (!!this.stats ? this.stats.getStat("HP") : null).clearTemp();
+            var _loc1_:String = "HP";
+            (!!this.stats ? this.stats.getStat(_loc1_) : null).clearTemp();
          }
       }
       
@@ -211,3 +216,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

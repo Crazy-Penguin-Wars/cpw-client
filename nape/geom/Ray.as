@@ -8,8 +8,6 @@ package nape.geom
    
    public final class Ray
    {
-       
-      
       public var zpp_inner:ZPP_Ray;
       
       public function Ray(param1:Vec2, param2:Vec2)
@@ -196,6 +194,11 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc5_;
          zpp_inner.origin;
@@ -362,6 +365,11 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc5_;
          zpp_inner.zip_dir = true;
@@ -499,6 +507,11 @@ package nape.geom
             _loc10_._invalidate = null;
             _loc10_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc10_;
+            true;
+         }
+         else
+         {
+            false;
          }
          if(param2.zpp_inner.weak)
          {
@@ -548,6 +561,11 @@ package nape.geom
             _loc10_._invalidate = null;
             _loc10_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc10_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc4_;
       }
@@ -720,6 +738,11 @@ package nape.geom
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          return zpp_inner.origin;
@@ -904,6 +927,11 @@ package nape.geom
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          zpp_inner.zip_dir = true;
@@ -1089,3 +1117,4 @@ package nape.geom
       }
    }
 }
+

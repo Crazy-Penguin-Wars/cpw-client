@@ -5,8 +5,6 @@ package tuxwars.home.states.shop
    
    public class ShopState extends TuxState
    {
-       
-      
       public function ShopState(game:TuxWarsGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.shop
       }
    }
 }
+

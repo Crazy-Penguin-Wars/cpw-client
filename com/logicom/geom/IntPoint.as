@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    public class IntPoint
    {
-       
-      
       public var X:int;
       
       public var Y:int;
@@ -26,3 +24,4 @@ package com.logicom.geom
       }
    }
 }
+

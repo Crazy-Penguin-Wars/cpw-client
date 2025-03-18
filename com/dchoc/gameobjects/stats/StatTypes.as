@@ -4,7 +4,6 @@ package com.dchoc.gameobjects.stats
    
    public class StatTypes
    {
-      
       public static const GROUP_BASE:String = "Group_Base";
       
       public static const GROUP_ITEM:String = "Group_Item";
@@ -26,7 +25,6 @@ package com.dchoc.gameobjects.stats
       public static const CALCULATE_ALL:String = "Calculate_All";
       
       public static const SORT_ORDER:Array = ["Group_Base","Group_Item","Group_Booster","Group_Emoticons","Group_Temp"];
-       
       
       public function StatTypes()
       {
@@ -41,7 +39,6 @@ package com.dchoc.gameobjects.stats
                return "Group_Base";
             case "Clothing":
             case "Trophy":
-               break;
             case "ClothingSet":
                break;
             case "Status":
@@ -57,3 +54,4 @@ package com.dchoc.gameobjects.stats
       }
    }
 }
+

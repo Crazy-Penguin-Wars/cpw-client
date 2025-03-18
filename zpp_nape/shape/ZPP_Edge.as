@@ -10,11 +10,9 @@ package zpp_nape.shape
    
    public class ZPP_Edge
    {
+      public static var zpp_pool:ZPP_Edge;
       
-      public static var zpp_pool:ZPP_Edge = null;
-      
-      public static var §internal§:Boolean = false;
-       
+      public static var §internal§:Boolean;
       
       public var wrap_lnorm:Vec2;
       
@@ -141,6 +139,7 @@ package zpp_nape.shape
                   _loc2_.zip_axis = false;
                   _loc2_.axisx = Math.sin(_loc2_.rot);
                   _loc2_.axisy = Math.cos(_loc2_.rot);
+                  null;
                }
                if(_loc1_.zip_gverts)
                {
@@ -154,6 +153,7 @@ package zpp_nape.shape
                         _loc2_.zip_axis = false;
                         _loc2_.axisx = Math.sin(_loc2_.rot);
                         _loc2_.axisy = Math.cos(_loc2_.rot);
+                        null;
                      }
                      _loc3_ = _loc1_.lverts.next;
                      _loc4_ = _loc1_.gverts.next;
@@ -220,6 +220,7 @@ package zpp_nape.shape
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = lnormx;
          var _loc2_:Number = lnormy;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_lnorm));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -322,7 +323,7 @@ package zpp_nape.shape
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_lnorm = _loc4_;
          wrap_lnorm.zpp_inner._immutable = true;
          wrap_lnorm.zpp_inner._validate = lnorm_validate;
@@ -335,6 +336,7 @@ package zpp_nape.shape
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = gnormx;
          var _loc2_:Number = gnormy;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_gnorm));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -437,10 +439,11 @@ package zpp_nape.shape
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_gnorm = _loc4_;
          wrap_gnorm.zpp_inner._immutable = true;
          wrap_gnorm.zpp_inner._validate = gnorm_validate;
       }
    }
 }
+

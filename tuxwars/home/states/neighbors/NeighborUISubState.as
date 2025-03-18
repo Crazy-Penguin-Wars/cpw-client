@@ -7,11 +7,10 @@ package tuxwars.home.states.neighbors
    
    public class NeighborUISubState extends TuxUIState
    {
-       
-      
       public function NeighborUISubState(game:TuxWarsGame, params:* = null)
       {
          super(NeighborsScreen,NeighborLogic,game,params);
       }
    }
 }
+

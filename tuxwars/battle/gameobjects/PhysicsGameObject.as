@@ -17,6 +17,7 @@ package tuxwars.battle.gameobjects
    import nape.geom.Vec3;
    import nape.phys.Body;
    import nape.shape.Shape;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.data.WorldPhysics;
    import tuxwars.battle.effects.TextEffect;
@@ -36,7 +37,6 @@ package tuxwars.battle.gameobjects
    
    public class PhysicsGameObject extends TuxGameObject implements Collider
    {
-      
       public static const GROUP_PENGUIN:String = "PENGUIN";
       
       public static const GROUP_TERRAIN:String = "TERRAIN";
@@ -51,8 +51,6 @@ package tuxwars.battle.gameobjects
       
       public static const GROUP_WATER:String = "WATER";
       
-      public static const GROUP_ALL:Array = ["FOLLOWER","LEVEL_OBJECT","MISSILE","PENGUIN","POWER_UP","TERRAIN","WATER"];
-      
       public static const DAMAGE_ID_OUT_OF_WORLD_ALIVE:String = "OOWorldAlive";
       
       public static const DAMAGE_ID_COLLISION:String = "Collision";
@@ -64,7 +62,8 @@ package tuxwars.battle.gameobjects
       private static var groupCounterPositive:int = 1;
       
       private static var groupCounterNegative:int = -1;
-       
+      
+      public static const GROUP_ALL:Array = ["FOLLOWER","LEVEL_OBJECT","MISSILE","PENGUIN","POWER_UP","TERRAIN","WATER"];
       
       private const _currentContacts:Vector.<PhysicsGameObject> = new Vector.<PhysicsGameObject>();
       
@@ -242,7 +241,8 @@ package tuxwars.battle.gameobjects
          {
             return;
          }
-         var _loc2_:Stat = !!this.stats ? this.stats.getStat("HP") : null;
+         var _loc3_:String = "HP";
+         var _loc2_:Stat = !!this.stats ? this.stats.getStat(_loc3_) : null;
          if(_loc2_)
          {
             reduceHitPointsCumulative(damageSource);
@@ -323,7 +323,7 @@ package tuxwars.battle.gameobjects
       
       public function setCollisionFilterValues(group:uint, mask:uint, fluidGroup:int = -1) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:InteractionFilter = null;
          if(body)
          {
             _loc4_ = new InteractionFilter();
@@ -382,8 +382,8 @@ package tuxwars.battle.gameobjects
       protected function emptyCollectedDamage() : void
       {
          var _loc2_:int = 0;
-         var _loc1_:* = null;
-         var _loc3_:* = null;
+         var _loc1_:Tagger = null;
+         var _loc3_:PlayerGameObject = null;
          if(_hasHPs && canTakeDamage())
          {
             _loc2_ = calculateHitPoints();
@@ -444,10 +444,10 @@ package tuxwars.battle.gameobjects
       protected function takeCollisionDamage(impulse:Number, other:PhysicsGameObject) : void
       {
          var _loc7_:int = 0;
-         var _loc3_:* = null;
-         var _loc8_:* = null;
-         var _loc4_:* = null;
-         var _loc6_:* = null;
+         var _loc3_:Tagger = null;
+         var _loc8_:PlayerGameObject = null;
+         var _loc4_:Vec2 = null;
+         var _loc6_:Vec2 = null;
          var velocityTagger:* = null;
          if(impulse >= WorldPhysics.getFallImpulseThreshold() && canTakeDamage())
          {
@@ -558,7 +558,7 @@ package tuxwars.battle.gameobjects
          {
             _timeFromLastContact = DCGame.getTime();
          }
-         var _loc3_:int = _currentContacts.indexOf(otherBody.userData.gameObject);
+         var _loc3_:int = int(_currentContacts.indexOf(otherBody.userData.gameObject));
          if(_loc3_ != -1)
          {
             _currentContacts.splice(_loc3_,1);
@@ -585,7 +585,7 @@ package tuxwars.battle.gameobjects
       
       public function reduceHitPointsCumulative(damageSource:Damage) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:TextEffect = null;
          if(damageSource.amount == 0)
          {
             return;
@@ -690,7 +690,7 @@ package tuxwars.battle.gameobjects
       protected function findFirstCollisionPosition(arbiterList:ArbiterList) : Vec2
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:CollisionArbiter = null;
          var j:int = 0;
          for(i = 0; i < arbiterList.length; )
          {
@@ -711,11 +711,11 @@ package tuxwars.battle.gameobjects
       protected function findFirstCollisionImpulse(arbiterList:ArbiterList, other:Body) : Number
       {
          var i:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:CollisionArbiter = null;
          var j:int = 0;
-         var _loc7_:* = null;
-         var _loc5_:* = null;
-         var _loc8_:* = null;
+         var _loc7_:Contact = null;
+         var _loc5_:Vec3 = null;
+         var _loc8_:Vec2 = null;
          var _loc3_:Number = NaN;
          for(i = 0; i < arbiterList.length; )
          {
@@ -773,7 +773,7 @@ package tuxwars.battle.gameobjects
       
       private function updateDamageCollection(deltaTime:int) : void
       {
-         var cumulativeDamage:* = null;
+         var cumulativeDamage:CumulativeDamage = null;
          var i:int = 0;
          var deleteObjects:Boolean = false;
          for each(cumulativeDamage in _damageSources)
@@ -814,3 +814,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

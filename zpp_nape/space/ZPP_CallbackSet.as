@@ -9,9 +9,7 @@ package zpp_nape.space
    
    public class ZPP_CallbackSet
    {
-      
-      public static var zpp_pool:ZPP_CallbackSet = null;
-       
+      public static var zpp_pool:ZPP_CallbackSet;
       
       public var pushmod:Boolean;
       
@@ -143,7 +141,7 @@ package zpp_nape.space
                _loc8_.next = ZNPNode_ZPP_Arbiter.zpp_pool;
                ZNPNode_ZPP_Arbiter.zpp_pool = _loc8_;
                _loc2_.modified = true;
-               _loc2_.length = _loc2_.length - 1;
+               --_loc2_.length;
                _loc2_.pushmod = true;
                _loc7_;
                _loc5_ = true;
@@ -243,7 +241,7 @@ package zpp_nape.space
                _loc8_.next = ZNPNode_ZPP_Arbiter.zpp_pool;
                ZNPNode_ZPP_Arbiter.zpp_pool = _loc8_;
                _loc2_.modified = true;
-               _loc2_.length = _loc2_.length - 1;
+               --_loc2_.length;
                _loc2_.pushmod = true;
                _loc7_;
                _loc5_ = true;
@@ -288,7 +286,7 @@ package zpp_nape.space
                }
                _loc5_._inuse = false;
                modified = true;
-               length = length - 1;
+               --length;
                pushmod = true;
                _loc6_;
                _loc4_ = true;
@@ -317,7 +315,7 @@ package zpp_nape.space
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function iterator_at(param1:int) : ZPP_CallbackSet
@@ -344,9 +342,8 @@ package zpp_nape.space
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -367,7 +364,7 @@ package zpp_nape.space
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function inlined_insert(param1:ZPP_CallbackSet, param2:ZPP_CallbackSet) : ZPP_CallbackSet
@@ -384,9 +381,8 @@ package zpp_nape.space
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -434,7 +430,7 @@ package zpp_nape.space
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -450,7 +446,7 @@ package zpp_nape.space
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
       
@@ -498,7 +494,7 @@ package zpp_nape.space
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -579,12 +575,13 @@ package zpp_nape.space
                ZNPNode_ZPP_Arbiter.zpp_pool = _loc6_.next;
                _loc6_.next = null;
             }
+            null;
             _loc6_.elt = param1;
             _loc3_ = _loc6_;
             _loc3_.next = _loc5_.head;
             _loc5_.head = _loc3_;
             _loc5_.modified = true;
-            _loc5_.length = _loc5_.length + 1;
+            ++_loc5_.length;
             param1;
             return true;
          }
@@ -610,8 +607,9 @@ package zpp_nape.space
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
    }
 }
+

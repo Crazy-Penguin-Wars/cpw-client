@@ -4,8 +4,6 @@ package tuxwars.challenges.events
    
    public class ChallengeBoosterUsedMessage extends Message
    {
-       
-      
       private var _playerId:String;
       
       public function ChallengeBoosterUsedMessage(boosterId:String, playerId:String)
@@ -25,3 +23,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

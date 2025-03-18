@@ -8,7 +8,6 @@ package tuxwars.battle.data.missiles
    
    public class MissileData extends TuxEmissionGameObjectData
    {
-      
       private static const TYPE:String = "Type";
       
       private static const TIMER:String = "Timer";
@@ -30,7 +29,6 @@ package tuxwars.battle.data.missiles
       private static const PARTICLE_STREAM_SPAWN_TIME:String = "ParticleStreamSpawnTime";
       
       private static const AT_SLEEP_TO_STATIC_AND_SENSOR:String = "AtSleepToStaticAndSensor";
-       
       
       public function MissileData(row:Row)
       {
@@ -114,3 +112,4 @@ package tuxwars.battle.data.missiles
       }
    }
 }
+

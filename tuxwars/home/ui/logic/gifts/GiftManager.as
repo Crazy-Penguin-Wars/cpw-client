@@ -1,19 +1,16 @@
 package tuxwars.home.ui.logic.gifts
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    
    public class GiftManager
    {
-      
       private static const GIFT_TABLE:String = "Gift";
       
       private static const _gifts:Vector.<GiftReference> = new Vector.<GiftReference>();
       
       private static const _giftsShow:Vector.<GiftReference> = new Vector.<GiftReference>();
-       
       
       public function GiftManager()
       {
@@ -95,8 +92,9 @@ package tuxwars.home.ui.logic.gifts
       
       private static function get table() : Table
       {
+         var _loc2_:String = "Gift";
          var _loc1_:ProjectManager = ProjectManager;
-         return com.dchoc.projectdata.ProjectManager.projectData.findTable("Gift");
+         return com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
       }
       
       private static function getRow(id:String) : Row
@@ -121,3 +119,4 @@ package tuxwars.home.ui.logic.gifts
       }
    }
 }
+

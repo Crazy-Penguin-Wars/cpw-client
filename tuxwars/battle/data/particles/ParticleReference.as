@@ -4,7 +4,6 @@ package tuxwars.battle.data.particles
    
    public class ParticleReference
    {
-      
       private static const PARTICLE_AMOUNT:String = "ParticleAmount";
       
       private static const PARTICLE_COLOR:String = "ParticleColor";
@@ -66,7 +65,6 @@ package tuxwars.battle.data.particles
       private static const CHILD_PARTICLES:String = "ChildParticles";
       
       private static const CHILD_PARTICLE_START_TIMES:String = "ChildParticleStartTimes";
-       
       
       private var _amount:int;
       
@@ -347,3 +345,4 @@ package tuxwars.battle.data.particles
       }
    }
 }
+

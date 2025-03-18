@@ -6,8 +6,6 @@ package com.dchoc.gameobjects.stats.modifier
    
    public class StatModifier
    {
-       
-      
       private var id:String;
       
       private var group:String;
@@ -98,3 +96,4 @@ package com.dchoc.gameobjects.stats.modifier
       }
    }
 }
+

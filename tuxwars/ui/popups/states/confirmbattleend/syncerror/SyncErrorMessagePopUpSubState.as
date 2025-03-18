@@ -7,11 +7,10 @@ package tuxwars.ui.popups.states.confirmbattleend.syncerror
    
    public class SyncErrorMessagePopUpSubState extends MessagePopUpSubState
    {
-       
-      
       public function SyncErrorMessagePopUpSubState(game:TuxWarsGame, battleResults:BattleResults)
       {
          super(game,SyncErrorMessagePopUpLogic,battleResults);
       }
    }
 }
+

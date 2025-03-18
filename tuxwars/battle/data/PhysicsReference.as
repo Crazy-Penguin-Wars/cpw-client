@@ -1,7 +1,7 @@
 package tuxwars.battle.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import nape.phys.BodyType;
    import nape.phys.Material;
@@ -11,7 +11,6 @@ package tuxwars.battle.data
    
    public class PhysicsReference
    {
-      
       private static const SHAPE_CIRCLE:String = "Circle";
       
       private static const SHAPE_POLYGON:String = "Polygon";
@@ -45,7 +44,6 @@ package tuxwars.battle.data
       private static const FIXTURE_NAME:String = "FixtureName";
       
       private static const GRAVITY_SCALE:String = "GravityScale";
-       
       
       private const _bodyDef:BodyDef = new BodyDef();
       
@@ -214,8 +212,8 @@ package tuxwars.battle.data
       
       private function createShapes() : void
       {
-         var _loc1_:* = null;
-         var _loc2_:* = null;
+         var _loc1_:Circle = null;
+         var _loc2_:Material = null;
          switch(shape)
          {
             case "Circle":
@@ -243,3 +241,4 @@ package tuxwars.battle.data
       }
    }
 }
+

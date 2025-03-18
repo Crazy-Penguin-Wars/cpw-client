@@ -6,8 +6,6 @@ package com.dchoc.gameobjects.states
    
    public class GameObjectState extends State
    {
-       
-      
       private var gameObject:GameObject;
       
       public function GameObjectState(gameObject:GameObject, params:* = null)
@@ -30,3 +28,4 @@ package com.dchoc.gameobjects.states
       }
    }
 }
+

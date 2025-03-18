@@ -4,8 +4,6 @@ package mx.managers
    
    public interface ISystemManagerChildManager
    {
-       
-      
       function addingChild(param1:DisplayObject) : void;
       
       function childAdded(param1:DisplayObject) : void;
@@ -17,3 +15,4 @@ package mx.managers
       function initializeTopLevelWindow(param1:Number, param2:Number) : void;
    }
 }
+

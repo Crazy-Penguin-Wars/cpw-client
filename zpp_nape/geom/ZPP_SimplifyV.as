@@ -4,9 +4,7 @@ package zpp_nape.geom
    
    public class ZPP_SimplifyV
    {
-      
-      public static var zpp_pool:ZPP_SimplifyV = null;
-       
+      public static var zpp_pool:ZPP_SimplifyV;
       
       public var y:Number;
       
@@ -47,6 +45,7 @@ package zpp_nape.geom
             ZPP_SimplifyV.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          _loc2_.x = param1.x;
          _loc2_.y = param1.y;
          _loc2_.flag = false;
@@ -54,3 +53,4 @@ package zpp_nape.geom
       }
    }
 }
+

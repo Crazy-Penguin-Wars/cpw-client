@@ -2,8 +2,6 @@ package mx.messaging.messages
 {
    public interface IMessage
    {
-       
-      
       function get body() : Object;
       
       function set body(param1:Object) : void;
@@ -35,3 +33,4 @@ package mx.messaging.messages
       function toString() : String;
    }
 }
+

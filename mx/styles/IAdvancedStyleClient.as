@@ -2,8 +2,6 @@ package mx.styles
 {
    public interface IAdvancedStyleClient extends IStyleClient
    {
-       
-      
       function get id() : String;
       
       function get styleParent() : IAdvancedStyleClient;
@@ -17,3 +15,4 @@ package mx.styles
       function matchesCSSType(param1:String) : Boolean;
    }
 }
+

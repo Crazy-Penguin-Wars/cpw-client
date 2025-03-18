@@ -9,16 +9,13 @@ package tuxwars.ui.components
    
    public class TopBarBackground extends TuxUIElementScreen
    {
-       
-      
-      private var background:MovieClip;
+      private var background:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/hud_shared.swf","top_bar");
       
       public function TopBarBackground(whereToAdd:MovieClip, game:TuxWarsGame)
       {
-         background = DCResourceManager.instance.getFromSWF("flash/ui/hud_shared.swf","top_bar");
          super(background,game);
          var _loc3_:DCGame = DCGame;
-         background.y = -Number(com.dchoc.game.DCGame._stage.stageHeight) * 0.5;
+         background.y = -com.dchoc.game.DCGame._stage.stageHeight * 0.5;
          whereToAdd.addChild(background);
          fullscreenChanged(DCGame.isFullScreen());
       }
@@ -37,3 +34,4 @@ package tuxwars.ui.components
       }
    }
 }
+

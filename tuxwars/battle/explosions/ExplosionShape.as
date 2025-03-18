@@ -10,11 +10,9 @@ package tuxwars.battle.explosions
    
    public class ExplosionShape
    {
+      private static const CIRCLE_RAD:Number = 6.283185307179586;
       
       private static const SECRET:Number = Math.random();
-      
-      private static const CIRCLE_RAD:Number = 6.283185307179586;
-       
       
       private const points:Vector.<Vec2> = new Vector.<Vec2>();
       
@@ -68,3 +66,4 @@ package tuxwars.battle.explosions
       }
    }
 }
+

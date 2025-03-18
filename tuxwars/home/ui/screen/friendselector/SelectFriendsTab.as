@@ -16,7 +16,6 @@ package tuxwars.home.ui.screen.friendselector
    
    public class SelectFriendsTab extends UIComponent
    {
-      
       private static const HEADER_TEXTFIELD:String = "Header";
       
       private static const DESCRIPTION_TEXTFIELD:String = "Text_Description";
@@ -36,7 +35,6 @@ package tuxwars.home.ui.screen.friendselector
       public static const BUTTON_PREFIX:String = "Tab_0";
       
       public static const DELIMITER:String = ",";
-       
       
       public var mHeader:UIAutoTextField;
       
@@ -52,9 +50,9 @@ package tuxwars.home.ui.screen.friendselector
       
       public var mButton:UIButton;
       
-      public var mButtonList:Array;
+      public var mButtonList:Array = [];
       
-      public var mFilters:Array;
+      public var mFilters:Array = [];
       
       private var mSelectorData:MultipleFriendSelectorData;
       
@@ -66,8 +64,6 @@ package tuxwars.home.ui.screen.friendselector
       
       public function SelectFriendsTab(newDesign:DisplayObject, giftingInfo:GiftingInfo)
       {
-         mButtonList = [];
-         mFilters = [];
          super(newDesign);
          var _loc3_:MovieClip = getDesignMovieClip();
          mGiftingInfo = giftingInfo;
@@ -90,10 +86,11 @@ package tuxwars.home.ui.screen.friendselector
       {
          var returnArray:Array = [];
          var returnString:String = "";
+         var max:uint = 50;
          var i:uint = 1;
          for each(var obj in list)
          {
-            if(i > 50)
+            if(i > max)
             {
                break;
             }
@@ -122,14 +119,14 @@ package tuxwars.home.ui.screen.friendselector
       
       public function parseFilters(filter:Array) : Array
       {
-         var mTabButton:* = null;
-         var tabName:* = null;
+         var mTabButton:UIToggleButton = null;
+         var tabName:String = null;
          var x:int = 0;
          var i:* = 0;
-         var parseArray:* = null;
+         var parseArray:Array = null;
          var friendsDataList:* = undefined;
-         var friendsInfo:* = null;
-         var friend:* = null;
+         var friendsInfo:Object = null;
+         var friend:MultipleFriendSelectorFriend = null;
          var mTabRadialGroup:UIRadialGroup = new UIRadialGroup();
          var tabsContainerClip:MovieClip = getDesignMovieClip().getChildByName("Container_Subtabs") as MovieClip;
          for(x = 1; x <= 3; )
@@ -251,3 +248,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

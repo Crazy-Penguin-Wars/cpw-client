@@ -6,9 +6,7 @@ package tuxwars.battle.net.messages.battle
    
    public class EmitMessage extends BattleMessage
    {
-      
       public static const DIRECTION_MULTIPLIER:int = 10000;
-       
       
       public function EmitMessage(playerId:String, emissionId:String, loc:Vec2, dir:Vec2 = null, powerBar:int = -1, playerAttackValue:int = 0, impulseList:Array = null, damageList:Array = null, terrainList:Array = null)
       {
@@ -17,8 +15,8 @@ package tuxwars.battle.net.messages.battle
          var _loc12_:Object = {
             "t":9,
             "eid":emissionId,
-            "lx":loc.x,
-            "ly":loc.y
+            "lx":int(loc.x),
+            "ly":int(loc.y)
          };
          if(playerId)
          {
@@ -27,8 +25,8 @@ package tuxwars.battle.net.messages.battle
          if(dir)
          {
             LogUtils.log("Emit message dir: " + dir,this,1,"Emission",false,false,false);
-            _loc10_ = dir.x * 10000;
-            _loc11_ = dir.y * 10000;
+            _loc10_ = int(dir.x * 10000);
+            _loc11_ = int(dir.y * 10000);
             if(_loc10_ != 0 || _loc11_ != 0)
             {
                _loc12_["dx"] = _loc10_;
@@ -64,3 +62,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

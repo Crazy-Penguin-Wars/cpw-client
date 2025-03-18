@@ -12,11 +12,9 @@ package tuxwars.home.ui.screen.challenge
    
    public class ChallengesScreen extends TuxUIScreen
    {
-      
       private static const EXPORT:String = "challenges_screen";
       
       private static const BUTTON_CLOSE:String = "Button_Close";
-       
       
       private var elementScreens:ChallengeElementScreens;
       
@@ -66,3 +64,4 @@ package tuxwars.home.ui.screen.challenge
       }
    }
 }
+

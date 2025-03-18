@@ -8,11 +8,10 @@ package tuxwars.ui.popups.states.exitquestion
    
    public class ExitQuestionPopUpSubState extends PopUpBaseSubState
    {
-       
-      
       public function ExitQuestionPopUpSubState(game:TuxWarsGame)
       {
          super("QuestionMessageType",game,ExitQuestionPopUpScreen,ExitQuestionPopUpLogic,AssetsData.getQuestionPopupAssets());
       }
    }
 }
+

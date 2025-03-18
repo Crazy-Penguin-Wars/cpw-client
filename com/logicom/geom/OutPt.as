@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    internal final class OutPt
    {
-       
-      
       public var idx:int;
       
       public var pt:IntPoint;
@@ -18,3 +16,4 @@ package com.logicom.geom
       }
    }
 }
+

@@ -20,8 +20,6 @@ package nape.shape
    
    public final class Polygon extends Shape
    {
-       
-      
       public var zpp_inner_zn:ZPP_Polygon;
       
       public function Polygon(param1:*, param2:Material = undefined, param3:InteractionFilter = undefined)
@@ -74,7 +72,7 @@ package nape.shape
             {
                _loc6_ = param1;
                _loc7_ = 0;
-               while(_loc7_ < _loc6_.length)
+               while(_loc7_ < int(_loc6_.length))
                {
                   _loc5_ = _loc6_[_loc7_];
                   _loc7_++;
@@ -570,14 +568,15 @@ package nape.shape
                if(_loc20_ != null)
                {
                   _loc21_ = _loc20_;
-                  while(true)
+                  do
                   {
                      _loc10_ = _loc21_.x;
                      _loc12_ = _loc21_.y;
                      _loc9_ = false;
                      if(_loc10_ != _loc10_ || _loc12_ != _loc12_)
                      {
-                        break;
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
                      }
                      if(ZPP_PubPool.poolVec2 == null)
                      {
@@ -860,20 +859,16 @@ package nape.shape
                      _loc22_._invalidate = null;
                      _loc22_.next = ZPP_Vec2.zpp_pool;
                      ZPP_Vec2.zpp_pool = _loc22_;
-                     if(_loc21_ != _loc20_)
-                     {
-                        continue;
-                     }
                   }
-                  Boot.lastError = new Error();
-                  throw "Error: Vec2 components cannot be NaN";
+                  while(_loc21_ != _loc20_);
+                  
                }
             }
             if(param1 is Array)
             {
                _loc6_ = param1;
                _loc7_ = 0;
-               while(_loc7_ < _loc6_.length)
+               while(_loc7_ < int(_loc6_.length))
                {
                   _loc8_ = _loc6_[_loc7_];
                   if(_loc8_.zpp_inner.weak)
@@ -946,7 +941,7 @@ package nape.shape
                if(!_loc15_.fixed)
                {
                   _loc7_ = 0;
-                  while(_loc7_ < _loc15_.length)
+                  while(_loc7_ < int(_loc15_.length))
                   {
                      _loc8_ = _loc15_[_loc7_];
                      if(_loc8_.zpp_inner.weak)
@@ -1079,6 +1074,11 @@ package nape.shape
                         _loc26_._invalidate = null;
                         _loc26_.next = ZPP_Vec2.zpp_pool;
                         ZPP_Vec2.zpp_pool = _loc26_;
+                        true;
+                     }
+                     else
+                     {
+                        false;
                      }
                   }
                   else
@@ -1100,6 +1100,7 @@ package nape.shape
                   ZPP_Material.zpp_pool = zpp_inner.material.next;
                   zpp_inner.material.next = null;
                }
+               null;
             }
             else
             {
@@ -1124,6 +1125,7 @@ package nape.shape
                   ZPP_InteractionFilter.zpp_pool = zpp_inner.filter.next;
                   zpp_inner.filter.next = null;
                }
+               null;
             }
             else
             {
@@ -1744,3 +1746,4 @@ package nape.shape
       }
    }
 }
+

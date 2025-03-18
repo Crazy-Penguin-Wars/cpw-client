@@ -5,8 +5,6 @@ package tuxwars.home.ui.logic.privategame.host
    
    public class PlayerSlotData
    {
-       
-      
       private const _clothes:Vector.<ClothingItem> = new Vector.<ClothingItem>();
       
       private var _id:String;
@@ -52,3 +50,4 @@ package tuxwars.home.ui.logic.privategame.host
       }
    }
 }
+

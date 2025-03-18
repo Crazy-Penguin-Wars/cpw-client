@@ -9,8 +9,6 @@ package tuxwars.home.ui.logic.home
    
    public class MoneyResourceElementLogic extends TuxUIElementLogic
    {
-       
-      
       public function MoneyResourceElementLogic(game:TuxWarsGame)
       {
          super(game);
@@ -61,3 +59,4 @@ package tuxwars.home.ui.logic.home
       }
    }
 }
+

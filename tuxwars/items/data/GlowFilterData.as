@@ -1,11 +1,10 @@
 package tuxwars.items.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    
    public class GlowFilterData
    {
-      
       private static const COLOR:String = "Color";
       
       private static const ALPHA:String = "Alpha";
@@ -21,7 +20,6 @@ package tuxwars.items.data
       private static const INNER:String = "Inner";
       
       private static const KNOCKOUT:String = "Knockout";
-       
       
       private var row:Row;
       
@@ -33,98 +31,107 @@ package tuxwars.items.data
       
       public function get color() : int
       {
+         var _loc4_:String = "Color";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Color"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Color"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Color");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Color"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get alpha() : Number
       {
+         var _loc4_:String = "Alpha";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Alpha"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Alpha"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Alpha");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Alpha"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get blurX() : Number
       {
+         var _loc4_:String = "BlurX";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["BlurX"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["BlurX"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","BlurX");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["BlurX"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get blurY() : Number
       {
+         var _loc4_:String = "BlurY";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["BlurY"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["BlurY"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","BlurY");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["BlurY"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get strength() : Number
       {
+         var _loc4_:String = "Strength";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Strength"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Strength"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Strength");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Strength"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get quality() : int
       {
+         var _loc4_:String = "Quality";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Quality"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Quality"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Quality");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Quality"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get inner() : Boolean
       {
+         var _loc4_:String = "Inner";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Inner"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Inner"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Inner");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Inner"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : false;
       }
       
       public function get knockout() : Boolean
       {
+         var _loc4_:String = "Knockout";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Knockout"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Knockout"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Knockout");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Knockout"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : false;
       }
    }
 }
+

@@ -10,9 +10,7 @@ package tuxwars.net
    
    public class JavaScriptServices
    {
-      
       private static var currentGame:TuxWarsGame;
-       
       
       public function JavaScriptServices()
       {
@@ -59,3 +57,4 @@ package tuxwars.net
       }
    }
 }
+

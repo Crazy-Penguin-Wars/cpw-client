@@ -2,8 +2,6 @@ package no.olog
 {
    public class Oline
    {
-       
-      
       public var msg:String;
       
       public var level:uint;
@@ -46,3 +44,4 @@ package no.olog
       }
    }
 }
+

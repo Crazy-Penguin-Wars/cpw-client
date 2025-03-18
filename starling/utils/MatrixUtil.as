@@ -7,9 +7,7 @@ package starling.utils
    
    public class MatrixUtil
    {
-      
       private static var sRawData:Vector.<Number> = new <Number>[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
-       
       
       public function MatrixUtil()
       {
@@ -86,3 +84,4 @@ package starling.utils
       }
    }
 }
+

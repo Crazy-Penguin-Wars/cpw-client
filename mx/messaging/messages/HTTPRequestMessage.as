@@ -2,7 +2,6 @@ package mx.messaging.messages
 {
    public class HTTPRequestMessage extends AbstractMessage
    {
-      
       public static const CONTENT_TYPE_XML:String = "application/xml";
       
       public static const CONTENT_TYPE_FORM:String = "application/x-www-form-urlencoded";
@@ -24,7 +23,6 @@ package mx.messaging.messages
       public static const TRACE_METHOD:String = "TRACE";
       
       private static const VALID_METHODS:String = "POST,PUT,GET,HEAD,DELETE,OPTIONS,TRACE";
-       
       
       public var contentType:String;
       
@@ -53,3 +51,4 @@ package mx.messaging.messages
       }
    }
 }
+

@@ -8,8 +8,6 @@ package starling.display
    
    public class MovieClip extends Image implements IAnimatable
    {
-       
-      
       private var mTextures:Vector.<Texture>;
       
       private var mSounds:Vector.<Sound>;
@@ -47,7 +45,7 @@ package starling.display
          {
             throw new ArgumentError("Invalid fps: " + fps);
          }
-         var numFrames:int = textures.length;
+         var numFrames:int = int(textures.length);
          this.mDefaultFrameDuration = 1 / fps;
          this.mLoop = true;
          this.mPlaying = true;
@@ -342,3 +340,4 @@ package starling.display
       }
    }
 }
+

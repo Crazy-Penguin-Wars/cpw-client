@@ -5,8 +5,6 @@ package nape.geom
    
    public final class MatMN
    {
-       
-      
       public var zpp_inner:ZPP_MatMN;
       
       public function MatMN(param1:int, param2:int)
@@ -184,3 +182,4 @@ package nape.geom
       }
    }
 }
+

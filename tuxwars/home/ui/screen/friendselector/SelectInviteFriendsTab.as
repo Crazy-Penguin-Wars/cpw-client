@@ -5,13 +5,10 @@ package tuxwars.home.ui.screen.friendselector
    
    public class SelectInviteFriendsTab extends SelectFriendsTab
    {
-       
-      
-      private var mDescText:TextField;
+      private var mDescText:TextField = new TextField();
       
       public function SelectInviteFriendsTab(newDesign:Sprite, giftingInfo:GiftingInfo)
       {
-         mDescText = new TextField();
          super(newDesign,giftingInfo);
          this._design.visible = false;
       }
@@ -26,3 +23,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

@@ -28,7 +28,6 @@ package tuxwars.home.ui.screen.tournament
    
    public class TournamentEndScreen extends TuxUIScreen
    {
-      
       private static const LEAGUE_AMOUNT:int = 5;
       
       private static const LEAGUE_SLOT_AMOUNT:int = 3;
@@ -38,7 +37,6 @@ package tuxwars.home.ui.screen.tournament
       private static const SHARE_BUTTON:String = "Button_Share";
       
       private static const CLOSE_BUTTON:String = "Button_Close";
-       
       
       private var _tournament:Tournament;
       
@@ -81,7 +79,7 @@ package tuxwars.home.ui.screen.tournament
       public function TournamentEndScreen(game:TuxWarsGame)
       {
          var slotCounter:int = 0;
-         var slotDesign:* = null;
+         var slotDesign:MovieClip = null;
          var _loc8_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/tournament.swf","tournament_result");
          super(game,_loc8_);
          _okButton = TuxUiUtils.createButton(UIButton,_loc8_,"Button_Ok",okCallback,"BUTTON_OK");
@@ -111,8 +109,8 @@ package tuxwars.home.ui.screen.tournament
       
       override public function init(params:*) : void
       {
-         var arrowMC:* = null;
-         var leagueIconMC:* = null;
+         var arrowMC:MovieClip = null;
+         var leagueIconMC:MovieClip = null;
          var leagueCounter:int = 0;
          super.init(params);
          for(leagueCounter = 1; leagueCounter <= 5; )
@@ -156,20 +154,20 @@ package tuxwars.home.ui.screen.tournament
       
       private function initResultInfo() : void
       {
-         var leagueIconMC:* = null;
-         var nextLeagueIconMC:* = null;
-         var prevLeagueIconMC:* = null;
-         var arrowMC:* = null;
+         var leagueIconMC:MovieClip = null;
+         var nextLeagueIconMC:MovieClip = null;
+         var prevLeagueIconMC:MovieClip = null;
+         var arrowMC:MovieClip = null;
          var slotIndex:int = 0;
          var index:int = 0;
          var i:* = 0;
-         var _loc9_:* = null;
-         var _loc12_:* = null;
-         var _loc16_:* = null;
-         var rMC:* = null;
-         var rSMC:* = null;
-         var formulaTF:* = null;
-         var coinsTF:* = null;
+         var _loc9_:League = null;
+         var _loc12_:League = null;
+         var _loc16_:TournamentRewardItem = null;
+         var rMC:MovieClip = null;
+         var rSMC:MovieClip = null;
+         var formulaTF:TextField = null;
+         var coinsTF:TextField = null;
          _tournament = _game.player.tournament;
          _league = _tournament.league;
          var _loc13_:int = 5 - _league.sortPriority + 1;
@@ -401,3 +399,4 @@ package tuxwars.home.ui.screen.tournament
       }
    }
 }
+

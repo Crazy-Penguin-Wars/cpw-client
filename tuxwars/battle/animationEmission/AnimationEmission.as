@@ -4,14 +4,13 @@ package tuxwars.battle.animationEmission
    import com.dchoc.gameobjects.stats.Stat;
    import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.gameobjects.PhysicsEmissionGameObject;
    import tuxwars.battle.gameobjects.PhysicsGameObjectDef;
    import tuxwars.battle.gameobjects.Tagger;
    
    public class AnimationEmission extends PhysicsEmissionGameObject
    {
-       
-      
       private var activationTime:int;
       
       private var _tagger:Tagger;
@@ -124,3 +123,4 @@ package tuxwars.battle.animationEmission
       }
    }
 }
+

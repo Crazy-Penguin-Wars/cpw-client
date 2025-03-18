@@ -12,7 +12,6 @@ package tuxwars
    
    public class BattleLoader
    {
-      
       private static const FAKE_PLAYER:String = "FakePlayer";
       
       private static var levelLoader:LevelLoader;
@@ -26,7 +25,6 @@ package tuxwars
       private static var vip:Boolean;
       
       private static var tournament:Boolean;
-       
       
       public function BattleLoader()
       {
@@ -107,7 +105,7 @@ package tuxwars
       
       private static function loadLevel() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:PracticeLevel = null;
          levelLoader = new LevelLoader();
          if(data.map is PracticeLevel)
          {
@@ -122,34 +120,48 @@ package tuxwars
       
       private static function loadPlayers(localPlayer:Player) : Array
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:Player = null;
+         var _loc2_:Challenges = null;
          var _loc4_:Array = [];
          for each(var playerData in data.players)
          {
             LogUtils.log("Loading player: " + playerData.id,"BattleLoader",1,"Player",true,false,true);
             if(playerData.id != localPlayer.id)
             {
-               _loc3_ = new Player(false);
+               if(playerData.id.indexOf("LocalPlayer") != -1)
+               {
+                  _loc3_ = new Player(true);
+               }
+               else
+               {
+                  _loc3_ = new Player(false);
+               }
                addWornItemsToItems(playerData);
                _loc3_.init(playerData);
-               _loc3_.ai = isPracticeMode();
+               if(playerData.id.indexOf("LocalPlayer") != -1)
+               {
+                  _loc3_.ai = false;
+               }
+               else
+               {
+                  _loc3_.ai = isPracticeMode();
+               }
                _loc3_.setMatchLeagueInfo(playerData.tournamentBattle,playerData.league_id);
                if(_loc3_.name.indexOf("FakePlayer") != -1)
                {
                   LogUtils.addDebugLine("Player","Setting dummy player\'s challenges.");
                   var _loc6_:ChallengeManager = ChallengeManager;
-                  if(!tuxwars.challenges.ChallengeManager._instance)
+                  if(!ChallengeManager._instance)
                   {
-                     tuxwars.challenges.ChallengeManager._instance = new tuxwars.challenges.ChallengeManager();
+                     ChallengeManager._instance = new ChallengeManager();
                   }
-                  _loc2_ = tuxwars.challenges.ChallengeManager._instance.getPlayerChallenges(localPlayer.id);
+                  _loc2_ = ChallengeManager._instance.getPlayerChallenges(localPlayer.id);
                   var _loc7_:ChallengeManager = ChallengeManager;
-                  if(!tuxwars.challenges.ChallengeManager._instance)
+                  if(!ChallengeManager._instance)
                   {
-                     tuxwars.challenges.ChallengeManager._instance = new tuxwars.challenges.ChallengeManager();
+                     ChallengeManager._instance = new ChallengeManager();
                   }
-                  tuxwars.challenges.ChallengeManager._instance.addPlayerChallenges(_loc3_.id,_loc2_.data,false);
+                  ChallengeManager._instance.addPlayerChallenges(_loc3_.id,_loc2_.data,false);
                   _loc3_.ingameMoney = localPlayer.ingameMoney;
                   _loc3_.premiumMoney = localPlayer.premiumMoney;
                }
@@ -188,3 +200,4 @@ package tuxwars
       }
    }
 }
+

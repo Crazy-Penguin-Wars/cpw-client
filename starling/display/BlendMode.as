@@ -5,7 +5,6 @@ package starling.display
    
    public class BlendMode
    {
-      
       private static var sBlendFactors:Array = [{
          "none":[Context3DBlendFactor.ONE,Context3DBlendFactor.ZERO],
          "normal":[Context3DBlendFactor.SOURCE_ALPHA,Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA],
@@ -35,7 +34,6 @@ package starling.display
       public static const SCREEN:String = "screen";
       
       public static const ERASE:String = "erase";
-       
       
       public function BlendMode()
       {
@@ -65,3 +63,4 @@ package starling.display
       }
    }
 }
+

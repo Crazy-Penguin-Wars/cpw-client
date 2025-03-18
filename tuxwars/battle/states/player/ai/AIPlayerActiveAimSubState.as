@@ -19,8 +19,6 @@ package tuxwars.battle.states.player.ai
    
    public class AIPlayerActiveAimSubState extends PlayerState
    {
-       
-      
       private var aimSent:Boolean;
       
       public function AIPlayerActiveAimSubState(player:PlayerGameObject, params:* = null)
@@ -38,8 +36,8 @@ package tuxwars.battle.states.player.ai
       
       override public function handleMessage(response:ActionResponse) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Vec2 = null;
+         var _loc3_:Vec2 = null;
          super.handleMessage(response);
          switch(response.responseType - 2)
          {
@@ -64,9 +62,9 @@ package tuxwars.battle.states.player.ai
       
       override public function logicUpdate(deltaTime:int) : void
       {
-         var targetVec:* = null;
+         var targetVec:Vec2 = null;
          var _loc3_:* = undefined;
-         var _loc2_:* = null;
+         var _loc2_:PlayerGameObject = null;
          super.logicUpdate(deltaTime);
          if(player.weapon && player.weapon.isAiming())
          {
@@ -94,3 +92,4 @@ package tuxwars.battle.states.player.ai
       }
    }
 }
+

@@ -5,13 +5,11 @@ package com.nnyman.tween
    
    public class Sequence
    {
-      
       private static var sequencePlayer:SequencePlayer;
-       
       
-      private var steps:Array;
+      private var steps:Array = [];
       
-      private var defaultEasing:Function;
+      private var defaultEasing:Function = Quartic.easeOut;
       
       private var playing:Boolean = false;
       
@@ -21,14 +19,12 @@ package com.nnyman.tween
       
       public function Sequence()
       {
-         steps = [];
-         defaultEasing = Quartic.easeOut;
          super();
       }
       
       public static function createAndStart(data:Object) : Sequence
       {
-         var sequence:* = null;
+         var sequence:Sequence = null;
          if(data != null)
          {
             sequence = new Sequence();
@@ -65,7 +61,7 @@ package com.nnyman.tween
       public function add(data:Object) : void
       {
          var n:int = 0;
-         var step:* = null;
+         var step:SequenceStep = null;
          if(!playing)
          {
             if(data is Array)
@@ -155,3 +151,4 @@ package com.nnyman.tween
       }
    }
 }
+

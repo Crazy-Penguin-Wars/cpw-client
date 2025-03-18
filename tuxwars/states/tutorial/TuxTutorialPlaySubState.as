@@ -5,8 +5,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialPlaySubState extends TuxTutorialSubState
    {
-       
-      
       public function TuxTutorialPlaySubState(game:TuxWarsGame)
       {
          super(game,"TUTORIAL_PLAY_GAME");
@@ -21,3 +19,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

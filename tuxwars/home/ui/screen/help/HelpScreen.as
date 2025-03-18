@@ -16,8 +16,6 @@ package tuxwars.home.ui.screen.help
    
    public class HelpScreen extends TuxUIScreen implements IResourceLoaderURL
    {
-       
-      
       private const HELP_SCREEN:String = "popup_help";
       
       private var buttonClose:UIButton;
@@ -126,3 +124,4 @@ package tuxwars.home.ui.screen.help
       }
    }
 }
+

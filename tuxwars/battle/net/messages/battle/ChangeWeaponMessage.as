@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class ChangeWeaponMessage extends BattleMessage
    {
-       
-      
       public function ChangeWeaponMessage(weapon:String, id:String)
       {
          super({
@@ -21,3 +19,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

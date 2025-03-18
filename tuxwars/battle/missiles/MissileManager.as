@@ -8,8 +8,6 @@ package tuxwars.battle.missiles
    
    public class MissileManager
    {
-       
-      
       public function MissileManager()
       {
          super();
@@ -35,3 +33,4 @@ package tuxwars.battle.missiles
       }
    }
 }
+

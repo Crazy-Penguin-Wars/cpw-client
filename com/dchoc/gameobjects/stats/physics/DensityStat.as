@@ -5,8 +5,6 @@ package com.dchoc.gameobjects.stats.physics
    
    public class DensityStat extends PhysicsStat
    {
-       
-      
       public function DensityStat(statName:String, body:Body, value:Number = 0, group:String = "Group_Base", type:String = "Normal", includeBase:Boolean = true)
       {
          super(statName,body,value,group,type,includeBase);
@@ -25,3 +23,4 @@ package com.dchoc.gameobjects.stats.physics
       }
    }
 }
+

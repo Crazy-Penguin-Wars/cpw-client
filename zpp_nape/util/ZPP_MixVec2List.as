@@ -7,8 +7,6 @@ package zpp_nape.util
    
    public class ZPP_MixVec2List extends Vec2List
    {
-       
-      
       public var zip_length:Boolean;
       
       public var inner:ZPP_Vec2;
@@ -68,7 +66,7 @@ package zpp_nape.util
             while(_loc1_ != null)
             {
                _loc2_ = _loc1_;
-               _length = _length + 1;
+               ++_length;
                _loc1_ = _loc1_.next;
             }
             zip_length = false;
@@ -428,13 +426,19 @@ package zpp_nape.util
          {
             at_index = 0;
             at_ite = inner.next;
-            _loc2_ = at_ite;
+            if(true)
+            {
+               _loc2_ = at_ite;
+            }
          }
          while(at_index != param1)
          {
-            at_index = at_index + 1;
+            ++at_index;
             at_ite = at_ite.next;
-            _loc2_ = at_ite;
+            if(true)
+            {
+               _loc2_ = at_ite;
+            }
          }
          _loc2_ = at_ite;
          if(_loc2_.outer == null)
@@ -457,3 +461,4 @@ package zpp_nape.util
       }
    }
 }
+

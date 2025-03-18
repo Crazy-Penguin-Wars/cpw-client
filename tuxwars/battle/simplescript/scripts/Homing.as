@@ -11,8 +11,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class Homing implements SimpleScriptCore
    {
-       
-      
       public function Homing()
       {
          super();
@@ -20,12 +18,12 @@ package tuxwars.battle.simplescript.scripts
       
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var target:* = null;
-         var emitAt:* = null;
-         var start:* = null;
-         var end:* = null;
-         var newParams:* = null;
-         var _loc8_:* = null;
+         var target:PhysicsGameObject = null;
+         var emitAt:PhysicsGameObject = null;
+         var start:Vec2 = null;
+         var end:Vec2 = null;
+         var newParams:SimpleScriptParams = null;
+         var _loc8_:Vec2 = null;
          assert("Must be a Follower",true,scriptObject is Follower);
          assert("ScriptObject.variables lenght must be 4",true,scriptObject.variables.length == 4);
          var _loc9_:int = int(scriptObject.variables[1]);
@@ -84,3 +82,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

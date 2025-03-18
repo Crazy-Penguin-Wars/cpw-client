@@ -13,11 +13,9 @@ package tuxwars.home.ui.screen.crafting
    
    public class Research
    {
-      
       private static const DEBUG_TO_CONSOLE:Boolean = false;
       
       private static var _instance:Research;
-       
       
       private const _currentIngredients:Vector.<ItemData> = new Vector.<ItemData>();
       
@@ -46,15 +44,16 @@ package tuxwars.home.ui.screen.crafting
       
       public static function get instance() : Research
       {
-         if(_instance)
+         if(!_instance)
          {
+            new Research();
          }
          return _instance;
       }
       
       public function load(data:Object) : void
       {
-         var items:* = null;
+         var items:Array = null;
          if(!data)
          {
             return;
@@ -362,3 +361,4 @@ package tuxwars.home.ui.screen.crafting
       }
    }
 }
+

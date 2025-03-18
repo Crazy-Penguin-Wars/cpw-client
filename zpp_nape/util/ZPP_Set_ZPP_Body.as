@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZPP_Set_ZPP_Body
    {
-      
-      public static var zpp_pool:ZPP_Set_ZPP_Body = null;
-       
+      public static var zpp_pool:ZPP_Set_ZPP_Body;
       
       public var swapped:Function;
       
@@ -136,6 +134,7 @@ package zpp_nape.util
                ZPP_Set_ZPP_Body.zpp_pool = _loc2_.next;
                _loc2_.next = null;
             }
+            null;
             _loc2_.data = param1;
             parent = _loc2_;
          }
@@ -158,6 +157,7 @@ package zpp_nape.util
                         ZPP_Set_ZPP_Body.zpp_pool = _loc2_.next;
                         _loc2_.next = null;
                      }
+                     null;
                      _loc2_.data = param1;
                      _loc3_.prev = _loc2_;
                      _loc2_.parent = _loc3_;
@@ -183,6 +183,7 @@ package zpp_nape.util
                         ZPP_Set_ZPP_Body.zpp_pool = _loc2_.next;
                         _loc2_.next = null;
                      }
+                     null;
                      _loc2_.data = param1;
                      _loc3_.next = _loc2_;
                      _loc2_.parent = _loc3_;
@@ -227,6 +228,7 @@ package zpp_nape.util
                ZPP_Set_ZPP_Body.zpp_pool = _loc2_.next;
                _loc2_.next = null;
             }
+            null;
             _loc2_.data = param1;
             parent = _loc2_;
          }
@@ -249,6 +251,7 @@ package zpp_nape.util
                         ZPP_Set_ZPP_Body.zpp_pool = _loc2_.next;
                         _loc2_.next = null;
                      }
+                     null;
                      _loc2_.data = param1;
                      _loc3_.prev = _loc2_;
                      _loc2_.parent = _loc3_;
@@ -274,6 +277,7 @@ package zpp_nape.util
                         ZPP_Set_ZPP_Body.zpp_pool = _loc2_.next;
                         _loc2_.next = null;
                      }
+                     null;
                      _loc2_.data = param1;
                      _loc3_.next = _loc2_;
                      _loc2_.parent = _loc3_;
@@ -406,11 +410,11 @@ package zpp_nape.util
             else if(param1.parent != null)
             {
                _loc4_ = param1.parent;
-               while(true)
+               for(; true; _loc4_ = _loc4_.parent)
                {
-                  _loc4_.colour = _loc4_.colour + 1;
-                  _loc4_.prev.colour = _loc4_.prev.colour - 1;
-                  _loc4_.next.colour = _loc4_.next.colour - 1;
+                  ++_loc4_.colour;
+                  --_loc4_.prev.colour;
+                  --_loc4_.next.colour;
                   _loc5_ = _loc4_.prev;
                   if(_loc5_.colour == -1)
                   {
@@ -449,16 +453,14 @@ package zpp_nape.util
                         break;
                      }
                   }
-                  if(_loc4_.colour != 2)
+                  if(_loc4_.colour == 2)
                   {
-                     break;
-                  }
-                  if(_loc4_.parent == null)
-                  {
+                     if(_loc4_.parent != null)
+                     {
+                        continue;
+                     }
                      _loc4_.colour = 1;
-                     break;
                   }
-                  _loc4_ = _loc4_.parent;
                }
             }
          }
@@ -591,6 +593,7 @@ package zpp_nape.util
             ZPP_Set_ZPP_Body.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          _loc2_.data = param1;
          if(parent == null)
          {
@@ -780,7 +783,11 @@ package zpp_nape.util
          var _loc1_:* = null as ZPP_Set_ZPP_Body;
          var _loc2_:* = null as ZPP_Set_ZPP_Body;
          var _loc3_:* = null as ZPP_Set_ZPP_Body;
-         if(parent != null)
+         if(parent == null)
+         {
+            null;
+         }
+         else
          {
             _loc1_ = parent;
             while(_loc1_ != null)
@@ -928,7 +935,7 @@ package zpp_nape.util
          var _loc9_:* = null as ZPP_Set_ZPP_Body;
          var _loc10_:* = null as ZPP_Set_ZPP_Body;
          var _loc11_:* = null as ZPP_Set_ZPP_Body;
-         while(true)
+         for(; true; param1 = _loc5_)
          {
             _loc2_ = param1.parent;
             _loc3_ = _loc2_.parent;
@@ -1032,14 +1039,13 @@ package zpp_nape.util
             if(_loc5_ == parent)
             {
                parent.colour = 1;
-               break;
             }
-            if(!(_loc5_.colour == 0 && _loc5_.parent.colour == 0))
+            else if(_loc5_.colour == 0 && _loc5_.parent.colour == 0)
             {
-               break;
+               continue;
             }
-            param1 = _loc5_;
          }
       }
    }
 }
+

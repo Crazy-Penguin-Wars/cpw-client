@@ -5,11 +5,10 @@ package tuxwars.battle.data.player
    
    public class PlayerGameObjectData extends TuxGameObjectData
    {
-       
-      
       public function PlayerGameObjectData(row:Row)
       {
          super(row);
       }
    }
 }
+

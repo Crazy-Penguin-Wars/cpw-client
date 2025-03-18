@@ -2,8 +2,6 @@ package mx.logging
 {
    public interface ILoggingTarget
    {
-       
-      
       function get filters() : Array;
       
       function set filters(param1:Array) : void;
@@ -17,3 +15,4 @@ package mx.logging
       function removeLogger(param1:ILogger) : void;
    }
 }
+

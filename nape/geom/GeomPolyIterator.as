@@ -5,9 +5,7 @@ package nape.geom
    
    public final class GeomPolyIterator
    {
-      
-      public static var zpp_pool:GeomPolyIterator = null;
-       
+      public static var zpp_pool:GeomPolyIterator;
       
       public var zpp_next:GeomPolyIterator;
       
@@ -75,3 +73,4 @@ package nape.geom
       }
    }
 }
+

@@ -15,21 +15,6 @@ package
    
    public class Config
    {
-      
-      private static var loadingScreenClass:Class = §loading_swf$894ea72c2d67d57e1860bb23455de030-2127856406§;
-      
-      public static const VEC_UP:Vec2 = new Vec2(0,-1);
-      
-      public static const VEC_DOWN:Vec2 = new Vec2(0,1);
-      
-      public static const VEC_RIGHT:Vec2 = new Vec2(1,0);
-      
-      public static const VEC_LEFT:Vec2 = new Vec2(-1,0);
-      
-      public static const ZERO_VEC:Vec2 = new Vec2();
-      
-      public static const ZERO_POINT:Point = new Point();
-      
       public static const CRM_SERVER_URL:String = "http://crm.digitalchocolate.com";
       
       public static const CRM_SERVER_STAGE_URL:String = "http://crm-stage.digitalchocolate.com";
@@ -81,7 +66,20 @@ package
       public static const POWER_UP_ICON_SIZE:int = 50;
       
       public static var ENABLE_DEAL_SPOT_PROMOTION:Boolean = true;
-       
+      
+      private static var loadingScreenClass:Class = §loading_swf$894ea72c2d67d57e1860bb23455de030-2127856406§;
+      
+      public static const VEC_UP:Vec2 = new Vec2(0,-1);
+      
+      public static const VEC_DOWN:Vec2 = new Vec2(0,1);
+      
+      public static const VEC_RIGHT:Vec2 = new Vec2(1,0);
+      
+      public static const VEC_LEFT:Vec2 = new Vec2(-1,0);
+      
+      public static const ZERO_VEC:Vec2 = new Vec2();
+      
+      public static const ZERO_POINT:Point = new Point();
       
       public function Config()
       {
@@ -90,7 +88,7 @@ package
       
       public static function init(params:Object) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          serverURL = params.server;
          smUseHomemadeFriendSelector = true;
          secure = params.secure == "true";
@@ -136,8 +134,8 @@ package
                LogUtils.log("Allowing domain: " + url,"Config",0,"ConfigInit");
                Security.allowDomain(url);
             }
-            Security.allowDomain("dchoc1-a.akamaihd.net/wcrm/v3/");
-            Security.loadPolicyFile("dchoc1-a.akamaihd.net/wcrm/v3/crossdomain.xml");
+            Security.allowDomain("https://game--crazypenguinwar.repl.co/");
+            Security.loadPolicyFile("https://game--crazypenguinwar.repl.co/crossdomain.xml");
          }
          LogUtils.log("Param:" + JSON.stringify(params),"Config",0,"ConfigInit");
          LogUtils.log("Config Initialized","Config",0,"ConfigInit");
@@ -311,3 +309,4 @@ package
       }
    }
 }
+

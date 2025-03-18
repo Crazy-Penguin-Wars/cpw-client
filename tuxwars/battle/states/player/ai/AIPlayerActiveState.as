@@ -9,8 +9,6 @@ package tuxwars.battle.states.player.ai
    
    public class AIPlayerActiveState extends PlayerState
    {
-       
-      
       public function AIPlayerActiveState(player:PlayerGameObject, params:* = null)
       {
          super(player,params);
@@ -54,3 +52,4 @@ package tuxwars.battle.states.player.ai
       }
    }
 }
+

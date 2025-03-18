@@ -8,8 +8,6 @@ package tuxwars.home.ui.screen.friendselector
    
    public class SelectGiftableFriendsTab extends SelectFriendsTab
    {
-       
-      
       private var mItemText:UIAutoTextField;
       
       public function SelectGiftableFriendsTab(newDesign:Sprite, giftingInfo:GiftingInfo)
@@ -31,3 +29,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

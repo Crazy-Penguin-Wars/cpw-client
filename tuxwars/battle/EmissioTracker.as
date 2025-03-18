@@ -24,7 +24,6 @@ package tuxwars.battle
    
    public class EmissioTracker
    {
-      
       private static const PHYSICS_LOG_INTERVAL:int = 30000;
       
       private static var _physicsElapsedTime:int = 0;
@@ -60,7 +59,6 @@ package tuxwars.battle
       public static const DAMAGE_LIST:String = "DamageList";
       
       public static const TERRAIN_LIST:String = "TerrainList";
-       
       
       private const emissions:Vector.<EmissionMessage> = new Vector.<EmissionMessage>();
       
@@ -102,8 +100,8 @@ package tuxwars.battle
       public function physicsUpdate(deltaTime:int) : void
       {
          var i:int = 0;
-         var _loc4_:* = null;
-         var _loc2_:* = null;
+         var _loc4_:EmissionMessage = null;
+         var _loc2_:Emission = null;
          for each(var toAdd in toAddEmissions)
          {
             LogUtils.log("EmissioTracker: Adding new emission: " + Emission(toAdd.data).shortName,this,0,"Emitter",false,false,false);
@@ -143,8 +141,8 @@ package tuxwars.battle
       private function setEmittingDoneForFinishedEmissions() : void
       {
          var i:int = 0;
-         var _loc5_:* = null;
-         var _loc2_:* = null;
+         var _loc5_:EmissionMessage = null;
+         var _loc2_:Emission = null;
          var done:* = false;
          var _loc3_:Boolean = false;
          if(Config.debugMode)
@@ -167,7 +165,7 @@ package tuxwars.battle
                {
                   LogUtils.log("emit: " + emit.id + " done: " + _loc3_,this,1,"Emission",false,false,false);
                }
-               done = done && _loc3_;
+               done &&= _loc3_;
             }
             if(done && !hasWaitingEmission(_loc2_.uniqueId))
             {
@@ -181,8 +179,8 @@ package tuxwars.battle
       private function removeFinishedEmissions() : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
-         var _loc1_:* = null;
+         var _loc2_:EmissionMessage = null;
+         var _loc1_:Emission = null;
          for(i = emissions.length - 1; i >= 0; )
          {
             _loc2_ = emissions[i];
@@ -249,7 +247,7 @@ package tuxwars.battle
                      emissio.setEmissionData(emit,"Processed",false);
                   }
                }
-               emissioDone = emissioDone && emissio.getEmissionData(emit,"Done");
+               emissioDone &&= emissio.getEmissionData(emit,"Done");
                LogUtils.log("Emissio done after emit " + emit.id + ": " + emissioDone,this,1,"Emitter",false,false,false);
             }
          }
@@ -263,7 +261,7 @@ package tuxwars.battle
       private function emit(emissio:Emission, deltaTime:int, playerId:String) : void
       {
          var i:int = 0;
-         var _loc8_:* = null;
+         var _loc8_:EmissionReference = null;
          var _loc7_:int = 0;
          var count:int = 0;
          var k:int = 0;
@@ -363,8 +361,8 @@ package tuxwars.battle
       
       private function addWaitingEmission(msg:FireEmissionMessage) : void
       {
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:ExplosionPreCalculationsWrapper = null;
+         var _loc4_:Object = null;
          var _loc2_:Emission = msg.emissionObject;
          var _loc5_:String = getEmissionId(_loc2_,msg.emissionReference);
          LogUtils.log("EmissioTracker: addWaitingEmission: " + _loc5_ + " world step: " + game.tuxWorld.physicsWorld.stepCount,this,0,"Emitter",false,false,false);
@@ -418,8 +416,8 @@ package tuxwars.battle
       
       private function actionHandler(action:ActionResponse) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:EmitResponse = null;
+         var _loc3_:FireEmissionMessage = null;
          if(action.responseType == 9)
          {
             _loc2_ = EmitResponse(action);
@@ -438,10 +436,10 @@ package tuxwars.battle
       
       private function getEmissionMessage(response:EmitResponse) : FireEmissionMessage
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Emission = null;
+         var _loc3_:Object = null;
          var _loc5_:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:SimpleScript = null;
          var _loc6_:FireEmissionMessage = hasWaitingEmission(response.emitterId) ? getWaitingEmission(response.emitterId) : createEmissionMessage(response);
          if(_loc6_)
          {
@@ -591,3 +589,4 @@ package tuxwars.battle
       }
    }
 }
+

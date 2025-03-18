@@ -6,8 +6,6 @@ package nape.dynamics
    
    public final class ContactList
    {
-       
-      
       public var zpp_inner:ZPP_ContactList;
       
       public function ContactList()
@@ -31,7 +29,7 @@ package nape.dynamics
          }
          var _loc2_:ContactList = new ContactList();
          var _loc3_:int = 0;
-         while(_loc3_ < param1.length)
+         while(_loc3_ < int(param1.length))
          {
             _loc4_ = param1[_loc3_];
             _loc3_++;
@@ -94,7 +92,7 @@ package nape.dynamics
                         _loc4_ = _loc3_;
                         if(_loc4_.active && _loc4_.arbiter.active)
                         {
-                           zpp_inner.user_length = zpp_inner.user_length + 1;
+                           ++zpp_inner.user_length;
                         }
                         _loc3_ = _loc3_.next;
                      }
@@ -117,7 +115,7 @@ package nape.dynamics
                            _loc4_ = _loc3_;
                            if(_loc4_.active && _loc4_.arbiter.active)
                            {
-                              zpp_inner.user_length = zpp_inner.user_length + 1;
+                              ++zpp_inner.user_length;
                            }
                            _loc3_ = _loc3_.next;
                         }
@@ -167,7 +165,7 @@ package nape.dynamics
                   _loc8_ = _loc7_;
                   if(_loc8_.active && _loc8_.arbiter.active)
                   {
-                     _loc6_.zpp_inner.user_length = _loc6_.zpp_inner.user_length + 1;
+                     ++_loc6_.zpp_inner.user_length;
                   }
                   _loc7_ = _loc7_.next;
                }
@@ -215,7 +213,7 @@ package nape.dynamics
                _loc2_ = _loc1_;
                if(_loc2_.active && _loc2_.arbiter.active)
                {
-                  zpp_inner.user_length = zpp_inner.user_length + 1;
+                  ++zpp_inner.user_length;
                }
                _loc1_ = _loc1_.next;
             }
@@ -244,7 +242,7 @@ package nape.dynamics
                   _loc4_ = _loc3_;
                   if(_loc4_.active && _loc4_.arbiter.active)
                   {
-                     zpp_inner.user_length = zpp_inner.user_length + 1;
+                     ++zpp_inner.user_length;
                   }
                   _loc3_ = _loc3_.next;
                }
@@ -267,7 +265,7 @@ package nape.dynamics
                      _loc4_ = _loc3_;
                      if(_loc4_.active && _loc4_.arbiter.active)
                      {
-                        zpp_inner.user_length = zpp_inner.user_length + 1;
+                        ++zpp_inner.user_length;
                      }
                      _loc3_ = _loc3_.next;
                   }
@@ -374,7 +372,7 @@ package nape.dynamics
                         _loc4_ = _loc3_;
                         if(_loc4_.active && _loc4_.arbiter.active)
                         {
-                           zpp_inner.user_length = zpp_inner.user_length + 1;
+                           ++zpp_inner.user_length;
                         }
                         _loc3_ = _loc3_.next;
                      }
@@ -397,7 +395,7 @@ package nape.dynamics
                            _loc4_ = _loc3_;
                            if(_loc4_.active && _loc4_.arbiter.active)
                            {
-                              zpp_inner.user_length = zpp_inner.user_length + 1;
+                              ++zpp_inner.user_length;
                            }
                            _loc3_ = _loc3_.next;
                         }
@@ -441,7 +439,7 @@ package nape.dynamics
                _loc2_ = _loc1_;
                if(_loc2_.active && _loc2_.arbiter.active)
                {
-                  zpp_inner.user_length = zpp_inner.user_length + 1;
+                  ++zpp_inner.user_length;
                }
                _loc1_ = _loc1_.next;
             }
@@ -483,7 +481,7 @@ package nape.dynamics
                   _loc5_ = _loc4_;
                   if(_loc5_.active && _loc5_.arbiter.active)
                   {
-                     zpp_inner.user_length = zpp_inner.user_length + 1;
+                     ++zpp_inner.user_length;
                   }
                   _loc4_ = _loc4_.next;
                }
@@ -506,7 +504,7 @@ package nape.dynamics
                      _loc5_ = _loc4_;
                      if(_loc5_.active && _loc5_.arbiter.active)
                      {
-                        zpp_inner.user_length = zpp_inner.user_length + 1;
+                        ++zpp_inner.user_length;
                      }
                      _loc4_ = _loc4_.next;
                   }
@@ -558,7 +556,7 @@ package nape.dynamics
                   _loc7_ = _loc6_;
                   if(_loc7_.active && _loc7_.arbiter.active)
                   {
-                     _loc5_.zpp_inner.user_length = _loc5_.zpp_inner.user_length + 1;
+                     ++_loc5_.zpp_inner.user_length;
                   }
                   _loc6_ = _loc6_.next;
                }
@@ -613,7 +611,7 @@ package nape.dynamics
                _loc2_ = _loc1_;
                if(_loc2_.active && _loc2_.arbiter.active)
                {
-                  zpp_inner.user_length = zpp_inner.user_length + 1;
+                  ++zpp_inner.user_length;
                }
                _loc1_ = _loc1_.next;
             }
@@ -650,7 +648,7 @@ package nape.dynamics
                   _loc8_ = _loc7_;
                   if(_loc8_.active && _loc8_.arbiter.active)
                   {
-                     _loc6_.zpp_inner.user_length = _loc6_.zpp_inner.user_length + 1;
+                     ++_loc6_.zpp_inner.user_length;
                   }
                   _loc7_ = _loc7_.next;
                }
@@ -701,7 +699,7 @@ package nape.dynamics
                   _loc7_ = _loc6_;
                   if(_loc7_.active && _loc7_.arbiter.active)
                   {
-                     zpp_inner.user_length = zpp_inner.user_length + 1;
+                     ++zpp_inner.user_length;
                   }
                   _loc6_ = _loc6_.next;
                }
@@ -745,7 +743,7 @@ package nape.dynamics
                _loc2_ = _loc1_;
                if(_loc2_.active && _loc2_.arbiter.active)
                {
-                  zpp_inner.user_length = zpp_inner.user_length + 1;
+                  ++zpp_inner.user_length;
                }
                _loc1_ = _loc1_.next;
             }
@@ -778,7 +776,7 @@ package nape.dynamics
                   _loc8_ = _loc7_;
                   if(_loc8_.active && _loc8_.arbiter.active)
                   {
-                     _loc6_.zpp_inner.user_length = _loc6_.zpp_inner.user_length + 1;
+                     ++_loc6_.zpp_inner.user_length;
                   }
                   _loc7_ = _loc7_.next;
                }
@@ -827,7 +825,7 @@ package nape.dynamics
                      _loc2_ = _loc1_;
                      if(_loc2_.active && _loc2_.arbiter.active)
                      {
-                        zpp_inner.user_length = zpp_inner.user_length + 1;
+                        ++zpp_inner.user_length;
                      }
                      _loc1_ = _loc1_.next;
                   }
@@ -854,7 +852,7 @@ package nape.dynamics
                      _loc2_ = _loc1_;
                      if(_loc2_.active && _loc2_.arbiter.active)
                      {
-                        zpp_inner.user_length = zpp_inner.user_length + 1;
+                        ++zpp_inner.user_length;
                      }
                      _loc1_ = _loc1_.next;
                   }
@@ -891,7 +889,7 @@ package nape.dynamics
                   _loc3_ = _loc2_;
                   if(_loc3_.active && _loc3_.arbiter.active)
                   {
-                     zpp_inner.user_length = zpp_inner.user_length + 1;
+                     ++zpp_inner.user_length;
                   }
                   _loc2_ = _loc2_.next;
                }
@@ -914,7 +912,7 @@ package nape.dynamics
          }
          while(zpp_inner.at_index != param1)
          {
-            zpp_inner.at_index = zpp_inner.at_index + 1;
+            ++zpp_inner.at_index;
             zpp_inner.at_ite = zpp_inner.at_ite.next;
             while(true)
             {
@@ -935,3 +933,4 @@ package nape.dynamics
       }
    }
 }
+

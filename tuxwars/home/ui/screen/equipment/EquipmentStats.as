@@ -7,11 +7,9 @@ package tuxwars.home.ui.screen.equipment
    
    public class EquipmentStats extends TuxUIElementScreen
    {
-      
       private static const NORMAL:String = "Stats_Default";
       
       private static const SET:String = "Stats_Complete_Set";
-       
       
       private var statsNormal:EquipmentStatsElement;
       
@@ -46,3 +44,4 @@ package tuxwars.home.ui.screen.equipment
       }
    }
 }
+

@@ -6,8 +6,6 @@ package tuxwars.challenges.counters
    
    public class HasRecipesCounter extends Counter
    {
-       
-      
       public function HasRecipesCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -25,3 +23,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

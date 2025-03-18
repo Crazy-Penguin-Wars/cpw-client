@@ -6,8 +6,6 @@ package nape.callbacks
    
    public final class BodyCallback extends Callback
    {
-       
-      
       public function BodyCallback()
       {
          if(Boot.skip_constructor)
@@ -31,3 +29,4 @@ package nape.callbacks
       }
    }
 }
+

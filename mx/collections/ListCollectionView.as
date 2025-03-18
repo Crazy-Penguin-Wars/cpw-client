@@ -17,11 +17,12 @@ package mx.collections
    import mx.resources.ResourceManager;
    import mx.utils.ObjectUtil;
    
+   use namespace mx_internal;
+   use namespace flash_proxy;
+   
    public class ListCollectionView extends Proxy implements ICollectionView, IList, IMXMLObject
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       private var eventDispatcher:EventDispatcher;
       
@@ -33,7 +34,7 @@ package mx.collections
       
       mx_internal var dispatchResetEvent:Boolean = true;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       protected var localIndex:Array;
       
@@ -45,7 +46,6 @@ package mx.collections
       
       public function ListCollectionView(list:IList = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this.eventDispatcher = new EventDispatcher(this);
          this.list = list;
@@ -278,7 +278,7 @@ package mx.collections
          }
          if(Boolean(this.localIndex) && this.filterFunction != null)
          {
-            len = this.localIndex.length;
+            len = int(this.localIndex.length);
             for(i = 0; i < len; i++)
             {
                if(this.localIndex[i] == item)
@@ -294,7 +294,7 @@ package mx.collections
       mx_internal function getLocalItemIndex(item:Object) : int
       {
          var i:int = 0;
-         var len:int = this.localIndex.length;
+         var len:int = int(this.localIndex.length);
          for(i = 0; i < len; i++)
          {
             if(this.localIndex[i] == item)
@@ -320,7 +320,7 @@ package mx.collections
             prevItem = this.list.getItemAt(i);
             if(this.filterFunction(prevItem))
             {
-               len = this.localIndex.length;
+               len = int(this.localIndex.length);
                for(j = 0; j < len; j++)
                {
                   if(this.localIndex[j] == prevItem)
@@ -608,8 +608,8 @@ package mx.collections
          }
          catch(e:SortError)
          {
-            return -1;
          }
+         return -1;
       }
       
       mx_internal function getBookmark(index:int) : ListCollectionViewBookmark
@@ -680,7 +680,7 @@ package mx.collections
                   this.addItemsToView(event.items,event.location);
                   break;
                case CollectionEventKind.MOVE:
-                  n = event.items.length;
+                  n = int(event.items.length);
                   for(i = 0; i < n; i++)
                   {
                      this.moveItemInView(event.items[i]);
@@ -741,7 +741,7 @@ package mx.collections
                   if(updatedItems[j].item == item)
                   {
                      events = updatedItems[j].events;
-                     l = events.length;
+                     l = int(events.length);
                      for(k = 0; k < l; k++)
                      {
                         if(events[k].property != updateInfo.property)
@@ -870,7 +870,7 @@ package mx.collections
             if(this.filterFunction != null)
             {
                tmp = [];
-               len = this.localIndex.length;
+               len = int(this.localIndex.length);
                for(i = 0; i < len; i++)
                {
                   item = this.localIndex[i];
@@ -1015,7 +1015,7 @@ package mx.collections
          var event:CollectionEvent = null;
          if(Boolean(this.localIndex))
          {
-            len = items.length;
+            len = int(items.length);
             oldItems = [];
             newItems = [];
             for(i = 0; i < len; i++)
@@ -1052,11 +1052,6 @@ package mx.collections
 }
 
 import flash.events.EventDispatcher;
-import mx.collections.CursorBookmark;
-import mx.collections.ICollectionView;
-import mx.collections.IViewCursor;
-import mx.collections.ListCollectionView;
-import mx.collections.Sort;
 import mx.collections.errors.CollectionViewError;
 import mx.collections.errors.CursorError;
 import mx.collections.errors.ItemPendingError;
@@ -1068,13 +1063,13 @@ import mx.events.FlexEvent;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
+use namespace mx_internal;
+
 class ListCollectionViewCursor extends EventDispatcher implements IViewCursor
 {
-   
    private static const BEFORE_FIRST_INDEX:int = -1;
    
    private static const AFTER_LAST_INDEX:int = -2;
-    
    
    private var _view:ListCollectionView;
    
@@ -1245,7 +1240,7 @@ class ListCollectionViewCursor extends EventDispatcher implements IViewCursor
       {
          return false;
       }
-      var tempIndex:int = !!this.beforeFirst ? 0 : this.currentIndex + 1;
+      var tempIndex:int = !!this.beforeFirst ? 0 : int(this.currentIndex + 1);
       if(tempIndex >= this.view.length)
       {
          tempIndex = int(AFTER_LAST_INDEX);
@@ -1265,7 +1260,7 @@ class ListCollectionViewCursor extends EventDispatcher implements IViewCursor
       {
          return false;
       }
-      var tempIndex:int = !!this.afterLast ? Number(this.view.length) - 1 : Number(this.currentIndex) - 1;
+      var tempIndex:int = !!this.afterLast ? int(this.view.length - 1) : int(this.currentIndex - 1);
       if(tempIndex == -1)
       {
          tempIndex = int(BEFORE_FIRST_INDEX);
@@ -1332,13 +1327,13 @@ class ListCollectionViewCursor extends EventDispatcher implements IViewCursor
       }
       else if(bookmark == CursorBookmark.LAST)
       {
-         newIndex = Number(this.view.length) - 1;
+         newIndex = this.view.length - 1;
       }
       else if(bookmark != CursorBookmark.CURRENT)
       {
          try
          {
-            newIndex = int(ListCollectionView(this.view).mx_internal::getBookmarkIndex(bookmark));
+            newIndex = ListCollectionView(this.view).mx_internal::getBookmarkIndex(bookmark);
             if(newIndex < 0)
             {
                this.setCurrent(null);
@@ -1481,14 +1476,8 @@ class ListCollectionViewCursor extends EventDispatcher implements IViewCursor
    }
 }
 
-import mx.collections.CursorBookmark;
-import mx.collections.ListCollectionView;
-import mx.core.mx_internal;
-
 class ListCollectionViewBookmark extends CursorBookmark
 {
-    
-   
    mx_internal var index:int;
    
    mx_internal var view:ListCollectionView;

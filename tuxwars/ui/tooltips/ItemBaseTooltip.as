@@ -6,8 +6,6 @@ package tuxwars.ui.tooltips
    
    public class ItemBaseTooltip extends TuxTooltip
    {
-       
-      
       private var _item:ShopItem;
       
       private var _content:TooltipContent;
@@ -48,3 +46,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

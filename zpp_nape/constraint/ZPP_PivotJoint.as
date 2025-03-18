@@ -20,8 +20,6 @@ package zpp_nape.constraint
    
    public class ZPP_PivotJoint extends ZPP_Constraint
    {
-       
-      
       public var wrap_a2:Vec2;
       
       public var wrap_a1:Vec2;
@@ -179,6 +177,7 @@ package zpp_nape.constraint
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = a2localx;
          var _loc2_:Number = a2localy;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_a2));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -281,7 +280,7 @@ package zpp_nape.constraint
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_a2 = _loc4_;
          wrap_a2.zpp_inner._inuse = true;
          wrap_a2.zpp_inner._validate = validate_a2;
@@ -295,6 +294,7 @@ package zpp_nape.constraint
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = a1localx;
          var _loc2_:Number = a1localy;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_a1));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -397,7 +397,7 @@ package zpp_nape.constraint
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_a1 = _loc4_;
          wrap_a1.zpp_inner._inuse = true;
          wrap_a1.zpp_inner._validate = validate_a1;
@@ -642,7 +642,7 @@ package zpp_nape.constraint
                else
                {
                   _loc2_.parent = _loc1_;
-                  _loc1_.rank = _loc1_.rank + 1;
+                  ++_loc1_.rank;
                }
             }
          }
@@ -709,7 +709,7 @@ package zpp_nape.constraint
                else
                {
                   _loc2_.parent = _loc1_;
-                  _loc1_.rank = _loc1_.rank + 1;
+                  ++_loc1_.rank;
                }
             }
          }
@@ -962,7 +962,7 @@ package zpp_nape.constraint
          {
             _loc4_ = null;
             _loc5_ = 0;
-            while(_loc5_ < param1.length)
+            while(_loc5_ < int(param1.length))
             {
                _loc6_ = param1[_loc5_];
                _loc5_++;
@@ -988,7 +988,7 @@ package zpp_nape.constraint
          {
             _loc4_ = null;
             _loc5_ = 0;
-            while(_loc5_ < param1.length)
+            while(_loc5_ < int(param1.length))
             {
                _loc6_ = param1[_loc5_];
                _loc5_++;
@@ -1242,6 +1242,7 @@ package zpp_nape.constraint
          {
             _loc16_.axisx = Math.sin(_loc16_.rot);
             _loc16_.axisy = Math.cos(_loc16_.rot);
+            null;
          }
          else
          {
@@ -1259,6 +1260,7 @@ package zpp_nape.constraint
          {
             _loc16_.axisx = Math.sin(_loc16_.rot);
             _loc16_.axisy = Math.cos(_loc16_.rot);
+            null;
          }
          else
          {
@@ -1288,3 +1290,4 @@ package zpp_nape.constraint
       }
    }
 }
+

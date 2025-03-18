@@ -4,9 +4,10 @@ package starling.events
    import starling.core.starling_internal;
    import starling.utils.formatString;
    
+   use namespace starling_internal;
+   
    public class Event
    {
-      
       public static const ADDED:String = "added";
       
       public static const ADDED_TO_STAGE:String = "addedToStage";
@@ -44,7 +45,6 @@ package starling.events
       public static const SELECT:String = "select";
       
       private static var sEventPool:Vector.<Event> = new Vector.<Event>(0);
-       
       
       private var mTarget:EventDispatcher;
       
@@ -68,7 +68,7 @@ package starling.events
          this.mData = data;
       }
       
-      starling_internal internal static function fromPool(type:String, bubbles:Boolean = false, data:Object = null) : Event
+      starling_internal static function fromPool(type:String, bubbles:Boolean = false, data:Object = null) : Event
       {
          if(Boolean(sEventPool.length))
          {
@@ -77,7 +77,7 @@ package starling.events
          return new Event(type,bubbles,data);
       }
       
-      starling_internal internal static function toPool(event:Event) : void
+      starling_internal static function toPool(event:Event) : void
       {
          event.mData = event.mTarget = event.mCurrentTarget = null;
          sEventPool.push(event);
@@ -90,8 +90,7 @@ package starling.events
       
       public function stopImmediatePropagation() : void
       {
-         this.mStopsImmediatePropagation = true;
-         this.mStopsPropagation = true;
+         this.mStopsPropagation = this.mStopsImmediatePropagation = true;
       }
       
       public function toString() : String
@@ -149,7 +148,7 @@ package starling.events
          return this.mStopsImmediatePropagation;
       }
       
-      starling_internal internal function reset(type:String, bubbles:Boolean = false, data:Object = null) : Event
+      starling_internal function reset(type:String, bubbles:Boolean = false, data:Object = null) : Event
       {
          this.mType = type;
          this.mBubbles = bubbles;
@@ -160,3 +159,4 @@ package starling.events
       }
    }
 }
+

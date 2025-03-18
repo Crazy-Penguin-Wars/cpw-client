@@ -9,7 +9,6 @@ package com.dchoc.avatar
    
    public class UserAvatar extends MovieClip implements IAvatar
    {
-      
       public static const TRACE_OUTPUT:Boolean = false;
       
       public static const INDEX_FOR_AVATAR:int = 0;
@@ -25,19 +24,17 @@ package com.dchoc.avatar
       public static const MALE:int = 1;
       
       public static const MALE_FEMALE_2_VERSIONS:int = 3;
-       
       
       protected var _currentAnimation:AvatarAnimation;
       
       private var _paperdoll:PaperDoll;
       
-      private var wornItems:Dictionary;
+      private var wornItems:Dictionary = new Dictionary(true);
       
       private var swfFileName:String;
       
       public function UserAvatar(fileName:String, addShadow:Boolean = true, avatarClass:Class = null)
       {
-         wornItems = new Dictionary(true);
          super();
          swfFileName = fileName;
          initialize();
@@ -72,7 +69,7 @@ package com.dchoc.avatar
       
       public function putOnItem(item:WearableItem) : Boolean
       {
-         var _loc2_:* = null;
+         var _loc2_:ClothesSlot = null;
          if(item)
          {
             _loc2_ = ClothesSlot.getSlotByID(item.wearableSlot);
@@ -145,7 +142,7 @@ package com.dchoc.avatar
       public function getWornItems() : Array
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:WearableItem = null;
          var _loc1_:Array = [];
          for(i = 0; i < ClothesSlot.TYPE_NAMES.length; )
          {
@@ -162,7 +159,7 @@ package com.dchoc.avatar
       public function getWornItemsIds() : String
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:WearableItem = null;
          var items:String = "";
          for(i = 0; i < ClothesSlot.TYPE_NAMES.length; )
          {
@@ -260,3 +257,4 @@ package com.dchoc.avatar
       }
    }
 }
+

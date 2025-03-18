@@ -9,8 +9,6 @@ package tuxwars.challenges.counters
    
    public class DamageOpponentsWeaponIdsAndTagged extends Counter
    {
-       
-      
       public function DamageOpponentsWeaponIdsAndTagged(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -21,11 +19,11 @@ package tuxwars.challenges.counters
          var cumulativeDamage:int = 0;
          var _loc4_:int = 0;
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:PlayerGameObject = null;
          if(checkIfEmissionIdMatchesIdsInParams(msg.emission))
          {
             cumulativeDamage = 0;
-            _loc4_ = msg.affectedGameObjects.length;
+            _loc4_ = int(msg.affectedGameObjects.length);
             for(i = 0; i < _loc4_; )
             {
                _loc2_ = msg.affectedGameObjects[i] as PlayerGameObject;
@@ -63,3 +61,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

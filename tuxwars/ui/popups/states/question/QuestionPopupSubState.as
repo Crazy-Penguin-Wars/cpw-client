@@ -8,9 +8,7 @@ package tuxwars.ui.popups.states.question
    
    public class QuestionPopupSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_QUESTION:String = "QuestionMessageType";
-       
       
       public function QuestionPopupSubState(game:TuxWarsGame)
       {
@@ -18,3 +16,4 @@ package tuxwars.ui.popups.states.question
       }
    }
 }
+

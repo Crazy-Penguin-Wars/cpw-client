@@ -6,8 +6,6 @@ package tuxwars.home.states.privategame.join
    
    public class JoinPrivateGameState extends PrivateGameState
    {
-       
-      
       public function JoinPrivateGameState(game:TuxWarsGame, gameModel:PrivateGameModel)
       {
          super(game,gameModel);
@@ -20,3 +18,4 @@ package tuxwars.home.states.privategame.join
       }
    }
 }
+

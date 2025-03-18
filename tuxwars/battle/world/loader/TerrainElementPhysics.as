@@ -10,9 +10,7 @@ package tuxwars.battle.world.loader
    
    public class TerrainElementPhysics
    {
-      
       private static const FIXTURE_NAME:String = "ball_medium";
-       
       
       private const points:Vector.<Vec2> = new Vector.<Vec2>();
       
@@ -20,11 +18,10 @@ package tuxwars.battle.world.loader
       
       private var boundingBox:Rectangle;
       
-      private var originalTerrainPoints:Vector.<Vec2>;
+      private var originalTerrainPoints:Vector.<Vec2> = new Vector.<Vec2>();
       
       public function TerrainElementPhysics(data:Object)
       {
-         originalTerrainPoints = new Vector.<Vec2>();
          super();
          assert("Not enough points.",true,data.points.length >= 3);
          parsePoints(data.points);
@@ -85,3 +82,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

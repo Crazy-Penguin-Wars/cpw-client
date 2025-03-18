@@ -12,9 +12,6 @@ package tuxwars.battle.world
    
    public class DynamicBodyManagerFactory extends EventDispatcher implements IEventDispatcher
    {
-      
-      private static const EXTRA_INFORMATION:Boolean = Config.debugMode;
-      
       private static const TIMER_LOGIC_UPDATE_TIME:int = 1000;
       
       private static const TIMES_LOOP_COUNT:int = 1;
@@ -28,7 +25,8 @@ package tuxwars.battle.world
       private static const ID_PREFIX:String = "ID_";
       
       private static var instance:DynamicBodyManagerFactory;
-       
+      
+      private static const EXTRA_INFORMATION:Boolean = Config.debugMode;
       
       private var idNumber:int = 0;
       
@@ -59,6 +57,7 @@ package tuxwars.battle.world
       {
          if(instance == null)
          {
+            new DynamicBodyManagerFactory();
          }
          return instance;
       }
@@ -84,8 +83,8 @@ package tuxwars.battle.world
       
       public function createManager(file:String, callBackOnLoad:Function) : String
       {
-         var _loc4_:* = null;
-         var _loc5_:* = null;
+         var _loc4_:String = null;
+         var _loc5_:String = null;
          if(isLoadingFile(file))
          {
             _loc4_ = findIdForLoadingManager(file);
@@ -171,7 +170,7 @@ package tuxwars.battle.world
       
       private function update(event:TimerEvent) : void
       {
-         var removeObject:* = null;
+         var removeObject:Object = null;
          var index:int = 0;
          for each(var loadObject in managersInLoading)
          {
@@ -183,7 +182,7 @@ package tuxwars.battle.world
          while(removeBin.length > 0)
          {
             removeObject = removeBin.pop();
-            index = managersInLoading.indexOf(removeObject);
+            index = int(managersInLoading.indexOf(removeObject));
             managersInLoading.splice(index,1);
          }
          if(managersInLoading.length > 0)
@@ -258,3 +257,4 @@ package tuxwars.battle.world
       }
    }
 }
+

@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class DestroyAllLevelObjectsCounter extends Counter
    {
-       
-      
       public function DestroyAllLevelObjectsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -31,3 +29,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

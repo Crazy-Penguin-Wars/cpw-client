@@ -6,11 +6,10 @@ package tuxwars.ui.popups.logic.nomoney
    
    public class NoMoneyPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function NoMoneyPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.battle
    
    public class StopMessage extends BattleMessage
    {
-       
-      
       public function StopMessage(id:String)
       {
          super({
@@ -26,3 +24,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

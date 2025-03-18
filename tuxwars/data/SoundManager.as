@@ -16,14 +16,7 @@ package tuxwars.data
    
    public class SoundManager
    {
-      
-      private static const PlayTypeArray:Array = ["Start","Loop","End","Collision"];
-      
-      private static const musicArray:Array = [];
-      
       public static const ID_NONE:String = "NONE";
-      
-      private static const channelVector:Array = [];
       
       private static var collisionTable:Dictionary;
       
@@ -36,7 +29,12 @@ package tuxwars.data
       private static var currentPlayTypeListIndexMaster:int;
       
       private static var musicType:int;
-       
+      
+      private static const PlayTypeArray:Array = ["Start","Loop","End","Collision"];
+      
+      private static const musicArray:Array = [];
+      
+      private static const channelVector:Array = [];
       
       public function SoundManager()
       {
@@ -127,7 +125,7 @@ package tuxwars.data
       
       private static function checkMessage(msg:SoundMessage, type:String) : Boolean
       {
-         var sound:* = null;
+         var sound:SoundReference = null;
          if(msg.id == null)
          {
             LogUtils.addDebugLine("Sounds","MusicID is null! for SoundReference: " + msg.id);
@@ -160,7 +158,7 @@ package tuxwars.data
       
       public static function playmusic(msg:SoundMessage) : void
       {
-         var sound:* = null;
+         var sound:SoundReference = null;
          if(checkMessage(msg,"PlaySound"))
          {
             sound = Sounds.getSoundReference(msg.id);
@@ -188,7 +186,7 @@ package tuxwars.data
       
       public static function loopmusic(msg:SoundMessage) : void
       {
-         var sound:* = null;
+         var sound:SoundReference = null;
          if(checkMessage(msg,"LoopSound"))
          {
             sound = Sounds.getSoundReference(msg.id);
@@ -206,8 +204,8 @@ package tuxwars.data
       
       public static function playsound(msg:SoundMessage) : void
       {
-         var sound:* = null;
-         var startSound:* = null;
+         var sound:SoundReference = null;
+         var startSound:String = null;
          if(checkMessage(msg,"PlaySound") || checkMessage(msg,"PlayCollisionSound"))
          {
             sound = Sounds.getSoundReference(msg.id);
@@ -258,7 +256,7 @@ package tuxwars.data
       
       public static function loopsound(msg:SoundMessage) : void
       {
-         var sound:* = null;
+         var sound:SoundReference = null;
          if(checkMessage(msg,"LoopSound"))
          {
             sound = Sounds.getSoundReference(msg.id);
@@ -276,8 +274,8 @@ package tuxwars.data
       
       public static function endsound(msg:SoundMessage) : void
       {
-         var sound:* = null;
-         var endSound:* = null;
+         var sound:SoundReference = null;
+         var endSound:String = null;
          if(checkMessage(msg,"EndSound"))
          {
             sound = Sounds.getSoundReference(msg.id);
@@ -481,8 +479,11 @@ package tuxwars.data
       
       public static function markCollision(a:PhysicsGameObject, b:PhysicsGameObject) : Boolean
       {
-         var aSound:* = null;
-         var bSound:* = null;
+         var aSound:SoundReference = null;
+         var bSound:SoundReference = null;
+         var soundID:* = null;
+         var soundID2:* = null;
+         var soundID3:* = null;
          if(a is LevelGameObject || b is LevelGameObject)
          {
             if(a is LevelGameObject && b is LevelGameObject)
@@ -563,10 +564,11 @@ package tuxwars.data
       {
          var currentLoadNumber:int = 0;
          var currentPlayType:int = 0;
-         var tempArray:* = null;
+         var tempArray:Array = null;
          var currentPlayTypeListIndex:int = 0;
+         var _loc11_:String = "Sound";
          var _loc7_:ProjectManager = ProjectManager;
-         var _loc8_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Sound");
+         var _loc8_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc11_);
          var mA:Array = _loc8_._rows;
          currentLoadNumberMaster = 0;
          currentPlayTypeMaster = 0;
@@ -634,7 +636,7 @@ package tuxwars.data
       {
          var currentLoadNumber:int = 0;
          var currentPlayType:int = 0;
-         var tempArray:* = null;
+         var tempArray:Array = null;
          var currentPlayTypeListIndex:int = 0;
          var soundType:Array = musicArray[currentLoadNumberMaster].getArrayColumn(PlayTypeArray[currentPlayTypeMaster]);
          DCSoundManager.getInstance().removeCustomEventListener("complete",preLoadLoop,soundType[currentPlayTypeListIndexMaster]);
@@ -696,3 +698,4 @@ package tuxwars.data
       }
    }
 }
+

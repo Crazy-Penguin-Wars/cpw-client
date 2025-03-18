@@ -17,7 +17,6 @@ package tuxwars.ui.containers.slotitem.uicontainers
    
    public class ButtonContainers extends UIContainers
    {
-      
       private static const CONTAINER_BUTTONS:String = "Container_Buttons";
       
       public static const BUTTON_CASH:String = "Button";
@@ -27,7 +26,6 @@ package tuxwars.ui.containers.slotitem.uicontainers
       public static const BUTTON_MEMBERSHIP:String = "Button_Membership";
       
       public static const BUTTON_UNLOCK:String = "Button_Unlock";
-       
       
       private var _slotElement:SlotElement;
       
@@ -103,3 +101,4 @@ package tuxwars.ui.containers.slotitem.uicontainers
       }
    }
 }
+

@@ -20,9 +20,7 @@ package tuxwars.home.ui.screen.inbox.container
    
    public class InboxGift extends InboxCore
    {
-      
       public static const MYSTERY_GIFT_ID:String = "MysteryGift";
-       
       
       private var claim:UIButton;
       
@@ -69,7 +67,7 @@ package tuxwars.home.ui.screen.inbox.container
       
       override public function setFriend(friend:Friend, playerID:String) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:GiftReference = null;
          super.setFriend(friend,playerID);
          if(requestData.type == "Gifts_Default")
          {
@@ -84,7 +82,7 @@ package tuxwars.home.ui.screen.inbox.container
       
       private function setSendBackAvailability() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:Object = null;
          if(requestData.state == "Accepted")
          {
             _loc1_ = {};
@@ -176,8 +174,8 @@ package tuxwars.home.ui.screen.inbox.container
       
       private function sendBackPressed(event:MouseEvent) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Array = null;
+         var _loc3_:GiftReference = null;
          if(requestData.state != "Done")
          {
             _loc2_ = [getFriend().platformId];
@@ -270,3 +268,4 @@ package tuxwars.home.ui.screen.inbox.container
       }
    }
 }
+

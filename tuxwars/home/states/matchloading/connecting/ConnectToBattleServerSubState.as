@@ -23,8 +23,6 @@ package tuxwars.home.states.matchloading.connecting
    
    public class ConnectToBattleServerSubState extends TuxState
    {
-       
-      
       private var matchMakerKey:String;
       
       private var gameReady:Boolean;
@@ -117,7 +115,7 @@ package tuxwars.home.states.matchloading.connecting
       
       private function serverResponseHandler(response:BattleResponse) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          if(response.responseType == 27)
          {
             MessageCenter.sendEvent(new BattleServerDisconnectMessage());
@@ -188,3 +186,4 @@ package tuxwars.home.states.matchloading.connecting
       }
    }
 }
+

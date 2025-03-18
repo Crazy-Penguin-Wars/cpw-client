@@ -2,8 +2,6 @@ package tuxwars.home.ui.logic.dailynews
 {
    public class AddData
    {
-       
-      
       private var _header:String;
       
       private var _text:String;
@@ -39,3 +37,4 @@ package tuxwars.home.ui.logic.dailynews
       }
    }
 }
+

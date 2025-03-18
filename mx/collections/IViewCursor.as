@@ -4,8 +4,6 @@ package mx.collections
    
    public interface IViewCursor extends IEventDispatcher
    {
-       
-      
       [Bindable("cursorUpdate")]
       function get afterLast() : Boolean;
       
@@ -37,3 +35,4 @@ package mx.collections
       function seek(param1:CursorBookmark, param2:int = 0, param3:int = 0) : void;
    }
 }
+

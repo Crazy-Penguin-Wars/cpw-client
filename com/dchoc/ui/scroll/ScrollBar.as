@@ -9,11 +9,9 @@ package com.dchoc.ui.scroll
    
    public class ScrollBar
    {
-      
       public static const HORIZONTAL:String = "horizontal";
       
       public static const VERTICAL:String = "vertical";
-       
       
       private var mType:String = "";
       
@@ -77,7 +75,7 @@ package com.dchoc.ui.scroll
       
       public function setUpButton(design:MovieClip, buttonUpName:String, callback:Function) : void
       {
-         var buttonClip:* = null;
+         var buttonClip:MovieClip = null;
          if(design && buttonUpName != "" && callback != null)
          {
             buttonClip = design.getChildByName(buttonUpName) as MovieClip;
@@ -91,7 +89,7 @@ package com.dchoc.ui.scroll
       
       public function setDownButton(design:MovieClip, buttonDownName:String, callback:Function) : void
       {
-         var buttonClip:* = null;
+         var buttonClip:MovieClip = null;
          if(design && buttonDownName != "" && callback != null)
          {
             buttonClip = design.getChildByName(buttonDownName) as MovieClip;
@@ -214,3 +212,4 @@ package com.dchoc.ui.scroll
       }
    }
 }
+

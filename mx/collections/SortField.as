@@ -8,13 +8,13 @@ package mx.collections
    import mx.resources.ResourceManager;
    import mx.utils.ObjectUtil;
    
+   use namespace mx_internal;
+   
    public class SortField extends EventDispatcher implements ISortField
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _caseInsensitive:Boolean;
       
@@ -30,7 +30,6 @@ package mx.collections
       
       public function SortField(name:String = null, caseInsensitive:Boolean = false, descending:Boolean = false, numeric:Object = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this._name = name;
          this._caseInsensitive = caseInsensitive;
@@ -215,6 +214,7 @@ package mx.collections
       
       private function nullCompare(a:Object, b:Object) : int
       {
+         var value:Object = null;
          var left:Object = null;
          var right:Object = null;
          var message:String = null;
@@ -374,3 +374,4 @@ package mx.collections
       }
    }
 }
+

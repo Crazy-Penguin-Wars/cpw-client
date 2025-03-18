@@ -6,8 +6,6 @@ package tuxwars.home.ui.logic.home
    
    public class LevelElementLogic extends TuxUIElementLogic
    {
-       
-      
       public function LevelElementLogic(game:TuxWarsGame)
       {
          super(game);
@@ -19,3 +17,4 @@ package tuxwars.home.ui.logic.home
       }
    }
 }
+

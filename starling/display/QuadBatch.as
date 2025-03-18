@@ -24,9 +24,10 @@ package starling.display
    import starling.utils.MatrixUtil;
    import starling.utils.VertexData;
    
+   use namespace starling_internal;
+   
    public class QuadBatch extends DisplayObject
    {
-      
       private static const QUAD_PROGRAM_NAME:String = "QB_q";
       
       private static var sHelperMatrix:Matrix = new Matrix();
@@ -36,7 +37,6 @@ package starling.display
       private static var sRenderMatrix:Matrix3D = new Matrix3D();
       
       private static var sProgramNameCache:Dictionary = new Dictionary();
-       
       
       private var mNumQuads:int;
       
@@ -358,7 +358,7 @@ package starling.display
       private function createBuffers() : void
       {
          var numVertices:int = this.mVertexData.numVertices;
-         var numIndices:int = this.mIndexData.length;
+         var numIndices:int = int(this.mIndexData.length);
          var context:Context3D = Starling.context;
          if(Boolean(this.mVertexBuffer))
          {
@@ -580,3 +580,4 @@ package starling.display
       }
    }
 }
+

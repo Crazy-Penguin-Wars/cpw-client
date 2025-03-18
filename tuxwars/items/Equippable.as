@@ -13,11 +13,9 @@ package tuxwars.items
    
    public class Equippable implements Wearable
    {
-      
       public static const EQUIPPABLE_BONUS_STATS:Array = ["Attack","Defence","Luck","ImpulseResistance","Damage","JumpPower","WalkSpeed","MaxSpeed","ExpBonus","CoinsBonus","DamageRadius","ShotSpread","Density","GravityScale","Restitution","Friction"];
       
       public static const BOOSTER_BONUS_STATS:Array = ["Attack","Damage","DamageRadius","ShotSpread"];
-       
       
       private var _type:String;
       
@@ -172,3 +170,4 @@ package tuxwars.items
       }
    }
 }
+

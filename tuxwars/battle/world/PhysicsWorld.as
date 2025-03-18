@@ -1,6 +1,7 @@
 package tuxwars.battle.world
 {
    import com.dchoc.game.DCGame;
+   import com.dchoc.game.WorldContainer;
    import com.dchoc.gameobjects.GameObject;
    import com.dchoc.gameobjects.GameObjects;
    import com.dchoc.messages.MessageCenter;
@@ -32,6 +33,7 @@ package tuxwars.battle.world
    import nape.space.Space;
    import nape.util.Debug;
    import nape.util.ShapeDebug;
+   import starling.core.Starling;
    import starling.display.DisplayObject;
    import starling.display.Image;
    import starling.textures.Texture;
@@ -58,7 +60,6 @@ package tuxwars.battle.world
    
    public class PhysicsWorld
    {
-      
       private static const VELOCITY_ITERATIONS:int = 30;
       
       private static const POSITION_ITERATIONS:int = 20;
@@ -72,9 +73,8 @@ package tuxwars.battle.world
       private static const MAX_HEIGHT:int = 2048;
       
       private static const MAX_WIDTH:int = 2048;
-       
       
-      private var _space:Space;
+      private var _space:Space = new Space(Vec2.weak(0,WorldPhysics.getGravity()));
       
       private var _powerUpSpawnRandom:Random;
       
@@ -82,7 +82,7 @@ package tuxwars.battle.world
       
       private var startLocations:Vector.<Vec2>;
       
-      private const debug:Debug = new ShapeDebug(com.dchoc.game.DCGame._stage.stageWidth,com.dchoc.game.DCGame._stage.stageHeight,com.dchoc.game.DCGame._stage.color);
+      private const debug:Debug;
       
       private var debugMode:Boolean;
       
@@ -102,10 +102,10 @@ package tuxwars.battle.world
       
       public function PhysicsWorld(world:TuxWorld)
       {
-         _space = new Space(Vec2.weak(0,WorldPhysics.getGravity()));
          var _loc2_:DCGame = DCGame;
          var _loc3_:DCGame = DCGame;
          var _loc4_:DCGame = DCGame;
+         debug = new ShapeDebug(com.dchoc.game.DCGame._stage.stageWidth,com.dchoc.game.DCGame._stage.stageHeight,com.dchoc.game.DCGame._stage.color);
          super();
          this.world = world;
       }
@@ -237,8 +237,8 @@ package tuxwars.battle.world
       {
          var _loc5_:* = undefined;
          var _loc1_:int = 0;
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:Object = null;
+         var _loc2_:LevelPowerUp = null;
          var _loc4_:int = powerUpSpawnRandom.integer(0,100);
          LogUtils.log("Random powerup creation chance: " + _loc4_ + " < " + _level.powerUpPercentage,"PhysicsWorld",1,"PowerUps",false,false,false);
          if(_loc4_ < _level.powerUpPercentage)
@@ -288,7 +288,7 @@ package tuxwars.battle.world
          }
          var _loc4_:TuxWorld = world;
          var _loc5_:TuxWorld = world;
-         _loc4_._objectContainer.setChildIndex(_waterGraphics,Number(_loc5_._objectContainer.numChildren) - 1);
+         _loc4_._objectContainer.setChildIndex(_waterGraphics,_loc5_._objectContainer.numChildren - 1);
       }
       
       public function updateSimulation(num:int) : void
@@ -310,10 +310,10 @@ package tuxwars.battle.world
       private function slowDownLevelObjects() : void
       {
          var i:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:LevelGameObject = null;
          var _loc5_:TuxWorld = world;
          var _loc1_:Vector.<GameObject> = _loc5_._gameObjects.gameObjects;
-         var _loc2_:int = _loc1_.length;
+         var _loc2_:int = int(_loc1_.length);
          for(i = 0; i < _loc2_; )
          {
             _loc3_ = _loc1_[i] as LevelGameObject;
@@ -343,9 +343,9 @@ package tuxwars.battle.world
       private function checkJoints() : void
       {
          var i:int = 0;
-         var joint:* = null;
-         var body1:* = null;
-         var body2:* = null;
+         var joint:Constraint = null;
+         var body1:Body = null;
+         var body2:Body = null;
          var _loc3_:ConstraintList = space.constraints;
          for(i = 0; i < _loc3_.length; )
          {
@@ -399,9 +399,9 @@ package tuxwars.battle.world
       
       private function createLevelPowerUp(powerUp:LevelPowerUp) : void
       {
-         var _loc4_:* = null;
-         var _loc5_:* = null;
-         var _loc2_:* = null;
+         var _loc4_:PhysicsGameObjectDef = null;
+         var _loc5_:PowerUpGameObject = null;
+         var _loc2_:ParticleReference = null;
          LogUtils.log("Creating powerup: " + powerUp.id,"PhysicsWorld",1,"PowerUps");
          var _loc3_:Vec2 = getLocationForPowerUp(powerUp);
          if(_loc3_)
@@ -412,7 +412,7 @@ package tuxwars.battle.world
             _loc5_ = createGameObject(_loc4_) as PowerUpGameObject;
             var _loc6_:* = _loc5_;
             var _loc7_:* = _loc5_;
-            _loc6_._displayObject.x = powerUp.getLocation().x - Number(_loc7_._displayObject.width);
+            _loc6_._displayObject.x = powerUp.getLocation().x - _loc7_._displayObject.width;
             var _loc8_:* = _loc5_;
             _loc8_._displayObject.y = powerUp.getLocation().y;
             _loc4_.dispose();
@@ -445,13 +445,13 @@ package tuxwars.battle.world
       private function updatePhysicsGameObjects(time:int) : void
       {
          var i:int = 0;
-         var _loc6_:* = null;
+         var _loc6_:PhysicsGameObject = null;
          var k:int = 0;
          LogUtils.log("Updating physics game objects.","PhysicsWorld",1,"GameObjects",false,false,false);
          var _loc9_:TuxWorld = world;
          var _loc7_:GameObjects = _loc9_._gameObjects;
          var _loc2_:Vector.<GameObject> = _loc7_.gameObjects;
-         var _loc3_:int = _loc2_.length;
+         var _loc3_:int = int(_loc2_.length);
          for(i = 0; i < _loc3_; )
          {
             _loc6_ = _loc2_[i] as PhysicsGameObject;
@@ -581,8 +581,8 @@ package tuxwars.battle.world
       
       private function getLocationForPowerUp(powerUp:LevelPowerUp) : Vec2
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Rectangle = null;
+         var _loc3_:SpawnPointFinder = null;
          if(Config.ZERO_POINT.equals(powerUp.getLocation().toPoint()))
          {
             _loc2_ = new Rectangle(0,0,50,50);
@@ -596,9 +596,9 @@ package tuxwars.battle.world
       {
          var _loc2_:Bitmap = createParallaxes(level.theme.getBackground());
          var _loc3_:DCGame = DCGame;
-         _normalBG = createBGImage(_loc2_,Number(com.dchoc.game.DCGame._stage.stageHeight) / _loc2_.height);
+         _normalBG = createBGImage(_loc2_,com.dchoc.game.DCGame._stage.stageHeight / _loc2_.height);
          var _loc4_:DCGame = DCGame;
-         _fullscreenBG = createBGImage(_loc2_,Number(com.dchoc.game.DCGame._stage.fullScreenHeight) / _loc2_.height);
+         _fullscreenBG = createBGImage(_loc2_,com.dchoc.game.DCGame._stage.fullScreenHeight / _loc2_.height);
          var _loc5_:TuxWorld = world;
          (starling.core.Starling.current.root as com.dchoc.game.WorldContainer).backgroundContainer.addChild(_normalBG);
          _loc2_.bitmapData.dispose();
@@ -618,7 +618,7 @@ package tuxwars.battle.world
       private function createParallaxes(parent:MovieClip) : Bitmap
       {
          var i:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:ParallaxLayer = null;
          var _loc2_:BitmapData = new BitmapData(level.width,level.height);
          var _loc3_:Matrix = new Matrix();
          _loc3_.scale(level.width / parent.width,level.height / parent.height);
@@ -663,7 +663,7 @@ package tuxwars.battle.world
       
       private function endContactHandler(event:InteractionCallback) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Water = null;
          var _loc6_:Body = event.int1.castBody;
          var _loc3_:Body = event.int2.castBody;
          var _loc5_:Collider = _loc6_.userData.gameObject;
@@ -685,7 +685,7 @@ package tuxwars.battle.world
       
       private function ongoingContactHandler(event:InteractionCallback) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Water = null;
          var _loc6_:Body = event.int1.castBody;
          var _loc3_:Body = event.int2.castBody;
          var _loc5_:Collider = _loc6_.userData.gameObject;
@@ -707,7 +707,7 @@ package tuxwars.battle.world
       
       private function beginContactHandler(event:InteractionCallback) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Water = null;
          var _loc6_:Body = event.int1.castBody;
          var _loc3_:Body = event.int2.castBody;
          var _loc5_:Collider = _loc6_.userData.gameObject;
@@ -729,8 +729,8 @@ package tuxwars.battle.world
       
       private function isAllowedContact(collider1:Collider, collider2:Collider) : Boolean
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:PhysicsEmissionGameObject = null;
+         var _loc3_:PhysicsEmissionGameObject = null;
          if(collider1 == null || collider2 == null)
          {
             return false;
@@ -800,15 +800,15 @@ package tuxwars.battle.world
       
       private function logGameObjectData(gameObject:GameObject, logShapeData:Boolean = true) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:TerrainGameObject = null;
          var k:int = 0;
-         var _loc12_:* = null;
-         var vertList:* = null;
+         var _loc12_:Polygon = null;
+         var vertList:String = null;
          var j:int = 0;
-         var _loc14_:* = null;
+         var _loc14_:Vec2 = null;
          var i:int = 0;
-         var _loc5_:* = null;
-         var _loc9_:* = null;
+         var _loc5_:Shape = null;
+         var _loc9_:Material = null;
          var _loc7_:PhysicsGameObject = PhysicsGameObject(gameObject);
          var _loc4_:Body = _loc7_.body;
          if(gameObject is TerrainGameObject)
@@ -858,3 +858,4 @@ package tuxwars.battle.world
       }
    }
 }
+

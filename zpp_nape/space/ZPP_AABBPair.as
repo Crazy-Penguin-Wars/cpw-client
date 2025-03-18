@@ -5,9 +5,7 @@ package zpp_nape.space
    
    public class ZPP_AABBPair
    {
-      
-      public static var zpp_pool:ZPP_AABBPair = null;
-       
+      public static var zpp_pool:ZPP_AABBPair;
       
       public var sleeping:Boolean;
       
@@ -42,3 +40,4 @@ package zpp_nape.space
       }
    }
 }
+

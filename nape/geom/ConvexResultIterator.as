@@ -5,9 +5,7 @@ package nape.geom
    
    public final class ConvexResultIterator
    {
-      
-      public static var zpp_pool:ConvexResultIterator = null;
-       
+      public static var zpp_pool:ConvexResultIterator;
       
       public var zpp_next:ConvexResultIterator;
       
@@ -75,3 +73,4 @@ package nape.geom
       }
    }
 }
+

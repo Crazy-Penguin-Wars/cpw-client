@@ -8,9 +8,7 @@ package tuxwars.ui.popups.states.firstvip
    
    public class VipFirstTimePopUpSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE:String = "MessageType";
-       
       
       public function VipFirstTimePopUpSubState(game:TuxWarsGame, params:* = null)
       {
@@ -18,3 +16,4 @@ package tuxwars.ui.popups.states.firstvip
       }
    }
 }
+

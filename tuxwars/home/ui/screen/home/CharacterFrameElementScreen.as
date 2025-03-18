@@ -11,6 +11,7 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.states.customgame.CustomGameState;
    import tuxwars.home.states.matchloading.MultiplayerMatchLoadingSubState;
@@ -26,7 +27,6 @@ package tuxwars.home.ui.screen.home
    
    public class CharacterFrameElementScreen extends CharacterAvatarElementScreen
    {
-      
       private static const CHARACTER_FRAME:String = "Character_Frame";
       
       private static const BUTTON_PLAY:String = "Button_Play";
@@ -34,7 +34,6 @@ package tuxwars.home.ui.screen.home
       private static const BUTTON_PLAY_TOURNAMENT:String = "Button_Tournament";
       
       private static const BUTTON_PLAY_CUSTOM_GAME:String = "Button_Custom_Game";
-       
       
       private var _play:UIButton;
       
@@ -44,15 +43,22 @@ package tuxwars.home.ui.screen.home
       
       public function CharacterFrameElementScreen(whereToAdd:MovieClip, game:TuxWarsGame)
       {
-         var playButtonDesing:* = null;
+         var playButtonDesing:MovieClip = null;
          var _loc6_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/home_screen.swf","home_screen");
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 1 works");
          DCUtils.stopMovieClip(_loc6_);
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 2 works");
          var _loc3_:MovieClip = _loc6_.getChildByName("Character_Frame") as MovieClip;
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 3 works");
          super(_loc3_,game);
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 4 works");
          DCUtils.playMovieClip(_loc3_);
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 5 works");
          var _loc4_:MovieClip = _loc6_.getChildByName("Container_Play_Buttons") as MovieClip;
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 6 works");
          if(game.player.isTournamentAvailable())
          {
+            ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 7 works");
             playButtonDesing = _loc4_.getChildByName("Play_Tournament") as MovieClip;
             _playTournament = TuxUiUtils.createButton(UIButton,playButtonDesing,"Button_Tournament",tournamentHandler,"BUTTON_TOURNAMENT","TOOLTIP_TOURNAMENT");
             _playTournament.addEventListener("out",mouseOut,false,0,true);
@@ -64,26 +70,34 @@ package tuxwars.home.ui.screen.home
             {
                enableTournamentButton(false);
             }
+            ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 8 works");
          }
          else
          {
+            ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 9 works");
             playButtonDesing = _loc4_.getChildByName("Play_No_Tournament") as MovieClip;
          }
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 10 works");
          _play = TuxUiUtils.createButton(UIButton,playButtonDesing,"Button_Play",playHandler,"BUTTON_PLAY","TOOLTIP_PLAY");
          _playCustom = TuxUiUtils.createButton(UIButton,playButtonDesing,"Button_Custom_Game",customGameHandler,"BUTTON_CUSTOM_GAME","TOOLTIP_CUSTOM");
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 11 works");
          _play.addEventListener("out",mouseOut,false,0,true);
          _play.addEventListener("over",mouseOver,false,0,true);
          _playCustom.addEventListener("out",mouseOut,false,0,true);
          _playCustom.addEventListener("over",mouseOver,false,0,true);
          whereToAdd.addChild(avatarContainer);
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 12 works");
          var _loc7_:UIButton = _play;
          whereToAdd.addChild(_loc7_._design);
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 13 works");
          var _loc8_:UIButton = _playCustom;
          whereToAdd.addChild(_loc8_._design);
+         ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 14 works");
          if(_playTournament)
          {
             var _loc9_:UIButton = _playTournament;
             whereToAdd.addChild(_loc9_._design);
+            ExternalInterface.call("console.log","[CharacterFrameElementScreen] Point 15 works");
          }
       }
       
@@ -197,3 +211,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

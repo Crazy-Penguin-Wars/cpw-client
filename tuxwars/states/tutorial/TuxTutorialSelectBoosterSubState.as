@@ -11,8 +11,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialSelectBoosterSubState extends TuxTutorialSubState
    {
-       
-      
       private var arrowAdded:Boolean;
       
       public function TuxTutorialSelectBoosterSubState(game:TuxWarsGame)
@@ -37,8 +35,8 @@ package tuxwars.states.tutorial
       
       override public function logicUpdate(deltaTime:int) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:HUDBoosterSelectionSubState = null;
+         var _loc2_:BoosterSelectionScreen = null;
          super.logicUpdate(deltaTime);
          if(!arrowAdded)
          {
@@ -76,3 +74,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

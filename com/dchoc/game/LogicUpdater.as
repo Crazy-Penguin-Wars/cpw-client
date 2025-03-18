@@ -7,13 +7,11 @@ package com.dchoc.game
    
    public class LogicUpdater
    {
-      
       private static var addList:Vector.<Object> = new Vector.<Object>();
       
       private static var activeList:Vector.<Object> = new Vector.<Object>();
       
       private static var removeList:Vector.<Object> = new Vector.<Object>();
-       
       
       public function LogicUpdater()
       {
@@ -43,14 +41,14 @@ package com.dchoc.game
       
       public static function logicUpdate(deltaTime:int) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Object = null;
          var _loc2_:int = 0;
          try
          {
             while(removeList.length > 0)
             {
                _loc3_ = removeList.pop();
-               _loc2_ = activeList.indexOf(_loc3_);
+               _loc2_ = int(activeList.indexOf(_loc3_));
                if(_loc2_ != -1)
                {
                   activeList.splice(_loc2_,1);
@@ -125,7 +123,7 @@ package com.dchoc.game
       
       private static function removeFrom(obj:Object, from:Vector.<Object>) : void
       {
-         var _loc3_:int = from.indexOf(obj);
+         var _loc3_:int = int(from.indexOf(obj));
          if(_loc3_ != -1)
          {
             LogUtils.log("Removed " + obj + " from other list.","LogicUpdater",1,"LogicUpdater",false,false,false);
@@ -134,3 +132,4 @@ package com.dchoc.game
       }
    }
 }
+

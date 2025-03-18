@@ -8,8 +8,6 @@ package mx.modules
    
    public interface IModuleInfo extends IEventDispatcher
    {
-       
-      
       function get data() : Object;
       
       function set data(param1:Object) : void;
@@ -35,3 +33,4 @@ package mx.modules
       function publish(param1:IFlexModuleFactory) : void;
    }
 }
+

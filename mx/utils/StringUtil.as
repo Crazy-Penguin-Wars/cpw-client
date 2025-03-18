@@ -2,11 +2,11 @@ package mx.utils
 {
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class StringUtil
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       public function StringUtil()
       {
@@ -44,7 +44,7 @@ package mx.utils
          if(value != "" && value != null)
          {
             items = value.split(delimiter);
-            len = items.length;
+            len = int(items.length);
             for(i = 0; i < len; i++)
             {
                items[i] = StringUtil.trim(items[i]);
@@ -125,7 +125,7 @@ package mx.utils
          var n:int = str.length;
          for(var i:int = 0; i < n; i++)
          {
-            charCode = str.charCodeAt(i);
+            charCode = uint(str.charCodeAt(i));
             if(testCharacter(charCode,restrict))
             {
                charCodes.push(charCode);
@@ -146,7 +146,7 @@ package mx.utils
          var n:int = restrict.length;
          if(n > 0)
          {
-            code = restrict.charCodeAt(0);
+            code = uint(restrict.charCodeAt(0));
             if(code == 94)
             {
                allowIt = true;
@@ -154,7 +154,7 @@ package mx.utils
          }
          for(var i:int = 0; i < n; i++)
          {
-            code = restrict.charCodeAt(i);
+            code = uint(restrict.charCodeAt(i));
             acceptCode = false;
             if(!inBackSlash)
             {
@@ -205,3 +205,4 @@ package mx.utils
       }
    }
 }
+

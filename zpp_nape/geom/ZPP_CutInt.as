@@ -4,9 +4,7 @@ package zpp_nape.geom
    
    public class ZPP_CutInt
    {
-      
-      public static var zpp_pool:ZPP_CutInt = null;
-       
+      public static var zpp_pool:ZPP_CutInt;
       
       public var virtualint:Boolean;
       
@@ -53,6 +51,7 @@ package zpp_nape.geom
             ZPP_CutInt.zpp_pool = _loc8_.next;
             _loc8_.next = null;
          }
+         null;
          _loc8_.virtualint = param6;
          _loc8_.end = param2;
          _loc8_.start = param3;
@@ -64,3 +63,4 @@ package zpp_nape.geom
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.control
    
    public class UpdateWorldMessage extends SocketMessage
    {
-       
-      
       public function UpdateWorldMessage(ttl:int, mtl:int = -2147483648, respawn:Array = null, resume:Array = null, powerup:String = null)
       {
          var _loc8_:Object = {
@@ -46,3 +44,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

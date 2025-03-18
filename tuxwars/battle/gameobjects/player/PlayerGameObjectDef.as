@@ -8,8 +8,6 @@ package tuxwars.battle.gameobjects.player
    
    public class PlayerGameObjectDef extends AvatarGameObjectDef
    {
-       
-      
       private var _inventory:Inventory;
       
       private var _wornItems:Object;
@@ -44,3 +42,4 @@ package tuxwars.battle.gameobjects.player
       }
    }
 }
+

@@ -6,8 +6,6 @@ package com.dchoc.gameobjects
    
    public class GameObjectDef
    {
-       
-      
       private var _name:String;
       
       private var _objClass:Class;
@@ -83,3 +81,4 @@ package com.dchoc.gameobjects
       }
    }
 }
+

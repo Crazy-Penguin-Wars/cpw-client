@@ -4,9 +4,7 @@ package tuxwars.battle.net.messages
    
    public class SocketMessage extends Message
    {
-      
       public static const MESSAGE:String = "SocketMessage";
-       
       
       private var _message:String;
       
@@ -52,3 +50,4 @@ package tuxwars.battle.net.messages
       }
    }
 }
+

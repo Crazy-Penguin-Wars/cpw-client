@@ -5,8 +5,6 @@ package tuxwars.home.states.matchloading
    
    public class PrivateGameMatchLoadingSubState extends MatchLoadingSubState
    {
-       
-      
       public function PrivateGameMatchLoadingSubState(game:TuxWarsGame, data:Object)
       {
          super(game,data);
@@ -18,3 +16,4 @@ package tuxwars.home.states.matchloading
       }
    }
 }
+

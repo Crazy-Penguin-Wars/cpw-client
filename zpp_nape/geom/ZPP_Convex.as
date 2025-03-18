@@ -4,8 +4,6 @@ package zpp_nape.geom
    
    public class ZPP_Convex
    {
-       
-      
       public function ZPP_Convex()
       {
       }
@@ -115,3 +113,4 @@ package zpp_nape.geom
       }
    }
 }
+

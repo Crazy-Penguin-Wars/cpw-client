@@ -27,8 +27,6 @@ package tuxwars.battle.ui.screen.couponfound
    
    public class CouponSalesSlot
    {
-       
-      
       private var design:MovieClip;
       
       private var parent:TuxUIScreen;
@@ -110,9 +108,9 @@ package tuxwars.battle.ui.screen.couponfound
       
       private function buyItem(event:MouseEvent) : void
       {
-         var _loc3_:* = null;
-         var _loc4_:* = null;
-         var _loc5_:* = null;
+         var _loc3_:SoundReference = null;
+         var _loc4_:ShopItem = null;
+         var _loc5_:SoundReference = null;
          var hasMoney:Boolean = false;
          if(isPremium && newPrice <= parent.tuxGame.player.premiumMoney)
          {
@@ -178,7 +176,7 @@ package tuxwars.battle.ui.screen.couponfound
       
       private function itemMouseOver(event:MouseEvent) : void
       {
-         var tt:* = null;
+         var tt:TuxTooltip = null;
          var _loc3_:ShopItem = ShopItemManager.getShopItem(couponData.itemData);
          if(_loc3_)
          {
@@ -204,3 +202,4 @@ package tuxwars.battle.ui.screen.couponfound
       }
    }
 }
+

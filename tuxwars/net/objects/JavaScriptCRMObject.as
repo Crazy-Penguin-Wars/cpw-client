@@ -2,8 +2,6 @@ package tuxwars.net.objects
 {
    public class JavaScriptCRMObject extends JavaScriptObject
    {
-       
-      
       private var _group:String;
       
       private var _crm_event_type:String;
@@ -171,3 +169,4 @@ package tuxwars.net.objects
       }
    }
 }
+

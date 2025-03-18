@@ -6,8 +6,6 @@ package tuxwars.ui.tooltips
    
    public class TuxTooltip extends UIStateComponent
    {
-       
-      
       public function TuxTooltip(graphics:GraphicsReference)
       {
          super(DCResourceManager.instance.getFromSWF(graphics.swf,graphics.export));
@@ -25,3 +23,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

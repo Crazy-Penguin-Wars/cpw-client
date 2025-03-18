@@ -6,8 +6,6 @@ package tuxwars.battle.gameobjects.player
    
    public class AvatarGameObjectDef extends PhysicsGameObjectDef
    {
-       
-      
       private var _animationAssets:String;
       
       public function AvatarGameObjectDef(world:Space)
@@ -33,3 +31,4 @@ package tuxwars.battle.gameobjects.player
       }
    }
 }
+

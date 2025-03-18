@@ -2,13 +2,11 @@ package zpp_nape
 {
    public class ZPP_Const
    {
+      public static var vec2vector:Class;
       
-      public static var vec2vector:Class = Type.getClass(new Vector.<Vec2>());
+      public static var cbtypevector:Class;
       
-      public static var cbtypevector:Class = Type.getClass(new Vector.<CbType>());
-      
-      public static var optiontypevector:Class = Type.getClass(new Vector.<OptionType>());
-       
+      public static var optiontypevector:Class;
       
       public function ZPP_Const()
       {
@@ -25,3 +23,8 @@ package zpp_nape
       }
    }
 }
+
+import nape.callbacks.CbType;
+import nape.callbacks.OptionType;
+import nape.geom.Vec2;
+

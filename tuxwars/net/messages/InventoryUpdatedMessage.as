@@ -8,8 +8,6 @@ package tuxwars.net.messages
    
    public class InventoryUpdatedMessage extends Message
    {
-       
-      
       private var _player:TuxFriend;
       
       private var _item:Item;
@@ -48,3 +46,4 @@ package tuxwars.net.messages
       }
    }
 }
+

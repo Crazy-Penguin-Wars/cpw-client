@@ -2,13 +2,10 @@ package com.logicom.geom
 {
    public class Polygons
    {
-       
-      
-      private var _polygons:Vector.<Polygon>;
+      private var _polygons:Vector.<Polygon> = new Vector.<Polygon>();
       
       public function Polygons()
       {
-         _polygons = new Vector.<Polygon>();
          super();
       }
       
@@ -28,3 +25,4 @@ package com.logicom.geom
       }
    }
 }
+

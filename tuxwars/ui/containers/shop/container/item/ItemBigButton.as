@@ -8,9 +8,7 @@ package tuxwars.ui.containers.shop.container.item
    
    public class ItemBigButton extends ItemButton
    {
-      
       public static const LOADED_ICON:String = "LoadedIcon";
-       
       
       private var parentMC:MovieClip;
       
@@ -52,3 +50,4 @@ package tuxwars.ui.containers.shop.container.item
       }
    }
 }
+

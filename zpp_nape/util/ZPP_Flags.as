@@ -16,100 +16,99 @@ package zpp_nape.util
    
    public class ZPP_Flags
    {
+      public static var §internal§:Boolean;
       
-      public static var §internal§:Boolean = false;
+      public static var id_ImmState_ACCEPT:int;
       
-      public static var id_ImmState_ACCEPT:int = 1;
+      public static var id_ImmState_IGNORE:int;
       
-      public static var id_ImmState_IGNORE:int = 2;
+      public static var id_ImmState_ALWAYS:int;
       
-      public static var id_ImmState_ALWAYS:int = 4;
+      public static var id_GravMassMode_DEFAULT:int;
       
-      public static var id_GravMassMode_DEFAULT:int = 0;
+      public static var id_GravMassMode_FIXED:int;
       
-      public static var id_GravMassMode_FIXED:int = 1;
+      public static var id_GravMassMode_SCALED:int;
       
-      public static var id_GravMassMode_SCALED:int = 2;
+      public static var id_InertiaMode_DEFAULT:int;
       
-      public static var id_InertiaMode_DEFAULT:int = 0;
+      public static var id_InertiaMode_FIXED:int;
       
-      public static var id_InertiaMode_FIXED:int = 1;
+      public static var id_MassMode_DEFAULT:int;
       
-      public static var id_MassMode_DEFAULT:int = 0;
+      public static var id_MassMode_FIXED:int;
       
-      public static var id_MassMode_FIXED:int = 1;
+      public static var id_BodyType_STATIC:int;
       
-      public static var id_BodyType_STATIC:int = 1;
+      public static var id_BodyType_DYNAMIC:int;
       
-      public static var id_BodyType_DYNAMIC:int = 2;
+      public static var id_BodyType_KINEMATIC:int;
       
-      public static var id_BodyType_KINEMATIC:int = 3;
+      public static var id_ListenerType_BODY:int;
       
-      public static var id_ListenerType_BODY:int = 0;
+      public static var id_PreFlag_ACCEPT:int;
       
-      public static var id_PreFlag_ACCEPT:int = 1;
+      public static var id_ListenerType_CONSTRAINT:int;
       
-      public static var id_ListenerType_CONSTRAINT:int = 1;
+      public static var id_PreFlag_IGNORE:int;
       
-      public static var id_PreFlag_IGNORE:int = 2;
+      public static var id_ListenerType_INTERACTION:int;
       
-      public static var id_ListenerType_INTERACTION:int = 2;
+      public static var id_PreFlag_ACCEPT_ONCE:int;
       
-      public static var id_PreFlag_ACCEPT_ONCE:int = 3;
+      public static var id_ListenerType_PRE:int;
       
-      public static var id_ListenerType_PRE:int = 3;
+      public static var id_PreFlag_IGNORE_ONCE:int;
       
-      public static var id_PreFlag_IGNORE_ONCE:int = 4;
+      public static var id_CbEvent_BEGIN:int;
       
-      public static var id_CbEvent_BEGIN:int = 0;
+      public static var id_InteractionType_COLLISION:int;
       
-      public static var id_InteractionType_COLLISION:int = 1;
+      public static var id_CbEvent_ONGOING:int;
       
-      public static var id_CbEvent_ONGOING:int = 6;
+      public static var id_InteractionType_SENSOR:int;
       
-      public static var id_InteractionType_SENSOR:int = 2;
+      public static var id_CbEvent_END:int;
       
-      public static var id_CbEvent_END:int = 1;
+      public static var id_InteractionType_FLUID:int;
       
-      public static var id_InteractionType_FLUID:int = 4;
+      public static var id_CbEvent_WAKE:int;
       
-      public static var id_CbEvent_WAKE:int = 2;
+      public static var id_InteractionType_ANY:int;
       
-      public static var id_InteractionType_ANY:int = 7;
+      public static var id_CbEvent_SLEEP:int;
       
-      public static var id_CbEvent_SLEEP:int = 3;
+      public static var id_CbEvent_BREAK:int;
       
-      public static var id_CbEvent_BREAK:int = 4;
+      public static var id_CbEvent_PRE:int;
       
-      public static var id_CbEvent_PRE:int = 5;
+      public static var id_Winding_UNDEFINED:int;
       
-      public static var id_Winding_UNDEFINED:int = 0;
+      public static var id_Winding_CLOCKWISE:int;
       
-      public static var id_Winding_CLOCKWISE:int = 1;
+      public static var id_Winding_ANTICLOCKWISE:int;
       
-      public static var id_Winding_ANTICLOCKWISE:int = 2;
+      public static var id_ValidationResult_VALID:int;
       
-      public static var id_ValidationResult_VALID:int = 0;
+      public static var id_ValidationResult_DEGENERATE:int;
       
-      public static var id_ValidationResult_DEGENERATE:int = 1;
+      public static var id_ValidationResult_CONCAVE:int;
       
-      public static var id_ValidationResult_CONCAVE:int = 2;
+      public static var id_ValidationResult_SELF_INTERSECTING:int;
       
-      public static var id_ValidationResult_SELF_INTERSECTING:int = 3;
+      public static var id_ShapeType_CIRCLE:int;
       
-      public static var id_ShapeType_CIRCLE:int = 0;
+      public static var id_ShapeType_POLYGON:int;
       
-      public static var id_ShapeType_POLYGON:int = 1;
+      public static var id_Broadphase_DYNAMIC_AABB_TREE:int;
       
-      public static var id_Broadphase_DYNAMIC_AABB_TREE:int = 0;
+      public static var id_Broadphase_SWEEP_AND_PRUNE:int;
       
-      public static var id_Broadphase_SWEEP_AND_PRUNE:int = 1;
+      public static var id_ArbiterType_COLLISION:int;
       
-      public static var id_ArbiterType_COLLISION:int = 1;
+      public static var id_ArbiterType_SENSOR:int;
       
-      public static var id_ArbiterType_SENSOR:int = 2;
-      
-      public static var id_ArbiterType_FLUID:int = 4;
+      public static var id_ArbiterType_FLUID:int;
       
       public static var GravMassMode_DEFAULT:GravMassMode;
       
@@ -196,10 +195,10 @@ package zpp_nape.util
       public static var ArbiterType_SENSOR:ArbiterType;
       
       public static var ArbiterType_FLUID:ArbiterType;
-       
       
       public function ZPP_Flags()
       {
       }
    }
 }
+

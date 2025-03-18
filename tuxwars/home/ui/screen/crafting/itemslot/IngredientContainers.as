@@ -11,11 +11,9 @@ package tuxwars.home.ui.screen.crafting.itemslot
    
    public class IngredientContainers extends UIContainers
    {
-      
       protected static const SHOW:String = "Slot_Default";
       
       protected static const DISABLED:String = "Slot_Disabled";
-       
       
       private var player:Player;
       
@@ -59,3 +57,4 @@ package tuxwars.home.ui.screen.crafting.itemslot
       }
    }
 }
+

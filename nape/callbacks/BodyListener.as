@@ -8,8 +8,6 @@ package nape.callbacks
    
    public final class BodyListener extends Listener
    {
-       
-      
       public var zpp_inner_zn:ZPP_BodyListener;
       
       public function BodyListener(param1:CbEvent, param2:*, param3:Function, param4:int = 0)
@@ -90,3 +88,4 @@ package nape.callbacks
       }
    }
 }
+

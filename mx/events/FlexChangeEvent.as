@@ -3,9 +3,10 @@ package mx.events
    import flash.events.Event;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class FlexChangeEvent extends Event
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const ADD_CHILD_BRIDGE:String = "addChildBridge";
@@ -13,7 +14,6 @@ package mx.events
       public static const REMOVE_CHILD_BRIDGE:String = "removeChildBridge";
       
       public static const STYLE_MANAGER_CHANGE:String = "styleManagerChange";
-       
       
       public var data:Object;
       
@@ -29,3 +29,4 @@ package mx.events
       }
    }
 }
+

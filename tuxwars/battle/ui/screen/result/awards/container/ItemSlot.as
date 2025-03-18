@@ -15,8 +15,6 @@ package tuxwars.battle.ui.screen.result.awards.container
    
    public class ItemSlot extends UIStateComponent
    {
-       
-      
       private var iconButton:IconButton;
       
       private var _itemName:String;
@@ -121,3 +119,4 @@ package tuxwars.battle.ui.screen.result.awards.container
       }
    }
 }
+

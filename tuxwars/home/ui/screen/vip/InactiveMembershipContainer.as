@@ -1,13 +1,14 @@
 package tuxwars.home.ui.screen.vip
 {
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
    import com.dchoc.ui.base.UIComponent;
    import com.dchoc.ui.buttons.UIButton;
    import com.dchoc.ui.events.UIButtonEvent;
    import com.dchoc.ui.text.UIAutoTextField;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import com.dchoc.utils.TextUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
@@ -31,7 +32,6 @@ package tuxwars.home.ui.screen.vip
    
    public class InactiveMembershipContainer extends AbstractMembershipContainer
    {
-      
       private static const ENABLED_LABEL:String = "Visible";
       
       private static const PRICE1Tooltip:String = "TOOLTIP_VIP_1_DAY";
@@ -43,7 +43,6 @@ package tuxwars.home.ui.screen.vip
       public static const FREE_GIFT:String = "freegift";
       
       public static const NOFREE_GIFT:String = "no_freegift";
-       
       
       private var game:TuxWarsGame;
       
@@ -71,9 +70,9 @@ package tuxwars.home.ui.screen.vip
       
       public function InactiveMembershipContainer(design:MovieClip, game:TuxWarsGame, vipScreen:VIPScreen, no:int, parent:UIComponent = null)
       {
-         var iconRow:* = null;
-         var _loc13_:* = null;
-         var _loc11_:* = null;
+         var iconRow:Row = null;
+         var _loc13_:Object = null;
+         var _loc11_:MovieClip = null;
          price1Data = VIPData.getVIPPrice("Price1");
          price2Data = VIPData.getVIPPrice("Price2");
          price3Data = VIPData.getVIPPrice("Price3");
@@ -99,18 +98,20 @@ package tuxwars.home.ui.screen.vip
                priceTooltip = "TOOLTIP_VIP_7_DAY";
                freeGiftClip.visible = true;
                noFreeGiftClip.visible = false;
+               var _loc20_:String = "VIPPrice";
                var _loc14_:ProjectManager = ProjectManager;
-               var _loc15_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("VIPPrice");
-               if(!_loc15_._cache["Price2"])
+               var _loc21_:String = "Price2";
+               var _loc15_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc20_);
+               if(!_loc15_._cache[_loc21_])
                {
-                  var _loc22_:Row = com.dchoc.utils.DCUtils.find(_loc15_.rows,"id","Price2");
+                  var _loc22_:Row = com.dchoc.utils.DCUtils.find(_loc15_.rows,"id",_loc21_);
                   if(!_loc22_)
                   {
-                     com.dchoc.utils.LogUtils.log("No row with name: \'" + "Price2" + "\' was found in table: \'" + _loc15_.name + "\'",_loc15_,3);
+                     com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc21_ + "\' was found in table: \'" + _loc15_.name + "\'",_loc15_,3);
                   }
-                  _loc15_._cache["Price2"] = _loc22_;
+                  _loc15_._cache[_loc21_] = _loc22_;
                }
-               iconRow = _loc15_._cache["Price2"];
+               iconRow = _loc15_._cache[_loc21_];
                dayText.setText("Days");
                break;
             case 2:
@@ -118,18 +119,20 @@ package tuxwars.home.ui.screen.vip
                priceTooltip = "TOOLTIP_VIP_30_DAY";
                freeGiftClip.visible = true;
                noFreeGiftClip.visible = false;
+               var _loc23_:String = "VIPPrice";
                var _loc16_:ProjectManager = ProjectManager;
-               var _loc17_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("VIPPrice");
-               if(!_loc17_._cache["Price3"])
+               var _loc24_:String = "Price3";
+               var _loc17_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc23_);
+               if(!_loc17_._cache[_loc24_])
                {
-                  var _loc25_:Row = com.dchoc.utils.DCUtils.find(_loc17_.rows,"id","Price3");
+                  var _loc25_:Row = com.dchoc.utils.DCUtils.find(_loc17_.rows,"id",_loc24_);
                   if(!_loc25_)
                   {
-                     com.dchoc.utils.LogUtils.log("No row with name: \'" + "Price3" + "\' was found in table: \'" + _loc17_.name + "\'",_loc17_,3);
+                     com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc24_ + "\' was found in table: \'" + _loc17_.name + "\'",_loc17_,3);
                   }
-                  _loc17_._cache["Price3"] = _loc25_;
+                  _loc17_._cache[_loc24_] = _loc25_;
                }
-               iconRow = _loc17_._cache["Price3"];
+               iconRow = _loc17_._cache[_loc24_];
                dayText.setText("Days");
          }
          membershipText = ProjectManager.getText("VIP_MEMBERSHIP_HEADER");
@@ -137,7 +140,7 @@ package tuxwars.home.ui.screen.vip
          subscriptionText = ProjectManager.getText("VIP_MEMBERSHIP_SUBSCRIPTION_INACTIVE");
          buttonMC = design.Slot_01;
          var dayString:String = TextUtils.getTimeTextFromSeconds(priceData.duration);
-         var ii:int = dayString.indexOf("d");
+         var ii:int = int(dayString.indexOf("d"));
          var daySubString:String = dayString.substr(0,ii);
          time1Text = TuxUiUtils.createAutoTextFieldWithText(design.Slot_01.Text_number,daySubString);
          button = TuxUiUtils.createButton(UIButton,design.Slot_01,"Button_Buy",buttonCallback,null,priceTooltip);
@@ -147,12 +150,13 @@ package tuxwars.home.ui.screen.vip
          updateButtonState();
          if(iconRow)
          {
+            var _loc26_:String = "Item";
             var _loc18_:* = iconRow;
-            if(!_loc18_._cache["Item"])
+            if(!_loc18_._cache[_loc26_])
             {
-               _loc18_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc18_._fields,"name","Item");
+               _loc18_._cache[_loc26_] = com.dchoc.utils.DCUtils.find(_loc18_._fields,"name",_loc26_);
             }
-            var _loc19_:* = _loc18_._cache["Item"];
+            var _loc19_:* = _loc18_._cache[_loc26_];
             _loc13_ = _loc19_.overrideValue != null ? _loc19_.overrideValue : _loc19_._value;
             giftItem = ItemManager.getItemData(_loc13_.id);
             if(giftItem.iconRef)
@@ -180,7 +184,7 @@ package tuxwars.home.ui.screen.vip
       
       private function canAfford(value:int) : Boolean
       {
-         var sound2:* = null;
+         var sound2:SoundReference = null;
          if(game.player.premiumMoney < value)
          {
             sound2 = Sounds.getSoundReference("Nomoney");
@@ -236,3 +240,4 @@ package tuxwars.home.ui.screen.vip
       }
    }
 }
+

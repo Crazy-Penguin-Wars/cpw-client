@@ -2,15 +2,15 @@ package mx.core
 {
    import flash.events.Event;
    
+   use namespace mx_internal;
+   
    public class RSLListLoader
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       private var currentIndex:int = 0;
       
-      private var rslList:Array;
+      private var rslList:Array = [];
       
       private var chainedProgressHandler:Function;
       
@@ -24,7 +24,6 @@ package mx.core
       
       public function RSLListLoader(rslList:Array)
       {
-         this.rslList = [];
          super();
          this.rslList = rslList;
       }
@@ -102,3 +101,4 @@ package mx.core
       }
    }
 }
+

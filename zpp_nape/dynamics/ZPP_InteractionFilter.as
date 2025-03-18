@@ -9,13 +9,11 @@ package zpp_nape.dynamics
    
    public class ZPP_InteractionFilter
    {
-      
-      public static var zpp_pool:ZPP_InteractionFilter = null;
-       
+      public static var zpp_pool:ZPP_InteractionFilter;
       
       public var wrap_shapes:ShapeList;
       
-      public var userData;
+      public var userData:*;
       
       public var shapes:ZNPList_ZPP_Shape;
       
@@ -102,6 +100,7 @@ package zpp_nape.dynamics
             ZPP_InteractionFilter.zpp_pool = _loc1_.next;
             _loc1_.next = null;
          }
+         null;
          _loc1_.collisionGroup = collisionGroup;
          _loc1_.collisionMask = collisionMask;
          _loc1_.sensorGroup = sensorGroup;
@@ -112,3 +111,4 @@ package zpp_nape.dynamics
       }
    }
 }
+

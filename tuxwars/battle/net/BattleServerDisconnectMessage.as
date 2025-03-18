@@ -4,9 +4,7 @@ package tuxwars.battle.net
    
    public class BattleServerDisconnectMessage extends Message
    {
-      
       public static const DISCONNECT:String = "BattleServerDisconnect";
-       
       
       public function BattleServerDisconnectMessage()
       {
@@ -14,3 +12,4 @@ package tuxwars.battle.net
       }
    }
 }
+

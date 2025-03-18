@@ -7,8 +7,6 @@ package nape.geom
    
    public final class Vec3
    {
-       
-      
       public var zpp_pool:Vec3;
       
       public var zpp_inner:ZPP_Vec3;
@@ -1059,3 +1057,4 @@ package nape.geom
       }
    }
 }
+

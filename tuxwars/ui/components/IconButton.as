@@ -7,9 +7,7 @@ package tuxwars.ui.components
    
    public class IconButton extends UIButton
    {
-      
       private static const CONTAINER_ICON:String = "Container_Icon";
-       
       
       private var _icon:MovieClip;
       
@@ -26,7 +24,7 @@ package tuxwars.ui.components
       
       private function removeIcon() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:MovieClip = null;
          var i:int = 0;
          var displayable:* = undefined;
          if(getIconContainer())
@@ -62,7 +60,7 @@ package tuxwars.ui.components
       
       private function getIconContainer() : MovieClip
       {
-         var _loc3_:* = null;
+         var _loc3_:MovieClip = null;
          var _loc2_:MovieClip = getDesignMovieClip();
          var clip:MovieClip = _loc2_.getChildByName("Container_Icon") as MovieClip;
          if(clip == null)
@@ -83,3 +81,4 @@ package tuxwars.ui.components
       }
    }
 }
+

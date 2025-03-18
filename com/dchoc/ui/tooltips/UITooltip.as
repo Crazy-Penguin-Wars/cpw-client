@@ -7,8 +7,6 @@ package com.dchoc.ui.tooltips
    
    public class UITooltip extends UIStateComponent
    {
-       
-      
       private var tooltipBG:MovieClip;
       
       private var tooltip:TextField;
@@ -22,8 +20,8 @@ package com.dchoc.ui.tooltips
          super(design);
          tooltip = getDesignMovieClip().Text;
          tooltipBG = getDesignMovieClip().Base;
-         spaceHorizontal = Number(tooltipBG.getWidth()) - tooltip.width;
-         spaceVertital = Number(tooltipBG.getHeight()) - tooltip.height;
+         spaceHorizontal = tooltipBG.getWidth() - tooltip.width;
+         spaceVertital = tooltipBG.getHeight() - tooltip.height;
          setMouseEnabled(false);
          setMouseChildren(false);
          tooltip.autoSize = "center";
@@ -58,3 +56,4 @@ package com.dchoc.ui.tooltips
       }
    }
 }
+

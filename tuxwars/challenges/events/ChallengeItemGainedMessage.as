@@ -7,8 +7,6 @@ package tuxwars.challenges.events
    
    public class ChallengeItemGainedMessage extends Message
    {
-       
-      
       private var _gainedAmount:int;
       
       private var _player:TuxFriend;
@@ -37,3 +35,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

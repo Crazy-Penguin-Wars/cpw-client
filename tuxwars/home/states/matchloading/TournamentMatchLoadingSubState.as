@@ -7,8 +7,6 @@ package tuxwars.home.states.matchloading
    
    public class TournamentMatchLoadingSubState extends MatchLoadingSubState
    {
-       
-      
       public function TournamentMatchLoadingSubState(game:TuxWarsGame, request:ServerRequest)
       {
          super(game,request);
@@ -35,3 +33,4 @@ package tuxwars.home.states.matchloading
       }
    }
 }
+

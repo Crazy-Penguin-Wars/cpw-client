@@ -11,19 +11,17 @@ package tuxwars.ui.containers.shop.container.slot
    
    public class SlotsBig extends Container implements IShopTutorial
    {
-      
       private static const SLOT_SIZE:int = 4;
       
       private static const CONTAINER:String = "Container_0";
-       
       
       private var _containers:Vector.<ContentSizeFour>;
       
       public function SlotsBig(design:DisplayObject, data:*, game:TuxWarsGame, slots:int, parent:TuxUIScreen = null)
       {
          var i:int = 0;
-         var mc:* = null;
-         var dataArray:* = null;
+         var mc:MovieClip = null;
+         var dataArray:Array = null;
          var size:int = 0;
          super(design,data,game,parent);
          _containers = new Vector.<ContentSizeFour>();
@@ -82,3 +80,4 @@ package tuxwars.ui.containers.shop.container.slot
       }
    }
 }
+

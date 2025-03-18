@@ -5,11 +5,11 @@ package mx.messaging
    import mx.logging.Log;
    import mx.messaging.events.MessageEvent;
    
+   use namespace mx_internal;
+   
    public class ConsumerMessageDispatcher
    {
-      
       private static var _instance:ConsumerMessageDispatcher;
-       
       
       private const _consumers:Object = {};
       
@@ -35,7 +35,7 @@ package mx.messaging
       {
          var memberOfChannelSets:Array = channel.channelSets;
          var cs:ChannelSet = null;
-         var n:int = memberOfChannelSets.length;
+         var n:int = int(memberOfChannelSets.length);
          for(var i:int = 0; i < n; i++)
          {
             cs = memberOfChannelSets[i];
@@ -126,3 +126,4 @@ package mx.messaging
       }
    }
 }
+

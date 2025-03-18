@@ -17,8 +17,6 @@ package tuxwars.ui.containers.slotitem
    
    public class SlotElement extends UIStateComponent implements IShopTutorial
    {
-       
-      
       private var _game:TuxWarsGame;
       
       private var _shopItem:ShopItem;
@@ -151,3 +149,4 @@ package tuxwars.ui.containers.slotitem
       }
    }
 }
+

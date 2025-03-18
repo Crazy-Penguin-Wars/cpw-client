@@ -5,8 +5,6 @@ package tuxwars.battle.world
    
    public interface Collider
    {
-       
-      
       function handleBeginContact(param1:Body, param2:ArbiterList) : void;
       
       function handleOngoingContact(param1:Body, param2:ArbiterList) : void;
@@ -16,3 +14,4 @@ package tuxwars.battle.world
       function get id() : String;
    }
 }
+

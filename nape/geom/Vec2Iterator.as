@@ -5,9 +5,7 @@ package nape.geom
    
    public final class Vec2Iterator
    {
-      
-      public static var zpp_pool:Vec2Iterator = null;
-       
+      public static var zpp_pool:Vec2Iterator;
       
       public var zpp_next:Vec2Iterator;
       
@@ -68,3 +66,4 @@ package nape.geom
       }
    }
 }
+

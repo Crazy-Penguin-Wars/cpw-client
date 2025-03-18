@@ -21,8 +21,6 @@ package zpp_nape.shape
    
    public class ZPP_Polygon extends ZPP_Shape
    {
-       
-      
       public var zip_valid:Boolean;
       
       public var zip_sanitation:Boolean;
@@ -199,6 +197,7 @@ package zpp_nape.shape
                   _loc1_.zip_axis = false;
                   _loc1_.axisx = Math.sin(_loc1_.rot);
                   _loc1_.axisy = Math.cos(_loc1_.rot);
+                  null;
                }
                if(zip_gverts)
                {
@@ -212,6 +211,7 @@ package zpp_nape.shape
                         _loc1_.zip_axis = false;
                         _loc1_.axisx = Math.sin(_loc1_.rot);
                         _loc1_.axisy = Math.cos(_loc1_.rot);
+                        null;
                      }
                      _loc2_ = lverts.next;
                      _loc3_ = gverts.next;
@@ -365,37 +365,12 @@ package zpp_nape.shape
             {
                _loc5_ = lverts.next;
                _loc8_ = _loc5_;
-               _loc9_ = 0;
-               _loc10_ = 0;
-               _loc9_ = _loc8_.x - _loc7_.x;
-               _loc10_ = _loc8_.y - _loc7_.y;
-               _loc11_ = 0;
-               _loc12_ = 0;
-               _loc11_ = _loc7_.x - _loc6_.x;
-               _loc12_ = _loc7_.y - _loc6_.y;
-               _loc13_ = _loc12_ * _loc9_ - _loc11_ * _loc10_;
-               if(_loc13_ > Config.epsilon)
+               do
                {
-                  _loc3_ = true;
-               }
-               else if(_loc13_ < -Config.epsilon)
-               {
-                  _loc2_ = true;
-               }
-               if(_loc3_ && _loc2_)
-               {
-                  _loc4_ = false;
-               }
-               if(_loc4_)
-               {
-                  _loc6_ = _loc7_;
-                  _loc7_ = _loc8_;
-                  _loc5_ = _loc5_.next;
-                  _loc14_ = _loc5_;
                   _loc9_ = 0;
                   _loc10_ = 0;
-                  _loc9_ = _loc14_.x - _loc7_.x;
-                  _loc10_ = _loc14_.y - _loc7_.y;
+                  _loc9_ = _loc8_.x - _loc7_.x;
+                  _loc10_ = _loc8_.y - _loc7_.y;
                   _loc11_ = 0;
                   _loc12_ = 0;
                   _loc11_ = _loc7_.x - _loc6_.x;
@@ -411,7 +386,44 @@ package zpp_nape.shape
                   }
                   if(_loc3_ && _loc2_)
                   {
+                     _loc4_ = false;
+                     break;
                   }
+               }
+               while(false);
+               
+               if(_loc4_)
+               {
+                  _loc6_ = _loc7_;
+                  _loc7_ = _loc8_;
+                  _loc5_ = _loc5_.next;
+                  _loc14_ = _loc5_;
+                  do
+                  {
+                     _loc9_ = 0;
+                     _loc10_ = 0;
+                     _loc9_ = _loc14_.x - _loc7_.x;
+                     _loc10_ = _loc14_.y - _loc7_.y;
+                     _loc11_ = 0;
+                     _loc12_ = 0;
+                     _loc11_ = _loc7_.x - _loc6_.x;
+                     _loc12_ = _loc7_.y - _loc6_.y;
+                     _loc13_ = _loc12_ * _loc9_ - _loc11_ * _loc10_;
+                     if(_loc13_ > Config.epsilon)
+                     {
+                        _loc3_ = true;
+                     }
+                     else if(_loc13_ < -Config.epsilon)
+                     {
+                        _loc2_ = true;
+                     }
+                     if(_loc3_ && _loc2_)
+                     {
+                        break;
+                     }
+                  }
+                  while(false);
+                  
                }
             }
             if(_loc3_ && _loc2_)
@@ -486,9 +498,13 @@ package zpp_nape.shape
                }
                if(_loc16_)
                {
-                  _loc17_ = lverts.next;
-                  if(!(_loc6_ == _loc14_ || _loc6_ == _loc17_ || _loc7_ == _loc14_ || _loc7_ == _loc17_))
+                  do
                   {
+                     _loc17_ = lverts.next;
+                     if(_loc6_ == _loc14_ || _loc6_ == _loc17_ || _loc7_ == _loc14_ || _loc7_ == _loc17_)
+                     {
+                        break;
+                     }
                      _loc9_ = 0;
                      _loc10_ = 0;
                      _loc9_ = _loc6_.x - _loc14_.x;
@@ -512,19 +528,26 @@ package zpp_nape.shape
                            if(_loc21_ > Config.epsilon && _loc21_ < 1 - Config.epsilon)
                            {
                               _loc4_ = false;
+                              break;
                            }
                         }
                      }
                   }
+                  while(false);
+                  
                }
                _loc6_ = _loc7_;
                _loc5_ = _loc5_.next;
             }
             if(_loc15_)
             {
-               _loc7_ = lverts.next;
-               if(_loc4_)
+               do
                {
+                  _loc7_ = lverts.next;
+                  if(!_loc4_)
+                  {
+                     break;
+                  }
                   _loc16_ = true;
                   _loc8_ = lverts.next;
                   _loc14_ = _loc8_;
@@ -573,9 +596,13 @@ package zpp_nape.shape
                   }
                   if(_loc16_)
                   {
-                     _loc17_ = lverts.next;
-                     if(!(_loc6_ == _loc14_ || _loc6_ == _loc17_ || _loc7_ == _loc14_ || _loc7_ == _loc17_))
+                     do
                      {
+                        _loc17_ = lverts.next;
+                        if(_loc6_ == _loc14_ || _loc6_ == _loc17_ || _loc7_ == _loc14_ || _loc7_ == _loc17_)
+                        {
+                           break;
+                        }
                         _loc9_ = 0;
                         _loc10_ = 0;
                         _loc9_ = _loc6_.x - _loc14_.x;
@@ -599,12 +626,17 @@ package zpp_nape.shape
                               if(_loc21_ > Config.epsilon && _loc21_ < 1 - Config.epsilon)
                               {
                                  _loc4_ = false;
+                                 break;
                               }
                            }
                         }
                      }
+                     while(false);
+                     
                   }
                }
+               while(false);
+               
             }
             if(!_loc4_)
             {
@@ -725,6 +757,7 @@ package zpp_nape.shape
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = localCOMx;
          var _loc2_:Number = localCOMy;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_localCOM));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -827,7 +860,7 @@ package zpp_nape.shape
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_localCOM = _loc4_;
          wrap_localCOM.zpp_inner._inuse = true;
          wrap_localCOM.zpp_inner._validate = localCOM_validate;
@@ -918,6 +951,7 @@ package zpp_nape.shape
                   ZPP_Edge.zpp_pool = _loc6_.next;
                   _loc6_.next = null;
                }
+               null;
                _loc6_.polygon = this;
                edges.add(_loc6_);
                if(ZPP_Edge.zpp_pool == null)
@@ -930,6 +964,7 @@ package zpp_nape.shape
                   ZPP_Edge.zpp_pool = _loc7_.next;
                   _loc7_.next = null;
                }
+               null;
                _loc7_.polygon = this;
                edges.add(_loc7_);
                edgeCnt += 2;
@@ -946,9 +981,10 @@ package zpp_nape.shape
                   ZPP_Edge.zpp_pool = _loc6_.next;
                   _loc6_.next = null;
                }
+               null;
                _loc6_.polygon = this;
                edges.insert(_loc3_,_loc6_);
-               edgeCnt = edgeCnt + 1;
+               ++edgeCnt;
             }
          }
          _loc4_._validate = gverts_pa_validate;
@@ -1013,6 +1049,7 @@ package zpp_nape.shape
                {
                   _loc1_.localCOMx = _loc1_.lverts.next.x;
                   _loc1_.localCOMy = _loc1_.lverts.next.y;
+                  null;
                }
                else if(_loc1_.lverts.next.next.next == null)
                {
@@ -1095,6 +1132,7 @@ package zpp_nape.shape
                {
                   _loc2_.localCOMx = _loc2_.lverts.next.x;
                   _loc2_.localCOMy = _loc2_.lverts.next.y;
+                  null;
                }
                else if(_loc2_.lverts.next.next.next == null)
                {
@@ -1222,6 +1260,7 @@ package zpp_nape.shape
                   _loc1_.zip_axis = false;
                   _loc1_.axisx = Math.sin(_loc1_.rot);
                   _loc1_.axisy = Math.cos(_loc1_.rot);
+                  null;
                }
                _loc2_ = lverts.next;
                _loc3_ = gverts.next;
@@ -1262,6 +1301,7 @@ package zpp_nape.shape
                   _loc1_.zip_axis = false;
                   _loc1_.axisx = Math.sin(_loc1_.rot);
                   _loc1_.axisy = Math.cos(_loc1_.rot);
+                  null;
                }
                _loc2_ = lverts.next;
                _loc3_ = gverts.next;
@@ -1280,6 +1320,7 @@ package zpp_nape.shape
       
       public function getlverts() : void
       {
+         var _loc1_:ZPP_Polygon = this;
          wrap_lverts = ZPP_MixVec2List.get(lverts);
          wrap_lverts.zpp_inner.post_adder = lverts_post_adder;
          wrap_lverts.zpp_inner.subber = lverts_subber;
@@ -1291,6 +1332,7 @@ package zpp_nape.shape
       
       public function getgverts() : void
       {
+         var _loc1_:ZPP_Polygon = this;
          wrap_gverts = ZPP_MixVec2List.get(gverts,true);
          wrap_gverts.zpp_inner.reverse_flag = reverse_flag;
          wrap_gverts.zpp_inner._validate = gverts_validate;
@@ -1298,6 +1340,7 @@ package zpp_nape.shape
       
       public function getedges() : void
       {
+         var _loc1_:ZPP_Polygon = this;
          wrap_edges = ZPP_EdgeList.get(edges,true);
          wrap_edges.zpp_inner.reverse_flag = reverse_flag;
          wrap_edges.zpp_inner._validate = edges_validate;
@@ -1362,7 +1405,7 @@ package zpp_nape.shape
             _loc7_.polygon = null;
             _loc7_.next = ZPP_Edge.zpp_pool;
             ZPP_Edge.zpp_pool = _loc7_;
-            edgeCnt = edgeCnt - 1;
+            --edgeCnt;
          }
       }
       
@@ -1494,6 +1537,7 @@ package zpp_nape.shape
          var _loc1_:Number = 0;
          var _loc2_:ZNPNode_ZPP_Edge = edges.head;
          var _loc3_:Number = 0;
+         var _loc4_:Boolean = true;
          var _loc5_:ZPP_Vec2 = lverts.next;
          var _loc6_:ZPP_Vec2 = _loc5_;
          var _loc7_:ZPP_Vec2 = _loc5_.next;
@@ -1543,46 +1587,54 @@ package zpp_nape.shape
             _loc6_ = _loc8_;
             _loc7_ = _loc7_.next;
          }
-         _loc7_ = lverts.next;
-         _loc8_ = _loc7_;
-         _loc9_ = _loc2_.elt;
-         _loc2_ = _loc2_.next;
-         _loc3_ += _loc9_.length;
-         _loc10_ = 0;
-         _loc11_ = 0;
-         _loc10_ = _loc8_.x - _loc6_.x;
-         _loc11_ = _loc8_.y - _loc6_.y;
-         _loc1_ += _loc9_.length * Config.fluidAngularDragFriction * material.dynamicFriction * _loc9_.lprojection * _loc9_.lprojection;
-         _loc12_ = -(_loc6_.y * _loc9_.lnormx - _loc6_.x * _loc9_.lnormy) / (_loc11_ * _loc9_.lnormx - _loc10_ * _loc9_.lnormy);
-         if(_loc12_ > 0)
+         if(_loc4_)
          {
-            _loc13_ = _loc12_ > 1 ? 1 : _loc12_;
-            _loc14_ = 0;
-            _loc15_ = 0;
-            _loc14_ = _loc6_.x;
-            _loc15_ = _loc6_.y;
-            _loc16_ = _loc13_;
-            _loc14_ += _loc10_ * _loc16_;
-            _loc15_ += _loc11_ * _loc16_;
-            _loc16_ = _loc9_.lnormy * _loc6_.x - _loc9_.lnormx * _loc6_.y;
-            _loc17_ = _loc9_.lnormy * _loc14_ - _loc9_.lnormx * _loc15_;
-            _loc18_ = (_loc17_ * _loc17_ * _loc17_ - _loc16_ * _loc16_ * _loc16_) / (3 * (_loc17_ - _loc16_));
-            _loc1_ += _loc18_ * _loc13_ * _loc9_.length * Config.fluidAngularDrag;
-         }
-         if(_loc12_ < 1)
-         {
-            _loc13_ = _loc12_ < 0 ? 0 : _loc12_;
-            _loc14_ = 0;
-            _loc15_ = 0;
-            _loc14_ = _loc6_.x;
-            _loc15_ = _loc6_.y;
-            _loc16_ = _loc13_;
-            _loc14_ += _loc10_ * _loc16_;
-            _loc15_ += _loc11_ * _loc16_;
-            _loc16_ = _loc9_.lnormy * _loc14_ - _loc9_.lnormx * _loc15_;
-            _loc17_ = _loc9_.lnormy * _loc8_.x - _loc9_.lnormx * _loc8_.y;
-            _loc18_ = (_loc17_ * _loc17_ * _loc17_ - _loc16_ * _loc16_ * _loc16_) / (3 * (_loc17_ - _loc16_));
-            _loc1_ += _loc18_ * Config.fluidVacuumDrag * (1 - _loc13_) * _loc9_.length * Config.fluidAngularDrag;
+            do
+            {
+               _loc7_ = lverts.next;
+               _loc8_ = _loc7_;
+               _loc9_ = _loc2_.elt;
+               _loc2_ = _loc2_.next;
+               _loc3_ += _loc9_.length;
+               _loc10_ = 0;
+               _loc11_ = 0;
+               _loc10_ = _loc8_.x - _loc6_.x;
+               _loc11_ = _loc8_.y - _loc6_.y;
+               _loc1_ += _loc9_.length * Config.fluidAngularDragFriction * material.dynamicFriction * _loc9_.lprojection * _loc9_.lprojection;
+               _loc12_ = -(_loc6_.y * _loc9_.lnormx - _loc6_.x * _loc9_.lnormy) / (_loc11_ * _loc9_.lnormx - _loc10_ * _loc9_.lnormy);
+               if(_loc12_ > 0)
+               {
+                  _loc13_ = _loc12_ > 1 ? 1 : _loc12_;
+                  _loc14_ = 0;
+                  _loc15_ = 0;
+                  _loc14_ = _loc6_.x;
+                  _loc15_ = _loc6_.y;
+                  _loc16_ = _loc13_;
+                  _loc14_ += _loc10_ * _loc16_;
+                  _loc15_ += _loc11_ * _loc16_;
+                  _loc16_ = _loc9_.lnormy * _loc6_.x - _loc9_.lnormx * _loc6_.y;
+                  _loc17_ = _loc9_.lnormy * _loc14_ - _loc9_.lnormx * _loc15_;
+                  _loc18_ = (_loc17_ * _loc17_ * _loc17_ - _loc16_ * _loc16_ * _loc16_) / (3 * (_loc17_ - _loc16_));
+                  _loc1_ += _loc18_ * _loc13_ * _loc9_.length * Config.fluidAngularDrag;
+               }
+               if(_loc12_ < 1)
+               {
+                  _loc13_ = _loc12_ < 0 ? 0 : _loc12_;
+                  _loc14_ = 0;
+                  _loc15_ = 0;
+                  _loc14_ = _loc6_.x;
+                  _loc15_ = _loc6_.y;
+                  _loc16_ = _loc13_;
+                  _loc14_ += _loc10_ * _loc16_;
+                  _loc15_ += _loc11_ * _loc16_;
+                  _loc16_ = _loc9_.lnormy * _loc14_ - _loc9_.lnormx * _loc15_;
+                  _loc17_ = _loc9_.lnormy * _loc8_.x - _loc9_.lnormx * _loc8_.y;
+                  _loc18_ = (_loc17_ * _loc17_ * _loc17_ - _loc16_ * _loc16_ * _loc16_) / (3 * (_loc17_ - _loc16_));
+                  _loc1_ += _loc18_ * Config.fluidVacuumDrag * (1 - _loc13_) * _loc9_.length * Config.fluidAngularDrag;
+               }
+            }
+            while(false);
+            
          }
          angDrag = _loc1_ / (inertia * _loc3_);
       }
@@ -1669,3 +1721,4 @@ package zpp_nape.shape
       }
    }
 }
+

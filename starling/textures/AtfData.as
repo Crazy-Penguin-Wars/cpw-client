@@ -5,8 +5,6 @@ package starling.textures
    
    internal class AtfData
    {
-       
-      
       private var mFormat:String;
       
       private var mWidth:int;
@@ -74,3 +72,4 @@ package starling.textures
       }
    }
 }
+

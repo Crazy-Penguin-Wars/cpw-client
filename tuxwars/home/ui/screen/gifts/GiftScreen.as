@@ -17,8 +17,6 @@ package tuxwars.home.ui.screen.gifts
    
    public class GiftScreen extends TuxUIScreen
    {
-       
-      
       private const GIFT_SCREEN:String = "popup_gifts";
       
       private var buttonClose:UIButton;
@@ -68,3 +66,4 @@ package tuxwars.home.ui.screen.gifts
       }
    }
 }
+

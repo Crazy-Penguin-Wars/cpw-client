@@ -34,8 +34,6 @@ package zpp_nape.util
    
    public class ZPP_ShapeDebug extends ZPP_Debug
    {
-       
-      
       public var shapeList:ShapeList;
       
       public var shape:flash.display.Shape;
@@ -270,30 +268,30 @@ package zpp_nape.util
          var _loc33_:Number = NaN;
          if(outer.colour == null)
          {
-            _loc6_ = 16777215 * Math.exp(-(param1.id % 500) / 1500);
+            _loc6_ = int(16777215 * Math.exp(-(int(param1.id % 500)) / 1500));
          }
          else
          {
             _loc6_ = outer.colour(param1.id);
          }
-         _loc7_ = ((_loc6_ & 16711680) >> 16) * 0.7;
-         _loc8_ = ((_loc6_ & 65280) >> 8) * 0.7;
-         _loc9_ = (_loc6_ & 255) * 0.7;
-         var _loc5_:int = -16777216 | _loc7_ << 16 | _loc8_ << 8 | _loc9_;
+         _loc7_ = ((_loc6_ & 0xFF0000) >> 16) * 0.7;
+         _loc8_ = ((_loc6_ & 0xFF00) >> 8) * 0.7;
+         _loc9_ = (_loc6_ & 0xFF) * 0.7;
+         var _loc5_:int = -16777216 | int(_loc7_) << 16 | int(_loc8_) << 8 | int(_loc9_);
          var _loc10_:ZPP_Body = param1.body;
          if(_loc10_ != null)
          {
             if(outer.colour == null)
             {
-               _loc11_ = 16777215 * Math.exp(-(_loc10_.id % 500) / 1500);
+               _loc11_ = int(16777215 * Math.exp(-(int(_loc10_.id % 500)) / 1500));
             }
             else
             {
                _loc11_ = outer.colour(_loc10_.id);
             }
-            _loc7_ = ((_loc11_ & 16711680) >> 16) * 0.7;
-            _loc8_ = ((_loc11_ & 65280) >> 8) * 0.7;
-            _loc9_ = (_loc11_ & 255) * 0.7;
+            _loc7_ = ((_loc11_ & 0xFF0000) >> 16) * 0.7;
+            _loc8_ = ((_loc11_ & 0xFF00) >> 8) * 0.7;
+            _loc9_ = (_loc11_ & 0xFF) * 0.7;
             §§push(false);
             if(_loc10_.space != null)
             {
@@ -312,13 +310,13 @@ package zpp_nape.util
                _loc8_ = 0.4 * _loc8_ + 0.6 * bg_g;
                _loc9_ = 0.4 * _loc9_ + 0.6 * bg_b;
             }
-            _loc6_ = -16777216 | _loc7_ << 16 | _loc8_ << 8 | _loc9_;
+            _loc6_ = -16777216 | int(_loc7_) << 16 | int(_loc8_) << 8 | int(_loc9_);
             _loc11_ = _loc5_;
             _loc13_ = _loc6_;
             _loc7_ = 0.2;
-            _loc14_ = (_loc11_ >> 16 & 255) * _loc7_ + (_loc13_ >> 16 & 255) * (1 - _loc7_);
-            _loc15_ = (_loc11_ >> 8 & 255) * _loc7_ + (_loc13_ >> 8 & 255) * (1 - _loc7_);
-            _loc16_ = (_loc11_ & 255) * _loc7_ + (_loc13_ & 255) * (1 - _loc7_);
+            _loc14_ = int((_loc11_ >> 16 & 0xFF) * _loc7_ + (_loc13_ >> 16 & 0xFF) * (1 - _loc7_));
+            _loc15_ = int((_loc11_ >> 8 & 0xFF) * _loc7_ + (_loc13_ >> 8 & 0xFF) * (1 - _loc7_));
+            _loc16_ = int((_loc11_ & 0xFF) * _loc7_ + (_loc13_ & 0xFF) * (1 - _loc7_));
             _loc5_ = -16777216 | _loc14_ << 16 | _loc15_ << 8 | _loc16_;
             graphics.lineStyle(outer_zn.thickness,_loc5_,1);
             if(param1.type == ZPP_Flags.id_ShapeType_CIRCLE)
@@ -344,6 +342,7 @@ package zpp_nape.util
                            {
                               _loc18_.localCOMx = _loc18_.lverts.next.x;
                               _loc18_.localCOMy = _loc18_.lverts.next.y;
+                              null;
                            }
                            else if(_loc18_.lverts.next.next.next == null)
                            {
@@ -404,6 +403,7 @@ package zpp_nape.util
                         _loc24_.zip_axis = false;
                         _loc24_.axisx = Math.sin(_loc24_.rot);
                         _loc24_.axisy = Math.cos(_loc24_.rot);
+                        null;
                      }
                      _loc17_.worldCOMx = _loc17_.body.posx + (_loc17_.body.axisy * _loc17_.localCOMx - _loc17_.body.axisx * _loc17_.localCOMy);
                      _loc17_.worldCOMy = _loc17_.body.posy + (_loc17_.localCOMx * _loc17_.body.axisx + _loc17_.localCOMy * _loc17_.body.axisy);
@@ -455,6 +455,7 @@ package zpp_nape.util
                         _loc24_.zip_axis = false;
                         _loc24_.axisx = Math.sin(_loc24_.rot);
                         _loc24_.axisy = Math.cos(_loc24_.rot);
+                        null;
                      }
                      _loc19_ = _loc18_.lverts.next;
                      _loc20_ = _loc18_.gverts.next;
@@ -519,6 +520,7 @@ package zpp_nape.util
                               {
                                  _loc29_.localCOMx = _loc29_.lverts.next.x;
                                  _loc29_.localCOMy = _loc29_.lverts.next.y;
+                                 null;
                               }
                               else if(_loc29_.lverts.next.next.next == null)
                               {
@@ -579,6 +581,7 @@ package zpp_nape.util
                            _loc24_.zip_axis = false;
                            _loc24_.axisx = Math.sin(_loc24_.rot);
                            _loc24_.axisy = Math.cos(_loc24_.rot);
+                           null;
                         }
                         _loc18_.worldCOMx = _loc18_.body.posx + (_loc18_.body.axisy * _loc18_.localCOMx - _loc18_.body.axisx * _loc18_.localCOMy);
                         _loc18_.worldCOMy = _loc18_.body.posy + (_loc18_.localCOMx * _loc18_.body.axisx + _loc18_.localCOMy * _loc18_.body.axisy);
@@ -620,6 +623,7 @@ package zpp_nape.util
                            {
                               _loc18_.localCOMx = _loc18_.lverts.next.x;
                               _loc18_.localCOMy = _loc18_.lverts.next.y;
+                              null;
                            }
                            else if(_loc18_.lverts.next.next.next == null)
                            {
@@ -680,6 +684,7 @@ package zpp_nape.util
                         _loc24_.zip_axis = false;
                         _loc24_.axisx = Math.sin(_loc24_.rot);
                         _loc24_.axisy = Math.cos(_loc24_.rot);
+                        null;
                      }
                      param1.worldCOMx = param1.body.posx + (param1.body.axisy * param1.localCOMx - param1.body.axisx * param1.localCOMy);
                      param1.worldCOMy = param1.body.posy + (param1.localCOMx * param1.body.axisx + param1.localCOMy * param1.body.axisy);
@@ -688,9 +693,9 @@ package zpp_nape.util
                _loc11_ = _loc5_;
                _loc13_ = 16711680;
                _loc7_ = 0.8;
-               _loc14_ = (_loc11_ >> 16 & 255) * _loc7_ + (_loc13_ >> 16 & 255) * (1 - _loc7_);
-               _loc15_ = (_loc11_ >> 8 & 255) * _loc7_ + (_loc13_ >> 8 & 255) * (1 - _loc7_);
-               _loc16_ = (_loc11_ & 255) * _loc7_ + (_loc13_ & 255) * (1 - _loc7_);
+               _loc14_ = int((_loc11_ >> 16 & 0xFF) * _loc7_ + (_loc13_ >> 16 & 0xFF) * (1 - _loc7_));
+               _loc15_ = int((_loc11_ >> 8 & 0xFF) * _loc7_ + (_loc13_ >> 8 & 0xFF) * (1 - _loc7_));
+               _loc16_ = int((_loc11_ & 0xFF) * _loc7_ + (_loc13_ & 0xFF) * (1 - _loc7_));
                graphics.lineStyle(outer_zn.thickness,-16777216 | _loc14_ << 16 | _loc15_ << 8 | _loc16_,1);
                _loc7_ = 0;
                _loc8_ = 0;
@@ -733,6 +738,7 @@ package zpp_nape.util
                                     {
                                        _loc18_.localCOMx = _loc18_.lverts.next.x;
                                        _loc18_.localCOMy = _loc18_.lverts.next.y;
+                                       null;
                                     }
                                     else if(_loc18_.lverts.next.next.next == null)
                                     {
@@ -793,6 +799,7 @@ package zpp_nape.util
                                  _loc24_.zip_axis = false;
                                  _loc24_.axisx = Math.sin(_loc24_.rot);
                                  _loc24_.axisy = Math.cos(_loc24_.rot);
+                                 null;
                               }
                               _loc17_.worldCOMx = _loc17_.body.posx + (_loc17_.body.axisy * _loc17_.localCOMx - _loc17_.body.axisx * _loc17_.localCOMy);
                               _loc17_.worldCOMy = _loc17_.body.posy + (_loc17_.localCOMx * _loc17_.body.axisx + _loc17_.localCOMy * _loc17_.body.axisy);
@@ -820,6 +827,7 @@ package zpp_nape.util
                                  _loc24_.zip_axis = false;
                                  _loc24_.axisx = Math.sin(_loc24_.rot);
                                  _loc24_.axisy = Math.cos(_loc24_.rot);
+                                 null;
                               }
                               _loc19_ = _loc18_.lverts.next;
                               _loc20_ = _loc18_.gverts.next;
@@ -980,15 +988,15 @@ package zpp_nape.util
          {
             if(outer.colour == null)
             {
-               _loc8_ = 16777215 * Math.exp(-(param1.id % 500) / 1500);
+               _loc8_ = int(16777215 * Math.exp(-(int(param1.id % 500)) / 1500));
             }
             else
             {
                _loc8_ = outer.colour(param1.id);
             }
-            _loc9_ = ((_loc8_ & 16711680) >> 16) * 0.7;
-            _loc10_ = ((_loc8_ & 65280) >> 8) * 0.7;
-            _loc11_ = (_loc8_ & 255) * 0.7;
+            _loc9_ = ((_loc8_ & 0xFF0000) >> 16) * 0.7;
+            _loc10_ = ((_loc8_ & 0xFF00) >> 8) * 0.7;
+            _loc11_ = (_loc8_ & 0xFF) * 0.7;
             §§push(false);
             if(param1.space != null)
             {
@@ -1007,13 +1015,13 @@ package zpp_nape.util
                _loc10_ = 0.4 * _loc10_ + 0.6 * bg_g;
                _loc11_ = 0.4 * _loc11_ + 0.6 * bg_b;
             }
-            _loc7_ = -16777216 | _loc9_ << 16 | _loc10_ << 8 | _loc11_;
+            _loc7_ = -16777216 | int(_loc9_) << 16 | int(_loc10_) << 8 | int(_loc11_);
             _loc8_ = _loc7_;
             _loc13_ = 16711680;
             _loc9_ = 0.8;
-            _loc14_ = (_loc8_ >> 16 & 255) * _loc9_ + (_loc13_ >> 16 & 255) * (1 - _loc9_);
-            _loc15_ = (_loc8_ >> 8 & 255) * _loc9_ + (_loc13_ >> 8 & 255) * (1 - _loc9_);
-            _loc16_ = (_loc8_ & 255) * _loc9_ + (_loc13_ & 255) * (1 - _loc9_);
+            _loc14_ = int((_loc8_ >> 16 & 0xFF) * _loc9_ + (_loc13_ >> 16 & 0xFF) * (1 - _loc9_));
+            _loc15_ = int((_loc8_ >> 8 & 0xFF) * _loc9_ + (_loc13_ >> 8 & 0xFF) * (1 - _loc9_));
+            _loc16_ = int((_loc8_ & 0xFF) * _loc9_ + (_loc13_ & 0xFF) * (1 - _loc9_));
             graphics.lineStyle(outer_zn.thickness,-16777216 | _loc14_ << 16 | _loc15_ << 8 | _loc16_,1);
             _loc9_ = 0;
             _loc10_ = 0;
@@ -1077,6 +1085,7 @@ package zpp_nape.util
                                           {
                                              _loc19_.localCOMx = _loc19_.lverts.next.x;
                                              _loc19_.localCOMy = _loc19_.lverts.next.y;
+                                             null;
                                           }
                                           else if(_loc19_.lverts.next.next.next == null)
                                           {
@@ -1137,6 +1146,7 @@ package zpp_nape.util
                                        _loc27_.zip_axis = false;
                                        _loc27_.axisx = Math.sin(_loc27_.rot);
                                        _loc27_.axisy = Math.cos(_loc27_.rot);
+                                       null;
                                     }
                                     _loc18_.worldCOMx = _loc18_.body.posx + (_loc18_.body.axisy * _loc18_.localCOMx - _loc18_.body.axisx * _loc18_.localCOMy);
                                     _loc18_.worldCOMy = _loc18_.body.posy + (_loc18_.localCOMx * _loc18_.body.axisx + _loc18_.localCOMy * _loc18_.body.axisy);
@@ -1164,6 +1174,7 @@ package zpp_nape.util
                                        _loc27_.zip_axis = false;
                                        _loc27_.axisx = Math.sin(_loc27_.rot);
                                        _loc27_.axisy = Math.cos(_loc27_.rot);
+                                       null;
                                     }
                                     _loc21_ = _loc19_.lverts.next;
                                     _loc22_ = _loc19_.gverts.next;
@@ -1327,9 +1338,9 @@ package zpp_nape.util
                _loc8_ = 65280;
                _loc9_ = ~bg_col;
                _loc10_ = 0.7;
-               _loc11_ = (_loc8_ >> 16 & 255) * _loc10_ + (_loc9_ >> 16 & 255) * (1 - _loc10_);
-               _loc12_ = (_loc8_ >> 8 & 255) * _loc10_ + (_loc9_ >> 8 & 255) * (1 - _loc10_);
-               _loc13_ = (_loc8_ & 255) * _loc10_ + (_loc9_ & 255) * (1 - _loc10_);
+               _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc10_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc10_));
+               _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc10_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc10_));
+               _loc13_ = int((_loc8_ & 0xFF) * _loc10_ + (_loc9_ & 0xFF) * (1 - _loc10_));
                graphics.lineStyle(outer_zn.thickness,-16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_,1);
                if(param4)
                {
@@ -2936,9 +2947,9 @@ package zpp_nape.util
                _loc8_ = 255;
                _loc9_ = ~bg_col;
                _loc10_ = 0.7;
-               _loc11_ = (_loc8_ >> 16 & 255) * _loc10_ + (_loc9_ >> 16 & 255) * (1 - _loc10_);
-               _loc12_ = (_loc8_ >> 8 & 255) * _loc10_ + (_loc9_ >> 8 & 255) * (1 - _loc10_);
-               _loc13_ = (_loc8_ & 255) * _loc10_ + (_loc9_ & 255) * (1 - _loc10_);
+               _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc10_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc10_));
+               _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc10_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc10_));
+               _loc13_ = int((_loc8_ & 0xFF) * _loc10_ + (_loc9_ & 0xFF) * (1 - _loc10_));
                graphics.lineStyle(outer_zn.thickness,-16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_,1);
                if(param4)
                {
@@ -3104,7 +3115,7 @@ package zpp_nape.util
                   _loc25_ = _loc24_;
                   if(_loc25_.active && _loc25_.arbiter.active)
                   {
-                     _loc23_.zpp_inner.user_length = _loc23_.zpp_inner.user_length + 1;
+                     ++_loc23_.zpp_inner.user_length;
                   }
                   _loc24_ = _loc24_.next;
                }
@@ -3134,7 +3145,7 @@ package zpp_nape.util
                      _loc25_ = _loc24_;
                      if(_loc25_.active && _loc25_.arbiter.active)
                      {
-                        _loc23_.zpp_inner.user_length = _loc23_.zpp_inner.user_length + 1;
+                        ++_loc23_.zpp_inner.user_length;
                      }
                      _loc24_ = _loc24_.next;
                   }
@@ -3288,9 +3299,9 @@ package zpp_nape.util
                   _loc8_ = 255;
                   _loc9_ = ~bg_col;
                   _loc30_ = 0.7;
-                  _loc11_ = (_loc8_ >> 16 & 255) * _loc30_ + (_loc9_ >> 16 & 255) * (1 - _loc30_);
-                  _loc12_ = (_loc8_ >> 8 & 255) * _loc30_ + (_loc9_ >> 8 & 255) * (1 - _loc30_);
-                  _loc13_ = (_loc8_ & 255) * _loc30_ + (_loc9_ & 255) * (1 - _loc30_);
+                  _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc30_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc30_));
+                  _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc30_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc30_));
+                  _loc13_ = int((_loc8_ & 0xFF) * _loc30_ + (_loc9_ & 0xFF) * (1 - _loc30_));
                   graphics.lineStyle(outer_zn.thickness,-16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_,1);
                   if(_loc14_ != null && _loc14_.zpp_disp)
                   {
@@ -3441,9 +3452,9 @@ package zpp_nape.util
                   _loc8_ = 16711680;
                   _loc9_ = ~bg_col;
                   _loc30_ = 0.7;
-                  _loc11_ = (_loc8_ >> 16 & 255) * _loc30_ + (_loc9_ >> 16 & 255) * (1 - _loc30_);
-                  _loc12_ = (_loc8_ >> 8 & 255) * _loc30_ + (_loc9_ >> 8 & 255) * (1 - _loc30_);
-                  _loc13_ = (_loc8_ & 255) * _loc30_ + (_loc9_ & 255) * (1 - _loc30_);
+                  _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc30_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc30_));
+                  _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc30_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc30_));
+                  _loc13_ = int((_loc8_ & 0xFF) * _loc30_ + (_loc9_ & 0xFF) * (1 - _loc30_));
                   graphics.lineStyle(outer_zn.thickness,-16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_,1);
                   if(_loc14_ != null && _loc14_.zpp_disp)
                   {
@@ -3717,18 +3728,18 @@ package zpp_nape.util
                   _loc8_ = 16711935;
                   _loc9_ = ~bg_col;
                   _loc28_ = 0.7;
-                  _loc11_ = (_loc8_ >> 16 & 255) * _loc28_ + (_loc9_ >> 16 & 255) * (1 - _loc28_);
-                  _loc12_ = (_loc8_ >> 8 & 255) * _loc28_ + (_loc9_ >> 8 & 255) * (1 - _loc28_);
-                  _loc13_ = (_loc8_ & 255) * _loc28_ + (_loc9_ & 255) * (1 - _loc28_);
+                  _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc28_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc28_));
+                  _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc28_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc28_));
+                  _loc13_ = int((_loc8_ & 0xFF) * _loc28_ + (_loc9_ & 0xFF) * (1 - _loc28_));
                   graphics.lineStyle(outer_zn.thickness,-16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_,1);
                   graphics.drawCircle(_loc10_,_loc16_,1);
                }
                _loc8_ = ~bg_col;
                _loc9_ = bg_col;
                _loc28_ = 0.7;
-               _loc11_ = (_loc8_ >> 16 & 255) * _loc28_ + (_loc9_ >> 16 & 255) * (1 - _loc28_);
-               _loc12_ = (_loc8_ >> 8 & 255) * _loc28_ + (_loc9_ >> 8 & 255) * (1 - _loc28_);
-               _loc13_ = (_loc8_ & 255) * _loc28_ + (_loc9_ & 255) * (1 - _loc28_);
+               _loc11_ = int((_loc8_ >> 16 & 0xFF) * _loc28_ + (_loc9_ >> 16 & 0xFF) * (1 - _loc28_));
+               _loc12_ = int((_loc8_ >> 8 & 0xFF) * _loc28_ + (_loc9_ >> 8 & 0xFF) * (1 - _loc28_));
+               _loc13_ = int((_loc8_ & 0xFF) * _loc28_ + (_loc9_ & 0xFF) * (1 - _loc28_));
                graphics.lineStyle(outer_zn.thickness,-16777216 | _loc11_ << 16 | _loc12_ << 8 | _loc13_,1);
                graphics.moveTo(_loc10_,_loc16_);
                if(!_loc22_.zpp_inner.active)
@@ -3785,3 +3796,4 @@ package zpp_nape.util
       }
    }
 }
+

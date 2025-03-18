@@ -6,11 +6,10 @@ package tuxwars.home.ui.logic.privategame.join
    
    public class JoinPrivateGameLogic extends PrivateGameLogic
    {
-       
-      
       public function JoinPrivateGameLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
       }
    }
 }
+

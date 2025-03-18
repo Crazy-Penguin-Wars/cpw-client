@@ -3,8 +3,8 @@ package tuxwars.battle.editor
    import com.dchoc.game.DCGame;
    import com.dchoc.gameobjects.GameObject;
    import com.dchoc.gameobjects.stats.Stat;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.display.Sprite;
@@ -22,7 +22,6 @@ package tuxwars.battle.editor
    
    public class GameObjectValueEditor
    {
-      
       private static const KEY:String = "key";
       
       private static const OLD_VALUE:String = "old value";
@@ -76,7 +75,6 @@ package tuxwars.battle.editor
       private static var fields:Array;
       
       private static var textLinePosX:int;
-       
       
       public function GameObjectValueEditor()
       {
@@ -125,9 +123,9 @@ package tuxwars.battle.editor
       
       private static function createScreenTexts(tuxGameObject:TuxGameObject, klazz:Class) : void
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
-         var _loc5_:* = null;
+         var _loc4_:Missile = null;
+         var _loc3_:PlayerGameObject = null;
+         var _loc5_:LevelGameObject = null;
          fields = [];
          var _loc7_:String = getQualifiedClassName(klazz);
          var _loc6_:TextField = new TextField();
@@ -167,8 +165,8 @@ package tuxwars.battle.editor
       {
          var maxHP:int = 0;
          var newHP:int = 0;
-         var statOne:* = null;
-         var baseName:* = null;
+         var statOne:Stat = null;
+         var baseName:String = null;
          switch(obj["key"])
          {
             case "HP":
@@ -179,17 +177,16 @@ package tuxwars.battle.editor
                   (!!_loc7_.stats ? _loc7_.stats.getStat(_loc9_) : null).clearTemp();
                   maxHP = gameObject.calculateMaxHitPoints();
                   newHP = int((obj["edit field"] as TextField).text);
-                  break;
                }
                break;
             case "Max HP":
                if(gameObject._hasHPs)
                {
+                  var _loc10_:String = "HP";
                   var _loc8_:* = gameObject;
-                  statOne = !!_loc8_.stats ? _loc8_.stats.getStat("HP") : null;
+                  statOne = !!_loc8_.stats ? _loc8_.stats.getStat(_loc10_) : null;
                   baseName = statOne.getBaseModifierName();
                   statOne.getModifier(baseName).value = int((obj["edit field"] as TextField).text);
-                  break;
                }
                break;
             case "Friction":
@@ -223,13 +220,14 @@ package tuxwars.battle.editor
             _loc7_._cache[_loc11_] = _loc12_;
          }
          var row:Row = _loc7_._cache[_loc11_];
+         var _loc13_:String = "Physics";
          var _loc8_:* = row;
          §§push(§§findproperty(PhysicsReference));
-         if(!_loc8_._cache["Physics"])
+         if(!_loc8_._cache[_loc13_])
          {
-            _loc8_._cache["Physics"] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name","Physics");
+            _loc8_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name",_loc13_);
          }
-         var _loc9_:* = _loc8_._cache["Physics"];
+         var _loc9_:* = _loc8_._cache[_loc13_];
          var newPhysicsReference:PhysicsReference = new §§pop().PhysicsReference(_loc9_.overrideValue != null ? _loc9_.overrideValue : _loc9_._value);
       }
       
@@ -280,12 +278,13 @@ package tuxwars.battle.editor
                   }
                   _loc5_._cache[_loc19_] = _loc20_;
                }
+               var _loc21_:String = "HitPoints";
                var _loc6_:* = _loc5_._cache[_loc19_];
-               if(!_loc6_._cache["HitPoints"])
+               if(!_loc6_._cache[_loc21_])
                {
-                  _loc6_._cache["HitPoints"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","HitPoints");
+                  _loc6_._cache[_loc21_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc21_);
                }
-               var _loc7_:* = _loc6_._cache["HitPoints"];
+               var _loc7_:* = _loc6_._cache[_loc21_];
                return _loc7_.overrideValue != null ? _loc7_.overrideValue : _loc7_._value;
             case "Damage":
             case "Impulse":
@@ -293,7 +292,6 @@ package tuxwars.battle.editor
             case "ImpulseRadius":
             case "Timer":
             case "FiringImpulse":
-               break;
             case "FiringImpulseMin":
                break;
             case "Density":
@@ -312,12 +310,13 @@ package tuxwars.battle.editor
                   }
                   _loc13_._cache[_loc27_] = _loc28_;
                }
+               var _loc29_:String = "Physics";
                var _loc14_:* = _loc13_._cache[_loc27_];
-               if(!_loc14_._cache["Physics"])
+               if(!_loc14_._cache[_loc29_])
                {
-                  _loc14_._cache["Physics"] = com.dchoc.utils.DCUtils.find(_loc14_._fields,"name","Physics");
+                  _loc14_._cache[_loc29_] = com.dchoc.utils.DCUtils.find(_loc14_._fields,"name",_loc29_);
                }
-               var _loc15_:* = _loc14_._cache["Physics"];
+               var _loc15_:* = _loc14_._cache[_loc29_];
                var _loc30_:* = fieldName;
                var _loc16_:* = (_loc15_.overrideValue != null ? _loc15_.overrideValue : _loc15_._value) as Row;
                if(!_loc16_._cache[_loc30_])
@@ -382,12 +381,13 @@ package tuxwars.battle.editor
                   }
                   _loc6_._cache[_loc17_] = _loc18_;
                }
+               var _loc19_:String = "HitPoints";
                var _loc7_:* = _loc6_._cache[_loc17_];
-               if(!_loc7_._cache["HitPoints"])
+               if(!_loc7_._cache[_loc19_])
                {
-                  _loc7_._cache["HitPoints"] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name","HitPoints");
+                  _loc7_._cache[_loc19_] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name",_loc19_);
                }
-               _loc7_._cache["HitPoints"].value = value;
+               _loc7_._cache[_loc19_].value = value;
                break;
             case "Damage":
             case "Impulse":
@@ -433,12 +433,13 @@ package tuxwars.battle.editor
                   }
                   _loc12_._cache[_loc25_] = _loc26_;
                }
+               var _loc27_:String = "Physics";
                var _loc13_:* = _loc12_._cache[_loc25_];
-               if(!_loc13_._cache["Physics"])
+               if(!_loc13_._cache[_loc27_])
                {
-                  _loc13_._cache["Physics"] = com.dchoc.utils.DCUtils.find(_loc13_._fields,"name","Physics");
+                  _loc13_._cache[_loc27_] = com.dchoc.utils.DCUtils.find(_loc13_._fields,"name",_loc27_);
                }
-               var _loc14_:* = _loc13_._cache["Physics"];
+               var _loc14_:* = _loc13_._cache[_loc27_];
                var _loc28_:* = fieldName;
                var _loc15_:* = (_loc14_.overrideValue != null ? _loc14_.overrideValue : _loc14_._value) as Row;
                if(!_loc15_._cache[_loc28_])
@@ -454,7 +455,7 @@ package tuxwars.battle.editor
       
       private static function buttonClickHandlerAll(event:MouseEvent) : void
       {
-         var obj:* = null;
+         var obj:Object = null;
          var _loc5_:* = battleState.tuxGame.tuxWorld;
          var _loc6_:TuxGameObject = lastEditedTuxGameObject;
          var _loc7_:TuxGameObject = lastEditedTuxGameObject;
@@ -477,7 +478,7 @@ package tuxwars.battle.editor
       
       private static function buttonClickHandler(event:MouseEvent) : void
       {
-         var obj:* = null;
+         var obj:Object = null;
          while(fields.length > 0)
          {
             obj = fields.pop();
@@ -493,10 +494,10 @@ package tuxwars.battle.editor
       
       private static function addButton(screen:MovieClip) : void
       {
-         var button:* = null;
-         var btf:* = null;
-         var buttonAll:* = null;
-         var btfAll:* = null;
+         var button:Sprite = null;
+         var btf:TextField = null;
+         var buttonAll:Sprite = null;
+         var btfAll:TextField = null;
          if(!applyButton)
          {
             button = new Sprite();
@@ -574,18 +575,21 @@ package tuxwars.battle.editor
          screen = new MovieClip();
          var _loc6_:* = gameObj;
          var _loc4_:TuxGameObject = _loc6_._displayObject.gameObject as TuxGameObject;
+         var w:int = 400;
+         var h:int = 400;
          screen.graphics.clear();
          screen.graphics.beginFill(85);
-         screen.graphics.drawRect(0,0,400 + 4,400 + 4);
+         screen.graphics.drawRect(0,0,w + 4,h + 4);
          screen.graphics.beginFill(16777215);
-         screen.graphics.drawRect(2,2,400,400);
+         screen.graphics.drawRect(2,2,w,h);
          screen.graphics.endFill();
          var _loc7_:DCGame = DCGame;
-         screen.x = Number(com.dchoc.game.DCGame._stage.stageWidth) / 2 - 400 / 2;
+         screen.x = com.dchoc.game.DCGame._stage.stageWidth / 2 - w / 2;
          var _loc8_:DCGame = DCGame;
-         screen.y = Number(com.dchoc.game.DCGame._stage.stageHeight) / 2 - 400 / 2;
+         screen.y = com.dchoc.game.DCGame._stage.stageHeight / 2 - h / 2;
          createScreenTexts(_loc4_,klazz);
          addButton(screen);
       }
    }
 }
+

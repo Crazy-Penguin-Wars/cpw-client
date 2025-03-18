@@ -5,9 +5,7 @@ package tuxwars.ui.components
    
    public class IconToggleButton extends UIToggleButton
    {
-      
       private static const CONTAINER_ICON:String = "Container_Icon";
-       
       
       private var icon:MovieClip;
       
@@ -55,3 +53,4 @@ package tuxwars.ui.components
       }
    }
 }
+

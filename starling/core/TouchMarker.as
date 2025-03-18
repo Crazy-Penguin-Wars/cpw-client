@@ -9,8 +9,6 @@ package starling.core
    
    internal class TouchMarker extends Sprite
    {
-       
-      
       private var mCenter:Point;
       
       private var mTexture:Texture;
@@ -107,3 +105,4 @@ package starling.core
       }
    }
 }
+

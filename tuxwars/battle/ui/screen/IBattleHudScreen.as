@@ -4,10 +4,9 @@ package tuxwars.battle.ui.screen
    
    public interface IBattleHudScreen extends IScreen
    {
-       
-      
       function showHud() : void;
       
       function hideHud() : void;
    }
 }
+

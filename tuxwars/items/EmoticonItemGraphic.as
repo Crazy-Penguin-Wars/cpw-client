@@ -5,8 +5,6 @@ package tuxwars.items
    
    public class EmoticonItemGraphic extends UIStateComponent
    {
-       
-      
       public function EmoticonItemGraphic(design:DisplayObject)
       {
          super(design);
@@ -22,3 +20,4 @@ package tuxwars.items
       }
    }
 }
+

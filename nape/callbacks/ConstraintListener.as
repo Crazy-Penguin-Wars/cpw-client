@@ -8,8 +8,6 @@ package nape.callbacks
    
    public final class ConstraintListener extends Listener
    {
-       
-      
       public var zpp_inner_zn:ZPP_ConstraintListener;
       
       public function ConstraintListener(param1:CbEvent, param2:*, param3:Function, param4:int = 0)
@@ -104,3 +102,4 @@ package nape.callbacks
       }
    }
 }
+

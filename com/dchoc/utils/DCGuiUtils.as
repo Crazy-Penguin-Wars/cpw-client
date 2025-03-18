@@ -10,9 +10,7 @@ package com.dchoc.utils
    
    public class DCGuiUtils
    {
-      
       public static const ARIAL_UNICODE_FONT:String = "Arial Unicode MS";
-       
       
       public function DCGuiUtils()
       {
@@ -22,7 +20,7 @@ package com.dchoc.utils
       public static function checkTextFieldTextFormat(container:DisplayObjectContainer) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:DisplayObject = null;
          if(ProjectManager.getProjectTexts().languageHasSpecialCharacters() && container)
          {
             for(i = 0; i < container.numChildren; )
@@ -43,12 +41,12 @@ package com.dchoc.utils
       
       public static function setTextFieldTextFormat(textField:TextField) : void
       {
-         var _loc2_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:String = null;
+         var _loc4_:TextFormat = null;
          var _loc3_:int = 0;
          _loc3_ = 2;
          var _loc5_:int = 0;
-         var _loc6_:* = null;
+         var _loc6_:TextFormat = null;
          if(textField.defaultTextFormat.font != "Arial Unicode MS")
          {
             _loc2_ = textField.text;
@@ -76,8 +74,8 @@ package com.dchoc.utils
       
       public static function hitTestPoint(displayObject:DisplayObject, mouseX:Number, mouseY:Number, shapeFlag:Boolean = false, boundsAdd:Rectangle = null) : Boolean
       {
-         var _loc6_:* = null;
-         var globalPoint:* = null;
+         var _loc6_:Rectangle = null;
+         var globalPoint:Point = null;
          var i:int = 0;
          if(displayObject == null || !displayObject.visible)
          {
@@ -121,3 +119,4 @@ package com.dchoc.utils
       }
    }
 }
+

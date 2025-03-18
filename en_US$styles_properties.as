@@ -4,8 +4,6 @@ package
    
    public dynamic class en_US$styles_properties extends ResourceBundle
    {
-       
-      
       public function en_US$styles_properties()
       {
          super("en_US","styles");
@@ -17,3 +15,4 @@ package
       }
    }
 }
+

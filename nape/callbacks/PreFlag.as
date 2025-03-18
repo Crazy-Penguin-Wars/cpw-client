@@ -5,8 +5,6 @@ package nape.callbacks
    
    public final class PreFlag
    {
-       
-      
       public function PreFlag()
       {
          if(Boot.skip_constructor)
@@ -114,3 +112,4 @@ package nape.callbacks
       }
    }
 }
+

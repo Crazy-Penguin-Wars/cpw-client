@@ -9,13 +9,11 @@ package tuxwars.ui.containers.shop.container.banner
    
    public class Banner extends ContainerTags implements IShopTutorial
    {
-      
-      private static const DEFAULT_IMAGE_URL:String = Config.getDataDir() + "flash/ui/png/daily_news/default.png";
-      
       public static const TYPE_BANNER:String = "Banner";
       
       public static const TYPE_BANNER_BIG:String = "BannerBig";
-       
+      
+      private static const DEFAULT_IMAGE_URL:String = Config.getDataDir() + "flash/ui/png/daily_news/default.png";
       
       private var _imageContainer:MovieClip;
       
@@ -49,3 +47,4 @@ package tuxwars.ui.containers.shop.container.banner
       }
    }
 }
+

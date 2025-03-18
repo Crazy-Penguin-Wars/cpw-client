@@ -5,8 +5,6 @@ package tuxwars.battle.gameobjects.player
    
    public class AIPlayerGameObject extends PlayerGameObject
    {
-       
-      
       private var targetVec:Vec2;
       
       public function AIPlayerGameObject(def:PlayerGameObjectDef, game:TuxWarsGame)
@@ -30,3 +28,4 @@ package tuxwars.battle.gameobjects.player
       }
    }
 }
+

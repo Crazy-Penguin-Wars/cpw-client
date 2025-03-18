@@ -4,8 +4,6 @@ package com.logicom.geom
    
    public class Clipper extends ClipperBase
    {
-       
-      
       private var m_PolyOuts:Vector.<OutRec>;
       
       private var m_ClipType:int;
@@ -48,9 +46,9 @@ package com.logicom.geom
       {
          var point:* = null;
          var n:int = 0;
-         var points:* = null;
+         var points:Array = null;
          var i:int = 0;
-         var p:* = null;
+         var p:IntPoint = null;
          var subjectPolygon:Polygon = new Polygon();
          var clipPolygon:Polygon = new Polygon();
          for each(point in subjectPolygonFloat)
@@ -167,7 +165,7 @@ package com.logicom.geom
       
       private static function round(value:Number) : int
       {
-         return value < 0 ? value - 0.5 : value + 0.5;
+         return value < 0 ? int(value - 0.5) : int(value + 0.5);
       }
       
       private static function topX(edge:TEdge, currentY:int) : int
@@ -251,7 +249,7 @@ package com.logicom.geom
       
       private function disposeScanbeamList() : void
       {
-         var sb2:* = null;
+         var sb2:Scanbeam = null;
          while(m_Scanbeam != null)
          {
             sb2 = m_Scanbeam.next;
@@ -288,8 +286,8 @@ package com.logicom.geom
       
       private function insertScanbeam(Y:int) : void
       {
-         var newSb:* = null;
-         var sb2:* = null;
+         var newSb:Scanbeam = null;
+         var sb2:Scanbeam = null;
          if(m_Scanbeam == null)
          {
             m_Scanbeam = new Scanbeam();
@@ -352,7 +350,7 @@ package com.logicom.geom
       
       internal function fixHoleLinkage(outRec:OutRec) : void
       {
-         var tmp:* = null;
+         var tmp:OutRec = null;
          if(outRec.bottomPt != null)
          {
             tmp = m_PolyOuts[outRec.bottomPt.idx].firstLeft;
@@ -554,16 +552,16 @@ package com.logicom.geom
       
       private function insertLocalMinimaIntoAEL(botY:int) : void
       {
-         var lb:* = null;
-         var rb:* = null;
+         var lb:TEdge = null;
+         var rb:TEdge = null;
          var i:int = 0;
-         var hj:* = null;
-         var pt1a:* = null;
-         var pt1b:* = null;
-         var pt2a:* = null;
-         var pt2b:* = null;
-         var e:* = null;
-         var pt:* = null;
+         var hj:HorzJoinRec = null;
+         var pt1a:IntPoint = null;
+         var pt1b:IntPoint = null;
+         var pt2a:IntPoint = null;
+         var pt2b:IntPoint = null;
+         var e:TEdge = null;
+         var pt:IntPoint = null;
          while(m_CurrentLM != null && m_CurrentLM.Y == botY)
          {
             lb = m_CurrentLM.leftBound;
@@ -639,7 +637,7 @@ package com.logicom.geom
       
       private function insertEdgeIntoAEL(edge:TEdge) : void
       {
-         var e:* = null;
+         var e:TEdge = null;
          edge.prevInAEL = null;
          edge.nextInAEL = null;
          if(m_ActiveEdges == null)
@@ -897,8 +895,8 @@ package com.logicom.geom
       
       private function swapPositionsInAEL(edge1:TEdge, edge2:TEdge) : void
       {
-         var next:* = null;
-         var prev:* = null;
+         var next:TEdge = null;
+         var prev:TEdge = null;
          if(edge1.nextInAEL == null && edge1.prevInAEL == null)
          {
             return;
@@ -978,8 +976,8 @@ package com.logicom.geom
       
       private function swapPositionsInSEL(edge1:TEdge, edge2:TEdge) : void
       {
-         var next:* = null;
-         var prev:* = null;
+         var next:TEdge = null;
+         var prev:TEdge = null;
          if(edge1.nextInSEL == null && edge1.prevInSEL == null)
          {
             return;
@@ -1077,7 +1075,7 @@ package com.logicom.geom
       
       private function addLocalMinPoly(e1:TEdge, e2:TEdge, pt:IntPoint) : void
       {
-         var prevE:* = null;
+         var prevE:TEdge = null;
          var e:* = null;
          if(e2.dx == -3.4e+38 || e1.dx > e2.dx)
          {
@@ -1133,10 +1131,10 @@ package com.logicom.geom
       
       private function addOutPt(e:TEdge, pt:IntPoint) : void
       {
-         var outRec:* = null;
-         var op:* = null;
-         var opBot:* = null;
-         var op2:* = null;
+         var outRec:OutRec = null;
+         var op:OutPt = null;
+         var opBot:OutPt = null;
+         var op2:OutPt = null;
          var toFront:Boolean = e.side == 1;
          if(e.outIdx < 0)
          {
@@ -1277,7 +1275,7 @@ package com.logicom.geom
       
       private function findSegment(ppRef:OutPtRef, seg:Segment) : Boolean
       {
-         var seg2:* = null;
+         var seg2:Segment = null;
          var pp:OutPt = ppRef.outPt;
          if(pp == null)
          {
@@ -1610,7 +1608,7 @@ package com.logicom.geom
       private function reversePolyPtLinks(pp:OutPt) : void
       {
          var pp1:* = null;
-         var pp2:* = null;
+         var pp2:OutPt = null;
          pp1 = pp;
          do
          {
@@ -1810,21 +1808,18 @@ package com.logicom.geom
                      if(e1Wc2 > 0 && e2Wc2 > 0)
                      {
                         addLocalMinPoly(e1,e2,pt);
-                        break;
                      }
                      break;
                   case 1:
                      if(e1Wc2 <= 0 && e2Wc2 <= 0)
                      {
                         addLocalMinPoly(e1,e2,pt);
-                        break;
                      }
                      break;
                   case 2:
                      if(e1.polyType == 1 && e1Wc2 > 0 && e2Wc2 > 0 || e1.polyType == 0 && e1Wc2 <= 0 && e2Wc2 <= 0)
                      {
                         addLocalMinPoly(e1,e2,pt);
-                        break;
                      }
                      break;
                   case 3:
@@ -1950,8 +1945,8 @@ package com.logicom.geom
          var direction:int = 0;
          var horzRight:int = 0;
          var horzLeft:int = 0;
-         var eMaxPair:* = null;
-         var eNext:* = null;
+         var eMaxPair:TEdge = null;
+         var eNext:TEdge = null;
          if(horzEdge.xcurr < horzEdge.xtop)
          {
             horzLeft = horzEdge.xcurr;
@@ -1985,7 +1980,6 @@ package com.logicom.geom
                      if(horzEdge.outIdx >= 0 && e.outIdx >= 0)
                      {
                         addJoin(horzEdge.nextInLML,e,horzEdge.outIdx,-1);
-                        break;
                      }
                      break;
                   }
@@ -2100,8 +2094,8 @@ package com.logicom.geom
       
       private function buildIntersectList(botY:int, topY:int) : void
       {
-         var eNext:* = null;
-         var pt:* = null;
+         var eNext:TEdge = null;
+         var pt:IntPoint = null;
          if(m_ActiveEdges == null)
          {
             return;
@@ -2155,8 +2149,8 @@ package com.logicom.geom
       
       private function fixupIntersections() : Boolean
       {
-         var e1:* = null;
-         var e2:* = null;
+         var e1:TEdge = null;
+         var e2:TEdge = null;
          if(m_IntersectNodes.next == null)
          {
             return true;
@@ -2207,7 +2201,7 @@ package com.logicom.geom
       
       private function processIntersectList() : void
       {
-         var iNode:* = null;
+         var iNode:IntersectNode = null;
          while(m_IntersectNodes != null)
          {
             iNode = m_IntersectNodes.next;
@@ -2220,7 +2214,7 @@ package com.logicom.geom
       
       private function addIntersectNode(e1:TEdge, e2:TEdge, pt:IntPoint) : void
       {
-         var iNode:* = null;
+         var iNode:IntersectNode = null;
          var newNode:IntersectNode = new IntersectNode();
          newNode.edge1 = e1;
          newNode.edge2 = e2;
@@ -2327,7 +2321,7 @@ package com.logicom.geom
       
       private function disposeIntersectNodes() : void
       {
-         var iNode:* = null;
+         var iNode:IntersectNode = null;
          while(m_IntersectNodes != null)
          {
             iNode = m_IntersectNodes.next;
@@ -2338,13 +2332,13 @@ package com.logicom.geom
       
       private function processEdgesAtTopOfScanbeam(topY:int) : void
       {
-         var ePrior:* = null;
+         var ePrior:TEdge = null;
          var i:int = 0;
-         var hj:* = null;
-         var pt1a:* = null;
-         var pt1b:* = null;
-         var pt2a:* = null;
-         var pt2b:* = null;
+         var hj:HorzJoinRec = null;
+         var pt1a:IntPoint = null;
+         var pt1b:IntPoint = null;
+         var pt2a:IntPoint = null;
+         var pt2b:IntPoint = null;
          var e:TEdge = m_ActiveEdges;
          while(e != null)
          {
@@ -2506,9 +2500,9 @@ package com.logicom.geom
       
       private function buildResult(polyg:Polygons) : void
       {
-         var p:* = null;
+         var p:OutPt = null;
          var cnt:int = 0;
-         var pg:* = null;
+         var pg:Polygon = null;
          var j:int = 0;
          polyg.clear();
          for each(var outRec in m_PolyOuts)
@@ -2606,27 +2600,27 @@ package com.logicom.geom
       private function joinCommonEdges(fixHoleLinkages:Boolean) : void
       {
          var i:int = 0;
-         var j:* = null;
-         var outRec1:* = null;
-         var pp1aRef:* = null;
-         var outRec2:* = null;
-         var pp2aRef:* = null;
-         var seg1:* = null;
-         var seg2:* = null;
-         var seg:* = null;
-         var pt1:* = null;
-         var pt2:* = null;
-         var pt3:* = null;
-         var pt4:* = null;
-         var pp1a:* = null;
-         var pp2a:* = null;
+         var j:JoinRec = null;
+         var outRec1:OutRec = null;
+         var pp1aRef:OutPtRef = null;
+         var outRec2:OutRec = null;
+         var pp2aRef:OutPtRef = null;
+         var seg1:Segment = null;
+         var seg2:Segment = null;
+         var seg:Segment = null;
+         var pt1:IntPoint = null;
+         var pt2:IntPoint = null;
+         var pt3:IntPoint = null;
+         var pt4:IntPoint = null;
+         var pp1a:OutPt = null;
+         var pp2a:OutPt = null;
          var p2:* = null;
          var p3:* = null;
          var p4:* = null;
          var p1:* = null;
-         var prev:* = null;
+         var prev:OutPt = null;
          var k:int = 0;
-         var j2:* = null;
+         var j2:JoinRec = null;
          var OKIdx:int = 0;
          var ObsoleteIdx:int = 0;
          for(i = 0; i < m_Joins.length; i++)
@@ -2871,7 +2865,6 @@ package com.logicom.geom
 
 final class Protects
 {
-   
    public static const NONE:int = 0;
    
    public static const LEFT:int = 1;
@@ -2879,7 +2872,6 @@ final class Protects
    public static const RIGHT:int = 2;
    
    public static const BOTH:int = 3;
-    
    
    public function Protects()
    {
@@ -2889,11 +2881,9 @@ final class Protects
 
 final class Direction
 {
-   
    public static const RIGHT_TO_LEFT:int = 0;
    
    public static const LEFT_TO_RIGHT:int = 1;
-    
    
    public function Direction()
    {
@@ -2903,8 +2893,6 @@ final class Direction
 
 final class Scanbeam
 {
-    
-   
    public var Y:int;
    
    public var next:Scanbeam;
@@ -2915,12 +2903,8 @@ final class Scanbeam
    }
 }
 
-import com.logicom.geom.IntPoint;
-
 final class JoinRec
 {
-    
-   
    public var pt1a:IntPoint;
    
    public var pt1b:IntPoint;

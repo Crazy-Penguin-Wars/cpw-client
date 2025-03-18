@@ -20,8 +20,6 @@ package zpp_nape.shape
    
    public class ZPP_Shape extends ZPP_Interactor
    {
-       
-      
       public var zip_worldCOM:Boolean;
       
       public var zip_sweepRadius:Boolean;
@@ -140,12 +138,14 @@ package zpp_nape.shape
             ZPP_AABB.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          _loc2_.minx = 0;
          _loc2_.miny = 0;
          _loc2_.maxx = 0;
          _loc2_.maxy = 0;
          §§pop().aabb = _loc2_;
          aabb._immutable = true;
+         var _loc3_:ZPP_Shape = this;
          aabb._validate = aabb_validate;
          zip_area_inertia = zip_angDrag = zip_localCOM = zip_sweepRadius = true;
          localCOMx = 0;
@@ -157,8 +157,7 @@ package zpp_nape.shape
          fluidProperties = null;
          body = null;
          refmaterial = new ZPP_Material();
-         sweepCoef = 0;
-         sweepRadius = 0;
+         sweepRadius = sweepCoef = 0;
       }
       
       public function validate_sweepRadius() : void
@@ -431,6 +430,7 @@ package zpp_nape.shape
                      {
                         _loc1_.localCOMx = _loc1_.lverts.next.x;
                         _loc1_.localCOMy = _loc1_.lverts.next.y;
+                        null;
                      }
                      else if(_loc1_.lverts.next.next.next == null)
                      {
@@ -491,6 +491,7 @@ package zpp_nape.shape
                   _loc9_.zip_axis = false;
                   _loc9_.axisx = Math.sin(_loc9_.rot);
                   _loc9_.axisy = Math.cos(_loc9_.rot);
+                  null;
                }
                worldCOMx = body.posx + (body.axisy * localCOMx - body.axisx * localCOMy);
                worldCOMy = body.posy + (localCOMx * body.axisx + localCOMy * body.axisy);
@@ -654,6 +655,7 @@ package zpp_nape.shape
                               {
                                  _loc2_.localCOMx = _loc2_.lverts.next.x;
                                  _loc2_.localCOMy = _loc2_.lverts.next.y;
+                                 null;
                               }
                               else if(_loc2_.lverts.next.next.next == null)
                               {
@@ -714,6 +716,7 @@ package zpp_nape.shape
                            _loc10_.zip_axis = false;
                            _loc10_.axisx = Math.sin(_loc10_.rot);
                            _loc10_.axisy = Math.cos(_loc10_.rot);
+                           null;
                         }
                         _loc1_.worldCOMx = _loc1_.body.posx + (_loc1_.body.axisy * _loc1_.localCOMx - _loc1_.body.axisx * _loc1_.localCOMy);
                         _loc1_.worldCOMy = _loc1_.body.posy + (_loc1_.localCOMx * _loc1_.body.axisx + _loc1_.localCOMy * _loc1_.body.axisy);
@@ -741,6 +744,7 @@ package zpp_nape.shape
                            _loc10_.zip_axis = false;
                            _loc10_.axisx = Math.sin(_loc10_.rot);
                            _loc10_.axisy = Math.cos(_loc10_.rot);
+                           null;
                         }
                         _loc4_ = _loc2_.lverts.next;
                         _loc5_ = _loc2_.gverts.next;
@@ -802,3 +806,4 @@ package zpp_nape.shape
       }
    }
 }
+

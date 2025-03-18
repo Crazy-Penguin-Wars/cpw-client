@@ -2,10 +2,10 @@ package no.olog.utilfunctions
 {
    public function getCallee(calltStackIndex:int = 2) : String
    {
-      var stackLine:* = null;
-      var functionName:* = null;
-      var className:* = null;
-      var lineNumber:* = null;
+      var stackLine:String = null;
+      var functionName:String = null;
+      var className:String = null;
+      var lineNumber:String = null;
       var _loc6_:String = new Error().getStackTrace();
       if(_loc6_)
       {
@@ -37,3 +37,4 @@ package no.olog.utilfunctions
       return "Unknown Callee";
    }
 }
+

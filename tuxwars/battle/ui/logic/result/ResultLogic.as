@@ -45,8 +45,6 @@ package tuxwars.battle.ui.logic.result
    
    public class ResultLogic extends TuxUILogic
    {
-       
-      
       private var battleEndResponse:ServerResponse;
       
       private var battleResults:BattleResults;
@@ -66,7 +64,7 @@ package tuxwars.battle.ui.logic.result
       
       override public function preInit(params:*) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:ItemData = null;
          super.preInit(params);
          _canStartRematch = false;
          _rematchIdentifier = "";
@@ -230,7 +228,7 @@ package tuxwars.battle.ui.logic.result
       
       private function playAgainWithoutAnnoyingPopup() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          var _loc1_:TuxWarsGame = game;
          if(!game.homeState)
          {
@@ -304,7 +302,6 @@ package tuxwars.battle.ui.logic.result
                case "Clothing":
                case "Recipe":
                case "Trophy":
-                  break;
                case "Weapon":
                   break;
                case "Crafting":
@@ -367,14 +364,12 @@ package tuxwars.battle.ui.logic.result
                      betPayout = IngameBetData.getPayout();
                      game.player.addPremiumMoney(betPayout);
                      CRMService.sendEvent("Economy","Earn PC","Confirmed","Betting",null,betPayout);
-                     break;
                   }
-                  if(playerResult.player.betData.valueIngame > 0)
+                  else if(playerResult.player.betData.valueIngame > 0)
                   {
                      betPayout = IngameBetData.getPayout();
                      game.player.addIngameMoney(betPayout,false);
                      CRMService.sendEvent("Economy","Earn GC","Confirmed","Betting",null,betPayout);
-                     break;
                   }
                   break;
                }
@@ -390,13 +385,11 @@ package tuxwars.battle.ui.logic.result
                   {
                      game.player.addPremiumMoney(IngameBetData.getBetAmount());
                      CRMService.sendEvent("Economy","Earn PC","Confirmed","Betting",null,IngameBetData.getBetAmount());
-                     break;
                   }
-                  if(playerResult.player.betData.valueIngame > 0)
+                  else if(playerResult.player.betData.valueIngame > 0)
                   {
                      game.player.addIngameMoney(IngameBetData.getBetAmount(),false);
                      CRMService.sendEvent("Economy","Earn GC","Confirmed","Betting",null,IngameBetData.getBetAmount());
-                     break;
                   }
                   break;
                }
@@ -453,8 +446,8 @@ package tuxwars.battle.ui.logic.result
       
       private function responseCallback(response:BattleResponse) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Array = null;
+         var _loc3_:Array = null;
          switch(response.responseType - 41)
          {
             case 0:
@@ -485,3 +478,4 @@ package tuxwars.battle.ui.logic.result
       }
    }
 }
+

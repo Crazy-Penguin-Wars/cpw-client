@@ -21,9 +21,7 @@ package starling.textures
    
    public class Texture
    {
-      
       private static var sOrigin:Point = new Point();
-       
       
       private var mFrame:Rectangle;
       
@@ -295,3 +293,4 @@ package starling.textures
       }
    }
 }
+

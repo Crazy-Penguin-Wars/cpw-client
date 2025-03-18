@@ -5,8 +5,6 @@ package tuxwars.battle.events
    
    public class PlayerTurnEndedMessage extends Message
    {
-       
-      
       private var turnDuration:int;
       
       public function PlayerTurnEndedMessage(player:PlayerGameObject, turnDuration:int)
@@ -26,3 +24,4 @@ package tuxwars.battle.events
       }
    }
 }
+

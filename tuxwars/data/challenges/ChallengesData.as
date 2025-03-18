@@ -1,23 +1,19 @@
 package tuxwars.data.challenges
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import tuxwars.data.Tuner;
    
    public class ChallengesData
    {
-      
       private static const TABLE:String = "Challenge";
       
       private static const TYPE:String = "Type";
       
-      private static const CACHE:Object = {};
-      
       private static var table:Table;
-       
+      
+      private static const CACHE:Object = {};
       
       public function ChallengesData()
       {
@@ -27,7 +23,7 @@ package tuxwars.data.challenges
       
       public static function getChallengeData(id:String) : ChallengeData
       {
-         var _loc2_:* = null;
+         var _loc2_:Row = null;
          if(!CACHE.hasOwnProperty(id))
          {
             var _loc4_:* = id;
@@ -56,7 +52,7 @@ package tuxwars.data.challenges
       
       public static function findChallengesOfType(type:String) : Vector.<ChallengeData>
       {
-         var _loc3_:* = null;
+         var _loc3_:ChallengeData = null;
          var _loc2_:Vector.<ChallengeData> = new Vector.<ChallengeData>();
          var _loc5_:* = getTable();
          for each(var row in _loc5_._rows)
@@ -72,8 +68,8 @@ package tuxwars.data.challenges
       
       public static function findFirstChallengeOfType(type:String) : ChallengeData
       {
-         var _loc5_:* = null;
-         var _loc3_:* = null;
+         var _loc5_:ChallengeData = null;
+         var _loc3_:ChallengeData = null;
          var _loc6_:Tuner = Tuner;
          var _loc11_:Field = tuxwars.data.Tuner.getField("FirstChallenges");
          for each(var firstChallengeId in !!_loc11_ ? _loc11_.value : [])
@@ -112,8 +108,9 @@ package tuxwars.data.challenges
       {
          if(!table)
          {
+            var _loc2_:String = "Challenge";
             var _loc1_:ProjectManager = ProjectManager;
-            table = com.dchoc.projectdata.ProjectManager.projectData.findTable("Challenge");
+            table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return table;
       }
@@ -132,7 +129,7 @@ package tuxwars.data.challenges
       
       private static function findTypeFrom(challengeData:ChallengeData, type:String) : ChallengeData
       {
-         var _loc4_:* = null;
+         var _loc4_:ChallengeData = null;
          if(challengeData.type == type)
          {
             return challengeData;
@@ -149,3 +146,4 @@ package tuxwars.data.challenges
       }
    }
 }
+

@@ -7,8 +7,6 @@ package nape.dynamics
    
    public final class InteractionFilter
    {
-       
-      
       public var zpp_inner:ZPP_InteractionFilter;
       
       public function InteractionFilter(param1:int = 1, param2:int = -1, param3:int = 1, param4:int = -1, param5:int = 1, param6:int = -1)
@@ -28,6 +26,7 @@ package nape.dynamics
             ZPP_InteractionFilter.zpp_pool = zpp_inner.next;
             zpp_inner.next = null;
          }
+         null;
          zpp_inner.outer = this;
          if(zpp_inner.collisionGroup != param1)
          {
@@ -222,3 +221,4 @@ package nape.dynamics
       }
    }
 }
+

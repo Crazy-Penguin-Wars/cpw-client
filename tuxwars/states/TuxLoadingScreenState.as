@@ -16,7 +16,6 @@ package tuxwars.states
    
    public class TuxLoadingScreenState extends TuxState
    {
-      
       private static const PROGRESS_BAR:String = "Slider_Loading";
       
       private static const TEXT:String = "Text";
@@ -26,7 +25,6 @@ package tuxwars.states
       private static const POPUP_ERROR_TITLE:String = "Text_Header";
       
       private static const POPUP_ERROR_TEXT:String = "Text_Message";
-       
       
       protected var step:int;
       
@@ -100,3 +98,4 @@ package tuxwars.states
       }
    }
 }
+

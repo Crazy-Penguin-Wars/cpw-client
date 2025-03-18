@@ -7,8 +7,6 @@ package tuxwars.battle.states.weapon
    
    public class WeaponPutAwayState extends WeaponState
    {
-       
-      
       private var weaponClip:MovieClip;
       
       private var newWeapon:String;
@@ -56,3 +54,4 @@ package tuxwars.battle.states.weapon
       }
    }
 }
+

@@ -5,11 +5,9 @@ package mx.messaging.events
    
    public class MessageEvent extends Event
    {
-      
       public static const MESSAGE:String = "message";
       
       public static const RESULT:String = "result";
-       
       
       public var message:IMessage;
       
@@ -44,3 +42,4 @@ package mx.messaging.events
       }
    }
 }
+

@@ -6,21 +6,20 @@ package starling.display
    import starling.events.EnterFrameEvent;
    import starling.events.Event;
    
+   use namespace starling_internal;
+   
    public class Stage extends DisplayObjectContainer
    {
-       
-      
       private var mWidth:int;
       
       private var mHeight:int;
       
       private var mColor:uint;
       
-      private var mEnterFrameEvent:EnterFrameEvent;
+      private var mEnterFrameEvent:EnterFrameEvent = new EnterFrameEvent(Event.ENTER_FRAME,0);
       
       public function Stage(width:int, height:int, color:uint = 0)
       {
-         this.mEnterFrameEvent = new EnterFrameEvent(Event.ENTER_FRAME,0);
          super();
          this.mWidth = width;
          this.mHeight = height;
@@ -117,3 +116,4 @@ package starling.display
       }
    }
 }
+

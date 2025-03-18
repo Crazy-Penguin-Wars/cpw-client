@@ -6,8 +6,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
    
    public class SaleButton extends ShopItemButton
    {
-       
-      
       private var _saleIcon:MovieClip;
       
       private var _saleText:UIAutoTextField;
@@ -48,3 +46,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
       }
    }
 }
+

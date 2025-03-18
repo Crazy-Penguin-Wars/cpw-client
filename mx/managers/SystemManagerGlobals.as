@@ -2,9 +2,6 @@ package mx.managers
 {
    public class SystemManagerGlobals
    {
-      
-      public static var topLevelSystemManagers:Array = [];
-      
       public static var bootstrapLoaderInfoURL:String;
       
       public static var showMouseCursor:Boolean;
@@ -16,7 +13,8 @@ package mx.managers
       public static var info:Object;
       
       public static var parameters:Object;
-       
+      
+      public static var topLevelSystemManagers:Array = [];
       
       public function SystemManagerGlobals()
       {
@@ -24,3 +22,4 @@ package mx.managers
       }
    }
 }
+

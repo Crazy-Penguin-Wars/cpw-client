@@ -12,9 +12,7 @@ package zpp_nape.phys
    
    public class ZPP_FluidProperties
    {
-      
-      public static var zpp_pool:ZPP_FluidProperties = null;
-       
+      public static var zpp_pool:ZPP_FluidProperties;
       
       public var wrap_shapes:ShapeList;
       
@@ -22,7 +20,7 @@ package zpp_nape.phys
       
       public var viscosity:Number;
       
-      public var userData;
+      public var userData:*;
       
       public var shapes:ZNPList_ZPP_Shape;
       
@@ -53,8 +51,7 @@ package zpp_nape.phys
          userData = null;
          next = null;
          shapes = new ZNPList_ZPP_Shape();
-         viscosity = 1;
-         density = 1;
+         density = viscosity = 1;
          wrap_gravity = null;
          gravityx = 0;
          gravityy = 0;
@@ -112,6 +109,7 @@ package zpp_nape.phys
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = gravityx;
          var _loc2_:Number = gravityy;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_gravity));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -214,7 +212,7 @@ package zpp_nape.phys
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_gravity = _loc4_;
          wrap_gravity.zpp_inner._inuse = true;
          wrap_gravity.zpp_inner._invalidate = gravity_invalidate;
@@ -234,9 +232,11 @@ package zpp_nape.phys
             ZPP_FluidProperties.zpp_pool = _loc1_.next;
             _loc1_.next = null;
          }
+         null;
          _loc1_.viscosity = viscosity;
          _loc1_.density = density;
          return _loc1_;
       }
    }
 }
+

@@ -12,8 +12,6 @@ package tuxwars.battle.gameobjects
    
    public class PhysicsGameObjectDef extends TuxGameObjectDef
    {
-       
-      
       private const _shapes:Array = [];
       
       private const _bodyDef:BodyDef = new BodyDef();
@@ -113,3 +111,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

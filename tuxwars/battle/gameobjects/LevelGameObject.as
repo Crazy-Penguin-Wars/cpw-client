@@ -13,6 +13,7 @@ package tuxwars.battle.gameobjects
    import starling.display.DisplayObject;
    import starling.display.Image;
    import starling.textures.Texture;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.data.WorldPhysics;
    import tuxwars.battle.data.particles.Particles;
    import tuxwars.battle.gameobjects.player.PlayerGameObject;
@@ -26,7 +27,6 @@ package tuxwars.battle.gameobjects
    
    public class LevelGameObject extends PhysicsGameObject
    {
-      
       private static const NUM_STATES:int = 3;
       
       private static const FIRST_STATE:String = "_1";
@@ -46,7 +46,6 @@ package tuxwars.battle.gameobjects
       private static const MATERIAL_CUSTOM:String = "CustomObjects";
       
       private static const MATERIALS:Array = ["CustomObjects","Ice","Wood","Stone","Metal"];
-       
       
       private var toughness:int;
       
@@ -103,7 +102,9 @@ package tuxwars.battle.gameobjects
             stats.create("HP",null,0);
             _hasHPs = true;
          }
-         (!!this.stats ? this.stats.getStat("HP") : null).getModifier((!!this.stats ? this.stats.getStat("HP") : null).getBaseModifierName()).value = toughness * 3;
+         var _loc2_:String = "HP";
+         var _loc3_:String = "HP";
+         (!!this.stats ? this.stats.getStat(_loc2_) : null).getModifier((!!this.stats ? this.stats.getStat(_loc3_) : null).getBaseModifierName()).value = toughness * 3;
       }
       
       override public function handleExplosionDamage(damageSource:Damage) : void
@@ -147,7 +148,7 @@ package tuxwars.battle.gameobjects
       
       override protected function handleCollision(otherBody:Body, arbiterList:ArbiterList) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:LevelGameObject = null;
          var _loc4_:Vec2 = findFirstCollisionPosition(arbiterList);
          super.handleCollision(otherBody,arbiterList);
          if(otherBody.userData.gameObject is Missile)
@@ -218,10 +219,10 @@ package tuxwars.battle.gameobjects
       private function setCorrectFrame() : void
       {
          var _loc3_:int = 0;
-         var _loc6_:* = null;
-         var _loc4_:* = null;
-         var _loc2_:* = null;
-         var _loc5_:* = null;
+         var _loc6_:String = null;
+         var _loc4_:DisplayObject = null;
+         var _loc2_:BitmapData = null;
+         var _loc5_:Image = null;
          var _loc1_:int = calculateHitPoints();
          if(_loc1_ > 0)
          {
@@ -262,8 +263,8 @@ package tuxwars.battle.gameobjects
       
       private function destroyed() : void
       {
-         var _loc1_:* = null;
-         var _loc2_:* = null;
+         var _loc1_:Tagger = null;
+         var _loc2_:PlayerGameObject = null;
          if(!this._markedForRemoval)
          {
             (this.game as tuxwars.TuxWarsGame).tuxWorld.addParticle(Particles.getParticlesReference("ObjectDestroyed"),bodyLocation.x,bodyLocation.y);
@@ -291,3 +292,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

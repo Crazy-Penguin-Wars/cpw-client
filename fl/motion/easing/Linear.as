@@ -2,8 +2,6 @@ package fl.motion.easing
 {
    public class Linear
    {
-       
-      
       public function Linear()
       {
          super();
@@ -30,3 +28,4 @@ package fl.motion.easing
       }
    }
 }
+

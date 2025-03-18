@@ -9,9 +9,7 @@ package tuxwars.battle.world.loader
    
    public class LevelLoader
    {
-      
       public static const LEVEL_LOADED:String = "LevelLoaded";
-       
       
       private var level:Level;
       
@@ -75,3 +73,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

@@ -2,9 +2,9 @@ package tuxwars.home.ui.screen.crafting
 {
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
+   import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.logic.crafting.CraftingLogic;
@@ -18,8 +18,6 @@ package tuxwars.home.ui.screen.crafting
    
    public class CraftingScreen extends TuxPageSubTabScreen
    {
-       
-      
       private const CRAFTING_SCREEN:String = "crafting_screen";
       
       private const TYPE:String = "Type";
@@ -81,25 +79,27 @@ package tuxwars.home.ui.screen.crafting
       
       private function initSubTabObjectContainer() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Field = null;
          objectContainer = new ObjectContainer(contentMoveClip,_game,getSlotObject,"transition_slots_left","transition_slots_right",false);
          var _loc1_:Row = craftingLogic.getCurrentTab();
          if(_loc1_)
          {
+            var _loc7_:String = "Categorys";
             var _loc3_:* = _loc1_;
-            if(!_loc3_._cache["Categorys"])
+            if(!_loc3_._cache[_loc7_])
             {
-               _loc3_._cache["Categorys"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","Categorys");
+               _loc3_._cache[_loc7_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc7_);
             }
-            _loc2_ = _loc3_._cache["Categorys"];
+            _loc2_ = _loc3_._cache[_loc7_];
+            var _loc8_:String = "Type";
             var _loc4_:* = _loc1_;
             §§push(objectContainer);
             §§push(craftingLogic);
-            if(!_loc4_._cache["Type"])
+            if(!_loc4_._cache[_loc8_])
             {
-               _loc4_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","Type");
+               _loc4_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc8_);
             }
-            var _loc5_:* = _loc4_._cache["Type"];
+            var _loc5_:* = _loc4_._cache[_loc8_];
             var _loc6_:*;
             §§pop().init(§§pop().getItems(_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value,_loc2_ != null ? (_loc6_ = _loc2_, _loc6_.overrideValue != null ? _loc6_.overrideValue : _loc6_._value) : null),true);
          }
@@ -107,7 +107,7 @@ package tuxwars.home.ui.screen.crafting
       
       public function getSlotObject(slotIndex:int, object:*, design:MovieClip) : *
       {
-         var _loc4_:* = null;
+         var _loc4_:SlotElement = null;
          if(contentMoveClip.name == "Content_Crafting")
          {
             return new RecipeContainers(slotIndex,ItemManager.getItemData((object as ShopItem).id) as RecipeData,design,this);
@@ -132,7 +132,7 @@ package tuxwars.home.ui.screen.crafting
       
       public function updateObjectContainer(msg:Message) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:String = null;
          if(contentMoveClip.name == "Content_Research")
          {
             for each(var rc in objectContainer.getContainerForObjects())
@@ -166,3 +166,4 @@ package tuxwars.home.ui.screen.crafting
       }
    }
 }
+

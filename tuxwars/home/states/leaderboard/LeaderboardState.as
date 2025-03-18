@@ -9,8 +9,6 @@ package tuxwars.home.states.leaderboard
    
    public class LeaderboardState extends TuxState
    {
-       
-      
       private var report:PlayerReport;
       
       public function LeaderboardState(game:TuxWarsGame, params:* = null)
@@ -40,3 +38,4 @@ package tuxwars.home.states.leaderboard
       }
    }
 }
+

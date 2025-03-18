@@ -5,8 +5,6 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SlotMachineAwardItemContainer extends SlotMachineAwardContainer
    {
-       
-      
       private var _icon:MovieClip;
       
       public function SlotMachineAwardItemContainer(design:MovieClip, parent:UIComponent = null)
@@ -26,3 +24,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

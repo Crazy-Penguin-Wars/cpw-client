@@ -6,9 +6,7 @@ package mx.rpc.events
    
    public class InvokeEvent extends AbstractEvent
    {
-      
       public static const INVOKE:String = "invoke";
-       
       
       public function InvokeEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false, token:AsyncToken = null, message:IMessage = null)
       {
@@ -31,3 +29,4 @@ package mx.rpc.events
       }
    }
 }
+

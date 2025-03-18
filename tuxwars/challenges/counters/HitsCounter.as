@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class HitsCounter extends Counter
    {
-       
-      
       private var waitingForMatchToEnd:Boolean;
       
       public function HitsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -31,7 +29,7 @@ package tuxwars.challenges.counters
          if(playerId == _loc4_._id)
          {
             _loc3_ = msg.affectedPlayers;
-            _loc2_ = _loc3_.indexOf(msg.firingPlayer);
+            _loc2_ = int(_loc3_.indexOf(msg.firingPlayer));
             updateValue(_loc2_ == -1 ? _loc3_.length : _loc3_.length - 1);
          }
       }
@@ -59,3 +57,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

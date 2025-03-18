@@ -8,9 +8,7 @@ package tuxwars.ui.popups.states.freeammopackage
    
    public class FreeAmmoPopUpSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE:String = "MessageType";
-       
       
       public function FreeAmmoPopUpSubState(game:TuxWarsGame, params:* = null)
       {
@@ -18,3 +16,4 @@ package tuxwars.ui.popups.states.freeammopackage
       }
    }
 }
+

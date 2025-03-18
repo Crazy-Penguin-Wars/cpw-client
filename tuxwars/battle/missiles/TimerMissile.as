@@ -8,8 +8,6 @@ package tuxwars.battle.missiles
    
    public class TimerMissile extends Missile
    {
-       
-      
       private var _timer:int;
       
       public function TimerMissile(def:MissileDef, game:DCGame)
@@ -54,3 +52,4 @@ package tuxwars.battle.missiles
       }
    }
 }
+

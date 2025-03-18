@@ -1,15 +1,14 @@
 package tuxwars.data.practice
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import com.dchoc.utils.Random;
+   import no.olog.utilfunctions.assert;
    
    public class PracticeLevels
    {
-      
       private static const TABLE:String = "PracticeLevel";
-       
       
       public function PracticeLevels()
       {
@@ -54,8 +53,10 @@ package tuxwars.data.practice
       
       private static function getTable() : Table
       {
+         var _loc2_:String = "PracticeLevel";
          var _loc1_:ProjectManager = ProjectManager;
-         return com.dchoc.projectdata.ProjectManager.projectData.findTable("PracticeLevel");
+         return com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
       }
    }
 }
+

@@ -4,9 +4,7 @@ package starling.events
    
    public class ResizeEvent extends Event
    {
-      
       public static const RESIZE:String = "resize";
-       
       
       public function ResizeEvent(type:String, width:int, height:int, bubbles:Boolean = false)
       {
@@ -24,3 +22,4 @@ package starling.events
       }
    }
 }
+

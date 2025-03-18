@@ -4,8 +4,7 @@ package com.dchoc.avatar
    
    public interface IAvatarColor
    {
-       
-      
       function get colorTransform() : ColorTransform;
    }
 }
+

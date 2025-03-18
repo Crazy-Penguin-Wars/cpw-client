@@ -4,7 +4,6 @@ package starling.events
    
    public final class TouchPhase
    {
-      
       public static const HOVER:String = "hover";
       
       public static const BEGAN:String = "began";
@@ -14,7 +13,6 @@ package starling.events
       public static const STATIONARY:String = "stationary";
       
       public static const ENDED:String = "ended";
-       
       
       public function TouchPhase()
       {
@@ -23,3 +21,4 @@ package starling.events
       }
    }
 }
+

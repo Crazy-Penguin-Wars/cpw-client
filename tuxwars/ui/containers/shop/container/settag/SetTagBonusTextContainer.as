@@ -9,8 +9,6 @@ package tuxwars.ui.containers.shop.container.settag
    
    public class SetTagBonusTextContainer extends SetTagContainer
    {
-       
-      
       private var _setDesc:UIAutoTextField;
       
       public function SetTagBonusTextContainer(design:MovieClip, data:*, game:TuxWarsGame, parent:UIComponent = null)
@@ -32,3 +30,4 @@ package tuxwars.ui.containers.shop.container.settag
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.home.ui.screenhandlers
    
    public class ScreenHandler
    {
-       
-      
       protected var _screen:IScreen;
       
       protected var _logic:ILogic;
@@ -63,3 +61,4 @@ package tuxwars.home.ui.screenhandlers
       }
    }
 }
+

@@ -6,8 +6,6 @@ package nape.callbacks
    
    public class Callback
    {
-       
-      
       public var zpp_inner:ZPP_Callback;
       
       public function Callback()
@@ -88,3 +86,4 @@ package nape.callbacks
       }
    }
 }
+

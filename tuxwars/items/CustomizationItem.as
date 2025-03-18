@@ -6,8 +6,6 @@ package tuxwars.items
    
    public class CustomizationItem extends ClothingItem
    {
-       
-      
       private var _isDefaultValue:Boolean;
       
       public function CustomizationItem()
@@ -30,3 +28,4 @@ package tuxwars.items
       }
    }
 }
+

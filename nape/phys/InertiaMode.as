@@ -5,8 +5,6 @@ package nape.phys
    
    public final class InertiaMode
    {
-       
-      
       public function InertiaMode()
       {
          if(Boot.skip_constructor)
@@ -70,3 +68,4 @@ package nape.phys
       }
    }
 }
+

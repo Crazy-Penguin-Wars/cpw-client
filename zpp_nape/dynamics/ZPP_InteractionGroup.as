@@ -14,11 +14,9 @@ package zpp_nape.dynamics
    
    public class ZPP_InteractionGroup
    {
+      public static var SHAPE:int;
       
-      public static var SHAPE:int = 1;
-      
-      public static var BODY:int = 2;
-       
+      public static var BODY:int;
       
       public var wrap_interactors:InteractorList;
       
@@ -120,3 +118,4 @@ package zpp_nape.dynamics
       }
    }
 }
+

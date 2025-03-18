@@ -8,8 +8,6 @@ package com.dchoc.ui.spinner
    
    public class UISpinner extends UIComponent
    {
-       
-      
       private const textField:UIAutoTextField = new UIAutoTextField();
       
       private var _minValue:int;
@@ -108,3 +106,4 @@ package com.dchoc.ui.spinner
       }
    }
 }
+

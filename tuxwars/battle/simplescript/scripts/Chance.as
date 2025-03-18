@@ -10,8 +10,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class Chance implements SimpleScriptCore
    {
-       
-      
       public function Chance()
       {
          super();
@@ -20,7 +18,7 @@ package tuxwars.battle.simplescript.scripts
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
          var _loc4_:Number = NaN;
-         var _loc6_:* = null;
+         var _loc6_:SimpleScriptObject = null;
          var _loc3_:Array = scriptObject.variables;
          assert("Value array length is incorrect.",true,_loc3_.length >= 2);
          var _loc5_:Number = Number(_loc3_[1]);
@@ -57,3 +55,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

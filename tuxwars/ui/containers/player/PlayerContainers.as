@@ -5,17 +5,16 @@ package tuxwars.ui.containers.player
    
    public class PlayerContainers
    {
-      
       private static const NUM_SLOTS:int = 4;
       
       private static const SLOT:String = "Slot_0";
-       
       
-      private const slots:Vector.<PlayerContainer> = new Vector.<PlayerContainer>(4,true);
+      private const slots:Vector.<PlayerContainer>;
       
       public function PlayerContainers(design:MovieClip)
       {
          var i:int = 0;
+         slots = new Vector.<PlayerContainer>(4,true);
          super();
          for(i = 0; i < 4; )
          {
@@ -52,3 +51,4 @@ package tuxwars.ui.containers.player
       }
    }
 }
+

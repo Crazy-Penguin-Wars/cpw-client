@@ -6,8 +6,6 @@ package nape.callbacks
    
    public final class PreCallback extends Callback
    {
-       
-      
       public function PreCallback()
       {
          if(Boot.skip_constructor)
@@ -46,3 +44,4 @@ package nape.callbacks
       }
    }
 }
+

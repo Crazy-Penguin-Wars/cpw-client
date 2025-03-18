@@ -35,11 +35,9 @@ package tuxwars.battle.emitters
    
    public class ExplosionEmitter
    {
-      
       public static const EXPLOSION_EMITTER:String = "ExplosionEmitter";
       
       private static var _instance:ExplosionEmitter;
-       
       
       private var tuxGame:TuxWarsGame;
       
@@ -78,19 +76,19 @@ package tuxwars.battle.emitters
       
       private function explode(msg:FireEmissionMessage) : void
       {
-         var _loc5_:* = null;
-         var _loc3_:* = null;
-         var locationPoint:* = null;
-         var _loc2_:* = null;
-         var _loc4_:* = null;
-         var _loc18_:* = null;
-         var _loc13_:* = null;
-         var _loc24_:* = null;
-         var _loc6_:* = null;
+         var _loc5_:PlayerGameObject = null;
+         var _loc3_:EmissionReference = null;
+         var locationPoint:Vec2 = null;
+         var _loc2_:EmissionExplosionReference = null;
+         var _loc4_:ExplosionData = null;
+         var _loc18_:Explosion = null;
+         var _loc13_:Array = null;
+         var _loc24_:Array = null;
+         var _loc6_:Array = null;
          var _loc23_:* = undefined;
-         var _loc22_:* = null;
-         var _loc9_:* = null;
-         var _loc11_:* = null;
+         var _loc22_:EmissionExplosionReference = null;
+         var _loc9_:ExplosionData = null;
+         var _loc11_:Explosion = null;
          if(Config.isDev())
          {
             assert("Expected an explosion: " + msg.emissionReference.id + " specialType: " + msg.emissionReference.specialType,true,msg.emissionReference.specialType == "ExplosionEmitter");
@@ -187,11 +185,11 @@ package tuxwars.battle.emitters
       
       private function handleImpulse(explosion:Explosion, world:TuxWorld, locationPoint:Vec2, firingPlayer:PlayerGameObject, affectedObjects:Array) : void
       {
-         var _loc11_:* = null;
-         var _loc7_:* = null;
-         var _loc10_:* = null;
-         var _loc8_:* = null;
-         var hitVectorData:* = null;
+         var _loc11_:PhysicsGameObject = null;
+         var _loc7_:Body = null;
+         var _loc10_:Vec2 = null;
+         var _loc8_:Vec2 = null;
+         var hitVectorData:String = null;
          if(affectedObjects && affectedObjects.length > 0)
          {
             LogUtils.log("Explosion: " + explosion.id + " objects in impulse radius: " + affectedObjects.length,this,0,"Emitter",false,false,false);
@@ -235,9 +233,9 @@ package tuxwars.battle.emitters
       
       private function handleDamage(explosion:Explosion, world:TuxWorld, locationPoint:Vec2, firingPlayer:PlayerGameObject, emissionObject:Emission, affectedObjects:Array, emitExplosionRef:EmissionExplosionReference, emissionReference:EmissionReference) : void
       {
-         var _loc14_:* = null;
-         var _loc11_:* = null;
-         var _loc9_:* = null;
+         var _loc14_:PhysicsGameObject = null;
+         var _loc11_:Vec2 = null;
+         var _loc9_:Follower = null;
          var _loc12_:int = 0;
          world.addParticle(explosion.particleEffect,locationPoint.x,locationPoint.y);
          var _loc13_:Vector.<PhysicsGameObject> = new Vector.<PhysicsGameObject>();
@@ -307,7 +305,7 @@ package tuxwars.battle.emitters
       
       private function handleTerrain(explosion:Explosion, world:TuxWorld, locationPoint:Vec2, firingPlayer:PlayerGameObject, affectedObjects:Array) : void
       {
-         var _loc7_:* = null;
+         var _loc7_:PhysicsGameObject = null;
          if(affectedObjects && affectedObjects.length > 0)
          {
             LogUtils.log("Explosion: " + explosion.id + " objects in terrain explosion radius: " + affectedObjects.length,this,1,"Emitter",false,false,false);
@@ -378,3 +376,4 @@ package tuxwars.battle.emitters
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.items.definitions
    
    public class ClothingDef extends ItemDef
    {
-       
-      
       private var _setReference:SetReference;
       
       private var _rightFootExport:String;
@@ -46,3 +44,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

@@ -8,9 +8,7 @@ package tuxwars.ui.popups.states.slotmachineprize
    
    public class SlotmachinePrizeSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_PRIZE:String = "SlotMachinePrize";
-       
       
       public function SlotmachinePrizeSubState(game:DCGame, params:* = null)
       {
@@ -18,3 +16,4 @@ package tuxwars.ui.popups.states.slotmachineprize
       }
    }
 }
+

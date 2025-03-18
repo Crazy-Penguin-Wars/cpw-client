@@ -5,8 +5,6 @@ package tuxwars.home.states.challenge
    
    public class ChallengeState extends TuxState
    {
-       
-      
       public function ChallengeState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.challenge
       }
    }
 }
+

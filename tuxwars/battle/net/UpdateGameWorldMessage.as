@@ -4,8 +4,6 @@ package tuxwars.battle.net
    
    public class UpdateGameWorldMessage extends Message
    {
-       
-      
       public function UpdateGameWorldMessage(responses:Vector.<BattleResponse>)
       {
          super("UpdateGameWorld",responses);
@@ -17,3 +15,4 @@ package tuxwars.battle.net
       }
    }
 }
+

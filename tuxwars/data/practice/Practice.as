@@ -1,12 +1,11 @@
 package tuxwars.data.practice
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class Practice
    {
-      
       private static const TABLE:String = "Practice";
       
       private static const DEFAULT_ROW:String = "Default";
@@ -18,7 +17,6 @@ package tuxwars.data.practice
       private static const TURN_DURATION:String = "TurnDuration";
       
       private static const OPPONENT_AMOUNT:String = "OpponentAmount";
-       
       
       public function Practice()
       {
@@ -37,67 +35,74 @@ package tuxwars.data.practice
       
       public static function getWeapons() : Array
       {
+         var _loc3_:String = "Weapons";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["Weapons"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["Weapons"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","Weapons");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["Weapons"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getMatchDuration() : int
       {
+         var _loc3_:String = "MatchDuration";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MatchDuration"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MatchDuration"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MatchDuration");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MatchDuration"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getTurnDuration() : int
       {
+         var _loc3_:String = "TurnDuration";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TurnDuration"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TurnDuration"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TurnDuration");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TurnDuration"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getOpponentAmount() : int
       {
+         var _loc3_:String = "OpponentAmount";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["OpponentAmount"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["OpponentAmount"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","OpponentAmount");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["OpponentAmount"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       private static function getRow() : Row
       {
+         var _loc2_:String = "Default";
          var _loc1_:* = getTable();
-         if(!_loc1_._cache["Default"])
+         if(!_loc1_._cache[_loc2_])
          {
-            var _loc3_:Row = com.dchoc.utils.DCUtils.find(_loc1_.rows,"id","Default");
+            var _loc3_:Row = com.dchoc.utils.DCUtils.find(_loc1_.rows,"id",_loc2_);
             if(!_loc3_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc1_.name + "\'",_loc1_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc2_ + "\' was found in table: \'" + _loc1_.name + "\'",_loc1_,3);
             }
-            _loc1_._cache["Default"] = _loc3_;
+            _loc1_._cache[_loc2_] = _loc3_;
          }
-         return _loc1_._cache["Default"];
+         return _loc1_._cache[_loc2_];
       }
       
       private static function getTable() : Table
       {
+         var _loc2_:String = "Practice";
          var _loc1_:ProjectManager = ProjectManager;
-         return com.dchoc.projectdata.ProjectManager.projectData.findTable("Practice");
+         return com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
       }
    }
 }
+

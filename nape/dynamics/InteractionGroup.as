@@ -8,8 +8,6 @@ package nape.dynamics
    
    public final class InteractionGroup
    {
-       
-      
       public var zpp_inner:ZPP_InteractionGroup;
       
       public function InteractionGroup(param1:Boolean = false)
@@ -89,3 +87,4 @@ package nape.dynamics
       }
    }
 }
+

@@ -5,6 +5,7 @@ package tuxwars.player
    import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import nape.geom.Vec2;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.data.follower.FollowerData;
    import tuxwars.battle.data.follower.Followers;
    import tuxwars.battle.gameobjects.Follower;
@@ -18,9 +19,6 @@ package tuxwars.player
    
    public class WornItems
    {
-      
-      private static const EQUIPMENT_VALUE_SLOTS:Array = ["Feet","Head","Torso"];
-      
       public static const ITEM_WEAR:String = "ItemWear";
       
       public static const ITEM_UNWEAR:String = "ItemUnWear";
@@ -28,7 +26,8 @@ package tuxwars.player
       public static const ITEM_WEAR_PREVIEW:String = "ItemWearPreview";
       
       public static const ITEM_UNWEAR_PREVIEW:String = "ItemUnWearPreview";
-       
+      
+      private static const EQUIPMENT_VALUE_SLOTS:Array = ["Feet","Head","Torso"];
       
       private const _wornItemStats:PlayerStats = new PlayerStats();
       
@@ -89,7 +88,7 @@ package tuxwars.player
       
       public function wearItem(itemId:String) : ClothingItem
       {
-         var _loc3_:* = null;
+         var _loc3_:SetReference = null;
          if(itemId == null)
          {
             LogUtils.log("Trying to wear an item with null ID.",this,3,"Items",false,false,false);
@@ -139,7 +138,7 @@ package tuxwars.player
       
       private function addFollowersToPlayerGameObject(followers:Vector.<FollowerData>) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Vec2 = null;
          if(playerGameObject != null && followers)
          {
             _loc3_ = playerGameObject.bodyLocation.copy();
@@ -183,8 +182,8 @@ package tuxwars.player
       
       public function unwearItemInSlot(slot:String) : ClothingItem
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:SetReference = null;
+         var _loc2_:ClothingItem = null;
          if(slot)
          {
             if(hasSet() && (slot == "Torso" || slot == "Feet" || slot == "Head"))
@@ -231,7 +230,7 @@ package tuxwars.player
       
       private function removeFollowersFromPlayerGameObject(followers:Vector.<FollowerData>) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Follower = null;
          if(playerGameObject != null && followers)
          {
             for each(var fodd in followers)
@@ -247,8 +246,8 @@ package tuxwars.player
       
       public function wornItemsIncludedItemCheck() : void
       {
-         var includedFacialExplessionID:* = null;
-         var _loc2_:* = null;
+         var includedFacialExplessionID:String = null;
+         var _loc2_:ClothingItem = null;
          for each(var slot in EQUIPMENT_VALUE_SLOTS)
          {
             if(wornItems[slot] as ClothingItem != null)
@@ -308,3 +307,4 @@ package tuxwars.player
       }
    }
 }
+

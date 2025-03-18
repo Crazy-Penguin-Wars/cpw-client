@@ -8,8 +8,6 @@ package nape.geom
    
    public class GeomVertexIterator
    {
-       
-      
       public var zpp_inner:ZPP_GeomVertexIterator;
       
       public function GeomVertexIterator()
@@ -180,3 +178,4 @@ package nape.geom
       }
    }
 }
+

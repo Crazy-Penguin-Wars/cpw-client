@@ -1,17 +1,14 @@
 package tuxwars.data.money
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class MoneyPackageDatas
    {
-      
       private static const CASH_PACKAGE_TABLE:String = "CashPackage";
       
       private static const COIN_PACKAGE_TABLE:String = "CoinPackage";
-      
-      private static const MONEY_DATA_CACHE:Object = {};
       
       private static var cashTable:Table;
       
@@ -20,7 +17,8 @@ package tuxwars.data.money
       private static var cashPackages:Vector.<CashPackageData>;
       
       private static var coinPackages:Vector.<CoinPackageData>;
-       
+      
+      private static const MONEY_DATA_CACHE:Object = {};
       
       public function MoneyPackageDatas()
       {
@@ -30,8 +28,8 @@ package tuxwars.data.money
       
       public static function getCashPackageDatas() : Vector.<CashPackageData>
       {
-         var cashTable:* = null;
-         var _loc1_:* = null;
+         var cashTable:Table = null;
+         var _loc1_:CashPackageData = null;
          if(!cashPackages)
          {
             cashPackages = new Vector.<CashPackageData>();
@@ -52,8 +50,8 @@ package tuxwars.data.money
       
       public static function getCoinPackageDatas() : Vector.<CoinPackageData>
       {
-         var _loc2_:* = null;
-         var _loc1_:* = null;
+         var _loc2_:Table = null;
+         var _loc1_:CoinPackageData = null;
          if(!coinPackages)
          {
             coinPackages = new Vector.<CoinPackageData>();
@@ -122,8 +120,9 @@ package tuxwars.data.money
       {
          if(!cashTable)
          {
+            var _loc2_:String = "CashPackage";
             var _loc1_:ProjectManager = ProjectManager;
-            cashTable = com.dchoc.projectdata.ProjectManager.projectData.findTable("CashPackage");
+            cashTable = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return cashTable;
       }
@@ -132,10 +131,12 @@ package tuxwars.data.money
       {
          if(!coinTable)
          {
+            var _loc2_:String = "CoinPackage";
             var _loc1_:ProjectManager = ProjectManager;
-            coinTable = com.dchoc.projectdata.ProjectManager.projectData.findTable("CoinPackage");
+            coinTable = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return coinTable;
       }
    }
 }
+

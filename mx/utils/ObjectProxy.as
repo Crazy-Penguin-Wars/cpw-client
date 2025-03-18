@@ -12,16 +12,17 @@ package mx.utils
    import mx.events.PropertyChangeEvent;
    import mx.events.PropertyChangeEventKind;
    
+   use namespace object_proxy;
+   use namespace flash_proxy;
+   
    [Bindable("propertyChange")]
    public dynamic class ObjectProxy extends Proxy implements IExternalizable, IPropertyChangeNotifier
    {
-       
-      
       protected var dispatcher:EventDispatcher;
       
       protected var notifiers:Object;
       
-      protected var proxyClass:Class;
+      protected var proxyClass:Class = ObjectProxy;
       
       protected var propertyList:Array;
       
@@ -35,7 +36,6 @@ package mx.utils
       
       public function ObjectProxy(item:Object = null, uid:String = null, proxyDepth:int = -1)
       {
-         this.proxyClass = ObjectProxy;
          super();
          if(!item)
          {
@@ -242,7 +242,7 @@ package mx.utils
       
       protected function setupPropertyList() : void
       {
-         var prop:* = null;
+         var prop:String = null;
          if(getQualifiedClassName(this._item) == "Object")
          {
             this.propertyList = [];
@@ -261,3 +261,4 @@ package mx.utils
       }
    }
 }
+

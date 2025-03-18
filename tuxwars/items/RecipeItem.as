@@ -6,8 +6,6 @@ package tuxwars.items
    
    public class RecipeItem extends Item
    {
-       
-      
       private var _ingredients:Array;
       
       private var _result:String;
@@ -37,3 +35,4 @@ package tuxwars.items
       }
    }
 }
+

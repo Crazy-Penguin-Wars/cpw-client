@@ -4,9 +4,7 @@ package org.as3commons.zip
    
    public class ZipErrorEvent extends Event
    {
-      
       public static const PARSE_ERROR:String = "parseError";
-       
       
       public var text:String;
       
@@ -22,3 +20,4 @@ package org.as3commons.zip
       }
    }
 }
+

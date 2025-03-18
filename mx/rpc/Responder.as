@@ -2,8 +2,6 @@ package mx.rpc
 {
    public class Responder implements IResponder
    {
-       
-      
       private var _resultHandler:Function;
       
       private var _faultHandler:Function;
@@ -26,3 +24,4 @@ package mx.rpc
       }
    }
 }
+

@@ -2,7 +2,6 @@ package com.dchoc.events
 {
    public class ErrorCodes
    {
-      
       public static const UNSPECIFIED_ERROR:String = "Error Unspecified";
       
       public static const LOGIC_UPDATER_EXCEPTION:String = "LogicUpdater Exception";
@@ -14,7 +13,6 @@ package com.dchoc.events
       public static const MESSACE_CENTER_EXCEPTION:String = "Message Center Exception";
       
       public static const REQUEST_NOT_FOUND_ERROR:String = "Request Not Found";
-       
       
       public function ErrorCodes()
       {
@@ -23,3 +21,4 @@ package com.dchoc.events
       }
    }
 }
+

@@ -10,8 +10,6 @@ package tuxwars.ui.popups.logic.freeammopackage
    
    public class FreeAmmoPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function FreeAmmoPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -42,7 +40,7 @@ package tuxwars.ui.popups.logic.freeammopackage
       private function givePack(msg:Message) : void
       {
          var coins:int = 0;
-         var weapons:* = null;
+         var weapons:String = null;
          var amount:int = 0;
          var _loc4_:Object = msg.data;
          if(_loc4_ != null)
@@ -65,3 +63,4 @@ package tuxwars.ui.popups.logic.freeammopackage
       }
    }
 }
+

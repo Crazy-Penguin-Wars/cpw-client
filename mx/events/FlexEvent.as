@@ -3,9 +3,10 @@ package mx.events
    import flash.events.Event;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class FlexEvent extends Event
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const ADD:String = "add";
@@ -107,7 +108,6 @@ package mx.events
       public static const VALID:String = "valid";
       
       public static const VALUE_COMMIT:String = "valueCommit";
-       
       
       public function FlexEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false)
       {
@@ -120,3 +120,4 @@ package mx.events
       }
    }
 }
+

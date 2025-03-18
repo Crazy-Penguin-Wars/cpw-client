@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ZPP_Component
    {
-      
-      public static var zpp_pool:ZNPNode_ZPP_Component = null;
-       
+      public static var zpp_pool:ZNPNode_ZPP_Component;
       
       public var next:ZNPNode_ZPP_Component;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

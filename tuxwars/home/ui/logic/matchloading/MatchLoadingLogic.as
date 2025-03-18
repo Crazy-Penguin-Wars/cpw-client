@@ -22,8 +22,6 @@ package tuxwars.home.ui.logic.matchloading
    
    public class MatchLoadingLogic extends TuxUILogic
    {
-       
-      
       private var betIsReady:Boolean;
       
       private var betCountdownTimer:int;
@@ -131,44 +129,50 @@ package tuxwars.home.ui.logic.matchloading
       {
          var _loc3_:Boolean = false;
          _loc3_ = true;
-         var sound:* = null;
+         var sound:SoundReference = null;
          var _loc5_:BetData = BetManager.getBet(selectedId);
          var _loc2_:BetData = BetManager.getBet(newId);
          selectedId = newId;
          IngameBetData.nullValues();
-         if(_loc5_.valuePremium > 0)
+         if(true || _loc5_.id != _loc2_.id)
          {
-            loadingScreen.moneyScreen.setPremiumMoney("" + game.player.premiumMoney);
-            _moneyLogic.setPremiumBet(0);
-         }
-         else if(_loc5_.valueIngame > 0)
-         {
-            loadingScreen.moneyScreen.setInGameMoney("" + game.player.ingameMoney);
-            _moneyLogic.setIngameBet(0);
-         }
-         if(_loc2_.valuePremium > 0)
-         {
-            loadingScreen.moneyScreen.setPremiumMoney("" + (game.player.premiumMoney - _loc2_.valuePremium));
-            loadingScreen.animate(true,_loc2_.valuePremium);
-            _moneyLogic.setPremiumBet(_loc2_.valuePremium);
-            IngameBetData.addToBetAmount(_loc2_.valuePremium);
-         }
-         else if(_loc2_.valueIngame > 0)
-         {
-            loadingScreen.moneyScreen.setInGameMoney("" + (game.player.ingameMoney - _loc2_.valueIngame));
-            loadingScreen.animate(false,_loc2_.valueIngame);
-            _moneyLogic.setIngameBet(_loc2_.valueIngame);
-            IngameBetData.addToBetAmount(_loc2_.valueIngame);
-         }
-         if(_loc2_.valuePremium > 0 || _loc2_.valueIngame > 0)
-         {
-            sound = Sounds.getSoundReference("Buy");
-            if(sound)
+            if(_loc5_.valuePremium > 0)
             {
-               MessageCenter.sendEvent(new SoundMessage("PlaySound",sound.getMusicID(),sound.getStart(),sound.getType(),"PlaySound"));
+               loadingScreen.moneyScreen.setPremiumMoney("" + game.player.premiumMoney);
+               _moneyLogic.setPremiumBet(0);
+            }
+            else if(_loc5_.valueIngame > 0)
+            {
+               loadingScreen.moneyScreen.setInGameMoney("" + game.player.ingameMoney);
+               _moneyLogic.setIngameBet(0);
+            }
+            if(_loc2_.valuePremium > 0)
+            {
+               loadingScreen.moneyScreen.setPremiumMoney("" + (game.player.premiumMoney - _loc2_.valuePremium));
+               loadingScreen.animate(true,_loc2_.valuePremium);
+               _moneyLogic.setPremiumBet(_loc2_.valuePremium);
+               IngameBetData.addToBetAmount(_loc2_.valuePremium);
+            }
+            else if(_loc2_.valueIngame > 0)
+            {
+               loadingScreen.moneyScreen.setInGameMoney("" + (game.player.ingameMoney - _loc2_.valueIngame));
+               loadingScreen.animate(false,_loc2_.valueIngame);
+               _moneyLogic.setIngameBet(_loc2_.valueIngame);
+               IngameBetData.addToBetAmount(_loc2_.valueIngame);
+            }
+            if(_loc2_.valuePremium > 0 || _loc2_.valueIngame > 0)
+            {
+               sound = Sounds.getSoundReference("Buy");
+               if(sound)
+               {
+                  MessageCenter.sendEvent(new SoundMessage("PlaySound",sound.getMusicID(),sound.getStart(),sound.getType(),"PlaySound"));
+               }
+            }
+            if(true)
+            {
+               bettingReady();
             }
          }
-         bettingReady();
       }
       
       private function battleServerConnected(msg:Message) : void
@@ -217,9 +221,9 @@ package tuxwars.home.ui.logic.matchloading
       
       private function responseCallback(response:BattleResponse) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:Array = null;
+         var _loc2_:Array = null;
+         var _loc4_:Array = null;
          switch(response.responseType - 41)
          {
             case 0:
@@ -246,3 +250,4 @@ package tuxwars.home.ui.logic.matchloading
       }
    }
 }
+

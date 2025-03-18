@@ -5,15 +5,15 @@ package mx.rpc
    import mx.resources.ResourceManager;
    import mx.rpc.events.AbstractEvent;
    
+   use namespace mx_internal;
+   
    public class AbstractOperation extends AbstractInvoker
    {
-       
-      
       public var arguments:Object;
       
       public var properties:Object;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       mx_internal var _service:AbstractService;
       
@@ -21,7 +21,6 @@ package mx.rpc
       
       public function AbstractOperation(service:AbstractService = null, name:String = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this.mx_internal::_service = service;
          this._name = name;
@@ -84,3 +83,4 @@ package mx.rpc
       }
    }
 }
+

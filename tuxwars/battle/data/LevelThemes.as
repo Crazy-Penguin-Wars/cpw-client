@@ -1,13 +1,12 @@
 package tuxwars.battle.data
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class LevelThemes
    {
-      
       private static const TABLE_NAME:String = "LevelTheme";
-       
       
       public function LevelThemes()
       {
@@ -23,9 +22,10 @@ package tuxwars.battle.data
       
       private static function getRow(rowName:String) : Row
       {
+         var _loc4_:String = "LevelTheme";
          var _loc2_:ProjectManager = ProjectManager;
          var _loc5_:* = rowName;
-         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("LevelTheme");
+         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc4_);
          if(!_loc3_._cache[_loc5_])
          {
             var _loc6_:Row = com.dchoc.utils.DCUtils.find(_loc3_.rows,"id",_loc5_);
@@ -39,3 +39,4 @@ package tuxwars.battle.data
       }
    }
 }
+

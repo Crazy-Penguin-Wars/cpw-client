@@ -4,7 +4,6 @@ package com.dchoc.ui.events
    
    public class UIButtonEvent extends UIEvent
    {
-      
       public static const CLICKED_POST_CALLBACK:String = "clicked_post_callback";
       
       public static const CLICKED:String = "clicked";
@@ -14,7 +13,6 @@ package com.dchoc.ui.events
       public static const OUT:String = "out";
       
       public static const OVER:String = "over";
-       
       
       private var button:UIButton;
       
@@ -30,3 +28,4 @@ package com.dchoc.ui.events
       }
    }
 }
+

@@ -15,7 +15,6 @@ package tuxwars.battle.ui.screen.chat
    
    public class ChatElementScreen extends TuxUIElementScreen
    {
-      
       private static const MAX_LINES:int = 4;
       
       private static const TEXT_CHAT:String = "Text_Chat";
@@ -31,7 +30,6 @@ package tuxwars.battle.ui.screen.chat
       private static const BUTTON_ENTER:String = "Button_Enter";
       
       private static const PARSE_TAGS:Array = ["<","/",">"];
-       
       
       private var chatText:TextField;
       
@@ -96,7 +94,7 @@ package tuxwars.battle.ui.screen.chat
       
       public function addMessage(id:String, name:String, message:String, isStatus:Boolean) : void
       {
-         var _loc6_:* = null;
+         var _loc6_:String = null;
          message = parseMessage(message);
          var textToAppend:String = "";
          if(name)
@@ -122,15 +120,15 @@ package tuxwars.battle.ui.screen.chat
          var _loc9_:int = 0;
          var remove:Boolean = false;
          var i:int = 0;
-         var _loc3_:* = null;
-         var _loc2_:* = null;
-         var subTag:* = null;
+         var _loc3_:String = null;
+         var _loc2_:String = null;
+         var subTag:String = null;
          var currentIndex:* = 0;
          var messageLowerCase:String = message.toLowerCase();
          while(messageLowerCase.indexOf(PARSE_TAGS[0],currentIndex) != -1)
          {
-            _loc5_ = messageLowerCase.indexOf(PARSE_TAGS[0],currentIndex);
-            _loc9_ = messageLowerCase.indexOf(PARSE_TAGS[2],currentIndex + 1);
+            _loc5_ = int(messageLowerCase.indexOf(PARSE_TAGS[0],currentIndex));
+            _loc9_ = int(messageLowerCase.indexOf(PARSE_TAGS[2],currentIndex + 1));
             remove = true;
             if(_loc5_ < _loc9_)
             {
@@ -262,7 +260,6 @@ package tuxwars.battle.ui.screen.chat
             case 32:
             case 38:
             case 37:
-               break;
             case 39:
          }
       }
@@ -273,3 +270,4 @@ package tuxwars.battle.ui.screen.chat
       }
    }
 }
+

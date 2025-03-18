@@ -1,22 +1,12 @@
 package org.as3commons.zip
 {
-   import flash.events.Event;
-   import flash.events.EventDispatcher;
-   import flash.events.HTTPStatusEvent;
-   import flash.events.IOErrorEvent;
-   import flash.events.ProgressEvent;
-   import flash.events.SecurityErrorEvent;
+   import flash.events.*;
    import flash.net.URLRequest;
    import flash.net.URLStream;
-   import flash.utils.ByteArray;
-   import flash.utils.Dictionary;
-   import flash.utils.Endian;
-   import flash.utils.IDataInput;
-   import flash.utils.IDataOutput;
+   import flash.utils.*;
    
    public class Zip extends EventDispatcher
    {
-      
       internal static const SIG_CENTRAL_FILE_HEADER:uint = 33639248;
       
       internal static const SIG_SPANNING_MARKER:uint = 808471376;
@@ -36,7 +26,6 @@ package org.as3commons.zip
       internal static const SIG_ARCHIVE_EXTRA_DATA:uint = 134630224;
       
       internal static const SIG_SPANNING:uint = 134695760;
-       
       
       protected var filesList:Array;
       
@@ -435,3 +424,4 @@ package org.as3commons.zip
       }
    }
 }
+

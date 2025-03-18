@@ -9,8 +9,6 @@ package tuxwars.battle.states.player
    
    public class PlayerActiveWalkSubState extends PlayerState
    {
-       
-      
       public function PlayerActiveWalkSubState(player:PlayerGameObject, params:* = null)
       {
          super(player,params);
@@ -98,3 +96,4 @@ package tuxwars.battle.states.player
       }
    }
 }
+

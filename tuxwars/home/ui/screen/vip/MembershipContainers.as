@@ -7,11 +7,9 @@ package tuxwars.home.ui.screen.vip
    
    public class MembershipContainers extends UIContainers
    {
-      
       public static const ACTIVE_CONTAINER:String = "ActiveContainer";
       
       public static const INACTIVE_CONTAINER:String = "InactiveContainer";
-       
       
       public function MembershipContainers(design:MovieClip, game:TuxWarsGame, vipScreen:VIPScreen, no:int)
       {
@@ -48,3 +46,4 @@ package tuxwars.home.ui.screen.vip
       }
    }
 }
+

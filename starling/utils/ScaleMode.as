@@ -4,13 +4,11 @@ package starling.utils
    
    public class ScaleMode
    {
-      
       public static const NONE:String = "none";
       
       public static const NO_BORDER:String = "noBorder";
       
       public static const SHOW_ALL:String = "showAll";
-       
       
       public function ScaleMode()
       {
@@ -24,3 +22,4 @@ package starling.utils
       }
    }
 }
+

@@ -7,11 +7,10 @@ package tuxwars.battle.ui.states.results
    
    public class ResultsUISubState extends TuxUIState
    {
-       
-      
       public function ResultsUISubState(game:TuxWarsGame, params:* = null)
       {
          super(ResultScreen,ResultLogic,game,params);
       }
    }
 }
+

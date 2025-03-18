@@ -16,13 +16,11 @@ package tuxwars.home.ui.screen.dailynews
    
    public class DailyNewsScreen extends TuxUIScreen
    {
-      
       private static const CLOSE_BUTTON:String = "Button_Close";
       
       private static const GIFTS_BUTTON:String = "Button_Gifts";
       
       private static const INBOX_BUTTON:String = "Button_Inbox";
-       
       
       private var _closeButton:UIButton;
       
@@ -142,10 +140,10 @@ package tuxwars.home.ui.screen.dailynews
       public function dailyRewardInit(game:TuxWarsGame) : void
       {
          var i:int = 0;
-         var text:* = null;
-         var textValue:* = null;
-         var icon:* = null;
-         var textMessage:* = null;
+         var text:String = null;
+         var textValue:String = null;
+         var icon:String = null;
+         var textMessage:String = null;
          dailyRewardArray = game.player.dailyRewards;
          day = game.player.dailyRewardDay;
          for(i = 0; i < 5; )
@@ -201,3 +199,4 @@ package tuxwars.home.ui.screen.dailynews
       }
    }
 }
+

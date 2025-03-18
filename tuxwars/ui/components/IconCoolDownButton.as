@@ -6,8 +6,6 @@ package tuxwars.ui.components
    
    public class IconCoolDownButton extends IconButton
    {
-       
-      
       private var lastCoolDownTime:int;
       
       private var coolDownValue:int;
@@ -83,3 +81,4 @@ package tuxwars.ui.components
       }
    }
 }
+

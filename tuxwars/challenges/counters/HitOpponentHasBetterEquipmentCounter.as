@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class HitOpponentHasBetterEquipmentCounter extends HitOpponentCounter
    {
-       
-      
       public function HitOpponentHasBetterEquipmentCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -36,3 +34,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

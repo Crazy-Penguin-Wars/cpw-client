@@ -4,8 +4,6 @@ package
    
    public dynamic class en_US$core_properties extends ResourceBundle
    {
-       
-      
       public function en_US$core_properties()
       {
          super("en_US","core");
@@ -34,3 +32,4 @@ package
       }
    }
 }
+

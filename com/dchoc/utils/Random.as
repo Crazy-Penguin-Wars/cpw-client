@@ -2,9 +2,7 @@ package com.dchoc.utils
 {
    public final class Random
    {
-      
       private static var _instance:Random;
-       
       
       private var _seed:uint;
       
@@ -152,3 +150,4 @@ package com.dchoc.utils
       }
    }
 }
+

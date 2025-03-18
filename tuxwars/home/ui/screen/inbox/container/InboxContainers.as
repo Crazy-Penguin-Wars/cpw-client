@@ -11,7 +11,6 @@ package tuxwars.home.ui.screen.inbox.container
    
    public class InboxContainers extends UIContainers
    {
-      
       public static const TYPE_GIFT_EMPTY:String = "Gifts_Empty";
       
       public static const TYPE_GIFT:String = "Gifts_Default";
@@ -21,7 +20,6 @@ package tuxwars.home.ui.screen.inbox.container
       public static const TYPE_NEIGHBOR:String = "Neighbor_Default";
       
       private static const DUMMY_PLAYER_PIC:String = "facebook/misc_images/dummy_friend_picture.png";
-       
       
       private var _tuxGame:TuxWarsGame;
       
@@ -58,7 +56,7 @@ package tuxwars.home.ui.screen.inbox.container
       
       private function getFriendFromRequestData(rData:RequestData) : Friend
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          var friend:Friend = new Friend();
          if(rData.feedRewardGift)
          {
@@ -85,3 +83,4 @@ package tuxwars.home.ui.screen.inbox.container
       }
    }
 }
+

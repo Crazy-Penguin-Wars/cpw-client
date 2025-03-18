@@ -6,6 +6,7 @@ package tuxwars.battle.states.player.ai
    import nape.geom.RayResultList;
    import nape.geom.Vec2;
    import nape.phys.Body;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.gameobjects.player.AIPlayerGameObject;
    import tuxwars.battle.gameobjects.player.PlayerGameObject;
@@ -16,8 +17,6 @@ package tuxwars.battle.states.player.ai
    
    public class AIPlayerActiveWalkSubState extends PlayerActiveWalkSubState
    {
-       
-      
       private var walkingTimer:int;
       
       private var walkingDirectionLeft:Boolean;
@@ -94,10 +93,10 @@ package tuxwars.battle.states.player.ai
       
       private function findTargets() : void
       {
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:Ray = null;
+         var _loc4_:RayResultList = null;
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:Body = null;
          var _loc7_:BattleManager = BattleManager;
          if(tuxwars.battle.BattleManager._aiPlayerHasShot)
          {
@@ -130,3 +129,4 @@ package tuxwars.battle.states.player.ai
       }
    }
 }
+

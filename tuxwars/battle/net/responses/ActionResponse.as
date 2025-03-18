@@ -4,15 +4,13 @@ package tuxwars.battle.net.responses
    
    public class ActionResponse extends Message
    {
-       
-      
       private var _sendTime:int;
       
       private var _senderId:String;
       
       public function ActionResponse(data:Object)
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          super("ActionResponse",data);
          if(data.hasOwnProperty("_t"))
          {
@@ -63,3 +61,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

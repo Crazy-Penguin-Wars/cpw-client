@@ -10,9 +10,7 @@ package tuxwars.ui.popups.screen.firstvip
    
    public class VipFirstTimePopUpScreen extends PopUpBaseScreen implements IResourceLoaderURL
    {
-      
       private static const IMAGE_CONTAINER:String = "Container_Image";
-       
       
       private var loader:URLResourceLoader;
       
@@ -48,3 +46,4 @@ package tuxwars.ui.popups.screen.firstvip
       }
    }
 }
+

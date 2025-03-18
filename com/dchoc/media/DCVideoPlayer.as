@@ -10,8 +10,6 @@ package com.dchoc.media
    
    public class DCVideoPlayer
    {
-       
-      
       private const netConnection:NetConnection = new NetConnection();
       
       private const video:Video = new Video();
@@ -102,3 +100,4 @@ package com.dchoc.media
       }
    }
 }
+

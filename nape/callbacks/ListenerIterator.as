@@ -5,9 +5,7 @@ package nape.callbacks
    
    public final class ListenerIterator
    {
-      
-      public static var zpp_pool:ListenerIterator = null;
-       
+      public static var zpp_pool:ListenerIterator;
       
       public var zpp_next:ListenerIterator;
       
@@ -75,3 +73,4 @@ package nape.callbacks
       }
    }
 }
+

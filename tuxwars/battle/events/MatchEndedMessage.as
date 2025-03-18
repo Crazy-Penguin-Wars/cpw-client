@@ -5,7 +5,6 @@ package tuxwars.battle.events
    
    public class MatchEndedMessage extends Message
    {
-      
       public static const NORMAL_EXIT:String = "NormalExit";
       
       public static const SYNC_ERROR:String = "sync_error";
@@ -15,7 +14,6 @@ package tuxwars.battle.events
       public static const UNEXPECTED_MESSAGE:String = "unexpected_message";
       
       private static var _reason:String;
-       
       
       public function MatchEndedMessage(players:Array, reason:String = "NormalExit")
       {
@@ -53,3 +51,4 @@ package tuxwars.battle.events
       }
    }
 }
+

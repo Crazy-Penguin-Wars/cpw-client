@@ -12,9 +12,7 @@ package tuxwars.ui.popups.states.levelup
    
    public class LevelUpPopupSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_LEVEL_UP:String = "TypeLevelUp";
-       
       
       public function LevelUpPopupSubState(game:TuxWarsGame, params:* = null)
       {
@@ -31,3 +29,4 @@ package tuxwars.ui.popups.states.levelup
       }
    }
 }
+

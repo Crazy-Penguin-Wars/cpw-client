@@ -1,11 +1,11 @@
 package tuxwars.home.ui.screen
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.ui.buttons.UIToggleButton;
    import com.dchoc.ui.events.UIButtonEvent;
    import com.dchoc.ui.groups.UIRadialGroup;
    import com.dchoc.ui.text.UIAutoTextField;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
@@ -20,7 +20,6 @@ package tuxwars.home.ui.screen
    
    public class TuxPageSubTabScreen extends TuxPageContentScreen
    {
-      
       private static const SUB_TABS_CONTAINER:String = "Container_Subtabs";
       
       private static const SUB_TAB:String = "Tab_0";
@@ -30,7 +29,6 @@ package tuxwars.home.ui.screen
       private static const CONTAINER_SORT_TABS:String = "Container_Sort_Tabs";
       
       private static const ICON:String = "Icon";
-       
       
       private var _radialGroup:UIRadialGroup;
       
@@ -49,7 +47,7 @@ package tuxwars.home.ui.screen
       
       public function initMoneyResourceElemenet() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:MovieClip = null;
          if(contentMoveClip && contentMoveClip.Saldo || this._design && this._design.Saldo)
          {
             if(_moneyResourceElementScreen)
@@ -124,11 +122,11 @@ package tuxwars.home.ui.screen
       
       private function initSorting() : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Array = null;
          var _loc2_:Boolean = false;
          var i:int = 0;
-         var _loc1_:* = null;
-         var _loc3_:* = null;
+         var _loc1_:MovieClip = null;
+         var _loc3_:IconToggleTooltipButton = null;
          if(contentMoveClip)
          {
             if(_radialSortingGroup)
@@ -186,9 +184,9 @@ package tuxwars.home.ui.screen
       {
          var count:int = 0;
          var i:int = 0;
-         var _loc1_:* = null;
-         var _loc4_:* = null;
-         var _loc6_:* = null;
+         var _loc1_:MovieClip = null;
+         var _loc4_:Row = null;
+         var _loc6_:UIToggleButton = null;
          if(_radialGroup == null)
          {
             _radialGroup = new UIRadialGroup();
@@ -207,17 +205,18 @@ package tuxwars.home.ui.screen
                   if(i < _loc2_.length)
                   {
                      _loc4_ = _loc2_[i];
+                     var _loc10_:String = "Name";
                      var _loc8_:* = _loc4_;
                      §§push(TuxUiUtils);
                      §§push(UIToggleButton);
                      §§push(_loc3_);
                      §§push(_loc1_.name);
                      §§push(subTabPressed);
-                     if(!_loc8_._cache["Name"])
+                     if(!_loc8_._cache[_loc10_])
                      {
-                        _loc8_._cache["Name"] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name","Name");
+                        _loc8_._cache[_loc10_] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name",_loc10_);
                      }
-                     var _loc9_:* = _loc8_._cache["Name"];
+                     var _loc9_:* = _loc8_._cache[_loc10_];
                      _loc6_ = §§pop().createButton(§§pop(),§§pop(),§§pop(),§§pop(),_loc9_.overrideValue != null ? _loc9_.overrideValue : _loc9_._value,_loc4_);
                      _radialGroup.add(_loc6_);
                      if(_loc4_ == getPageSubTabLogic().getCurrentTab())
@@ -283,3 +282,4 @@ package tuxwars.home.ui.screen
       }
    }
 }
+

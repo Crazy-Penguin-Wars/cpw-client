@@ -5,8 +5,6 @@ package mx.core
    
    public interface IFlexModuleFactory
    {
-       
-      
       function get allowDomainsInNewRSLs() : Boolean;
       
       function set allowDomainsInNewRSLs(param1:Boolean) : void;
@@ -34,3 +32,4 @@ package mx.core
       function registerImplementation(param1:String, param2:Object) : void;
    }
 }
+

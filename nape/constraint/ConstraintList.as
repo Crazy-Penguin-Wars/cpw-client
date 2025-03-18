@@ -7,8 +7,6 @@ package nape.constraint
    
    public final class ConstraintList
    {
-       
-      
       public var zpp_inner:ZPP_ConstraintList;
       
       public function ConstraintList()
@@ -32,7 +30,7 @@ package nape.constraint
          }
          var _loc2_:ConstraintList = new ConstraintList();
          var _loc3_:int = 0;
-         while(_loc3_ < param1.length)
+         while(_loc3_ < int(param1.length))
          {
             _loc4_ = param1[_loc3_];
             _loc3_++;
@@ -630,7 +628,7 @@ package nape.constraint
          {
             while(zpp_inner.at_index != param1)
             {
-               zpp_inner.at_index = zpp_inner.at_index + 1;
+               ++zpp_inner.at_index;
                zpp_inner.at_ite = zpp_inner.at_ite.next;
             }
          }
@@ -643,3 +641,4 @@ package nape.constraint
       }
    }
 }
+

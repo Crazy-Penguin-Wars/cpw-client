@@ -8,15 +8,13 @@ package tuxwars.battle.world
    
    public class PhysicsUpdater
    {
+      private static var needsSorting:Boolean;
       
       private static const addList:Array = [];
       
       private static const activeList:Array = [];
       
       private static const removeList:Array = [];
-      
-      private static var needsSorting:Boolean;
-       
       
       public function PhysicsUpdater()
       {
@@ -34,7 +32,7 @@ package tuxwars.battle.world
       
       public static function physicsUpdate(deltaTime:int) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:UpdateObject = null;
          var _loc2_:int = 0;
          try
          {
@@ -151,7 +149,7 @@ package tuxwars.battle.world
       
       private static function update(deltaTime:int) : void
       {
-         var id:* = null;
+         var id:String = null;
          try
          {
             for each(var registerdObject in activeList)
@@ -200,7 +198,7 @@ package tuxwars.battle.world
          {
             if(updateObject.object == obj.object)
             {
-               _loc3_ = from.indexOf(updateObject);
+               _loc3_ = int(from.indexOf(updateObject));
                if(_loc3_ != -1)
                {
                   LogUtils.log("Removed " + obj + " from other list.","PhysicsUpdater",1,"PhysicsUpdater");
@@ -215,8 +213,6 @@ package tuxwars.battle.world
 
 class UpdateObject
 {
-    
-   
    public var object:Object;
    
    public var id:String;

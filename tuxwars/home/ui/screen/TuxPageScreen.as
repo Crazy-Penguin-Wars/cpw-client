@@ -1,9 +1,10 @@
 package tuxwars.home.ui.screen
 {
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.ui.buttons.UIButton;
    import com.dchoc.ui.events.UIButtonEvent;
    import com.dchoc.ui.groups.UIRadialGroup;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
@@ -20,7 +21,6 @@ package tuxwars.home.ui.screen
    
    public class TuxPageScreen extends TuxUIScreen implements IShopTutorial
    {
-      
       protected static const NAME:String = "Name";
       
       protected static const ICON_LABEL:String = "IconLabel";
@@ -36,7 +36,6 @@ package tuxwars.home.ui.screen
       private static const PAGES_CONTAINER:String = "Container_Tabs";
       
       private static const PAGE:String = "Tab_0";
-       
       
       private var _closeButton:UIButton;
       
@@ -81,9 +80,9 @@ package tuxwars.home.ui.screen
       {
          var count:int = 0;
          var i:int = 0;
-         var child:* = null;
-         var _loc2_:* = null;
-         var _loc5_:* = null;
+         var child:MovieClip = null;
+         var _loc2_:MovieClip = null;
+         var _loc5_:Row = null;
          var _loc6_:Array = pageLogic.getPages();
          var _loc3_:MovieClip = getDesignMovieClip().getChildByName("Container_Headers") as MovieClip;
          if(_loc3_)
@@ -98,22 +97,24 @@ package tuxwars.home.ui.screen
                   if(i < _loc6_.length)
                   {
                      _loc5_ = _loc6_[i];
+                     var _loc12_:String = "Name";
                      var _loc8_:* = _loc5_;
                      §§push(TuxUiUtils);
                      §§push(child.getChildByName("Text") as TextField);
-                     if(!_loc8_._cache["Name"])
+                     if(!_loc8_._cache[_loc12_])
                      {
-                        _loc8_._cache["Name"] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name","Name");
+                        _loc8_._cache[_loc12_] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name",_loc12_);
                      }
-                     var _loc9_:* = _loc8_._cache["Name"];
+                     var _loc9_:* = _loc8_._cache[_loc12_];
                      §§pop().createAutoTextField(§§pop(),_loc9_.overrideValue != null ? _loc9_.overrideValue : _loc9_._value);
+                     var _loc13_:String = "IconLabel";
                      var _loc10_:* = _loc5_;
                      §§push(_loc2_);
-                     if(!_loc10_._cache["IconLabel"])
+                     if(!_loc10_._cache[_loc13_])
                      {
-                        _loc10_._cache["IconLabel"] = com.dchoc.utils.DCUtils.find(_loc10_._fields,"name","IconLabel");
+                        _loc10_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc10_._fields,"name",_loc13_);
                      }
-                     var _loc11_:* = _loc10_._cache["IconLabel"];
+                     var _loc11_:* = _loc10_._cache[_loc13_];
                      §§pop().gotoAndStop(_loc11_.overrideValue != null ? _loc11_.overrideValue : _loc11_._value);
                      child.visible = _loc5_ == pageLogic.getCurrentPage();
                   }
@@ -137,10 +138,10 @@ package tuxwars.home.ui.screen
       {
          var count:int = 0;
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:MovieClip = null;
          var slotCount:int = 0;
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:Row = null;
+         var _loc3_:IconToggleButton = null;
          var _loc6_:Array = pageLogic.getPages();
          var _loc5_:MovieClip = getDesignMovieClip().getChildByName("Container_Tabs") as MovieClip;
          if(_loc5_)
@@ -155,25 +156,27 @@ package tuxwars.home.ui.screen
                   if(_loc1_ != null && _loc1_.name == "Tab_0" + slotCount)
                   {
                      _loc4_ = _loc6_[slotCount - 1];
+                     var _loc13_:String = "Name";
                      var _loc9_:* = _loc4_;
                      §§push(TuxUiUtils);
                      §§push(IconToggleButton);
                      §§push(_loc5_);
                      §§push(_loc1_.name);
                      §§push(pagePressed);
-                     if(!_loc9_._cache["Name"])
+                     if(!_loc9_._cache[_loc13_])
                      {
-                        _loc9_._cache["Name"] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name","Name");
+                        _loc9_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name",_loc13_);
                      }
-                     var _loc10_:* = _loc9_._cache["Name"];
+                     var _loc10_:* = _loc9_._cache[_loc13_];
                      _loc3_ = §§pop().createButton(§§pop(),§§pop(),§§pop(),§§pop(),_loc10_.overrideValue != null ? _loc10_.overrideValue : _loc10_._value,_loc4_);
+                     var _loc14_:String = "IconLabel";
                      var _loc11_:* = _loc4_;
                      §§push(_loc3_.getIconContainer("Icon"));
-                     if(!_loc11_._cache["IconLabel"])
+                     if(!_loc11_._cache[_loc14_])
                      {
-                        _loc11_._cache["IconLabel"] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name","IconLabel");
+                        _loc11_._cache[_loc14_] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name",_loc14_);
                      }
-                     var _loc12_:* = _loc11_._cache["IconLabel"];
+                     var _loc12_:* = _loc11_._cache[_loc14_];
                      §§pop().gotoAndStop(_loc12_.overrideValue != null ? _loc12_.overrideValue : _loc12_._value);
                      _radialGroup.add(_loc3_);
                      if(_loc4_ == pageLogic.getCurrentPage())
@@ -197,7 +200,7 @@ package tuxwars.home.ui.screen
       private function hideTabs(mc:MovieClip) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:MovieClip = null;
          for(i = 0; i < mc.numChildren; )
          {
             _loc2_ = mc.getChildAt(i) as MovieClip;
@@ -255,3 +258,4 @@ package tuxwars.home.ui.screen
       }
    }
 }
+

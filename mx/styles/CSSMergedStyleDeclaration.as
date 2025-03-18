@@ -3,11 +3,11 @@ package mx.styles
    import flash.display.DisplayObject;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class CSSMergedStyleDeclaration extends CSSStyleDeclaration
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       private var style:CSSStyleDeclaration;
       
@@ -113,7 +113,7 @@ package mx.styles
       
       override public function get overrides() : Object
       {
-         var obj:* = null;
+         var obj:Object = null;
          var childOverrides:Object = null;
          var parentOverrides:Object = null;
          if(!this.updateOverrides)
@@ -172,3 +172,4 @@ package mx.styles
       }
    }
 }
+

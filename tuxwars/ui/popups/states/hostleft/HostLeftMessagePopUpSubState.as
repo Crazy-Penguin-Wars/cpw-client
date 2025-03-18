@@ -6,11 +6,10 @@ package tuxwars.ui.popups.states.hostleft
    
    public class HostLeftMessagePopUpSubState extends MessagePopUpSubState
    {
-       
-      
       public function HostLeftMessagePopUpSubState(game:TuxWarsGame)
       {
          super(game,HostLeftMessagePopUpLogic);
       }
    }
 }
+

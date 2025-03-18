@@ -7,9 +7,7 @@ package zpp_nape.geom
    
    public class ZPP_AABB
    {
-      
-      public static var zpp_pool:ZPP_AABB = null;
-       
+      public static var zpp_pool:ZPP_AABB;
       
       public var wrap_min:Vec2;
       
@@ -65,6 +63,7 @@ package zpp_nape.geom
             ZPP_AABB.zpp_pool = _loc5_.next;
             _loc5_.next = null;
          }
+         null;
          _loc5_.minx = param1;
          _loc5_.miny = param2;
          _loc5_.maxx = param3;
@@ -409,3 +408,4 @@ package zpp_nape.geom
       }
    }
 }
+

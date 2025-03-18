@@ -8,19 +8,18 @@ package tuxwars.battle.ui.screen.result.position
    
    public class PositionElement extends TuxUIElementScreen
    {
-      
       private static const NUM_CONTAINERS:int = 4;
       
       private static const CONTAINER:String = "Container_";
-       
       
-      private const containers:UIContainers = new UIContainers();
+      private const containers:UIContainers;
       
       private var container:PositionContainer;
       
       public function PositionElement(design:MovieClip, game:TuxWarsGame)
       {
          var i:int = 0;
+         containers = new UIContainers();
          super(design,game);
          for(i = 1; i <= 4; )
          {
@@ -32,7 +31,7 @@ package tuxwars.battle.ui.screen.result.position
       
       public function init(results:BattleResults) : void
       {
-         var _loc2_:int = results.playerResults.length;
+         var _loc2_:int = int(results.playerResults.length);
          container = containers.getContainer("Container_" + _loc2_) as PositionContainer;
          container.init(results);
          containers.show("Container_" + _loc2_,false);
@@ -44,3 +43,4 @@ package tuxwars.battle.ui.screen.result.position
       }
    }
 }
+

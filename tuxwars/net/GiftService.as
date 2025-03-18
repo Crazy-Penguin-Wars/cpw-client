@@ -16,7 +16,6 @@ package tuxwars.net
    
    public class GiftService
    {
-      
       public static const CRM_TYPE_GIFT:String = "Gift";
       
       public static const CRM_PRODUCT_SEND_GIFT:String = "Send Gift";
@@ -24,7 +23,6 @@ package tuxwars.net
       public static const PLATFORM_REQUEST_TYPE_GIFT:int = 0;
       
       private static var currentGame:TuxWarsGame;
-       
       
       public function GiftService()
       {
@@ -56,7 +54,7 @@ package tuxwars.net
       
       public static function sendGift(giftReference:GiftReference, titleTID:String, messageTID:String, to:Array, fromWhereInClient:String, titleTIDParam:Array = null, messageTIDParam:Array = null, filters:Array = null, excludes:String = null) : void
       {
-         var sendRequest:* = null;
+         var sendRequest:SendRequestObject = null;
          CRMService.sendEvent("Social","Gift","Started",giftReference.id,null,0,null,true);
          LogUtils.log("Send Gift: " + giftReference.id + " with target to: " + (to != null ? to.toString() : null) + " from: " + fromWhereInClient + " with filters: " + (filters != null ? filters.toString() : null) + " with excludes: " + (excludes != null ? excludes.toString() : null),"GiftService",0,"Gift",false,false,false);
          if(to == null && Config.useHomemadeFriendSelector())
@@ -91,7 +89,7 @@ package tuxwars.net
       
       private static function callbackCatcher(msg:Message) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          if(msg.data)
          {
             if(Config.debugMode)
@@ -120,11 +118,11 @@ package tuxwars.net
       
       private static function afterSendRequestCallback(msg:Message) : void
       {
-         var _loc6_:* = null;
-         var _loc2_:* = null;
-         var _loc5_:* = null;
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc6_:Object = null;
+         var _loc2_:Array = null;
+         var _loc5_:String = null;
+         var _loc3_:String = null;
+         var _loc4_:String = null;
          if(msg.data)
          {
             _loc6_ = JSON.parse(msg.data);
@@ -151,8 +149,8 @@ package tuxwars.net
       
       private static function notifyGameServerGiftSend(requestID:String, recipientIDs:String, giftID:String, responsePlatformId:String) : void
       {
-         var _loc6_:* = null;
-         var _loc5_:* = null;
+         var _loc6_:Object = null;
+         var _loc5_:ServerRequest = null;
          LogUtils.log("Send gift requestID:" + requestID + " for giftID: " + giftID + " to recipientIDs: " + recipientIDs + " responsePlatformId: " + responsePlatformId,"GiftService",0,"Gift",false,false,false);
          if(requestID != null && recipientIDs != null && giftID != null)
          {
@@ -188,8 +186,8 @@ package tuxwars.net
       
       private static function acceptCallback(response:ServerResponse) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:String = null;
+         var _loc2_:Object = null;
          LogUtils.log("giftAcceptCallback","GiftService",0,"Gift",false,false,true);
          if(response.data != null && response.data.accept_gift_results != null && response.data.accept_gift_results.result != null)
          {
@@ -232,3 +230,4 @@ package tuxwars.net
       }
    }
 }
+

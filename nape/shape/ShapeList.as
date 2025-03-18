@@ -7,8 +7,6 @@ package nape.shape
    
    public final class ShapeList
    {
-       
-      
       public var zpp_inner:ZPP_ShapeList;
       
       public function ShapeList()
@@ -32,7 +30,7 @@ package nape.shape
          }
          var _loc2_:ShapeList = new ShapeList();
          var _loc3_:int = 0;
-         while(_loc3_ < param1.length)
+         while(_loc3_ < int(param1.length))
          {
             _loc4_ = param1[_loc3_];
             _loc3_++;
@@ -630,7 +628,7 @@ package nape.shape
          {
             while(zpp_inner.at_index != param1)
             {
-               zpp_inner.at_index = zpp_inner.at_index + 1;
+               ++zpp_inner.at_index;
                zpp_inner.at_ite = zpp_inner.at_ite.next;
             }
          }
@@ -643,3 +641,4 @@ package nape.shape
       }
    }
 }
+

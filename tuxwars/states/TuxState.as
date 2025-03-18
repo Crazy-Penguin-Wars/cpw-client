@@ -6,8 +6,6 @@ package tuxwars.states
    
    public class TuxState extends State
    {
-       
-      
       public function TuxState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.states
       }
    }
 }
+

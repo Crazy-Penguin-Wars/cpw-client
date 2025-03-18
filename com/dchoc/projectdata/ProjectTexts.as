@@ -1,12 +1,11 @@
 package com.dchoc.projectdata
 {
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    
    public class ProjectTexts
    {
-      
       private static const LANGUAGES_WITH_SPECIAL_CHARACTERS:Array = ["tr","zt","zs","zh"];
-       
       
       private const textMap:Object = {};
       
@@ -44,13 +43,13 @@ package com.dchoc.projectdata
       
       private static function replaceSubstring(source:String, replace:String, by:String) : String
       {
-         var _loc4_:int = source.indexOf(replace);
+         var _loc4_:int = int(source.indexOf(replace));
          return _loc4_ >= 0 ? source.substring(0,_loc4_) + by + source.substring(_loc4_ + replace.length) : source;
       }
       
       final public function getText(tid:String, params:Array = null) : String
       {
-         var _loc3_:* = null;
+         var _loc3_:String = null;
          if(tid != null)
          {
             _loc3_ = tid.toLocaleUpperCase();
@@ -71,8 +70,8 @@ package com.dchoc.projectdata
       
       private function loadTexts(textTable:Table) : void
       {
-         var _loc2_:* = null;
-         var str:* = null;
+         var _loc2_:Field = null;
+         var str:String = null;
          var _loc5_:* = textTable;
          for each(var row in _loc5_._rows)
          {
@@ -97,3 +96,4 @@ package com.dchoc.projectdata
       }
    }
 }
+

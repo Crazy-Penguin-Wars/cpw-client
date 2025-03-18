@@ -9,8 +9,6 @@ package tuxwars.home.states.shop
    
    public class ShopUISubState extends TuxUIState
    {
-       
-      
       public function ShopUISubState(game:TuxWarsGame, params:* = null)
       {
          super(ShopScreen,ShopLogic,game,params);
@@ -31,3 +29,4 @@ package tuxwars.home.states.shop
       }
    }
 }
+

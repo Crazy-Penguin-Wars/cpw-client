@@ -6,8 +6,6 @@ package tuxwars.home.ui.logic.matchloading
    
    public class PrivateGameMatchLoadingLogic extends MatchLoadingLogic
    {
-       
-      
       public function PrivateGameMatchLoadingLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -20,3 +18,4 @@ package tuxwars.home.ui.logic.matchloading
       }
    }
 }
+

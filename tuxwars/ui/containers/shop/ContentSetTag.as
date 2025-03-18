@@ -10,11 +10,9 @@ package tuxwars.ui.containers.shop
    
    public class ContentSetTag extends Content
    {
-      
       private static const EXTRA:String = "Extra";
       
       private static const NO_EXTRA:String = "No_Extra";
-       
       
       private var _setText:UIAutoTextField;
       
@@ -52,3 +50,4 @@ package tuxwars.ui.containers.shop
       }
    }
 }
+

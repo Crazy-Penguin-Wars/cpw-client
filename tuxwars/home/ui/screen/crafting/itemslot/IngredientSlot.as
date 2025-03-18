@@ -24,7 +24,6 @@ package tuxwars.home.ui.screen.crafting.itemslot
    
    public class IngredientSlot extends UIContainer
    {
-      
       protected static const TEXT:String = "Text";
       
       protected static const ICON:String = "Icon";
@@ -34,7 +33,6 @@ package tuxwars.home.ui.screen.crafting.itemslot
       protected static const BUTTON_CASH:String = "Button";
       
       protected static const BUTTON_COINS:String = "Button_Coins";
-       
       
       protected var _item:Item;
       
@@ -182,3 +180,4 @@ package tuxwars.home.ui.screen.crafting.itemslot
       }
    }
 }
+

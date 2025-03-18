@@ -17,8 +17,6 @@ package tuxwars.ui.popups.screen.levelup
    
    public class LevelUpPopUpScreen extends PopUpBaseScreen
    {
-       
-      
       private var levelNumber:UIAutoTextField;
       
       private var lootContainer:ItemContainers;
@@ -34,7 +32,7 @@ package tuxwars.ui.popups.screen.levelup
       
       override public function init(params:*) : void
       {
-         var desc:* = null;
+         var desc:String = null;
          super.init(params);
          headerField.setText(ProjectManager.getText("Level_Up_Title"));
          levelNumber = TuxUiUtils.createAutoTextFieldWithText(getDesignMovieClip().getChildByName("Text_Level") as TextField,levelReached.toString());
@@ -92,3 +90,4 @@ package tuxwars.ui.popups.screen.levelup
       }
    }
 }
+

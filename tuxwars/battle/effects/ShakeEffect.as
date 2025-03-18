@@ -4,11 +4,9 @@ package tuxwars.battle.effects
    
    public class ShakeEffect
    {
-      
       private static const USE_INTERVAL:Boolean = false;
       
       private static const USE_DECAY:Boolean = true;
-       
       
       private var shakeTotalTime:int;
       
@@ -55,12 +53,18 @@ package tuxwars.battle.effects
             {
                return true;
             }
-            shakeStrength *= shakeTimer / shakeTotalTime;
-            var _loc3_:TuxWorld = world;
-            _loc3_._camera.worldX = shakeStartX + (Math.random() * shakeStrength - (shakeStrength >> 1));
-            var _loc4_:TuxWorld = world;
-            _loc4_._camera.worldY = shakeStartY + (Math.random() * shakeStrength - (shakeStrength >> 1));
-            shakeIntervalTimer = shakeIntervalTotalTime;
+            if(false && shakeIntervalTimer <= 0 || true)
+            {
+               if(true)
+               {
+                  shakeStrength *= shakeTimer / shakeTotalTime;
+               }
+               var _loc3_:TuxWorld = world;
+               _loc3_._camera.worldX = shakeStartX + (Math.random() * shakeStrength - (shakeStrength >> 1));
+               var _loc4_:TuxWorld = world;
+               _loc4_._camera.worldY = shakeStartY + (Math.random() * shakeStrength - (shakeStrength >> 1));
+               shakeIntervalTimer = shakeIntervalTotalTime;
+            }
             shakeIntervalTimer -= dt;
             shakeTimer -= dt;
             if(shakeTimer <= 0)
@@ -76,3 +80,4 @@ package tuxwars.battle.effects
       }
    }
 }
+

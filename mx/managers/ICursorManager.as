@@ -2,8 +2,6 @@ package mx.managers
 {
    public interface ICursorManager
    {
-       
-      
       function get currentCursorID() : int;
       
       function set currentCursorID(param1:int) : void;
@@ -35,3 +33,4 @@ package mx.managers
       function unRegisterToUseBusyCursor(param1:Object) : void;
    }
 }
+

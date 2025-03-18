@@ -11,8 +11,6 @@ package tuxwars.battle.ui.states.results
    
    public class ResultsState extends TuxState
    {
-       
-      
       public function ResultsState(game:TuxWarsGame, params:* = null)
       {
          super(game,params);
@@ -69,3 +67,4 @@ package tuxwars.battle.ui.states.results
       }
    }
 }
+

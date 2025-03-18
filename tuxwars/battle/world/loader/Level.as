@@ -8,11 +8,9 @@ package tuxwars.battle.world.loader
    
    public class Level
    {
-      
       public static const ZOOM_SIDE_WIDTH:String = "width";
       
       public static const ZOOM_SIDE_HEIGHT:String = "height";
-       
       
       private const _spawnPoints:Vector.<Vec2> = new Vector.<Vec2>();
       
@@ -257,7 +255,7 @@ package tuxwars.battle.world.loader
       
       private function parseJoints(jointData:Object) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          if(jointData)
          {
             _loc2_ = jointData is Array ? jointData as Array : [jointData];
@@ -270,7 +268,7 @@ package tuxwars.battle.world.loader
       
       private function parsePowerUps(powerUpData:Object) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          if(powerUpData)
          {
             _loc2_ = powerUpData is Array ? powerUpData as Array : [powerUpData];
@@ -283,7 +281,7 @@ package tuxwars.battle.world.loader
       
       public function parseParallaxes() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          if(_parallaxData)
          {
             _parallaxLayers = new Vector.<ParallaxLayer>();
@@ -296,3 +294,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

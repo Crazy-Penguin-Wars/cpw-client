@@ -7,11 +7,10 @@ package tuxwars.home.states.challenge
    
    public class ChallengeUISubState extends TuxUIState
    {
-       
-      
       public function ChallengeUISubState(game:TuxWarsGame, params:* = null)
       {
          super(ChallengesScreen,ChallengeLogic,game,params);
       }
    }
 }
+

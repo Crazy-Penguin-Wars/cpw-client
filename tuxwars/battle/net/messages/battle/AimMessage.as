@@ -5,15 +5,13 @@ package tuxwars.battle.net.messages.battle
    
    public class AimMessage extends BattleMessage
    {
-       
-      
       public function AimMessage(vec:Vec2, id:String)
       {
          super({
             "t":2,
             "id":id,
-            "x":vec.x,
-            "y":vec.y
+            "x":int(vec.x),
+            "y":int(vec.y)
          });
       }
       
@@ -23,3 +21,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

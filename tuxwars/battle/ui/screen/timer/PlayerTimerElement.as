@@ -7,13 +7,11 @@ package tuxwars.battle.ui.screen.timer
    
    public class PlayerTimerElement extends TimerElement
    {
-      
       private static const CHARACTER_FRAME:String = "Character_Frame";
       
       private static const LAUREL:String = "Icon_Laurel";
       
       private static const CHARACTER_CONTAINER:String = "Container_Character";
-       
       
       private var firstPlaceLaurel:MovieClip;
       
@@ -61,3 +59,4 @@ package tuxwars.battle.ui.screen.timer
       }
    }
 }
+

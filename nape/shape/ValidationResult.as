@@ -5,8 +5,6 @@ package nape.shape
    
    public final class ValidationResult
    {
-       
-      
       public function ValidationResult()
       {
          if(Boot.skip_constructor)
@@ -114,3 +112,4 @@ package nape.shape
       }
    }
 }
+

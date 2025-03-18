@@ -6,11 +6,10 @@ package tuxwars.ui.popups.states.confirmbattleend.timeout
    
    public class TimeOutMessagePopUpSubState extends MessagePopUpSubState
    {
-       
-      
       public function TimeOutMessagePopUpSubState(game:TuxWarsGame)
       {
          super(game,TimeOutMessagePopUpLogic);
       }
    }
 }
+

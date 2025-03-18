@@ -8,6 +8,7 @@ package tuxwars.player
    import com.dchoc.projectdata.ProjectManager;
    import com.dchoc.projectdata.Row;
    import com.dchoc.utils.LogUtils;
+   import flash.external.ExternalInterface;
    import no.olog.utilfunctions.assert;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.events.PlayerFiredMessage;
@@ -43,8 +44,6 @@ package tuxwars.player
    
    public class Player extends TuxFriend
    {
-       
-      
       private const _vipMembership:VIPMembership = new VIPMembership();
       
       private const _friends:Friends = new Friends();
@@ -63,17 +62,17 @@ package tuxwars.player
       
       private var _dummy:Boolean;
       
-      private var _dailyRewards:Array;
+      private var _dailyRewards:Array = [];
       
-      private var _dailyReward1:Array;
+      private var _dailyReward1:Array = [];
       
-      private var _dailyReward2:Array;
+      private var _dailyReward2:Array = [];
       
-      private var _dailyReward3:Array;
+      private var _dailyReward3:Array = [];
       
-      private var _dailyReward4:Array;
+      private var _dailyReward4:Array = [];
       
-      private var _dailyReward5:Array;
+      private var _dailyReward5:Array = [];
       
       private var _dailyRewardDay:int;
       
@@ -95,12 +94,6 @@ package tuxwars.player
       
       public function Player(local:Boolean)
       {
-         _dailyRewards = [];
-         _dailyReward1 = [];
-         _dailyReward2 = [];
-         _dailyReward3 = [];
-         _dailyReward4 = [];
-         _dailyReward5 = [];
          super();
          _local = local;
          _playerSpecificStats = new Stats();
@@ -113,12 +106,14 @@ package tuxwars.player
       override public function init(data:Object) : void
       {
          var days:int = 0;
-         var flag:* = null;
+         var flag:Object = null;
          assert("Loading player data.",true,data != null);
          super.init(data);
          name = data.name != null ? data.name : ProjectManager.getText("DEFAULT_FRIEND_NAME");
          picUrl = data.pic_url;
+         ExternalInterface.call("console.log","[tuxwars.player] Point 1 works");
          level = data.level;
+         ExternalInterface.call("console.log","[tuxwars.player] Point 2 works");
          status = "Player";
          if(data.dcg_id != null)
          {
@@ -132,16 +127,17 @@ package tuxwars.player
          {
             LogUtils.log("Did not find a USER ID in data!",this,3,"Warning",false,false,true);
          }
-         LogUtils.addDebugLine("Player","Loading Player " + name + " id: " + id,"Player");
+         ExternalInterface.call("console.log","[tuxwars.player] Point 3 works");
          _ingameMoney = data.coins;
          _premiumMoney = data.cash;
          _slotMachineSpinsUsed = data.slot_machine_used_spins;
-         LogUtils.addDebugLine("Player","Ingame money: " + _ingameMoney + " premium: " + _premiumMoney,"Player");
          var _loc4_:int = int(data.score != null ? data.score : Experience.getScore(data.level));
+         ExternalInterface.call("console.log","[tuxwars.player] Point 4 works");
          loadStat("Exp",_loc4_);
+         ExternalInterface.call("console.log","[tuxwars.player] Point 5 works");
          _controlLevelUp = level;
-         LogUtils.addDebugLine("Player","Exp: " + expValue + " level: " + level,"Player");
          loadFriends(data.neighbors,data.user_data);
+         ExternalInterface.call("console.log","[tuxwars.player] Point 6 works");
          if(data.vip_active_until)
          {
             vipMembership.vip = true;
@@ -152,7 +148,7 @@ package tuxwars.player
             }
             else
             {
-               days = Number(data.vip_active_until) / 86400;
+               days = data.vip_active_until / 86400;
                if(days > 7)
                {
                   vipMembership.boughtPackId = "Price3";
@@ -259,7 +255,7 @@ package tuxwars.player
       
       public function getNextBooster() : BoosterItem
       {
-         var boosterItem:* = null;
+         var boosterItem:BoosterItem = null;
          var _loc3_:Vector.<ShopItem> = ShopItemManager.getShopItems("Booster");
          for each(var item in _loc3_)
          {
@@ -475,11 +471,11 @@ package tuxwars.player
       
       private function loadFriends(neighborData:Object, userData:Object) : void
       {
-         var _loc5_:* = null;
-         var _loc7_:* = null;
-         var neighbors:* = null;
-         var _loc10_:* = null;
-         var _loc9_:* = null;
+         var _loc5_:Object = null;
+         var _loc7_:Array = null;
+         var neighbors:Array = null;
+         var _loc10_:Object = null;
+         var _loc9_:TuxFriend = null;
          var neighborFound:Boolean = false;
          if(userData)
          {
@@ -526,8 +522,8 @@ package tuxwars.player
       
       private function loadItems(data:Object) : void
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:Object = null;
+         var _loc3_:Array = null;
          if(data)
          {
             _loc4_ = data.item != null ? data.item : data;
@@ -573,7 +569,7 @@ package tuxwars.player
       
       private function loadRecipes(data:Object) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          if(data)
          {
             _loc2_ = data is Array ? data as Array : [data];
@@ -590,8 +586,8 @@ package tuxwars.player
       
       private function unlockItems(data:Object) : void
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:Object = null;
+         var _loc3_:Array = null;
          if(data)
          {
             _loc4_ = data.unlocked_item != null ? data.unlocked_item : data;
@@ -609,8 +605,8 @@ package tuxwars.player
       
       private function wearItems(data:Object) : void
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:Object = null;
+         var _loc3_:Array = null;
          wearDefaultValues();
          if(data)
          {
@@ -666,8 +662,8 @@ package tuxwars.player
       
       private function itemBoughtCouponSales(msg:Message) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:ShopItem = null;
+         var _loc2_:PriceObject = null;
          var coupon:CouponData = ItemManager.getItemData(msg.data.item.coupon_id) as CouponData;
          if(coupon)
          {
@@ -679,12 +675,12 @@ package tuxwars.player
       
       private function itemBought(msg:Message, forcePrice:int = -1) : void
       {
-         var _loc14_:* = null;
+         var _loc14_:MegaPackData = null;
          var i:int = 0;
-         var _loc13_:* = null;
+         var _loc13_:Row = null;
          var _loc4_:int = 0;
-         var _loc12_:* = null;
-         var _loc6_:* = null;
+         var _loc12_:ItemData = null;
+         var _loc6_:Object = null;
          var _loc5_:Object = msg.data;
          var _loc10_:String = _loc5_.item.item_id;
          var _loc16_:int = int(_loc5_.item.total_amount);
@@ -784,7 +780,7 @@ package tuxwars.player
       
       private function itemCrafted(msg:Message) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Object = null;
          var _loc5_:Object = msg.data;
          if(_loc5_ && _loc5_.crafted_item && _loc5_.crafted_item.amount && _loc5_.crafted_item.item_id && _loc5_.consumed_ingredients)
          {
@@ -812,7 +808,7 @@ package tuxwars.player
       
       private function removeFiredWeaponFromInventory(msg:PlayerFiredMessage) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Weapon = null;
          var _loc3_:* = msg.player;
          if(_loc3_._id == id)
          {
@@ -895,3 +891,4 @@ package tuxwars.player
       }
    }
 }
+

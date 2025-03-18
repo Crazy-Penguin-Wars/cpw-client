@@ -1,18 +1,16 @@
 package tuxwars.items.references
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    import tuxwars.battle.data.missiles.MissileData;
    import tuxwars.battle.data.missiles.Missiles;
    
    public class EmissionMissileReference
    {
+      private static const MISSILE:String = "Missile";
       
       private static const CACHE:Object = {};
-      
-      private static const MISSILE:String = "Missile";
-       
       
       private var _field_cache:Object;
       
@@ -27,7 +25,7 @@ package tuxwars.items.references
       
       public static function get(row:Row) : EmissionMissileReference
       {
-         var _loc2_:* = null;
+         var _loc2_:EmissionMissileReference = null;
          assert("EmitMissileReference row is null",true,row != null);
          if(!CACHE.hasOwnProperty(row.id))
          {
@@ -75,8 +73,8 @@ package tuxwars.items.references
       
       public function get missileData() : MissileData
       {
-         var _loc1_:* = null;
-         var _loc2_:* = null;
+         var _loc1_:Field = null;
+         var _loc2_:Row = null;
          if(!_missileData)
          {
             _loc1_ = getField("Missile");
@@ -88,3 +86,4 @@ package tuxwars.items.references
       }
    }
 }
+

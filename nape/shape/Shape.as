@@ -10,6 +10,8 @@ package nape.shape
    import nape.phys.FluidProperties;
    import nape.phys.Interactor;
    import nape.phys.Material;
+   import zpp_nape.geom.ZPP_Collide;
+   import zpp_nape.geom.ZPP_Geom;
    import zpp_nape.geom.ZPP_Vec2;
    import zpp_nape.phys.ZPP_Body;
    import zpp_nape.phys.ZPP_FluidProperties;
@@ -20,8 +22,6 @@ package nape.shape
    
    public class Shape extends Interactor
    {
-       
-      
       public var zpp_inner:ZPP_Shape;
       
       public function Shape()
@@ -167,6 +167,11 @@ package nape.shape
             _loc4_._invalidate = null;
             _loc4_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc4_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -416,6 +421,11 @@ package nape.shape
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner.wrap_localCOM == null)
@@ -835,8 +845,74 @@ package nape.shape
             Boot.lastError = new Error();
             throw "Cannot check null point for containment";
          }
-         Boot.lastError = new Error();
-         throw "Error: Shape is not well defined without a Body";
+         if((zpp_inner.body != null ? zpp_inner.body.outer : null) == null)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Shape is not well defined without a Body";
+         }
+         ZPP_Geom.validateShape(zpp_inner);
+         _loc2_ = param1.zpp_inner;
+         if(_loc2_._validate != null)
+         {
+            _loc2_._validate();
+         }
+         var _loc3_:Boolean = ZPP_Collide.shapeContains(zpp_inner,param1.zpp_inner);
+         if(param1.zpp_inner.weak)
+         {
+            if(param1 != null && param1.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc2_ = param1.zpp_inner;
+            if(_loc2_._immutable)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Vec2 is immutable";
+            }
+            if(_loc2_._isimmutable != null)
+            {
+               _loc2_._isimmutable();
+            }
+            if(param1.zpp_inner._inuse)
+            {
+               Boot.lastError = new Error();
+               throw "Error: This Vec2 is not disposable";
+            }
+            _loc2_ = param1.zpp_inner;
+            param1.zpp_inner.outer = null;
+            param1.zpp_inner = null;
+            _loc4_ = param1;
+            _loc4_.zpp_pool = null;
+            if(ZPP_PubPool.nextVec2 != null)
+            {
+               ZPP_PubPool.nextVec2.zpp_pool = _loc4_;
+            }
+            else
+            {
+               ZPP_PubPool.poolVec2 = _loc4_;
+            }
+            ZPP_PubPool.nextVec2 = _loc4_;
+            _loc4_.zpp_disp = true;
+            _loc5_ = _loc2_;
+            if(_loc5_.outer != null)
+            {
+               _loc5_.outer.zpp_inner = null;
+               _loc5_.outer = null;
+            }
+            _loc5_._isimmutable = null;
+            _loc5_._validate = null;
+            _loc5_._invalidate = null;
+            _loc5_.next = ZPP_Vec2.zpp_pool;
+            ZPP_Vec2.zpp_pool = _loc5_;
+            true;
+         }
+         else
+         {
+            false;
+         }
+         return _loc3_;
       }
    }
 }
+

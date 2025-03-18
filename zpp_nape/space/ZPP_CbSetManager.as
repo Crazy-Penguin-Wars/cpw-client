@@ -11,8 +11,6 @@ package zpp_nape.space
    
    public class ZPP_CbSetManager
    {
-       
-      
       public var space:ZPP_Space;
       
       public var cbsets:ZPP_Set_ZPP_CbSet;
@@ -35,6 +33,7 @@ package zpp_nape.space
             ZPP_Set_ZPP_CbSet.zpp_pool = cbsets.next;
             cbsets.next = null;
          }
+         null;
          cbsets.lt = ZPP_CbSet.setlt;
          space = param1;
       }
@@ -87,6 +86,7 @@ package zpp_nape.space
             ZPP_CbSet.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          var _loc3_:ZNPList_ZPP_CbType = _loc2_.cbTypes;
          _loc2_.cbTypes = param1;
          var _loc4_:ZPP_Set_ZPP_CbSet = cbsets.find_weak(_loc2_);
@@ -104,6 +104,7 @@ package zpp_nape.space
             _loc7_ = _loc6_.cbTypes.pop_unsafe();
             _loc7_.cbsets.remove(_loc6_);
          }
+         null;
          _loc6_.next = ZPP_CbSet.zpp_pool;
          ZPP_CbSet.zpp_pool = _loc6_;
          return _loc5_;
@@ -114,3 +115,4 @@ package zpp_nape.space
       }
    }
 }
+

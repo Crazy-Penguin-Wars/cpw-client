@@ -34,8 +34,6 @@ package tuxwars.battle.gameobjects
    
    public class TerrainGameObject extends PhysicsGameObject
    {
-       
-      
       private const _terrainModels:Vector.<TerrainModel> = new Vector.<TerrainModel>();
       
       private const _bodies:Vector.<Body> = new Vector.<Body>();
@@ -146,7 +144,7 @@ package tuxwars.battle.gameobjects
       override public function handleExplosionTerrain(location:Vec2, explosionShape:ExplosionShape) : void
       {
          var i:int = 0;
-         var _loc6_:* = null;
+         var _loc6_:Image = null;
          if(!canTakeDamage())
          {
             return;
@@ -227,13 +225,13 @@ package tuxwars.battle.gameobjects
       
       public function generateAABB() : AABB
       {
-         var rect:* = null;
+         var rect:Rectangle = null;
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:Body = null;
          var _loc2_:int = 0;
          var j:int = 0;
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:Shape = null;
+         var _loc3_:Rectangle = null;
          for(i = 0; i < _bodies.length; )
          {
             _loc1_ = _bodies[i];
@@ -377,7 +375,7 @@ package tuxwars.battle.gameobjects
       private function removeDestroyedModels() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:TerrainModel = null;
          for(i = _terrainModels.length - 1; i >= 0; )
          {
             _loc1_ = _terrainModels[i];
@@ -391,7 +389,7 @@ package tuxwars.battle.gameobjects
       
       private function createNewModels() : void
       {
-         var _loc5_:* = null;
+         var _loc5_:Array = null;
          var _loc3_:Array = [];
          for each(var model in _terrainModels)
          {
@@ -420,7 +418,7 @@ package tuxwars.battle.gameobjects
       private function createNewBodies() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:Body = null;
          var _loc2_:Number = NaN;
          var _loc3_:Space = (this.game as tuxwars.TuxWarsGame).tuxWorld.physicsWorld.space;
          for(i = 0; i < _terrainModels.length; )
@@ -448,7 +446,7 @@ package tuxwars.battle.gameobjects
       private function addShapes(body:Body, points:Vector.<Vec2>) : void
       {
          var i:int = 0;
-         var _loc6_:* = null;
+         var _loc6_:Polygon = null;
          var _loc3_:Array = [];
          for(i = 0; i < points.length; )
          {
@@ -477,3 +475,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

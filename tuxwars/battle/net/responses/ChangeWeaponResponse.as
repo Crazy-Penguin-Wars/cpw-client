@@ -2,8 +2,6 @@ package tuxwars.battle.net.responses
 {
    public class ChangeWeaponResponse extends ActionResponse
    {
-       
-      
       public function ChangeWeaponResponse(data:Object)
       {
          super(data);
@@ -15,3 +13,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

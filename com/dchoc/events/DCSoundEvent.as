@@ -4,11 +4,9 @@ package com.dchoc.events
    
    public class DCSoundEvent extends Event
    {
-      
       public static const COMPLETE_ONE_PLAY:String = "soundComplete";
       
       public static const PLAY_ERROR:String = "soundPLayError";
-       
       
       private var _resourceName:String;
       
@@ -28,3 +26,4 @@ package com.dchoc.events
       }
    }
 }
+

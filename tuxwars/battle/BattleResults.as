@@ -10,8 +10,6 @@ package tuxwars.battle
    
    public class BattleResults
    {
-       
-      
       private const _playerResults:Vector.<PlayerResult> = new Vector.<PlayerResult>();
       
       private const _itemsLooted:Vector.<LootItem> = new Vector.<LootItem>();
@@ -79,7 +77,8 @@ package tuxwars.battle
       
       public function getCouponLoot(ndx:int) : CouponData
       {
-         var _loc3_:* = null;
+         var _loc3_:ItemData = null;
+         var i:int = 0;
          for each(var loot in _itemsLooted)
          {
             _loc3_ = ItemManager.getItemData(loot.id);
@@ -106,7 +105,7 @@ package tuxwars.battle
       public function getPosition(id:String) : int
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:PlayerResult = null;
          for(i = 0; i < playerResults.length; )
          {
             _loc2_ = playerResults[i];
@@ -121,8 +120,8 @@ package tuxwars.battle
       
       private function getPositionBonus(id:String, modifier:int) : int
       {
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:PlayerResult = null;
+         var _loc4_:PlayerResult = null;
          if(getRank(id) <= 4)
          {
             _loc3_ = findPlayerResults(id);
@@ -231,3 +230,4 @@ package tuxwars.battle
       }
    }
 }
+

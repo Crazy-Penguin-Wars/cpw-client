@@ -7,8 +7,6 @@ package tuxwars.ui.tooltips
    
    public class GenericTooltip extends TuxTooltip
    {
-       
-      
       private var tooltipBG:MovieClip;
       
       private var tooltip:TextField;
@@ -61,3 +59,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

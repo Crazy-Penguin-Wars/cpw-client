@@ -2,8 +2,6 @@ package mx.collections
 {
    public interface ISort
    {
-       
-      
       function get compareFunction() : Function;
       
       function set compareFunction(param1:Function) : void;
@@ -25,3 +23,4 @@ package mx.collections
       function sort(param1:Array) : void;
    }
 }
+

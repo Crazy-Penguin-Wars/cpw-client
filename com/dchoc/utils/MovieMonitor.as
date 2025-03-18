@@ -10,8 +10,6 @@ package com.dchoc.utils
    
    public class MovieMonitor extends Sprite
    {
-       
-      
       private const xml:XML = <xml>
 				<sectionTitle>FPS MONITOR</sectionTitle>
 				<sectionLabel>FPS: </sectionLabel>
@@ -100,7 +98,7 @@ package com.dchoc.utils
          var _loc5_:int = getTimer();
          if(_loc5_ - 1000 > lastTimeCheck)
          {
-            _loc4_ = fpsVector.push(fps);
+            _loc4_ = int(fpsVector.push(fps));
             if(_loc4_ > 60)
             {
                fpsVector.shift();
@@ -148,3 +146,4 @@ package com.dchoc.utils
       }
    }
 }
+

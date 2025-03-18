@@ -6,8 +6,6 @@ package tuxwars.home.states.neighbors
    
    public class NeighborLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function NeighborLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getNeighborScreenAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.neighbors
       }
    }
 }
+

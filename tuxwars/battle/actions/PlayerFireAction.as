@@ -9,8 +9,6 @@ package tuxwars.battle.actions
    
    public class PlayerFireAction extends AbstractMouseInputAction
    {
-       
-      
       private var player:PlayerGameObject;
       
       private var state:PlayerActiveAimSubState;
@@ -50,3 +48,4 @@ package tuxwars.battle.actions
       }
    }
 }
+

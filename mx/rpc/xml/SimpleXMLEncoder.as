@@ -6,7 +6,6 @@ package mx.rpc.xml
    
    public class SimpleXMLEncoder
    {
-      
       private static const NUMBER_TYPE:uint = 0;
       
       private static const STRING_TYPE:uint = 1;
@@ -45,7 +44,6 @@ package mx.rpc.xml
          "includeReadOnly":false,
          "includeTransient":false
       };
-       
       
       private var myXMLDoc:XMLDocument;
       
@@ -68,7 +66,7 @@ package mx.rpc.xml
                s = s.concat("0");
             }
             s = s.concat(n,"-");
-            n = rawDate.getUTCDate();
+            n = Number(rawDate.getUTCDate());
             if(n < 10)
             {
                s = s.concat("0");
@@ -81,25 +79,25 @@ package mx.rpc.xml
          }
          if(dateType == "dateTime" || dateType == "time")
          {
-            n = rawDate.getUTCHours();
+            n = Number(rawDate.getUTCHours());
             if(n < 10)
             {
                s = s.concat("0");
             }
             s = s.concat(n,":");
-            n = rawDate.getUTCMinutes();
+            n = Number(rawDate.getUTCMinutes());
             if(n < 10)
             {
                s = s.concat("0");
             }
             s = s.concat(n,":");
-            n = rawDate.getUTCSeconds();
+            n = Number(rawDate.getUTCSeconds());
             if(n < 10)
             {
                s = s.concat("0");
             }
             s = s.concat(n,".");
-            n = rawDate.getUTCMilliseconds();
+            n = Number(rawDate.getUTCMilliseconds());
             if(n < 10)
             {
                s = s.concat("00");
@@ -246,3 +244,4 @@ package mx.rpc.xml
       }
    }
 }
+

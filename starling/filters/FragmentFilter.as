@@ -28,15 +28,15 @@ package starling.filters
    import starling.utils.VertexData;
    import starling.utils.getNextPowerOfTwo;
    
+   use namespace starling_internal;
+   
    public class FragmentFilter
    {
-      
       private static var sBounds:Rectangle = new Rectangle();
       
       private static var sStageBounds:Rectangle = new Rectangle();
       
       private static var sTransformationMatrix:Matrix = new Matrix();
-       
       
       protected const PMA:Boolean = true;
       
@@ -80,11 +80,10 @@ package starling.filters
       
       private var mCache:QuadBatch;
       
-      private var mProjMatrix:Matrix;
+      private var mProjMatrix:Matrix = new Matrix();
       
       public function FragmentFilter(numPasses:int = 1, resolution:Number = 1)
       {
-         this.mProjMatrix = new Matrix();
          super();
          if(Capabilities.isDebugger && getQualifiedClassName(this) == "starling.filters::FragmentFilter")
          {
@@ -389,7 +388,7 @@ package starling.filters
          this.disposeCache();
       }
       
-      starling_internal internal function compile(object:DisplayObject) : QuadBatch
+      starling_internal function compile(object:DisplayObject) : QuadBatch
       {
          var renderSupport:RenderSupport = null;
          var stage:Stage = null;
@@ -527,3 +526,4 @@ package starling.filters
       }
    }
 }
+

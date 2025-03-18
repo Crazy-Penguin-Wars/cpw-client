@@ -2,11 +2,12 @@ package tuxwars.ui.popups.screen.levelup
 {
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.ui.buttons.UIButton;
    import com.dchoc.ui.effects.BuyingAnimation;
    import com.dchoc.ui.events.UIButtonEvent;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
    import tuxwars.data.SoundMessage;
@@ -29,8 +30,6 @@ package tuxwars.ui.popups.screen.levelup
    
    public class LevelUpSalesSlot
    {
-       
-      
       private var design:MovieClip;
       
       private var parent:TuxUIScreen;
@@ -66,9 +65,10 @@ package tuxwars.ui.popups.screen.levelup
       
       public static function getSale(currentLevel:int) : Row
       {
+         var _loc4_:String = "ItemLevelUpSales";
          var _loc2_:ProjectManager = ProjectManager;
          var _loc5_:* = "" + currentLevel;
-         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("ItemLevelUpSales");
+         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc4_);
          if(!_loc3_._cache[_loc5_])
          {
             var _loc6_:Row = com.dchoc.utils.DCUtils.find(_loc3_.rows,"id",_loc5_);
@@ -83,37 +83,40 @@ package tuxwars.ui.popups.screen.levelup
       
       public static function getSalePrice(currentLevel:int) : int
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Object = null;
+         var _loc3_:ItemData = null;
          var saleRow:Row = LevelUpSalesSlot.getSale(currentLevel);
          if(saleRow)
          {
+            var _loc11_:String = "Item";
             var _loc5_:* = saleRow;
-            if(!_loc5_._cache["Item"])
+            if(!_loc5_._cache[_loc11_])
             {
-               _loc5_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","Item");
+               _loc5_._cache[_loc11_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc11_);
             }
-            var _loc6_:* = _loc5_._cache["Item"];
+            var _loc6_:* = _loc5_._cache[_loc11_];
             _loc2_ = _loc6_.overrideValue != null ? _loc6_.overrideValue : _loc6_._value;
             _loc3_ = ItemManager.getItemData(_loc2_.id);
             if(_loc3_)
             {
                if(_loc3_.priceInfoReference.priceObject.isPremium)
                {
+                  var _loc12_:String = "Premium";
                   var _loc7_:* = saleRow;
-                  if(!_loc7_._cache["Premium"])
+                  if(!_loc7_._cache[_loc12_])
                   {
-                     _loc7_._cache["Premium"] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name","Premium");
+                     _loc7_._cache[_loc12_] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name",_loc12_);
                   }
-                  var _loc8_:* = _loc7_._cache["Premium"];
+                  var _loc8_:* = _loc7_._cache[_loc12_];
                   return _loc8_.overrideValue != null ? _loc8_.overrideValue : _loc8_._value;
                }
+               var _loc13_:String = "InGame";
                var _loc9_:* = saleRow;
-               if(!_loc9_._cache["InGame"])
+               if(!_loc9_._cache[_loc13_])
                {
-                  _loc9_._cache["InGame"] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name","InGame");
+                  _loc9_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name",_loc13_);
                }
-               var _loc10_:* = _loc9_._cache["InGame"];
+               var _loc10_:* = _loc9_._cache[_loc13_];
                return _loc10_.overrideValue != null ? _loc10_.overrideValue : _loc10_._value;
             }
          }
@@ -135,36 +138,39 @@ package tuxwars.ui.popups.screen.levelup
       
       private function findSale(currentLevel:int) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          saleRow = LevelUpSalesSlot.getSale(currentLevel);
          if(saleRow)
          {
+            var _loc9_:String = "Item";
             var _loc3_:Row = saleRow;
-            if(!_loc3_._cache["Item"])
+            if(!_loc3_._cache[_loc9_])
             {
-               _loc3_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","Item");
+               _loc3_._cache[_loc9_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc9_);
             }
-            var _loc4_:* = _loc3_._cache["Item"];
+            var _loc4_:* = _loc3_._cache[_loc9_];
             _loc2_ = _loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value;
             item = ItemManager.getItemData(_loc2_.id);
             if(isPremium)
             {
+               var _loc10_:String = "Premium";
                var _loc5_:Row = saleRow;
-               if(!_loc5_._cache["Premium"])
+               if(!_loc5_._cache[_loc10_])
                {
-                  _loc5_._cache["Premium"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","Premium");
+                  _loc5_._cache[_loc10_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc10_);
                }
-               var _loc6_:* = _loc5_._cache["Premium"];
+               var _loc6_:* = _loc5_._cache[_loc10_];
                newPrice = _loc6_.overrideValue != null ? _loc6_.overrideValue : _loc6_._value;
             }
             else
             {
+               var _loc11_:String = "InGame";
                var _loc7_:Row = saleRow;
-               if(!_loc7_._cache["InGame"])
+               if(!_loc7_._cache[_loc11_])
                {
-                  _loc7_._cache["InGame"] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name","InGame");
+                  _loc7_._cache[_loc11_] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name",_loc11_);
                }
-               var _loc8_:* = _loc7_._cache["InGame"];
+               var _loc8_:* = _loc7_._cache[_loc11_];
                newPrice = _loc8_.overrideValue != null ? _loc8_.overrideValue : _loc8_._value;
             }
          }
@@ -205,9 +211,9 @@ package tuxwars.ui.popups.screen.levelup
       
       private function buyItem(event:MouseEvent) : void
       {
-         var _loc3_:* = null;
-         var _loc4_:* = null;
-         var _loc5_:* = null;
+         var _loc3_:SoundReference = null;
+         var _loc4_:ShopItem = null;
+         var _loc5_:SoundReference = null;
          var hasMoney:Boolean = false;
          if(isPremium && newPrice <= parent.tuxGame.player.premiumMoney)
          {
@@ -297,3 +303,4 @@ package tuxwars.ui.popups.screen.levelup
       }
    }
 }
+

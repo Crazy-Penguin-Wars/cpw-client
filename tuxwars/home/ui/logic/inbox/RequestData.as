@@ -4,7 +4,6 @@ package tuxwars.home.ui.logic.inbox
    
    public class RequestData
    {
-      
       public static const STATE_NEW:String = "New";
       
       public static const STATE_ACCEPTED:String = "Accepted";
@@ -14,7 +13,6 @@ package tuxwars.home.ui.logic.inbox
       public static const STATE_HIDE_MANUALLY:String = "HideManually";
       
       public static const REWARD_PREFIX:String = "reward_";
-       
       
       private var _type:String;
       
@@ -94,3 +92,4 @@ package tuxwars.home.ui.logic.inbox
       }
    }
 }
+

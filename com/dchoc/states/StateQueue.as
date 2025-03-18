@@ -2,8 +2,6 @@ package com.dchoc.states
 {
    public class StateQueue
    {
-       
-      
       private const states:Array = [];
       
       public function StateQueue()
@@ -44,3 +42,4 @@ package com.dchoc.states
       }
    }
 }
+

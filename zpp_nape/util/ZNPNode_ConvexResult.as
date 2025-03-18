@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ConvexResult
    {
-      
-      public static var zpp_pool:ZNPNode_ConvexResult = null;
-       
+      public static var zpp_pool:ZNPNode_ConvexResult;
       
       public var next:ZNPNode_ConvexResult;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

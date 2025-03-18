@@ -8,11 +8,9 @@ package tuxwars.ui.containers.shop
    
    public class ContentSizeTwelve extends Content implements IShopTutorial
    {
-      
       private static const BANNER:String = "Banner";
       
       private static const SLOTS:String = "Slots";
-       
       
       public function ContentSizeTwelve(design:MovieClip, data:*, game:TuxWarsGame, parent:TuxUIScreen = null)
       {
@@ -51,3 +49,4 @@ package tuxwars.ui.containers.shop
       }
    }
 }
+

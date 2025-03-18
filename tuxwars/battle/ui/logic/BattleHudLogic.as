@@ -21,11 +21,9 @@ package tuxwars.battle.ui.logic
    
    public class BattleHudLogic extends TuxUILogic implements IBattleHudLogic
    {
-      
       public static const PLAYER:String = "Player_";
       
       public static const MAX_PLAYERS:int = 4;
-       
       
       private var playersData:Object;
       
@@ -107,11 +105,11 @@ package tuxwars.battle.ui.logic
       private function updatePlayers() : void
       {
          var i:int = 0;
-         var player:* = null;
-         var playerData:* = null;
-         var _loc5_:* = null;
-         var _loc10_:* = null;
-         var _loc15_:* = null;
+         var player:PlayerGameObject = null;
+         var playerData:BattleHudPlayerData = null;
+         var _loc5_:TuxAvatar = null;
+         var _loc10_:Object = null;
+         var _loc15_:TuxAvatar = null;
          var j:int = 0;
          var k:* = 0;
          var score:int = 0;
@@ -169,36 +167,33 @@ package tuxwars.battle.ui.logic
                }
                playerData.score = player.getScore();
                playerData.hitPoints = player.calculateHitPoints();
-               loop3:
-               for(j = 1; j <= _loc9_; j++)
+               for(j = 1; j <= _loc9_; )
                {
                   var _loc22_:* = _loc14_[j - 1] as PlayerGameObject;
                   var _loc23_:* = player;
-                  if(_loc22_._id != _loc23_._id)
+                  if(_loc22_._id == _loc23_._id)
                   {
-                     continue;
-                  }
-                  if(j == 1)
-                  {
-                     playerData.place = j;
+                     if(j == 1)
+                     {
+                        playerData.place = j;
+                     }
+                     else
+                     {
+                        for(k = j; k > 0; )
+                        {
+                           score = (_loc14_[k - 1] as PlayerGameObject).getScore();
+                           if(score > playerData.score)
+                           {
+                              playerData.place = k + 1;
+                              break;
+                           }
+                           playerData.place = k;
+                           k--;
+                        }
+                     }
                      break;
                   }
-                  k = j;
-                  while(true)
-                  {
-                     if(k <= 0)
-                     {
-                        break loop3;
-                     }
-                     score = (_loc14_[k - 1] as PlayerGameObject).getScore();
-                     if(score > playerData.score)
-                     {
-                        playerData.place = k + 1;
-                        break loop3;
-                     }
-                     playerData.place = k;
-                     k--;
-                  }
+                  j++;
                }
             }
             else if(playerData.status == "Active" || playerData.status == "Idle")
@@ -215,3 +210,4 @@ package tuxwars.battle.ui.logic
       }
    }
 }
+

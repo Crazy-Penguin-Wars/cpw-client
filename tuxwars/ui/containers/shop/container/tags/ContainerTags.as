@@ -10,20 +10,18 @@ package tuxwars.ui.containers.shop.container.tags
    
    public class ContainerTags extends Container
    {
-      
       public static const TAG_NEW:String = "tag_new";
       
       public static const TAG_SALE:String = "tag_sale";
       
       public static const TAG_VIP:String = "tag_vip";
-       
       
       private var _tagContainers:UIContainers;
       
       public function ContainerTags(design:MovieClip, data:*, game:TuxWarsGame, parent:UIComponent = null)
       {
-         var tagDesign:* = null;
-         var _loc5_:* = null;
+         var tagDesign:MovieClip = null;
+         var _loc5_:BigShopItem = null;
          super(design,data,game,parent);
          if(design.Tag || design.Content && design.Content.Tag)
          {
@@ -93,3 +91,4 @@ package tuxwars.ui.containers.shop.container.tags
       }
    }
 }
+

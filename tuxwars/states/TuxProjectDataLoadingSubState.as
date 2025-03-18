@@ -8,8 +8,6 @@ package tuxwars.states
    
    public class TuxProjectDataLoadingSubState extends TuxState
    {
-       
-      
       public function TuxProjectDataLoadingSubState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -46,3 +44,4 @@ package tuxwars.states
       }
    }
 }
+

@@ -5,8 +5,6 @@ package com.dchoc.ui.buttons
    
    public class UIToggleButton extends UIButton
    {
-       
-      
       private var selected:Boolean;
       
       private var selectedText:String;
@@ -36,7 +34,7 @@ package com.dchoc.ui.buttons
       
       override protected function updateTextField() : void
       {
-         var saveText:* = null;
+         var saveText:String = null;
          if(selected && selectedText)
          {
             saveText = getText();
@@ -102,3 +100,4 @@ package com.dchoc.ui.buttons
       }
    }
 }
+

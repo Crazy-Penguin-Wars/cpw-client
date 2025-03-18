@@ -4,8 +4,6 @@ package tuxwars.events
    
    public class ExpChangedMessage extends Message
    {
-       
-      
       private var _exp:int;
       
       private var _amount:int;
@@ -28,3 +26,4 @@ package tuxwars.events
       }
    }
 }
+

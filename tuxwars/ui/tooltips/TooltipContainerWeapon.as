@@ -9,8 +9,6 @@ package tuxwars.ui.tooltips
    
    public class TooltipContainerWeapon extends TooltipContainer
    {
-       
-      
       private var _textPower:UIAutoTextField;
       
       private var _textSkill:UIAutoTextField;
@@ -33,3 +31,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

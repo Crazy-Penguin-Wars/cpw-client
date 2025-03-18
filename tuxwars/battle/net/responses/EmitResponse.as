@@ -4,8 +4,6 @@ package tuxwars.battle.net.responses
    
    public class EmitResponse extends ActionResponse
    {
-       
-      
       public function EmitResponse(data:Object)
       {
          super(data);
@@ -23,7 +21,7 @@ package tuxwars.battle.net.responses
       
       public function get direction() : Vec2
       {
-         var point:* = null;
+         var point:Vec2 = null;
          if(data.hasOwnProperty("dx") && data.hasOwnProperty("dy"))
          {
             point = new Vec2(data.dx,data.dy);
@@ -62,3 +60,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

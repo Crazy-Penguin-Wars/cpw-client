@@ -11,8 +11,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialUseBoosterSubState extends TuxTutorialSubState
    {
-       
-      
       public function TuxTutorialUseBoosterSubState(game:TuxWarsGame)
       {
          super(game,"TUTORIAL_BOOST");
@@ -50,3 +48,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

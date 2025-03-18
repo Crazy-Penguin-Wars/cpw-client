@@ -18,8 +18,6 @@ package tuxwars.battle.states.player
    
    public class PlayerActiveAimSubState extends PlayerState
    {
-       
-      
       private const lastPoint:Point = new Point();
       
       private var playerFireAction:PlayerFireAction;
@@ -71,8 +69,8 @@ package tuxwars.battle.states.player
       
       override public function handleMessage(response:ActionResponse) : void
       {
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:Vec2 = null;
+         var _loc4_:Vec2 = null;
          super.handleMessage(response);
          LogUtils.addDebugLine("HandleMessage","Handling response: " + response.responseType,"PlayerActiveAimSubState");
          var _loc2_:Object = response.data;
@@ -96,7 +94,7 @@ package tuxwars.battle.states.player
       
       override public function physicsUpdate(deltaTime:int) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Vec2 = null;
          super.physicsUpdate(deltaTime);
          if(player.weapon && BattleManager.isLocalPlayersTurn() && player.mode == "AimMode")
          {
@@ -136,3 +134,4 @@ package tuxwars.battle.states.player
       }
    }
 }
+

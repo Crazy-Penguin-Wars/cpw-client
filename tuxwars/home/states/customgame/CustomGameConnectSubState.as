@@ -27,8 +27,6 @@ package tuxwars.home.states.customgame
    
    public class CustomGameConnectSubState extends TuxState
    {
-       
-      
       private var key:String;
       
       private var vip:Boolean;
@@ -200,7 +198,7 @@ package tuxwars.home.states.customgame
       
       private function handleDummyPlayer(data:Object) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Challenges = null;
          if(data.dcg_id != tuxGame.player.id)
          {
             LogUtils.addDebugLine("Player","Changing dummy player\'s id to " + data.dcg_id);
@@ -223,3 +221,4 @@ package tuxwars.home.states.customgame
       }
    }
 }
+

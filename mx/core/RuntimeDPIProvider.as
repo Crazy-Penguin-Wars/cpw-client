@@ -2,10 +2,10 @@ package mx.core
 {
    import flash.system.Capabilities;
    
+   use namespace mx_internal;
+   
    public class RuntimeDPIProvider
    {
-       
-      
       public function RuntimeDPIProvider()
       {
          super();
@@ -30,3 +30,4 @@ package mx.core
       }
    }
 }
+

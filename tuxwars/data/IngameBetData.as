@@ -2,11 +2,9 @@ package tuxwars.data
 {
    public class IngameBetData
    {
-      
       private static var _currentPayout:int;
       
       private static var _currentBetAmount:int;
-       
       
       public function IngameBetData()
       {
@@ -41,3 +39,4 @@ package tuxwars.data
       }
    }
 }
+

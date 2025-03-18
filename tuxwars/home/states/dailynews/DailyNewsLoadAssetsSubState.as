@@ -7,8 +7,6 @@ package tuxwars.home.states.dailynews
    
    public class DailyNewsLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function DailyNewsLoadAssetsSubState(game:DCGame, dailyNewsData:DailyNewsData)
       {
          super(game,AssetsData.getDailyNewsAssets(),dailyNewsData);
@@ -20,3 +18,4 @@ package tuxwars.home.states.dailynews
       }
    }
 }
+

@@ -9,9 +9,7 @@ package tuxwars.ui.containers.shop.container.item
    
    public class ItemButton extends ContainerTags implements IShopTutorial
    {
-      
       public static const TYPE_ITEM:String = "Item";
-       
       
       protected var _slotElement:SlotElement;
       
@@ -48,3 +46,4 @@ package tuxwars.ui.containers.shop.container.item
       }
    }
 }
+

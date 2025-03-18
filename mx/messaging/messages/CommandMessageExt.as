@@ -5,8 +5,6 @@ package mx.messaging.messages
    
    public class CommandMessageExt extends CommandMessage implements IExternalizable
    {
-       
-      
       private var _message:CommandMessage;
       
       public function CommandMessageExt(message:CommandMessage = null)
@@ -37,3 +35,4 @@ package mx.messaging.messages
       }
    }
 }
+

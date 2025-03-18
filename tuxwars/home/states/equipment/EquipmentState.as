@@ -5,8 +5,6 @@ package tuxwars.home.states.equipment
    
    public class EquipmentState extends TuxState
    {
-       
-      
       public function EquipmentState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.equipment
       }
    }
 }
+

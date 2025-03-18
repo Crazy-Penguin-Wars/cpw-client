@@ -7,8 +7,6 @@ package tuxwars.ui.popups.logic.wrongversion
    
    public class WrongVersionPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function WrongVersionPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -30,3 +28,4 @@ package tuxwars.ui.popups.logic.wrongversion
       }
    }
 }
+

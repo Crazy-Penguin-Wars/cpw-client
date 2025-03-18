@@ -1,12 +1,11 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    
    public class FeedData
    {
-      
       private static const IMAGE:String = "Image";
       
       private static const TITLE:String = "Title";
@@ -16,7 +15,6 @@ package tuxwars.data
       private static const DESCRIPTION:String = "Description";
       
       private static const ACTION_TEXT:String = "ActionText";
-       
       
       private var row:Row;
       
@@ -71,3 +69,4 @@ package tuxwars.data
       }
    }
 }
+

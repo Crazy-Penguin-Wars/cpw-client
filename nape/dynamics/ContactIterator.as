@@ -6,9 +6,7 @@ package nape.dynamics
    
    public final class ContactIterator
    {
-      
-      public static var zpp_pool:ContactIterator = null;
-       
+      public static var zpp_pool:ContactIterator;
       
       public var zpp_next:ContactIterator;
       
@@ -70,7 +68,7 @@ package nape.dynamics
                _loc4_ = _loc3_;
                if(_loc4_.active && _loc4_.arbiter.active)
                {
-                  _loc2_.zpp_inner.user_length = _loc2_.zpp_inner.user_length + 1;
+                  ++_loc2_.zpp_inner.user_length;
                }
                _loc3_ = _loc3_.next;
             }
@@ -88,3 +86,4 @@ package nape.dynamics
       }
    }
 }
+

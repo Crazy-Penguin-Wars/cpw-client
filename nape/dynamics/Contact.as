@@ -11,8 +11,6 @@ package nape.dynamics
    
    public final class Contact
    {
-       
-      
       public var zpp_inner:ZPP_Contact;
       
       public function Contact()
@@ -198,3 +196,4 @@ package nape.dynamics
       }
    }
 }
+

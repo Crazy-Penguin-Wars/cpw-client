@@ -7,8 +7,6 @@ package tuxwars.ui.popups.logic.confirmbattleend.timeout
    
    public class TimeOutMessagePopUpLogic extends MessagePopUpLogic
    {
-       
-      
       public function TimeOutMessagePopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -25,3 +23,4 @@ package tuxwars.ui.popups.logic.confirmbattleend.timeout
       }
    }
 }
+

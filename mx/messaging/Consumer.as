@@ -6,10 +6,10 @@ package mx.messaging
    import mx.messaging.messages.CommandMessage;
    import mx.messaging.messages.IMessage;
    
+   use namespace mx_internal;
+   
    public class Consumer extends AbstractConsumer
    {
-       
-      
       private var _selector:String = "";
       
       private var _subtopic:String = "";
@@ -86,3 +86,4 @@ package mx.messaging
       }
    }
 }
+

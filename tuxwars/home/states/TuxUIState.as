@@ -6,8 +6,6 @@ package tuxwars.home.states
    
    public class TuxUIState extends TuxState
    {
-       
-      
       protected var _screenHandler:ScreenHandler;
       
       public function TuxUIState(screenClass:Class, logicClass:Class, game:TuxWarsGame, params:* = null)
@@ -34,3 +32,4 @@ package tuxwars.home.states
       }
    }
 }
+

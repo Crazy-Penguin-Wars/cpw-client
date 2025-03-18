@@ -17,7 +17,6 @@ package tuxwars.net
    
    public class CRMService
    {
-      
       public static const GROUP_SOCIAL:String = "Social";
       
       public static const GROUP_TUTORIAL:String = "Tutorial";
@@ -160,18 +159,16 @@ package tuxwars.net
       
       private static const storedClassName:Object = {};
       
-      {
-         storedClassName[getQualifiedClassName(EquipmentScreen)] = "CharacterMenu";
-         storedClassName[getQualifiedClassName(ShopScreen)] = "SuppliesMenu";
-         storedClassName[getQualifiedClassName(WeaponSelectionScreen)] = "WeaponSelection";
-         storedClassName[getQualifiedClassName(BoosterSelectionScreen)] = "BoosterSelection";
-         storedClassName[getQualifiedClassName(AfterResultSalesScreen)] = "AfterResultSales";
-         storedClassName[getQualifiedClassName(CouponFoundScreen)] = "Coupon";
-         storedClassName[getQualifiedClassName(CraftingScreen)] = "CraftingMenu";
-         storedClassName[getQualifiedClassName(DailyNewsScreen)] = "DailyNewsScreen";
-         storedClassName[getQualifiedClassName(MatchLoadingScreen)] = "MatchLoadingScreen";
-         storedClassName[getQualifiedClassName(CRMMessagePopUpScreen)] = "CRMMessagePopUpScreen";
-      }
+      storedClassName[getQualifiedClassName(EquipmentScreen)] = "CharacterMenu";
+      storedClassName[getQualifiedClassName(ShopScreen)] = "SuppliesMenu";
+      storedClassName[getQualifiedClassName(WeaponSelectionScreen)] = "WeaponSelection";
+      storedClassName[getQualifiedClassName(BoosterSelectionScreen)] = "BoosterSelection";
+      storedClassName[getQualifiedClassName(AfterResultSalesScreen)] = "AfterResultSales";
+      storedClassName[getQualifiedClassName(CouponFoundScreen)] = "Coupon";
+      storedClassName[getQualifiedClassName(CraftingScreen)] = "CraftingMenu";
+      storedClassName[getQualifiedClassName(DailyNewsScreen)] = "DailyNewsScreen";
+      storedClassName[getQualifiedClassName(MatchLoadingScreen)] = "MatchLoadingScreen";
+      storedClassName[getQualifiedClassName(CRMMessagePopUpScreen)] = "CRMMessagePopUpScreen";
       
       public function CRMService()
       {
@@ -240,3 +237,4 @@ package tuxwars.net
       }
    }
 }
+

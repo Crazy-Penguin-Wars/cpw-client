@@ -2,8 +2,11 @@ package mx.core
 {
    import mx.resources.ResourceManager;
    
+   use namespace mx_internal;
+   
    public class FlexVersion
    {
+      private static var _compatibilityErrorFunction:Function;
       
       mx_internal static const VERSION:String = "4.5.1.21489";
       
@@ -23,14 +26,11 @@ package mx.core
       
       public static const VERSION_ALREADY_READ:String = "versionAlreadyRead";
       
-      private static var _compatibilityErrorFunction:Function;
-      
       private static var _compatibilityVersion:uint = CURRENT_VERSION;
       
       private static var compatibilityVersionChanged:Boolean = false;
       
       private static var compatibilityVersionRead:Boolean = false;
-       
       
       public function FlexVersion()
       {
@@ -84,9 +84,9 @@ package mx.core
       
       public static function get compatibilityVersionString() : String
       {
-         var major:uint = compatibilityVersion >> 24 & 255;
-         var minor:uint = compatibilityVersion >> 16 & 255;
-         var update:uint = compatibilityVersion & 65535;
+         var major:uint = uint(compatibilityVersion >> 24 & 0xFF);
+         var minor:uint = uint(compatibilityVersion >> 16 & 0xFF);
+         var update:uint = uint(compatibilityVersion & 0xFFFF);
          return major.toString() + "." + minor.toString() + "." + update.toString();
       }
       
@@ -109,3 +109,4 @@ package mx.core
       }
    }
 }
+

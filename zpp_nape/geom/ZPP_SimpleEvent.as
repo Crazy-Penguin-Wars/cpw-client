@@ -5,9 +5,7 @@ package zpp_nape.geom
    
    public class ZPP_SimpleEvent
    {
-      
-      public static var zpp_pool:ZPP_SimpleEvent = null;
-       
+      public static var zpp_pool:ZPP_SimpleEvent;
       
       public var vertex:ZPP_SimpleVert;
       
@@ -76,8 +74,10 @@ package zpp_nape.geom
             ZPP_SimpleEvent.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          _loc2_.vertex = param1;
          return _loc2_;
       }
    }
 }
+

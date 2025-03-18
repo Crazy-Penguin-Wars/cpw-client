@@ -6,8 +6,6 @@ package tuxwars.home.states.customgame
    
    public class CustomGameLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function CustomGameLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getCustomGameAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.customgame
       }
    }
 }
+

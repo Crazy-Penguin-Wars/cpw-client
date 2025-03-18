@@ -6,13 +6,11 @@ package tuxwars.home.ui.screen.dailynews
    
    public class DailyRewardContainers extends UIContainers
    {
-      
       public static const CONTAINER_CURRENT:String = "Container_Current";
       
       public static const CONTAINER_COMPLETE:String = "Container_Complete";
       
       public static const CONTAINER_INCOMPLETE:String = "Container_Incomplete";
-       
       
       private var _design:MovieClip;
       
@@ -75,3 +73,4 @@ package tuxwars.home.ui.screen.dailynews
       }
    }
 }
+

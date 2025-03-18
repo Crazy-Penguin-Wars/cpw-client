@@ -7,9 +7,7 @@ package tuxwars.ui.popups.states
    
    public class PopUpBaseSubState extends TuxState
    {
-      
       public static const TYPE_NONE:String = "Base";
-       
       
       private var _type:String = "Base";
       
@@ -55,3 +53,4 @@ package tuxwars.ui.popups.states
       }
    }
 }
+

@@ -17,8 +17,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialMoveSubState extends TuxTutorialSubState
    {
-       
-      
       private var controlsClip:MovieClip;
       
       private var powerupPickedUp:Boolean;
@@ -30,7 +28,7 @@ package tuxwars.states.tutorial
       
       override public function enter() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Point = null;
          super.enter();
          BattleManager.getSimulation().pause();
          tuxGame.battleState.hud.screen.controlsElement.changeBoosterButton.setEnabled(false);
@@ -79,3 +77,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

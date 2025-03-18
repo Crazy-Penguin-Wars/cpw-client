@@ -7,13 +7,12 @@ package tuxwars.home.states.matchloading
    
    public class PracticeMatchLoadingSubState extends MatchLoadingSubState
    {
-       
-      
       public function PracticeMatchLoadingSubState(game:TuxWarsGame, params:* = null)
       {
          super(game,params);
+         var _loc4_:* = null;
          var _loc3_:BattleManager = BattleManager;
-         tuxwars.battle.BattleManager._customGameName = null;
+         tuxwars.battle.BattleManager._customGameName = _loc4_;
          BattleManager.setPracticeMode(true);
          BattleManager.init(game);
       }
@@ -40,3 +39,4 @@ package tuxwars.home.states.matchloading
       }
    }
 }
+

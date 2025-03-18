@@ -12,8 +12,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialFireSubState extends TuxTutorialSubState
    {
-       
-      
       public function TuxTutorialFireSubState(game:TuxWarsGame)
       {
          super(game,"TUTORIAL_FIRE");
@@ -48,3 +46,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

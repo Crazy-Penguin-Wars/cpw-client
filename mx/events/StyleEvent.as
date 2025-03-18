@@ -4,9 +4,10 @@ package mx.events
    import flash.events.ProgressEvent;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class StyleEvent extends ProgressEvent
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const COMPLETE:String = "complete";
@@ -14,7 +15,6 @@ package mx.events
       public static const ERROR:String = "error";
       
       public static const PROGRESS:String = "progress";
-       
       
       public var errorText:String;
       
@@ -30,3 +30,4 @@ package mx.events
       }
    }
 }
+

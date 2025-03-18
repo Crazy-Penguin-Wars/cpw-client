@@ -2,9 +2,7 @@ package com.dchoc.messages
 {
    public class Message
    {
-       
-      
-      private var _data;
+      private var _data:*;
       
       private var _type:String;
       
@@ -26,3 +24,4 @@ package com.dchoc.messages
       }
    }
 }
+

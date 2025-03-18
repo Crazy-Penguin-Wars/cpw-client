@@ -13,21 +13,19 @@ package tuxwars.ui.popups
    
    public class PopUpManager
    {
-      
       public static const TYPE_INFORMATION:String = "TypeInformation";
       
       public static const FLAG_RECENT_CB_REFUND:String = "recent_cb_refund";
-      
-      private static const POPUP_FLAG_KEYS:Array = ["recent_cb_refund"];
-      
-      private static const POPUPS:Vector.<PopUpBaseSubState> = new Vector.<PopUpBaseSubState>();
       
       private static var _instance:PopUpManager;
       
       private static var _game:TuxWarsGame;
       
+      private static const POPUP_FLAG_KEYS:Array = ["recent_cb_refund"];
+      
+      private static const POPUPS:Vector.<PopUpBaseSubState> = new Vector.<PopUpBaseSubState>();
+      
       private static const SORT_ORDER_TYPE:Array = ["Base","SlotMachinePrize","TypeLoot","TypeLevelUp","PassedStat","QuestionMessageType","TypeCRM","TypeInformation","MessageType","TypeNotEnoughAmmo","TypeNoMoney","TypeError"];
-       
       
       public function PopUpManager()
       {
@@ -122,8 +120,8 @@ package tuxwars.ui.popups
       
       public function sortByTypeAndSubType(a:PopUpBaseSubState, b:PopUpBaseSubState) : int
       {
-         var _loc3_:int = SORT_ORDER_TYPE.indexOf(a.type);
-         var _loc4_:int = SORT_ORDER_TYPE.indexOf(b.type);
+         var _loc3_:int = int(SORT_ORDER_TYPE.indexOf(a.type));
+         var _loc4_:int = int(SORT_ORDER_TYPE.indexOf(b.type));
          if(a.type == "TypeLoot" && b.type == "TypeLoot" && a.params is ItemData && b.params is ItemData)
          {
             return ItemManager.sortByItemTypeAndPriority(a.params,b.params);
@@ -159,3 +157,4 @@ package tuxwars.ui.popups
       }
    }
 }
+

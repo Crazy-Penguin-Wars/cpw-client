@@ -6,6 +6,7 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.battle.avatar.TuxAvatar;
    import tuxwars.battle.data.player.Players;
@@ -15,11 +16,9 @@ package tuxwars.home.ui.screen.home
    
    public class CharacterAvatarElementScreen extends TuxUIElementScreen
    {
-      
       private static const CHARACTER_CONTAINER:String = "Container_Character";
       
       private static var tuxGame:TuxWarsGame;
-       
       
       private var _avatar:TuxAvatar;
       
@@ -27,6 +26,7 @@ package tuxwars.home.ui.screen.home
       
       public function CharacterAvatarElementScreen(design:MovieClip, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] CharacterAvatarElementScreen is the cause (GOT YOU :troll:)");
          super(design,game);
          _container = design.getChildByName("Container_Character") as MovieClip;
          setupAvatar(_container);
@@ -123,3 +123,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

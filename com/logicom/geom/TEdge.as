@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    internal final class TEdge
    {
-       
-      
       public var xbot:int;
       
       public var ybot:int;
@@ -52,3 +50,4 @@ package com.logicom.geom
       }
    }
 }
+

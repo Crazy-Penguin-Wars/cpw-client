@@ -9,8 +9,6 @@ package
    
    public class GameLauncher extends Sprite
    {
-       
-      
       private var game:TuxWarsGame;
       
       public function GameLauncher()
@@ -31,3 +29,4 @@ package
       }
    }
 }
+

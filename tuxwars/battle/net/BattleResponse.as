@@ -4,8 +4,6 @@ package tuxwars.battle.net
    
    public class BattleResponse extends Message
    {
-       
-      
       private var _responseText:String;
       
       public function BattleResponse(msg:String)
@@ -58,7 +56,6 @@ package tuxwars.battle.net
             case 37:
             case 51:
             case 50:
-               break;
             case 60:
                break;
             default:
@@ -68,3 +65,4 @@ package tuxwars.battle.net
       }
    }
 }
+

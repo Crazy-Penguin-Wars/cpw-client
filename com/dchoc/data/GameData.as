@@ -1,18 +1,15 @@
 package com.dchoc.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import no.olog.utilfunctions.assert;
    
    public class GameData
    {
-      
       private static const NAME:String = "Name";
       
       private static const GRAPHICS:String = "Graphics";
-       
       
       private var _fieldCache:Object;
       
@@ -59,7 +56,7 @@ package com.dchoc.data
       
       public function get graphics() : GraphicsReference
       {
-         var _loc1_:* = null;
+         var _loc1_:Field = null;
          if(!_graphics)
          {
             _loc1_ = getField("Graphics");
@@ -90,3 +87,4 @@ package com.dchoc.data
       }
    }
 }
+

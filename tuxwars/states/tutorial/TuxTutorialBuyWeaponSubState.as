@@ -11,8 +11,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialBuyWeaponSubState extends TuxTutorialSubState
    {
-       
-      
       private var arrowAdded:Boolean;
       
       public function TuxTutorialBuyWeaponSubState(game:TuxWarsGame)
@@ -35,8 +33,8 @@ package tuxwars.states.tutorial
       
       override public function logicUpdate(deltaTime:int) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:HUDWeaponSelectionSubState = null;
+         var _loc2_:WeaponSelectionScreen = null;
          super.logicUpdate(deltaTime);
          if(!arrowAdded)
          {
@@ -77,3 +75,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

@@ -12,7 +12,6 @@ package tuxwars.home.ui.screen.neighbors
    
    public class NeighborSlot implements IResourceLoaderURL
    {
-      
       private static const NAME_FIELD:String = "Text_Header";
       
       private static const LEVEL_ICON:String = "Icon_Level";
@@ -20,7 +19,6 @@ package tuxwars.home.ui.screen.neighbors
       private static const LEVEL_FIELD:String = "Text_Level";
       
       private static const PICTURE_CONTAINER:String = "Container_Profile_Picture";
-       
       
       private var _design:MovieClip;
       
@@ -111,3 +109,4 @@ package tuxwars.home.ui.screen.neighbors
       }
    }
 }
+

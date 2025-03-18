@@ -6,8 +6,6 @@ package tuxwars.challenges.counters
    
    public class UseOnlyWeaponCounter extends DynamicCounter
    {
-       
-      
       private var invalidated:Boolean;
       
       public function UseOnlyWeaponCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -62,3 +60,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

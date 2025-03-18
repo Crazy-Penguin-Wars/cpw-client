@@ -5,8 +5,6 @@ package tuxwars.player.reports.events
    
    public class ReportLevelObjectDestroyedMessage extends Message
    {
-       
-      
       public function ReportLevelObjectDestroyedMessage(levelObject:LevelGameObject)
       {
          super("LevelObjectDestroyed",levelObject);
@@ -18,3 +16,4 @@ package tuxwars.player.reports.events
       }
    }
 }
+

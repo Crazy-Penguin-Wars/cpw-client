@@ -9,8 +9,6 @@ package tuxwars.home.states.equipment
    
    public class EquipmentUISubState extends TuxUIState
    {
-       
-      
       public function EquipmentUISubState(game:TuxWarsGame, params:* = null)
       {
          super(EquipmentScreen,EquipmentLogic,game,params);
@@ -31,3 +29,4 @@ package tuxwars.home.states.equipment
       }
    }
 }
+

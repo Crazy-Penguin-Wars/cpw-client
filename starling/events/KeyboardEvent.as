@@ -2,11 +2,9 @@ package starling.events
 {
    public class KeyboardEvent extends Event
    {
-      
       public static const KEY_UP:String = "keyUp";
       
       public static const KEY_DOWN:String = "keyDown";
-       
       
       private var mCharCode:uint;
       
@@ -62,3 +60,4 @@ package starling.events
       }
    }
 }
+

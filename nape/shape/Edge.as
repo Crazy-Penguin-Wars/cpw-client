@@ -10,8 +10,6 @@ package nape.shape
    
    public final class Edge
    {
-       
-      
       public var zpp_inner:ZPP_Edge;
       
       public function Edge()
@@ -60,6 +58,7 @@ package nape.shape
                   _loc2_.zip_axis = false;
                   _loc2_.axisx = Math.sin(_loc2_.rot);
                   _loc2_.axisy = Math.cos(_loc2_.rot);
+                  null;
                }
                if(_loc1_.zip_gverts)
                {
@@ -73,6 +72,7 @@ package nape.shape
                         _loc2_.zip_axis = false;
                         _loc2_.axisx = Math.sin(_loc2_.rot);
                         _loc2_.axisy = Math.cos(_loc2_.rot);
+                        null;
                      }
                      _loc3_ = _loc1_.lverts.next;
                      _loc4_ = _loc1_.gverts.next;
@@ -158,6 +158,7 @@ package nape.shape
                   _loc2_.zip_axis = false;
                   _loc2_.axisx = Math.sin(_loc2_.rot);
                   _loc2_.axisy = Math.cos(_loc2_.rot);
+                  null;
                }
                if(_loc1_.zip_gverts)
                {
@@ -171,6 +172,7 @@ package nape.shape
                         _loc2_.zip_axis = false;
                         _loc2_.axisx = Math.sin(_loc2_.rot);
                         _loc2_.axisy = Math.cos(_loc2_.rot);
+                        null;
                      }
                      _loc3_ = _loc1_.lverts.next;
                      _loc4_ = _loc1_.gverts.next;
@@ -273,6 +275,7 @@ package nape.shape
                   _loc2_.zip_axis = false;
                   _loc2_.axisx = Math.sin(_loc2_.rot);
                   _loc2_.axisy = Math.cos(_loc2_.rot);
+                  null;
                }
                if(_loc1_.zip_gverts)
                {
@@ -286,6 +289,7 @@ package nape.shape
                         _loc2_.zip_axis = false;
                         _loc2_.axisx = Math.sin(_loc2_.rot);
                         _loc2_.axisy = Math.cos(_loc2_.rot);
+                        null;
                      }
                      _loc3_ = _loc1_.lverts.next;
                      _loc4_ = _loc1_.gverts.next;
@@ -393,6 +397,7 @@ package nape.shape
                   _loc2_.zip_axis = false;
                   _loc2_.axisx = Math.sin(_loc2_.rot);
                   _loc2_.axisy = Math.cos(_loc2_.rot);
+                  null;
                }
                if(_loc1_.zip_gverts)
                {
@@ -406,6 +411,7 @@ package nape.shape
                         _loc2_.zip_axis = false;
                         _loc2_.axisx = Math.sin(_loc2_.rot);
                         _loc2_.axisy = Math.cos(_loc2_.rot);
+                        null;
                      }
                      _loc3_ = _loc1_.lverts.next;
                      _loc4_ = _loc1_.gverts.next;
@@ -583,3 +589,4 @@ package nape.shape
       }
    }
 }
+

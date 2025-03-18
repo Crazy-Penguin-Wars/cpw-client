@@ -3,11 +3,11 @@ package mx.modules
    import mx.core.IFlexModuleFactory;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class ModuleManager
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       public function ModuleManager()
       {
@@ -35,28 +35,37 @@ package mx.modules
    }
 }
 
+import flash.display.Loader;
+import flash.events.ErrorEvent;
+import flash.events.Event;
 import flash.events.EventDispatcher;
+import flash.events.IOErrorEvent;
+import flash.events.ProgressEvent;
+import flash.events.SecurityErrorEvent;
+import flash.net.URLRequest;
 import flash.system.ApplicationDomain;
+import flash.system.LoaderContext;
+import flash.system.Security;
+import flash.system.SecurityDomain;
+import flash.utils.ByteArray;
 import flash.utils.Dictionary;
 import flash.utils.getQualifiedClassName;
 import mx.core.IFlexModuleFactory;
-import mx.modules.IModuleInfo;
+import mx.events.ModuleEvent;
+import mx.events.Request;
 
 class ModuleManagerImpl extends EventDispatcher
 {
-    
-   
-   private var moduleDictionary:Dictionary;
+   private var moduleDictionary:Dictionary = new Dictionary(true);
    
    public function ModuleManagerImpl()
    {
-      this.moduleDictionary = new Dictionary(true);
       super();
    }
    
    public function getAssociatedFactory(object:Object) : IFlexModuleFactory
    {
-      var m:* = null;
+      var m:Object = null;
       var info:ModuleInfo = null;
       var domain:ApplicationDomain = null;
       var cls:Class = null;
@@ -82,7 +91,7 @@ class ModuleManagerImpl extends EventDispatcher
    
    public function getModule(url:String) : IModuleInfo
    {
-      var m:* = null;
+      var m:Object = null;
       var mi:ModuleInfo = null;
       var info:ModuleInfo = null;
       for(m in this.moduleDictionary)
@@ -103,27 +112,8 @@ class ModuleManagerImpl extends EventDispatcher
    }
 }
 
-import flash.display.Loader;
-import flash.events.ErrorEvent;
-import flash.events.Event;
-import flash.events.EventDispatcher;
-import flash.events.IOErrorEvent;
-import flash.events.ProgressEvent;
-import flash.events.SecurityErrorEvent;
-import flash.net.URLRequest;
-import flash.system.ApplicationDomain;
-import flash.system.LoaderContext;
-import flash.system.Security;
-import flash.system.SecurityDomain;
-import flash.utils.ByteArray;
-import mx.core.IFlexModuleFactory;
-import mx.events.ModuleEvent;
-import mx.events.Request;
-
 class ModuleInfo extends EventDispatcher
 {
-    
-   
    private var factoryInfo:FactoryInfo;
    
    private var loader:Loader;
@@ -453,13 +443,8 @@ class ModuleInfo extends EventDispatcher
    }
 }
 
-import flash.system.ApplicationDomain;
-import mx.core.IFlexModuleFactory;
-
 class FactoryInfo
 {
-    
-   
    public var factory:IFlexModuleFactory;
    
    public var applicationDomain:ApplicationDomain;
@@ -472,18 +457,8 @@ class FactoryInfo
    }
 }
 
-import flash.events.EventDispatcher;
-import flash.system.ApplicationDomain;
-import flash.system.SecurityDomain;
-import flash.utils.ByteArray;
-import mx.core.IFlexModuleFactory;
-import mx.events.ModuleEvent;
-import mx.modules.IModuleInfo;
-
 class ModuleInfoProxy extends EventDispatcher implements IModuleInfo
 {
-    
-   
    private var info:ModuleInfo;
    
    private var referenced:Boolean = false;

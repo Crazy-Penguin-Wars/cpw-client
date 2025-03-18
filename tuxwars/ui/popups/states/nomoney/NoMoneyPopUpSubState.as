@@ -8,9 +8,7 @@ package tuxwars.ui.popups.states.nomoney
    
    public class NoMoneyPopUpSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_NO_MONEY:String = "TypeNoMoney";
-       
       
       public function NoMoneyPopUpSubState(game:TuxWarsGame, params:* = null)
       {
@@ -18,3 +16,4 @@ package tuxwars.ui.popups.states.nomoney
       }
    }
 }
+

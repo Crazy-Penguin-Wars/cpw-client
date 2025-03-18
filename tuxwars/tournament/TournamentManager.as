@@ -10,7 +10,6 @@ package tuxwars.tournament
    
    public class TournamentManager
    {
-      
       private static const TOURNAMENT_TABLE:String = "TournamentConfiguration";
       
       private static const LEAGUE_TABLE:String = "League";
@@ -24,7 +23,6 @@ package tuxwars.tournament
       private static var leagueRewardDatas:Vector.<LeagueRewardData>;
       
       private static var currentGame:TuxWarsGame;
-       
       
       public function TournamentManager()
       {
@@ -63,9 +61,10 @@ package tuxwars.tournament
       
       private static function installTournamentConfig() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:TournamentData = null;
+         var _loc8_:String = "TournamentConfiguration";
          var _loc4_:ProjectManager = ProjectManager;
-         var tournamentTable:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable("TournamentConfiguration");
+         var tournamentTable:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc8_);
          tournaments = new Vector.<Tournament>();
          var _loc5_:* = tournamentTable;
          for each(var row in _loc5_._rows)
@@ -77,8 +76,9 @@ package tuxwars.tournament
       
       private static function installLeagueRewards() : void
       {
+         var _loc7_:String = "LeagueReward";
          var _loc3_:ProjectManager = ProjectManager;
-         var leagueRewardsTable:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable("LeagueReward");
+         var leagueRewardsTable:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc7_);
          leagueRewardDatas = new Vector.<LeagueRewardData>();
          var _loc4_:* = leagueRewardsTable;
          for each(var row in _loc4_._rows)
@@ -89,9 +89,10 @@ package tuxwars.tournament
       
       private static function installLeagues() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:LeagueData = null;
+         var _loc8_:String = "League";
          var _loc4_:ProjectManager = ProjectManager;
-         var leagueTable:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable("League");
+         var leagueTable:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc8_);
          leagues = new Vector.<League>();
          var _loc5_:* = leagueTable;
          for each(var row in _loc5_._rows)
@@ -172,8 +173,8 @@ package tuxwars.tournament
       
       private static function tournamentUpdated(msg:Message) : void
       {
-         var tournament:* = null;
-         var league:* = null;
+         var tournament:Tournament = null;
+         var league:League = null;
          var _loc4_:Object = msg.data;
          if(_loc4_)
          {
@@ -184,7 +185,7 @@ package tuxwars.tournament
                   currentGame.player.tournament.dispose();
                }
                tournament = getTournament(_loc4_.tournament_ongoing.config_id);
-               tournament.tournamentTime = Number(_loc4_.tournament_ongoing.seconds_left) * 1000;
+               tournament.tournamentTime = _loc4_.tournament_ongoing.seconds_left * 1000;
                tournament.status = _loc4_.tournament_ongoing.status;
                currentGame.player.tournament = tournament;
             }
@@ -297,3 +298,4 @@ package tuxwars.tournament
       }
    }
 }
+

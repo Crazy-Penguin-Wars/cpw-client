@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    public class Segment
    {
-       
-      
       public var pt1:IntPoint;
       
       public var pt2:IntPoint;
@@ -23,3 +21,4 @@ package com.logicom.geom
       }
    }
 }
+

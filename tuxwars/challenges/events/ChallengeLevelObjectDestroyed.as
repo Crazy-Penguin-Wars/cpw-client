@@ -5,8 +5,6 @@ package tuxwars.challenges.events
    
    public class ChallengeLevelObjectDestroyed extends Message
    {
-       
-      
       private var _levelObject:LevelGameObject;
       
       private var _cause:String;
@@ -29,3 +27,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

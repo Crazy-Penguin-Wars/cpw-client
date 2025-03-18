@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ZPP_SimpleVert
    {
-      
-      public static var zpp_pool:ZNPNode_ZPP_SimpleVert = null;
-       
+      public static var zpp_pool:ZNPNode_ZPP_SimpleVert;
       
       public var next:ZNPNode_ZPP_SimpleVert;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

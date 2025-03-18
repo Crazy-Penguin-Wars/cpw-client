@@ -10,13 +10,11 @@ package mx.messaging
    
    public class MessageResponder extends Responder
    {
-       
-      
       private var _requestTimedOut:Boolean;
       
       private var _requestTimer:Timer;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _agent:MessageAgent;
       
@@ -26,7 +24,6 @@ package mx.messaging
       
       public function MessageResponder(agent:MessageAgent, message:IMessage, channel:Channel = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super(this.result,this.status);
          this._agent = agent;
          this._channel = channel;
@@ -122,3 +119,4 @@ package mx.messaging
       }
    }
 }
+

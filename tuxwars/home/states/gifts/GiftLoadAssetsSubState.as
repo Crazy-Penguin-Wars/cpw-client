@@ -6,8 +6,6 @@ package tuxwars.home.states.gifts
    
    public class GiftLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function GiftLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getGiftScreenAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.gifts
       }
    }
 }
+

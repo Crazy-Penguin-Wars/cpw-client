@@ -8,11 +8,11 @@ package mx.rpc.events
    import mx.rpc.AsyncToken;
    import mx.rpc.Fault;
    
+   use namespace mx_internal;
+   
    public class FaultEvent extends AbstractEvent
    {
-      
       public static const FAULT:String = "fault";
-       
       
       private var _fault:Fault;
       
@@ -81,3 +81,4 @@ package mx.rpc.events
       }
    }
 }
+

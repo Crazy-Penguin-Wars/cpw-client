@@ -24,7 +24,6 @@ package tuxwars.home.ui.screen.equipment
    
    public class EquipmentStatsElement extends TuxUIElementScreen
    {
-      
       private static const SET_TAG:String = "Set_Tag";
       
       private static const TEXT_SET:String = "Text_Set";
@@ -46,7 +45,6 @@ package tuxwars.home.ui.screen.equipment
       private static const POSITIVE:String = "_Positive";
       
       private static var tuxGame:TuxWarsGame;
-       
       
       private var attack:UIAutoTextField;
       
@@ -151,8 +149,8 @@ package tuxwars.home.ui.screen.equipment
       
       private function updateStatsModifiers(msg:Message) : void
       {
-         var newItem:* = null;
-         var oldItem:* = null;
+         var newItem:ClothingItem = null;
+         var oldItem:ClothingItem = null;
          if(msg.data != null)
          {
             newItem = game.player.inventory.getItem((msg.data as ShopItem).id) as ClothingItem;
@@ -174,11 +172,11 @@ package tuxwars.home.ui.screen.equipment
       
       private function updateStatsModifiersTexts(oldItem:ClothingItem, newItem:ClothingItem) : void
       {
-         var newSetReference:* = null;
-         var oldSetReference:* = null;
+         var newSetReference:SetReference = null;
+         var oldSetReference:SetReference = null;
          var addSet:Boolean = false;
-         var newSetStats:* = null;
-         var oldSetStats:* = null;
+         var newSetStats:Stats = null;
+         var oldSetStats:Stats = null;
          var show:Boolean = newItem && (game.player.wornItemsContainer.hasSet(newItem) || newItem.setReference == null);
          if(!newItem && !show)
          {
@@ -311,8 +309,8 @@ package tuxwars.home.ui.screen.equipment
       private function setModifierTexts(positive:UIAutoTextField, negative:UIAutoTextField, newItem:ClothingItem, oldItem:ClothingItem, addSet:Boolean, setStats:Stats, statName:String) : void
       {
          var value:int = 0;
-         var valueString:* = null;
-         var _loc10_:* = null;
+         var valueString:String = null;
+         var _loc10_:Stat = null;
          var _loc9_:Stat = !!newItem ? newItem.getStatBonus(statName) : null;
          var _loc8_:Stat = !!oldItem ? oldItem.getStatBonus(statName) : null;
          if(_loc9_ == null && _loc8_ == null)
@@ -423,3 +421,4 @@ package tuxwars.home.ui.screen.equipment
       }
    }
 }
+

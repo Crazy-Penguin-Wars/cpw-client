@@ -8,11 +8,10 @@ package tuxwars.home.states.privategame.host
    
    public class HostPrivateGameSettingsSubState extends TuxUIState
    {
-       
-      
       public function HostPrivateGameSettingsSubState(game:TuxWarsGame, gameModel:PrivateGameModel)
       {
          super(HostPrivateGameSettingsScreen,HostPrivateGameSettingsLogic,game,gameModel);
       }
    }
 }
+

@@ -7,11 +7,10 @@ package tuxwars.battle.ui.states.couponfound
    
    public class CouponFoundUISubState extends TuxUIState
    {
-       
-      
       public function CouponFoundUISubState(game:TuxWarsGame, params:* = null)
       {
          super(CouponFoundScreen,CouponFoundLogic,game,params);
       }
    }
 }
+

@@ -2,11 +2,11 @@ package tuxwars.tutorial
 {
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.utils.LogUtils;
+   import flash.external.ExternalInterface;
    import tuxwars.net.messages.SetFlagMessage;
    
    public class Tutorial
    {
-      
       public static const TUTORIAL:String = "Tutorial";
       
       public static const TUTORIAL_STEP:String = "TutorialStep";
@@ -62,7 +62,6 @@ package tuxwars.tutorial
       private static var _tutorial:Boolean;
       
       private static var _tutorialStep:String = "TutorialCustomizationDone";
-       
       
       public function Tutorial()
       {
@@ -77,8 +76,11 @@ package tuxwars.tutorial
       public static function setTutorial(value:Boolean, save:Boolean = true) : void
       {
          _tutorial = value;
+         ExternalInterface.call("console.log","[MichiDebug] setTutorial(): Tutorial set to (none=false): with save(none=false):");
+         ExternalInterface.call("console.log",_tutorial.toString());
          if(save)
          {
+            ExternalInterface.call("console.log","save=true");
             MessageCenter.sendEvent(new SetFlagMessage("Tutorial",_tutorial.toString()));
          }
       }
@@ -102,3 +104,4 @@ package tuxwars.tutorial
       }
    }
 }
+

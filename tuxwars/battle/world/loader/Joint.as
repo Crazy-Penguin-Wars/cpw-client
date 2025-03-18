@@ -6,13 +6,11 @@ package tuxwars.battle.world.loader
    
    public class Joint
    {
-      
       public static const TYPE_DISTANCE:String = "Distance";
       
       public static const TYPE_PIVOT:String = "Pivot";
       
       public static const TYPE_WELD:String = "Weld";
-       
       
       private var _id:String;
       
@@ -131,3 +129,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

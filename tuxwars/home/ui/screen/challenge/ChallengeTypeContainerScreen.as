@@ -11,8 +11,6 @@ package tuxwars.home.ui.screen.challenge
    
    public class ChallengeTypeContainerScreen extends TuxUIElementScreen
    {
-       
-      
       private var _objectContainer:ObjectContainer;
       
       private var _challengeType:String;
@@ -62,7 +60,7 @@ package tuxwars.home.ui.screen.challenge
       
       public function getContainerButtonObject(slotIndex:int, object:*, design:MovieClip) : *
       {
-         var index:int = _sortedChallenges.indexOf(object as ChallengeData);
+         var index:int = int(_sortedChallenges.indexOf(object as ChallengeData));
          var completed:Boolean = index < _activeChallengeIndex;
          return new ChallengeButtonContainers(slotIndex,object as ChallengeData,design,_activeChallenge,completed);
       }
@@ -106,3 +104,4 @@ package tuxwars.home.ui.screen.challenge
       }
    }
 }
+

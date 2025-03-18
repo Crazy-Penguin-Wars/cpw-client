@@ -13,8 +13,6 @@ package zpp_nape.shape
    
    public class ZPP_Circle extends ZPP_Shape
    {
-       
-      
       public var radius:Number;
       
       public var outer_zn:Circle;
@@ -37,8 +35,10 @@ package zpp_nape.shape
          var _loc5_:* = null as Vec2;
          var _loc6_:Boolean = false;
          var _loc7_:* = null as ZPP_Vec2;
+         var _loc1_:ZPP_Circle = this;
          var _loc2_:Number = localCOMx;
          var _loc3_:Number = localCOMy;
+         var _loc4_:Boolean = false;
          §§push(§§findproperty(wrap_localCOM));
          if(_loc2_ != _loc2_ || _loc3_ != _loc3_)
          {
@@ -141,7 +141,7 @@ package zpp_nape.shape
             }
             _loc5_;
          }
-         _loc5_.zpp_inner.weak = false;
+         _loc5_.zpp_inner.weak = _loc4_;
          §§pop().wrap_localCOM = _loc5_;
          wrap_localCOM.zpp_inner._inuse = true;
          wrap_localCOM.zpp_inner._validate = localCOM_validate;
@@ -214,8 +214,9 @@ package zpp_nape.shape
       
       public function __translate(param1:Number, param2:Number) : void
       {
-         localCOMx += param1 * 1;
-         localCOMy += param2 * 1;
+         var _loc3_:Number = 1;
+         localCOMx += param1 * _loc3_;
+         localCOMy += param2 * _loc3_;
          invalidate_localCOM();
       }
       
@@ -277,3 +278,4 @@ package zpp_nape.shape
       }
    }
 }
+

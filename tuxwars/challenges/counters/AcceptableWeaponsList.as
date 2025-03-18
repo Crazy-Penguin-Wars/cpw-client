@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class AcceptableWeaponsList extends FailingWeaponsList
    {
-       
-      
       public function AcceptableWeaponsList(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -47,3 +45,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

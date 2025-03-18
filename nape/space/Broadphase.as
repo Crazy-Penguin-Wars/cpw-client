@@ -5,8 +5,6 @@ package nape.space
    
    public final class Broadphase
    {
-       
-      
       public function Broadphase()
       {
          if(Boot.skip_constructor)
@@ -70,3 +68,4 @@ package nape.space
       }
    }
 }
+

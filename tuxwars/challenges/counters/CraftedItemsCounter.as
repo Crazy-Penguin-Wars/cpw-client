@@ -6,8 +6,6 @@ package tuxwars.challenges.counters
    
    public class CraftedItemsCounter extends Counter
    {
-       
-      
       public function CraftedItemsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -22,3 +20,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

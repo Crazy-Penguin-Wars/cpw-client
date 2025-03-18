@@ -9,8 +9,6 @@ package tuxwars.challenges.counters
    
    public class CollectedPowerUpsCounter extends Counter
    {
-       
-      
       public function CollectedPowerUpsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -43,3 +41,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

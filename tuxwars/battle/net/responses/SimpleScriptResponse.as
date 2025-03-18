@@ -5,8 +5,6 @@ package tuxwars.battle.net.responses
    
    public class SimpleScriptResponse extends ActionResponse
    {
-       
-      
       public function SimpleScriptResponse(data:Object)
       {
          super(data);
@@ -54,3 +52,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

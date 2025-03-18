@@ -5,8 +5,6 @@ package nape.callbacks
    
    public final class OptionType
    {
-       
-      
       public var zpp_inner:ZPP_OptionType;
       
       public function OptionType(param1:* = undefined, param2:* = undefined)
@@ -74,3 +72,4 @@ package nape.callbacks
       }
    }
 }
+

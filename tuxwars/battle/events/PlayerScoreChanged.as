@@ -5,8 +5,6 @@ package tuxwars.battle.events
    
    public class PlayerScoreChanged extends Message
    {
-       
-      
       private var _amount:int;
       
       public function PlayerScoreChanged(player:PlayerGameObject, amount:int)
@@ -26,3 +24,4 @@ package tuxwars.battle.events
       }
    }
 }
+

@@ -8,8 +8,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class Kill implements SimpleScriptCore
    {
-       
-      
       public function Kill()
       {
          super();
@@ -17,7 +15,7 @@ package tuxwars.battle.simplescript.scripts
       
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var _loc4_:* = null;
+         var _loc4_:Damage = null;
          var _loc5_:PhysicsGameObject = params.pgoA;
          var _loc6_:PlayerGameObject = params.pgoB as PlayerGameObject;
          var _loc3_:Array = scriptObject.variables[1] is Array ? scriptObject.variables[1] : [scriptObject.variables[1]];
@@ -37,3 +35,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

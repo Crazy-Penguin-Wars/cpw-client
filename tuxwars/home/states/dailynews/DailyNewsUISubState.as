@@ -8,11 +8,10 @@ package tuxwars.home.states.dailynews
    
    public class DailyNewsUISubState extends TuxUIState
    {
-       
-      
       public function DailyNewsUISubState(game:TuxWarsGame, dailyNewsData:DailyNewsData)
       {
          super(DailyNewsScreen,DailyNewsLogic,game,dailyNewsData);
       }
    }
 }
+

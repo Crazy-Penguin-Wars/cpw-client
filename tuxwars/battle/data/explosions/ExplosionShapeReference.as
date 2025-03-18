@@ -1,18 +1,16 @@
 package tuxwars.battle.data.explosions
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    
    public class ExplosionShapeReference
    {
-      
       private static const MIN_RADIUS:String = "MinRadius";
       
       private static const MAX_RADIUS:String = "MaxRadius";
       
       private static const ANGLE:String = "Angle";
-       
       
       private var _fieldCache:Object;
       
@@ -67,3 +65,4 @@ package tuxwars.battle.data.explosions
       }
    }
 }
+

@@ -6,9 +6,10 @@ package mx.utils
    import flash.xml.XMLNode;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class RPCObjectUtil
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21328";
       
       private static var defaultToStringExcludes:Array = ["password","credentials"];
@@ -16,7 +17,6 @@ package mx.utils
       private static var refCount:int = 0;
       
       private static var CLASS_INFO_CACHE:Object = {};
-       
       
       public function RPCObjectUtil()
       {
@@ -211,7 +211,7 @@ package mx.utils
          excludeObject = {};
          if(Boolean(excludes))
          {
-            n = excludes.length;
+            n = int(excludes.length);
             for(i = 0; i < n; i++)
             {
                excludeObject[excludes[i]] = 1;
@@ -248,7 +248,7 @@ package mx.utils
          {
             if(className == "XML")
             {
-               n = properties.length();
+               n = int(properties.length());
                for(i = 0; i < n; i++)
                {
                   p = properties[i].name();
@@ -260,7 +260,7 @@ package mx.utils
             }
             else
             {
-               n = properties.length();
+               n = int(properties.length());
                uris = options.uris;
                for(i = 0; i < n; i++)
                {
@@ -316,6 +316,7 @@ package mx.utils
                            catch(e:Error)
                            {
                            }
+                           continue;
                         }
                      }
                   }
@@ -433,7 +434,7 @@ package mx.utils
       {
          var i:uint = 0;
          var excl:String = null;
-         var flag:* = null;
+         var flag:String = null;
          var value:String = null;
          var key:String = getQualifiedClassName(o);
          if(excludes != null)
@@ -463,3 +464,4 @@ package mx.utils
       }
    }
 }
+

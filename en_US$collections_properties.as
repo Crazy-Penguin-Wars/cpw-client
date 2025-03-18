@@ -4,8 +4,6 @@ package
    
    public dynamic class en_US$collections_properties extends ResourceBundle
    {
-       
-      
       public function en_US$collections_properties()
       {
          super("en_US","collections");
@@ -36,3 +34,4 @@ package
       }
    }
 }
+

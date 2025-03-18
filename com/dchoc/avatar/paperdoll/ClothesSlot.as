@@ -4,9 +4,6 @@ package com.dchoc.avatar.paperdoll
    
    public class ClothesSlot
    {
-      
-      private static const slots:Vector.<ClothesSlot> = new Vector.<ClothesSlot>();
-      
       public static const TYPE_SHOES:int = 0;
       
       public static const TYPE_BOTTOM:int = 1;
@@ -48,6 +45,8 @@ package com.dchoc.avatar.paperdoll
       public static const TYPE_ACCESSORY_OVER_HAT:int = 19;
       
       public static const TYPE_ACCESSORY_UNDER_HAT:int = 20;
+      
+      private static const slots:Vector.<ClothesSlot> = new Vector.<ClothesSlot>();
       
       public static const TYPE_NAMES:Array = ["shoes","bottom","top","eyes","eyebrows","mouth","hair","extras","tool","styles","left_hand","right_hand","hands","head_gear","body_gear","left_foot_gear","right_foot_gear","color","face","accessory_over","accessory_under"];
       
@@ -92,7 +91,6 @@ package com.dchoc.avatar.paperdoll
       public static const ACCESSORY_OVER_HAT:ClothesSlot = new ClothesSlot(19);
       
       public static const ACCESSORY_UNDER_HAT:ClothesSlot = new ClothesSlot(20);
-       
       
       private var identifier:int;
       
@@ -146,3 +144,4 @@ package com.dchoc.avatar.paperdoll
       }
    }
 }
+

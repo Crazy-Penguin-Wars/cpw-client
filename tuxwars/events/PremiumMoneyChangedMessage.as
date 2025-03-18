@@ -4,8 +4,6 @@ package tuxwars.events
    
    public class PremiumMoneyChangedMessage extends Message
    {
-       
-      
       private var _amount:int;
       
       private var _premiumMoney:int;
@@ -28,3 +26,4 @@ package tuxwars.events
       }
    }
 }
+

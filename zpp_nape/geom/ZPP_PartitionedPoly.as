@@ -10,13 +10,11 @@ package zpp_nape.geom
    
    public class ZPP_PartitionedPoly
    {
-      
-      public static var zpp_pool:ZPP_PartitionedPoly = null;
+      public static var zpp_pool:ZPP_PartitionedPoly;
       
       public static var sharedPPList:ZNPList_ZPP_PartitionedPoly;
       
       public static var sharedGVList:ZNPList_ZPP_GeomVert;
-       
       
       public var vertices:ZPP_PartitionVertex;
       
@@ -78,7 +76,8 @@ package zpp_nape.geom
                {
                   _loc1_.next.forced = true;
                }
-               _loc1_ = _loc1_ != null && _loc1_.prev == _loc1_ ? (_loc1_.next = _loc1_.prev = null, _loc3_ = _loc1_, _loc3_.helper = null, _loc3_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc3_, _loc1_ = null) : (_loc3_ = _loc1_.next, _loc1_.prev.next = _loc1_.next, _loc1_.next.prev = _loc1_.prev, _loc1_.next = _loc1_.prev = null, _loc4_ = _loc1_, _loc4_.helper = null, _loc4_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc4_, _loc1_ = null, _loc3_);
+               _loc1_ = null;
+               _loc1_ = _loc1_ != null && _loc1_.prev == _loc1_ ? (_loc1_.next = _loc1_.prev = null, _loc3_ = _loc1_, _loc3_.helper = null, null, _loc3_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc3_, _loc1_) : (_loc3_ = _loc1_.next, _loc1_.prev.next = _loc1_.next, _loc1_.next.prev = _loc1_.prev, _loc1_.next = _loc1_.prev = null, _loc4_ = _loc1_, _loc4_.helper = null, null, _loc4_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc4_, _loc1_ = null, _loc3_);
                if(_loc1_ == null)
                {
                   vertices = null;
@@ -123,7 +122,8 @@ package zpp_nape.geom
                      vertices = _loc1_.next;
                      _loc2_ = true;
                   }
-                  _loc1_ = _loc1_ != null && _loc1_.prev == _loc1_ ? (_loc1_.next = _loc1_.prev = null, _loc4_ = _loc1_, _loc4_.helper = null, _loc4_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc4_, _loc1_ = null) : (_loc4_ = _loc1_.next, _loc1_.prev.next = _loc1_.next, _loc1_.next.prev = _loc1_.prev, _loc1_.next = _loc1_.prev = null, _loc11_ = _loc1_, _loc11_.helper = null, _loc11_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc11_, _loc1_ = null, _loc4_);
+                  _loc1_ = null;
+                  _loc1_ = _loc1_ != null && _loc1_.prev == _loc1_ ? (_loc1_.next = _loc1_.prev = null, _loc4_ = _loc1_, _loc4_.helper = null, null, _loc4_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc4_, _loc1_) : (_loc4_ = _loc1_.next, _loc1_.prev.next = _loc1_.next, _loc1_.next.prev = _loc1_.prev, _loc1_.next = _loc1_.prev = null, _loc11_ = _loc1_, _loc11_.helper = null, null, _loc11_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc11_, _loc1_ = null, _loc4_);
                   _loc5_ = true;
                   if(_loc1_ == null)
                   {
@@ -157,6 +157,7 @@ package zpp_nape.geom
             ZPP_PartitionedPoly.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          var _loc4_:ZPP_PartitionVertex = param1;
          do
          {
@@ -171,6 +172,7 @@ package zpp_nape.geom
                ZPP_PartitionVertex.zpp_pool = _loc6_.next;
                _loc6_.next = null;
             }
+            null;
             _loc6_.x = _loc4_.x;
             _loc6_.y = _loc4_.y;
             _loc6_.forced = _loc4_.forced;
@@ -333,7 +335,8 @@ package zpp_nape.geom
                   {
                      _loc5_.next.forced = true;
                   }
-                  _loc5_ = _loc5_ != null && _loc5_.prev == _loc5_ ? (_loc5_.next = _loc5_.prev = null, _loc5_ = null) : (_loc6_ = _loc5_.next, _loc5_.prev.next = _loc5_.next, _loc5_.next.prev = _loc5_.prev, _loc5_.next = _loc5_.prev = null, _loc5_ = null, _loc6_);
+                  _loc5_ = null;
+                  _loc5_ = _loc5_ != null && _loc5_.prev == _loc5_ ? (_loc5_.next = _loc5_.prev = null, _loc5_) : (_loc6_ = _loc5_.next, _loc5_.prev.next = _loc5_.next, _loc5_.next.prev = _loc5_.prev, _loc5_.next = _loc5_.prev = null, _loc5_ = null, _loc6_);
                   if(_loc5_ == null)
                   {
                      _loc3_ = null;
@@ -376,7 +379,8 @@ package zpp_nape.geom
                            _loc3_ = _loc5_.next;
                            _loc14_ = true;
                         }
-                        _loc5_ = _loc5_ != null && _loc5_.prev == _loc5_ ? (_loc5_.next = _loc5_.prev = null, _loc5_ = null) : (_loc12_ = _loc5_.next, _loc5_.prev.next = _loc5_.next, _loc5_.next.prev = _loc5_.prev, _loc5_.next = _loc5_.prev = null, _loc5_ = null, _loc12_);
+                        _loc5_ = null;
+                        _loc5_ = _loc5_ != null && _loc5_.prev == _loc5_ ? (_loc5_.next = _loc5_.prev = null, _loc5_) : (_loc12_ = _loc5_.next, _loc5_.prev.next = _loc5_.next, _loc5_.next.prev = _loc5_.prev, _loc5_.next = _loc5_.prev = null, _loc5_ = null, _loc12_);
                         _loc16_ = true;
                         if(_loc5_ == null)
                         {
@@ -440,6 +444,7 @@ package zpp_nape.geom
                   ZPP_PartitionVertex.zpp_pool = _loc9_.next;
                   _loc9_.next = null;
                }
+               null;
                _loc9_.x = _loc4_.x;
                _loc9_.y = _loc4_.y;
                _loc8_ = _loc9_;
@@ -468,6 +473,7 @@ package zpp_nape.geom
                   ZPP_PartitionVertex.zpp_pool = _loc9_.next;
                   _loc9_.next = null;
                }
+               null;
                _loc9_.x = _loc4_.x;
                _loc9_.y = _loc4_.y;
                _loc8_ = _loc9_;
@@ -529,7 +535,7 @@ package zpp_nape.geom
             pull_partitions(vertices,param1);
             while(vertices != null)
             {
-               vertices = vertices != null && vertices.prev == vertices ? (vertices.next = vertices.prev = null, _loc2_ = vertices, _loc2_.helper = null, _loc2_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc2_, vertices = null) : (_loc2_ = vertices.next, vertices.prev.next = vertices.next, vertices.next.prev = vertices.prev, vertices.next = vertices.prev = null, _loc3_ = vertices, _loc3_.helper = null, _loc3_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc3_, vertices = null, _loc2_);
+               vertices = vertices != null && vertices.prev == vertices ? (vertices.next = vertices.prev = null, _loc2_ = vertices, _loc2_.helper = null, null, _loc2_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc2_, vertices = null) : (_loc2_ = vertices.next, vertices.prev.next = vertices.next, vertices.next.prev = vertices.prev, vertices.next = vertices.prev = null, _loc3_ = vertices, _loc3_.helper = null, null, _loc3_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc3_, vertices = null, _loc2_);
             }
             _loc6_ = null;
             _loc7_ = param1.head;
@@ -579,7 +585,7 @@ package zpp_nape.geom
             pull(vertices,param1);
             while(vertices != null)
             {
-               vertices = vertices != null && vertices.prev == vertices ? (vertices.next = vertices.prev = null, _loc2_ = vertices, _loc2_.helper = null, _loc2_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc2_, vertices = null) : (_loc2_ = vertices.next, vertices.prev.next = vertices.next, vertices.next.prev = vertices.prev, vertices.next = vertices.prev = null, _loc3_ = vertices, _loc3_.helper = null, _loc3_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc3_, vertices = null, _loc2_);
+               vertices = vertices != null && vertices.prev == vertices ? (vertices.next = vertices.prev = null, _loc2_ = vertices, _loc2_.helper = null, null, _loc2_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc2_, vertices = null) : (_loc2_ = vertices.next, vertices.prev.next = vertices.next, vertices.next.prev = vertices.prev, vertices.next = vertices.prev = null, _loc3_ = vertices, _loc3_.helper = null, null, _loc3_.next = ZPP_PartitionVertex.zpp_pool, ZPP_PartitionVertex.zpp_pool = _loc3_, vertices = null, _loc2_);
             }
          }
          return param1;
@@ -602,8 +608,8 @@ package zpp_nape.geom
       {
          param1.diagonals.add(param2);
          param2.diagonals.add(param1);
-         param2.forced = true;
-         param1.forced = true;
+         param1.forced = param2.forced = true;
       }
    }
 }
+

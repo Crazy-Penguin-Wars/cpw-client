@@ -6,8 +6,6 @@ package tuxwars.home.states.money
    
    public class MoneyLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function MoneyLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getMoneyScreenAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.money
       }
    }
 }
+

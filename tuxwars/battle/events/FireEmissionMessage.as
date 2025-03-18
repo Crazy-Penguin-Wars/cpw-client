@@ -6,8 +6,6 @@ package tuxwars.battle.events
    
    public class FireEmissionMessage extends Message
    {
-       
-      
       private var _emissionReference:EmissionReference;
       
       private var _emissionObject:Emission;
@@ -68,3 +66,4 @@ package tuxwars.battle.events
       }
    }
 }
+

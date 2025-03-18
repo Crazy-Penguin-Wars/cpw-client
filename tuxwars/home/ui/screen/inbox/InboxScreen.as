@@ -19,8 +19,6 @@ package tuxwars.home.ui.screen.inbox
    
    public class InboxScreen extends TuxUIScreen
    {
-       
-      
       private const GIFT_SCREEN:String = "popup_inbox";
       
       private var buttonClose:UIButton;
@@ -73,3 +71,4 @@ package tuxwars.home.ui.screen.inbox
       }
    }
 }
+

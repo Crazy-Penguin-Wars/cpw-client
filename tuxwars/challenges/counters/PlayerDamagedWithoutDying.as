@@ -9,8 +9,6 @@ package tuxwars.challenges.counters
    
    public class PlayerDamagedWithoutDying extends Counter
    {
-       
-      
       public function PlayerDamagedWithoutDying(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -20,21 +18,21 @@ package tuxwars.challenges.counters
       {
          var _loc4_:int = 0;
          var i:int = 0;
-         var playerGameObject:* = null;
+         var playerGameObject:PlayerGameObject = null;
          var goingToDie:Boolean = false;
          var _loc6_:* = msg.firingPlayer;
          if(playerId != _loc6_._id)
          {
             if(checkIfEmissionIdMatchesIdsInParams(msg.emission))
             {
-               _loc4_ = msg.affectedGameObjects.length;
+               _loc4_ = int(msg.affectedGameObjects.length);
                for(i = 0; i < _loc4_; )
                {
                   playerGameObject = msg.affectedGameObjects[i] as PlayerGameObject;
                   if(playerGameObject && _loc7_._id == playerId)
                   {
                      var _loc8_:* = playerGameObject;
-                     goingToDie = Number(_loc8_.cahcedHP) - msg.damageToGameObjects[i] <= 0;
+                     goingToDie = _loc8_.cahcedHP - msg.damageToGameObjects[i] <= 0;
                      if(!goingToDie)
                      {
                         updateValue(msg.damageToGameObjects[i]);
@@ -72,3 +70,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

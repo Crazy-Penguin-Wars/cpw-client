@@ -8,7 +8,6 @@ package tuxwars.battle.effects
    
    public class ParticleSystem
    {
-      
       private static const MAX_PARTICLE_AMOUNT:int = 2000;
       
       public static const PARTICLE_TYPE_MISSILE_EXPLOSION:String = "MissileExplosion";
@@ -26,7 +25,6 @@ package tuxwars.battle.effects
       private static const CHILD_ARRAY_SET_INDEX_ANGLE:int = 3;
       
       private static const CHILD_ARRAY_SET_INDEX_DELAY:int = 4;
-       
       
       private var particles:Vector.<Particle>;
       
@@ -84,10 +82,10 @@ package tuxwars.battle.effects
          var i:int = 0;
          var _loc12_:Number = NaN;
          var _loc8_:int = 0;
-         var _loc9_:* = null;
+         var _loc9_:Point = null;
          var oppositeIndex:int = 0;
-         var _loc18_:* = null;
-         var _loc15_:* = null;
+         var _loc18_:Point = null;
+         var _loc15_:Particle = null;
          var delay:* = 0;
          if(particleRef == null)
          {
@@ -128,8 +126,8 @@ package tuxwars.battle.effects
                {
                   oppositeIndex -= _loc17_;
                }
-               locX = _loc6_[i].x + Math.random() * (Number(_loc6_[oppositeIndex].x) - Number(_loc6_[i].x));
-               locY = _loc6_[i].y + Math.random() * (Number(_loc6_[oppositeIndex].y) - Number(_loc6_[i].y));
+               locX = _loc6_[i].x + Math.random() * (_loc6_[oppositeIndex].x - _loc6_[i].x);
+               locY = _loc6_[i].y + Math.random() * (_loc6_[oppositeIndex].y - _loc6_[i].y);
             }
             _loc18_ = new Point(Math.cos(angle * 3.141592653589793 / 180) * 3,Math.sin(angle * 3.141592653589793 / 180) * 3);
             _loc15_ = new Particle(_loc9_,_loc8_,_loc18_,graphicAngle,particleRef);
@@ -192,8 +190,9 @@ package tuxwars.battle.effects
          }
          for(i = childParticleArray.length - 1; i >= 0; )
          {
-            var _loc4_:* = Number(childParticleArray[i][4]) - deltaTime;
-            childParticleArray[i][4] = _loc4_;
+            var _loc3_:int = 4;
+            var _loc4_:* = childParticleArray[i][_loc3_] - deltaTime;
+            childParticleArray[i][_loc3_] = _loc4_;
             if(childParticleArray[i][4] <= 0)
             {
                addParticleEffect(Particles.getParticlesReference(childParticleArray[i][0]),childParticleArray[i][1],childParticleArray[i][2],childParticleArray[i][3]);
@@ -218,3 +217,4 @@ package tuxwars.battle.effects
       }
    }
 }
+

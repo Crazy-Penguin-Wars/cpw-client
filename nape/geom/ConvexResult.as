@@ -6,8 +6,6 @@ package nape.geom
    
    public final class ConvexResult
    {
-       
-      
       public var zpp_inner:ZPP_ConvexRayResult;
       
       public function ConvexResult()
@@ -98,3 +96,4 @@ package nape.geom
       }
    }
 }
+

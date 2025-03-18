@@ -8,8 +8,6 @@ package tuxwars.home.states.money
    
    public class MoneyUISubState extends TuxUIState
    {
-       
-      
       public function MoneyUISubState(game:TuxWarsGame, params:* = null)
       {
          var _loc3_:Class = params == "popup_get_cash_new" ? MoneyScreenCash : MoneyScreenCoins;
@@ -17,3 +15,4 @@ package tuxwars.home.states.money
       }
    }
 }
+

@@ -8,8 +8,6 @@ package tuxwars.battle.actions
    
    public class EditMouseHandler extends AbstractMouseInputAction
    {
-       
-      
       private var editState:TuxBattleEditSubState;
       
       public var isMoving:Boolean;
@@ -29,3 +27,4 @@ package tuxwars.battle.actions
       }
    }
 }
+

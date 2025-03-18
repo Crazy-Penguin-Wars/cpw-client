@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class UseOnlyWeaponsListCounter extends Counter
    {
-       
-      
       private var invalidated:Boolean;
       
       private var weaponsList:Array;
@@ -89,3 +87,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

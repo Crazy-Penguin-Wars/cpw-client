@@ -19,9 +19,7 @@ package tuxwars.battle.gameobjects
    
    public class PhysicsEmissionGameObject extends PhysicsGameObject implements Emission, SimpleScript
    {
-       
-      
-      private var _emissionData:Object;
+      private var _emissionData:Object = {};
       
       private var _emissions:Array;
       
@@ -43,7 +41,6 @@ package tuxwars.battle.gameobjects
       
       public function PhysicsEmissionGameObject(def:PhysicsEmissionGameObjectDef, game:TuxWarsGame)
       {
-         _emissionData = {};
          super(def,game);
          _emissions = def.emissions;
          _simpleScript = def.simpleScript;
@@ -157,7 +154,8 @@ package tuxwars.battle.gameobjects
       
       public function get playerAttackValueStat() : Stat
       {
-         return !!this.stats ? this.stats.getStat("Attackers_Stat") : null;
+         var _loc1_:String = "Attackers_Stat";
+         return !!this.stats ? this.stats.getStat(_loc1_) : null;
       }
       
       public function set playerAttackValue(value:int) : void
@@ -262,6 +260,7 @@ package tuxwars.battle.gameobjects
       
       public function get className() : String
       {
+         var className:String = null;
          if(_simpleScript && _simpleScript.length > 0)
          {
             return _simpleScript[0];
@@ -296,7 +295,7 @@ package tuxwars.battle.gameobjects
       
       override protected function updateGraphics() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:Vec2 = null;
          var _loc2_:Number = NaN;
          if(body)
          {
@@ -335,3 +334,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

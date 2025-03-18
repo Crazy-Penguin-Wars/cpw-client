@@ -8,7 +8,6 @@ package tuxwars.ui.tooltips
    
    public class TooltipManager
    {
-      
       public static const DELAY:int = 250;
       
       public static const TOP:int = 0;
@@ -24,7 +23,6 @@ package tuxwars.ui.tooltips
       private static var parent:DisplayObject;
       
       private static var startTime:int;
-       
       
       public function TooltipManager()
       {
@@ -98,3 +96,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

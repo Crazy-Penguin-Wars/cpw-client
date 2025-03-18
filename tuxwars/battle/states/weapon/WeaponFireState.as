@@ -7,8 +7,6 @@ package tuxwars.battle.states.weapon
    
    public class WeaponFireState extends WeaponState
    {
-       
-      
       private var weaponClip:MovieClip;
       
       public function WeaponFireState(weapon:Weapon, game:DCGame, params:* = null)
@@ -52,3 +50,4 @@ package tuxwars.battle.states.weapon
       }
    }
 }
+

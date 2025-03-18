@@ -1,13 +1,11 @@
 package tuxwars.home.ui.logic.help
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    
    public class HelpReference
    {
-      
       public static const TABLE:String = "HelpData";
       
       private static const TITLE:String = "Title";
@@ -17,7 +15,6 @@ package tuxwars.home.ui.logic.help
       private static const DESCRIPTION:String = "Description";
       
       private static const SORT_ORDER:String = "SortOrder";
-       
       
       private var _row:Row;
       
@@ -37,12 +34,13 @@ package tuxwars.home.ui.logic.help
       {
          if(_row)
          {
+            var _loc4_:String = "Title";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["Title"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["Title"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Title");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["Title"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -57,12 +55,13 @@ package tuxwars.home.ui.logic.help
       {
          if(_row)
          {
+            var _loc4_:String = "Picture";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["Picture"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["Picture"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Picture");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["Picture"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -77,12 +76,13 @@ package tuxwars.home.ui.logic.help
       {
          if(_row)
          {
+            var _loc4_:String = "Description";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["Description"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["Description"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Description");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["Description"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -97,12 +97,13 @@ package tuxwars.home.ui.logic.help
       {
          if(_row)
          {
+            var _loc4_:String = "SortOrder";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["SortOrder"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["SortOrder"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SortOrder");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["SortOrder"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -114,3 +115,4 @@ package tuxwars.home.ui.logic.help
       }
    }
 }
+

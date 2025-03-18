@@ -9,8 +9,6 @@ package tuxwars.challenges.events
    
    public class ChallengeAmmoHitMessage extends Message
    {
-       
-      
       private var _affectedGameObjects:Vector.<PhysicsGameObject>;
       
       private var _firingPlayer:PlayerGameObject;
@@ -77,3 +75,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

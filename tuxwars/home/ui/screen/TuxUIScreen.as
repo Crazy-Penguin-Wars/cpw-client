@@ -12,13 +12,11 @@ package tuxwars.home.ui.screen
    
    public class TuxUIScreen extends UIWindow implements IScreen
    {
-       
-      
-      protected var _logic;
+      protected var _logic:*;
       
       protected var _game:TuxWarsGame;
       
-      protected var _params;
+      protected var _params:*;
       
       private var _exitState:StateMachine;
       
@@ -75,9 +73,9 @@ package tuxwars.home.ui.screen
       public function centerOnScreen() : void
       {
          var _loc1_:DCGame = DCGame;
-         getDesignMovieClip().x = Number(com.dchoc.game.DCGame._stage.stageWidth) * 0.5;
+         getDesignMovieClip().x = com.dchoc.game.DCGame._stage.stageWidth * 0.5;
          var _loc2_:DCGame = DCGame;
-         getDesignMovieClip().y = Number(com.dchoc.game.DCGame._stage.stageHeight) * 0.5;
+         getDesignMovieClip().y = com.dchoc.game.DCGame._stage.stageHeight * 0.5;
       }
       
       protected function fullscreenChanged(event:FullScreenEvent) : void
@@ -101,6 +99,10 @@ package tuxwars.home.ui.screen
          {
             _game.homeState.exitCurrentState();
          }
+         else if(_game && _game.battleState)
+         {
+            _game.battleState.exitCurrentState();
+         }
          else
          {
             LogUtils.log("Unable to exit to any state, no _exitState is set and _game.homeState is null",this,3,"ErrorLogging",true,true,true);
@@ -110,3 +112,4 @@ package tuxwars.home.ui.screen
       }
    }
 }
+

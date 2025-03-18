@@ -6,11 +6,9 @@ package com.dchoc.resources
    
    public class ResourceLoaderURL
    {
-      
       private static const LOADING:String = "loading_anim_icon";
       
       private static var instance:ResourceLoaderURL;
-       
       
       public var waiting:MovieClip;
       
@@ -35,6 +33,7 @@ package com.dchoc.resources
       {
          if(instance == null)
          {
+            new ResourceLoaderURL();
          }
          return instance;
       }
@@ -75,3 +74,4 @@ package com.dchoc.resources
       }
    }
 }
+

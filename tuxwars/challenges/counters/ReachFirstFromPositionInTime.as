@@ -10,8 +10,6 @@ package tuxwars.challenges.counters
    
    public class ReachFirstFromPositionInTime extends CounterLessThan
    {
-       
-      
       public function ReachFirstFromPositionInTime(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -41,7 +39,7 @@ package tuxwars.challenges.counters
       
       override public function handleScoreChanged(msg:ChallengePlayerScoreChangedMessage) : void
       {
-         var sortedPlayers:* = null;
+         var sortedPlayers:Array = null;
          var playerScore:int = 0;
          var indexOfPlayer:int = 0;
          var positionIndex:int = 0;
@@ -52,7 +50,7 @@ package tuxwars.challenges.counters
             {
                sortedPlayers = TuxUiUtils.getPlayersSortedByScore(msg.players);
                playerScore = msg.player.getScore();
-               indexOfPlayer = sortedPlayers.indexOf(msg.player);
+               indexOfPlayer = int(sortedPlayers.indexOf(msg.player));
                if(indexOfPlayer != -1)
                {
                   if(indexOfPlayer == 0)
@@ -74,3 +72,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

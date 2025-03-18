@@ -7,8 +7,6 @@ package tuxwars.challenges.events
    
    public class ChallengeTakeCollisionDamageMessage extends Message
    {
-       
-      
       private var _damagedObject:PhysicsGameObject;
       
       private var _objectDoingDamage:PhysicsGameObject;
@@ -19,7 +17,7 @@ package tuxwars.challenges.events
       
       public function ChallengeTakeCollisionDamageMessage(damagedObject:PhysicsGameObject, objectDoingDamage:PhysicsGameObject, damageAmount:int)
       {
-         var _loc4_:* = null;
+         var _loc4_:Tagger = null;
          super("ChallengeTakeCollisionDamage");
          _damagedObject = damagedObject;
          _objectDoingDamage = objectDoingDamage;
@@ -59,3 +57,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

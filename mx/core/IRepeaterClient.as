@@ -2,8 +2,6 @@ package mx.core
 {
    public interface IRepeaterClient
    {
-       
-      
       function get instanceIndices() : Array;
       
       function set instanceIndices(param1:Array) : void;
@@ -21,3 +19,4 @@ package mx.core
       function initializeRepeaterArrays(param1:IRepeaterClient) : void;
    }
 }
+

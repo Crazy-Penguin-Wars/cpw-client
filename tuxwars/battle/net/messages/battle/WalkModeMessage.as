@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class WalkModeMessage extends BattleMessage
    {
-       
-      
       public function WalkModeMessage(id:String)
       {
          super({
@@ -20,3 +18,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

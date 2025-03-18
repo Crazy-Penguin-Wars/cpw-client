@@ -8,8 +8,6 @@ package tuxwars.ui.popups.logic.firstvip
    
    public class VipFirstTimePopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function VipFirstTimePopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -36,3 +34,4 @@ package tuxwars.ui.popups.logic.firstvip
       }
    }
 }
+

@@ -2,8 +2,6 @@ package mx.core
 {
    public interface IInvalidating
    {
-       
-      
       function invalidateProperties() : void;
       
       function invalidateSize() : void;
@@ -13,3 +11,4 @@ package mx.core
       function validateNow() : void;
    }
 }
+

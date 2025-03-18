@@ -13,21 +13,18 @@ package tuxwars.battle.ui.screen.timer
    
    public class TimerElement extends UIContainer
    {
-       
-      
       private var game:TuxWarsGame;
       
       protected var slider:UIProgressIndicator;
       
       private const name:UIAutoTextField = new UIAutoTextField();
       
-      private var time:TextField;
+      private var time:TextField = new TextField();
       
       private var curTime:uint;
       
       public function TimerElement(design:MovieClip, parent:UIComponent, minValueInMS:int, maxValueInMS:int)
       {
-         time = new TextField();
          super(design,parent);
          slider = new UIProgressIndicator(design.Slider,minValueInMS,maxValueInMS);
          name.setTextField(design.Text_Name);
@@ -84,3 +81,4 @@ package tuxwars.battle.ui.screen.timer
       }
    }
 }
+

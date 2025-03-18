@@ -1,7 +1,7 @@
 package tuxwars.items.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import flash.filters.GlowFilter;
    import org.as3commons.lang.StringUtils;
    import tuxwars.battle.simplescript.SimpleScriptManager;
@@ -9,7 +9,6 @@ package tuxwars.items.data
    
    public class BoosterData extends ItemData
    {
-      
       public static const DURATION_TYPE_SHOT:String = "Shot";
       
       public static const DURATION_TYPE_HIT:String = "Hit";
@@ -33,7 +32,6 @@ package tuxwars.items.data
       private static const DURATION_AMOUNT:String = "DurationAmount";
       
       private static const SIMPLE_SCRIPT:String = "SimpleScript";
-       
       
       public function BoosterData(row:Row)
       {
@@ -45,12 +43,13 @@ package tuxwars.items.data
          var field:Field;
          var localEmissions:*;
          var emissionArray:Array;
+         var _loc4_:String = "Emitters";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["Emitters"])
+         if(!_loc1_._cache[_loc4_])
          {
-            _loc1_._cache["Emitters"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","Emitters");
+            _loc1_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc4_);
          }
-         field = _loc1_._cache["Emitters"];
+         field = _loc1_._cache[_loc4_];
          if(field)
          {
             var _loc3_:Field = field;
@@ -68,15 +67,16 @@ package tuxwars.items.data
       public function get missileBoostingEmissions() : Array
       {
          var _loc2_:* = undefined;
-         var _loc5_:* = null;
-         var _loc3_:* = null;
+         var _loc5_:Array = null;
+         var _loc3_:Array = null;
          var i:int = 0;
+         var _loc8_:String = "EmitMissileBoosting";
          var _loc6_:Row = row;
-         if(!_loc6_._cache["EmitMissileBoosting"])
+         if(!_loc6_._cache[_loc8_])
          {
-            _loc6_._cache["EmitMissileBoosting"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","EmitMissileBoosting");
+            _loc6_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc8_);
          }
-         var _loc1_:Field = _loc6_._cache["EmitMissileBoosting"];
+         var _loc1_:Field = _loc6_._cache[_loc8_];
          if(_loc1_)
          {
             var _loc7_:* = _loc1_;
@@ -96,15 +96,16 @@ package tuxwars.items.data
       public function get explosionBoostingEmissions() : Array
       {
          var _loc5_:* = undefined;
-         var _loc4_:* = null;
-         var _loc2_:* = null;
+         var _loc4_:Array = null;
+         var _loc2_:Array = null;
          var i:int = 0;
+         var _loc8_:String = "EmitterExplosionBoosting";
          var _loc6_:Row = row;
-         if(!_loc6_._cache["EmitterExplosionBoosting"])
+         if(!_loc6_._cache[_loc8_])
          {
-            _loc6_._cache["EmitterExplosionBoosting"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","EmitterExplosionBoosting");
+            _loc6_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc8_);
          }
-         var _loc1_:Field = _loc6_._cache["EmitterExplosionBoosting"];
+         var _loc1_:Field = _loc6_._cache[_loc8_];
          if(_loc1_)
          {
             var _loc7_:* = _loc1_;
@@ -123,49 +124,53 @@ package tuxwars.items.data
       
       public function get durationType() : String
       {
+         var _loc4_:String = "DurationType";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["DurationType"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["DurationType"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","DurationType");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["DurationType"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get durationAmount() : int
       {
+         var _loc4_:String = "DurationAmount";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["DurationAmount"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["DurationAmount"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","DurationAmount");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["DurationAmount"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get simpleScript() : Array
       {
+         var _loc4_:String = "SimpleScript";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["SimpleScript"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["SimpleScript"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SimpleScript");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["SimpleScript"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, SimpleScriptManager.parseSimpleScriptFromOdsData(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : null;
       }
       
       public function get glowFilter() : GlowFilter
       {
-         var _loc2_:* = null;
+         var _loc2_:GlowFilterData = null;
+         var _loc5_:String = "GlowEffect";
          var _loc3_:Row = row;
-         if(!_loc3_._cache["GlowEffect"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["GlowEffect"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","GlowEffect");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["GlowEffect"];
+         var _loc1_:Field = _loc3_._cache[_loc5_];
          if(_loc1_)
          {
             var _loc4_:* = _loc1_;
@@ -176,3 +181,4 @@ package tuxwars.items.data
       }
    }
 }
+

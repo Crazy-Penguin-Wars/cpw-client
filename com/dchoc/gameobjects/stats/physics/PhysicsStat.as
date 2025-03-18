@@ -7,8 +7,6 @@ package com.dchoc.gameobjects.stats.physics
    
    public class PhysicsStat extends Stat
    {
-       
-      
       private var _body:Body;
       
       public function PhysicsStat(statName:String, body:Body, value:Number = 0, group:String = "Group_Base", type:String = "Normal", includeBase:Boolean = true)
@@ -74,3 +72,4 @@ package com.dchoc.gameobjects.stats.physics
       }
    }
 }
+

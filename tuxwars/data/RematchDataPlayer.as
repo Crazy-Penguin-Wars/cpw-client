@@ -4,8 +4,6 @@ package tuxwars.data
    
    public class RematchDataPlayer
    {
-       
-      
       private var _id:String;
       
       private var _name:String;
@@ -51,3 +49,4 @@ package tuxwars.data
       }
    }
 }
+

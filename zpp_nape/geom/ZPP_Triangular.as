@@ -6,13 +6,11 @@ package zpp_nape.geom
    
    public class ZPP_Triangular
    {
+      public static var queue:ZNPList_ZPP_PartitionVertex;
       
-      public static var queue:ZNPList_ZPP_PartitionVertex = null;
+      public static var stack:ZNPList_ZPP_PartitionVertex;
       
-      public static var stack:ZNPList_ZPP_PartitionVertex = null;
-      
-      public static var edgeSet:ZPP_Set_ZPP_PartitionPair = null;
-       
+      public static var edgeSet:ZPP_Set_ZPP_PartitionPair;
       
       public function ZPP_Triangular()
       {
@@ -93,6 +91,7 @@ package zpp_nape.geom
                ZPP_Set_ZPP_PartitionPair.zpp_pool = ZPP_Triangular.edgeSet.next;
                ZPP_Triangular.edgeSet.next = null;
             }
+            null;
             ZPP_Triangular.edgeSet.lt = ZPP_PartitionPair.edge_lt;
             ZPP_Triangular.edgeSet.swapped = ZPP_PartitionPair.edge_swap;
          }
@@ -106,6 +105,7 @@ package zpp_nape.geom
             ZPP_PartitionPair.zpp_pool = _loc6_.next;
             _loc6_.next = null;
          }
+         null;
          _loc2_ = param1.vertices;
          _loc3_ = param1.vertices;
          if(_loc2_ != null)
@@ -140,6 +140,7 @@ package zpp_nape.geom
                            ZPP_PartitionPair.zpp_pool = _loc12_.next;
                            _loc12_.next = null;
                         }
+                        null;
                         _loc12_.a = _loc5_;
                         _loc12_.b = _loc9_;
                         if(_loc5_.id < _loc9_.id)
@@ -366,3 +367,7 @@ package zpp_nape.geom
       }
    }
 }
+
+import zpp_nape.util.ZNPList_ZPP_PartitionVertex;
+import zpp_nape.util.ZPP_Set_ZPP_PartitionPair;
+

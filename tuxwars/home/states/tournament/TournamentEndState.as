@@ -5,8 +5,6 @@ package tuxwars.home.states.tournament
    
    public class TournamentEndState extends TuxState
    {
-       
-      
       public function TournamentEndState(game:TuxWarsGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.tournament
       }
    }
 }
+

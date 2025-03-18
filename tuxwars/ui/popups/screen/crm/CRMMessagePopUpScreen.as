@@ -20,11 +20,9 @@ package tuxwars.ui.popups.screen.crm
    
    public class CRMMessagePopUpScreen extends PopUpBaseScreen implements IResourceLoaderURL
    {
-      
       private static const BUTTON_CASH:String = "Button_Buy_Cash";
       
       private static const BUTTON_COINS:String = "Button_Buy_Coins";
-       
       
       private var loader:URLResourceLoader;
       
@@ -83,7 +81,7 @@ package tuxwars.ui.popups.screen.crm
       
       private function enableCorrectButton() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:ItemData = null;
          switch(popupData.actionCode)
          {
             case "directbuy":
@@ -94,14 +92,18 @@ package tuxwars.ui.popups.screen.crm
                   {
                      _cashButton.setVisible(true);
                      _cashButton.setText("" + _loc1_.priceInfoReference.priceObject.priceValue);
-                     break;
                   }
-                  _coinsButton.setVisible(true);
-                  _coinsButton.setText("" + _loc1_.priceInfoReference.priceObject.priceValue);
-                  break;
+                  else
+                  {
+                     _coinsButton.setVisible(true);
+                     _coinsButton.setText("" + _loc1_.priceInfoReference.priceObject.priceValue);
+                  }
                }
-               LogUtils.log("No item found for id: " + popupData.actionParameters.id,this,2,"CRMPopup",false,false,false);
-               okButton.setVisible(true);
+               else
+               {
+                  LogUtils.log("No item found for id: " + popupData.actionParameters.id,this,2,"CRMPopup",false,false,false);
+                  okButton.setVisible(true);
+               }
                break;
             case "gototournament":
                okButton.setVisible(true);
@@ -177,3 +179,4 @@ package tuxwars.ui.popups.screen.crm
       }
    }
 }
+

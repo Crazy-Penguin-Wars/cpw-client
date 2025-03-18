@@ -4,8 +4,6 @@ package tuxwars.battle.gameobjects
    
    public class Tag
    {
-       
-      
       private const _taggers:Vector.<Tagger> = new Vector.<Tagger>();
       
       private var _physGameObject:PhysicsGameObject;
@@ -45,7 +43,7 @@ package tuxwars.battle.gameobjects
       
       public function add(gameObject:PhysicsGameObject) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Tagger = null;
          var _loc3_:Tagger = latestTagger;
          if(!_loc3_ || !_loc3_.gameObject || _loc4_._id != _loc5_._id)
          {
@@ -160,3 +158,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

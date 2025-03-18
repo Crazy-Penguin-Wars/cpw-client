@@ -5,9 +5,7 @@ package tuxwars.utils
    
    public class UniqueCounters
    {
-      
       private static const COUNTERS:Object = {};
-       
       
       public function UniqueCounters()
       {
@@ -29,9 +27,10 @@ package tuxwars.utils
       
       private static function getNextId(from:String) : uint
       {
-         var _loc2_:uint = uint(COUNTERS.hasOwnProperty(from) ? COUNTERS[from] : 0);
+         var _loc2_:uint = uint(!!COUNTERS.hasOwnProperty(from) ? COUNTERS[from] : 0);
          COUNTERS[from] = _loc2_ + 1;
          return _loc2_;
       }
    }
 }
+

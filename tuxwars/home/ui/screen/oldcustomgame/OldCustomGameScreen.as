@@ -16,7 +16,6 @@ package tuxwars.home.ui.screen.oldcustomgame
    
    public class OldCustomGameScreen extends TuxUIScreen
    {
-      
       private static const EXPORT:String = "multiplayer_test";
       
       private static const TEXT_HEADER:String = "Text_Header";
@@ -38,7 +37,6 @@ package tuxwars.home.ui.screen.oldcustomgame
       private static const INPUT_TURN_TIME:String = "Input_Turn";
       
       private static const TEXT_INPUT:String = "Text_Input";
-       
       
       private var closeButton:UIButton;
       
@@ -143,3 +141,4 @@ package tuxwars.home.ui.screen.oldcustomgame
       }
    }
 }
+

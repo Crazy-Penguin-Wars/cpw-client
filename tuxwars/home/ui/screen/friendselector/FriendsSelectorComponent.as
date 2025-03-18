@@ -16,7 +16,6 @@ package tuxwars.home.ui.screen.friendselector
    
    public class FriendsSelectorComponent extends FriendsSelectorBase
    {
-      
       public static const CHANGE_EVENT:String = "ChangeEvent";
       
       private static const SEARCH_DEFAULT_TID:String = "FS_SEARCH_DEFAULT";
@@ -52,7 +51,6 @@ package tuxwars.home.ui.screen.friendselector
       private static const FRIENDS_PANEL_PREFIX:String = "Slot_";
       
       private static const SELECTED_FRIENDS_PANEL_PREFIX:String = "Slot_";
-       
       
       private var mEmptyTextfield:UIAutoTextField;
       
@@ -111,7 +109,7 @@ package tuxwars.home.ui.screen.friendselector
       
       public function clean() : void
       {
-         var panel:* = null;
+         var panel:CellPanel = null;
          if(mSearchBar)
          {
             mSearchBar.clean();
@@ -215,8 +213,8 @@ package tuxwars.home.ui.screen.friendselector
       private function initFriendsList() : void
       {
          var i:int = 0;
-         var panelName:* = null;
-         var panel:* = null;
+         var panelName:String = null;
+         var panel:FriendsSelectPanel = null;
          var _loc3_:MovieClip = getDesignMovieClip().getChildByName("Container_Slots") as MovieClip;
          mFriendsList = new MultipleFriendSelectorFriendsCollection();
          for(i = 1; i <= mPanelCount; )
@@ -239,9 +237,9 @@ package tuxwars.home.ui.screen.friendselector
       private function initSelectedList() : void
       {
          var i:int = 0;
-         var panelName:* = null;
-         var movieAsset:* = null;
-         var panel:* = null;
+         var panelName:String = null;
+         var movieAsset:MovieClip = null;
+         var panel:FriendsSelectPanel = null;
          var _loc4_:MovieClip = getDesignMovieClip();
          mSelectedFriendsList = new MultipleFriendSelectorFriendsCollection();
          for(i = 1; i <= mSelectedPanelCount; )
@@ -310,7 +308,7 @@ package tuxwars.home.ui.screen.friendselector
          {
             mScrollBarFriends.enabled = true;
          }
-         var length:uint = mFriendsList.currentLength - mPanelCount;
+         var length:uint = uint(mFriendsList.currentLength - mPanelCount);
          var percentage:uint = index / length * 100;
          mScrollBarFriends.setProcentage(percentage);
       }
@@ -350,7 +348,7 @@ package tuxwars.home.ui.screen.friendselector
       public function deleteSent(num:int, allTabs:Array) : void
       {
          var i:int = 0;
-         var friend:* = null;
+         var friend:Object = null;
          for(i = 0; i < num; )
          {
             friend = mSelectedFriendsList.dataList.shift();
@@ -396,6 +394,7 @@ package tuxwars.home.ui.screen.friendselector
       private function updateScrollBarButtons(bar:ScrollBar, clip:MovieClip, list:CellList, panelCount:uint) : void
       {
          var max:int = list.currentLength - list.panelList.length;
+         var min:int = 0;
          if(list.currentLength <= list.panelList.length)
          {
             clip.visible = false;
@@ -404,7 +403,7 @@ package tuxwars.home.ui.screen.friendselector
          {
             clip.visible = true;
          }
-         if(list.listIndex == 0)
+         if(list.listIndex == min)
          {
             if(bar.buttonUp)
             {
@@ -454,3 +453,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

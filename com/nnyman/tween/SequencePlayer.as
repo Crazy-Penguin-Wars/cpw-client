@@ -6,15 +6,12 @@ package com.nnyman.tween
    
    public class SequencePlayer extends Sprite
    {
-       
-      
-      private var sequences:Array;
+      private var sequences:Array = [];
       
       private var lastUpdateTime:uint;
       
       public function SequencePlayer()
       {
-         sequences = [];
          super();
       }
       
@@ -49,18 +46,18 @@ package com.nnyman.tween
       public function run(event:Event) : void
       {
          var i:int = 0;
-         var sequence:* = null;
-         var sequenceSteps:* = null;
+         var sequence:Sequence = null;
+         var sequenceSteps:Array = null;
          var sequenceTime:* = 0;
          var sequenceDone:Boolean = false;
          var n:int = 0;
-         var step:* = null;
+         var step:SequenceStep = null;
          lastUpdateTime = getTimer();
          for(i = 0; i < sequences.length; )
          {
             sequence = sequences[i];
             sequenceSteps = sequence.getSteps();
-            sequenceTime = lastUpdateTime - sequence.getStartTime();
+            sequenceTime = uint(lastUpdateTime - sequence.getStartTime());
             sequenceDone = true;
             for(n = 0; n < sequenceSteps.length; )
             {
@@ -104,3 +101,4 @@ package com.nnyman.tween
       }
    }
 }
+

@@ -7,12 +7,10 @@ package tuxwars.battle.net.messages.battle
    
    public class SimpleScriptMessage extends BattleMessage
    {
-       
-      
       public function SimpleScriptMessage(playerId:String, emissionId:String, scriptObject:SimpleScript, params:SimpleScriptParams)
       {
-         var _loc5_:* = null;
-         var _loc6_:* = null;
+         var _loc5_:Vec2 = null;
+         var _loc6_:Vec2 = null;
          var _loc7_:Object = {
             "t":55,
             "sid":emissionId
@@ -23,16 +21,16 @@ package tuxwars.battle.net.messages.battle
          }
          if(scriptObject && scriptObject.location)
          {
-            _loc7_["sx"] = scriptObject.location.x;
-            _loc7_["sy"] = scriptObject.location.y;
+            _loc7_["sx"] = int(scriptObject.location.x);
+            _loc7_["sy"] = int(scriptObject.location.y);
          }
          if(params.pgoA)
          {
             _loc5_ = params.pgoA.bodyLocation;
             if(_loc5_)
             {
-               _loc7_["ax"] = _loc5_.x;
-               _loc7_["ay"] = _loc5_.y;
+               _loc7_["ax"] = int(_loc5_.x);
+               _loc7_["ay"] = int(_loc5_.y);
             }
          }
          if(params.pgoB)
@@ -40,14 +38,14 @@ package tuxwars.battle.net.messages.battle
             _loc6_ = params.pgoB.bodyLocation;
             if(_loc6_)
             {
-               _loc7_["bx"] = _loc6_.x;
-               _loc7_["by"] = _loc6_.y;
+               _loc7_["bx"] = int(_loc6_.x);
+               _loc7_["by"] = int(_loc6_.y);
             }
          }
          if(params.emission && params.emission.location)
          {
-            _loc7_["ex"] = params.emission.location.x;
-            _loc7_["ey"] = params.emission.location.y;
+            _loc7_["ex"] = int(params.emission.location.x);
+            _loc7_["ey"] = int(params.emission.location.y);
          }
          super(_loc7_);
       }
@@ -58,3 +56,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

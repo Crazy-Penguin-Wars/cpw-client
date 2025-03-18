@@ -4,8 +4,6 @@ package
    
    public class Std
    {
-       
-      
       public function Std()
       {
       }
@@ -16,3 +14,4 @@ package
       }
    }
 }
+

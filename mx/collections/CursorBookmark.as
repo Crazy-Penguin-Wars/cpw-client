@@ -2,17 +2,17 @@ package mx.collections
 {
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class CursorBookmark
    {
-      
-      mx_internal static const VERSION:String = "4.5.1.21489";
-      
       private static var _first:CursorBookmark;
       
       private static var _last:CursorBookmark;
       
       private static var _current:CursorBookmark;
-       
+      
+      mx_internal static const VERSION:String = "4.5.1.21489";
       
       private var _value:Object;
       
@@ -60,3 +60,4 @@ package mx.collections
       }
    }
 }
+

@@ -4,9 +4,7 @@ package tuxwars.battle.gameobjects
    
    public class Tagger
    {
-      
       public static const DEFAULT:Tagger = new Tagger(null);
-       
       
       private var _gameObject:PhysicsGameObject;
       
@@ -59,3 +57,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

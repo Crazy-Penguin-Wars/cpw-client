@@ -7,8 +7,6 @@ package nape.phys
    
    public final class Material
    {
-       
-      
       public var zpp_inner:ZPP_Material;
       
       public function Material(param1:Number = 0, param2:Number = 1, param3:Number = 2, param4:Number = 1, param5:Number = 0.001)
@@ -28,6 +26,7 @@ package nape.phys
             ZPP_Material.zpp_pool = zpp_inner.next;
             zpp_inner.next = null;
          }
+         null;
          zpp_inner.outer = this;
          if(param1 != zpp_inner.elasticity)
          {
@@ -300,3 +299,4 @@ package nape.phys
       }
    }
 }
+

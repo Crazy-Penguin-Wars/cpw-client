@@ -4,8 +4,6 @@ package tuxwars.battle.net.responses
    
    public class FireWeaponResponse extends ActionResponse
    {
-       
-      
       public function FireWeaponResponse(data:Object)
       {
          super(data);
@@ -42,3 +40,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

@@ -4,13 +4,13 @@ package mx.messaging
    import mx.core.mx_internal;
    import mx.events.PropertyChangeEvent;
    
+   use namespace mx_internal;
+   
    public class FlexClient extends EventDispatcher
    {
+      private static var _instance:FlexClient;
       
       mx_internal static const NULL_FLEXCLIENT_ID:String = "nil";
-      
-      private static var _instance:FlexClient;
-       
       
       private var _id:String;
       
@@ -65,3 +65,4 @@ package mx.messaging
       }
    }
 }
+

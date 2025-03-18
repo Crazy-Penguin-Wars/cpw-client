@@ -16,11 +16,9 @@ package zpp_nape.callbacks
    
    public class ZPP_Callback
    {
+      public static var §internal§:Boolean;
       
-      public static var §internal§:Boolean = false;
-      
-      public static var zpp_pool:ZPP_Callback = null;
-       
+      public static var zpp_pool:ZPP_Callback;
       
       public var wrap_arbiters:ArbiterList;
       
@@ -158,7 +156,7 @@ package zpp_nape.callbacks
                prev = param1.prev;
             }
          }
-         length = length - 1;
+         --length;
          return _loc2_;
       }
       
@@ -195,7 +193,7 @@ package zpp_nape.callbacks
          param1.next = next;
          param1.prev = null;
          next = param1;
-         length = length + 1;
+         ++length;
       }
       
       public function push(param1:ZPP_Callback) : void
@@ -211,7 +209,7 @@ package zpp_nape.callbacks
          param1.prev = prev;
          param1.next = null;
          prev = param1;
-         length = length + 1;
+         ++length;
       }
       
       public function pop_rev() : ZPP_Callback
@@ -226,7 +224,7 @@ package zpp_nape.callbacks
          {
             prev.next = null;
          }
-         length = length - 1;
+         --length;
          return _loc1_;
       }
       
@@ -242,7 +240,7 @@ package zpp_nape.callbacks
          {
             next.prev = null;
          }
-         length = length - 1;
+         --length;
          return _loc1_;
       }
       
@@ -288,3 +286,4 @@ package zpp_nape.callbacks
       }
    }
 }
+

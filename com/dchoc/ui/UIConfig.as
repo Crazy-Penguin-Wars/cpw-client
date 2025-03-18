@@ -2,8 +2,6 @@ package com.dchoc.ui
 {
    public class UIConfig
    {
-       
-      
       public function UIConfig()
       {
          super();
@@ -18,3 +16,4 @@ package com.dchoc.ui
       }
    }
 }
+

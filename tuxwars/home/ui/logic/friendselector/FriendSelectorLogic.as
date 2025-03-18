@@ -11,13 +11,11 @@ package tuxwars.home.ui.logic.friendselector
    
    public class FriendSelectorLogic extends TuxUILogic
    {
-      
       public static const GIFTING:String = "GIFT";
       
       public static const INVITE:String = "INVITE";
       
       public static const HELP_REQUEST:String = "HELP";
-       
       
       private var _sendRequest:SendRequestObject;
       
@@ -29,7 +27,11 @@ package tuxwars.home.ui.logic.friendselector
       public function get data() : MultipleFriendSelectorData
       {
          var returnData:MultipleFriendSelectorData = null;
-         return new MultipleFriendSelectorData(header,description,imageDescription,null,null,buttonText,null,null);
+         var selectionDescription:String = null;
+         var selectionMessage:String = null;
+         var iconFile:String = null;
+         var iconClipName:String = null;
+         return new MultipleFriendSelectorData(header,description,imageDescription,iconFile,iconClipName,buttonText,selectionDescription,selectionMessage);
       }
       
       public function get header() : String
@@ -108,3 +110,4 @@ package tuxwars.home.ui.logic.friendselector
       }
    }
 }
+

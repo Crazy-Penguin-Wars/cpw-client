@@ -4,8 +4,6 @@ package tuxwars.money
    
    public class CoinPackage
    {
-       
-      
       private var _id:String;
       
       private var _amount:int;
@@ -56,3 +54,4 @@ package tuxwars.money
       }
    }
 }
+

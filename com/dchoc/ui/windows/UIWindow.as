@@ -10,11 +10,9 @@ package com.dchoc.ui.windows
    
    public class UIWindow extends UIStateComponent
    {
-      
       public static var isModalWindowOpen:Boolean;
       
       protected static var numberModalWindowsOpen:int = 0;
-       
       
       protected var modalShade:UIModalWindowShade;
       
@@ -105,7 +103,7 @@ package com.dchoc.ui.windows
       
       public function changeTextFieldText(nameOfTextField:String, newText:String) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:TextField = null;
          if(newText != null)
          {
             _loc3_ = DisplayObjectContainer(this._design).getChildByName(nameOfTextField) as TextField;
@@ -117,3 +115,4 @@ package com.dchoc.ui.windows
       }
    }
 }
+

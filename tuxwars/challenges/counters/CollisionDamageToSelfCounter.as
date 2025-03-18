@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class CollisionDamageToSelfCounter extends Counter
    {
-       
-      
       public function CollisionDamageToSelfCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -34,3 +32,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

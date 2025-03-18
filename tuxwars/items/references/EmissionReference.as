@@ -1,9 +1,7 @@
 package tuxwars.items.references
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import com.dchoc.utils.Random;
    import no.olog.utilfunctions.assert;
@@ -13,9 +11,6 @@ package tuxwars.items.references
    
    public class EmissionReference
    {
-      
-      private static const CACHE:Object = {};
-      
       private static const TABLE:String = "Emitter";
       
       private static const SPECIAL_EFFECT:String = "SpecialEffect";
@@ -45,7 +40,8 @@ package tuxwars.items.references
       private static const RANDOM_OFFSET:String = "RandomOffset";
       
       private static var _table:Table;
-       
+      
+      private static const CACHE:Object = {};
       
       public var id:String;
       
@@ -83,7 +79,7 @@ package tuxwars.items.references
       
       public static function get(row:Row) : EmissionReference
       {
-         var _loc2_:* = null;
+         var _loc2_:EmissionReference = null;
          assert("EmissionReference row is null",true,row != null);
          if(!CACHE.hasOwnProperty(row.id))
          {
@@ -98,8 +94,9 @@ package tuxwars.items.references
       {
          if(!_table)
          {
+            var _loc2_:String = "Emitter";
             var _loc1_:ProjectManager = ProjectManager;
-            _table = com.dchoc.projectdata.ProjectManager.projectData.findTable("Emitter");
+            _table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return _table;
       }
@@ -137,34 +134,49 @@ package tuxwars.items.references
       
       public function get specialEffect() : Row
       {
+         var _loc5_:String = "SpecialEffect";
          var _loc3_:Row = row;
-         if(!_loc3_._cache["SpecialEffect"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["SpecialEffect"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","SpecialEffect");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["SpecialEffect"];
-         return null;
+         var _loc1_:Field = _loc3_._cache[_loc5_];
+         var _loc4_:*;
+         var _loc2_:* = !!_loc1_ ? (_loc4_ = _loc1_, (_loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) as Row) : null;
+         if(_loc2_ != null)
+         {
+            assert("SpecialEffect for emission: " + id + " is null",true,_loc2_ != null);
+         }
+         return _loc2_;
       }
       
       public function get specialType() : String
       {
+         var _loc5_:String = "SpecialType";
          var _loc3_:Row = row;
-         if(!_loc3_._cache["SpecialType"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["SpecialType"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","SpecialType");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["SpecialType"];
-         return null;
+         var _loc1_:Field = _loc3_._cache[_loc5_];
+         var _loc4_:*;
+         var _loc2_:* = !!_loc1_ ? (_loc4_ = _loc1_, _loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) : null;
+         if(_loc2_ != null)
+         {
+            assert("SpecialType for emission: " + id + " is null",true,_loc2_ != null);
+         }
+         return _loc2_;
       }
       
       public function get soundID() : String
       {
+         var _loc4_:String = "SoundID";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["SoundID"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["SoundID"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SoundID");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["SoundID"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          if(_loc1_)
          {
             var _loc3_:* = _loc1_;
@@ -175,24 +187,26 @@ package tuxwars.items.references
       
       public function get followers() : Vector.<FollowerData>
       {
+         var _loc4_:String = "Followers";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Followers"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Followers"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Followers");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Followers"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, Followers.getFollowersData(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : null;
       }
       
       public function get affectedObjects() : Array
       {
+         var _loc4_:String = "AffectsObjects";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["AffectsObjects"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["AffectsObjects"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","AffectsObjects");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["AffectsObjects"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          if(_loc1_)
          {
             var _loc3_:* = _loc1_;
@@ -288,3 +302,4 @@ package tuxwars.items.references
       }
    }
 }
+

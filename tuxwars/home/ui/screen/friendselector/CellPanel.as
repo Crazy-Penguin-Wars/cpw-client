@@ -4,8 +4,6 @@ package tuxwars.home.ui.screen.friendselector
    
    public class CellPanel extends EventDispatcher
    {
-       
-      
       private var mId:String = "";
       
       public function CellPanel()
@@ -28,3 +26,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

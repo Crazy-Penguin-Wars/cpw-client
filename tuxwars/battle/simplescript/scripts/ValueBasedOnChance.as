@@ -7,9 +7,7 @@ package tuxwars.battle.simplescript.scripts
    
    public class ValueBasedOnChance implements SimpleScriptCore
    {
-      
       public static const RETURN_INT_ON_FAIL:int = 0;
-       
       
       public function ValueBasedOnChance()
       {
@@ -38,3 +36,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

@@ -11,17 +11,15 @@ package com.dchoc.media
    
    public class DCSoundManager extends EventDispatcher
    {
+      private static var instance:DCSoundManager;
+      
+      private static var allowInstance:Boolean;
       
       public static const TYPE_MUSIC:int = 0;
       
       public static const TYPE_SFX:int = 1;
       
       private static const SOUND_INITIAL_VOLUME:Number = 1;
-      
-      private static var instance:DCSoundManager;
-      
-      private static var allowInstance:Boolean;
-       
       
       private var musicOn:Boolean;
       
@@ -54,7 +52,7 @@ package com.dchoc.media
       
       public function loadSound(path:String, name:String, type:int) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:DCSound = null;
          if(!soundExists(name))
          {
             try
@@ -108,6 +106,7 @@ package com.dchoc.media
       public function playSound(name:String, loops:int = 0, volume:Number = 1, startTime:Number = 0) : void
       {
          var success:Boolean = false;
+         var error:Boolean = false;
          if(name == null || soundsDictionary == null)
          {
             dispatchEvent(new DCSoundEvent("soundPLayError",name));
@@ -232,7 +231,7 @@ package com.dchoc.media
       
       private function onSoundOneLoopComplete(event:Event) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:DCSound = null;
          for each(var dcSound in soundsDictionary)
          {
             _loc3_ = event.target as DCSound;
@@ -286,3 +285,4 @@ package com.dchoc.media
       }
    }
 }
+

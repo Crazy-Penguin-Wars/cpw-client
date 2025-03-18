@@ -12,8 +12,6 @@ package tuxwars.home.ui.screen.vip
    
    public class VIPScreen extends TuxUIScreen
    {
-       
-      
       private const VIP_SCREEN:String = "popup_membership";
       
       private var buttonClose:UIButton;
@@ -167,3 +165,4 @@ package tuxwars.home.ui.screen.vip
       }
    }
 }
+

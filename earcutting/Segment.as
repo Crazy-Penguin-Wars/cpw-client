@@ -5,13 +5,11 @@ package earcutting
    
    public class Segment
    {
-       
-      
       public var p0:Point;
       
       public var p1:Point;
       
-      private var p:Point;
+      private var p:Point = new Point();
       
       private var minX:Number = 0;
       
@@ -23,7 +21,6 @@ package earcutting
       
       public function Segment(p0:Point, p1:Point)
       {
-         p = new Point();
          super();
          this.p0 = p0;
          this.p1 = p1;
@@ -31,7 +28,7 @@ package earcutting
       
       public function segmentIntersct(s:Segment, as_seg:Boolean = true) : Point
       {
-         var ip:* = null;
+         var ip:Point = null;
          var a1:Number = NaN;
          var a2:Number = NaN;
          var b1:Number = NaN;
@@ -105,3 +102,4 @@ package earcutting
       }
    }
 }
+

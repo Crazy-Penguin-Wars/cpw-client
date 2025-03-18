@@ -5,8 +5,13 @@ package mx.logging
    import mx.resources.IResourceManager;
    import mx.resources.ResourceManager;
    
+   use namespace mx_internal;
+   
    public class Log
    {
+      private static var _loggers:Array;
+      
+      private static var _resourceManager:IResourceManager;
       
       mx_internal static const VERSION:String = "4.5.1.21489";
       
@@ -14,12 +19,7 @@ package mx.logging
       
       private static var _targetLevel:int = NONE;
       
-      private static var _loggers:Array;
-      
       private static var _targets:Array = [];
-      
-      private static var _resourceManager:IResourceManager;
-       
       
       public function Log()
       {
@@ -63,7 +63,8 @@ package mx.logging
       public static function addTarget(target:ILoggingTarget) : void
       {
          var filters:Array = null;
-         var i:* = null;
+         var logger:ILogger = null;
+         var i:String = null;
          var message:String = null;
          if(Boolean(target))
          {
@@ -93,7 +94,8 @@ package mx.logging
       public static function removeTarget(target:ILoggingTarget) : void
       {
          var filters:Array = null;
-         var i:* = null;
+         var logger:ILogger = null;
+         var i:String = null;
          var j:int = 0;
          var message:String = null;
          if(Boolean(target))
@@ -161,16 +163,18 @@ package mx.logging
       private static function categoryMatchInFilterList(category:String, filters:Array) : Boolean
       {
          var filter:String = null;
+         var result:Boolean = false;
          var index:int = -1;
          for(var i:uint = 0; i < filters.length; i++)
          {
             filter = filters[i];
-            index = filter.indexOf("*");
+            index = int(filter.indexOf("*"));
             if(index == 0)
             {
                return true;
             }
-            index = index < 0 ? (index = category.length) : index - 1;
+            index = category.length;
+            index = index < 0 ? (index) : index - 1;
             if(category.substring(0,index) == filter.substring(0,index))
             {
                return true;
@@ -208,3 +212,4 @@ package mx.logging
       }
    }
 }
+

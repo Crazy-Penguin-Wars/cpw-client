@@ -8,8 +8,6 @@ package nape.geom
    
    public final class AABB
    {
-       
-      
       public var zpp_inner:ZPP_AABB;
       
       public function AABB(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0)
@@ -41,6 +39,7 @@ package nape.geom
             ZPP_AABB.zpp_pool = _loc5_.next;
             _loc5_.next = null;
          }
+         null;
          _loc5_.minx = param1;
          _loc5_.miny = param2;
          _loc5_.maxx = param1 + param3;
@@ -481,6 +480,11 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc5_;
          return zpp_inner.getmin();
@@ -747,6 +751,11 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc5_;
          return zpp_inner.getmax();
@@ -871,6 +880,7 @@ package nape.geom
             ZPP_AABB.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          _loc2_.minx = _loc1_.minx;
          _loc2_.miny = _loc1_.miny;
          _loc2_.maxx = _loc1_.maxx;
@@ -879,3 +889,4 @@ package nape.geom
       }
    }
 }
+

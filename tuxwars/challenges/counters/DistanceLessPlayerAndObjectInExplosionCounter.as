@@ -10,8 +10,6 @@ package tuxwars.challenges.counters
    
    public class DistanceLessPlayerAndObjectInExplosionCounter extends CounterLessThan
    {
-       
-      
       public function DistanceLessPlayerAndObjectInExplosionCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -44,9 +42,9 @@ package tuxwars.challenges.counters
       
       override public function handleAmmoHit(msg:ChallengeAmmoHitMessage) : void
       {
-         var _loc4_:* = null;
-         var _loc5_:* = null;
-         var _loc2_:* = null;
+         var _loc4_:Vec2 = null;
+         var _loc5_:Vec2 = null;
+         var _loc2_:Vec2 = null;
          var _loc6_:* = msg.firingPlayer;
          if(playerId == _loc6_._id)
          {
@@ -73,3 +71,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

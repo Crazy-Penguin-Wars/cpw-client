@@ -11,8 +11,6 @@ package nape.callbacks
    
    public class Listener
    {
-       
-      
       public var zpp_inner:ZPP_Listener;
       
       public function Listener()
@@ -378,3 +376,4 @@ package nape.callbacks
       }
    }
 }
+

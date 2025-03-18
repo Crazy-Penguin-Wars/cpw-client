@@ -8,8 +8,6 @@ package tuxwars.battle.ui
    
    public class BattleHud extends StateMachine
    {
-       
-      
       private var _screenHandler:ScreenHandler;
       
       private var _helpHud:HelpHud;
@@ -57,3 +55,4 @@ package tuxwars.battle.ui
       }
    }
 }
+

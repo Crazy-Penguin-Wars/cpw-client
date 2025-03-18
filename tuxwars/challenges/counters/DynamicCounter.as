@@ -5,8 +5,6 @@ package tuxwars.challenges.counters
    
    public class DynamicCounter extends Counter
    {
-       
-      
       protected var targetId:String;
       
       public function DynamicCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -22,3 +20,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

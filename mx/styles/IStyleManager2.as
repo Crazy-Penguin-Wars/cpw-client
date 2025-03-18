@@ -6,8 +6,6 @@ package mx.styles
    
    public interface IStyleManager2 extends IStyleManager
    {
-       
-      
       function get parent() : IStyleManager2;
       
       function get qualifiedTypeSelectors() : Boolean;
@@ -33,3 +31,4 @@ package mx.styles
       function acceptMediaList(param1:String) : Boolean;
    }
 }
+

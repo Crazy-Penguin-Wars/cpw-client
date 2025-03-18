@@ -36,13 +36,11 @@ package zpp_nape.phys
    
    public class ZPP_Body extends ZPP_Interactor
    {
+      public static var bodystack:ZNPList_ZPP_Body;
       
-      public static var bodystack:ZNPList_ZPP_Body = null;
+      public static var bodyset:ZPP_Set_ZPP_Body;
       
-      public static var bodyset:ZPP_Set_ZPP_Body = null;
-      
-      public static var cur_graph_depth:int = 0;
-       
+      public static var cur_graph_depth:int;
       
       public var zip_worldCOM:Boolean;
       
@@ -282,8 +280,7 @@ package zpp_nape.phys
          bulletEnabled = false;
          sweepTime = 0;
          sweep_angvel = 0;
-         nomove = false;
-         norotate = false;
+         norotate = nomove = false;
          disableCCD = false;
          posx = 0;
          posy = 0;
@@ -318,12 +315,14 @@ package zpp_nape.phys
             ZPP_AABB.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.minx = 0;
          _loc3_.miny = 0;
          _loc3_.maxx = 0;
          _loc3_.maxy = 0;
          §§pop().aabb = _loc3_;
          aabb._immutable = true;
+         var _loc4_:ZPP_Body = this;
          aabb._validate = aabb_validate;
          massMode = ZPP_Flags.id_MassMode_DEFAULT;
          gravMassMode = ZPP_Flags.id_GravMassMode_DEFAULT;
@@ -392,6 +391,7 @@ package zpp_nape.phys
                zip_axis = false;
                axisx = Math.sin(rot);
                axisy = Math.cos(rot);
+               null;
             }
             worldCOMx = posx + (axisy * localCOMx - axisx * localCOMy);
             worldCOMy = posy + (localCOMx * axisx + localCOMy * axisy);
@@ -408,7 +408,8 @@ package zpp_nape.phys
          var _loc2_:* = null as ZNPNode_ZPP_Shape;
          var _loc3_:* = null as ZPP_Shape;
          var _loc4_:Number = NaN;
-         if(zip_mass || massMode == ZPP_Flags.id_MassMode_DEFAULT && false)
+         var _loc1_:Boolean = false;
+         if(zip_mass || massMode == ZPP_Flags.id_MassMode_DEFAULT && _loc1_)
          {
             zip_mass = false;
             if(massMode == ZPP_Flags.id_MassMode_DEFAULT)
@@ -433,6 +434,10 @@ package zpp_nape.phys
             {
                mass = 1.79e+308;
                imass = smass = 0;
+            }
+            if(_loc1_)
+            {
+               invalidate_inertia();
             }
          }
       }
@@ -477,6 +482,7 @@ package zpp_nape.phys
                      {
                         _loc6_.localCOMx = _loc6_.lverts.next.x;
                         _loc6_.localCOMy = _loc6_.lverts.next.y;
+                        null;
                      }
                      else if(_loc6_.lverts.next.next.next == null)
                      {
@@ -572,7 +578,8 @@ package zpp_nape.phys
          var _loc2_:* = null as ZNPNode_ZPP_Shape;
          var _loc3_:* = null as ZPP_Shape;
          var _loc4_:Number = NaN;
-         if(zip_inertia || inertiaMode == ZPP_Flags.id_InertiaMode_DEFAULT && false)
+         var _loc1_:Boolean = false;
+         if(zip_inertia || inertiaMode == ZPP_Flags.id_InertiaMode_DEFAULT && _loc1_)
          {
             zip_inertia = false;
             if(inertiaMode == ZPP_Flags.id_InertiaMode_DEFAULT)
@@ -597,6 +604,10 @@ package zpp_nape.phys
             {
                inertia = 1.79e+308;
                sinertia = iinertia = 0;
+            }
+            if(_loc1_)
+            {
+               invalidate_inertia();
             }
          }
       }
@@ -644,6 +655,7 @@ package zpp_nape.phys
             zip_axis = false;
             axisx = Math.sin(rot);
             axisy = Math.cos(rot);
+            null;
          }
       }
       
@@ -707,6 +719,7 @@ package zpp_nape.phys
                                     {
                                        _loc4_.localCOMx = _loc4_.lverts.next.x;
                                        _loc4_.localCOMy = _loc4_.lverts.next.y;
+                                       null;
                                     }
                                     else if(_loc4_.lverts.next.next.next == null)
                                     {
@@ -767,6 +780,7 @@ package zpp_nape.phys
                                  _loc12_.zip_axis = false;
                                  _loc12_.axisx = Math.sin(_loc12_.rot);
                                  _loc12_.axisy = Math.cos(_loc12_.rot);
+                                 null;
                               }
                               _loc3_.worldCOMx = _loc3_.body.posx + (_loc3_.body.axisy * _loc3_.localCOMx - _loc3_.body.axisx * _loc3_.localCOMy);
                               _loc3_.worldCOMy = _loc3_.body.posy + (_loc3_.localCOMx * _loc3_.body.axisx + _loc3_.localCOMy * _loc3_.body.axisy);
@@ -794,6 +808,7 @@ package zpp_nape.phys
                                  _loc12_.zip_axis = false;
                                  _loc12_.axisx = Math.sin(_loc12_.rot);
                                  _loc12_.axisy = Math.cos(_loc12_.rot);
+                                 null;
                               }
                               _loc6_ = _loc4_.lverts.next;
                               _loc7_ = _loc4_.gverts.next;
@@ -955,6 +970,7 @@ package zpp_nape.phys
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = svelx;
          var _loc2_:Number = svely;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_svel));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -1057,7 +1073,7 @@ package zpp_nape.phys
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_svel = _loc4_;
          wrap_svel.zpp_inner._inuse = true;
          if(world)
@@ -1078,6 +1094,7 @@ package zpp_nape.phys
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = kinvelx;
          var _loc2_:Number = kinvely;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_kinvel));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -1180,7 +1197,7 @@ package zpp_nape.phys
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_kinvel = _loc4_;
          wrap_kinvel.zpp_inner._inuse = true;
          if(world)
@@ -1196,6 +1213,7 @@ package zpp_nape.phys
       
       public function setup_cvel() : void
       {
+         var _loc1_:ZPP_Body = this;
          wrapcvel = Vec3.get();
          wrapcvel.zpp_inner.immutable = true;
          wrapcvel.zpp_inner._validate = cvel_validate;
@@ -1208,6 +1226,7 @@ package zpp_nape.phys
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = velx;
          var _loc2_:Number = vely;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_vel));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -1310,7 +1329,7 @@ package zpp_nape.phys
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_vel = _loc4_;
          wrap_vel.zpp_inner._inuse = true;
          if(world)
@@ -1331,6 +1350,7 @@ package zpp_nape.phys
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = posx;
          var _loc2_:Number = posy;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_pos));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -1433,7 +1453,7 @@ package zpp_nape.phys
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_pos = _loc4_;
          wrap_pos.zpp_inner._inuse = true;
          if(world)
@@ -1454,6 +1474,7 @@ package zpp_nape.phys
          var _loc6_:* = null as ZPP_Vec2;
          var _loc1_:Number = forcex;
          var _loc2_:Number = forcey;
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(wrap_force));
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
@@ -1556,7 +1577,7 @@ package zpp_nape.phys
             }
             _loc4_;
          }
-         _loc4_.zpp_inner.weak = false;
+         _loc4_.zpp_inner.weak = _loc3_;
          §§pop().wrap_force = _loc4_;
          wrap_force.zpp_inner._inuse = true;
          if(world)
@@ -1619,7 +1640,7 @@ package zpp_nape.phys
                      _loc8_.next = ZNPNode_ZPP_Arbiter.zpp_pool;
                      ZNPNode_ZPP_Arbiter.zpp_pool = _loc8_;
                      _loc2_.modified = true;
-                     _loc2_.length = _loc2_.length - 1;
+                     --_loc2_.length;
                      _loc2_.pushmod = true;
                      _loc7_;
                      _loc5_ = true;
@@ -1665,7 +1686,7 @@ package zpp_nape.phys
                      _loc8_.next = ZNPNode_ZPP_Arbiter.zpp_pool;
                      ZNPNode_ZPP_Arbiter.zpp_pool = _loc8_;
                      _loc2_.modified = true;
-                     _loc2_.length = _loc2_.length - 1;
+                     --_loc2_.length;
                      _loc2_.pushmod = true;
                      _loc7_;
                      _loc5_ = true;
@@ -1687,6 +1708,7 @@ package zpp_nape.phys
          var _loc9_:ZPP_Component = component;
          _loc9_.body = null;
          _loc9_.constraint = null;
+         null;
          _loc9_.next = ZPP_Component.zpp_pool;
          ZPP_Component.zpp_pool = _loc9_;
          component = null;
@@ -1840,6 +1862,7 @@ package zpp_nape.phys
             ZPP_Body.bodyset.lt = ZPP_Body.bodysetlt;
             ZPP_Body.bodystack = new ZNPList_ZPP_Body();
          }
+         null;
          var _loc5_:BodyList = param3 == null ? new BodyList() : param3;
          ZPP_Body.bodyset.insert(this);
          ZPP_Body.bodystack.add(this);
@@ -1867,7 +1890,11 @@ package zpp_nape.phys
             }
          }
          var _loc10_:ZPP_Set_ZPP_Body = ZPP_Body.bodyset;
-         if(_loc10_.parent != null)
+         if(_loc10_.parent == null)
+         {
+            null;
+         }
+         else
          {
             _loc11_ = _loc10_.parent;
             while(_loc11_ != null)
@@ -2135,6 +2162,7 @@ package zpp_nape.phys
             ZPP_Body.bodyset.lt = ZPP_Body.bodysetlt;
             ZPP_Body.bodystack = new ZNPList_ZPP_Body();
          }
+         null;
          var _loc4_:BodyList = param2 == null ? new BodyList() : param2;
          ZPP_Body.bodystack.add(this);
          ZPP_Body.bodyset.insert(this);
@@ -2155,7 +2183,11 @@ package zpp_nape.phys
             }
          }
          var _loc8_:ZPP_Set_ZPP_Body = ZPP_Body.bodyset;
-         if(_loc8_.parent != null)
+         if(_loc8_.parent == null)
+         {
+            null;
+         }
+         else
          {
             _loc9_ = _loc8_.parent;
             while(_loc9_ != null)
@@ -2317,6 +2349,7 @@ package zpp_nape.phys
             ZPP_Component.zpp_pool = component.next;
             component.next = null;
          }
+         null;
          component.isBody = true;
          component.body = this;
          __iaddedToSpace();
@@ -2387,6 +2420,7 @@ package zpp_nape.phys
                                     {
                                        _loc4_.localCOMx = _loc4_.lverts.next.x;
                                        _loc4_.localCOMy = _loc4_.lverts.next.y;
+                                       null;
                                     }
                                     else if(_loc4_.lverts.next.next.next == null)
                                     {
@@ -2447,6 +2481,7 @@ package zpp_nape.phys
                                  _loc12_.zip_axis = false;
                                  _loc12_.axisx = Math.sin(_loc12_.rot);
                                  _loc12_.axisy = Math.cos(_loc12_.rot);
+                                 null;
                               }
                               _loc3_.worldCOMx = _loc3_.body.posx + (_loc3_.body.axisy * _loc3_.localCOMx - _loc3_.body.axisx * _loc3_.localCOMy);
                               _loc3_.worldCOMy = _loc3_.body.posy + (_loc3_.localCOMx * _loc3_.body.axisx + _loc3_.localCOMy * _loc3_.body.axisy);
@@ -2474,6 +2509,7 @@ package zpp_nape.phys
                                  _loc12_.zip_axis = false;
                                  _loc12_.axisx = Math.sin(_loc12_.rot);
                                  _loc12_.axisy = Math.cos(_loc12_.rot);
+                                 null;
                               }
                               _loc6_ = _loc4_.lverts.next;
                               _loc7_ = _loc4_.gverts.next;
@@ -2547,3 +2583,7 @@ package zpp_nape.phys
       }
    }
 }
+
+import zpp_nape.util.ZNPList_ZPP_Body;
+import zpp_nape.util.ZPP_Set_ZPP_Body;
+

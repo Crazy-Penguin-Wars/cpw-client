@@ -19,11 +19,11 @@ package mx.preloaders
    import mx.events.FlexEvent;
    import mx.events.RSLEvent;
    
+   use namespace mx_internal;
+   
    public class Preloader extends Sprite
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       private var displayClass:IPreloaderDisplay = null;
       
@@ -72,7 +72,7 @@ package mx.preloaders
             {
                rslList = [];
             }
-            n = libs.length;
+            n = int(libs.length);
             for(i = 0; i < n; i++)
             {
                node = new RSLItem(libs[i]);
@@ -82,7 +82,7 @@ package mx.preloaders
          var resourceModuleList:Array = [];
          if(Boolean(resourceModuleURLs) && resourceModuleURLs.length > 0)
          {
-            n = resourceModuleURLs.length;
+            n = int(resourceModuleURLs.length);
             for(i = 0; i < n; i++)
             {
                resourceModuleNode = new ResourceModuleRSLItem(resourceModuleURLs[i],applicationDomain);
@@ -150,13 +150,13 @@ package mx.preloaders
       {
          var rslTotal:int = 0;
          var li:LoaderInfo = root.loaderInfo;
-         var loaded:int = li.bytesLoaded;
-         var total:int = li.bytesTotal;
+         var loaded:int = int(li.bytesLoaded);
+         var total:int = int(li.bytesTotal);
          var n:int = Boolean(this.rslListLoader) ? this.rslListLoader.getItemCount() : 0;
          for(var i:int = 0; i < n; i++)
          {
             loaded += this.rslListLoader.getItem(i).loaded;
-            rslTotal = this.rslListLoader.getItem(i).total;
+            rslTotal = int(this.rslListLoader.getItem(i).total);
             total += rslTotal;
          }
          return {
@@ -316,3 +316,4 @@ package mx.preloaders
       }
    }
 }
+

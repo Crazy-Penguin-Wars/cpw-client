@@ -2,8 +2,6 @@ package tuxwars.battle.net.responses
 {
    public class MoveResponse extends ActionResponse
    {
-       
-      
       public function MoveResponse(data:Object)
       {
          super(data);
@@ -15,3 +13,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

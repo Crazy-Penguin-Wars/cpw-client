@@ -6,8 +6,6 @@ package tuxwars.challenges.counters
    
    public class CounterLessThan extends Counter
    {
-       
-      
       public function CounterLessThan(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -52,3 +50,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

@@ -1,12 +1,12 @@
 package mx.core
 {
+   use namespace mx_internal;
+   
    public class Singleton
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       private static var classMap:Object = {};
-       
       
       public function Singleton()
       {
@@ -38,3 +38,4 @@ package mx.core
       }
    }
 }
+

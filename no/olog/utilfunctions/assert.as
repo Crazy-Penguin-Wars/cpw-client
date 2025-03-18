@@ -7,7 +7,7 @@ package no.olog.utilfunctions
    {
       var level:* = 0;
       var result:* = undefined;
-      var expectedAsString:* = null;
+      var expectedAsString:String = null;
       var msg:String = "[Test \"" + testName + "\"] ";
       var location:String = "";
       if(actual is Function)
@@ -52,3 +52,4 @@ package no.olog.utilfunctions
       throw new Error(msg + " at " + location);
    }
 }
+

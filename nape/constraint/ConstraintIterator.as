@@ -5,9 +5,7 @@ package nape.constraint
    
    public final class ConstraintIterator
    {
-      
-      public static var zpp_pool:ConstraintIterator = null;
-       
+      public static var zpp_pool:ConstraintIterator;
       
       public var zpp_next:ConstraintIterator;
       
@@ -75,3 +73,4 @@ package nape.constraint
       }
    }
 }
+

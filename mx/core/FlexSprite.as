@@ -3,11 +3,11 @@ package mx.core
    import flash.display.Sprite;
    import mx.utils.NameUtil;
    
+   use namespace mx_internal;
+   
    public class FlexSprite extends Sprite
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       public function FlexSprite()
       {
@@ -27,3 +27,4 @@ package mx.core
       }
    }
 }
+

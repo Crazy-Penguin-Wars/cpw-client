@@ -4,8 +4,6 @@ package mx.collections
    
    public interface ICollectionView extends IEventDispatcher
    {
-       
-      
       function get length() : int;
       
       function get filterFunction() : Function;
@@ -29,3 +27,4 @@ package mx.collections
       function refresh() : Boolean;
    }
 }
+

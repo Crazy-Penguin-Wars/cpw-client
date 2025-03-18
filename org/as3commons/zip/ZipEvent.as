@@ -4,9 +4,7 @@ package org.as3commons.zip
    
    public class ZipEvent extends Event
    {
-      
       public static const FILE_LOADED:String = "fileLoaded";
-       
       
       public var file:ZipFile;
       
@@ -27,3 +25,4 @@ package org.as3commons.zip
       }
    }
 }
+

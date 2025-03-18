@@ -6,8 +6,6 @@ package tuxwars.home.states.oldcustomgame
    
    public class OldCustomGameLoadAssetsSubState extends BattleLoadAssetsSubState
    {
-       
-      
       public function OldCustomGameLoadAssetsSubState(game:TuxWarsGame, params:* = null)
       {
          super(game,AssetsData.getCustomGameAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.oldcustomgame
       }
    }
 }
+

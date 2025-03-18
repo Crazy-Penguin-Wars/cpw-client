@@ -14,15 +14,13 @@ package tuxwars.home.ui.screen.gifts.container
    
    public class GiftSend extends GiftBase
    {
-       
-      
       private var send:UIButton;
       
       private var selectedFriendID:String;
       
       public function GiftSend(design:MovieClip, gift:GiftReference, game:TuxWarsGame, friendID:String, parent:UIComponent = null)
       {
-         var data:* = null;
+         var data:Object = null;
          super(design,gift,game,parent);
          selectedFriendID = friendID;
          if(game.player.level >= gift.requiredLevel)
@@ -49,9 +47,9 @@ package tuxwars.home.ui.screen.gifts.container
       
       private function sendGift(event:MouseEvent) : void
       {
-         var _loc4_:* = null;
-         var _loc2_:* = null;
-         var data:* = null;
+         var _loc4_:Array = null;
+         var _loc2_:Array = null;
+         var data:Object = null;
          if(selectedFriendID)
          {
             _loc4_ = [gift.name];
@@ -73,8 +71,8 @@ package tuxwars.home.ui.screen.gifts.container
       private function giftStatusChecked(msg:Message) : void
       {
          var giftSendable:Boolean = false;
-         var _loc6_:* = null;
-         var _loc2_:* = null;
+         var _loc6_:Array = null;
+         var _loc2_:Array = null;
          send.setVisible(true);
          if(!msg.data.gift_status_results)
          {
@@ -130,3 +128,4 @@ package tuxwars.home.ui.screen.gifts.container
       }
    }
 }
+

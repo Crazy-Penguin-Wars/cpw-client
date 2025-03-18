@@ -8,8 +8,6 @@ package com.dchoc.ui.utils
    
    public class UIUtils
    {
-       
-      
       public function UIUtils()
       {
          super();
@@ -28,7 +26,7 @@ package com.dchoc.ui.utils
          {
             if(_loc3_[i].name == label)
             {
-               return Number(_loc3_[i].frame) - 1;
+               return _loc3_[i].frame - 1;
             }
             i++;
          }
@@ -57,7 +55,7 @@ package com.dchoc.ui.utils
       
       public static function duplicateDisplayObject(target:DisplayObject, autoAdd:Boolean = false) : DisplayObject
       {
-         var rect:* = null;
+         var rect:Rectangle = null;
          var targetClass:Class = Object(target).constructor;
          var duplicate:DisplayObject = new targetClass();
          duplicate.transform = target.transform;
@@ -128,3 +126,4 @@ package com.dchoc.ui.utils
       }
    }
 }
+

@@ -5,8 +5,6 @@ package zpp_nape.constraint
    
    public class ZPP_CopyHelper
    {
-       
-      
       public var id:int;
       
       public var cb:Function;
@@ -41,3 +39,4 @@ package zpp_nape.constraint
       }
    }
 }
+

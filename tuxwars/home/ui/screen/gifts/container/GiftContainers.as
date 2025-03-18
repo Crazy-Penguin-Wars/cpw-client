@@ -7,11 +7,9 @@ package tuxwars.home.ui.screen.gifts.container
    
    public class GiftContainers extends UIContainers
    {
-      
       public static const SHOW:String = "Slot_Default";
       
       public static const LOCK:String = "Slot_Disabled";
-       
       
       public var selectedFriendID:String;
       
@@ -40,3 +38,4 @@ package tuxwars.home.ui.screen.gifts.container
       }
    }
 }
+

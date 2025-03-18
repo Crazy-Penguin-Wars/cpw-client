@@ -15,13 +15,11 @@ package tuxwars.ui.popups.screen.freeammopackage
    
    public class FreeAmmoPopUpScreen extends PopUpBaseScreen implements IResourceLoaderURL
    {
-      
       private static const IMAGE_CONTAINER:String = "Container_Image";
       
       private static const BUTTON_GIFTS:String = "Button_SendGifts";
       
       private static const BUTTON_MONEY:String = "Button_GetCash";
-       
       
       private var loader:URLResourceLoader;
       
@@ -75,3 +73,4 @@ package tuxwars.ui.popups.screen.freeammopackage
       }
    }
 }
+

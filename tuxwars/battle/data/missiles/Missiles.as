@@ -1,18 +1,16 @@
 package tuxwars.battle.data.missiles
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class Missiles
    {
-      
       private static const MISSILES_TABLE:String = "Missile";
       
-      private static const MISSILES_CACHE:Object = {};
-      
       private static var missilesTable:Table;
-       
+      
+      private static const MISSILES_CACHE:Object = {};
       
       public function Missiles()
       {
@@ -47,10 +45,12 @@ package tuxwars.battle.data.missiles
       {
          if(!missilesTable)
          {
+            var _loc2_:String = "Missile";
             var _loc1_:ProjectManager = ProjectManager;
-            missilesTable = com.dchoc.projectdata.ProjectManager.projectData.findTable("Missile");
+            missilesTable = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return missilesTable;
       }
    }
 }
+

@@ -5,9 +5,7 @@ package nape.shape
    
    public final class EdgeIterator
    {
-      
-      public static var zpp_pool:EdgeIterator = null;
-       
+      public static var zpp_pool:EdgeIterator;
       
       public var zpp_next:EdgeIterator;
       
@@ -75,3 +73,4 @@ package nape.shape
       }
    }
 }
+

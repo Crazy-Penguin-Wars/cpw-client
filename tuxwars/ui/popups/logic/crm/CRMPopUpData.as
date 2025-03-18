@@ -5,8 +5,6 @@ package tuxwars.ui.popups.logic.crm
    
    public class CRMPopUpData
    {
-       
-      
       private var _title:String;
       
       private var _description:String;
@@ -110,3 +108,4 @@ package tuxwars.ui.popups.logic.crm
       }
    }
 }
+

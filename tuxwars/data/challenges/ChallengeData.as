@@ -1,16 +1,14 @@
 package tuxwars.data.challenges
 {
    import com.dchoc.data.GraphicsReference;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
+   import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import tuxwars.data.TuxGameData;
    
    public class ChallengeData extends TuxGameData
    {
-      
       private static const TYPE:String = "Type";
       
       private static const SCOPE:String = "Scope";
@@ -34,7 +32,6 @@ package tuxwars.data.challenges
       private static const ICON:String = "Icon";
       
       private static const PARAMS:String = "Params";
-       
       
       public function ChallengeData(row:Row)
       {
@@ -43,132 +40,143 @@ package tuxwars.data.challenges
       
       public function get type() : String
       {
+         var _loc4_:String = "Type";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Type"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Type");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Type"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get scope() : String
       {
+         var _loc4_:String = "Scope";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Scope"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Scope"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Scope");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Scope"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get targetValues() : Array
       {
+         var _loc4_:String = "TargetValues";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["TargetValues"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["TargetValues"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","TargetValues");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["TargetValues"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : [];
       }
       
       public function get counters() : Array
       {
+         var _loc4_:String = "Counters";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Counters"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Counters"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Counters");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Counters"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : [];
       }
       
       public function get nextChallengeIds() : Array
       {
+         var _loc4_:String = "NextChallengeIds";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["NextChallengeIds"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["NextChallengeIds"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","NextChallengeIds");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["NextChallengeIds"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : [];
       }
       
       public function get rewardCash() : int
       {
+         var _loc4_:String = "RewardCash";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["RewardCash"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["RewardCash"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardCash");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["RewardCash"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get rewardCoins() : int
       {
+         var _loc4_:String = "RewardCoins";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["RewardCoins"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["RewardCoins"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardCoins");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["RewardCoins"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get rewardExp() : int
       {
+         var _loc4_:String = "RewardExp";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["RewardExp"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["RewardExp"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardExp");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["RewardExp"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get description() : String
       {
+         var _loc4_:String = "Description_TID";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Description_TID"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Description_TID"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Description_TID");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Description_TID"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, ProjectManager.getText(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : null;
       }
       
       public function get category() : String
       {
+         var _loc4_:String = "Category_TID";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Category_TID"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Category_TID"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Category_TID");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Category_TID"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, ProjectManager.getText(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : null;
       }
       
       public function get icon() : GraphicsReference
       {
+         var _loc4_:String = "Icon";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Icon"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Icon"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Icon");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Icon"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, new GraphicsReference(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : null;
       }
@@ -181,14 +189,16 @@ package tuxwars.data.challenges
       
       public function get params() : Array
       {
+         var _loc4_:String = "Params";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Params"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Params"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Params");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Params"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
    }
 }
+

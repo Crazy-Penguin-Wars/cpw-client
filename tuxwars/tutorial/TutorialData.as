@@ -1,11 +1,11 @@
 package tuxwars.tutorial
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class TutorialData
    {
-      
       private static const TABLE:String = "Tutorial";
       
       private static const LEVEL:String = "Level";
@@ -17,7 +17,6 @@ package tuxwars.tutorial
       private static const OPPONENT:String = "Opponent";
       
       private static var row:Row;
-       
       
       public function TutorialData()
       {
@@ -27,12 +26,13 @@ package tuxwars.tutorial
       
       public static function getOpponent() : String
       {
+         var _loc3_:String = "Opponent";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["Opponent"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["Opponent"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","Opponent");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["Opponent"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
@@ -49,34 +49,37 @@ package tuxwars.tutorial
       
       public static function getLevel() : String
       {
+         var _loc3_:String = "Level";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["Level"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["Level"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","Level");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["Level"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getMatchTime() : int
       {
+         var _loc3_:String = "MatchTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MatchTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MatchTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MatchTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MatchTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getTurnTime() : int
       {
+         var _loc3_:String = "TurnTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TurnTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TurnTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TurnTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TurnTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
@@ -84,20 +87,23 @@ package tuxwars.tutorial
       {
          if(!row)
          {
+            var _loc3_:String = "Tutorial";
             var _loc1_:ProjectManager = ProjectManager;
-            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Tutorial");
-            if(!_loc2_._cache["Default"])
+            var _loc4_:String = "Default";
+            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+            if(!_loc2_._cache[_loc4_])
             {
-               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Default");
+               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
                if(!_loc5_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
                }
-               _loc2_._cache["Default"] = _loc5_;
+               _loc2_._cache[_loc4_] = _loc5_;
             }
-            row = _loc2_._cache["Default"];
+            row = _loc2_._cache[_loc4_];
          }
          return row;
       }
    }
 }
+

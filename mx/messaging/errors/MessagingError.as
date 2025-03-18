@@ -2,8 +2,6 @@ package mx.messaging.errors
 {
    public class MessagingError extends Error
    {
-       
-      
       public function MessagingError(msg:String)
       {
          super(msg);
@@ -24,3 +22,4 @@ package mx.messaging.errors
       }
    }
 }
+

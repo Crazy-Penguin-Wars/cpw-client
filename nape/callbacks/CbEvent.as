@@ -5,8 +5,6 @@ package nape.callbacks
    
    public final class CbEvent
    {
-       
-      
       public function CbEvent()
       {
          if(Boot.skip_constructor)
@@ -180,3 +178,4 @@ package nape.callbacks
       }
    }
 }
+

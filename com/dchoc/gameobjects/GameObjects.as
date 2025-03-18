@@ -6,8 +6,6 @@ package com.dchoc.gameobjects
    
    public class GameObjects
    {
-       
-      
       public const gameObjects:Vector.<GameObject> = new Vector.<GameObject>();
       
       private var game:DCGame;
@@ -232,7 +230,7 @@ package com.dchoc.gameobjects
       public function removeMarkedGameObjects() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:GameObject = null;
          for(i = gameObjects.length - 1; i >= 0; )
          {
             _loc1_ = gameObjects[i];
@@ -248,7 +246,7 @@ package com.dchoc.gameobjects
       
       private function removeGameObject(gameObject:GameObject) : void
       {
-         var _loc2_:int = gameObjects.indexOf(gameObject);
+         var _loc2_:int = int(gameObjects.indexOf(gameObject));
          if(_loc2_ > -1)
          {
             gameObjects.splice(_loc2_,1);
@@ -270,3 +268,4 @@ package com.dchoc.gameobjects
       }
    }
 }
+

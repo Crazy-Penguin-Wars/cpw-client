@@ -18,7 +18,6 @@ package tuxwars.player.reports
    
    public class PlayerBattleReportCollector
    {
-      
       public static const KILLS:String = "kills";
       
       public static const DEATHS:String = "deaths";
@@ -45,10 +44,9 @@ package tuxwars.player.reports
       
       public static const TURNS:String = "turns";
       
-      private static const MISSILE_CONTACT_TIMES:Object = {};
-      
       private static var player:Player;
-       
+      
+      private static const MISSILE_CONTACT_TIMES:Object = {};
       
       public function PlayerBattleReportCollector()
       {
@@ -135,7 +133,7 @@ package tuxwars.player.reports
          {
             if(msg.player.walkDistance > 0)
             {
-               HistoryMessageFactory.sendReportMessage(player.id,"distance_walked",msg.player.walkDistance);
+               HistoryMessageFactory.sendReportMessage(player.id,"distance_walked",int(msg.player.walkDistance));
             }
             HistoryMessageFactory.sendReportMessage(player.id,"turns",1);
          }
@@ -266,3 +264,4 @@ package tuxwars.player.reports
       }
    }
 }
+

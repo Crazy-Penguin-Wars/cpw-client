@@ -25,8 +25,6 @@ package tuxwars.battle
    
    public final class BattleSimulation
    {
-       
-      
       private const practiceDeadPlayerTimers:Vector.<DeadPlayerTimer> = new Vector.<DeadPlayerTimer>();
       
       private const practiceRespawnPlayers:Array = [];
@@ -346,9 +344,7 @@ package tuxwars.battle
                   if(turnChange)
                   {
                      MessageCenter.sendEvent(new StartTurnMessage(players[curPlayerIndex].id));
-                     break;
                   }
-                  break;
                }
                break;
             case 2:
@@ -461,3 +457,4 @@ package tuxwars.battle
       }
    }
 }
+

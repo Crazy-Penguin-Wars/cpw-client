@@ -1,12 +1,11 @@
 package tuxwars.battle.states
 {
-   import com.dchoc.events.ErrorMessage;
    import com.dchoc.game.GameWorld;
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.utils.FpsCounter;
-   import com.dchoc.utils.LogUtils;
    import flash.events.Event;
+   import flash.external.ExternalInterface;
    import starling.core.Starling;
    import tuxwars.BattleLoader;
    import tuxwars.TuxWarsGame;
@@ -24,15 +23,12 @@ package tuxwars.battle.states
    import tuxwars.challenges.ChallengeManager;
    import tuxwars.data.SoundManager;
    import tuxwars.net.CRMService;
-   import tuxwars.player.Player;
    import tuxwars.states.TuxState;
    import tuxwars.tutorial.Tutorial;
    
    public class TuxBattleState extends TuxState
    {
-      
       private static var _performanceTuner:PerformanceTuner;
-       
       
       private const _emissioTracker:EmissioTracker = new EmissioTracker();
       
@@ -176,32 +172,26 @@ package tuxwars.battle.states
       
       override public function logicUpdate(time:int) : void
       {
+         ExternalInterface.call("console.log","[MichiDebug1] TuxBattleState logicupdate");
          if(!Starling.current.isStarted)
          {
             Starling.current.start();
          }
-         try
+         super.logicUpdate(time);
+         _frameCounter.logicUpdate(time);
+         if(_textEffect && _textEffect.isFinished())
          {
-            super.logicUpdate(time);
-            _frameCounter.logicUpdate(time);
-            if(_textEffect && _textEffect.isFinished())
+            if(BattleManager.isBattleInProgress())
             {
-               if(BattleManager.isBattleInProgress())
-               {
-                  changeState(new TuxBattleIdleSubState(tuxGame));
-               }
-               _textEffect.dispose();
-               _textEffect = null;
+               changeState(new TuxBattleIdleSubState(tuxGame));
+               ExternalInterface.call("console.log","[MichiDebug1] change state to TuxBattleIdleSubState DO IT");
             }
-            if(_hud)
-            {
-               _hud.logicUpdate(time);
-            }
+            _textEffect.dispose();
+            _textEffect = null;
          }
-         catch(e:Error)
+         if(_hud)
          {
-            LogUtils.log(e.getStackTrace(),this,3,"ErrorLogging",false);
-            MessageCenter.sendEvent(new ErrorMessage("Battle Exception","logicUpdate",e.message.toString(),null,e));
+            _hud.logicUpdate(time);
          }
       }
       
@@ -255,3 +245,4 @@ package tuxwars.battle.states
       }
    }
 }
+

@@ -13,8 +13,6 @@ package tuxwars.home.ui.screen.challenge
    
    public class ChallengeElementScreen extends TuxUIElementScreen
    {
-       
-      
       private var nameField:UIAutoTextField;
       
       private var descField:UIAutoTextField;
@@ -70,3 +68,4 @@ package tuxwars.home.ui.screen.challenge
       }
    }
 }
+

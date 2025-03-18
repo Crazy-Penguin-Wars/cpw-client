@@ -4,17 +4,17 @@ package mx.messaging.config
    import mx.core.mx_internal;
    import mx.utils.LoaderUtil;
    
+   use namespace mx_internal;
+   
    public class LoaderConfig
    {
-      
-      mx_internal static const VERSION:String = "4.5.1.21489";
-      
       mx_internal static var _parameters:Object;
       
       mx_internal static var _swfVersion:uint;
       
+      mx_internal static const VERSION:String = "4.5.1.21489";
+      
       mx_internal static var _url:String = null;
-       
       
       public function LoaderConfig()
       {
@@ -47,3 +47,4 @@ package mx.messaging.config
       }
    }
 }
+

@@ -9,8 +9,6 @@ package org.odefu.flash.display
    
    public class BoundsUtil
    {
-       
-      
       public function BoundsUtil()
       {
          super();
@@ -37,8 +35,8 @@ package org.odefu.flash.display
       public static function addFilterBounds(bounds:Rectangle, mc:DisplayObject) : void
       {
          var i:int = 0;
-         var _loc5_:* = null;
-         var _loc3_:* = null;
+         var _loc5_:Rectangle = null;
+         var _loc3_:DisplayObjectContainer = null;
          var j:int = 0;
          for(i = 0; i < mc.filters.length; )
          {
@@ -66,3 +64,4 @@ package org.odefu.flash.display
       }
    }
 }
+

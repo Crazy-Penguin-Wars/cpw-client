@@ -9,8 +9,6 @@ package tuxwars.items.definitions
    
    public class ItemDef extends EquippableDef
    {
-       
-      
       private var _iconRef:GraphicsReference;
       
       private var _priceInfo:PriceInfoReference;
@@ -87,3 +85,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

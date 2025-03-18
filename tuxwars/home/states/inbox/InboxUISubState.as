@@ -7,11 +7,10 @@ package tuxwars.home.states.inbox
    
    public class InboxUISubState extends TuxUIState
    {
-       
-      
       public function InboxUISubState(game:TuxWarsGame, params:* = null)
       {
          super(InboxScreen,InboxLogic,game,params);
       }
    }
 }
+

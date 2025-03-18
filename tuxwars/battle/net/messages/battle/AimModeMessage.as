@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class AimModeMessage extends BattleMessage
    {
-       
-      
       public function AimModeMessage(id:String, weaponName:String)
       {
          super({
@@ -21,3 +19,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

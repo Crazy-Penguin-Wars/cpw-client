@@ -4,9 +4,7 @@ package zpp_nape.dynamics
    
    public class ZPP_SensorArbiter extends ZPP_Arbiter
    {
-      
-      public static var zpp_pool:ZPP_SensorArbiter = null;
-       
+      public static var zpp_pool:ZPP_SensorArbiter;
       
       public var next:ZPP_SensorArbiter;
       
@@ -23,3 +21,4 @@ package zpp_nape.dynamics
       }
    }
 }
+

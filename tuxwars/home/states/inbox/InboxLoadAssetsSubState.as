@@ -6,8 +6,6 @@ package tuxwars.home.states.inbox
    
    public class InboxLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function InboxLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getInboxScreenAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.inbox
       }
    }
 }
+

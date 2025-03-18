@@ -5,9 +5,7 @@ package com.adobe.crypto
    
    public class MD5
    {
-      
       public static var digest:ByteArray;
-       
       
       public function MD5()
       {
@@ -37,7 +35,7 @@ package com.adobe.crypto
          var c:int = -1732584194;
          var d:int = 271733878;
          var x:Array = createBlocks(s);
-         var len:int = x.length;
+         var len:int = int(x.length);
          for(var i:int = 0; i < len; i += 16)
          {
             aa = a;
@@ -172,13 +170,15 @@ package com.adobe.crypto
       {
          var blocks:Array = new Array();
          var len:int = s.length * 8;
+         var mask:int = 255;
          for(var i:int = 0; i < len; i += 8)
          {
-            blocks[int(i >> 5)] = Number(blocks[int(i >> 5)]) | (Number(s[i / 8]) & 255) << i % 32;
+            blocks[int(i >> 5)] = blocks[int(i >> 5)] | (s[i / 8] & mask) << i % 32;
          }
-         blocks[int(len >> 5)] = Number(blocks[int(len >> 5)]) | 128 << len % 32;
+         blocks[int(len >> 5)] = blocks[int(len >> 5)] | 128 << len % 32;
          blocks[int((len + 64 >>> 9 << 4) + 14)] = len;
          return blocks;
       }
    }
 }
+

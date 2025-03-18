@@ -23,13 +23,11 @@ package zpp_nape.phys
    
    public class ZPP_Interactor
    {
-       
-      
       public var wrap_cbTypes:CbTypeList;
       
-      public var userData;
+      public var userData:*;
       
-      public var outer_i:Interactor;
+      public var outer_i:nape.phys.Interactor;
       
       public var ishape:ZPP_Shape;
       
@@ -147,6 +145,7 @@ package zpp_nape.phys
             {
                _loc1_.space.non_inlined_wake(_loc1_);
             }
+            true;
          }
          else if(ibody != null)
          {
@@ -154,10 +153,18 @@ package zpp_nape.phys
             {
                ibody.space.non_inlined_wake(ibody);
             }
+            else
+            {
+               false;
+            }
          }
-         else if(icompound.space != null)
+         else
          {
-            icompound.space.wakeCompound(icompound);
+            if(icompound.space != null)
+            {
+               icompound.space.wakeCompound(icompound);
+            }
+            true;
          }
       }
       
@@ -255,6 +262,7 @@ package zpp_nape.phys
                ZNPNode_ZPP_CbType.zpp_pool = _loc7_.next;
                _loc7_.next = null;
             }
+            null;
             _loc7_.elt = param1;
             _loc4_ = _loc7_;
             if(_loc3_ == null)
@@ -268,7 +276,7 @@ package zpp_nape.phys
                _loc3_.next = _loc4_;
             }
             _loc6_.pushmod = _loc6_.modified = true;
-            _loc6_.length = _loc6_.length + 1;
+            ++_loc6_.length;
             _loc4_;
             if(_loc2_ != null)
             {
@@ -330,6 +338,7 @@ package zpp_nape.phys
                   _loc4_ = _loc3_.cbTypes.pop_unsafe();
                   _loc4_.cbsets.remove(_loc3_);
                }
+               null;
                _loc3_.next = ZPP_CbSet.zpp_pool;
                ZPP_CbSet.zpp_pool = _loc3_;
             }
@@ -337,13 +346,13 @@ package zpp_nape.phys
          }
       }
       
-      public function copyto(param1:Interactor) : void
+      public function copyto(param1:nape.phys.Interactor) : void
       {
          var _loc3_:* = null as CbTypeList;
          var _loc5_:* = null as CbType;
          var _loc6_:int = 0;
          param1.zpp_inner_i.group = group;
-         var _loc4_:Interactor = outer_i;
+         var _loc4_:nape.phys.Interactor = outer_i;
          if(_loc4_.zpp_inner_i.wrap_cbTypes == null)
          {
             _loc4_.zpp_inner_i.setupcbTypes();
@@ -395,7 +404,7 @@ package zpp_nape.phys
          var _loc1_:ZPP_Space = ishape != null ? (ishape.body == null ? null : ishape.body.space) : (ibody != null ? ibody.space : icompound.space);
          if((cbSet = _loc1_.cbsets.get(cbTypes)) != null)
          {
-            cbSet.count = cbSet.count + 1;
+            ++cbSet.count;
             cbSet.interactors.add(this);
             cbSet.validate();
             _loc1_.freshInteractorType(this);
@@ -439,3 +448,4 @@ package zpp_nape.phys
       }
    }
 }
+

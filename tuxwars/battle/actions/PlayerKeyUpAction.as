@@ -7,8 +7,6 @@ package tuxwars.battle.actions
    
    public class PlayerKeyUpAction extends AbstractKeyboardInputAction
    {
-       
-      
       private var player:PlayerGameObject;
       
       public function PlayerKeyUpAction(player:PlayerGameObject)
@@ -38,3 +36,4 @@ package tuxwars.battle.actions
       }
    }
 }
+

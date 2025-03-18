@@ -4,7 +4,6 @@ package mx.utils
    
    public class URLUtil
    {
-      
       private static const SQUARE_BRACKET_LEFT:String = "]";
       
       private static const SQUARE_BRACKET_RIGHT:String = "[";
@@ -20,7 +19,6 @@ package mx.utils
       private static const SERVER_NAME_REGEX:RegExp = /\{server.name\}/g;
       
       private static const SERVER_PORT_REGEX:RegExp = /\{server.port\}/g;
-       
       
       public function URLUtil()
       {
@@ -30,7 +28,7 @@ package mx.utils
       public static function getServerNameWithPort(url:String) : String
       {
          var start:int = url.indexOf("/") + 2;
-         var length:int = url.indexOf("/",start);
+         var length:int = int(url.indexOf("/",start));
          return length == -1 ? url.substring(start) : url.substring(start,length);
       }
       
@@ -38,7 +36,7 @@ package mx.utils
       {
          var sp:String = getServerNameWithPort(url);
          var delim:int = URLUtil.indexOfLeftSquareBracket(sp);
-         delim = delim > -1 ? sp.indexOf(":",delim) : sp.indexOf(":");
+         delim = delim > -1 ? int(sp.indexOf(":",delim)) : int(sp.indexOf(":"));
          if(delim > 0)
          {
             sp = sp.substring(0,delim);
@@ -51,14 +49,14 @@ package mx.utils
          var p:Number = NaN;
          var sp:String = getServerNameWithPort(url);
          var delim:int = URLUtil.indexOfLeftSquareBracket(sp);
-         delim = delim > -1 ? sp.indexOf(":",delim) : sp.indexOf(":");
+         delim = delim > -1 ? int(sp.indexOf(":",delim)) : int(sp.indexOf(":"));
          var port:uint = 0;
          if(delim > 0)
          {
             p = Number(sp.substring(delim + 1));
             if(!isNaN(p))
             {
-               port = int(p);
+               port = uint(int(p));
             }
          }
          return port;
@@ -77,7 +75,7 @@ package mx.utils
             {
                if(url.charAt(0) == "/")
                {
-                  slashPos = rootURL.indexOf("/",8);
+                  slashPos = Number(rootURL.indexOf("/",8));
                   if(slashPos == -1)
                   {
                      slashPos = rootURL.length;
@@ -113,13 +111,13 @@ package mx.utils
       
       public static function getProtocol(url:String) : String
       {
-         var slash:int = url.indexOf("/");
-         var indx:int = url.indexOf(":/");
+         var slash:int = int(url.indexOf("/"));
+         var indx:int = int(url.indexOf(":/"));
          if(indx > -1 && indx < slash)
          {
             return url.substring(0,indx);
          }
-         indx = url.indexOf("::");
+         indx = int(url.indexOf("::"));
          if(indx > -1 && indx < slash)
          {
             return url.substring(0,indx);
@@ -136,26 +134,26 @@ package mx.utils
       {
          var portEnd:int = 0;
          var result:String = "";
-         var indx:int = uri.indexOf("]");
+         var indx:int = int(uri.indexOf("]"));
          if(indx == -1)
          {
-            indx = uri.indexOf(":");
+            indx = int(uri.indexOf(":"));
          }
-         var portStart:int = uri.indexOf(":",indx + 1);
+         var portStart:int = int(uri.indexOf(":",indx + 1));
          if(portStart > -1)
          {
             portStart++;
-            portEnd = uri.indexOf("/",portStart);
+            portEnd = int(uri.indexOf("/",portStart));
             result = uri.substring(0,portStart) + newPort.toString() + uri.substring(portEnd,uri.length);
          }
          else
          {
-            portEnd = uri.indexOf("/",indx);
+            portEnd = int(uri.indexOf("/",indx));
             if(portEnd > -1)
             {
                if(uri.charAt(portEnd + 1) == "/")
                {
-                  portEnd = uri.indexOf("/",portEnd + 2);
+                  portEnd = int(uri.indexOf("/",portEnd + 2));
                }
                if(portEnd > 0)
                {
@@ -191,7 +189,7 @@ package mx.utils
             }
             url = url.replace(SERVER_NAME_REGEX,loaderServerName);
          }
-         var portToken:int = url.indexOf(SERVER_PORT_TOKEN);
+         var portToken:int = int(url.indexOf(SERVER_PORT_TOKEN));
          if(portToken > 0)
          {
             loaderPort = URLUtil.getPort(loaderURL);
@@ -258,17 +256,17 @@ package mx.utils
       
       private static function indexOfLeftSquareBracket(value:String) : int
       {
-         var delim:int = value.indexOf(SQUARE_BRACKET_LEFT);
+         var delim:int = int(value.indexOf(SQUARE_BRACKET_LEFT));
          if(delim == -1)
          {
-            delim = value.indexOf(SQUARE_BRACKET_LEFT_ENCODED);
+            delim = int(value.indexOf(SQUARE_BRACKET_LEFT_ENCODED));
          }
          return delim;
       }
       
       private static function internalObjectToString(object:Object, separator:String, prefix:String, encodeURL:Boolean) : String
       {
-         var p:* = null;
+         var p:String = null;
          var value:Object = null;
          var name:String = null;
          var s:String = "";
@@ -321,11 +319,11 @@ package mx.utils
       private static function replaceEncodedSquareBrackets(value:String) : String
       {
          var leftIndex:int = 0;
-         var rightIndex:int = value.indexOf(SQUARE_BRACKET_RIGHT_ENCODED);
+         var rightIndex:int = int(value.indexOf(SQUARE_BRACKET_RIGHT_ENCODED));
          if(rightIndex > -1)
          {
             value = value.replace(SQUARE_BRACKET_RIGHT_ENCODED,SQUARE_BRACKET_RIGHT);
-            leftIndex = value.indexOf(SQUARE_BRACKET_LEFT_ENCODED);
+            leftIndex = int(value.indexOf(SQUARE_BRACKET_LEFT_ENCODED));
             if(leftIndex > -1)
             {
                value = value.replace(SQUARE_BRACKET_LEFT_ENCODED,SQUARE_BRACKET_LEFT);
@@ -340,7 +338,7 @@ package mx.utils
          var name:String = null;
          var s:String = "";
          var first:Boolean = true;
-         var n:int = array.length;
+         var n:int = int(array.length);
          for(var i:int = 0; i < n; i++)
          {
             if(first)
@@ -400,7 +398,7 @@ package mx.utils
          var idx:Object = null;
          var o:Object = {};
          var arr:Array = string.split(separator);
-         var n:int = arr.length;
+         var n:int = int(arr.length);
          for(var i:int = 0; i < n; i++)
          {
             pieces = arr[i].split("=");
@@ -440,7 +438,7 @@ package mx.utils
             }
             obj = o;
             pieces = name.split(".");
-            m = pieces.length;
+            m = int(pieces.length);
             for(j = 0; j < m - 1; j++)
             {
                prop = pieces[j];
@@ -465,3 +463,4 @@ package mx.utils
       }
    }
 }
+

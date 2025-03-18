@@ -14,9 +14,7 @@ package tuxwars.ui.components
    
    public class IconTooltipButton extends IconButton
    {
-      
       public static const GENERIC:String = "generic";
-       
       
       private var _game:TuxWarsGame;
       
@@ -58,7 +56,7 @@ package tuxwars.ui.components
       
       private function mouseOver(event:MouseEvent) : void
       {
-         var tooltip:* = null;
+         var tooltip:TuxTooltip = null;
          if(_tooltipParent)
          {
             if(_tooltipType == "generic")
@@ -107,3 +105,4 @@ package tuxwars.ui.components
       }
    }
 }
+

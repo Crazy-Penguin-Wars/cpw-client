@@ -8,8 +8,6 @@ package tuxwars.ui.containers.shop.container.banner
    
    public class BannerMessage extends Banner
    {
-       
-      
       private var _optionalTextFieldContainer:MovieClip;
       
       private var _optionalTextField:UIAutoTextField;
@@ -47,3 +45,4 @@ package tuxwars.ui.containers.shop.container.banner
       }
    }
 }
+

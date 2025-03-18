@@ -13,8 +13,6 @@ package tuxwars.ui.popups.logic.exitquestion
    
    public class ExitQuestionPopUpLogic extends QuestionPopUpLogic
    {
-       
-      
       public function ExitQuestionPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -83,3 +81,4 @@ package tuxwars.ui.popups.logic.exitquestion
       }
    }
 }
+

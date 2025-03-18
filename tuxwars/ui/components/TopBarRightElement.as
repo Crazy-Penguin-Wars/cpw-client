@@ -13,9 +13,7 @@ package tuxwars.ui.components
    
    public class TopBarRightElement
    {
-      
       private static const BUTTON_INBOX:String = "Button_Inbox";
-       
       
       private var inboxButton:InboxButton;
       
@@ -69,3 +67,4 @@ package tuxwars.ui.components
       }
    }
 }
+

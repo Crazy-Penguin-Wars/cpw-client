@@ -12,15 +12,13 @@ package flash
    
    public dynamic class Boot extends MovieClip
    {
-      
       public static var tf:TextField;
       
       public static var lines:Array;
       
       public static var lastError:Error;
       
-      public static var skip_constructor:Boolean = false;
-       
+      public static var skip_constructor:Boolean;
       
       public function Boot()
       {
@@ -41,7 +39,7 @@ package flash
          var _loc2_:Array = [];
          var _loc3_:int = 0;
          var _loc4_:Array = param1.params;
-         while(_loc3_ < _loc4_.length)
+         while(_loc3_ < int(_loc4_.length))
          {
             _loc5_ = _loc4_[_loc3_];
             _loc3_++;
@@ -97,7 +95,7 @@ package flash
             _loc3_ = 0;
             if(_loc1_.stage != null)
             {
-               _loc3_ = _loc1_.stage.color;
+               _loc3_ = int(_loc1_.stage.color);
                _loc2_ = 16777215 - _loc3_;
             }
             Boot.tf.textColor = _loc2_;
@@ -136,7 +134,7 @@ package flash
          {
             return;
          }
-         while(Boot.lines.length > 1 && _loc3_.height > _loc5_.stageHeight)
+         while(int(Boot.lines.length) > 1 && _loc3_.height > _loc5_.stageHeight)
          {
             Boot.lines.shift();
             _loc3_.text = Boot.lines.join("\n");
@@ -170,7 +168,7 @@ package flash
             _loc10_ = "{";
             _loc11_ = true;
             _loc8_ = 0;
-            _loc12_ = _loc6_.length;
+            _loc12_ = int(_loc6_.length);
             while(_loc8_ < _loc12_)
             {
                _loc13_ = _loc8_++;
@@ -211,7 +209,7 @@ package flash
             _loc11_ = true;
             _loc6_ = param1;
             _loc8_ = 0;
-            _loc12_ = _loc6_.length;
+            _loc12_ = int(_loc6_.length);
             while(_loc8_ < _loc12_)
             {
                _loc13_ = _loc8_++;
@@ -282,3 +280,10 @@ package flash
       }
    }
 }
+
+Array.prototype;
+_loc1_.setPropertyIsEnumerable("copy",false);
+_loc1_.setPropertyIsEnumerable("insert",false);
+_loc1_.setPropertyIsEnumerable("remove",false);
+_loc1_.setPropertyIsEnumerable("iterator",false);
+

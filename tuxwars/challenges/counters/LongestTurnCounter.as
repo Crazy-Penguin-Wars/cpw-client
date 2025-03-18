@@ -10,13 +10,10 @@ package tuxwars.challenges.counters
    
    public class LongestTurnCounter extends CounterLessThan
    {
-       
-      
-      private var turnArray:Array;
+      private var turnArray:Array = [];
       
       public function LongestTurnCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
-         turnArray = [];
          super(challenge,id,targetValue,playerId,params);
       }
       
@@ -78,3 +75,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

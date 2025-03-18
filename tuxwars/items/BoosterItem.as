@@ -19,8 +19,6 @@ package tuxwars.items
    
    public class BoosterItem extends Item implements Emission, SimpleScript
    {
-       
-      
       private var _uniqueId:String;
       
       private var _durationType:String;
@@ -370,3 +368,4 @@ package tuxwars.items
       }
    }
 }
+

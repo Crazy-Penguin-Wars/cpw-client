@@ -3,13 +3,13 @@ package starling.events
    import starling.core.starling_internal;
    import starling.display.DisplayObject;
    
+   use namespace starling_internal;
+   
    public class TouchEvent extends Event
    {
-      
       public static const TOUCH:String = "touch";
       
       private static var sTouches:Vector.<Touch> = new Vector.<Touch>(0);
-       
       
       private var mShiftKey:Boolean;
       
@@ -26,7 +26,7 @@ package starling.events
          this.mCtrlKey = ctrlKey;
          this.mTimestamp = -1;
          this.mVisitedObjects = new Vector.<EventDispatcher>(0);
-         var numTouches:int = touches.length;
+         var numTouches:int = int(touches.length);
          for(var i:int = 0; i < numTouches; i++)
          {
             if(touches[i].timestamp > this.mTimestamp)
@@ -46,7 +46,7 @@ package starling.events
             result = new Vector.<Touch>(0);
          }
          var allTouches:Vector.<Touch> = data as Vector.<Touch>;
-         var numTouches:int = allTouches.length;
+         var numTouches:int = int(allTouches.length);
          for(var i:int = 0; i < numTouches; i++)
          {
             touch = allTouches[i];
@@ -92,7 +92,7 @@ package starling.events
          return false;
       }
       
-      starling_internal internal function dispatch(chain:Vector.<EventDispatcher>) : void
+      starling_internal function dispatch(chain:Vector.<EventDispatcher>) : void
       {
          var chainLength:int = 0;
          var previousTarget:EventDispatcher = null;
@@ -101,7 +101,7 @@ package starling.events
          var stopPropagation:Boolean = false;
          if(Boolean(chain) && Boolean(chain.length))
          {
-            chainLength = bubbles ? chain.length : 1;
+            chainLength = bubbles ? int(chain.length) : 1;
             previousTarget = target;
             setTarget(chain[0] as EventDispatcher);
             for(i = 0; i < chainLength; i++)
@@ -142,3 +142,4 @@ package starling.events
       }
    }
 }
+

@@ -17,8 +17,6 @@ package nape.phys
    
    public final class Compound extends Interactor
    {
-       
-      
       public var zpp_inner:ZPP_Compound;
       
       public function Compound()
@@ -281,6 +279,11 @@ package nape.phys
             _loc5_._invalidate = null;
             _loc5_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc5_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -301,6 +304,10 @@ package nape.phys
          zpp_inner.immutable_midstep("Compound::space");
          if((zpp_inner.space == null ? null : zpp_inner.space.outer) != param1)
          {
+            if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null)
+            {
+               (zpp_inner.space == null ? null : zpp_inner.space.outer).zpp_inner.wrap_compounds.remove(this);
+            }
             if(param1 != null)
             {
                _loc2_ = param1.zpp_inner.wrap_compounds;
@@ -323,6 +330,10 @@ package nape.phys
          zpp_inner.immutable_midstep("Compound::compound");
          if((zpp_inner.compound == null ? null : zpp_inner.compound.outer) != param1)
          {
+            if((zpp_inner.compound == null ? null : zpp_inner.compound.outer) != null)
+            {
+               (zpp_inner.compound == null ? null : zpp_inner.compound.outer).zpp_inner.wrap_compounds.remove(this);
+            }
             if(param1 != null)
             {
                _loc2_ = param1.zpp_inner.wrap_compounds;
@@ -418,6 +429,11 @@ package nape.phys
             _loc6_._invalidate = null;
             _loc6_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc6_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -728,3 +744,4 @@ package nape.phys
       }
    }
 }
+

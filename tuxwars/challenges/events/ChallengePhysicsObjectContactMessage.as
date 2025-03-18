@@ -6,8 +6,6 @@ package tuxwars.challenges.events
    
    public class ChallengePhysicsObjectContactMessage extends Message
    {
-       
-      
       private var _objectHit:PhysicsGameObject;
       
       private var _contactPoint:Vec2;
@@ -35,3 +33,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

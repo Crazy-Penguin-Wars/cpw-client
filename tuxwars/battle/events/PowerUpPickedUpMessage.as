@@ -6,8 +6,6 @@ package tuxwars.battle.events
    
    public class PowerUpPickedUpMessage extends Message
    {
-       
-      
       private var _player:PlayerGameObject;
       
       private var _powerUp:PowerUpGameObject;
@@ -30,3 +28,4 @@ package tuxwars.battle.events
       }
    }
 }
+

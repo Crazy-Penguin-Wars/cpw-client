@@ -6,8 +6,6 @@ package tuxwars.home.states.shop
    
    public class ShopLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function ShopLoadAssetsSubState(game:TuxWarsGame, params:* = null)
       {
          super(game,AssetsData.getShopAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.shop
       }
    }
 }
+

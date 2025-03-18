@@ -8,13 +8,10 @@ package tuxwars.ui.containers.shop
    
    public class Content extends Container
    {
-       
-      
-      private var _containers:UIContainers;
+      private var _containers:UIContainers = new UIContainers();
       
       public function Content(design:DisplayObject, data:*, game:TuxWarsGame, parent:TuxUIScreen = null)
       {
-         _containers = new UIContainers();
          setShowTransitions(false);
          super(design,data,game,parent);
       }
@@ -35,3 +32,4 @@ package tuxwars.ui.containers.shop
       }
    }
 }
+

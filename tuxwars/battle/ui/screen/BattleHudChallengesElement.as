@@ -18,7 +18,6 @@ package tuxwars.battle.ui.screen
    
    public class BattleHudChallengesElement extends TuxUIElementScreen
    {
-      
       private static const CHALLENGES_CONTAINER:String = "Container_Challenges";
       
       private static const CHALLENGE:String = "Button_Challenge_";
@@ -33,23 +32,23 @@ package tuxwars.battle.ui.screen
       
       private static const ELEMENT_MAP:Object = {};
       
-      {
-         ELEMENT_MAP["Battle"] = 0;
-         ELEMENT_MAP["Grind"] = 1;
-         ELEMENT_MAP["Skill"] = 2;
-         ELEMENT_MAP["Impossible"] = 3;
-      }
+      ELEMENT_MAP["Battle"] = 0;
+      ELEMENT_MAP["Grind"] = 1;
+      ELEMENT_MAP["Skill"] = 2;
+      ELEMENT_MAP["Impossible"] = 3;
       
-      private const challengeButtonsDefault:Vector.<IconButton> = new Vector.<IconButton>();
+      private const challengeButtonsDefault:Vector.<IconButton>;
       
-      private const challengeButtonsCompleted:Vector.<IconButton> = new Vector.<IconButton>();
+      private const challengeButtonsCompleted:Vector.<IconButton>;
       
       public function BattleHudChallengesElement(from:MovieClip, game:TuxWarsGame)
       {
          var numChallenges:int = 0;
          var i:int = 0;
-         var _loc4_:* = null;
-         var button:* = null;
+         var _loc4_:Challenge = null;
+         var button:IconButton = null;
+         challengeButtonsDefault = new Vector.<IconButton>();
+         challengeButtonsCompleted = new Vector.<IconButton>();
          super(from.getChildByName("Container_Challenges") as MovieClip,game);
          this._design.mouseChildren = true;
          this._design.mouseEnabled = true;
@@ -77,7 +76,7 @@ package tuxwars.battle.ui.screen
                button.setVisible(false);
                i++;
             }
-            numChallenges = _loc3_.activeChallenges.length;
+            numChallenges = int(_loc3_.activeChallenges.length);
          }
          MessageCenter.addListener("ChallengeStateChanged",updateChallenges);
       }
@@ -101,9 +100,9 @@ package tuxwars.battle.ui.screen
       private function createButtons() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
-         var button:* = null;
-         var _loc3_:* = null;
+         var _loc1_:MovieClip = null;
+         var button:IconButton = null;
+         var _loc3_:MovieClip = null;
          for(i = 0; i < 4; )
          {
             _loc1_ = getButtonContainer(i);
@@ -133,13 +132,13 @@ package tuxwars.battle.ui.screen
       
       private function updateChallenges(msg:Message) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Challenges = null;
          var i:int = 0;
-         var _loc5_:* = null;
+         var _loc5_:Challenge = null;
          var buttonIndex:int = 0;
-         var _loc2_:* = null;
-         var completedButtonMC:* = null;
-         var defaultButtonMC:* = null;
+         var _loc2_:MovieClip = null;
+         var completedButtonMC:MovieClip = null;
+         var defaultButtonMC:MovieClip = null;
          if((msg.data as Challenge).playerId == game.player.id)
          {
             var _loc9_:ChallengeManager = ChallengeManager;
@@ -200,3 +199,4 @@ package tuxwars.battle.ui.screen
       }
    }
 }
+

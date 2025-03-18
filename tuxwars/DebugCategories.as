@@ -2,11 +2,6 @@ package tuxwars
 {
    public class DebugCategories
    {
-      
-      public static const PROD_LOG:Object = {};
-      
-      public static const PERMANENT_LOG:Object = {};
-      
       public static const CATEGORY_ALL:String = "All";
       
       public static const TODO:String = "TODO";
@@ -177,73 +172,75 @@ package tuxwars
       
       public static const DEAL_SPOT:String = "DealSpot";
       
-      {
-         PROD_LOG[CATEGORY_ALL] = true;
-         PROD_LOG["AccountInformation"] = true;
-         PROD_LOG["AffectsGameObject"] = true;
-         PROD_LOG["AI"] = true;
-         PROD_LOG["BattleServer"] = true;
-         PROD_LOG["Booster"] = true;
-         PROD_LOG["ChallengeData"] = true;
-         PROD_LOG["Challenges"] = true;
-         PROD_LOG["Collision"] = true;
-         PROD_LOG["ConfigInit"] = true;
-         PROD_LOG["Controls"] = true;
-         PROD_LOG["Crafting"] = true;
-         PROD_LOG["CRMDataPopup"] = true;
-         PROD_LOG["CRMDataOverride"] = true;
-         PROD_LOG["CRMPopup"] = true;
-         PROD_LOG["CumulativeDamage"] = true;
-         PROD_LOG["DamageApply"] = true;
-         PROD_LOG["DamageCalculation"] = true;
-         PROD_LOG["DamageModify"] = true;
-         PROD_LOG["Emission"] = true;
-         PROD_LOG["Emitter"] = true;
-         PROD_LOG["ErrorLogging"] = true;
-         PROD_LOG["Follower"] = true;
-         PROD_LOG["GameObjects"] = true;
-         PROD_LOG["Game"] = true;
-         PROD_LOG["HandleMessage"] = true;
-         PROD_LOG["Input"] = true;
-         PROD_LOG["ItemData"] = true;
-         PROD_LOG["Items"] = true;
-         PROD_LOG["JavaScript"] = true;
-         PROD_LOG["LevelObjects"] = true;
-         PROD_LOG["LevelUp"] = true;
-         PROD_LOG["Match"] = true;
-         PROD_LOG["Messages"] = true;
-         PROD_LOG["Money"] = true;
-         PROD_LOG["PhysicsWorld"] = true;
-         PROD_LOG["Player"] = true;
-         PROD_LOG["PopUpManager"] = true;
-         PROD_LOG["PowerUps"] = true;
-         PROD_LOG["Random"] = true;
-         PROD_LOG["ReceivedMessage"] = true;
-         PROD_LOG["Research"] = true;
-         PROD_LOG["ItemDropChance"] = true;
-         PROD_LOG["RewardHandlerMisc"] = true;
-         PROD_LOG["MoneyAndExpValues"] = true;
-         PROD_LOG["Score"] = true;
-         PROD_LOG["SentMessage"] = true;
-         PROD_LOG["Server"] = true;
-         PROD_LOG["ServerResponse"] = true;
-         PROD_LOG["SimpleScript"] = true;
-         PROD_LOG["SlotMachine"] = true;
-         PROD_LOG["Stats"] = true;
-         PROD_LOG["Tag"] = true;
-         PROD_LOG["Trophies"] = true;
-         PROD_LOG["Tutorial"] = true;
-         PROD_LOG["VideoPlayer"] = true;
-         PROD_LOG["Warning"] = true;
-         PROD_LOG["Weapon"] = true;
-         PROD_LOG["Pools"] = true;
-         PROD_LOG["Tooltips"] = true;
-         PROD_LOG["Tournament"] = true;
-         PROD_LOG["MessageSpeedReport"] = true;
-         PERMANENT_LOG["AccountInformation"] = true;
-         PERMANENT_LOG["CRMDataOverride"] = true;
-         PERMANENT_LOG["ConfigInit"] = true;
-      }
+      public static const PROD_LOG:Object = {};
+      
+      public static const PERMANENT_LOG:Object = {};
+      
+      PROD_LOG[CATEGORY_ALL] = true;
+      PROD_LOG["AccountInformation"] = true;
+      PROD_LOG["AffectsGameObject"] = true;
+      PROD_LOG["AI"] = true;
+      PROD_LOG["BattleServer"] = true;
+      PROD_LOG["Booster"] = true;
+      PROD_LOG["ChallengeData"] = true;
+      PROD_LOG["Challenges"] = true;
+      PROD_LOG["Collision"] = true;
+      PROD_LOG["ConfigInit"] = true;
+      PROD_LOG["Controls"] = true;
+      PROD_LOG["Crafting"] = true;
+      PROD_LOG["CRMDataPopup"] = true;
+      PROD_LOG["CRMDataOverride"] = true;
+      PROD_LOG["CRMPopup"] = true;
+      PROD_LOG["CumulativeDamage"] = true;
+      PROD_LOG["DamageApply"] = true;
+      PROD_LOG["DamageCalculation"] = true;
+      PROD_LOG["DamageModify"] = true;
+      PROD_LOG["Emission"] = true;
+      PROD_LOG["Emitter"] = true;
+      PROD_LOG["ErrorLogging"] = true;
+      PROD_LOG["Follower"] = true;
+      PROD_LOG["GameObjects"] = true;
+      PROD_LOG["Game"] = true;
+      PROD_LOG["HandleMessage"] = true;
+      PROD_LOG["Input"] = true;
+      PROD_LOG["ItemData"] = true;
+      PROD_LOG["Items"] = true;
+      PROD_LOG["JavaScript"] = true;
+      PROD_LOG["LevelObjects"] = true;
+      PROD_LOG["LevelUp"] = true;
+      PROD_LOG["Match"] = true;
+      PROD_LOG["Messages"] = true;
+      PROD_LOG["Money"] = true;
+      PROD_LOG["PhysicsWorld"] = true;
+      PROD_LOG["Player"] = true;
+      PROD_LOG["PopUpManager"] = true;
+      PROD_LOG["PowerUps"] = true;
+      PROD_LOG["Random"] = true;
+      PROD_LOG["ReceivedMessage"] = true;
+      PROD_LOG["Research"] = true;
+      PROD_LOG["ItemDropChance"] = true;
+      PROD_LOG["RewardHandlerMisc"] = true;
+      PROD_LOG["MoneyAndExpValues"] = true;
+      PROD_LOG["Score"] = true;
+      PROD_LOG["SentMessage"] = true;
+      PROD_LOG["Server"] = true;
+      PROD_LOG["ServerResponse"] = true;
+      PROD_LOG["SimpleScript"] = true;
+      PROD_LOG["SlotMachine"] = true;
+      PROD_LOG["Stats"] = true;
+      PROD_LOG["Tag"] = true;
+      PROD_LOG["Trophies"] = true;
+      PROD_LOG["Tutorial"] = true;
+      PROD_LOG["VideoPlayer"] = true;
+      PROD_LOG["Warning"] = true;
+      PROD_LOG["Weapon"] = true;
+      PROD_LOG["Pools"] = true;
+      PROD_LOG["Tooltips"] = true;
+      PROD_LOG["Tournament"] = true;
+      PROD_LOG["MessageSpeedReport"] = true;
+      PERMANENT_LOG["AccountInformation"] = true;
+      PERMANENT_LOG["CRMDataOverride"] = true;
+      PERMANENT_LOG["ConfigInit"] = true;
       
       public function DebugCategories()
       {
@@ -252,3 +249,4 @@ package tuxwars
       }
    }
 }
+

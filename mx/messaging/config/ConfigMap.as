@@ -4,10 +4,11 @@ package mx.messaging.config
    import flash.utils.flash_proxy;
    import mx.utils.object_proxy;
    
+   use namespace object_proxy;
+   use namespace flash_proxy;
+   
    public dynamic class ConfigMap extends Proxy
    {
-       
-      
       object_proxy var propertyList:Array;
       
       private var _item:Object;
@@ -97,3 +98,4 @@ package mx.messaging.config
       }
    }
 }
+

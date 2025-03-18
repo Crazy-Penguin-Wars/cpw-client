@@ -7,8 +7,6 @@ package tuxwars.ui.popups.logic.confirmbattleend.syncerror
    
    public class SyncErrorMessagePopUpLogic extends ConfirmBattleEndPopUpLogic
    {
-       
-      
       public function SyncErrorMessagePopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -26,3 +24,4 @@ package tuxwars.ui.popups.logic.confirmbattleend.syncerror
       }
    }
 }
+

@@ -1,8 +1,8 @@
 package tuxwars.battle.ui.logic.couponfound
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.battle.ui.screen.couponfound.CouponFoundScreen;
    import tuxwars.home.ui.logic.TuxUILogic;
@@ -12,8 +12,6 @@ package tuxwars.battle.ui.logic.couponfound
    
    public class CouponFoundLogic extends TuxUILogic
    {
-       
-      
       public function CouponFoundLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -21,16 +19,18 @@ package tuxwars.battle.ui.logic.couponfound
       
       public function getShopItem(isWinner:Boolean, ndx:int) : ShopItem
       {
-         var table:* = null;
+         var table:Table = null;
          if(isWinner)
          {
+            var _loc9_:String = "AfterResultsSalesWinner";
             var _loc4_:ProjectManager = ProjectManager;
-            table = com.dchoc.projectdata.ProjectManager.projectData.findTable("AfterResultsSalesWinner");
+            table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc9_);
          }
          else
          {
+            var _loc10_:String = "AfterResultsSalesLoser";
             var _loc5_:ProjectManager = ProjectManager;
-            table = com.dchoc.projectdata.ProjectManager.projectData.findTable("AfterResultsSalesLoser");
+            table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc10_);
          }
          var _loc11_:* = "" + ndx;
          var _loc6_:* = table;
@@ -45,12 +45,13 @@ package tuxwars.battle.ui.logic.couponfound
             }
             _loc6_._cache[_loc11_] = _loc12_;
          }
+         var _loc13_:String = "ItemId";
          var _loc7_:* = _loc6_._cache[_loc11_];
-         if(!_loc7_._cache["ItemId"])
+         if(!_loc7_._cache[_loc13_])
          {
-            _loc7_._cache["ItemId"] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name","ItemId");
+            _loc7_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name",_loc13_);
          }
-         var _loc8_:* = _loc7_._cache["ItemId"];
+         var _loc8_:* = _loc7_._cache[_loc13_];
          return new §§pop().ShopItem(§§pop().getItemData(_loc8_.overrideValue != null ? _loc8_.overrideValue : _loc8_._value));
       }
       
@@ -60,3 +61,4 @@ package tuxwars.battle.ui.logic.couponfound
       }
    }
 }
+

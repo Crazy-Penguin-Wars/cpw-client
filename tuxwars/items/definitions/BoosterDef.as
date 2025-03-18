@@ -7,8 +7,6 @@ package tuxwars.items.definitions
    
    public class BoosterDef extends ItemDef
    {
-       
-      
       private var _durationType:String;
       
       private var _durationAmount:int;
@@ -78,3 +76,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

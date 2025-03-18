@@ -3,11 +3,11 @@ package mx.collections
    import mx.core.mx_internal;
    import mx.rpc.IResponder;
    
+   use namespace mx_internal;
+   
    public class ItemResponder implements IResponder
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       private var _resultHandler:Function;
       
@@ -34,3 +34,4 @@ package mx.collections
       }
    }
 }
+

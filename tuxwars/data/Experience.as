@@ -1,13 +1,11 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class Experience
    {
-      
       private static const TABLE_NAME:String = "Experience";
       
       private static const SCORE:String = "Score";
@@ -23,7 +21,6 @@ package tuxwars.data
       private static const REWARD_DAYS_OF_VIP:String = "RewardDaysOfVip";
       
       private static var table:Table;
-       
       
       public function Experience()
       {
@@ -53,12 +50,13 @@ package tuxwars.data
          var _loc2_:Row = _loc3_._cache[_loc6_];
          if(_loc2_)
          {
+            var _loc8_:String = "Score";
             var _loc4_:* = _loc2_;
-            if(!_loc4_._cache["Score"])
+            if(!_loc4_._cache[_loc8_])
             {
-               _loc4_._cache["Score"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","Score");
+               _loc4_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc8_);
             }
-            var _loc5_:* = _loc4_._cache["Score"];
+            var _loc5_:* = _loc4_._cache[_loc8_];
             §§push(_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value);
          }
          else
@@ -84,12 +82,13 @@ package tuxwars.data
          var _loc3_:Row = _loc4_._cache[_loc7_];
          if(_loc3_)
          {
+            var _loc9_:String = "RewardCoins";
             var _loc5_:* = _loc3_;
-            if(!_loc5_._cache["RewardCoins"])
+            if(!_loc5_._cache[_loc9_])
             {
-               _loc5_._cache["RewardCoins"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","RewardCoins");
+               _loc5_._cache[_loc9_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc9_);
             }
-            §§push(_loc5_._cache["RewardCoins"]);
+            §§push(_loc5_._cache[_loc9_]);
          }
          else
          {
@@ -116,12 +115,13 @@ package tuxwars.data
          var _loc3_:Row = _loc4_._cache[_loc7_];
          if(_loc3_)
          {
+            var _loc9_:String = "RewardCash";
             var _loc5_:* = _loc3_;
-            if(!_loc5_._cache["RewardCash"])
+            if(!_loc5_._cache[_loc9_])
             {
-               _loc5_._cache["RewardCash"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","RewardCash");
+               _loc5_._cache[_loc9_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc9_);
             }
-            §§push(_loc5_._cache["RewardCash"]);
+            §§push(_loc5_._cache[_loc9_]);
          }
          else
          {
@@ -148,12 +148,13 @@ package tuxwars.data
          var _loc3_:Row = _loc4_._cache[_loc7_];
          if(_loc3_)
          {
+            var _loc9_:String = "RewardItems";
             var _loc5_:* = _loc3_;
-            if(!_loc5_._cache["RewardItems"])
+            if(!_loc5_._cache[_loc9_])
             {
-               _loc5_._cache["RewardItems"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","RewardItems");
+               _loc5_._cache[_loc9_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc9_);
             }
-            §§push(_loc5_._cache["RewardItems"]);
+            §§push(_loc5_._cache[_loc9_]);
          }
          else
          {
@@ -180,12 +181,13 @@ package tuxwars.data
          var _loc3_:Row = _loc4_._cache[_loc7_];
          if(_loc3_)
          {
+            var _loc9_:String = "RewardItemsAmount";
             var _loc5_:* = _loc3_;
-            if(!_loc5_._cache["RewardItemsAmount"])
+            if(!_loc5_._cache[_loc9_])
             {
-               _loc5_._cache["RewardItemsAmount"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","RewardItemsAmount");
+               _loc5_._cache[_loc9_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc9_);
             }
-            §§push(_loc5_._cache["RewardItemsAmount"]);
+            §§push(_loc5_._cache[_loc9_]);
          }
          else
          {
@@ -212,12 +214,13 @@ package tuxwars.data
          var _loc3_:Row = _loc4_._cache[_loc7_];
          if(_loc3_)
          {
+            var _loc9_:String = "RewardDaysOfVip";
             var _loc5_:* = _loc3_;
-            if(!_loc5_._cache["RewardDaysOfVip"])
+            if(!_loc5_._cache[_loc9_])
             {
-               _loc5_._cache["RewardDaysOfVip"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","RewardDaysOfVip");
+               _loc5_._cache[_loc9_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc9_);
             }
-            §§push(_loc5_._cache["RewardDaysOfVip"]);
+            §§push(_loc5_._cache[_loc9_]);
          }
          else
          {
@@ -231,11 +234,11 @@ package tuxwars.data
       public static function findNextLevel(score:int) : Row
       {
          var i:int = 0;
-         var _loc5_:* = null;
-         var _loc2_:* = null;
+         var _loc5_:Row = null;
+         var _loc2_:Field = null;
          var _loc3_:Table = getTable();
          var _loc7_:* = _loc3_;
-         var _loc4_:int = _loc7_._rows.length;
+         var _loc4_:int = int(_loc7_._rows.length);
          for(i = 1; i <= _loc4_; )
          {
             var _loc11_:* = i.toString();
@@ -252,12 +255,13 @@ package tuxwars.data
             _loc5_ = _loc8_._cache[_loc11_];
             if(_loc5_)
             {
+               var _loc13_:String = "Score";
                var _loc9_:* = _loc5_;
-               if(!_loc9_._cache["Score"])
+               if(!_loc9_._cache[_loc13_])
                {
-                  _loc9_._cache["Score"] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name","Score");
+                  _loc9_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name",_loc13_);
                }
-               §§push(_loc9_._cache["Score"]);
+               §§push(_loc9_._cache[_loc13_]);
             }
             else
             {
@@ -278,14 +282,15 @@ package tuxwars.data
          var _loc2_:Row = findNextLevel(curScore);
          if(_loc2_)
          {
+            var _loc5_:String = "Score";
             var _loc3_:* = _loc2_;
             §§push(parseInt);
             §§push(global);
-            if(!_loc3_._cache["Score"])
+            if(!_loc3_._cache[_loc5_])
             {
-               _loc3_._cache["Score"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","Score");
+               _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
             }
-            var _loc4_:* = _loc3_._cache["Score"];
+            var _loc4_:* = _loc3_._cache[_loc5_];
             §§push(§§pop()(_loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) - curScore);
          }
          else
@@ -311,10 +316,12 @@ package tuxwars.data
       {
          if(!table)
          {
+            var _loc2_:String = "Experience";
             var _loc1_:ProjectManager = ProjectManager;
-            table = com.dchoc.projectdata.ProjectManager.projectData.findTable("Experience");
+            table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return table;
       }
    }
 }
+

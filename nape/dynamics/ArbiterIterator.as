@@ -5,9 +5,7 @@ package nape.dynamics
    
    public final class ArbiterIterator
    {
-      
-      public static var zpp_pool:ArbiterIterator = null;
-       
+      public static var zpp_pool:ArbiterIterator;
       
       public var zpp_next:ArbiterIterator;
       
@@ -68,3 +66,4 @@ package nape.dynamics
       }
    }
 }
+

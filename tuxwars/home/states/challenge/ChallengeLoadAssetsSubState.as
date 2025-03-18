@@ -6,8 +6,6 @@ package tuxwars.home.states.challenge
    
    public class ChallengeLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function ChallengeLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getChallengeAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.challenge
       }
    }
 }
+

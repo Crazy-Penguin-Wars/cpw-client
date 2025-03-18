@@ -22,8 +22,6 @@ package zpp_nape.phys
    
    public class ZPP_Compound extends ZPP_Interactor
    {
-       
-      
       public var wrap_constraints:ConstraintList;
       
       public var wrap_compounds:CompoundList;
@@ -63,6 +61,7 @@ package zpp_nape.phys
          super();
          icompound = this;
          depth = 1;
+         var _loc1_:ZPP_Compound = this;
          bodies = new ZNPList_ZPP_Body();
          wrap_bodies = ZPP_BodyList.get(bodies);
          wrap_bodies.zpp_inner.adder = bodies_adder;
@@ -117,6 +116,10 @@ package zpp_nape.phys
             _loc7_.zpp_inner.immutable_midstep("Compound::compound");
             if((_loc7_.zpp_inner.compound == null ? null : _loc7_.zpp_inner.compound.outer) != _loc4_)
             {
+               if((_loc7_.zpp_inner.compound == null ? null : _loc7_.zpp_inner.compound.outer) != null)
+               {
+                  (_loc7_.zpp_inner.compound == null ? null : _loc7_.zpp_inner.compound.outer).zpp_inner.wrap_compounds.remove(_loc7_);
+               }
                if(_loc4_ != null)
                {
                   _loc8_ = _loc4_.zpp_inner.wrap_compounds;
@@ -130,7 +133,11 @@ package zpp_nape.phys
                   }
                }
             }
-            if(_loc7_.zpp_inner.compound != null)
+            if(_loc7_.zpp_inner.compound == null)
+            {
+               null;
+            }
+            else
             {
                _loc7_.zpp_inner.compound.outer;
             }
@@ -144,6 +151,10 @@ package zpp_nape.phys
             param1.push(ZPP_CopyHelper.dict(_loc10_.id,_loc11_));
             if((_loc11_.zpp_inner.compound == null ? null : _loc11_.zpp_inner.compound.outer) != _loc4_)
             {
+               if((_loc11_.zpp_inner.compound == null ? null : _loc11_.zpp_inner.compound.outer) != null)
+               {
+                  (_loc11_.zpp_inner.compound == null ? null : _loc11_.zpp_inner.compound.outer).zpp_inner.wrap_bodies.remove(_loc11_);
+               }
                if(_loc4_ != null)
                {
                   _loc12_ = _loc4_.zpp_inner.wrap_bodies;
@@ -157,7 +168,11 @@ package zpp_nape.phys
                   }
                }
             }
-            if(_loc11_.zpp_inner.compound != null)
+            if(_loc11_.zpp_inner.compound == null)
+            {
+               null;
+            }
+            else
             {
                _loc11_.zpp_inner.compound.outer;
             }
@@ -170,6 +185,10 @@ package zpp_nape.phys
             _loc15_ = _loc14_.copy(param1,param2);
             if((_loc15_.zpp_inner.compound == null ? null : _loc15_.zpp_inner.compound.outer) != _loc4_)
             {
+               if((_loc15_.zpp_inner.compound == null ? null : _loc15_.zpp_inner.compound.outer) != null)
+               {
+                  (_loc15_.zpp_inner.compound == null ? null : _loc15_.zpp_inner.compound.outer).zpp_inner.wrap_constraints.remove(_loc15_);
+               }
                if(_loc4_ != null)
                {
                   _loc16_ = _loc4_.zpp_inner.wrap_constraints;
@@ -183,7 +202,11 @@ package zpp_nape.phys
                   }
                }
             }
-            if(_loc15_.zpp_inner.compound != null)
+            if(_loc15_.zpp_inner.compound == null)
+            {
+               null;
+            }
+            else
             {
                _loc15_.zpp_inner.compound.outer;
             }
@@ -191,11 +214,11 @@ package zpp_nape.phys
          }
          if(_loc3_)
          {
-            while(param2.length > 0)
+            while(int(param2.length) > 0)
             {
                _loc17_ = param2.pop();
                _loc18_ = 0;
-               while(_loc18_ < param1.length)
+               while(_loc18_ < int(param1.length))
                {
                   _loc19_ = param1[_loc18_];
                   _loc18_++;
@@ -413,3 +436,4 @@ package zpp_nape.phys
       }
    }
 }
+

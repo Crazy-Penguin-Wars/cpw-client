@@ -9,8 +9,6 @@ package nape.callbacks
    
    public final class CbType
    {
-       
-      
       public var zpp_inner:ZPP_CbType;
       
       public function CbType()
@@ -92,3 +90,4 @@ package nape.callbacks
       }
    }
 }
+

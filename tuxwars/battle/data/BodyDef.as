@@ -5,8 +5,6 @@ package tuxwars.battle.data
    
    public class BodyDef
    {
-       
-      
       private var _allowSleep:Boolean;
       
       private var _fixedRotation:Boolean;
@@ -25,7 +23,7 @@ package tuxwars.battle.data
       
       private var _linearVelocity:Vec2;
       
-      private var _userData;
+      private var _userData:*;
       
       public function BodyDef(type:BodyType = null, allowSleep:Boolean = true, bullet:Boolean = false, fixedRotation:Boolean = false, gravityScale:Number = 1)
       {
@@ -138,3 +136,4 @@ package tuxwars.battle.data
       }
    }
 }
+

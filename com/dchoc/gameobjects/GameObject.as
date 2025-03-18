@@ -20,11 +20,9 @@ package com.dchoc.gameobjects
    
    public class GameObject extends StateMachine
    {
-      
       public static const DIR_LEFT:int = 0;
       
       public static const DIR_RIGHT:int = 1;
-       
       
       private const _displayObject:GameDisplayObject = new GameDisplayObject();
       
@@ -225,7 +223,7 @@ package com.dchoc.gameobjects
       
       public function getDisplayObjectFromResourceManager() : DisplayObject
       {
-         var _loc1_:* = null;
+         var _loc1_:BitmapData = null;
          switch(_resourceType)
          {
             case "BitmapData":
@@ -292,9 +290,9 @@ package com.dchoc.gameobjects
       
       protected function loadGraphics() : void
       {
-         var _loc3_:* = null;
-         var _loc4_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:Texture = null;
+         var _loc4_:Image = null;
+         var _loc2_:OdefuMovieClip = null;
          var _loc1_:DisplayObject = getDisplayObjectFromResourceManager();
          if(_loc1_ is Bitmap)
          {
@@ -315,3 +313,4 @@ package com.dchoc.gameobjects
       }
    }
 }
+

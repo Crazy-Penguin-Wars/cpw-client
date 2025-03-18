@@ -12,7 +12,6 @@ package tuxwars.battle.ui
    
    public class FeedbackItem
    {
-      
       private static const REWARDS_GO_TO_PLAYER:Boolean = true;
       
       private static const SCALE_ITEMS:Boolean = true;
@@ -32,7 +31,6 @@ package tuxwars.battle.ui
       public static const TYPE_COUPON:String = "drop_coupon";
       
       public static const NOT_SET:int = -1;
-       
       
       private var apperaTimeDefault:int;
       
@@ -68,8 +66,8 @@ package tuxwars.battle.ui
       
       public function FeedbackItem(type:String, x:Number, y:Number, gain:int, levelWidth:Number, levelHeight:Number, appearTime:int = -1, waitTime:int = -1, flyTime:int = -1, swf:String = null, export:String = null, icon:MovieClip = null)
       {
-         var dx:Number = NaN;
-         var dy:Number = NaN;
+         var dx:* = NaN;
+         var dy:* = NaN;
          super();
          if(icon != null)
          {
@@ -87,17 +85,46 @@ package tuxwars.battle.ui
          {
             LogUtils.log("No clip for feedback item, type: " + type + " swf: " + swf + " export: " + export,"FeedbackItem",3,"Assets",true,true,true);
          }
+         if(false)
+         {
+            dx = 0;
+            dy = 0;
+            switch(type)
+            {
+               case "drop_coins":
+               case "drop_cash":
+                  dy = 0;
+                  dx = levelWidth;
+                  break;
+               case "drop_exp":
+                  dy = 0;
+                  dx = 0;
+                  break;
+               case "drop_generic_item":
+               default:
+                  dy = levelHeight;
+                  dx = levelWidth >> 1;
+            }
+            destLoc = new Point(dx,dy);
+         }
          clip.mouseEnabled = true;
          clip.addEventListener("mouseOver",mouseOver,false,0,true);
          clip.x = x;
          clip.y = y;
-         if(gain <= 50)
+         if(true)
          {
-            scale = 1 + gain / 50;
+            if(gain <= 50)
+            {
+               scale = 1 + gain / 50;
+            }
+            else
+            {
+               scale = 2;
+            }
          }
          else
          {
-            scale = 2;
+            scale = 1;
          }
          clip.scaleX = scale;
          clip.scaleY = scale;
@@ -112,7 +139,7 @@ package tuxwars.battle.ui
          effectAnimTimeFactor = 0.6;
          effectOffset = new Point(Math.random() * 40 + 40,Math.random() * 10 + 40);
          effectAnimHeightFactor = 400 + Math.random() * 200;
-         var directionLeft:Boolean = Math.random() * 2 == 0;
+         var directionLeft:Boolean = int(Math.random() * 2) == 0;
          if(directionLeft)
          {
             effectOffset.x *= -1;
@@ -187,8 +214,16 @@ package tuxwars.battle.ui
             prc = (flyTimeDefault - flyTime) / flyTimeDefault;
             additionalTime = flyTimeDefault / 20 * prc;
             flyTime -= dt + additionalTime;
-            distX = BattleManager.getLocalPlayer().container.x - clip.x;
-            distY = BattleManager.getLocalPlayer().container.y - clip.y;
+            if(true)
+            {
+               distX = BattleManager.getLocalPlayer().container.x - clip.x;
+               distY = BattleManager.getLocalPlayer().container.y - clip.y;
+            }
+            else
+            {
+               distX = destLoc.x - clip.x;
+               distY = destLoc.y - clip.y;
+            }
             dx = distX / flyTime * dt;
             dy = distY / flyTime * dt;
             if(Math.abs(distX) < Math.abs(dx))
@@ -199,9 +234,12 @@ package tuxwars.battle.ui
             {
                dy = distY;
             }
-            _loc3_ = prc - 0.2 < 0 ? 0 : prc - 0.2;
-            clip.scaleX = scale - scale * _loc3_;
-            clip.scaleY = scale - scale * _loc3_;
+            if(true)
+            {
+               _loc3_ = prc - 0.2 < 0 ? 0 : prc - 0.2;
+               clip.scaleX = scale - scale * _loc3_;
+               clip.scaleY = scale - scale * _loc3_;
+            }
             clip.x += dx;
             clip.y += dy;
          }
@@ -220,3 +258,4 @@ package tuxwars.battle.ui
       }
    }
 }
+

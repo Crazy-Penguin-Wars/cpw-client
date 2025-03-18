@@ -5,9 +5,7 @@ package nape.phys
    
    public final class InteractorIterator
    {
-      
-      public static var zpp_pool:InteractorIterator = null;
-       
+      public static var zpp_pool:InteractorIterator;
       
       public var zpp_next:InteractorIterator;
       
@@ -75,3 +73,4 @@ package nape.phys
       }
    }
 }
+

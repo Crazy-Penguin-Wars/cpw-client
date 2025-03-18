@@ -7,13 +7,11 @@ package tuxwars.home.ui.screen.challenge
    
    public class ChallengeButtonContainers extends UIContainers
    {
-      
       private static const DEFAULT_SLOT:String = "Slot_Default";
       
       private static const CURRENT_SLOT:String = "Challenge_Current";
       
       private static const DISABLED_SLOT:String = "Challenge_Disabled";
-       
       
       public function ChallengeButtonContainers(slotIndex:int, challengeData:ChallengeData, design:MovieClip, activeChallenge:Challenge, completed:Boolean)
       {
@@ -41,3 +39,4 @@ package tuxwars.home.ui.screen.challenge
       }
    }
 }
+

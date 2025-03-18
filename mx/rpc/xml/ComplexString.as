@@ -2,8 +2,6 @@ package mx.rpc.xml
 {
    internal dynamic class ComplexString
    {
-       
-      
       public var value:String;
       
       public function ComplexString(val:String)
@@ -23,3 +21,4 @@ package mx.rpc.xml
       }
    }
 }
+

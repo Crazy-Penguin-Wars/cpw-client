@@ -8,8 +8,6 @@ package tuxwars.battle.utils
    
    public class DeadPlayerTimer
    {
-       
-      
       private var _playerId:String;
       
       private var _loc:Point;
@@ -65,3 +63,4 @@ package tuxwars.battle.utils
       }
    }
 }
+

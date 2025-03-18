@@ -12,8 +12,6 @@ package mx.managers
    
    public interface ISystemManager extends IEventDispatcher, IChildList, IFlexModuleFactory
    {
-       
-      
       function get cursorChildren() : IChildList;
       
       function get document() : Object;
@@ -65,3 +63,4 @@ package mx.managers
       function invalidateParentSizeAndDisplayList() : void;
    }
 }
+

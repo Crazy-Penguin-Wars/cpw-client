@@ -7,9 +7,7 @@ package tuxwars.battle.net.messages.history
    
    public class HistoryMessageFactory
    {
-      
       private static const LATEST_HISTORY_MESSAGES:Object = {};
-       
       
       public function HistoryMessageFactory()
       {
@@ -157,3 +155,4 @@ package tuxwars.battle.net.messages.history
       }
    }
 }
+

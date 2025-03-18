@@ -9,8 +9,6 @@ package tuxwars.challenges
    
    public class Challenges
    {
-       
-      
       private const _activeChallenges:Vector.<Challenge> = new Vector.<Challenge>();
       
       private var playerId:String;
@@ -66,8 +64,8 @@ package tuxwars.challenges
       
       public function update(data:Object) : void
       {
-         var _loc4_:* = null;
-         var _loc2_:* = null;
+         var _loc4_:Array = null;
+         var _loc2_:Challenge = null;
          LogUtils.log("Updating challenges.","Challenges",1,"Challenges",true,false,true);
          _data = data;
          if(_data.challenge)
@@ -102,7 +100,7 @@ package tuxwars.challenges
       
       public function removeChallenge(challenge:Challenge) : void
       {
-         var _loc2_:int = _activeChallenges.indexOf(challenge);
+         var _loc2_:int = int(_activeChallenges.indexOf(challenge));
          if(_loc2_ != -1)
          {
             LogUtils.log("Removed challenge " + challenge.id,"Challenges",1,"Challenges",true,false,true);
@@ -161,8 +159,8 @@ package tuxwars.challenges
       
       private function parseData(data:Object) : void
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:ChallengeData = null;
+         var _loc3_:Challenge = null;
          if(data)
          {
             if(data.challenge)
@@ -205,8 +203,8 @@ package tuxwars.challenges
       
       private function createChallenges(list:Array) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:ChallengeData = null;
+         var _loc2_:Challenge = null;
          list.sort(sortDataObject);
          for each(var obj in list)
          {
@@ -220,7 +218,7 @@ package tuxwars.challenges
       
       private function sortByName(a:Challenge, b:Challenge) : int
       {
-         var playerIDDifference:int = a.playerId.localeCompare(b.playerId);
+         var playerIDDifference:int = int(a.playerId.localeCompare(b.playerId));
          if(playerIDDifference != 0)
          {
             return playerIDDifference;
@@ -229,3 +227,4 @@ package tuxwars.challenges
       }
    }
 }
+

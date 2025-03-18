@@ -13,8 +13,6 @@ package tuxwars.battle.effects
    
    public class Particle extends Sprite
    {
-       
-      
       private const vector:Point = new Point();
       
       private var particleReference:ParticleReference;
@@ -91,7 +89,7 @@ package tuxwars.battle.effects
          if(particleRef.getParticleGraphicSWF() && particleRef.getParticleGraphicExport())
          {
             this.graphicAngle = graphicAngle;
-            graphicExport = particleRef.getParticleGraphicExport()[Math.random() * particleRef.getParticleGraphicExport().length];
+            graphicExport = particleRef.getParticleGraphicExport()[int(Math.random() * particleRef.getParticleGraphicExport().length)];
             if(graphicExport.indexOf(".png") > -1)
             {
                graphicBitmapData = DCResourceManager.instance.getFromSWF(particleRef.getParticleGraphicSWF(),graphicExport,"BitmapData");
@@ -138,11 +136,11 @@ package tuxwars.battle.effects
          var _loc16_:Number = NaN;
          var _loc20_:Number = NaN;
          var _loc10_:Number = NaN;
-         var matrix:* = null;
+         var matrix:Array = null;
          var _loc17_:Number = NaN;
          var _loc3_:Number = NaN;
          var _loc6_:Number = NaN;
-         var _loc18_:* = null;
+         var _loc18_:Bitmap = null;
          lifeTimer -= dt;
          if(lifeTimer <= 0)
          {
@@ -224,9 +222,9 @@ package tuxwars.battle.effects
          }
          if(particleReference.colorModIndex && particleReference.colorModIndex != "none")
          {
-            _loc16_ = (particleReference.colorModValue & 16711680) >>> 16;
-            _loc20_ = (particleReference.colorModValue & 65280) >>> 8;
-            _loc10_ = particleReference.colorModValue & 255;
+            _loc16_ = (particleReference.colorModValue & 0xFF0000) >>> 16;
+            _loc20_ = (particleReference.colorModValue & 0xFF00) >>> 8;
+            _loc10_ = particleReference.colorModValue & 0xFF;
             if(particleReference.colorModIndex == "tint")
             {
                myColorTransform.redMultiplier = _loc15_;
@@ -297,7 +295,7 @@ package tuxwars.battle.effects
       
       public function leaveParticleTail() : Boolean
       {
-         var _loc1_:* = null;
+         var _loc1_:Point = null;
          if(particleReference.leaveTail && currentSpeed > 0)
          {
             _loc1_ = new Point(x,y);
@@ -329,3 +327,4 @@ package tuxwars.battle.effects
       }
    }
 }
+

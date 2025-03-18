@@ -10,8 +10,6 @@ package starling.textures
    
    public class ConcreteTexture extends starling.textures.Texture
    {
-       
-      
       private var mBase:TextureBase;
       
       private var mFormat:String;
@@ -141,3 +139,4 @@ package starling.textures
       }
    }
 }
+

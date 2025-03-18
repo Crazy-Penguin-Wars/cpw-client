@@ -6,18 +6,17 @@ package mx.utils
    import mx.binding.BindabilityInfo;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class DescribeTypeCache
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       private static var typeCache:Object = {};
       
       private static var cacheHandlers:Object = {};
       
-      {
-         registerCacheHandler("bindabilityInfo",bindabilityInfoHandler);
-      }
+      registerCacheHandler("bindabilityInfo",bindabilityInfoHandler);
       
       public function DescribeTypeCache()
       {
@@ -84,3 +83,4 @@ package mx.utils
       }
    }
 }
+

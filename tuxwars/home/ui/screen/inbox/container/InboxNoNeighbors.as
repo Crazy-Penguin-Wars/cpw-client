@@ -12,8 +12,6 @@ package tuxwars.home.ui.screen.inbox.container
    
    public class InboxNoNeighbors extends InboxCore
    {
-       
-      
       private var buttonInviteNeighbors:UIButton;
       
       public function InboxNoNeighbors(requestDataObj:RequestData, design:MovieClip, parent:UIComponent = null)
@@ -29,3 +27,4 @@ package tuxwars.home.ui.screen.inbox.container
       }
    }
 }
+

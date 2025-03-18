@@ -7,8 +7,6 @@ package tuxwars.battle.gameobjects
    
    public class TuxGameObjectDef extends GameObjectDef
    {
-       
-      
       private var _hitPoints:int;
       
       public function TuxGameObjectDef()
@@ -35,3 +33,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

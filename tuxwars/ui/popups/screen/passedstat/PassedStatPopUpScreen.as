@@ -12,8 +12,6 @@ package tuxwars.ui.popups.screen.passedstat
    
    public class PassedStatPopUpScreen extends PopUpBaseScreen
    {
-       
-      
       private var playerSlot:PlayerSlot;
       
       private var rivalSlot:PlayerSlot;
@@ -91,3 +89,4 @@ package tuxwars.ui.popups.screen.passedstat
       }
    }
 }
+

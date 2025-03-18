@@ -12,8 +12,6 @@ package tuxwars.home.ui.logic.matchloading
    
    public class TournamentMatchLoadingLogic extends MatchLoadingLogic
    {
-       
-      
       private var serverResponseData:Object;
       
       public function TournamentMatchLoadingLogic(game:TuxWarsGame, state:TuxState)
@@ -81,3 +79,4 @@ package tuxwars.home.ui.logic.matchloading
       }
    }
 }
+

@@ -16,9 +16,7 @@ package com.dchoc.utils
    
    public class DCUtils
    {
-      
       private static const CLASS_MAP:Object = {};
-       
       
       public function DCUtils()
       {
@@ -116,7 +114,7 @@ package com.dchoc.utils
       
       public static function replaceSubstring(source:String, replace:String, by:String) : String
       {
-         var _loc4_:int = source.indexOf(replace);
+         var _loc4_:int = int(source.indexOf(replace));
          return _loc4_ >= 0 ? source.substring(0,_loc4_) + by + source.substring(_loc4_ + replace.length) : source;
       }
       
@@ -134,9 +132,9 @@ package com.dchoc.utils
       public static function centerClip(clip:DisplayObject) : void
       {
          var _loc2_:DCGame = DCGame;
-         clip.x = Number(com.dchoc.game.DCGame._stage.stageWidth) >> 1;
+         clip.x = com.dchoc.game.DCGame._stage.stageWidth >> 1;
          var _loc3_:DCGame = DCGame;
-         clip.y = Number(com.dchoc.game.DCGame._stage.stageHeight) >> 1;
+         clip.y = com.dchoc.game.DCGame._stage.stageHeight >> 1;
       }
       
       public static function getChildByPath(mc:DisplayObjectContainer, path:String) : DisplayObject
@@ -215,7 +213,7 @@ package com.dchoc.utils
       public static function stopMovieClip(mc:MovieClip) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:MovieClip = null;
          mc.stop();
          for(i = 0; i < mc.numChildren; )
          {
@@ -231,7 +229,7 @@ package com.dchoc.utils
       public static function playMovieClip(mc:MovieClip) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:MovieClip = null;
          mc.play();
          for(i = 0; i < mc.numChildren; )
          {
@@ -247,7 +245,7 @@ package com.dchoc.utils
       public static function disposeAllBitmapData(parent:DisplayObjectContainer) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:DisplayObject = null;
          for(i = 0; i < parent.numChildren; )
          {
             _loc2_ = parent.getChildAt(i);
@@ -298,7 +296,7 @@ package com.dchoc.utils
       public static function setBitmapSmoothing(value:Boolean, mc:MovieClip) : void
       {
          var i:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:DisplayObject = null;
          if(mc != null)
          {
             for(i = 0; i < mc.numChildren; )
@@ -332,9 +330,9 @@ package com.dchoc.utils
          _loc1_.draw(_loc3_);
          var _loc2_:Bitmap = new Bitmap(_loc1_);
          var _loc6_:DCGame = DCGame;
-         _loc2_.x = -Number(com.dchoc.game.DCGame._stage.stageWidth) * 0.5;
+         _loc2_.x = -com.dchoc.game.DCGame._stage.stageWidth * 0.5;
          var _loc7_:DCGame = DCGame;
-         _loc2_.y = -Number(com.dchoc.game.DCGame._stage.stageHeight) * 0.5;
+         _loc2_.y = -com.dchoc.game.DCGame._stage.stageHeight * 0.5;
          return _loc2_;
       }
       
@@ -348,8 +346,8 @@ package com.dchoc.utils
       
       public static function getBrowser() : String
       {
-         var userAgent:* = null;
-         var browser:* = null;
+         var userAgent:String = null;
+         var browser:String = null;
          try
          {
             userAgent = ExternalInterface.call("window.navigator.userAgent.toString");
@@ -383,3 +381,4 @@ package com.dchoc.utils
       }
    }
 }
+

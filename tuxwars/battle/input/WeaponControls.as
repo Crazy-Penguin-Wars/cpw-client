@@ -7,6 +7,7 @@ package tuxwars.battle.input
    import flash.geom.ColorTransform;
    import nape.geom.Vec2;
    import nape.shape.Circle;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.events.PlayerFiredMessage;
    import tuxwars.battle.weapons.Weapon;
@@ -14,7 +15,6 @@ package tuxwars.battle.input
    
    public class WeaponControls
    {
-      
       public static const POWER_BAR:String = "PowerBar";
       
       public static const AIMING:String = "Aiming";
@@ -30,7 +30,6 @@ package tuxwars.battle.input
       private static const BOUNDING_BOX:String = "Bounding_Box";
       
       private static const POWER_BAR_GRAPHICS:String = "Power_Bar";
-       
       
       private const _targetLocation:Vec2 = new Vec2();
       
@@ -61,7 +60,7 @@ package tuxwars.battle.input
       
       private function loadAimingGraphics() : void
       {
-         var boundingBox:* = null;
+         var boundingBox:MovieClip = null;
          switch(weapon.targeting)
          {
             case "Target":
@@ -108,7 +107,7 @@ package tuxwars.battle.input
       public function updateAiming(vector:Vec2) : void
       {
          var _loc3_:Number = NaN;
-         var _loc2_:* = null;
+         var _loc2_:Vec2 = null;
          var _loc6_:Number = NaN;
          var _loc5_:int = 0;
          var _loc7_:Number = NaN;
@@ -163,7 +162,7 @@ package tuxwars.battle.input
                }
                var _loc9_:Config = Config;
                _loc7_ = Math.acos(vector.dot(Config.VEC_UP.copy()));
-               angleDegrees = Number(vector.x > 0 ? MathUtils.radiansToDegrees(_loc7_) : -MathUtils.radiansToDegrees(_loc7_));
+               angleDegrees = vector.x > 0 ? MathUtils.radiansToDegrees(_loc7_) : -MathUtils.radiansToDegrees(_loc7_);
                if(weapon.targeting == "Activation")
                {
                   if(vector.x > 0)
@@ -219,3 +218,4 @@ package tuxwars.battle.input
       }
    }
 }
+

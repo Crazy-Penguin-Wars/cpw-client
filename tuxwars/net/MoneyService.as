@@ -14,7 +14,6 @@ package tuxwars.net
    
    public class MoneyService
    {
-      
       public static const CRM_TYPE_MONEY:String = "Money";
       
       public static const PLATFORM_REQUEST_TYPE_MONEY:int = 10;
@@ -22,7 +21,6 @@ package tuxwars.net
       public static const CRM_PRODUCT_MONEY_PURCHASE:String = "MoneyPurchase";
       
       private static var currentGame:TuxWarsGame;
-       
       
       public function MoneyService()
       {
@@ -67,7 +65,7 @@ package tuxwars.net
       
       private static function callbackCatcher(msg:Message) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          if(msg.data)
          {
             if(Config.debugMode)
@@ -93,7 +91,7 @@ package tuxwars.net
       
       private static function trialPayResponse(msg:Message) : void
       {
-         var data:* = null;
+         var data:Object = null;
          if(msg.data)
          {
             data = JSON.parse(msg.data);
@@ -110,10 +108,10 @@ package tuxwars.net
       
       private static function afterFederalPayment(msg:Message) : void
       {
-         var data:* = null;
-         var _loc4_:* = null;
-         var _loc2_:* = null;
-         var currencyType:* = null;
+         var data:Object = null;
+         var _loc4_:CashPackage = null;
+         var _loc2_:CoinPackage = null;
+         var currencyType:String = null;
          var currencyAmount:int = 0;
          if(msg.data)
          {
@@ -166,3 +164,4 @@ package tuxwars.net
       }
    }
 }
+

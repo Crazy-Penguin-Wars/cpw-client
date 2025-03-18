@@ -9,13 +9,11 @@ package zpp_nape.geom
    
    public class ZPP_ConvexRayResult
    {
+      public static var convexPool:ZPP_ConvexRayResult;
       
-      public static var convexPool:ZPP_ConvexRayResult = null;
+      public static var rayPool:ZPP_ConvexRayResult;
       
-      public static var rayPool:ZPP_ConvexRayResult = null;
-      
-      public static var §internal§:Boolean = false;
-       
+      public static var §internal§:Boolean;
       
       public var toiDistance:Number;
       
@@ -222,3 +220,4 @@ package zpp_nape.geom
       }
    }
 }
+

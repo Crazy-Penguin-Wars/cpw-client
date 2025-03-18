@@ -25,15 +25,15 @@ package mx.managers
    import mx.styles.CSSStyleDeclaration;
    import mx.styles.StyleManager;
    
+   use namespace mx_internal;
+   
    public class CursorManagerImpl extends EventDispatcher implements ICursorManager
    {
-      
-      mx_internal static const VERSION:String = "4.5.1.21489";
-      
       private static var instance:ICursorManager;
       
       public static var mixins:Array;
-       
+      
+      mx_internal static const VERSION:String = "4.5.1.21489";
       
       private var nextCursorID:int = 1;
       
@@ -93,7 +93,7 @@ package mx.managers
          }
          if(Boolean(mixins))
          {
-            n = mixins.length;
+            n = int(mixins.length);
             for(i = 0; i < n; i++)
             {
                new mixins[i](this);
@@ -224,7 +224,7 @@ package mx.managers
       
       public function removeCursor(cursorID:int) : void
       {
-         var i:* = null;
+         var i:Object = null;
          var item:CursorQueueItem = null;
          if(hasEventListener("removeCursor"))
          {
@@ -501,7 +501,7 @@ package mx.managers
       
       private function findSource(target:Object) : int
       {
-         var n:int = this.sourceArray.length;
+         var n:int = int(this.sourceArray.length);
          for(var i:int = 0; i < n; i++)
          {
             if(this.sourceArray[i] === target)
@@ -531,7 +531,7 @@ package mx.managers
          this.mx_internal::cursorHolder.x = pt.x;
          this.mx_internal::cursorHolder.y = pt.y;
          var target:Object = event.target;
-         var isInputTextField:Boolean = target is TextField && target.type == TextFieldType.INPUT || target is ISystemCursorClient && Boolean(ISystemCursorClient(target).showSystemCursor);
+         var isInputTextField:Boolean = target is TextField && target.type == TextFieldType.INPUT || target is ISystemCursorClient && ISystemCursorClient(target).showSystemCursor;
          if(!this.overTextField && isInputTextField)
          {
             this.overTextField = true;
@@ -587,13 +587,12 @@ package mx.managers
 }
 
 import mx.core.mx_internal;
-import mx.managers.ISystemManager;
+
+use namespace mx_internal;
 
 class CursorQueueItem
 {
-   
    mx_internal static const VERSION:String = "4.5.1.21489";
-    
    
    public var cursorID:int = 0;
    

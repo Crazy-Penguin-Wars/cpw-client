@@ -5,11 +5,9 @@ package tuxwars.home.ui.screen.privategame.host
    
    public class LockedLevelButtonContainer extends AbstractLevelButtonContainer
    {
-       
-      
       public function LockedLevelButtonContainer(design:MovieClip, parent:HostPrivateGameSettingsScreen, levelData:LevelData)
       {
-         var _loc4_:* = null;
+         var _loc4_:MovieClip = null;
          super(design,parent,levelData);
          if(levelData)
          {
@@ -19,3 +17,4 @@ package tuxwars.home.ui.screen.privategame.host
       }
    }
 }
+

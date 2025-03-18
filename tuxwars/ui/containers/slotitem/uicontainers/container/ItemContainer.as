@@ -21,8 +21,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
    
    public class ItemContainer extends UIContainer
    {
-       
-      
       private var _lockButton:LockButton;
       
       private var _itemContainers:ItemContainers;
@@ -77,8 +75,8 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       
       protected function mouseClick(event:MouseEvent) : void
       {
-         var clothingItemData:* = null;
-         var _loc2_:* = null;
+         var clothingItemData:ClothingItem = null;
+         var _loc2_:SoundReference = null;
          if(slotElement.game.player.inventory.hasItem(shopItem.id,BattleManager.isPracticeMode()))
          {
             clothingItemData = slotElement.game.player.inventory.getItem(shopItem.id,true) as ClothingItem;
@@ -99,7 +97,7 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       
       protected function mouseOver(event:MouseEvent) : void
       {
-         var currentWornItem:* = null;
+         var currentWornItem:ClothingItem = null;
          MessageCenter.sendMessage("ItemDetails",shopItem);
          var previewItemData:ClothingItem = slotElement.game.player.inventory.getItem(shopItem.id,true) as ClothingItem;
          if(previewItemData is ClothingItem)
@@ -115,7 +113,7 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       
       protected function mouseOut(event:MouseEvent) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:ClothingItem = null;
          MessageCenter.sendMessage("ItemDetails",null);
          updateEquipped(null);
          var previewItemData:ClothingItem = slotElement.game.player.inventory.getItem(shopItem.id,true) as ClothingItem;
@@ -211,3 +209,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       }
    }
 }
+

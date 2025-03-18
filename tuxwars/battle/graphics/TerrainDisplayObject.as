@@ -20,13 +20,11 @@ package tuxwars.battle.graphics
    
    public class TerrainDisplayObject
    {
-      
       public static const PADDING:int = 50;
       
       public static const HALF_PADDING:Number = 25;
       
       private static const HALF_PADDING_POINT:Vec2 = new Vec2(25,25);
-       
       
       private const _terrainBitmap:Bitmap = new Bitmap(null,"auto",true);
       
@@ -72,9 +70,9 @@ package tuxwars.battle.graphics
          _terrainBitmap.bitmapData = _loc3_;
          var newColorTransform:ColorTransform = _terrainBitmap.transform.colorTransform;
          var _loc5_:uint = newColorTransform.color;
-         newColorTransform.redOffset = ((_loc5_ & 16711680) >>> 16) + def.getRed() + (def.getTint() - def.getShade());
-         newColorTransform.greenOffset = ((_loc5_ & 65280) >>> 8) + def.getGreen() + (def.getTint() - def.getShade());
-         newColorTransform.blueOffset = (_loc5_ & 255) + def.getBlue() + (def.getTint() - def.getShade());
+         newColorTransform.redOffset = ((_loc5_ & 0xFF0000) >>> 16) + def.getRed() + (def.getTint() - def.getShade());
+         newColorTransform.greenOffset = ((_loc5_ & 0xFF00) >>> 8) + def.getGreen() + (def.getTint() - def.getShade());
+         newColorTransform.blueOffset = (_loc5_ & 0xFF) + def.getBlue() + (def.getTint() - def.getShade());
          _terrainBitmap.transform.colorTransform = newColorTransform;
       }
       
@@ -153,25 +151,25 @@ package tuxwars.battle.graphics
       {
          var endVec2:* = null;
          var endAngleRad:* = NaN;
-         var curVec2:* = null;
+         var curVec2:Vec2 = null;
          var i:int = 0;
-         var _loc4_:* = null;
-         var _loc7_:* = null;
+         var _loc4_:Vec2 = null;
+         var _loc7_:Vec2 = null;
          var _loc12_:Number = NaN;
          var _loc24_:int = 0;
          var _loc33_:Number = NaN;
-         var connectorVec2:* = null;
+         var connectorVec2:Vec2 = null;
          var doubleWidth:Boolean = false;
          var j:int = 0;
          var _loc13_:* = false;
          var _loc3_:int = 0;
          var _loc14_:* = null;
-         var _loc18_:* = null;
-         var _loc34_:* = null;
-         var _loc35_:* = null;
+         var _loc18_:Point = null;
+         var _loc34_:Vec2 = null;
+         var _loc35_:Vec2 = null;
          var _loc22_:Number = NaN;
-         var _loc30_:* = null;
-         var _loc28_:* = null;
+         var _loc30_:Vec2 = null;
+         var _loc28_:Vec2 = null;
          var _loc15_:Vector.<Vec2> = GeomUtils.duplicatePolygon(terrainModel.points);
          var _loc11_:Rectangle = GeomUtils.createBoundingBox(_loc15_);
          var _loc9_:BitmapData = new BitmapData(_loc11_.width + 50,_loc11_.height + 50,true,0);
@@ -267,10 +265,10 @@ package tuxwars.battle.graphics
          bitmap.scaleX = scaleX;
          var _loc7_:Matrix = new Matrix();
          _loc7_.scale(scaleX,scaleY);
-         _loc7_.translate(-bitmap.width * 0.5,-bitmap.height * 0.5);
+         _loc7_.translate(int(-bitmap.width * 0.5),int(-bitmap.height * 0.5));
          _loc7_.rotate(angle);
-         _loc7_.translate(bitmap.width * 0.5,bitmap.height * 0.5);
-         _loc7_.translate(loc.x,loc.y);
+         _loc7_.translate(int(bitmap.width * 0.5),int(bitmap.height * 0.5));
+         _loc7_.translate(int(loc.x),int(loc.y));
          data.draw(bitmap,_loc7_,null,null,null,true);
       }
       
@@ -288,11 +286,11 @@ package tuxwars.battle.graphics
          var i:int = 0;
          var _loc2_:Vector.<int> = new Vector.<int>();
          var _loc3_:Vector.<Number> = new Vector.<Number>();
-         _loc3_.push(points[0].x,points[0].y);
+         _loc3_.push(int(points[0].x),int(points[0].y));
          _loc2_.push(1);
          for(i = 1; i < points.length; )
          {
-            _loc3_.push(points[i].x,points[i].y);
+            _loc3_.push(int(points[i].x),int(points[i].y));
             _loc2_.push(2);
             i++;
          }
@@ -300,3 +298,4 @@ package tuxwars.battle.graphics
       }
    }
 }
+

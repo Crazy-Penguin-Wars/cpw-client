@@ -8,8 +8,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialChangeBoosterSubState extends TuxTutorialSubState
    {
-       
-      
       public function TuxTutorialChangeBoosterSubState(game:TuxWarsGame)
       {
          super(game,"TUTORIAL_CHANGE_BOOSTER");
@@ -43,3 +41,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

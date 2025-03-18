@@ -21,7 +21,6 @@ package no.olog
    
    internal class Ocore
    {
-      
       internal static var alwaysOnTop:Boolean = true;
       
       internal static var scrollOnNewline:Boolean = true;
@@ -48,17 +47,9 @@ package no.olog
       
       private static var _pwPromptOpen:Boolean;
       
-      private static var _lines:Array = [];
-      
-      private static var _linesFiltered:Array = [];
-      
       private static var _linesAreFiltered:Boolean = false;
       
       private static var _levelFilter:int = -1;
-      
-      private static var _lastLine:Oline = new Oline("",0,null,"","",0,"","");
-      
-      private static var _runTimeMarkers:Array = [];
       
       private static var _numLinesPendingWrite:int;
       
@@ -69,7 +60,14 @@ package no.olog
       private static var _keySequence:String = "";
       
       private static var _logTargets:Array;
-       
+      
+      private static var _lines:Array = [];
+      
+      private static var _linesFiltered:Array = [];
+      
+      private static var _lastLine:Oline = new Oline("",0,null,"","",0,"","");
+      
+      private static var _runTimeMarkers:Array = [];
       
       public function Ocore()
       {
@@ -88,7 +86,7 @@ package no.olog
       
       internal static function getLogCSS() : StyleSheet
       {
-         var size:uint = Capabilities.os.toLowerCase().indexOf("win") == -1 ? 10 : 11;
+         var size:uint = uint(Capabilities.os.toLowerCase().indexOf("win") == -1 ? 10 : 11);
          var p:Object = {
             "fontFamily":"_typewriter",
             "fontSize":size,
@@ -185,8 +183,8 @@ package no.olog
       
       internal static function trace(message:Object, level:uint = 1, origin:Object = null, useLineStart:Boolean = true, bypassValidation:Boolean = false) : void
       {
-         var m:* = null;
-         var s:* = null;
+         var m:String = null;
+         var s:String = null;
          var l:int = 0;
          var isTruncated:Boolean = false;
          var c:String = Otils.getClassName(message);
@@ -201,7 +199,7 @@ package no.olog
          {
             m = String(message);
             s = "String";
-            l = level;
+            l = int(level);
          }
          var o:String = Otils.parseOrigin(origin);
          var i:int = _getLineIndex();
@@ -217,12 +215,12 @@ package no.olog
       
       private static function _sendToTargets(line:Oline) : void
       {
-         var target:* = null;
+         var target:ILogTarget = null;
          var num:int = 0;
          var i:int = 0;
          if(_logTargets)
          {
-            num = _logTargets.length;
+            num = int(_logTargets.length);
             for(i = 0; i < num; )
             {
                target = Ocore._logTargets[i];
@@ -255,6 +253,7 @@ package no.olog
       
       internal static function traceRuntimeInfo() : void
       {
+         var header:String = "RUNTIME INFORMATION\n";
          var type:String = Capabilities.isDebugger ? "Debugger" : "Standard";
          var msg:String = "Platform: " + Capabilities.os + "\n";
          msg += "Language: " + Capabilities.language.toUpperCase() + "\n";
@@ -280,7 +279,7 @@ package no.olog
          msg += "Input Method editor: " + Capabilities.hasIME + "\n";
          msg += "Local File Read Access: " + Capabilities.localFileReadDisable + "\n";
          msg += "Printing: " + Capabilities.hasPrinting + "\n";
-         trace("RUNTIME INFORMATION\n" + msg,0,null,false);
+         trace(header + msg,0,null,false);
       }
       
       internal static function describe(message:Object, level:int = 1, origin:Object = null, limitProperties:Array = null) : void
@@ -362,7 +361,7 @@ package no.olog
       internal static function evalOpenClose(e:Event = null) : void
       {
          var _loc2_:Owindow = Owindow;
-         if(_passwordOk)
+         if(!(!!no.olog.Owindow._i ? no.olog.Owindow._i.visible : false) && _passwordOk)
          {
             _openWindow();
          }
@@ -389,8 +388,8 @@ package no.olog
       private static function _writePendingLines() : void
       {
          var i:int = 0;
-         var line:* = null;
-         var num:int = _lines.length;
+         var line:Oline = null;
+         var num:int = int(_lines.length);
          for(i = _lines.length - _numLinesPendingWrite; i < num; )
          {
             line = _lines[i];
@@ -459,7 +458,7 @@ package no.olog
       {
          var i:int = 0;
          Owindow.clear();
-         var num:int = _linesFiltered.length;
+         var num:int = int(_linesFiltered.length);
          for(i = 0; i < num; )
          {
             _writeLine(_linesFiltered[i]);
@@ -482,8 +481,8 @@ package no.olog
       private static function _openPWPrompt() : void
       {
          _stageFocusRestore = _stage.focus;
-         _pwPrompt.x = (_stage.stageWidth - Number(Ocore._pwPrompt.width)) * 0.5;
-         _pwPrompt.y = (_stage.stageHeight - Number(Ocore._pwPrompt.height)) * 0.5;
+         _pwPrompt.x = (_stage.stageWidth - Ocore._pwPrompt.width) * 0.5;
+         _pwPrompt.y = (_stage.stageHeight - Ocore._pwPrompt.height) * 0.5;
          _stage.addChild(_pwPrompt);
          _stage.focus = _pwPrompt.field;
          _pwPromptOpen = true;
@@ -522,8 +521,8 @@ package no.olog
       
       private static function _onVersionHistoryResult(e:Event) : void
       {
-         var newestVersion:* = null;
-         var str:* = null;
+         var newestVersion:String = null;
+         var str:String = null;
          if(e.type == "complete")
          {
             _versions = new XML(e.target.data);
@@ -667,7 +666,7 @@ package no.olog
          else
          {
             _linesAreFiltered = true;
-            num = _lines.length;
+            num = int(_lines.length);
             for(i = 0; i < num; )
             {
                if(_lines[i].level == _levelFilter)
@@ -686,7 +685,7 @@ package no.olog
       
       private static function _getLogTextFromVO(oline:Oline) : String
       {
-         var rawText:* = null;
+         var rawText:String = null;
          if(!oline.isTruncated)
          {
             rawText = oline.msg;
@@ -772,22 +771,22 @@ package no.olog
       {
          var markerDuration:int = 0;
          var markerMaxDuration:* = 0;
-         var durationString:* = null;
+         var durationString:String = null;
          var level:* = 0;
          var overTime:Boolean = false;
-         var overTimeString:* = null;
+         var overTimeString:String = null;
          var marker:Array = _runTimeMarkers[id];
          if(marker)
          {
-            markerDuration = getTimer() - Number(marker[1]);
+            markerDuration = getTimer() - marker[1];
             markerMaxDuration = uint(marker[3]);
             durationString = Otils.formatTime(markerDuration);
             level = 9;
             if(markerMaxDuration > 0)
             {
                overTime = markerDuration > markerMaxDuration;
-               overTimeString = Otils.formatTime(Math.abs(markerDuration - Number(marker[3])));
-               level = !overTime ? 4 : 2;
+               overTimeString = Otils.formatTime(Math.abs(markerDuration - marker[3]));
+               level = uint(!overTime ? 4 : 2);
                durationString += " (" + overTimeString + (overTime ? " above allowed)" : " below allowed)");
             }
             trace(marker[0] + " completed in " + durationString,level,marker[2],true,true);
@@ -801,15 +800,15 @@ package no.olog
       internal static function saveLogAsXML(e:MouseEvent = null) : void
       {
          var i:int = 0;
-         var line:* = null;
-         var node:* = null;
+         var line:Oline = null;
+         var node:XML = null;
          var d:Date = new Date();
          var ds:String = d.getDate() + "" + d.getMonth() + "" + d.getFullYear();
          var ts:String = d.toTimeString().substr(0,8).replace(/:/g,"");
          var xml:XML = <olog_output></olog_output>;
          xml.@date = ds;
          xml.@time = ts;
-         var num:int = _lines.length;
+         var num:int = int(_lines.length);
          for(i = 0; i < num; )
          {
             line = _lines[i];
@@ -883,9 +882,9 @@ package no.olog
       
       internal static function activateLogTargets(targets:Array) : void
       {
-         var target:* = null;
+         var target:Object = null;
          var i:int = 0;
-         var num:int = targets.length;
+         var num:int = int(targets.length);
          for(i = 0; i < num; i++)
          {
             if(targets[i] is Class)
@@ -917,3 +916,4 @@ package no.olog
       }
    }
 }
+

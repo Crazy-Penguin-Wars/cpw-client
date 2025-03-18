@@ -7,11 +7,10 @@ package tuxwars.home.states.crafting
    
    public class CraftingUISubState extends TuxUIState
    {
-       
-      
       public function CraftingUISubState(game:TuxWarsGame, params:* = null)
       {
          super(CraftingScreen,CraftingLogic,game,params);
       }
    }
 }
+

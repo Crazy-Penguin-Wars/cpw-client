@@ -5,19 +5,18 @@ package mx.logging
    import mx.resources.IResourceManager;
    import mx.resources.ResourceManager;
    
+   use namespace mx_internal;
+   
    public class LogLogger extends EventDispatcher implements ILogger
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _category:String;
       
       public function LogLogger(category:String)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this._category = category;
       }
@@ -112,3 +111,4 @@ package mx.logging
       }
    }
 }
+

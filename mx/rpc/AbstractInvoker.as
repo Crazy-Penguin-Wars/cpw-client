@@ -20,13 +20,13 @@ package mx.rpc
    import mx.rpc.events.ResultEvent;
    import mx.utils.ObjectProxy;
    
+   use namespace mx_internal;
+   
    public class AbstractInvoker extends EventDispatcher
    {
-      
       mx_internal static const BINDING_RESULT:String = "resultForBinding";
-       
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       public var operationManager:Function;
       
@@ -48,7 +48,6 @@ package mx.rpc
       
       public function AbstractInvoker()
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this._log = Log.getLogger("mx.rpc.AbstractInvoker");
          this.mx_internal::activeCalls = new ActiveCalls();
@@ -237,3 +236,4 @@ package mx.rpc
       }
    }
 }
+

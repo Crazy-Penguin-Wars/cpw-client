@@ -12,11 +12,9 @@ package no.olog
    
    internal class Otils
    {
-      
       private static var _so:SharedObject;
       
       private static var _memUsageUpdater:Timer;
-       
       
       public function Otils()
       {
@@ -25,7 +23,7 @@ package no.olog
       
       internal static function parseMsgType(message:Object) : String
       {
-         var result:* = null;
+         var result:String = null;
          var urlPos:int = 0;
          var className:String = getClassName(message);
          var classNameSupported:String = getClassName(message,true);
@@ -77,7 +75,6 @@ package no.olog
                if(message.target != message.currentTarget)
                {
                   result += " (via " + getClassName(message.currentTarget) + ")";
-                  break;
                }
                break;
             case "Event":
@@ -110,7 +107,7 @@ package no.olog
       
       private static function _parseArrayType(message:Object) : String
       {
-         var result:* = null;
+         var result:String = null;
          var num:int = 0;
          var i:int = 0;
          if(!Oplist.expandArrayItems)
@@ -156,10 +153,10 @@ package no.olog
       private static function _parseProperties(message:Object, includeType:Boolean = false) : String
       {
          var i:int = 0;
-         var p:* = null;
+         var p:XML = null;
          var result:String = "";
          var props:XMLList = describeType(message).accessor;
-         var num:int = props.length();
+         var num:int = int(props.length());
          for(i = 0; i < num; )
          {
             p = props[i];
@@ -187,7 +184,7 @@ package no.olog
       internal static function getClassName(o:Object, supported:Boolean = false) : String
       {
          var result:* = null;
-         var inheritanceTree:* = null;
+         var inheritanceTree:XMLList = null;
          var num:int = 0;
          var i:int = 0;
          if(o == null)
@@ -203,7 +200,7 @@ package no.olog
          else
          {
             inheritanceTree = info.extendsClass;
-            num = inheritanceTree.length();
+            num = int(inheritanceTree.length());
             for(i = 0; i < num; )
             {
                result = extractClassNameFromPackage(inheritanceTree[i].@type);
@@ -230,7 +227,7 @@ package no.olog
       {
          var i:int = 0;
          var result:Boolean = false;
-         var num:int = Oplist.SUPPORTED_TYPES.length;
+         var num:int = int(Oplist.SUPPORTED_TYPES.length);
          for(i = 0; i < num; )
          {
             if(Oplist.SUPPORTED_TYPES[i] == name)
@@ -263,7 +260,8 @@ package no.olog
          var fillScreenHeight:int = 0;
          var restoredWidth:int = 0;
          var restoredHeight:int = 0;
-         var paddingX2:int = 5 * 2;
+         var padding:int = 5;
+         var paddingX2:int = padding * 2;
          var b:Rectangle = new Rectangle();
          _so = SharedObject.getLocal("OlogSettings");
          if(_so)
@@ -273,24 +271,24 @@ package no.olog
             {
                no.olog.Owindow._i = new no.olog.Owindow();
             }
-            fillScreenWidth = Number(no.olog.Owindow._i.stage.stageWidth) - paddingX2;
+            fillScreenWidth = no.olog.Owindow._i.stage.stageWidth - paddingX2;
             var _loc9_:Owindow = Owindow;
             if(!no.olog.Owindow._i)
             {
                no.olog.Owindow._i = new no.olog.Owindow();
             }
-            fillScreenHeight = Number(no.olog.Owindow._i.stage.stageHeight) - paddingX2;
-            restoredWidth = uint(_so.data.width);
-            restoredHeight = uint(_so.data.height);
-            b.x = Math.max(uint(_so.data.x),5);
-            b.y = Math.max(uint(_so.data.y),5);
+            fillScreenHeight = no.olog.Owindow._i.stage.stageHeight - paddingX2;
+            restoredWidth = int(uint(_so.data.width));
+            restoredHeight = int(uint(_so.data.height));
+            b.x = Math.max(uint(_so.data.x),padding);
+            b.y = Math.max(uint(_so.data.y),padding);
             b.width = Math.min(restoredWidth,fillScreenWidth);
             b.height = Math.min(restoredHeight,fillScreenHeight);
          }
          else
          {
-            b.x = Math.max(Oplist.x,5);
-            b.y = Math.max(Oplist.y,5);
+            b.x = Math.max(Oplist.x,padding);
+            b.y = Math.max(Oplist.y,padding);
             b.width = Oplist.width != -1 ? Oplist.width : 400;
             b.height = Oplist.height != -1 ? Oplist.height : 350;
          }
@@ -304,7 +302,7 @@ package no.olog
          _so = SharedObject.getLocal("OlogSettings");
          if(_so)
          {
-            now = new Date().getTime();
+            now = int(new Date().getTime());
             then = int(_so.data.lastVersionCheck);
             return then > 0 ? Math.floor((now - then) / 86400000) : 7;
          }
@@ -434,7 +432,6 @@ package no.olog
          switch(supportedType)
          {
             case "Error":
-               break;
             case "ErrorEvent":
                break;
             case "Event":
@@ -452,15 +449,16 @@ package no.olog
       
       internal static function getDescriptionOf(o:Object, limitProperties:Array = null) : String
       {
-         var objectName:* = null;
+         var objectName:String = null;
          var curClass:int = 0;
-         var varName:* = null;
+         var varName:String = null;
          var curVar:int = 0;
-         var v:* = null;
-         var className:* = null;
+         var v:XML = null;
+         var className:String = null;
          var curConst:int = 0;
-         var c:* = null;
-         var separator:String = "\n\t" + Ocore.colorTextLevel("-",0);
+         var c:XML = null;
+         var newLine:String = "\n\t";
+         var separator:String = newLine + Ocore.colorTextLevel("-",0);
          var result:String = "";
          var d:XML = describeType(o);
          var type:String = getClassName(o);
@@ -492,7 +490,7 @@ package no.olog
          }
          var baseList:XMLList = d.extendsClass;
          var heritage:String = "";
-         var numClasses:int = baseList.length();
+         var numClasses:int = int(baseList.length());
          for(curClass = 0; curClass < numClasses; )
          {
             heritage += extractClassNameFromPackage(baseList[curClass].@type);
@@ -502,7 +500,7 @@ package no.olog
             }
             curClass++;
          }
-         result += "\n\t" + "\n\t" + Ocore.colorTextLevel("Inheritance tree: " + heritage,0);
+         result += newLine + newLine + Ocore.colorTextLevel("Inheritance tree: " + heritage,0);
          var parsedVars:Dictionary = new Dictionary(true);
          var varList:* = d.variable;
          var accessorList:* = d.accessor.(@access == "readwrite" || @access == "readonly");
@@ -548,7 +546,7 @@ package no.olog
          }
          for each(var item in parsedVars)
          {
-            variables += "\n\t" + "var " + item.name + Ocore.colorTextLevel(":" + extractClassNameFromPackage(item.type),0) + "\t= " + o[item.name];
+            variables += newLine + "var " + item.name + Ocore.colorTextLevel(":" + extractClassNameFromPackage(item.type),0) + "\t= " + o[item.name];
          }
          if(numParsedVars > 0)
          {
@@ -556,7 +554,7 @@ package no.olog
          }
          var constList:XMLList = d.constant;
          var constants:String = "";
-         var numConst:int = constList.length();
+         var numConst:int = int(constList.length());
          for(curConst = 0; curConst < numConst; )
          {
             varsTotal++;
@@ -571,7 +569,7 @@ package no.olog
          {
             result += separator + "\n\t" + Ocore.colorTextLevel(constants,1);
          }
-         return result + (separator + "\n\t" + Ocore.colorTextLevel(numParsedVars + " value(s) shown of total " + varsTotal + " found",0) + "\n");
+         return result + (separator + newLine + Ocore.colorTextLevel(numParsedVars + " value(s) shown of total " + varsTotal + " found",0) + "\n");
       }
       
       internal static function getLineStart(index:int, timestamp:String, runtime:String) : String
@@ -626,23 +624,24 @@ package no.olog
          var restArgsAllStrings:Boolean = false;
          var restArgIndex:int = 0;
          var i:int = 0;
+         var level:uint = 9;
          var msg:String = "Breakpoint reached: " + getCallee(7);
          var numArgs:int = int(args.length);
          if(numArgs == 0)
          {
-            Ocore.trace(msg,9);
+            Ocore.trace(msg,level);
          }
          else if(numArgs == 1)
          {
             if(isPrimitive(args[0]))
             {
                msg += ", " + parseMsgType(args[i]);
-               Ocore.trace(msg,9);
+               Ocore.trace(msg,level);
             }
             else
             {
-               Ocore.trace(msg,9);
-               Ocore.describe(args[0],9);
+               Ocore.trace(msg,level);
+               Ocore.describe(args[0],level);
             }
          }
          else
@@ -659,8 +658,8 @@ package no.olog
             }
             if(!isPrimitive(args[0]) && restArgsAllStrings)
             {
-               Ocore.trace(msg,9);
-               Ocore.describe(args[0],9,null,args.slice(1));
+               Ocore.trace(msg,level);
+               Ocore.describe(args[0],level,null,args.slice(1));
             }
             else
             {
@@ -669,7 +668,7 @@ package no.olog
                   msg += ", " + parseMsgType(args[i]);
                   i++;
                }
-               Ocore.trace(msg,9);
+               Ocore.trace(msg,level);
             }
          }
       }
@@ -680,3 +679,4 @@ package no.olog
       }
    }
 }
+

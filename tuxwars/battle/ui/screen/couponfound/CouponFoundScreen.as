@@ -16,8 +16,6 @@ package tuxwars.battle.ui.screen.couponfound
    
    public class CouponFoundScreen extends TuxUIScreen
    {
-       
-      
       private const BUTTONS:String = "Slot_0";
       
       protected const headerField:UIAutoTextField = new UIAutoTextField();
@@ -77,3 +75,4 @@ package tuxwars.battle.ui.screen.couponfound
       }
    }
 }
+

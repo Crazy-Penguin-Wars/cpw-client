@@ -8,15 +8,14 @@ package mx.rpc
    import mx.messaging.messages.ErrorMessage;
    import mx.messaging.messages.IMessage;
    
+   use namespace mx_internal;
+   
    public class AsyncRequest extends Producer
    {
-       
-      
-      private var _pendingRequests:Object;
+      private var _pendingRequests:Object = {};
       
       public function AsyncRequest()
       {
-         this._pendingRequests = {};
          super();
       }
       
@@ -67,3 +66,4 @@ package mx.rpc
       }
    }
 }
+

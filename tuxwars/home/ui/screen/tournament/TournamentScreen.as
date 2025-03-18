@@ -30,7 +30,6 @@ package tuxwars.home.ui.screen.tournament
    
    public class TournamentScreen extends TuxUIScreen
    {
-      
       private static const LEAGUE_SLOT_AMOUNT:int = 5;
       
       private static const CLOSE_BUTTON:String = "Button_Close";
@@ -38,7 +37,6 @@ package tuxwars.home.ui.screen.tournament
       private static const PLAY_BUTTON:String = "Button_Play";
       
       private static const HELP_BUTTON:String = "Button_Help";
-       
       
       private var cursorPos:int = 0;
       
@@ -150,7 +148,7 @@ package tuxwars.home.ui.screen.tournament
       private function initLeagueSlots() : void
       {
          var slotCounter:int = 0;
-         var slotDesign:* = null;
+         var slotDesign:MovieClip = null;
          _leagueSlots = new Vector.<LeagueSlot>();
          var leagueSlots:MovieClip = (this._design as MovieClip).getChildByName("League_Slots") as MovieClip;
          var slots:MovieClip = leagueSlots.getChildByName("Container_Slots") as MovieClip;
@@ -176,10 +174,10 @@ package tuxwars.home.ui.screen.tournament
       private function initTournamentInfo() : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:MovieClip = null;
          var positionNumber:int = 0;
-         var _loc1_:* = null;
-         var _loc4_:* = null;
+         var _loc1_:MovieClip = null;
+         var _loc4_:TournamentRewardItem = null;
          var centralizedPos:int = 0;
          if(!_game.player.tournament || !_game.player.tournament.league)
          {
@@ -274,7 +272,7 @@ package tuxwars.home.ui.screen.tournament
       private function updateSlots() : void
       {
          var _loc1_:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:String = null;
          var slotCounter:int = 0;
          var i:int = 0;
          if(_league.playedGames < _tournament.requiredPlacementForLeague)
@@ -326,7 +324,7 @@ package tuxwars.home.ui.screen.tournament
       
       override public function logicUpdate(deltaTime:int) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:TuxWarsGame = null;
          super.logicUpdate(deltaTime);
          if(_tournament)
          {
@@ -415,3 +413,4 @@ package tuxwars.home.ui.screen.tournament
       }
    }
 }
+

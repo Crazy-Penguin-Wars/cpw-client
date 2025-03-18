@@ -3,11 +3,11 @@ package mx.utils
    import flash.utils.Proxy;
    import flash.utils.flash_proxy;
    
+   use namespace flash_proxy;
+   
    public dynamic class DescribeTypeCacheRecord extends Proxy
    {
-       
-      
-      private var cache:Object;
+      private var cache:Object = {};
       
       public var typeDescription:XML;
       
@@ -15,7 +15,6 @@ package mx.utils
       
       public function DescribeTypeCacheRecord()
       {
-         this.cache = {};
          super();
       }
       
@@ -46,3 +45,4 @@ package mx.utils
       }
    }
 }
+

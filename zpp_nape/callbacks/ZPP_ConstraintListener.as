@@ -13,8 +13,6 @@ package zpp_nape.callbacks
    
    public class ZPP_ConstraintListener extends ZPP_Listener
    {
-       
-      
       public var outer_zn:ConstraintListener;
       
       public var options:ZPP_OptionType;
@@ -127,6 +125,7 @@ package zpp_nape.callbacks
                   ZNPNode_ZPP_CbType.zpp_pool = _loc9_.next;
                   _loc9_.next = null;
                }
+               null;
                _loc9_.elt = param1;
                _loc6_ = _loc9_;
                if(_loc5_ == null)
@@ -140,7 +139,7 @@ package zpp_nape.callbacks
                   _loc5_.next = _loc6_;
                }
                _loc8_.pushmod = _loc8_.modified = true;
-               _loc8_.length = _loc8_.length + 1;
+               ++_loc8_.length;
                _loc6_;
             }
             else
@@ -173,6 +172,7 @@ package zpp_nape.callbacks
                ZNPNode_ZPP_CbType.zpp_pool = _loc9_.next;
                _loc9_.next = null;
             }
+            null;
             _loc9_.elt = param1;
             _loc6_ = _loc9_;
             if(_loc5_ == null)
@@ -186,7 +186,7 @@ package zpp_nape.callbacks
                _loc5_.next = _loc6_;
             }
             _loc8_.pushmod = _loc8_.modified = true;
-            _loc8_.length = _loc8_.length + 1;
+            ++_loc8_.length;
             _loc6_;
          }
          else
@@ -235,6 +235,7 @@ package zpp_nape.callbacks
                ZNPNode_ZPP_ConstraintListener.zpp_pool = _loc7_.next;
                _loc7_.next = null;
             }
+            null;
             _loc7_.elt = this;
             _loc4_ = _loc7_;
             if(_loc3_ == null)
@@ -248,7 +249,7 @@ package zpp_nape.callbacks
                _loc3_.next = _loc4_;
             }
             _loc6_.pushmod = _loc6_.modified = true;
-            _loc6_.length = _loc6_.length + 1;
+            ++_loc6_.length;
             _loc4_;
             _loc9_ = _loc2_.cbsets.head;
             while(_loc9_ != null)
@@ -262,3 +263,4 @@ package zpp_nape.callbacks
       }
    }
 }
+

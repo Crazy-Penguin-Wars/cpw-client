@@ -1,18 +1,16 @@
 package tuxwars.items.references
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    
    public class SpecialReference
    {
-      
       public static const TYPE_CUSTOMIZATION_VALUE_MULTIPLIER_R:String = "RedMultiplier";
       
       public static const TYPE_CUSTOMIZATION_VALUE_MULTIPLIER_G:String = "GreenMultiplier";
       
       public static const TYPE_CUSTOMIZATION_VALUE_MULTIPLIER_B:String = "BlueMultiplier";
-       
       
       private var row:Row;
       
@@ -42,3 +40,4 @@ package tuxwars.items.references
       }
    }
 }
+

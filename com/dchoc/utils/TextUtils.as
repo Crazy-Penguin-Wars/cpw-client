@@ -4,8 +4,6 @@ package com.dchoc.utils
    
    public class TextUtils
    {
-       
-      
       public function TextUtils()
       {
          super();
@@ -125,8 +123,6 @@ package com.dchoc.utils
 
 class Time
 {
-    
-   
    public var days:int;
    
    public var hours:int;
@@ -143,12 +139,12 @@ class Time
          timeInSeconds = 0;
       }
       seconds = timeInSeconds;
-      days = Number(seconds) / 86400;
-      seconds -= Number(days) * 60 * 60 * 24;
-      hours = Number(seconds) / 3600;
-      seconds -= Number(hours) * 60 * 60;
-      minutes = Number(seconds) / 60;
-      seconds -= Number(minutes) * 60;
+      days = seconds / 86400;
+      seconds -= days * 60 * 60 * 24;
+      hours = seconds / 3600;
+      seconds -= hours * 60 * 60;
+      minutes = seconds / 60;
+      seconds -= minutes * 60;
    }
    
    public function getPaddedDays() : String

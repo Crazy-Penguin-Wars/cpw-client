@@ -12,17 +12,14 @@ package com.dchoc.gameobjects.stats
    
    public class Stats
    {
-      
       private static const PHYSICS_STATS:Array = ["Density","GravityScale","Restitution","Friction"];
       
       private static const PHYSICS_STAT_CLASSES:Object = {};
       
-      {
-         PHYSICS_STAT_CLASSES["GravityScale"] = GravityScaleStat;
-         PHYSICS_STAT_CLASSES["Density"] = DensityStat;
-         PHYSICS_STAT_CLASSES["Restitution"] = RestitutionStat;
-         PHYSICS_STAT_CLASSES["Friction"] = FrictionStat;
-      }
+      PHYSICS_STAT_CLASSES["GravityScale"] = GravityScaleStat;
+      PHYSICS_STAT_CLASSES["Density"] = DensityStat;
+      PHYSICS_STAT_CLASSES["Restitution"] = RestitutionStat;
+      PHYSICS_STAT_CLASSES["Friction"] = FrictionStat;
       
       private var _stats:Object;
       
@@ -89,7 +86,7 @@ package com.dchoc.gameobjects.stats
       
       public function addStat(statName:String, statToAdd:Stat, body:Body) : void
       {
-         var stat:* = null;
+         var stat:Stat = null;
          if(statToAdd != null)
          {
             stat = getStat(statName);
@@ -121,9 +118,9 @@ package com.dchoc.gameobjects.stats
       
       public function removeStat(statName:String, statToRemove:Stat) : void
       {
-         var stat:* = null;
+         var stat:Stat = null;
          var i:int = 0;
-         var statModifier:* = null;
+         var statModifier:StatModifier = null;
          if(statToRemove != null)
          {
             stat = getStat(statName);
@@ -185,3 +182,4 @@ package com.dchoc.gameobjects.stats
       }
    }
 }
+

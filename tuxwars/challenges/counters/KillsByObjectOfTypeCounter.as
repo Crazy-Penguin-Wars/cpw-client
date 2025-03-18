@@ -10,8 +10,6 @@ package tuxwars.challenges.counters
    
    public class KillsByObjectOfTypeCounter extends KillsCounter
    {
-       
-      
       public function KillsByObjectOfTypeCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -19,7 +17,7 @@ package tuxwars.challenges.counters
       
       override public function handlePlayerDied(msg:ChallengePlayerDiedMessage) : void
       {
-         var _loc5_:* = null;
+         var _loc5_:Damage = null;
          var _loc4_:PlayerGameObject = msg.player;
          var _loc2_:Tagger = _loc4_.tag.findLatestPlayerTagger();
          var _loc6_:* = _loc4_;
@@ -66,3 +64,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

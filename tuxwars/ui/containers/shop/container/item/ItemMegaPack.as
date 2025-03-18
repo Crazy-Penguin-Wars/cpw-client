@@ -21,8 +21,6 @@ package tuxwars.ui.containers.shop.container.item
    
    public class ItemMegaPack extends ContainerTags
    {
-       
-      
       private var _name:UIAutoTextField;
       
       private var _normalPriceTitle:UIAutoTextField;
@@ -42,7 +40,7 @@ package tuxwars.ui.containers.shop.container.item
       public function ItemMegaPack(design:MovieClip, data:*, game:TuxWarsGame, parent:TuxUIScreen = null)
       {
          var i:int = 0;
-         var shopItemA:* = null;
+         var shopItemA:ShopItem = null;
          var itemAmount:int = 0;
          super(design,data,game,parent);
          assert("Data is not an array or lenght 1",true,data is Array && (data as Array).length == 1);
@@ -138,3 +136,4 @@ package tuxwars.ui.containers.shop.container.item
       }
    }
 }
+

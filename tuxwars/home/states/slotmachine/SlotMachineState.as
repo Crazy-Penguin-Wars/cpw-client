@@ -9,8 +9,6 @@ package tuxwars.home.states.slotmachine
    
    public class SlotMachineState extends TuxState
    {
-       
-      
       public function SlotMachineState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -47,3 +45,4 @@ package tuxwars.home.states.slotmachine
       }
    }
 }
+

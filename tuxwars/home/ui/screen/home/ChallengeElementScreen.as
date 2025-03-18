@@ -24,7 +24,6 @@ package tuxwars.home.ui.screen.home
    
    public class ChallengeElementScreen extends TuxUIElementScreen
    {
-      
       private static const BUTTON_CHALLENGES:String = "Button_Challenge_";
       
       private static const DEFAULT_BUTTON:String = "Challenge_Default";
@@ -37,12 +36,10 @@ package tuxwars.home.ui.screen.home
       
       private static const ELEMENT_MAP:Object = {};
       
-      {
-         ELEMENT_MAP["Battle"] = 0;
-         ELEMENT_MAP["Grind"] = 1;
-         ELEMENT_MAP["Skill"] = 2;
-         ELEMENT_MAP["Impossible"] = 3;
-      }
+      ELEMENT_MAP["Battle"] = 0;
+      ELEMENT_MAP["Grind"] = 1;
+      ELEMENT_MAP["Skill"] = 2;
+      ELEMENT_MAP["Impossible"] = 3;
       
       private const challengeButtons:Vector.<IconButton> = new Vector.<IconButton>();
       
@@ -59,8 +56,8 @@ package tuxwars.home.ui.screen.home
          var j:int = 0;
          var numChallenges:int = 0;
          var i:int = 0;
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:Challenge = null;
+         var _loc4_:IconButton = null;
          for(j = 0; j < 4; )
          {
             challengeButtons[j].setEnabled(false);
@@ -83,7 +80,7 @@ package tuxwars.home.ui.screen.home
                _loc4_.setEnabled(true);
                i++;
             }
-            numChallenges = _loc2_.activeChallenges.length;
+            numChallenges = int(_loc2_.activeChallenges.length);
          }
       }
       
@@ -101,11 +98,11 @@ package tuxwars.home.ui.screen.home
       private function createButtons() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
-         var _loc3_:* = null;
+         var _loc1_:MovieClip = null;
+         var _loc3_:IconButton = null;
          var _loc2_:Boolean = false;
-         var _loc4_:* = null;
-         var _loc5_:* = null;
+         var _loc4_:MovieClip = null;
+         var _loc5_:MovieClip = null;
          for(i = 0; i < 4; )
          {
             _loc1_ = getDesignMovieClip().getChildByName("Button_Challenge_" + (i + 1)) as MovieClip;
@@ -165,3 +162,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

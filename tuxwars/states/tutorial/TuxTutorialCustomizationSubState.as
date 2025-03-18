@@ -10,8 +10,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialCustomizationSubState extends TuxTutorialSubState
    {
-       
-      
       private var faceClicked:Boolean;
       
       public function TuxTutorialCustomizationSubState(game:TuxWarsGame)
@@ -66,3 +64,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

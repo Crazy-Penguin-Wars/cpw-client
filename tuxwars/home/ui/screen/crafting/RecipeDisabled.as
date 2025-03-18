@@ -12,8 +12,6 @@ package tuxwars.home.ui.screen.crafting
    
    public class RecipeDisabled extends UIContainer
    {
-       
-      
       private var title:UIAutoTextField;
       
       private var description:UIAutoTextField;
@@ -27,3 +25,4 @@ package tuxwars.home.ui.screen.crafting
       }
    }
 }
+

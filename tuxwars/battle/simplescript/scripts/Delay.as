@@ -10,11 +10,9 @@ package tuxwars.battle.simplescript.scripts
    
    public class Delay implements SimpleScriptCore
    {
+      private static var idCounter:int;
       
       private static const activeDelays:Vector.<Delay> = new Vector.<Delay>();
-      
-      private static var idCounter:int;
-       
       
       private var _uniqueIdForPhysicsUpdater:String;
       
@@ -45,7 +43,7 @@ package tuxwars.battle.simplescript.scripts
       
       public function physicsUpdate(deltaTime:int) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:SimpleScriptObject = null;
          _timeUntillTrigger -= deltaTime;
          if(_timeUntillTrigger < 0 && !_triggered)
          {
@@ -69,3 +67,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

@@ -10,8 +10,6 @@ package zpp_nape.dynamics
    
    public class ZPP_SpaceArbiterList extends ArbiterList
    {
-       
-      
       public var zip_length:Boolean;
       
       public var space:ZPP_Space;
@@ -248,7 +246,7 @@ package zpp_nape.dynamics
                }
                while(at_index_0 != _loc4_)
                {
-                  at_index_0 = at_index_0 + 1;
+                  ++at_index_0;
                   ite_0 = ite_0.next;
                   while(true)
                   {
@@ -288,7 +286,7 @@ package zpp_nape.dynamics
                }
                while(at_index_1 != _loc4_)
                {
-                  at_index_1 = at_index_1 + 1;
+                  ++at_index_1;
                   ite_1 = ite_1.next;
                   while(true)
                   {
@@ -328,7 +326,7 @@ package zpp_nape.dynamics
                }
                while(at_index_2 != _loc4_)
                {
-                  at_index_2 = at_index_2 + 1;
+                  ++at_index_2;
                   ite_2 = ite_2.next;
                   while(true)
                   {
@@ -368,7 +366,7 @@ package zpp_nape.dynamics
                }
                while(at_index_3 != _loc4_)
                {
-                  at_index_3 = at_index_3 + 1;
+                  ++at_index_3;
                   ite_3 = ite_3.next;
                   while(true)
                   {
@@ -391,3 +389,4 @@ package zpp_nape.dynamics
       }
    }
 }
+

@@ -11,11 +11,9 @@ package tuxwars.battle.ui.screen.tab
    
    public class BattleHudTabElement extends TuxUIElementScreen
    {
-      
       private static const PLAYER_SLOT:String = "Slot_";
       
       private static const NUMBER_OF_PLAYER_TABS:int = 4;
-       
       
       private var playerTabs:Object;
       
@@ -54,7 +52,7 @@ package tuxwars.battle.ui.screen.tab
       override public function logicUpdate(deltaTime:int) : void
       {
          var j:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:BattleHudPlayerData = null;
          var _loc3_:* = 0;
          super.logicUpdate(deltaTime);
          var _loc4_:Object = battleHudLogic.getHudPlayersData();
@@ -74,3 +72,4 @@ package tuxwars.battle.ui.screen.tab
       }
    }
 }
+

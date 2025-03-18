@@ -12,8 +12,6 @@ package tuxwars.home.ui.screen.privategame.host
    
    public class HostPrivateGameScreen extends PrivateGameScreen
    {
-       
-      
       private var playButton:UIButton;
       
       private var settingsButton:UIButton;
@@ -59,3 +57,4 @@ package tuxwars.home.ui.screen.privategame.host
       }
    }
 }
+

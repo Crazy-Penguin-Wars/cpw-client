@@ -7,9 +7,7 @@ package tuxwars.home.ui.screen.crafting.researchslot
    
    public class ResearchContainerOngoing extends ResearchContainer
    {
-      
       public static const INSTANT:String = "Slot_Result";
-       
       
       public function ResearchContainerOngoing(design:MovieClip, titleTid:String, descriptionTid:String, game:TuxWarsGame, parent:UIComponent = null)
       {
@@ -19,3 +17,4 @@ package tuxwars.home.ui.screen.crafting.researchslot
       }
    }
 }
+

@@ -8,9 +8,7 @@ package tuxwars.ui.popups.states.notenoughammo
    
    public class NotEnoughAmmoSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_NOT_ENOUGH_AMMO:String = "TypeNotEnoughAmmo";
-       
       
       public function NotEnoughAmmoSubState(game:DCGame, params:* = null)
       {
@@ -21,3 +19,4 @@ package tuxwars.ui.popups.states.notenoughammo
       }
    }
 }
+

@@ -2,11 +2,9 @@ package com.dchoc.ui
 {
    public class UIButtonConfig
    {
-      
       private static var soundStatus:Boolean = true;
       
       private static var sounds:Object = {};
-       
       
       public function UIButtonConfig()
       {
@@ -42,3 +40,4 @@ package com.dchoc.ui
       }
    }
 }
+

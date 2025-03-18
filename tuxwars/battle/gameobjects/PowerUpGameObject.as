@@ -27,8 +27,6 @@ package tuxwars.battle.gameobjects
    
    public class PowerUpGameObject extends PhysicsEmissionGameObject
    {
-       
-      
       private var exportBase:String;
       
       private var _toughness:int;
@@ -74,7 +72,7 @@ package tuxwars.battle.gameobjects
       
       override public function physicsUpdate(deltaTime:int) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:ParticleReference = null;
          super.physicsUpdate(deltaTime);
          if(!body)
          {
@@ -124,7 +122,6 @@ package tuxwars.battle.gameobjects
          switch(type)
          {
             case "object":
-               break;
             case "powerup":
                break;
             default:
@@ -161,7 +158,7 @@ package tuxwars.battle.gameobjects
       
       override protected function handleCollision(otherBody:Body, arbiterList:ArbiterList) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:PlayerGameObject = null;
          if(!powerUpUsed)
          {
             location = findFirstCollisionPosition(arbiterList);
@@ -205,9 +202,9 @@ package tuxwars.battle.gameobjects
       
       private function giveItems(resultItemsArray:Array, targetCharacter:PlayerGameObject, giveRandomItem:Boolean) : void
       {
-         var itemId:* = null;
+         var itemId:String = null;
          var itemAmount:int = 0;
-         var _loc6_:* = null;
+         var _loc6_:TextEffect = null;
          var _loc5_:RewardsHandler = targetCharacter.rewardsHandler;
          if(_loc5_)
          {
@@ -253,7 +250,7 @@ package tuxwars.battle.gameobjects
       
       private function applyHealEffect(targetCharacter:PlayerGameObject) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:TextEffect = null;
          if(resultObject.resultHeal > 0)
          {
             CRMService.sendEvent("Economy","Earn_Healing","Get_powerup","Earn_Score",null,-resultObject.resultHeal);
@@ -275,3 +272,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

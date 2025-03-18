@@ -12,8 +12,6 @@ package zpp_nape.geom
    
    public class ZPP_Geom
    {
-       
-      
       public function ZPP_Geom()
       {
       }
@@ -47,6 +45,7 @@ package zpp_nape.geom
                      _loc3_.zip_axis = false;
                      _loc3_.axisx = Math.sin(_loc3_.rot);
                      _loc3_.axisy = Math.cos(_loc3_.rot);
+                     null;
                   }
                   if(_loc2_.zip_gverts)
                   {
@@ -60,6 +59,7 @@ package zpp_nape.geom
                            _loc3_.zip_axis = false;
                            _loc3_.axisx = Math.sin(_loc3_.rot);
                            _loc3_.axisy = Math.cos(_loc3_.rot);
+                           null;
                         }
                         _loc4_ = _loc2_.lverts.next;
                         _loc5_ = _loc2_.gverts.next;
@@ -144,6 +144,7 @@ package zpp_nape.geom
                               {
                                  _loc2_.localCOMx = _loc2_.lverts.next.x;
                                  _loc2_.localCOMy = _loc2_.lverts.next.y;
+                                 null;
                               }
                               else if(_loc2_.lverts.next.next.next == null)
                               {
@@ -204,6 +205,7 @@ package zpp_nape.geom
                            _loc3_.zip_axis = false;
                            _loc3_.axisx = Math.sin(_loc3_.rot);
                            _loc3_.axisy = Math.cos(_loc3_.rot);
+                           null;
                         }
                         _loc10_.worldCOMx = _loc10_.body.posx + (_loc10_.body.axisy * _loc10_.localCOMx - _loc10_.body.axisx * _loc10_.localCOMy);
                         _loc10_.worldCOMy = _loc10_.body.posy + (_loc10_.localCOMx * _loc10_.body.axisx + _loc10_.localCOMy * _loc10_.body.axisy);
@@ -231,6 +233,7 @@ package zpp_nape.geom
                            _loc3_.zip_axis = false;
                            _loc3_.axisx = Math.sin(_loc3_.rot);
                            _loc3_.axisy = Math.cos(_loc3_.rot);
+                           null;
                         }
                         _loc4_ = _loc2_.lverts.next;
                         _loc5_ = _loc2_.gverts.next;
@@ -300,6 +303,7 @@ package zpp_nape.geom
                      {
                         _loc2_.localCOMx = _loc2_.lverts.next.x;
                         _loc2_.localCOMy = _loc2_.lverts.next.y;
+                        null;
                      }
                      else if(_loc2_.lverts.next.next.next == null)
                      {
@@ -360,6 +364,7 @@ package zpp_nape.geom
                   _loc3_.zip_axis = false;
                   _loc3_.axisx = Math.sin(_loc3_.rot);
                   _loc3_.axisy = Math.cos(_loc3_.rot);
+                  null;
                }
                param1.worldCOMx = param1.body.posx + (param1.body.axisy * param1.localCOMx - param1.body.axisx * param1.localCOMy);
                param1.worldCOMy = param1.body.posy + (param1.localCOMx * param1.body.axisx + param1.localCOMy * param1.body.axisy);
@@ -368,3 +373,4 @@ package zpp_nape.geom
       }
    }
 }
+

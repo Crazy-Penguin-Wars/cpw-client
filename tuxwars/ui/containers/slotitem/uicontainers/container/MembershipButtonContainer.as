@@ -10,8 +10,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
    
    public class MembershipButtonContainer extends ButtonContainer
    {
-       
-      
       public function MembershipButtonContainer(design:MovieClip, parent:UIComponent = null)
       {
          super(design,parent);
@@ -31,3 +29,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       }
    }
 }
+

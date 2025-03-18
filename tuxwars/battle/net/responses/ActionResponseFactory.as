@@ -2,8 +2,6 @@ package tuxwars.battle.net.responses
 {
    public class ActionResponseFactory
    {
-       
-      
       public function ActionResponseFactory()
       {
          super();
@@ -40,3 +38,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

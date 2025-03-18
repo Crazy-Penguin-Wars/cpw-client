@@ -13,13 +13,11 @@ package tuxwars.challenges
    
    public class ChallengeManager
    {
-      
       private static var _instance:ChallengeManager;
       
       private static var tuxGame:TuxWarsGame;
       
       private static var matchInProgress:Boolean;
-       
       
       private const playerChallenges:Object = {};
       
@@ -237,3 +235,4 @@ package tuxwars.challenges
       }
    }
 }
+

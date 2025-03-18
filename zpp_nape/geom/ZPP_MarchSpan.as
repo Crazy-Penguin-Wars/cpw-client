@@ -4,9 +4,7 @@ package zpp_nape.geom
    
    public class ZPP_MarchSpan
    {
-      
-      public static var zpp_pool:ZPP_MarchSpan = null;
-       
+      public static var zpp_pool:ZPP_MarchSpan;
       
       public var rank:int;
       
@@ -30,3 +28,4 @@ package zpp_nape.geom
       }
    }
 }
+

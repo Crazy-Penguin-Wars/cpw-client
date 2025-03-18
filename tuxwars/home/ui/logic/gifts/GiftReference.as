@@ -1,17 +1,15 @@
 package tuxwars.home.ui.logic.gifts
 {
    import com.dchoc.data.GraphicsReference;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
+   import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import tuxwars.items.data.ItemData;
    import tuxwars.items.managers.ItemManager;
    
    public class GiftReference
    {
-      
       private static const SHOW:String = "Show";
       
       private static const ITEM_REFERENCE:String = "ItemReference";
@@ -39,7 +37,6 @@ package tuxwars.home.ui.logic.gifts
       public static const TYPE_CASH:String = "Cash";
       
       public static const TYPE_EXP:String = "Exp";
-       
       
       private var row:Row;
       
@@ -56,24 +53,26 @@ package tuxwars.home.ui.logic.gifts
       
       public function get show() : Boolean
       {
+         var _loc4_:String = "Show";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Show"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Show"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Show");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Show"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : false;
       }
       
       public function get itemData() : ItemData
       {
+         var _loc5_:String = "ItemReference";
          var _loc3_:Row = row;
-         if(!_loc3_._cache["ItemReference"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["ItemReference"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","ItemReference");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["ItemReference"];
+         var _loc1_:Field = _loc3_._cache[_loc5_];
          var _loc4_:*;
          var _loc2_:Row = !!_loc1_ ? (_loc4_ = _loc1_, _loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) : null;
          return !!_loc2_ ? ItemManager.getItemData(_loc2_.id) : null;
@@ -81,72 +80,78 @@ package tuxwars.home.ui.logic.gifts
       
       public function get sortPriority() : int
       {
+         var _loc4_:String = "SortPriority";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["SortPriority"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["SortPriority"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SortPriority");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["SortPriority"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get requiredLevel() : int
       {
+         var _loc4_:String = "RequiredLevel";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["RequiredLevel"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["RequiredLevel"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RequiredLevel");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["RequiredLevel"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get mysteryGiftRatio() : int
       {
+         var _loc4_:String = "MysteryGiftRatio";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["MysteryGiftRatio"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["MysteryGiftRatio"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","MysteryGiftRatio");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["MysteryGiftRatio"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get amount() : int
       {
+         var _loc4_:String = "Amount";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Amount"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Amount"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Amount");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Amount"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get type() : String
       {
+         var _loc4_:String = "Type";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Type"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Type");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Type"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       private function get icon() : GraphicsReference
       {
+         var _loc4_:String = "Icon";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Icon"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Icon"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Icon");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Icon"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          if(_loc1_)
          {
             var _loc3_:* = _loc1_;
@@ -161,7 +166,7 @@ package tuxwars.home.ui.logic.gifts
       
       public function get iconMovieClip() : MovieClip
       {
-         var _loc1_:* = null;
+         var _loc1_:MovieClip = null;
          if(icon)
          {
             _loc1_ = DCResourceManager.instance.getFromSWF(icon.swf,icon.export);
@@ -180,12 +185,13 @@ package tuxwars.home.ui.logic.gifts
       
       public function get name() : String
       {
+         var _loc4_:String = "Name";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Name"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Name"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Name");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Name"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          if(_loc1_)
          {
             var _loc3_:* = _loc1_;
@@ -200,12 +206,13 @@ package tuxwars.home.ui.logic.gifts
       
       public function get description() : String
       {
+         var _loc4_:String = "Description";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Description"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Description"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Description");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Description"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          if(_loc1_)
          {
             var _loc3_:* = _loc1_;
@@ -219,3 +226,4 @@ package tuxwars.home.ui.logic.gifts
       }
    }
 }
+

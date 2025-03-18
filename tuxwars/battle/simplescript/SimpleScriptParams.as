@@ -7,9 +7,7 @@ package tuxwars.battle.simplescript
    
    public class SimpleScriptParams
    {
-       
-      
-      private var _data;
+      private var _data:*;
       
       private var _pgoA:PhysicsGameObject;
       
@@ -123,3 +121,4 @@ package tuxwars.battle.simplescript
       }
    }
 }
+

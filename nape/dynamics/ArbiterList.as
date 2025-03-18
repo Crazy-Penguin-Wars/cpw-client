@@ -7,8 +7,6 @@ package nape.dynamics
    
    public class ArbiterList
    {
-       
-      
       public var zpp_inner:ZPP_ArbiterList;
       
       public function ArbiterList()
@@ -32,7 +30,7 @@ package nape.dynamics
          }
          var _loc2_:ArbiterList = new ArbiterList();
          var _loc3_:int = 0;
-         while(_loc3_ < param1.length)
+         while(_loc3_ < int(param1.length))
          {
             _loc4_ = param1[_loc3_];
             _loc3_++;
@@ -85,7 +83,7 @@ package nape.dynamics
                _loc2_ = _loc1_.elt;
                if(_loc2_.active)
                {
-                  zpp_inner.user_length = zpp_inner.user_length + 1;
+                  ++zpp_inner.user_length;
                }
                _loc1_ = _loc1_.next;
             }
@@ -526,7 +524,7 @@ package nape.dynamics
          }
          while(zpp_inner.at_index != param1)
          {
-            zpp_inner.at_index = zpp_inner.at_index + 1;
+            ++zpp_inner.at_index;
             zpp_inner.at_ite = zpp_inner.at_ite.next;
             while(true)
             {
@@ -547,3 +545,4 @@ package nape.dynamics
       }
    }
 }
+

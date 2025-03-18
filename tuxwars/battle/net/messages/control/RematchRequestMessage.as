@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.control
    
    public class RematchRequestMessage extends SocketMessage
    {
-       
-      
       public function RematchRequestMessage(id:String)
       {
          super({
@@ -15,3 +13,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

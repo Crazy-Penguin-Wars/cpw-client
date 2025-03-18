@@ -4,8 +4,6 @@ package tuxwars.battle.simplescript
    
    public interface SimpleScript
    {
-       
-      
       function get className() : String;
       
       function get variables() : Array;
@@ -17,3 +15,4 @@ package tuxwars.battle.simplescript
       function get location() : Vec2;
    }
 }
+

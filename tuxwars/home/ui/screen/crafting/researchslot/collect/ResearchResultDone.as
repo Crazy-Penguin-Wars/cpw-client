@@ -11,8 +11,6 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
    
    public class ResearchResultDone extends ResearchResultBuild
    {
-       
-      
       private var coinsTF:UIAutoTextField;
       
       private var expTF:UIAutoTextField;
@@ -85,3 +83,4 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
       }
    }
 }
+

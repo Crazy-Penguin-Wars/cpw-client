@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class AddPowerUpMessage extends BattleMessage
    {
-       
-      
       public function AddPowerUpMessage(powerUpId:String)
       {
          super({
@@ -20,3 +18,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

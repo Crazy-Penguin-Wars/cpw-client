@@ -8,7 +8,6 @@ package tuxwars.battle.effects
    
    public class BoosterEffect extends Sprite
    {
-      
       public static const TYPE_START_EFFECT:int = 0;
       
       public static const TYPE_NORMAL_EFFECT:int = 1;
@@ -24,7 +23,6 @@ package tuxwars.battle.effects
       private static const BOOSTER_ICON_03:String = "booster_icon_03";
       
       private static const SHIMMER:String = "shimmer";
-       
       
       private var effectType:int;
       
@@ -83,3 +81,4 @@ package tuxwars.battle.effects
       }
    }
 }
+

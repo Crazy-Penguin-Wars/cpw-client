@@ -1,7 +1,8 @@
 package tuxwars.home.ui.logic.crafting
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.logic.TuxPageSubTabLogic;
    import tuxwars.home.ui.screen.crafting.CraftingScreen;
@@ -11,11 +12,9 @@ package tuxwars.home.ui.logic.crafting
    
    public class CraftingLogic extends TuxPageSubTabLogic
    {
-      
       private static const TABLE:String = "Screen";
       
       private static const SHOP:String = "Crafting";
-       
       
       public function CraftingLogic(game:TuxWarsGame, state:TuxState)
       {
@@ -24,18 +23,20 @@ package tuxwars.home.ui.logic.crafting
       
       public static function getStaticData() : Row
       {
+         var _loc3_:String = "Screen";
          var _loc1_:ProjectManager = ProjectManager;
-         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Screen");
-         if(!_loc2_._cache["Crafting"])
+         var _loc4_:String = "Crafting";
+         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+         if(!_loc2_._cache[_loc4_])
          {
-            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Crafting");
+            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
             if(!_loc5_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Crafting" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
             }
-            _loc2_._cache["Crafting"] = _loc5_;
+            _loc2_._cache[_loc4_] = _loc5_;
          }
-         return _loc2_._cache["Crafting"];
+         return _loc2_._cache[_loc4_];
       }
       
       override public function getData() : Row
@@ -63,3 +64,4 @@ package tuxwars.home.ui.logic.crafting
       }
    }
 }
+

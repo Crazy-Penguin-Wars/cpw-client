@@ -6,8 +6,6 @@ package tuxwars.battle.ui.states.afterresultsales
    
    public class AfterResultSalesLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function AfterResultSalesLoadAssetsSubState(game:TuxWarsGame, params:* = null)
       {
          super(game,AssetsData.getPopupAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.battle.ui.states.afterresultsales
       }
    }
 }
+

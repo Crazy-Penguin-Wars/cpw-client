@@ -7,11 +7,11 @@ package mx.messaging
    import mx.messaging.messages.AsyncMessage;
    import mx.messaging.messages.IMessage;
    
+   use namespace mx_internal;
+   
    public class Producer extends AbstractProducer
    {
-      
       public static const DEFAULT_PRIORITY:int = 4;
-       
       
       private var _subtopic:String = "";
       
@@ -75,3 +75,4 @@ package mx.messaging
       }
    }
 }
+

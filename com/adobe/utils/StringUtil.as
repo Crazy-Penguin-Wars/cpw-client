@@ -2,8 +2,6 @@ package com.adobe.utils
 {
    public class StringUtil
    {
-       
-      
       public function StringUtil()
       {
          super();
@@ -75,3 +73,4 @@ package com.adobe.utils
       }
    }
 }
+

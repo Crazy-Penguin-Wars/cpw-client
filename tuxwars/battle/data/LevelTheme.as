@@ -1,8 +1,8 @@
 package tuxwars.battle.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
+   import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import no.olog.utilfunctions.assert;
    import tuxwars.battle.data.follower.FollowerData;
@@ -13,7 +13,6 @@ package tuxwars.battle.data
    
    public class LevelTheme
    {
-      
       private static const BACKGROUND_SWF:String = "BackgroundSWF";
       
       private static const BACKGROUND_EXPORT:String = "background_gradient";
@@ -31,7 +30,6 @@ package tuxwars.battle.data
       private static const RAIN_PARTICLE:String = "RainParticle";
       
       private static const FOLLOWERS:String = "WaterFollowers";
-       
       
       private var row:Row;
       
@@ -64,47 +62,51 @@ package tuxwars.battle.data
       
       public function getAngle() : int
       {
+         var _loc3_:String = "Angle";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["Angle"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["Angle"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","Angle");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["Angle"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public function get waterSWF() : String
       {
+         var _loc3_:String = "WaterSWF";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["WaterSWF"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["WaterSWF"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","WaterSWF");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["WaterSWF"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public function get waterExport() : String
       {
+         var _loc3_:String = "WaterExport";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["WaterExport"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["WaterExport"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","WaterExport");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["WaterExport"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public function get waterColor() : uint
       {
+         var _loc3_:String = "WaterColor";
          var _loc1_:Row = row;
          §§push(parseInt);
          §§push(global);
-         if(!_loc1_._cache["WaterColor"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["WaterColor"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","WaterColor");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["WaterColor"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return §§pop()(_loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value);
       }
       
@@ -135,19 +137,21 @@ package tuxwars.battle.data
       
       private function getBackgroundSWF() : String
       {
+         var _loc4_:String = "BackgroundSWF";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["BackgroundSWF"])
+         if(!_loc1_._cache[_loc4_])
          {
-            _loc1_._cache["BackgroundSWF"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","BackgroundSWF");
+            _loc1_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc4_);
          }
-         if(_loc1_._cache["BackgroundSWF"])
+         if(_loc1_._cache[_loc4_])
          {
+            var _loc5_:String = "BackgroundSWF";
             var _loc2_:Row = row;
-            if(!_loc2_._cache["BackgroundSWF"])
+            if(!_loc2_._cache[_loc5_])
             {
-               _loc2_._cache["BackgroundSWF"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","BackgroundSWF");
+               _loc2_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc5_);
             }
-            var _loc3_:* = _loc2_._cache["BackgroundSWF"];
+            var _loc3_:* = _loc2_._cache[_loc5_];
             return _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value;
          }
          return null;
@@ -160,24 +164,26 @@ package tuxwars.battle.data
       
       public function getWaterParticleData() : ThemeParticleData
       {
-         var _loc1_:* = null;
+         var _loc1_:Field = null;
          if(!_waterParticle)
          {
+            var _loc5_:String = "WaterParticle";
             var _loc2_:Row = row;
-            if(!_loc2_._cache["WaterParticle"])
+            if(!_loc2_._cache[_loc5_])
             {
-               _loc2_._cache["WaterParticle"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","WaterParticle");
+               _loc2_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc5_);
             }
-            _loc1_ = _loc2_._cache["WaterParticle"];
+            _loc1_ = _loc2_._cache[_loc5_];
             if(_loc1_ != null)
             {
+               var _loc6_:String = "WaterParticle";
                var _loc3_:Row = row;
                §§push(§§findproperty(ThemeParticleData));
-               if(!_loc3_._cache["WaterParticle"])
+               if(!_loc3_._cache[_loc6_])
                {
-                  _loc3_._cache["WaterParticle"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","WaterParticle");
+                  _loc3_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc6_);
                }
-               var _loc4_:* = _loc3_._cache["WaterParticle"];
+               var _loc4_:* = _loc3_._cache[_loc6_];
                _waterParticle = new §§pop().ThemeParticleData(_loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value);
             }
             else
@@ -190,24 +196,26 @@ package tuxwars.battle.data
       
       public function getRainParticleData() : ThemeParticleData
       {
-         var _loc1_:* = null;
+         var _loc1_:Field = null;
          if(!_rainParticle)
          {
+            var _loc5_:String = "RainParticle";
             var _loc2_:Row = row;
-            if(!_loc2_._cache["RainParticle"])
+            if(!_loc2_._cache[_loc5_])
             {
-               _loc2_._cache["RainParticle"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RainParticle");
+               _loc2_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc5_);
             }
-            _loc1_ = _loc2_._cache["RainParticle"];
+            _loc1_ = _loc2_._cache[_loc5_];
             if(_loc1_ != null)
             {
+               var _loc6_:String = "RainParticle";
                var _loc3_:Row = row;
                §§push(§§findproperty(ThemeParticleData));
-               if(!_loc3_._cache["RainParticle"])
+               if(!_loc3_._cache[_loc6_])
                {
-                  _loc3_._cache["RainParticle"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","RainParticle");
+                  _loc3_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc6_);
                }
-               var _loc4_:* = _loc3_._cache["RainParticle"];
+               var _loc4_:* = _loc3_._cache[_loc6_];
                _rainParticle = new §§pop().ThemeParticleData(_loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value);
             }
             else
@@ -222,12 +230,13 @@ package tuxwars.battle.data
       {
          if(row)
          {
+            var _loc4_:String = "WaterFollowers";
             var _loc2_:Row = row;
-            if(!_loc2_._cache["WaterFollowers"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["WaterFollowers"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","WaterFollowers");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["WaterFollowers"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -239,3 +248,4 @@ package tuxwars.battle.data
       }
    }
 }
+

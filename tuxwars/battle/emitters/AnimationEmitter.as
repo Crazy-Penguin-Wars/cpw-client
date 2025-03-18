@@ -19,7 +19,6 @@ package tuxwars.battle.emitters
    
    public class AnimationEmitter
    {
-      
       public static const ANIMATION_EMITTER:String = "AnimationEmitter";
       
       private static const TARGET_FROM_AIR:String = "from_air";
@@ -29,7 +28,6 @@ package tuxwars.battle.emitters
       private static var tuxGame:TuxWarsGame;
       
       private static var hitLocation:Vec2;
-       
       
       public function AnimationEmitter()
       {
@@ -57,12 +55,12 @@ package tuxwars.battle.emitters
       
       public static function emit(msg:FireEmissionMessage) : void
       {
-         var _loc2_:* = null;
-         var _loc8_:* = null;
-         var _loc7_:* = null;
-         var animation:* = null;
-         var _loc6_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:EmissionAnimationReference = null;
+         var _loc8_:AnimationEmissionData = null;
+         var _loc7_:AnimationEmissionDef = null;
+         var animation:AnimationEmission = null;
+         var _loc6_:Object = null;
+         var _loc4_:Vec2 = null;
          var _loc5_:Emission = msg.emissionObject;
          if(_loc5_ && !_loc5_.tagger)
          {
@@ -105,10 +103,10 @@ package tuxwars.battle.emitters
       
       private static function getHitLocation(msg:FireEmissionMessage) : void
       {
-         var _loc9_:* = null;
-         var _loc8_:* = null;
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc9_:TuxWorld = null;
+         var _loc8_:Vec2 = null;
+         var _loc3_:Ray = null;
+         var _loc2_:RayResult = null;
          var _loc5_:Emission = msg.emissionObject;
          var _loc6_:EmissionAnimationReference = new EmissionAnimationReference(msg.emissionReference.specialEffect);
          var _loc7_:Object = _loc5_.getEmissionsParams("Params");
@@ -133,3 +131,4 @@ package tuxwars.battle.emitters
       }
    }
 }
+

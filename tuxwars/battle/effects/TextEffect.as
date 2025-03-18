@@ -9,7 +9,6 @@ package tuxwars.battle.effects
    
    public class TextEffect extends Sprite
    {
-      
       public static const TYPE_DAMAGE:int = 0;
       
       public static const TYPE_GAIN_HEALTH:int = 1;
@@ -57,7 +56,6 @@ package tuxwars.battle.effects
       private static const MESSAGE_1MINUTE:String = "message_time_alert";
       
       private static const BET_TEXT:String = "bet_text_animation";
-       
       
       private var component:MovieClip;
       
@@ -228,3 +226,4 @@ package tuxwars.battle.effects
       }
    }
 }
+

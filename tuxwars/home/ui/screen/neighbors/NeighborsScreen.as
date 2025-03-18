@@ -14,7 +14,6 @@ package tuxwars.home.ui.screen.neighbors
    
    public class NeighborsScreen extends TuxUIScreen
    {
-      
       private static const NEIGHBOR_SCREEN:String = "popup_neighbors";
       
       private static const HEADER:String = "Text_Header";
@@ -34,7 +33,6 @@ package tuxwars.home.ui.screen.neighbors
       private static const BUTTON_SCROLL_LEFT:String = "Button_Scroll_Left";
       
       private static const BUTTON_SCROLL_RIGHT:String = "Button_Scroll_Right";
-       
       
       private var buttonClose:UIButton;
       
@@ -113,7 +111,7 @@ package tuxwars.home.ui.screen.neighbors
       private function initSlots(slots:MovieClip) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:MovieClip = null;
          neighborDefaultSlots = new Vector.<NeighborSlotDefault>();
          neighborPendingSlots = new Vector.<NeighborSlotPending>();
          neighborAddSlots = new Vector.<NeighborSlotAdd>();
@@ -172,7 +170,7 @@ package tuxwars.home.ui.screen.neighbors
       
       private function rightPressed(e:MouseEvent) : void
       {
-         var posAdd:int = neighborDefaultSlots.length;
+         var posAdd:int = int(neighborDefaultSlots.length);
          if(cursorPos == 0)
          {
             posAdd--;
@@ -199,3 +197,4 @@ package tuxwars.home.ui.screen.neighbors
       }
    }
 }
+

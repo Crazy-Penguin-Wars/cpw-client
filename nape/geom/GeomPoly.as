@@ -29,8 +29,6 @@ package nape.geom
    
    public final class GeomPoly
    {
-       
-      
       public var zpp_pool:GeomPoly;
       
       public var zpp_inner:ZPP_GeomPoly;
@@ -75,7 +73,7 @@ package nape.geom
             {
                _loc2_ = param1;
                _loc3_ = 0;
-               while(_loc3_ < _loc2_.length)
+               while(_loc3_ < int(_loc2_.length))
                {
                   _loc4_ = _loc2_[_loc3_];
                   _loc3_++;
@@ -310,14 +308,15 @@ package nape.geom
                if(_loc6_ != null)
                {
                   _loc7_ = _loc6_;
-                  while(true)
+                  do
                   {
                      _loc14_ = _loc7_.x;
                      _loc15_ = _loc7_.y;
                      _loc16_ = false;
                      if(_loc14_ != _loc14_ || _loc15_ != _loc15_)
                      {
-                        break;
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
                      }
                      if(ZPP_PubPool.poolVec2 == null)
                      {
@@ -513,13 +512,9 @@ package nape.geom
                      _loc20_._invalidate = null;
                      _loc20_.next = ZPP_Vec2.zpp_pool;
                      ZPP_Vec2.zpp_pool = _loc20_;
-                     if(_loc7_ != _loc6_)
-                     {
-                        continue;
-                     }
                   }
-                  Boot.lastError = new Error();
-                  throw "Error: Vec2 components cannot be NaN";
+                  while(_loc7_ != _loc6_);
+                  
                }
             }
             skipForward(1);
@@ -527,7 +522,7 @@ package nape.geom
             {
                _loc2_ = param1;
                _loc3_ = 0;
-               while(_loc3_ < _loc2_.length)
+               while(_loc3_ < int(_loc2_.length))
                {
                   _loc5_ = _loc2_[_loc3_];
                   if(_loc5_.zpp_inner.weak)
@@ -600,7 +595,7 @@ package nape.geom
                if(!_loc9_.fixed)
                {
                   _loc3_ = 0;
-                  while(_loc3_ < _loc9_.length)
+                  while(_loc3_ < int(_loc9_.length))
                   {
                      _loc5_ = _loc9_[_loc3_];
                      if(_loc5_.zpp_inner.weak)
@@ -733,6 +728,11 @@ package nape.geom
                         _loc24_._invalidate = null;
                         _loc24_.next = ZPP_Vec2.zpp_pool;
                         ZPP_Vec2.zpp_pool = _loc24_;
+                        true;
+                     }
+                     else
+                     {
+                        false;
                      }
                   }
                   else
@@ -792,7 +792,7 @@ package nape.geom
             {
                _loc3_ = param1;
                _loc4_ = 0;
-               while(_loc4_ < _loc3_.length)
+               while(_loc4_ < int(_loc3_.length))
                {
                   _loc5_ = _loc3_[_loc4_];
                   _loc4_++;
@@ -1027,14 +1027,15 @@ package nape.geom
                if(_loc7_ != null)
                {
                   _loc8_ = _loc7_;
-                  while(true)
+                  do
                   {
                      _loc15_ = _loc8_.x;
                      _loc16_ = _loc8_.y;
                      _loc17_ = false;
                      if(_loc15_ != _loc15_ || _loc16_ != _loc16_)
                      {
-                        break;
+                        Boot.lastError = new Error();
+                        throw "Error: Vec2 components cannot be NaN";
                      }
                      if(ZPP_PubPool.poolVec2 == null)
                      {
@@ -1230,13 +1231,9 @@ package nape.geom
                      _loc21_._invalidate = null;
                      _loc21_.next = ZPP_Vec2.zpp_pool;
                      ZPP_Vec2.zpp_pool = _loc21_;
-                     if(_loc8_ != _loc7_)
-                     {
-                        continue;
-                     }
                   }
-                  Boot.lastError = new Error();
-                  throw "Error: Vec2 components cannot be NaN";
+                  while(_loc8_ != _loc7_);
+                  
                }
             }
             _loc2_.skipForward(1);
@@ -1244,7 +1241,7 @@ package nape.geom
             {
                _loc3_ = param1;
                _loc4_ = 0;
-               while(_loc4_ < _loc3_.length)
+               while(_loc4_ < int(_loc3_.length))
                {
                   _loc6_ = _loc3_[_loc4_];
                   if(_loc6_.zpp_inner.weak)
@@ -1317,7 +1314,7 @@ package nape.geom
                if(!_loc10_.fixed)
                {
                   _loc4_ = 0;
-                  while(_loc4_ < _loc10_.length)
+                  while(_loc4_ < int(_loc10_.length))
                   {
                      _loc6_ = _loc10_[_loc4_];
                      if(_loc6_.zpp_inner.weak)
@@ -1450,6 +1447,11 @@ package nape.geom
                         _loc25_._invalidate = null;
                         _loc25_.next = ZPP_Vec2.zpp_pool;
                         ZPP_Vec2.zpp_pool = _loc25_;
+                        true;
+                     }
+                     else
+                     {
+                        false;
                      }
                   }
                   else
@@ -1510,7 +1512,7 @@ package nape.geom
                ZPP_Flags.Winding_CLOCKWISE = new Winding();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.Winding_CLOCKWISE);
+            return ZPP_Flags.Winding_CLOCKWISE;
          }
          else if(_loc1_ == 0)
          {
@@ -1520,7 +1522,7 @@ package nape.geom
                ZPP_Flags.Winding_UNDEFINED = new Winding();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.Winding_UNDEFINED);
+            return ZPP_Flags.Winding_UNDEFINED;
          }
          else
          {
@@ -1530,9 +1532,8 @@ package nape.geom
                ZPP_Flags.Winding_ANTICLOCKWISE = new Winding();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.Winding_ANTICLOCKWISE);
+            return ZPP_Flags.Winding_ANTICLOCKWISE;
          }
-         return §§pop();
       }
       
       public function unshift(param1:Vec2) : GeomPoly
@@ -1648,6 +1649,11 @@ package nape.geom
             _loc6_._invalidate = null;
             _loc6_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc6_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -2420,6 +2426,11 @@ package nape.geom
             _loc6_._invalidate = null;
             _loc6_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc6_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -2770,7 +2781,7 @@ package nape.geom
          }
          if(zpp_inner.vertices == null || zpp_inner.vertices.next == null || zpp_inner.vertices.prev == zpp_inner.vertices.next)
          {
-            §§push(true);
+            return true;
          }
          else
          {
@@ -2814,9 +2825,8 @@ package nape.geom
                while(_loc6_ != _loc5_);
                
             }
-            §§push(_loc3_);
+            return _loc3_;
          }
-         return §§pop();
       }
       
       public function isClockwise() : Boolean
@@ -3197,6 +3207,11 @@ package nape.geom
             Boot.lastError = new Error();
             throw "Error: " + "GeomPoly" + " has been disposed and cannot be used!";
          }
+         if(!(zpp_inner.vertices == null || zpp_inner.vertices.next == null || zpp_inner.vertices.prev == zpp_inner.vertices.next ? true : ZPP_Simple.isSimple(zpp_inner.vertices)))
+         {
+            Boot.lastError = new Error();
+            throw "Error: Cut requires a truly simple polygon";
+         }
          if(param1 == null || param2 == null)
          {
             Boot.lastError = new Error();
@@ -3261,6 +3276,11 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          if(param2.zpp_inner.weak)
          {
@@ -3310,6 +3330,11 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc6_;
       }
@@ -3692,6 +3717,11 @@ package nape.geom
             _loc13_._invalidate = null;
             _loc13_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc13_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc2_;
       }
@@ -4013,7 +4043,7 @@ package nape.geom
          }
          if(zpp_inner.vertices == null || zpp_inner.vertices.next == null || zpp_inner.vertices.prev == zpp_inner.vertices.next)
          {
-            §§push(0);
+            return 0;
          }
          else
          {
@@ -4033,9 +4063,9 @@ package nape.geom
                
             }
             _loc1_ = _loc2_ * 0.5;
-            §§push(_loc1_ < 0 ? -_loc1_ : _loc1_);
+            return _loc1_ < 0 ? -_loc1_ : _loc1_;
          }
-         return §§pop();
       }
    }
 }
+

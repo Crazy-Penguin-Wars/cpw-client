@@ -9,11 +9,9 @@ package tuxwars.battle.world.loader
    
    public class Element
    {
-      
       private static const GRASS_NONE:String = "[None]";
       
       private static const GRASS_SAME_AS_THEME:String = "[Material]";
-       
       
       private var name:String;
       
@@ -262,3 +260,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

@@ -25,9 +25,10 @@ package mx.messaging
    import mx.rpc.AsyncDispatcher;
    import mx.utils.URLUtil;
    
+   use namespace mx_internal;
+   
    public class Channel extends EventDispatcher implements IMXMLObject
    {
-      
       protected static const CLIENT_LOAD_BALANCING:String = "client-load-balancing";
       
       protected static const CONNECT_TIMEOUT_SECONDS:String = "connect-timeout-seconds";
@@ -49,7 +50,6 @@ package mx.messaging
       public static const SMALL_MESSAGES_FEATURE:String = "small_messages";
       
       private static const dep:ArrayCollection = null;
-       
       
       mx_internal var authenticating:Boolean;
       
@@ -83,9 +83,9 @@ package mx.messaging
       
       private var _reliableReconnectAttempts:int;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
-      private var _channelSets:Array;
+      private var _channelSets:Array = [];
       
       private var _connected:Boolean = false;
       
@@ -115,8 +115,6 @@ package mx.messaging
       
       public function Channel(id:String = null, uri:String = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
-         this._channelSets = [];
          super();
          this._log = Log.getLogger("mx.messaging.Channel");
          this._failoverIndex = -1;
@@ -386,7 +384,7 @@ package mx.messaging
       {
          var flexClient:FlexClient = null;
          var exists:Boolean = false;
-         var n:int = this._channelSets.length;
+         var n:int = int(this._channelSets.length);
          for(var i:int = 0; i < this._channelSets.length; i++)
          {
             if(this._channelSets[i] == channelSet)
@@ -444,7 +442,7 @@ package mx.messaging
             this._ownsWaitGuard = false;
             FlexClient.getInstance().mx_internal::waitForFlexClientId = false;
          }
-         var i:int = channelSet != null ? this._channelSets.indexOf(channelSet) : -1;
+         var i:int = channelSet != null ? int(this._channelSets.indexOf(channelSet)) : -1;
          if(i != -1)
          {
             this._channelSets.splice(i,1);
@@ -858,7 +856,7 @@ package mx.messaging
       {
          var index:int = 0;
          var temp:Object = null;
-         var length:int = elements.length;
+         var length:int = int(elements.length);
          for(var i:int = 0; i < length; i++)
          {
             index = Math.floor(Math.random() * length);
@@ -883,21 +881,19 @@ package mx.messaging
    }
 }
 
+import flash.net.Responder;
 import mx.core.mx_internal;
 import mx.logging.ILogger;
 import mx.logging.Log;
-import mx.messaging.Channel;
-import mx.messaging.MessageAgent;
-import mx.messaging.MessageResponder;
 import mx.messaging.events.ChannelFaultEvent;
 import mx.messaging.messages.CommandMessage;
 import mx.messaging.messages.ErrorMessage;
 import mx.messaging.messages.IMessage;
 
+use namespace mx_internal;
+
 class AuthenticationMessageResponder extends MessageResponder
 {
-    
-   
    private var _log:ILogger;
    
    public function AuthenticationMessageResponder(agent:MessageAgent, message:IMessage, channel:Channel, log:ILogger)

@@ -2,7 +2,6 @@ package tuxwars.tournament
 {
    public class Tournament
    {
-      
       public static const STATUS_NOT_STARTED:int = 0;
       
       public static const STATUS_PLAYING:int = 10;
@@ -28,7 +27,6 @@ package tuxwars.tournament
       public static const ACCOUNT_STATUS_REWARDED:int = 50;
       
       public static const ACCOUNT_STATUS_UNKNOWN:int = 99;
-       
       
       private var _id:String;
       
@@ -195,3 +193,4 @@ package tuxwars.tournament
       }
    }
 }
+

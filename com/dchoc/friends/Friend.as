@@ -5,7 +5,6 @@ package com.dchoc.friends
    
    public class Friend
    {
-      
       public static const STATUS_PLAYER:String = "Player";
       
       public static const STATUS_PENDING:String = "Pending";
@@ -15,7 +14,6 @@ package com.dchoc.friends
       public static const STATUS_NO_NEIGHBOR:String = "NoNeighbor";
       
       public static const STATUS_ORDER:Array = new Array("Pending","Neighbor","NoNeighbor");
-       
       
       private var _userId:String;
       
@@ -137,3 +135,4 @@ package com.dchoc.friends
       }
    }
 }
+

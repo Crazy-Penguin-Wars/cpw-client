@@ -6,11 +6,9 @@ package tuxwars.ui.containers.player
    
    public class PlayerContainer
    {
-      
       private static const FREE_SLOT:String = "Free";
       
       private static const READY_SLOT:String = "Ready";
-       
       
       private const slotContainers:UIContainers = new UIContainers();
       
@@ -40,3 +38,4 @@ package tuxwars.ui.containers.player
       }
    }
 }
+

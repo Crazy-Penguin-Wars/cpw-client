@@ -4,8 +4,6 @@ package com.dchoc.avatar
    
    public class AvatarColor implements IAvatarColor
    {
-       
-      
       private var _colorTransform:ColorTransform;
       
       public function AvatarColor(redMultiplier:int, greenMultiplier:int, blueMultiplier:int)
@@ -20,3 +18,4 @@ package com.dchoc.avatar
       }
    }
 }
+

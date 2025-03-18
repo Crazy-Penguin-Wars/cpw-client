@@ -6,9 +6,7 @@ package zpp_nape.geom
    
    public class ZPP_GeomVert
    {
-      
-      public static var zpp_pool:ZPP_GeomVert = null;
-       
+      public static var zpp_pool:ZPP_GeomVert;
       
       public var y:Number;
       
@@ -249,8 +247,7 @@ package zpp_nape.geom
             ZPP_Vec2.zpp_pool = _loc4_;
             wrap = null;
          }
-         next = null;
-         prev = null;
+         prev = next = null;
       }
       
       public function alloc() : void
@@ -259,3 +256,4 @@ package zpp_nape.geom
       }
    }
 }
+

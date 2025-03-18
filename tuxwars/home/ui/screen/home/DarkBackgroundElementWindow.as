@@ -3,19 +3,19 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.game.DCGame;
    import com.dchoc.resources.DCResourceManager;
    import flash.display.MovieClip;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.ui.components.DarkBackgroundElementScreen;
    
    public class DarkBackgroundElementWindow extends DarkBackgroundElementScreen
    {
-      
       private static const TRANSITION_OFFSET:int = 100;
-       
       
       public function DarkBackgroundElementWindow(whereToAdd:MovieClip, game:TuxWarsGame, swf:String, export:String, setInBackground:Boolean = false)
       {
-         var container:* = null;
-         var _loc7_:* = null;
+         ExternalInterface.call("console.log","[AnnoyingDebug] DarkBackgroundElementScreen is the cause (GOT YOU :troll:)");
+         var container:MovieClip = null;
+         var _loc7_:MovieClip = null;
          if(swf != null || export != null)
          {
             _loc7_ = DCResourceManager.instance.getFromSWF(swf,export);
@@ -43,3 +43,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

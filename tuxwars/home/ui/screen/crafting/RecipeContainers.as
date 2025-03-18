@@ -8,11 +8,9 @@ package tuxwars.home.ui.screen.crafting
    
    public class RecipeContainers extends UIContainers
    {
-      
       public static const SHOW:String = "Slot_Default";
       
       public static const DISABLED:String = "Slot_Disabled";
-       
       
       public function RecipeContainers(slotIndex:int, object:RecipeData, design:MovieClip, parent:TuxUIScreen)
       {
@@ -37,3 +35,4 @@ package tuxwars.home.ui.screen.crafting
       }
    }
 }
+

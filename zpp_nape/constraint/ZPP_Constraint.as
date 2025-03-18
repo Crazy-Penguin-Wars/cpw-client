@@ -19,11 +19,9 @@ package zpp_nape.constraint
    
    public class ZPP_Constraint
    {
-       
-      
       public var wrap_cbTypes:CbTypeList;
       
-      public var userData;
+      public var userData:*;
       
       public var stiff:Boolean;
       
@@ -33,7 +31,7 @@ package zpp_nape.constraint
       
       public var pre_dt:Number;
       
-      public var outer:Constraint;
+      public var outer:nape.constraint.Constraint;
       
       public var maxForce:Number;
       
@@ -224,6 +222,7 @@ package zpp_nape.constraint
                ZNPNode_ZPP_CbType.zpp_pool = _loc6_.next;
                _loc6_.next = null;
             }
+            null;
             _loc6_.elt = param1;
             _loc3_ = _loc6_;
             if(_loc2_ == null)
@@ -237,7 +236,7 @@ package zpp_nape.constraint
                _loc2_.next = _loc3_;
             }
             _loc5_.pushmod = _loc5_.modified = true;
-            _loc5_.length = _loc5_.length + 1;
+            ++_loc5_.length;
             _loc3_;
             if(space != null)
             {
@@ -253,6 +252,7 @@ package zpp_nape.constraint
          var _loc1_:ZPP_Component = component;
          _loc1_.body = null;
          _loc1_.constraint = null;
+         null;
          _loc1_.next = ZPP_Component.zpp_pool;
          ZPP_Component.zpp_pool = _loc1_;
          component = null;
@@ -307,6 +307,7 @@ package zpp_nape.constraint
                   _loc3_ = _loc2_.cbTypes.pop_unsafe();
                   _loc3_.cbsets.remove(_loc2_);
                }
+               null;
                _loc2_.next = ZPP_CbSet.zpp_pool;
                ZPP_CbSet.zpp_pool = _loc2_;
             }
@@ -322,12 +323,12 @@ package zpp_nape.constraint
          }
       }
       
-      public function copyto(param1:Constraint) : void
+      public function copyto(param1:nape.constraint.Constraint) : void
       {
          var _loc4_:* = null as CbTypeList;
          var _loc5_:* = null as CbType;
          var _loc6_:int = 0;
-         var _loc2_:Constraint = outer;
+         var _loc2_:nape.constraint.Constraint = outer;
          if(_loc2_.zpp_inner.wrap_cbTypes == null)
          {
             _loc2_.zpp_inner.setupcbTypes();
@@ -507,7 +508,7 @@ package zpp_nape.constraint
          param1.zpp_inner.active;
       }
       
-      public function copy(param1:Array = undefined, param2:Array = undefined) : Constraint
+      public function copy(param1:Array = undefined, param2:Array = undefined) : nape.constraint.Constraint
       {
          return null;
       }
@@ -538,7 +539,7 @@ package zpp_nape.constraint
       {
          if((cbSet = space.cbsets.get(cbTypes)) != null)
          {
-            cbSet.count = cbSet.count + 1;
+            ++cbSet.count;
             cbSet.constraints.add(this);
          }
       }
@@ -573,6 +574,7 @@ package zpp_nape.constraint
             ZPP_Component.zpp_pool = component.next;
             component.next = null;
          }
+         null;
          component.isBody = false;
          component.constraint = this;
       }
@@ -590,3 +592,4 @@ package zpp_nape.constraint
       }
    }
 }
+

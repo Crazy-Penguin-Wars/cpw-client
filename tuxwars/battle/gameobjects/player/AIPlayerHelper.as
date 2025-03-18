@@ -2,9 +2,7 @@ package tuxwars.battle.gameobjects.player
 {
    public class AIPlayerHelper
    {
-      
       private static const AI_CACHE:Object = {};
-       
       
       public function AIPlayerHelper()
       {
@@ -23,3 +21,4 @@ package tuxwars.battle.gameobjects.player
       }
    }
 }
+

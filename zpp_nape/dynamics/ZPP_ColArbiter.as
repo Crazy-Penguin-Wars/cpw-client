@@ -13,9 +13,7 @@ package zpp_nape.dynamics
    
    public class ZPP_ColArbiter extends ZPP_Arbiter
    {
-      
-      public static var zpp_pool:ZPP_ColArbiter = null;
-       
+      public static var zpp_pool:ZPP_ColArbiter;
       
       public var wrap_normal:Vec2;
       
@@ -232,6 +230,7 @@ package zpp_nape.dynamics
          var _loc2_:* = null as Vec2;
          var _loc3_:Boolean = false;
          var _loc4_:* = null as ZPP_Vec2;
+         var _loc1_:Boolean = false;
          §§push(§§findproperty(wrap_normal));
          if(ZPP_PubPool.poolVec2 == null)
          {
@@ -324,7 +323,7 @@ package zpp_nape.dynamics
             }
             _loc2_;
          }
-         _loc2_.zpp_inner.weak = false;
+         _loc2_.zpp_inner.weak = _loc1_;
          §§pop().wrap_normal = _loc2_;
          wrap_normal.zpp_inner._immutable = true;
          wrap_normal.zpp_inner._inuse = true;
@@ -366,3 +365,4 @@ package zpp_nape.dynamics
       }
    }
 }
+

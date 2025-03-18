@@ -13,8 +13,6 @@ package mx.core
    
    public interface IFlexDisplayObject extends IBitmapDrawable, IEventDispatcher
    {
-       
-      
       function get root() : DisplayObject;
       
       function get stage() : Stage;
@@ -124,3 +122,4 @@ package mx.core
       function setActualSize(param1:Number, param2:Number) : void;
    }
 }
+

@@ -5,8 +5,6 @@ package mx.messaging.messages
    
    public class AcknowledgeMessageExt extends AcknowledgeMessage implements IExternalizable
    {
-       
-      
       private var _message:AcknowledgeMessage;
       
       public function AcknowledgeMessageExt(message:AcknowledgeMessage = null)
@@ -37,3 +35,4 @@ package mx.messaging.messages
       }
    }
 }
+

@@ -10,8 +10,6 @@ package tuxwars.challenges.counters
    
    public class KillsByDamageWithStatusEffectCounter extends KillsCounter
    {
-       
-      
       public function KillsByDamageWithStatusEffectCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -19,8 +17,8 @@ package tuxwars.challenges.counters
       
       override public function handlePlayerDied(msg:ChallengePlayerDiedMessage) : void
       {
-         var lastHpStatModifier:* = null;
-         var cleanedIds:* = null;
+         var lastHpStatModifier:Damage = null;
+         var cleanedIds:Array = null;
          var _loc5_:PlayerGameObject = msg.player;
          var _loc4_:Tagger = _loc5_.tag.findLatestPlayerTagger();
          var _loc8_:* = _loc5_;
@@ -80,3 +78,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

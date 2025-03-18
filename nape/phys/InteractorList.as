@@ -7,8 +7,6 @@ package nape.phys
    
    public final class InteractorList
    {
-       
-      
       public var zpp_inner:ZPP_InteractorList;
       
       public function InteractorList()
@@ -32,7 +30,7 @@ package nape.phys
          }
          var _loc2_:InteractorList = new InteractorList();
          var _loc3_:int = 0;
-         while(_loc3_ < param1.length)
+         while(_loc3_ < int(param1.length))
          {
             _loc4_ = param1[_loc3_];
             _loc3_++;
@@ -630,7 +628,7 @@ package nape.phys
          {
             while(zpp_inner.at_index != param1)
             {
-               zpp_inner.at_index = zpp_inner.at_index + 1;
+               ++zpp_inner.at_index;
                zpp_inner.at_ite = zpp_inner.at_ite.next;
             }
          }
@@ -643,3 +641,4 @@ package nape.phys
       }
    }
 }
+

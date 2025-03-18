@@ -11,8 +11,6 @@ package tuxwars.home.ui.screen.challenge
    
    public class ChallengeButtonContainer extends UIContainer
    {
-       
-      
       private var _challengeData:ChallengeData;
       
       private var iconButton:IconButton;
@@ -49,3 +47,4 @@ package tuxwars.home.ui.screen.challenge
       }
    }
 }
+

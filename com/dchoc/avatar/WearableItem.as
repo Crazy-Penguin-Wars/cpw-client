@@ -6,8 +6,6 @@ package com.dchoc.avatar
    
    public class WearableItem
    {
-       
-      
       protected var data:Object;
       
       private var _displayObject:DisplayObject;
@@ -74,3 +72,4 @@ package com.dchoc.avatar
       }
    }
 }
+

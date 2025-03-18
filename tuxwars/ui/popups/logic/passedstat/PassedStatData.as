@@ -2,8 +2,6 @@ package tuxwars.ui.popups.logic.passedstat
 {
    public class PassedStatData
    {
-       
-      
       private var _data:Object;
       
       private var _stat:String;
@@ -36,3 +34,4 @@ package tuxwars.ui.popups.logic.passedstat
       }
    }
 }
+

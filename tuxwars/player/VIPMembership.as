@@ -4,8 +4,6 @@ package tuxwars.player
    
    public class VIPMembership
    {
-       
-      
       private var _wasVip:Boolean;
       
       private var _vip:Boolean;
@@ -76,3 +74,4 @@ package tuxwars.player
       }
    }
 }
+

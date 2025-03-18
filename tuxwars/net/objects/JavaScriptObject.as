@@ -4,8 +4,6 @@ package tuxwars.net.objects
    
    public class JavaScriptObject
    {
-       
-      
       private var _method:String;
       
       private var _to:Array;
@@ -67,3 +65,4 @@ package tuxwars.net.objects
       }
    }
 }
+

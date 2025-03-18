@@ -5,9 +5,7 @@ package nape.geom
    
    public final class RayResultIterator
    {
-      
-      public static var zpp_pool:RayResultIterator = null;
-       
+      public static var zpp_pool:RayResultIterator;
       
       public var zpp_next:RayResultIterator;
       
@@ -75,3 +73,4 @@ package nape.geom
       }
    }
 }
+

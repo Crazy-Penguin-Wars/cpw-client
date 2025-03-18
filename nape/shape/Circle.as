@@ -17,8 +17,6 @@ package nape.shape
    
    public final class Circle extends Shape
    {
-       
-      
       public var zpp_inner_zn:ZPP_Circle;
       
       public function Circle(param1:Number, param2:Vec2 = undefined, param3:Material = undefined, param4:InteractionFilter = undefined)
@@ -155,6 +153,11 @@ package nape.shape
                   _loc9_._invalidate = null;
                   _loc9_.next = ZPP_Vec2.zpp_pool;
                   ZPP_Vec2.zpp_pool = _loc9_;
+                  true;
+               }
+               else
+               {
+                  false;
                }
             }
             if(param3 == null)
@@ -169,6 +172,7 @@ package nape.shape
                   ZPP_Material.zpp_pool = zpp_inner.material.next;
                   zpp_inner.material.next = null;
                }
+               null;
             }
             else
             {
@@ -193,6 +197,7 @@ package nape.shape
                   ZPP_InteractionFilter.zpp_pool = zpp_inner.filter.next;
                   zpp_inner.filter.next = null;
                }
+               null;
             }
             else
             {
@@ -247,3 +252,4 @@ package nape.shape
       }
    }
 }
+

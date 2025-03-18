@@ -2,7 +2,6 @@ package tuxwars.home.ui
 {
    public class ExportNames
    {
-      
       public static const INGAME_HUD:String = "ingame_hud";
       
       public static const CHILD_TROPHIES:String = "trophies";
@@ -68,7 +67,6 @@ package tuxwars.home.ui
       public static const TOURNAMENT_RESULT:String = "tournament_result";
       
       public static const FIREWORKS:String = "fireworks";
-       
       
       public function ExportNames()
       {
@@ -76,3 +74,4 @@ package tuxwars.home.ui
       }
    }
 }
+

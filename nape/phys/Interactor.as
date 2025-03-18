@@ -12,8 +12,6 @@ package nape.phys
    
    public class Interactor
    {
-       
-      
       public var zpp_inner_i:ZPP_Interactor;
       
       public function Interactor()
@@ -98,3 +96,4 @@ package nape.phys
       }
    }
 }
+

@@ -2,25 +2,22 @@ package com.logicom.geom
 {
    public class ClipperBase
    {
-      
       internal static const horizontal:Number = -3.4e+38;
       
       internal static const loRange:int = 1073741823;
       
       internal static const hiRange:int = 1073741823;
-       
       
       internal var m_MinimaList:LocalMinima;
       
       internal var m_CurrentLM:LocalMinima;
       
-      internal var m_edges:Vector.<Vector.<TEdge>>;
+      internal var m_edges:Vector.<Vector.<TEdge>> = new Vector.<Vector.<TEdge>>();
       
       internal var m_UseFullRange:Boolean;
       
       public function ClipperBase()
       {
-         m_edges = new Vector.<Vector.<TEdge>>();
          super();
          m_MinimaList = null;
          m_CurrentLM = null;
@@ -107,7 +104,7 @@ package com.logicom.geom
       
       private function disposeLocalMinimaList() : void
       {
-         var tmpLm:* = null;
+         var tmpLm:LocalMinima = null;
          while(m_MinimaList != null)
          {
             tmpLm = m_MinimaList.next;
@@ -135,7 +132,7 @@ package com.logicom.geom
          var i:int = 0;
          var maxVal:int = 0;
          var pg:Vector.<IntPoint> = polygon.getPoints();
-         var len:int = pg.length;
+         var len:int = int(pg.length);
          if(len < 3)
          {
             return false;
@@ -318,7 +315,7 @@ package com.logicom.geom
             {
                if(e.next.ytop < e.ytop && e.next.xbot > e.prev.xbot)
                {
-                  §§goto(addr80);
+                  §§goto(addr81);
                }
                if(e.xtop != e.prev.xbot)
                {
@@ -336,7 +333,7 @@ package com.logicom.geom
             }
             e = e.next;
          }
-         addr80:
+         addr81:
          var newLm:LocalMinima = new LocalMinima();
          newLm.next = null;
          newLm.Y = e.prev.ybot;
@@ -376,7 +373,7 @@ package com.logicom.geom
       
       private function insertLocalMinima(newLm:LocalMinima) : void
       {
-         var tmpLm:* = null;
+         var tmpLm:LocalMinima = null;
          if(m_MinimaList == null)
          {
             m_MinimaList = newLm;
@@ -416,7 +413,7 @@ package com.logicom.geom
       
       protected function reset() : void
       {
-         var e:* = null;
+         var e:TEdge = null;
          m_CurrentLM = m_MinimaList;
          var lm:LocalMinima = m_MinimaList;
          while(lm != null)
@@ -445,7 +442,7 @@ package com.logicom.geom
       
       public function getBounds() : IntRect
       {
-         var e:* = null;
+         var e:TEdge = null;
          var bottomE:* = null;
          var result:IntRect = new IntRect(0,0,0,0);
          var lm:LocalMinima = m_MinimaList;
@@ -511,3 +508,4 @@ package com.logicom.geom
       }
    }
 }
+

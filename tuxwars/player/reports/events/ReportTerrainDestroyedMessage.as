@@ -5,8 +5,6 @@ package tuxwars.player.reports.events
    
    public class ReportTerrainDestroyedMessage extends Message
    {
-       
-      
       private const _intersectionPolygons:Array = [];
       
       private var _terrain:TerrainGameObject;
@@ -23,3 +21,4 @@ package tuxwars.player.reports.events
       }
    }
 }
+

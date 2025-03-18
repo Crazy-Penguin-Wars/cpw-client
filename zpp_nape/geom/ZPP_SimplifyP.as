@@ -4,9 +4,7 @@ package zpp_nape.geom
    
    public class ZPP_SimplifyP
    {
-      
-      public static var zpp_pool:ZPP_SimplifyP = null;
-       
+      public static var zpp_pool:ZPP_SimplifyP;
       
       public var next:ZPP_SimplifyP;
       
@@ -38,9 +36,11 @@ package zpp_nape.geom
             ZPP_SimplifyP.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.min = param1;
          _loc3_.max = param2;
          return _loc3_;
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.battle.events
    
    public class EmissionMessage extends Message
    {
-       
-      
       private var _playerId:String;
       
       public function EmissionMessage(emission:Emission, playerId:String)
@@ -26,3 +24,4 @@ package tuxwars.battle.events
       }
    }
 }
+

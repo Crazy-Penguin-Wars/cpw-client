@@ -6,8 +6,6 @@ package tuxwars.home.states.dailynews
    
    public class DailyNewsState extends TuxState
    {
-       
-      
       public function DailyNewsState(game:TuxWarsGame, dailyNewsData:DailyNewsData)
       {
          super(game,dailyNewsData);
@@ -20,3 +18,4 @@ package tuxwars.home.states.dailynews
       }
    }
 }
+

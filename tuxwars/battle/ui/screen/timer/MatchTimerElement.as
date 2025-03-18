@@ -10,9 +10,7 @@ package tuxwars.battle.ui.screen.timer
    
    public class MatchTimerElement extends TimerElement
    {
-      
       private static const MATCH_TIMER:String = "Round_Timer";
-       
       
       public function MatchTimerElement(from:MovieClip, parent:UIComponent = null)
       {
@@ -48,3 +46,4 @@ package tuxwars.battle.ui.screen.timer
       }
    }
 }
+

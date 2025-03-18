@@ -6,8 +6,6 @@ package tuxwars.home.states.equipment
    
    public class EquipmentLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function EquipmentLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getEquipmentAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.equipment
       }
    }
 }
+

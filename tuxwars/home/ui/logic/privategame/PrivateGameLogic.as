@@ -15,8 +15,6 @@ package tuxwars.home.ui.logic.privategame
    
    public class PrivateGameLogic extends TuxUILogic
    {
-       
-      
       public function PrivateGameLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -52,7 +50,7 @@ package tuxwars.home.ui.logic.privategame
       
       private function responseCallback(response:BattleResponse) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          switch(response.responseType - 27)
          {
             case 0:
@@ -79,9 +77,11 @@ package tuxwars.home.ui.logic.privategame
                      tuxwars.ui.popups.PopUpManager._instance = new tuxwars.ui.popups.PopUpManager();
                   }
                   tuxwars.ui.popups.PopUpManager._instance.showPopUps(game.homeState);
-                  break;
                }
-               privateGameScreen.update();
+               else
+               {
+                  privateGameScreen.update();
+               }
                break;
             default:
                LogUtils.log("Unknown message: " + response.responseText,this,2,"ReceivedMessage");
@@ -89,3 +89,4 @@ package tuxwars.home.ui.logic.privategame
       }
    }
 }
+

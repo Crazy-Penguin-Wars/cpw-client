@@ -4,8 +4,6 @@ package com.dchoc.events
    
    public class ErrorMessage extends Message
    {
-       
-      
       private var _code:String;
       
       private var _desc:String;
@@ -64,3 +62,4 @@ package com.dchoc.events
       }
    }
 }
+

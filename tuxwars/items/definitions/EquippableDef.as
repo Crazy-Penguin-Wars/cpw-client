@@ -9,8 +9,6 @@ package tuxwars.items.definitions
    
    public class EquippableDef extends GameObjectDef
    {
-       
-      
       private var _type:String;
       
       private var _description:String;
@@ -64,3 +62,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

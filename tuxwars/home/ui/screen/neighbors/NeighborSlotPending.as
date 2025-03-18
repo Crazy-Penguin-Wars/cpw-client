@@ -11,7 +11,6 @@ package tuxwars.home.ui.screen.neighbors
    
    public class NeighborSlotPending extends NeighborSlot
    {
-      
       private static const TEXT_FIELD_DESCRIPTION:String = "Text_Description";
       
       private static const BUTTON_SEND:String = "Button_Send";
@@ -19,7 +18,6 @@ package tuxwars.home.ui.screen.neighbors
       private static const BUTTON_CANCEL:String = "Button_Cancel";
       
       private static const BUTTON_REMINDER:String = "Button_Reminder";
-       
       
       private var descriptionTextField:TextField;
       
@@ -68,3 +66,4 @@ package tuxwars.home.ui.screen.neighbors
       }
    }
 }
+

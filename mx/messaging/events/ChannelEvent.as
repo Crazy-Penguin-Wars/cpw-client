@@ -5,11 +5,9 @@ package mx.messaging.events
    
    public class ChannelEvent extends Event
    {
-      
       public static const CONNECT:String = "channelConnect";
       
       public static const DISCONNECT:String = "channelDisconnect";
-       
       
       public var channel:Channel;
       
@@ -53,3 +51,4 @@ package mx.messaging.events
       }
    }
 }
+

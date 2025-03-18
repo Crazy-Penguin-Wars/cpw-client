@@ -4,11 +4,10 @@ package tuxwars.battle.net.messages.control
    
    public class PurchaseMessage extends SocketMessage
    {
-       
-      
       public function PurchaseMessage()
       {
          super({"t":18});
       }
    }
 }
+

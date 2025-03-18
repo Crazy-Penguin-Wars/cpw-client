@@ -4,8 +4,6 @@ package zpp_nape.util
    
    public class FastHash2_Hashable2_Boolfalse
    {
-       
-      
       public var table:Vector.<Hashable2_Boolfalse>;
       
       public var cnt:int;
@@ -25,7 +23,7 @@ package zpp_nape.util
       public function remove(param1:Hashable2_Boolfalse) : void
       {
          var _loc4_:* = null as Hashable2_Boolfalse;
-         var _loc2_:int = param1.id * 106039 + param1.di & 1048575;
+         var _loc2_:int = param1.id * 106039 + param1.di & 0x0FFFFF;
          var _loc3_:Hashable2_Boolfalse = table[_loc2_];
          if(_loc3_ == param1)
          {
@@ -43,29 +41,33 @@ package zpp_nape.util
             _loc4_.hnext = _loc3_.hnext;
          }
          param1.hnext = null;
-         cnt = cnt - 1;
+         --cnt;
       }
       
       public function maybeAdd(param1:Hashable2_Boolfalse) : void
       {
-         var _loc2_:int = param1.id * 106039 + param1.di & 1048575;
+         var _loc2_:int = param1.id * 106039 + param1.di & 0x0FFFFF;
          var _loc3_:Hashable2_Boolfalse = table[_loc2_];
+         var _loc4_:Boolean = true;
          if(_loc3_ == null)
          {
             table[_loc2_] = param1;
             param1.hnext = null;
          }
-         else
+         else if(_loc4_)
          {
             param1.hnext = _loc3_.hnext;
             _loc3_.hnext = param1;
          }
-         cnt = cnt + 1;
+         if(_loc4_)
+         {
+            ++cnt;
+         }
       }
       
       public function has(param1:int, param2:int) : Boolean
       {
-         var _loc3_:Hashable2_Boolfalse = table[param1 * 106039 + param2 & 1048575];
+         var _loc3_:Hashable2_Boolfalse = table[param1 * 106039 + param2 & 0x0FFFFF];
          if(_loc3_ == null)
          {
             return false;
@@ -89,7 +91,7 @@ package zpp_nape.util
          var _loc4_:* = null as Hashable2_Boolfalse;
          var _loc5_:* = null as Hashable2_Boolfalse;
          var _loc1_:int = 0;
-         var _loc2_:int = table.length;
+         var _loc2_:int = int(table.length);
          while(_loc1_ < _loc2_)
          {
             _loc3_ = _loc1_++;
@@ -110,7 +112,7 @@ package zpp_nape.util
       
       public function add(param1:Hashable2_Boolfalse) : void
       {
-         var _loc2_:int = param1.id * 106039 + param1.di & 1048575;
+         var _loc2_:int = param1.id * 106039 + param1.di & 0x0FFFFF;
          var _loc3_:Hashable2_Boolfalse = table[_loc2_];
          if(_loc3_ == null)
          {
@@ -122,7 +124,8 @@ package zpp_nape.util
             param1.hnext = _loc3_.hnext;
             _loc3_.hnext = param1;
          }
-         cnt = cnt + 1;
+         ++cnt;
       }
    }
 }
+

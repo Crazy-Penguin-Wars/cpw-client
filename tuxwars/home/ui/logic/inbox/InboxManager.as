@@ -5,13 +5,11 @@ package tuxwars.home.ui.logic.inbox
    
    public class InboxManager
    {
+      private static var skipFirst:Boolean = true;
       
       private static const _gifts:Vector.<RequestData> = new Vector.<RequestData>();
       
       private static const _neighborRequests:Vector.<RequestData> = new Vector.<RequestData>();
-      
-      private static var skipFirst:Boolean = true;
-       
       
       public function InboxManager()
       {
@@ -168,3 +166,4 @@ package tuxwars.home.ui.logic.inbox
       }
    }
 }
+

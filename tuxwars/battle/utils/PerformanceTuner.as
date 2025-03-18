@@ -6,7 +6,6 @@ package tuxwars.battle.utils
    
    public class PerformanceTuner
    {
-      
       private static const WAIT_X_SECONDS_FOR_1ST_CHECK:int = 10;
       
       private static const CHECK_EVERY_X_SECONDS:int = 5;
@@ -23,12 +22,11 @@ package tuxwars.battle.utils
       
       private static const ACTION_AUGMENT_MISSILES_SPAWN_TIME:int = 6;
       
-      private static const CONFIG:Array = [15,1,0,15,3,0,14,4,30,13,0,0,13,4,50,13,5,100,13,6,100,10,4,80,10,5,200,10,6,200,8,5,300,8,6,300];
-      
       public static var _particleStreamSpawnDistanceAugmentationPercentage:int;
       
       public static var _particleStreamSpawnTimeAugmentationPercentage:int;
-       
+      
+      private static const CONFIG:Array = [15,1,0,15,3,0,14,4,30,13,0,0,13,4,50,13,5,100,13,6,100,10,4,80,10,5,200,10,6,200,8,5,300,8,6,300];
       
       private var mFrameRateAverage:int;
       
@@ -86,7 +84,7 @@ package tuxwars.battle.utils
          var i:int = 0;
          var frameRate:int = 0;
          mFirstCheckDone = true;
-         var n:int = CONFIG.length;
+         var n:int = int(CONFIG.length);
          for(i = 0; i < n; )
          {
             frameRate = int(CONFIG[i]);
@@ -106,7 +104,7 @@ package tuxwars.battle.utils
       
       public function turnOnOff(type:int, param:int) : void
       {
-         var players:* = null;
+         var players:Array = null;
          switch(type)
          {
             case 0:
@@ -134,3 +132,4 @@ package tuxwars.battle.utils
       }
    }
 }
+

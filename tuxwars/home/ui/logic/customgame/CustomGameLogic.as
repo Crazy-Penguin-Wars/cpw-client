@@ -12,8 +12,6 @@ package tuxwars.home.ui.logic.customgame
    
    public class CustomGameLogic extends TuxUILogic
    {
-       
-      
       public function CustomGameLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -49,3 +47,4 @@ package tuxwars.home.ui.logic.customgame
       }
    }
 }
+

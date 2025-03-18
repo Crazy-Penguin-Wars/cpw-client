@@ -2,8 +2,6 @@ package tuxwars.player.reports
 {
    public class PlayerReport
    {
-       
-      
       private var _all:Object;
       
       private var _weekly:Object;
@@ -43,22 +41,23 @@ package tuxwars.player.reports
       
       public function get weeklyLeaderboard() : Object
       {
-         return _leaderboard.hasOwnProperty("weeklyLeaderboard") ? _leaderboard.weeklyLeaderboard : {};
+         return !!_leaderboard.hasOwnProperty("weeklyLeaderboard") ? _leaderboard.weeklyLeaderboard : {};
       }
       
       public function get monthlyLeaderboard() : Object
       {
-         return _leaderboard.hasOwnProperty("monthlyLeaderboard") ? _leaderboard.monthlyLeaderboard : {};
+         return !!_leaderboard.hasOwnProperty("monthlyLeaderboard") ? _leaderboard.monthlyLeaderboard : {};
       }
       
       public function get allTimeLeaderboard() : Object
       {
-         return _leaderboard.hasOwnProperty("globalLeaderboard") ? _leaderboard.globalLeaderboard : {};
+         return !!_leaderboard.hasOwnProperty("globalLeaderboard") ? _leaderboard.globalLeaderboard : {};
       }
       
       public function get wornItems() : Object
       {
-         return _leaderboard.hasOwnProperty("wornItems") ? _leaderboard.wornItems : {};
+         return !!_leaderboard.hasOwnProperty("wornItems") ? _leaderboard.wornItems : {};
       }
    }
 }
+

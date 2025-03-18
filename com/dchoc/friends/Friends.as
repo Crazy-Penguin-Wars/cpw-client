@@ -2,8 +2,6 @@ package com.dchoc.friends
 {
    public class Friends
    {
-       
-      
       private const _friends:Vector.<Friend> = new Vector.<Friend>();
       
       public function Friends()
@@ -101,3 +99,4 @@ package com.dchoc.friends
       }
    }
 }
+

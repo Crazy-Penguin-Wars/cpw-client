@@ -12,11 +12,9 @@ package com.dchoc.media
    
    public class DCSound extends EventDispatcher
    {
-      
       internal static const TYPE_MUSIC:int = 0;
       
       internal static const TYPE_SFX:int = 1;
-       
       
       private var name:String;
       
@@ -201,3 +199,4 @@ package com.dchoc.media
       }
    }
 }
+

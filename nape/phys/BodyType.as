@@ -5,8 +5,6 @@ package nape.phys
    
    public final class BodyType
    {
-       
-      
       public function BodyType()
       {
          if(Boot.skip_constructor)
@@ -92,3 +90,4 @@ package nape.phys
       }
    }
 }
+

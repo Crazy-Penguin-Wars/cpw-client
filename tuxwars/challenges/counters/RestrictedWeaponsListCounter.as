@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class RestrictedWeaponsListCounter extends Counter
    {
-       
-      
       private var invalidated:Boolean;
       
       public function RestrictedWeaponsListCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -72,3 +70,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

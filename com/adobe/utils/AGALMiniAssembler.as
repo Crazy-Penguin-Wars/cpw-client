@@ -1,15 +1,10 @@
 package com.adobe.utils
 {
-   import flash.display3D.Context3D;
-   import flash.display3D.Program3D;
-   import flash.utils.ByteArray;
-   import flash.utils.Dictionary;
-   import flash.utils.Endian;
-   import flash.utils.getTimer;
+   import flash.display3D.*;
+   import flash.utils.*;
    
    public class AGALMiniAssembler
    {
-      
       protected static const REGEXP_OUTER_SPACES:RegExp = /^\s+|\s+$/g;
       
       private static var initialized:Boolean = false;
@@ -207,7 +202,6 @@ package com.adobe.utils
       private static const DXT5:String = "dxt5";
       
       private static const VIDEO:String = "video";
-       
       
       private var _agalcode:ByteArray = null;
       
@@ -314,12 +308,410 @@ package com.adobe.utils
       
       public function assemble(mode:String, source:String, version:uint = 1, ignorelimits:Boolean = false) : ByteArray
       {
-         /*
-          * Decompilatie fout
-          * Timeout (1 minuut) werd bereikt
-          * Instruction count: 1762
-          */
-         throw new flash.errors.IllegalOperationError("Niet gedecompileerd vanwege timeout");
+         var i:int = 0;
+         var line:String = null;
+         var startcomment:int = 0;
+         var optsi:int = 0;
+         var opts:Array = null;
+         var opCode:Array = null;
+         var opFound:OpCode = null;
+         var regs:Array = null;
+         var badreg:Boolean = false;
+         var pad:uint = 0;
+         var regLength:uint = 0;
+         var j:int = 0;
+         var isRelative:Boolean = false;
+         var relreg:Array = null;
+         var res:Array = null;
+         var regFound:Register = null;
+         var idxmatch:Array = null;
+         var regidx:uint = 0;
+         var regmask:uint = 0;
+         var maskmatch:Array = null;
+         var isDest:Boolean = false;
+         var isSampler:Boolean = false;
+         var reltype:uint = 0;
+         var relsel:uint = 0;
+         var reloffset:int = 0;
+         var cv:uint = 0;
+         var maskLength:uint = 0;
+         var k:int = 0;
+         var relname:Array = null;
+         var regFoundRel:Register = null;
+         var selmatch:Array = null;
+         var relofs:Array = null;
+         var samplerbits:uint = 0;
+         var optsLength:uint = 0;
+         var bias:Number = NaN;
+         var optfound:Sampler = null;
+         var dbgLine:String = null;
+         var agalLength:uint = 0;
+         var index:uint = 0;
+         var byteStr:String = null;
+         var start:uint = uint(getTimer());
+         this._agalcode = new ByteArray();
+         this._error = "";
+         var isFrag:Boolean = false;
+         if(mode == FRAGMENT)
+         {
+            isFrag = true;
+         }
+         else if(mode != VERTEX)
+         {
+            this._error = "ERROR: mode needs to be \"" + FRAGMENT + "\" or \"" + VERTEX + "\" but is \"" + mode + "\".";
+         }
+         this.agalcode.endian = Endian.LITTLE_ENDIAN;
+         this.agalcode.writeByte(160);
+         this.agalcode.writeUnsignedInt(version);
+         this.agalcode.writeByte(161);
+         this.agalcode.writeByte(isFrag ? 1 : 0);
+         this.initregmap(version,ignorelimits);
+         var lines:Array = source.replace(/[\f\n\r\v]+/g,"\n").split("\n");
+         var nest:int = 0;
+         var nops:int = 0;
+         var lng:int = int(lines.length);
+         i = 0;
+         while(i < lng && this._error == "")
+         {
+            line = new String(lines[i]);
+            line = line.replace(REGEXP_OUTER_SPACES,"");
+            startcomment = int(line.search("//"));
+            if(startcomment != -1)
+            {
+               line = line.slice(0,startcomment);
+            }
+            optsi = int(line.search(/<.*>/g));
+            if(optsi != -1)
+            {
+               opts = line.slice(optsi).match(/([\w\.\-\+]+)/gi);
+               line = line.slice(0,optsi);
+            }
+            opCode = line.match(/^\w{3}/ig);
+            if(!opCode)
+            {
+               if(line.length >= 3)
+               {
+                  trace("warning: bad line " + i + ": " + lines[i]);
+               }
+            }
+            else
+            {
+               opFound = OPMAP[opCode[0]];
+               if(this.debugEnabled)
+               {
+                  trace(opFound);
+               }
+               if(opFound == null)
+               {
+                  if(line.length >= 3)
+                  {
+                     trace("warning: bad line " + i + ": " + lines[i]);
+                  }
+               }
+               else
+               {
+                  line = line.slice(line.search(opFound.name) + opFound.name.length);
+                  if(Boolean(opFound.flags & OP_VERSION2) && version < 2)
+                  {
+                     this._error = "error: opcode requires version 2.";
+                     break;
+                  }
+                  if(Boolean(opFound.flags & OP_VERT_ONLY) && isFrag)
+                  {
+                     this._error = "error: opcode is only allowed in vertex programs.";
+                     break;
+                  }
+                  if(Boolean(opFound.flags & OP_FRAG_ONLY) && !isFrag)
+                  {
+                     this._error = "error: opcode is only allowed in fragment programs.";
+                     break;
+                  }
+                  if(this.verbose)
+                  {
+                     trace("emit opcode=" + opFound);
+                  }
+                  this.agalcode.writeUnsignedInt(opFound.emitCode);
+                  nops++;
+                  if(nops > MAX_OPCODES)
+                  {
+                     this._error = "error: too many opcodes. maximum is " + MAX_OPCODES + ".";
+                     break;
+                  }
+                  regs = line.match(/vc\[([vof][acostdip]?)(\d*)?(\.[xyzw](\+\d{1,3})?)?\](\.[xyzw]{1,4})?|([vof][acostdip]?)(\d*)?(\.[xyzw]{1,4})?/gi);
+                  if(!regs || regs.length != opFound.numRegister)
+                  {
+                     this._error = "error: wrong number of operands. found " + regs.length + " but expected " + opFound.numRegister + ".";
+                     break;
+                  }
+                  badreg = false;
+                  pad = uint(64 + 64 + 32);
+                  regLength = regs.length;
+                  for(j = 0; j < regLength; j++)
+                  {
+                     isRelative = false;
+                     relreg = regs[j].match(/\[.*\]/ig);
+                     if(Boolean(relreg) && relreg.length > 0)
+                     {
+                        regs[j] = regs[j].replace(relreg[0],"0");
+                        if(this.verbose)
+                        {
+                           trace("IS REL");
+                        }
+                        isRelative = true;
+                     }
+                     res = regs[j].match(/^\b[A-Za-z]{1,2}/ig);
+                     if(!res)
+                     {
+                        this._error = "error: could not parse operand " + j + " (" + regs[j] + ").";
+                        badreg = true;
+                        break;
+                     }
+                     regFound = REGMAP[res[0]];
+                     if(this.debugEnabled)
+                     {
+                        trace(regFound);
+                     }
+                     if(regFound == null)
+                     {
+                        this._error = "error: could not find register name for operand " + j + " (" + regs[j] + ").";
+                        badreg = true;
+                        break;
+                     }
+                     if(isFrag)
+                     {
+                        if(!(regFound.flags & REG_FRAG))
+                        {
+                           this._error = "error: register operand " + j + " (" + regs[j] + ") only allowed in vertex programs.";
+                           badreg = true;
+                           break;
+                        }
+                        if(isRelative)
+                        {
+                           this._error = "error: register operand " + j + " (" + regs[j] + ") relative adressing not allowed in fragment programs.";
+                           badreg = true;
+                           break;
+                        }
+                     }
+                     else if(!(regFound.flags & REG_VERT))
+                     {
+                        this._error = "error: register operand " + j + " (" + regs[j] + ") only allowed in fragment programs.";
+                        badreg = true;
+                        break;
+                     }
+                     regs[j] = regs[j].slice(regs[j].search(regFound.name) + regFound.name.length);
+                     idxmatch = isRelative ? relreg[0].match(/\d+/) : regs[j].match(/\d+/);
+                     regidx = 0;
+                     if(Boolean(idxmatch))
+                     {
+                        regidx = uint(idxmatch[0]);
+                     }
+                     if(regFound.range < regidx)
+                     {
+                        this._error = "error: register operand " + j + " (" + regs[j] + ") index exceeds limit of " + (regFound.range + 1) + ".";
+                        badreg = true;
+                        break;
+                     }
+                     regmask = 0;
+                     maskmatch = regs[j].match(/(\.[xyzw]{1,4})/);
+                     isDest = j == 0 && !(opFound.flags & OP_NO_DEST);
+                     isSampler = j == 2 && Boolean(opFound.flags & OP_SPECIAL_TEX);
+                     reltype = 0;
+                     relsel = 0;
+                     reloffset = 0;
+                     if(isDest && isRelative)
+                     {
+                        this._error = "error: relative can not be destination";
+                        badreg = true;
+                        break;
+                     }
+                     if(Boolean(maskmatch))
+                     {
+                        regmask = 0;
+                        maskLength = uint(maskmatch[0].length);
+                        for(k = 1; k < maskLength; k++)
+                        {
+                           cv = maskmatch[0].charCodeAt(k) - "x".charCodeAt(0);
+                           if(cv > 2)
+                           {
+                              cv = 3;
+                           }
+                           if(isDest)
+                           {
+                              regmask |= 1 << cv;
+                           }
+                           else
+                           {
+                              regmask |= cv << (k - 1 << 1);
+                           }
+                        }
+                        if(!isDest)
+                        {
+                           while(k <= 4)
+                           {
+                              regmask |= cv << (k - 1 << 1);
+                              k++;
+                           }
+                        }
+                     }
+                     else
+                     {
+                        regmask = isDest ? 15 : 228;
+                     }
+                     if(isRelative)
+                     {
+                        relname = relreg[0].match(/[A-Za-z]{1,2}/ig);
+                        regFoundRel = REGMAP[relname[0]];
+                        if(regFoundRel == null)
+                        {
+                           this._error = "error: bad index register";
+                           badreg = true;
+                           break;
+                        }
+                        reltype = regFoundRel.emitCode;
+                        selmatch = relreg[0].match(/(\.[xyzw]{1,1})/);
+                        if(selmatch.length == 0)
+                        {
+                           this._error = "error: bad index register select";
+                           badreg = true;
+                           break;
+                        }
+                        relsel = selmatch[0].charCodeAt(1) - "x".charCodeAt(0);
+                        if(relsel > 2)
+                        {
+                           relsel = 3;
+                        }
+                        relofs = relreg[0].match(/\+\d{1,3}/ig);
+                        if(relofs.length > 0)
+                        {
+                           reloffset = int(relofs[0]);
+                        }
+                        if(reloffset < 0 || reloffset > 255)
+                        {
+                           this._error = "error: index offset " + reloffset + " out of bounds. [0..255]";
+                           badreg = true;
+                           break;
+                        }
+                        if(this.verbose)
+                        {
+                           trace("RELATIVE: type=" + reltype + "==" + relname[0] + " sel=" + relsel + "==" + selmatch[0] + " idx=" + regidx + " offset=" + reloffset);
+                        }
+                     }
+                     if(this.verbose)
+                     {
+                        trace("  emit argcode=" + regFound + "[" + regidx + "][" + regmask + "]");
+                     }
+                     if(isDest)
+                     {
+                        this.agalcode.writeShort(regidx);
+                        this.agalcode.writeByte(regmask);
+                        this.agalcode.writeByte(regFound.emitCode);
+                        pad -= 32;
+                     }
+                     else if(isSampler)
+                     {
+                        if(this.verbose)
+                        {
+                           trace("  emit sampler");
+                        }
+                        samplerbits = 5;
+                        optsLength = opts == null ? 0 : opts.length;
+                        bias = 0;
+                        for(k = 0; k < optsLength; k++)
+                        {
+                           if(this.verbose)
+                           {
+                              trace("    opt: " + opts[k]);
+                           }
+                           optfound = SAMPLEMAP[opts[k]];
+                           if(optfound == null)
+                           {
+                              bias = Number(opts[k]);
+                              if(this.verbose)
+                              {
+                                 trace("    bias: " + bias);
+                              }
+                           }
+                           else
+                           {
+                              if(optfound.flag != SAMPLER_SPECIAL_SHIFT)
+                              {
+                                 samplerbits &= ~(15 << optfound.flag);
+                              }
+                              samplerbits |= uint(optfound.mask) << uint(optfound.flag);
+                           }
+                        }
+                        this.agalcode.writeShort(regidx);
+                        this.agalcode.writeByte(int(bias * 8));
+                        this.agalcode.writeByte(0);
+                        this.agalcode.writeUnsignedInt(samplerbits);
+                        if(this.verbose)
+                        {
+                           trace("    bits: " + (samplerbits - 5));
+                        }
+                        pad -= 64;
+                     }
+                     else
+                     {
+                        if(j == 0)
+                        {
+                           this.agalcode.writeUnsignedInt(0);
+                           pad -= 32;
+                        }
+                        this.agalcode.writeShort(regidx);
+                        this.agalcode.writeByte(reloffset);
+                        this.agalcode.writeByte(regmask);
+                        this.agalcode.writeByte(regFound.emitCode);
+                        this.agalcode.writeByte(reltype);
+                        this.agalcode.writeShort(isRelative ? relsel | 1 << 15 : 0);
+                        pad -= 64;
+                     }
+                  }
+                  for(j = 0; j < pad; j += 8)
+                  {
+                     this.agalcode.writeByte(0);
+                  }
+                  if(badreg)
+                  {
+                     break;
+                  }
+               }
+            }
+            i++;
+         }
+         if(this._error != "")
+         {
+            this._error += "\n  at line " + i + " " + lines[i];
+            this.agalcode.length = 0;
+            trace(this._error);
+         }
+         if(this.debugEnabled)
+         {
+            dbgLine = "generated bytecode:";
+            agalLength = this.agalcode.length;
+            for(index = 0; index < agalLength; index++)
+            {
+               if(!(index % 16))
+               {
+                  dbgLine += "\n";
+               }
+               if(!(index % 4))
+               {
+                  dbgLine += " ";
+               }
+               byteStr = this.agalcode[index].toString(16);
+               if(byteStr.length < 2)
+               {
+                  byteStr = "0" + byteStr;
+               }
+               dbgLine += byteStr;
+            }
+            trace(dbgLine);
+         }
+         if(this.verbose)
+         {
+            trace("AGALMiniAssembler.assemble time: " + (getTimer() - start) / 1000 + "s");
+         }
+         return this.agalcode;
       }
       
       private function initregmap(version:uint, ignorelimits:Boolean) : void
@@ -333,7 +725,7 @@ package com.adobe.utils
          REGMAP[FT] = new Register(FT,"fragment temporary",2,ignorelimits ? 1024 : (version == 1 ? 7 : 27),REG_FRAG | REG_WRITE | REG_READ);
          REGMAP[FS] = new Register(FS,"texture sampler",5,ignorelimits ? 1024 : 7,REG_FRAG | REG_READ);
          REGMAP[FO] = new Register(FO,"fragment output",3,ignorelimits ? 1024 : (version == 1 ? 0 : 3),REG_FRAG | REG_WRITE);
-         REGMAP[FD] = new Register(FD,"fragment depth output",6,ignorelimits ? 1024 : (version == 1 ? -1 : 0),REG_FRAG | REG_WRITE);
+         REGMAP[FD] = new Register(FD,"fragment depth output",6,ignorelimits ? 1024 : (version == 1 ? uint(-1) : 0),REG_FRAG | REG_WRITE);
          REGMAP["op"] = REGMAP[VO];
          REGMAP["i"] = REGMAP[VI];
          REGMAP["v"] = REGMAP[VI];
@@ -346,8 +738,6 @@ package com.adobe.utils
 
 class OpCode
 {
-    
-   
    private var _emitCode:uint;
    
    private var _flags:uint;
@@ -393,8 +783,6 @@ class OpCode
 
 class Register
 {
-    
-   
    private var _emitCode:uint;
    
    private var _name:String;
@@ -448,8 +836,6 @@ class Register
 
 class Sampler
 {
-    
-   
    private var _flag:uint;
    
    private var _mask:uint;

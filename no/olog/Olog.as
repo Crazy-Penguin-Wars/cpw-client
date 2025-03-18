@@ -6,9 +6,7 @@ package no.olog
    
    public class Olog extends Sprite
    {
-      
       public static const LOCAL_CONNECTION_ID:String = "no.olog#localConnection";
-       
       
       public function Olog()
       {
@@ -73,8 +71,8 @@ package no.olog
       
       public static function traceDisplayList(root:DisplayObjectContainer = null, maxDepth:uint = 10, property:String = null) : void
       {
-         var msg:* = null;
-         var footer:* = null;
+         var msg:String = null;
+         var footer:String = null;
          if(root)
          {
             §§push(root);
@@ -360,3 +358,4 @@ package no.olog
       }
    }
 }
+

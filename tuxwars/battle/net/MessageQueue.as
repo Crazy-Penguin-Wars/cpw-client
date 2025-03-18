@@ -7,9 +7,7 @@ package tuxwars.battle.net
    
    public class MessageQueue
    {
-      
       private static const LOCAL_MESSAGE_OUTPUT:Boolean = false;
-       
       
       private const practiceMessages:Vector.<BattleResponse> = new Vector.<BattleResponse>();
       
@@ -85,3 +83,4 @@ package tuxwars.battle.net
       }
    }
 }
+

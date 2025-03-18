@@ -4,9 +4,7 @@ package tuxwars.battle.net
    
    public class BattleServerConnectMessage extends Message
    {
-      
       public static const CONNECT:String = "Connect";
-       
       
       private var host:String;
       
@@ -30,3 +28,4 @@ package tuxwars.battle.net
       }
    }
 }
+

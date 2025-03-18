@@ -6,8 +6,6 @@ package tuxwars.challenges.events
    
    public class ChallengeEndGameConfirm extends Message
    {
-       
-      
       private var _players:Array;
       
       private var _playersSortedScore:Array;
@@ -41,3 +39,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

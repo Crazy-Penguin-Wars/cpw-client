@@ -6,15 +6,15 @@ package com.dchoc.net
    import com.dchoc.utils.LogUtils;
    import flash.utils.getTimer;
    import flash.xml.XMLDocument;
-   import mx.rpc.events.FaultEvent;
-   import mx.rpc.events.ResultEvent;
+   import mx.rpc.events.*;
    import mx.rpc.http.HTTPService;
    import mx.rpc.xml.SimpleXMLDecoder;
    import mx.utils.object_proxy;
    
+   use namespace object_proxy;
+   
    public class ServerConnection
    {
-      
       public static const RESPONSE_CODE_OK:int = 0;
       
       public static const RESPONSE_CODE_FACEBOOK_SESSION_LOST:int = 4;
@@ -26,7 +26,6 @@ package com.dchoc.net
       public static const CONNECTION_ERROR_RETRY_TIME:int = 30000;
       
       private static const simpleXMLDecoder:SimpleXMLDecoder = new SimpleXMLDecoder();
-       
       
       private var counter:int;
       
@@ -61,7 +60,7 @@ package com.dchoc.net
       
       public function resultHandler(event:ResultEvent) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          if(event.result && event.result != "")
          {
             _loc2_ = event.result.object_proxy::object;
@@ -80,9 +79,9 @@ package com.dchoc.net
       
       public function faultHandler(event:FaultEvent) : void
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
-         var _loc4_:* = null;
+         var _loc3_:String = null;
+         var _loc2_:ServerRequest = null;
+         var _loc4_:String = null;
          if(checkIfConnectionError(event))
          {
             _loc3_ = getCallId(event);
@@ -100,7 +99,7 @@ package com.dchoc.net
       
       private function getCallId(event:FaultEvent) : String
       {
-         var _loc4_:* = null;
+         var _loc4_:String = null;
          _loc4_ = "call%5Fid=";
          var _loc2_:int = int(event.fault.message.indexOf("call%5Fid="));
          var end:int = int(event.fault.message.indexOf("&",_loc2_));
@@ -115,11 +114,11 @@ package com.dchoc.net
       {
          var _loc2_:int = 0;
          var _loc4_:int = 0;
-         var errorCode:* = null;
+         var errorCode:String = null;
          if(event != null && event.fault != null && event.fault.faultDetail != null)
          {
-            _loc2_ = event.fault.faultDetail.indexOf("text=\"");
-            _loc4_ = event.fault.faultDetail.indexOf("URL:",_loc2_);
+            _loc2_ = int(event.fault.faultDetail.indexOf("text=\""));
+            _loc4_ = int(event.fault.faultDetail.indexOf("URL:",_loc2_));
             if(_loc2_ >= 0 && _loc4_ >= 0 && _loc4_ > _loc2_ + 6)
             {
                errorCode = event.fault.faultDetail.substring(_loc2_ + 6,_loc4_);
@@ -184,8 +183,6 @@ package com.dchoc.net
 
 class Pair
 {
-    
-   
    public var key:String;
    
    public var value:String;

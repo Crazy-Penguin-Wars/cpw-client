@@ -6,8 +6,6 @@ package tuxwars.battle.ui.states.results
    
    public class ResultsLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function ResultsLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getResultsAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.battle.ui.states.results
       }
    }
 }
+

@@ -1,13 +1,12 @@
 package tuxwars.battle.world.loader
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import org.as3commons.lang.StringUtils;
    import tuxwars.items.references.EmissionReference;
    
    public class LevelPowerUpResult
    {
-      
       public static const RESULT_INDEX_HEAL:int = 0;
       
       public static const RESULT_INDEX_GIVE_POINTS:int = 1;
@@ -33,11 +32,10 @@ package tuxwars.battle.world.loader
       private static const GIVE_ITEM_FIELD_NAME_RANDOMIZE_ITEMS:String = "RandomizeItems";
       
       private static const GIVE_ITEM_FIELD_NAME_RANDOMIZE_AMOUNT:String = "RandomizeAmount";
-       
       
-      private const _results:Array = [];
+      private const _results:Array;
       
-      private const _resultItems:Array = [];
+      private const _resultItems:Array;
       
       private var _resultItemsRandomized:Boolean;
       
@@ -59,40 +57,46 @@ package tuxwars.battle.world.loader
          var itemRow:Row;
          var items:Array;
          var r:Row;
+         _results = [];
+         _resultItems = [];
          super();
+         var _loc33_:String = "Heal";
          var _loc2_:Row = row;
          §§push(_results);
          §§push(0);
-         if(!_loc2_._cache["Heal"])
+         if(!_loc2_._cache[_loc33_])
          {
-            _loc2_._cache["Heal"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Heal");
+            _loc2_._cache[_loc33_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc33_);
          }
-         var _loc3_:* = _loc2_._cache["Heal"];
+         var _loc3_:* = _loc2_._cache[_loc33_];
          §§pop()[§§pop()] = _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value;
+         var _loc34_:String = "GivePoints";
          var _loc4_:Row = row;
          §§push(_results);
          §§push(1);
-         if(!_loc4_._cache["GivePoints"])
+         if(!_loc4_._cache[_loc34_])
          {
-            _loc4_._cache["GivePoints"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","GivePoints");
+            _loc4_._cache[_loc34_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc34_);
          }
-         var _loc5_:* = _loc4_._cache["GivePoints"];
+         var _loc5_:* = _loc4_._cache[_loc34_];
          §§pop()[§§pop()] = _loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value;
+         var _loc35_:String = "GiveCoins";
          var _loc6_:Row = row;
          §§push(_results);
          §§push(2);
-         if(!_loc6_._cache["GiveCoins"])
+         if(!_loc6_._cache[_loc35_])
          {
-            _loc6_._cache["GiveCoins"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","GiveCoins");
+            _loc6_._cache[_loc35_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc35_);
          }
-         var _loc7_:* = _loc6_._cache["GiveCoins"];
+         var _loc7_:* = _loc6_._cache[_loc35_];
          §§pop()[§§pop()] = _loc7_.overrideValue != null ? _loc7_.overrideValue : _loc7_._value;
+         var _loc36_:String = "Emitters";
          var _loc8_:Row = row;
-         if(!_loc8_._cache["Emitters"])
+         if(!_loc8_._cache[_loc36_])
          {
-            _loc8_._cache["Emitters"] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name","Emitters");
+            _loc8_._cache[_loc36_] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name",_loc36_);
          }
-         emissionsField = _loc8_._cache["Emitters"];
+         emissionsField = _loc8_._cache[_loc36_];
          if(emissionsField)
          {
             var _loc10_:Field = emissionsField;
@@ -105,12 +109,13 @@ package tuxwars.battle.world.loader
                return StringUtils.compareTo(row1.id,row2.id);
             });
          }
+         var _loc37_:String = "Followers";
          var _loc13_:Row = row;
-         if(!_loc13_._cache["Followers"])
+         if(!_loc13_._cache[_loc37_])
          {
-            _loc13_._cache["Followers"] = com.dchoc.utils.DCUtils.find(_loc13_._fields,"name","Followers");
+            _loc13_._cache[_loc37_] = com.dchoc.utils.DCUtils.find(_loc13_._fields,"name",_loc37_);
          }
-         followersField = _loc13_._cache["Followers"];
+         followersField = _loc13_._cache[_loc37_];
          if(followersField)
          {
             var _loc14_:Field = followersField;
@@ -123,61 +128,68 @@ package tuxwars.battle.world.loader
                return StringUtils.compareTo(row1.id,row2.id);
             });
          }
+         var _loc38_:String = "GiveItem";
          var _loc17_:Row = row;
-         if(!_loc17_._cache["GiveItem"])
+         if(!_loc17_._cache[_loc38_])
          {
-            _loc17_._cache["GiveItem"] = com.dchoc.utils.DCUtils.find(_loc17_._fields,"name","GiveItem");
+            _loc17_._cache[_loc38_] = com.dchoc.utils.DCUtils.find(_loc17_._fields,"name",_loc38_);
          }
-         itemNameField = _loc17_._cache["GiveItem"];
+         itemNameField = _loc17_._cache[_loc38_];
          if(itemNameField)
          {
             var _loc18_:Field = itemNameField;
             itemRow = _loc18_.overrideValue != null ? _loc18_.overrideValue : _loc18_._value;
+            var _loc39_:String = "RandomizeItems";
             var _loc19_:Row = itemRow;
-            if(!_loc19_._cache["RandomizeItems"])
+            if(!_loc19_._cache[_loc39_])
             {
-               _loc19_._cache["RandomizeItems"] = com.dchoc.utils.DCUtils.find(_loc19_._fields,"name","RandomizeItems");
+               _loc19_._cache[_loc39_] = com.dchoc.utils.DCUtils.find(_loc19_._fields,"name",_loc39_);
             }
-            var _loc20_:* = _loc19_._cache["RandomizeItems"];
+            var _loc20_:* = _loc19_._cache[_loc39_];
             _resultItemsRandomized = _loc20_.overrideValue != null ? _loc20_.overrideValue : _loc20_._value;
+            var _loc40_:String = "Amount";
             var _loc21_:Row = itemRow;
-            if(!_loc21_._cache["Amount"])
+            if(!_loc21_._cache[_loc40_])
             {
-               _loc21_._cache["Amount"] = com.dchoc.utils.DCUtils.find(_loc21_._fields,"name","Amount");
+               _loc21_._cache[_loc40_] = com.dchoc.utils.DCUtils.find(_loc21_._fields,"name",_loc40_);
             }
-            var _loc22_:* = _loc21_._cache["Amount"];
+            var _loc22_:* = _loc21_._cache[_loc40_];
             _resultItemAmount = _loc22_.overrideValue != null ? _loc22_.overrideValue : _loc22_._value;
+            var _loc41_:String = "RandomizeAmount";
             var _loc23_:Row = itemRow;
-            if(!_loc23_._cache["RandomizeAmount"])
+            if(!_loc23_._cache[_loc41_])
             {
-               _loc23_._cache["RandomizeAmount"] = com.dchoc.utils.DCUtils.find(_loc23_._fields,"name","RandomizeAmount");
+               _loc23_._cache[_loc41_] = com.dchoc.utils.DCUtils.find(_loc23_._fields,"name",_loc41_);
             }
-            var _loc24_:* = _loc23_._cache["RandomizeAmount"];
+            var _loc24_:* = _loc23_._cache[_loc41_];
             _resultItemsAmountRandomized = _loc24_.overrideValue != null ? _loc24_.overrideValue : _loc24_._value;
+            var _loc42_:String = "Items";
             var _loc25_:Row = itemRow;
-            if(!_loc25_._cache["Items"])
+            if(!_loc25_._cache[_loc42_])
             {
-               _loc25_._cache["Items"] = com.dchoc.utils.DCUtils.find(_loc25_._fields,"name","Items");
+               _loc25_._cache[_loc42_] = com.dchoc.utils.DCUtils.find(_loc25_._fields,"name",_loc42_);
             }
-            var _loc26_:* = _loc25_._cache["Items"];
+            var _loc26_:* = _loc25_._cache[_loc42_];
             if((_loc26_.overrideValue != null ? _loc26_.overrideValue : _loc26_._value) is Array)
             {
+               var _loc43_:String = "Items";
                var _loc27_:Row = itemRow;
-               if(!_loc27_._cache["Items"])
+               if(!_loc27_._cache[_loc43_])
                {
-                  _loc27_._cache["Items"] = com.dchoc.utils.DCUtils.find(_loc27_._fields,"name","Items");
+                  _loc27_._cache[_loc43_] = com.dchoc.utils.DCUtils.find(_loc27_._fields,"name",_loc43_);
                }
-               var _loc28_:* = _loc27_._cache["Items"];
+               var _loc28_:* = _loc27_._cache[_loc43_];
                §§push(_loc28_.overrideValue != null ? _loc28_.overrideValue : _loc28_._value);
             }
             else
             {
+               var _loc44_:String = "Items";
                var _loc29_:Row = itemRow;
-               if(!_loc29_._cache["Items"])
+               if(!_loc29_._cache[_loc44_])
                {
-                  _loc29_._cache["Items"] = com.dchoc.utils.DCUtils.find(_loc29_._fields,"name","Items");
+                  _loc29_._cache[_loc44_] = com.dchoc.utils.DCUtils.find(_loc29_._fields,"name",_loc44_);
                }
-               var _loc30_:* = _loc29_._cache["Items"];
+               var _loc30_:* = _loc29_._cache[_loc44_];
                §§push([_loc30_.overrideValue != null ? _loc30_.overrideValue : _loc30_._value]);
             }
             items = §§pop();
@@ -254,3 +266,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

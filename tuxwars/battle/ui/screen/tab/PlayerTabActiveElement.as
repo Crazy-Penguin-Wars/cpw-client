@@ -14,7 +14,6 @@ package tuxwars.battle.ui.screen.tab
    
    public class PlayerTabActiveElement extends PlayerTabElement
    {
-      
       private static const BACK_ACTIVE:String = "Back_Active";
       
       private static const PLACE_TAG:String = "Place_Tag";
@@ -24,7 +23,6 @@ package tuxwars.battle.ui.screen.tab
       private static const TEXT_PLACE:String = "Text_Place";
       
       private static const SLIDER_LIFEBAR:String = "Slider_Lifebar";
-       
       
       private var placeTags:UIContainers;
       
@@ -95,3 +93,4 @@ package tuxwars.battle.ui.screen.tab
       }
    }
 }
+

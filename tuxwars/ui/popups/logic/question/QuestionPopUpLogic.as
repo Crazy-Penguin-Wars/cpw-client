@@ -6,8 +6,6 @@ package tuxwars.ui.popups.logic.question
    
    public class QuestionPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function QuestionPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -42,3 +40,4 @@ package tuxwars.ui.popups.logic.question
       }
    }
 }
+

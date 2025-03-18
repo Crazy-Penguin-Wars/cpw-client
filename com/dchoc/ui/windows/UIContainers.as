@@ -5,8 +5,6 @@ package com.dchoc.ui.windows
    
    public class UIContainers
    {
-       
-      
       private const containers:Object = {};
       
       private var currentContainerId:String;
@@ -31,7 +29,7 @@ package com.dchoc.ui.windows
       
       public function show(id:String, useTransitioning:Boolean = true, useLoop:Boolean = false) : void
       {
-         var _loc6_:* = null;
+         var _loc6_:UIContainer = null;
          var oldUseTransitions:Boolean = false;
          var _loc5_:UIContainer = containers[id];
          if(useTransitioning)
@@ -133,7 +131,7 @@ package com.dchoc.ui.windows
       
       public function dispose() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:UIContainer = null;
          if(previousContainerId != null)
          {
             _loc1_ = containers[previousContainerId];
@@ -150,3 +148,4 @@ package com.dchoc.ui.windows
       }
    }
 }
+

@@ -2,18 +2,17 @@ package com.dchoc.messages
 {
    import com.dchoc.events.ErrorMessage;
    import com.dchoc.utils.LogUtils;
+   import flash.external.ExternalInterface;
    
    public class MessageCenter
    {
-      
-      private static const eventListeners:Object = {};
-      
       private static const DEBUG_ALL_MESSAGES:Boolean = false;
       
       private static var lastMessageType:String;
       
+      private static const eventListeners:Object = {};
+      
       private static var listeners:Vector.<String> = new Vector.<String>();
-       
       
       public function MessageCenter()
       {
@@ -23,6 +22,7 @@ package com.dchoc.messages
       
       public static function addListener(type:String, callback:Function) : void
       {
+         ExternalInterface.call("console.log",type);
          if(Config.debugMode)
          {
             listeners.push(type);
@@ -47,7 +47,7 @@ package com.dchoc.messages
          var _loc4_:Vector.<Function> = eventListeners[type];
          if(_loc4_)
          {
-            _loc3_ = _loc4_.indexOf(callback);
+            _loc3_ = int(_loc4_.indexOf(callback));
             if(_loc3_ >= 0)
             {
                _loc4_.splice(_loc3_,1);
@@ -82,6 +82,8 @@ package com.dchoc.messages
       
       public static function sendEvent(msg:Message) : void
       {
+         ExternalInterface.call("console.log","Send event with msg:");
+         ExternalInterface.call("console.log",msg.type);
          var _loc4_:* = undefined;
          var foundNull:Boolean = false;
          var i:int = 0;
@@ -135,8 +137,12 @@ package com.dchoc.messages
       private static function checkLastType(type:String) : Boolean
       {
          var _loc2_:Boolean = lastMessageType != type;
-         lastMessageType = type;
+         if(true)
+         {
+            lastMessageType = type;
+         }
          return _loc2_;
       }
    }
 }
+

@@ -15,9 +15,7 @@ package tuxwars.home.ui.screen.crafting.researchslot
    
    public class ResearchContainerStart extends ResearchContainer
    {
-      
       public static const START:String = "Slot_Result";
-       
       
       private var buttonReset:UIButton;
       
@@ -83,3 +81,4 @@ package tuxwars.home.ui.screen.crafting.researchslot
       }
    }
 }
+

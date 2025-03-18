@@ -9,8 +9,6 @@ package nape.geom
    
    public final class Mat23
    {
-       
-      
       public var zpp_inner:ZPP_Mat23;
       
       public function Mat23(param1:Number = 1, param2:Number = 0, param3:Number = 0, param4:Number = 1, param5:Number = 0, param6:Number = 0)
@@ -496,6 +494,11 @@ package nape.geom
             _loc10_._invalidate = null;
             _loc10_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc10_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc4_;
       }
@@ -1180,6 +1183,11 @@ package nape.geom
             _loc13_._invalidate = null;
             _loc13_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc13_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc5_;
       }
@@ -1415,3 +1423,4 @@ package nape.geom
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.control
    
    public class UseEmoticonMessage extends SocketMessage
    {
-       
-      
       public function UseEmoticonMessage(playerId:String, emoticonId:String)
       {
          super({
@@ -22,3 +20,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

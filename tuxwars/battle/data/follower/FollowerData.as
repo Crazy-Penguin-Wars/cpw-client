@@ -1,7 +1,7 @@
 package tuxwars.battle.data.follower
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import tuxwars.battle.data.TuxEmissionGameObjectData;
    import tuxwars.battle.gameobjects.ColorReference;
    import tuxwars.battle.simplescript.SimpleScriptManager;
@@ -9,7 +9,6 @@ package tuxwars.battle.data.follower
    
    public class FollowerData extends TuxEmissionGameObjectData
    {
-      
       private static const TYPE:String = "Type";
       
       private static const EMIT_AT:String = "EmitAt";
@@ -41,7 +40,6 @@ package tuxwars.battle.data.follower
       private static const STAT_BONUSES:String = "StatBonuses";
       
       private static const COLOR_REFERENCE:String = "ColorReference";
-       
       
       public function FollowerData(row:Row)
       {
@@ -113,48 +111,52 @@ package tuxwars.battle.data.follower
       
       public function get affectedObjects() : Array
       {
+         var _loc4_:String = "AffectsObjects";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["AffectsObjects"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["AffectsObjects"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","AffectsObjects");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["AffectsObjects"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get applyToObjects() : Array
       {
+         var _loc4_:String = "ApplyToObjects";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["ApplyToObjects"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["ApplyToObjects"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","ApplyToObjects");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["ApplyToObjects"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get followers() : Array
       {
+         var _loc4_:String = "Followers";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Followers"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Followers"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Followers");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Followers"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get triggers() : Array
       {
+         var _loc4_:String = "Trigger";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Trigger"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Trigger"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Trigger");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Trigger"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : ["Enter"];
       }
@@ -168,26 +170,29 @@ package tuxwars.battle.data.follower
       
       public function get statBonuses() : StatBonusReference
       {
+         var _loc4_:String = "StatBonuses";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["StatBonuses"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["StatBonuses"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","StatBonuses");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["StatBonuses"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, new StatBonusReference(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value,type)) : null;
       }
       
       public function get colorReference() : ColorReference
       {
+         var _loc4_:String = "ColorReference";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["ColorReference"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["ColorReference"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","ColorReference");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["ColorReference"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, new ColorReference(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : null;
       }
    }
 }
+

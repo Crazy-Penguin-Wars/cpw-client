@@ -45,9 +45,10 @@ package mx.managers
    import mx.utils.DensityUtil;
    import mx.utils.LoaderUtil;
    
+   use namespace mx_internal;
+   
    public class SystemManager extends MovieClip implements IChildList, IFlexDisplayObject, IFlexModuleFactory, ISystemManager
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       private static const IDLE_THRESHOLD:Number = 1000;
@@ -55,7 +56,6 @@ package mx.managers
       private static const IDLE_INTERVAL:Number = 100;
       
       mx_internal static var allSystemManagers:Dictionary = new Dictionary(true);
-       
       
       mx_internal var topLevel:Boolean = true;
       
@@ -135,15 +135,14 @@ package mx.managers
       
       private var _topMostIndex:int = 0;
       
-      mx_internal var _mouseX;
+      mx_internal var _mouseX:*;
       
-      mx_internal var _mouseY;
+      mx_internal var _mouseY:*;
       
-      private var implMap:Object;
+      private var implMap:Object = {};
       
       public function SystemManager()
       {
-         this.implMap = {};
          super();
          if(Boolean(this.stage))
          {
@@ -191,7 +190,6 @@ package mx.managers
             }
             catch(e:Error)
             {
-               continue;
             }
          }
          return null;
@@ -362,7 +360,7 @@ package mx.managers
       public function get embeddedFontList() : Object
       {
          var o:Object = null;
-         var p:* = null;
+         var p:String = null;
          var fl:Object = null;
          if(this._fontList == null)
          {
@@ -604,8 +602,8 @@ package mx.managers
          }
          catch(error:Error)
          {
-            return false;
          }
+         return false;
       }
       
       public function get parentAllowsChild() : Boolean
@@ -616,8 +614,8 @@ package mx.managers
          }
          catch(error:Error)
          {
-            return false;
          }
+         return false;
       }
       
       override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false) : void
@@ -939,8 +937,8 @@ package mx.managers
          if(mainClassName == null)
          {
             url = loaderInfo.loaderURL;
-            dot = url.lastIndexOf(".");
-            slash = url.lastIndexOf("/");
+            dot = int(url.lastIndexOf("."));
+            slash = int(url.lastIndexOf("/"));
             mainClassName = url.substring(slash + 1,dot);
          }
          var mainClass:Class = Class(this.getDefinitionByName(mainClassName));
@@ -1006,7 +1004,7 @@ package mx.managers
             }
             normalizedURL = LoaderUtil.normalizeURL(this.loaderInfo);
             crossDomainRSLItem = Class(this.getDefinitionByName("mx.core::CrossDomainRSLItem"));
-            n = this.rslDataList.length;
+            n = int(this.rslDataList.length);
             for(i = 0; i < n; i++)
             {
                rslWithFailovers = this.rslDataList[i];
@@ -1024,7 +1022,7 @@ package mx.managers
             {
                normalizedURL = LoaderUtil.normalizeURL(this.loaderInfo);
             }
-            n = rsls.length;
+            n = int(rsls.length);
             for(i = 0; i < n; i++)
             {
                node = new RSLItem(rsls[i].url,normalizedURL,this);
@@ -1182,7 +1180,7 @@ package mx.managers
          var bold:Boolean = Boolean(textFormat.bold);
          var italic:Boolean = Boolean(textFormat.italic);
          var fontList:Array = Font.enumerateFonts();
-         var n:int = fontList.length;
+         var n:int = int(fontList.length);
          for(var i:int = 0; i < n; i++)
          {
             font = Font(fontList[i]);
@@ -1404,7 +1402,7 @@ package mx.managers
          var mixinList:Array = this.info()["mixins"];
          if(Boolean(mixinList) && mixinList.length > 0)
          {
-            n = mixinList.length;
+            n = int(mixinList.length);
             for(i = 0; i < n; i++)
             {
                c = Class(this.getDefinitionByName(mixinList[i]));
@@ -1777,8 +1775,8 @@ package mx.managers
          }
          catch(e:SecurityError)
          {
-            return null;
          }
+         return null;
       }
       
       public function getTopLevelRoot() : DisplayObject
@@ -1966,3 +1964,4 @@ package mx.managers
       }
    }
 }
+

@@ -6,13 +6,11 @@ package tuxwars.data
    
    public class PlayerReportDatas
    {
-      
       private static const TABLE:String = "PlayerStatistics";
       
-      private static const PLAYER_REPORT_DATAS:Vector.<PlayerReportData> = new Vector.<PlayerReportData>();
-      
       private static var table:Table;
-       
+      
+      private static const PLAYER_REPORT_DATAS:Vector.<PlayerReportData> = new Vector.<PlayerReportData>();
       
       public function PlayerReportDatas()
       {
@@ -49,10 +47,12 @@ package tuxwars.data
       {
          if(!table)
          {
+            var _loc2_:String = "PlayerStatistics";
             var _loc1_:ProjectManager = ProjectManager;
-            table = com.dchoc.projectdata.ProjectManager.projectData.findTable("PlayerStatistics");
+            table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return table;
       }
    }
 }
+

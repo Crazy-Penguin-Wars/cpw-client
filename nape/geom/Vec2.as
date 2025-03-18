@@ -11,8 +11,6 @@ package nape.geom
    
    public final class Vec2
    {
-       
-      
       public var zpp_pool:Vec2;
       
       public var zpp_inner:ZPP_Vec2;
@@ -33,6 +31,7 @@ package nape.geom
             Boot.lastError = new Error();
             throw "Error: Vec2 components cannot be NaN";
          }
+         var _loc3_:Boolean = false;
          §§push(§§findproperty(zpp_inner));
          if(ZPP_Vec2.zpp_pool == null)
          {
@@ -45,7 +44,7 @@ package nape.geom
             _loc4_.next = null;
          }
          _loc4_.weak = false;
-         _loc4_._immutable = false;
+         _loc4_._immutable = _loc3_;
          _loc4_.x = param1;
          _loc4_.y = param2;
          §§pop().zpp_inner = _loc4_;
@@ -631,6 +630,11 @@ package nape.geom
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          if(param2.zpp_inner.weak)
          {
@@ -680,6 +684,11 @@ package nape.geom
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc3_;
       }
@@ -800,6 +809,11 @@ package nape.geom
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          if(param2.zpp_inner.weak)
          {
@@ -849,6 +863,11 @@ package nape.geom
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc3_;
       }
@@ -1274,6 +1293,7 @@ package nape.geom
                _loc2_._invalidate(_loc2_);
             }
          }
+         this;
          if(param1.zpp_inner.weak)
          {
             if(param1 != null && param1.zpp_disp)
@@ -1322,6 +1342,11 @@ package nape.geom
             _loc6_._invalidate = null;
             _loc6_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc6_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -1542,6 +1567,11 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc3_;
       }
@@ -2147,6 +2177,7 @@ package nape.geom
                _loc2_._invalidate(_loc2_);
             }
          }
+         this;
          if(zpp_disp)
          {
             Boot.lastError = new Error();
@@ -2379,6 +2410,11 @@ package nape.geom
             _loc7_._invalidate = null;
             _loc7_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc7_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc3_;
       }
@@ -2675,6 +2711,11 @@ package nape.geom
             _loc10_._invalidate = null;
             _loc10_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc10_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc7_;
       }
@@ -3635,6 +3676,11 @@ package nape.geom
             _loc5_._invalidate = null;
             _loc5_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc5_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc2_;
       }
@@ -3801,6 +3847,11 @@ package nape.geom
             _loc5_._invalidate = null;
             _loc5_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc5_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc2_;
       }
@@ -4072,6 +4123,7 @@ package nape.geom
                _loc2_._invalidate(_loc2_);
             }
          }
+         this;
          if(param1.zpp_inner.weak)
          {
             if(param1 != null && param1.zpp_disp)
@@ -4120,6 +4172,11 @@ package nape.geom
             _loc6_._invalidate = null;
             _loc6_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc6_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -4340,6 +4397,11 @@ package nape.geom
             _loc10_._invalidate = null;
             _loc10_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc10_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc4_;
       }
@@ -4560,8 +4622,14 @@ package nape.geom
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc3_;
       }
    }
 }
+

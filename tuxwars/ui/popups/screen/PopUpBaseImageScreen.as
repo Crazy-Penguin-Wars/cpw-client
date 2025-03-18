@@ -10,8 +10,6 @@ package tuxwars.ui.popups.screen
    
    public class PopUpBaseImageScreen extends PopUpBaseScreen implements IResourceLoaderURL
    {
-       
-      
       private var loader:URLResourceLoader;
       
       public function PopUpBaseImageScreen(game:TuxWarsGame, swf:String = "flash/ui/popups.swf", exportName:String = "popup_message")
@@ -76,3 +74,4 @@ package tuxwars.ui.popups.screen
       }
    }
 }
+

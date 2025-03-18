@@ -7,8 +7,6 @@ package com.dchoc.ui.groups
    
    public class UIRadialGroup extends EventDispatcher
    {
-       
-      
       private var buttons:Vector.<UIToggleButton>;
       
       private var selectedIndex:int;
@@ -22,7 +20,7 @@ package com.dchoc.ui.groups
       public function dispose() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:UIToggleButton = null;
          for(i = buttons.length - 1; i >= 0; )
          {
             _loc1_ = removeIndex(i);
@@ -48,7 +46,7 @@ package com.dchoc.ui.groups
       
       public function removeIndex(index:int) : UIToggleButton
       {
-         var _loc2_:* = null;
+         var _loc2_:UIToggleButton = null;
          if(index >= 0)
          {
             _loc2_ = buttons[index];
@@ -122,7 +120,7 @@ package com.dchoc.ui.groups
       public function setEnabled(value:Boolean) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:UIToggleButton = null;
          if(buttons)
          {
             for(i = buttons.length - 1; i >= 0; )
@@ -137,7 +135,7 @@ package com.dchoc.ui.groups
       public function setVisible(value:Boolean) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:UIToggleButton = null;
          for(i = buttons.length - 1; i >= 0; )
          {
             _loc2_ = buttons[i];
@@ -147,3 +145,4 @@ package com.dchoc.ui.groups
       }
    }
 }
+

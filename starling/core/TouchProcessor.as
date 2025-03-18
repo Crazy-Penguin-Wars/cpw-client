@@ -8,9 +8,10 @@ package starling.core
    import starling.events.TouchEvent;
    import starling.events.TouchPhase;
    
+   use namespace starling_internal;
+   
    internal class TouchProcessor
    {
-      
       private static const MULTITAP_TIME:Number = 0.3;
       
       private static const MULTITAP_DISTANCE:Number = 25;
@@ -18,7 +19,6 @@ package starling.core
       private static var sProcessedTouchIDs:Vector.<int> = new Vector.<int>(0);
       
       private static var sHoveringTouchData:Vector.<Object> = new Vector.<Object>(0);
-       
       
       private var mStage:Stage;
       
@@ -144,6 +144,7 @@ package starling.core
          {
             return;
          }
+         var offset:int = 1;
          var exitX:Number = mouse.globalX;
          var exitY:Number = mouse.globalY;
          var distLeft:Number = mouse.globalX;
@@ -153,19 +154,19 @@ package starling.core
          var minDist:Number = Math.min(distLeft,distRight,distTop,distBottom);
          if(minDist == distLeft)
          {
-            exitX = -1;
+            exitX = -offset;
          }
          else if(minDist == distRight)
          {
-            exitX = this.mStage.stageWidth + 1;
+            exitX = this.mStage.stageWidth + offset;
          }
          else if(minDist == distTop)
          {
-            exitY = -1;
+            exitY = -offset;
          }
          else
          {
-            exitY = this.mStage.stageHeight + 1;
+            exitY = this.mStage.stageHeight + offset;
          }
          this.enqueue(0,TouchPhase.HOVER,exitX,exitY);
       }
@@ -354,3 +355,4 @@ package starling.core
       }
    }
 }
+

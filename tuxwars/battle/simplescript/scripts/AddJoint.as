@@ -16,8 +16,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class AddJoint implements SimpleScriptCore
    {
-       
-      
       public function AddJoint()
       {
          super();
@@ -25,12 +23,12 @@ package tuxwars.battle.simplescript.scripts
       
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var _loc10_:* = null;
-         var _loc8_:* = null;
-         var j:* = null;
-         var a:* = null;
-         var b:* = null;
-         var joint:* = null;
+         var _loc10_:PhysicsGameObject = null;
+         var _loc8_:PhysicsGameObject = null;
+         var j:Joint = null;
+         var a:Body = null;
+         var b:Body = null;
+         var joint:Constraint = null;
          var jointMax:Number = NaN;
          var jointMin:Number = NaN;
          if(scriptObject.variables[1] is PhysicsGameObject && scriptObject.variables[2] is PhysicsGameObject)
@@ -68,9 +66,11 @@ package tuxwars.battle.simplescript.scripts
                   if(b is TerrainGameObject)
                   {
                      joint = new PivotJoint(a,b,a.worldPointToLocal(Vec2.get(j.endPoint.x,j.endPoint.y),true),b.worldPointToLocal(Vec2.get(j.endPoint.x,j.endPoint.y),true));
-                     break;
                   }
-                  joint = new PivotJoint(a,b,a.worldPointToLocal(Vec2.get(j.startPoint.x,j.startPoint.y),true),b.worldPointToLocal(Vec2.get(j.startPoint.x,j.startPoint.y),true));
+                  else
+                  {
+                     joint = new PivotJoint(a,b,a.worldPointToLocal(Vec2.get(j.startPoint.x,j.startPoint.y),true),b.worldPointToLocal(Vec2.get(j.startPoint.x,j.startPoint.y),true));
+                  }
                   break;
                case "Weld":
                   joint = new WeldJoint(a,b,a.worldPointToLocal(Vec2.get(j.startPoint.x,j.startPoint.y),true),b.worldPointToLocal(Vec2.get(j.startPoint.x,j.startPoint.y),true));
@@ -100,3 +100,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

@@ -17,9 +17,7 @@ package tuxwars.home.ui.screen.leaderboard
    
    public class LeaderboardElement extends TuxUIElementScreen
    {
-      
       private static const SLOT:String = "Slot_0";
-       
       
       private const group:UIRadialGroup = new UIRadialGroup();
       
@@ -170,7 +168,7 @@ package tuxwars.home.ui.screen.leaderboard
          var list:Array = getFilteredStats(data,stat);
          list.sort(function(obj1:Object, obj2:Object):int
          {
-            return Number(obj2.position) - Number(obj1.position);
+            return obj2.position - obj1.position;
          });
          return list;
       }
@@ -230,3 +228,4 @@ package tuxwars.home.ui.screen.leaderboard
       }
    }
 }
+

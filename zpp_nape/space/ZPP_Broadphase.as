@@ -28,8 +28,6 @@ package zpp_nape.space
    
    public class ZPP_Broadphase
    {
-       
-      
       public var sweep:ZPP_SweepPhase;
       
       public var space:ZPP_Space;
@@ -88,6 +86,7 @@ package zpp_nape.space
                      _loc3_.zip_axis = false;
                      _loc3_.axisx = Math.sin(_loc3_.rot);
                      _loc3_.axisy = Math.cos(_loc3_.rot);
+                     null;
                   }
                   if(_loc2_.zip_gverts)
                   {
@@ -101,6 +100,7 @@ package zpp_nape.space
                            _loc3_.zip_axis = false;
                            _loc3_.axisx = Math.sin(_loc3_.rot);
                            _loc3_.axisy = Math.cos(_loc3_.rot);
+                           null;
                         }
                         _loc4_ = _loc2_.lverts.next;
                         _loc5_ = _loc2_.gverts.next;
@@ -185,6 +185,7 @@ package zpp_nape.space
                               {
                                  _loc2_.localCOMx = _loc2_.lverts.next.x;
                                  _loc2_.localCOMy = _loc2_.lverts.next.y;
+                                 null;
                               }
                               else if(_loc2_.lverts.next.next.next == null)
                               {
@@ -245,6 +246,7 @@ package zpp_nape.space
                            _loc3_.zip_axis = false;
                            _loc3_.axisx = Math.sin(_loc3_.rot);
                            _loc3_.axisy = Math.cos(_loc3_.rot);
+                           null;
                         }
                         _loc10_.worldCOMx = _loc10_.body.posx + (_loc10_.body.axisy * _loc10_.localCOMx - _loc10_.body.axisx * _loc10_.localCOMy);
                         _loc10_.worldCOMy = _loc10_.body.posy + (_loc10_.localCOMx * _loc10_.body.axisx + _loc10_.localCOMy * _loc10_.body.axisy);
@@ -272,6 +274,7 @@ package zpp_nape.space
                            _loc3_.zip_axis = false;
                            _loc3_.axisx = Math.sin(_loc3_.rot);
                            _loc3_.axisy = Math.cos(_loc3_.rot);
+                           null;
                         }
                         _loc4_ = _loc2_.lverts.next;
                         _loc5_ = _loc2_.gverts.next;
@@ -341,6 +344,7 @@ package zpp_nape.space
                      {
                         _loc2_.localCOMx = _loc2_.lverts.next.x;
                         _loc2_.localCOMy = _loc2_.lverts.next.y;
+                        null;
                      }
                      else if(_loc2_.lverts.next.next.next == null)
                      {
@@ -401,6 +405,7 @@ package zpp_nape.space
                   _loc3_.zip_axis = false;
                   _loc3_.axisx = Math.sin(_loc3_.rot);
                   _loc3_.axisy = Math.cos(_loc3_.rot);
+                  null;
                }
                param1.worldCOMx = param1.body.posx + (param1.body.axisy * param1.localCOMx - param1.body.axisx * param1.localCOMy);
                param1.worldCOMy = param1.body.posy + (param1.localCOMx * param1.body.axisx + param1.localCOMy * param1.body.axisy);
@@ -671,6 +676,7 @@ package zpp_nape.space
                               {
                                  _loc19_.localCOMx = _loc19_.lverts.next.x;
                                  _loc19_.localCOMy = _loc19_.lverts.next.y;
+                                 null;
                               }
                               else if(_loc19_.lverts.next.next.next == null)
                               {
@@ -731,6 +737,7 @@ package zpp_nape.space
                            _loc24_.zip_axis = false;
                            _loc24_.axisx = Math.sin(_loc24_.rot);
                            _loc24_.axisy = Math.cos(_loc24_.rot);
+                           null;
                         }
                         _loc12_.worldCOMx = _loc12_.body.posx + (_loc12_.body.axisy * _loc12_.localCOMx - _loc12_.body.axisx * _loc12_.localCOMy);
                         _loc12_.worldCOMy = _loc12_.body.posy + (_loc12_.localCOMx * _loc12_.body.axisx + _loc12_.localCOMy * _loc12_.body.axisy);
@@ -758,6 +765,7 @@ package zpp_nape.space
                            _loc24_.zip_axis = false;
                            _loc24_.axisx = Math.sin(_loc24_.rot);
                            _loc24_.axisy = Math.cos(_loc24_.rot);
+                           null;
                         }
                         _loc10_ = _loc19_.lverts.next;
                         _loc20_ = _loc19_.gverts.next;
@@ -968,6 +976,7 @@ package zpp_nape.space
                               {
                                  _loc15_.localCOMx = _loc15_.lverts.next.x;
                                  _loc15_.localCOMy = _loc15_.lverts.next.y;
+                                 null;
                               }
                               else if(_loc15_.lverts.next.next.next == null)
                               {
@@ -1028,6 +1037,7 @@ package zpp_nape.space
                            _loc21_.zip_axis = false;
                            _loc21_.axisx = Math.sin(_loc21_.rot);
                            _loc21_.axisy = Math.cos(_loc21_.rot);
+                           null;
                         }
                         _loc14_.worldCOMx = _loc14_.body.posx + (_loc14_.body.axisy * _loc14_.localCOMx - _loc14_.body.axisx * _loc14_.localCOMy);
                         _loc14_.worldCOMy = _loc14_.body.posy + (_loc14_.localCOMx * _loc14_.body.axisx + _loc14_.localCOMy * _loc14_.body.axisy);
@@ -1055,6 +1065,7 @@ package zpp_nape.space
                            _loc21_.zip_axis = false;
                            _loc21_.axisx = Math.sin(_loc21_.rot);
                            _loc21_.axisy = Math.cos(_loc21_.rot);
+                           null;
                         }
                         _loc16_ = _loc15_.lverts.next;
                         _loc17_ = _loc15_.gverts.next;
@@ -1117,6 +1128,7 @@ package zpp_nape.space
                   _loc21_.zip_axis = false;
                   _loc21_.axisx = Math.sin(_loc21_.rot);
                   _loc21_.axisy = Math.cos(_loc21_.rot);
+                  null;
                }
                if(_loc15_.zip_gverts)
                {
@@ -1130,6 +1142,7 @@ package zpp_nape.space
                         _loc21_.zip_axis = false;
                         _loc21_.axisx = Math.sin(_loc21_.rot);
                         _loc21_.axisy = Math.cos(_loc21_.rot);
+                        null;
                      }
                      _loc16_ = _loc15_.lverts.next;
                      _loc17_ = _loc15_.gverts.next;
@@ -1236,6 +1249,7 @@ package zpp_nape.space
                                     {
                                        _loc3_.localCOMx = _loc3_.lverts.next.x;
                                        _loc3_.localCOMy = _loc3_.lverts.next.y;
+                                       null;
                                     }
                                     else if(_loc3_.lverts.next.next.next == null)
                                     {
@@ -1296,6 +1310,7 @@ package zpp_nape.space
                                  _loc11_.zip_axis = false;
                                  _loc11_.axisx = Math.sin(_loc11_.rot);
                                  _loc11_.axisy = Math.cos(_loc11_.rot);
+                                 null;
                               }
                               _loc2_.worldCOMx = _loc2_.body.posx + (_loc2_.body.axisy * _loc2_.localCOMx - _loc2_.body.axisx * _loc2_.localCOMy);
                               _loc2_.worldCOMy = _loc2_.body.posy + (_loc2_.localCOMx * _loc2_.body.axisx + _loc2_.localCOMy * _loc2_.body.axisy);
@@ -1323,6 +1338,7 @@ package zpp_nape.space
                                  _loc11_.zip_axis = false;
                                  _loc11_.axisx = Math.sin(_loc11_.rot);
                                  _loc11_.axisy = Math.cos(_loc11_.rot);
+                                 null;
                               }
                               _loc5_ = _loc3_.lverts.next;
                               _loc6_ = _loc3_.gverts.next;
@@ -1410,6 +1426,7 @@ package zpp_nape.space
                                        {
                                           _loc3_.localCOMx = _loc3_.lverts.next.x;
                                           _loc3_.localCOMy = _loc3_.lverts.next.y;
+                                          null;
                                        }
                                        else if(_loc3_.lverts.next.next.next == null)
                                        {
@@ -1470,6 +1487,7 @@ package zpp_nape.space
                                     _loc11_.zip_axis = false;
                                     _loc11_.axisx = Math.sin(_loc11_.rot);
                                     _loc11_.axisy = Math.cos(_loc11_.rot);
+                                    null;
                                  }
                                  _loc2_.worldCOMx = _loc2_.body.posx + (_loc2_.body.axisy * _loc2_.localCOMx - _loc2_.body.axisx * _loc2_.localCOMy);
                                  _loc2_.worldCOMy = _loc2_.body.posy + (_loc2_.localCOMx * _loc2_.body.axisx + _loc2_.localCOMy * _loc2_.body.axisy);
@@ -1497,6 +1515,7 @@ package zpp_nape.space
                                     _loc11_.zip_axis = false;
                                     _loc11_.axisx = Math.sin(_loc11_.rot);
                                     _loc11_.axisy = Math.cos(_loc11_.rot);
+                                    null;
                                  }
                                  _loc5_ = _loc3_.lverts.next;
                                  _loc6_ = _loc3_.gverts.next;
@@ -1641,3 +1660,4 @@ package zpp_nape.space
       }
    }
 }
+

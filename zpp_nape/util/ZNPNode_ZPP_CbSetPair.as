@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ZPP_CbSetPair
    {
-      
-      public static var zpp_pool:ZNPNode_ZPP_CbSetPair = null;
-       
+      public static var zpp_pool:ZNPNode_ZPP_CbSetPair;
       
       public var next:ZNPNode_ZPP_CbSetPair;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

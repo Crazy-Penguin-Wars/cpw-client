@@ -16,7 +16,6 @@ package tuxwars.battle.emitters
    
    public class ExplosionPreCalculationsWrapper
    {
-      
       private static var _tuxWorld:TuxWorld;
       
       private static var MAX_VALUE:uint;
@@ -28,7 +27,6 @@ package tuxwars.battle.emitters
       private static var pool:Vector.<ExplosionPreCalculationsWrapper>;
       
       private static var currentSprite:ExplosionPreCalculationsWrapper;
-       
       
       private var _emissionObject:Emission;
       
@@ -56,7 +54,7 @@ package tuxwars.battle.emitters
          MAX_VALUE = maxPoolSize;
          GROWTH_VALUE = growthValue;
          counter = maxPoolSize;
-         var i:uint = maxPoolSize;
+         var i:uint = uint(maxPoolSize);
          pool = new Vector.<ExplosionPreCalculationsWrapper>(MAX_VALUE);
          while(--i > -1)
          {
@@ -193,19 +191,19 @@ package tuxwars.battle.emitters
       
       private function generateAffectedObjects(emissionObject:Emission) : void
       {
-         var _loc5_:* = null;
-         var _loc8_:* = null;
+         var _loc5_:PhysicsGameObject = null;
+         var _loc8_:EmissionExplosionReference = null;
          var _loc20_:int = 0;
          var _loc7_:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          var includeWeapons:Boolean = false;
-         var _loc4_:* = null;
-         var _loc15_:* = null;
+         var _loc4_:ExplosionData = null;
+         var _loc15_:Vec2 = null;
          var _loc3_:int = 0;
          var i:int = 0;
          var _loc14_:* = 0;
-         var _loc9_:* = null;
-         var _loc11_:* = null;
+         var _loc9_:Vec2 = null;
+         var _loc11_:Vec2 = null;
          for each(var addEmission in emissionObject.emissions)
          {
             if(addEmission.specialType == "ExplosionEmitter")
@@ -277,7 +275,7 @@ package tuxwars.battle.emitters
       private function findAffectedObjects(explosionData:ExplosionData, emissionReference:EmissionReference, location:Vec2, includeWeapons:Boolean, affectedObjects:Array, taggerGameObject:PhysicsGameObject) : void
       {
          var radius:* = 0;
-         var _loc15_:* = null;
+         var _loc15_:Stat = null;
          var _loc13_:Number = NaN;
          var _loc10_:int = 0;
          var _loc14_:* = undefined;
@@ -345,3 +343,4 @@ package tuxwars.battle.emitters
       }
    }
 }
+

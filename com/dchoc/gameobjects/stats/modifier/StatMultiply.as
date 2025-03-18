@@ -5,8 +5,6 @@ package com.dchoc.gameobjects.stats.modifier
    
    public class StatMultiply extends StatModifier
    {
-       
-      
       public function StatMultiply(id:String, value:Number, group:String, type:String = "Normal", affects:String = "All")
       {
          super(id,value,10,group,type,affects);
@@ -37,3 +35,4 @@ package com.dchoc.gameobjects.stats.modifier
       }
    }
 }
+

@@ -6,8 +6,6 @@ package com.dchoc.projectdata
    
    public class Table
    {
-       
-      
       private const _cache:Object = {};
       
       private const _rows:Array = [];
@@ -43,7 +41,7 @@ package com.dchoc.projectdata
       
       final public function findRow(name:String) : Row
       {
-         var _loc2_:* = null;
+         var _loc2_:Row = null;
          if(!_cache[name])
          {
             _loc2_ = DCUtils.find(this._rows,"id",name);
@@ -58,3 +56,4 @@ package com.dchoc.projectdata
       }
    }
 }
+

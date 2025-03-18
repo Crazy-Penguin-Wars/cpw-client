@@ -8,11 +8,9 @@ package tuxwars.items.managers
    
    public class ShopItemManager
    {
+      private static var game:TuxWarsGame;
       
       private static const CACHE:Object = {};
-      
-      private static var game:TuxWarsGame;
-       
       
       public function ShopItemManager()
       {
@@ -34,14 +32,13 @@ package tuxwars.items.managers
       
       public static function getShopItems(type:String, categories:Array = null, includeVIP:Boolean = true) : Vector.<ShopItem>
       {
-         var item:* = null;
+         var item:ShopItem = null;
          if(game == null)
          {
             initGame();
          }
          var _loc7_:Vector.<ShopItem> = new Vector.<ShopItem>();
          var _loc6_:Vector.<ItemData> = type != null ? ItemManager.findItemDatas(type) : ItemManager.findAllItems();
-         loop0:
          for each(var itemData in _loc6_)
          {
             if(includeVIP == false && !game.player.vipMembership.vip)
@@ -61,7 +58,7 @@ package tuxwars.items.managers
                      if(!item.isLevelLocked(game.player.level))
                      {
                         _loc7_.push(getShopItem(itemData));
-                        continue loop0;
+                        break;
                      }
                   }
                   else if(category == "IsAvailableCODE")
@@ -69,13 +66,13 @@ package tuxwars.items.managers
                      if(game.player.inventory.hasItem(itemData.id))
                      {
                         _loc7_.push(getShopItem(itemData));
-                        continue loop0;
+                        break;
                      }
                   }
                   else if(itemData.categories && itemData.categories.indexOf(category) != -1)
                   {
                      _loc7_.push(getShopItem(itemData));
-                     continue loop0;
+                     break;
                   }
                }
             }
@@ -112,3 +109,4 @@ package tuxwars.items.managers
       }
    }
 }
+

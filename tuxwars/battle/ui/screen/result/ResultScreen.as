@@ -33,11 +33,9 @@ package tuxwars.battle.ui.screen.result
    
    public class ResultScreen extends TuxUIScreen
    {
-      
       private static const RESULTS_SCREEN:String = "result_screen";
       
       private static const PARTICIPANTS_CONTAINER:String = "Container_Participants";
-       
       
       private var darkBackGround:DarkBackgroundElementWindow;
       
@@ -304,7 +302,7 @@ package tuxwars.battle.ui.screen.result
             {
                playAgainButton.setEnabled(true);
                var _loc6_:BattleOptions = BattleOptions;
-               rematchCounter = Number(tuxwars.battle.data.BattleOptions.getRow().findField("TimeToStartRematch").value) * 1000;
+               rematchCounter = tuxwars.battle.data.BattleOptions.getRow().findField("TimeToStartRematch").value * 1000;
             }
             _shareButton.setEnabled((results.isPracticeMode || resultLogic.recievedServerResponse()) && BragFeeds.getBragFeedId(results.playerResults) != null && results.getPosition(_game.player.id) == 1);
          }
@@ -340,7 +338,7 @@ package tuxwars.battle.ui.screen.result
       private function showTrophy(leagueSortPriority:int) : void
       {
          var counter:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:MovieClip = null;
          trophies.visible = true;
          for(counter = 1; counter <= 5; )
          {
@@ -353,7 +351,7 @@ package tuxwars.battle.ui.screen.result
       private function compareTournamentPoints(design:MovieClip, position:int, pointsDisabled:Boolean) : void
       {
          var positionPoints:int = 0;
-         var tournamentPoints:* = null;
+         var tournamentPoints:UIAutoTextField = null;
          switch(position - 1)
          {
             case 0:
@@ -375,3 +373,4 @@ package tuxwars.battle.ui.screen.result
       }
    }
 }
+

@@ -4,7 +4,6 @@ package starling.utils
    
    public class Color
    {
-      
       public static const WHITE:uint = 16777215;
       
       public static const SILVER:uint = 12632256;
@@ -36,7 +35,6 @@ package starling.utils
       public static const FUCHSIA:uint = 16711935;
       
       public static const PURPLE:uint = 8388736;
-       
       
       public function Color()
       {
@@ -46,22 +44,22 @@ package starling.utils
       
       public static function getAlpha(color:uint) : int
       {
-         return color >> 24 & 255;
+         return color >> 24 & 0xFF;
       }
       
       public static function getRed(color:uint) : int
       {
-         return color >> 16 & 255;
+         return color >> 16 & 0xFF;
       }
       
       public static function getGreen(color:uint) : int
       {
-         return color >> 8 & 255;
+         return color >> 8 & 0xFF;
       }
       
       public static function getBlue(color:uint) : int
       {
-         return color & 255;
+         return color & 0xFF;
       }
       
       public static function rgb(red:int, green:int, blue:int) : uint
@@ -75,3 +73,4 @@ package starling.utils
       }
    }
 }
+

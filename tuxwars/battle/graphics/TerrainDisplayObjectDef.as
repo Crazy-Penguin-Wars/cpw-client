@@ -6,8 +6,6 @@ package tuxwars.battle.graphics
    
    public class TerrainDisplayObjectDef
    {
-       
-      
       private var terrainModel:TerrainModel;
       
       private var theme:MaterialTheme;
@@ -102,3 +100,4 @@ package tuxwars.battle.graphics
       }
    }
 }
+

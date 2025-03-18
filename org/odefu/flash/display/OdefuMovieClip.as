@@ -6,8 +6,6 @@ package org.odefu.flash.display
    
    public final class OdefuMovieClip extends MovieClip
    {
-       
-      
       private const frameScripts:Vector.<Function> = new Vector.<Function>();
       
       private var _frameLabels:Array;
@@ -115,3 +113,4 @@ package org.odefu.flash.display
       }
    }
 }
+

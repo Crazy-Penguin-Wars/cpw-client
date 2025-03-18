@@ -13,8 +13,6 @@ package tuxwars.battle.ui.logic.chat
    
    public class ChatLogic extends TuxUILogic
    {
-       
-      
       public function ChatLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -42,9 +40,9 @@ package tuxwars.battle.ui.logic.chat
       
       private function chatResponseHandler(response:BattleResponse) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:Object = null;
+         var _loc3_:String = null;
+         var _loc4_:String = null;
          if(response.responseType == 33)
          {
             _loc2_ = response.data;
@@ -69,3 +67,4 @@ package tuxwars.battle.ui.logic.chat
       }
    }
 }
+

@@ -1,14 +1,11 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class SoundReference
    {
-      
-      private static const CACHE:Object = {};
-      
       public static const TABLE:String = "Sound";
       
       public static const START:String = "Start";
@@ -32,7 +29,8 @@ package tuxwars.data
       public static const TYPE_MUSIC:String = "Music";
       
       public static const TYPE_SOUND:String = "Sfx";
-       
+      
+      private static const CACHE:Object = {};
       
       private var _fieldCache:Object;
       
@@ -45,7 +43,7 @@ package tuxwars.data
       
       public static function get(musicID:String) : SoundReference
       {
-         var _loc2_:* = null;
+         var _loc2_:SoundReference = null;
          if(musicID != "" && musicID != null)
          {
             if(!CACHE.hasOwnProperty(musicID))
@@ -62,9 +60,10 @@ package tuxwars.data
       public function init(musicID:String) : void
       {
          _fieldCache = {};
+         var _loc6_:String = "Sound";
          var _loc2_:ProjectManager = ProjectManager;
          var _loc7_:* = musicID;
-         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Sound");
+         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc6_);
          if(!_loc3_._cache[_loc7_])
          {
             var _loc8_:Row = com.dchoc.utils.DCUtils.find(_loc3_.rows,"id",_loc7_);
@@ -77,18 +76,20 @@ package tuxwars.data
          row = _loc3_._cache[_loc7_];
          if(row == null)
          {
+            var _loc9_:String = "Sound";
             var _loc4_:ProjectManager = ProjectManager;
-            var _loc5_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Sound");
-            if(!_loc5_._cache["NONE"])
+            var _loc10_:String = "NONE";
+            var _loc5_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc9_);
+            if(!_loc5_._cache[_loc10_])
             {
-               var _loc11_:Row = com.dchoc.utils.DCUtils.find(_loc5_.rows,"id","NONE");
+               var _loc11_:Row = com.dchoc.utils.DCUtils.find(_loc5_.rows,"id",_loc10_);
                if(!_loc11_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "NONE" + "\' was found in table: \'" + _loc5_.name + "\'",_loc5_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc10_ + "\' was found in table: \'" + _loc5_.name + "\'",_loc5_,3);
                }
-               _loc5_._cache["NONE"] = _loc11_;
+               _loc5_._cache[_loc10_] = _loc11_;
             }
-            row = _loc5_._cache["NONE"];
+            row = _loc5_._cache[_loc10_];
          }
       }
       
@@ -210,3 +211,4 @@ package tuxwars.data
       }
    }
 }
+

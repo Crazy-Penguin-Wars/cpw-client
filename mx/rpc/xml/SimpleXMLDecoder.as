@@ -7,8 +7,6 @@ package mx.rpc.xml
    
    public class SimpleXMLDecoder
    {
-       
-      
       private var makeObjectsBindable:Boolean;
       
       public function SimpleXMLDecoder(makeObjectsBindable:Boolean = false)
@@ -28,7 +26,7 @@ package mx.rpc.xml
             {
                result = val.toString();
             }
-            else if(isNaN(Number(val)) || val.charAt(0) == "0" || val.charAt(0) == "-" && val.charAt(1) == "0" || val.charAt(Number(val.length) - 1) == "E")
+            else if(isNaN(Number(val)) || val.charAt(0) == "0" || val.charAt(0) == "-" && val.charAt(1) == "0" || val.charAt(val.length - 1) == "E")
             {
                valStr = val.toString();
                valStrLC = valStr.toLowerCase();
@@ -56,7 +54,7 @@ package mx.rpc.xml
       public static function getLocalName(xmlNode:XMLNode) : String
       {
          var name:String = xmlNode.nodeName;
-         var myPrefixIndex:int = name.indexOf(":");
+         var myPrefixIndex:int = int(name.indexOf(":"));
          if(myPrefixIndex != -1)
          {
             name = name.substring(myPrefixIndex + 1);
@@ -67,7 +65,7 @@ package mx.rpc.xml
       public function decodeXML(dataNode:XMLNode) : Object
       {
          var result:Object = null;
-         var attribute:* = null;
+         var attribute:String = null;
          var i:uint = 0;
          var partNode:XMLNode = null;
          var partName:String = null;
@@ -152,3 +150,4 @@ package mx.rpc.xml
       }
    }
 }
+

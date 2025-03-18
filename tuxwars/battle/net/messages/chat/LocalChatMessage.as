@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.chat
    
    public class LocalChatMessage extends BattleResponse
    {
-       
-      
       private var _id:String;
       
       private var _tid:String;
@@ -36,3 +34,4 @@ package tuxwars.battle.net.messages.chat
       }
    }
 }
+

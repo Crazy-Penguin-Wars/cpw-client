@@ -1,27 +1,27 @@
 package tuxwars.items.data
 {
    import com.dchoc.data.GraphicsReference;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class VipData extends ItemData
    {
-       
-      
       public function VipData()
       {
+         var _loc2_:String = "BasicNuke";
          var _loc1_:* = ProjectManager.getProjectData().findTable("Item");
          §§push(this);
-         if(!_loc1_._cache["BasicNuke"])
+         if(!_loc1_._cache[_loc2_])
          {
-            var _loc3_:Row = com.dchoc.utils.DCUtils.find(_loc1_.rows,"id","BasicNuke");
+            var _loc3_:Row = com.dchoc.utils.DCUtils.find(_loc1_.rows,"id",_loc2_);
             if(!_loc3_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "BasicNuke" + "\' was found in table: \'" + _loc1_.name + "\'",_loc1_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc2_ + "\' was found in table: \'" + _loc1_.name + "\'",_loc1_,3);
             }
-            _loc1_._cache["BasicNuke"] = _loc3_;
+            _loc1_._cache[_loc2_] = _loc3_;
          }
-         §§pop().super(_loc1_._cache["BasicNuke"]);
+         §§pop().super(_loc1_._cache[_loc2_]);
       }
       
       override public function get type() : String
@@ -41,18 +41,19 @@ package tuxwars.items.data
       
       override public function get iconRef() : GraphicsReference
       {
+         var _loc2_:String = "Cash";
          var _loc1_:* = ProjectManager.getProjectData().findTable("BattleRewardIconDefault");
          §§push(§§findproperty(GraphicsReference));
-         if(!_loc1_._cache["Cash"])
+         if(!_loc1_._cache[_loc2_])
          {
-            var _loc3_:Row = com.dchoc.utils.DCUtils.find(_loc1_.rows,"id","Cash");
+            var _loc3_:Row = com.dchoc.utils.DCUtils.find(_loc1_.rows,"id",_loc2_);
             if(!_loc3_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Cash" + "\' was found in table: \'" + _loc1_.name + "\'",_loc1_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc2_ + "\' was found in table: \'" + _loc1_.name + "\'",_loc1_,3);
             }
-            _loc1_._cache["Cash"] = _loc3_;
+            _loc1_._cache[_loc2_] = _loc3_;
          }
-         return new §§pop().GraphicsReference(_loc1_._cache["Cash"]);
+         return new §§pop().GraphicsReference(_loc1_._cache[_loc2_]);
       }
       
       override public function get graphics() : GraphicsReference
@@ -61,3 +62,4 @@ package tuxwars.items.data
       }
    }
 }
+

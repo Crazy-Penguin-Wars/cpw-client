@@ -1,8 +1,8 @@
 package tuxwars.battle.editor
 {
    import com.dchoc.game.DCGame;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.display.Sprite;
@@ -17,7 +17,6 @@ package tuxwars.battle.editor
    
    public class WorldPhysicsValueEditor
    {
-      
       private static const OLD_VALUE:String = "old_value";
       
       private static const FIELD:String = "field";
@@ -49,7 +48,6 @@ package tuxwars.battle.editor
       private static var physicsWorld:PhysicsWorld;
       
       private static var editFields:Array;
-       
       
       public function WorldPhysicsValueEditor()
       {
@@ -71,17 +69,18 @@ package tuxwars.battle.editor
       
       public static function showWorldPhysicsEditScreen() : void
       {
-         var rect:* = null;
-         var tf:* = null;
-         var players:* = null;
+         var rect:Sprite = null;
+         var tf:TextField = null;
+         var ret:* = null;
+         var players:Array = null;
          showWorldPhysics = !showWorldPhysics;
          if(isShown())
          {
             screen = new MovieClip();
             var _loc6_:DCGame = DCGame;
-            screen.x = Number(com.dchoc.game.DCGame._stage.stageWidth) / 2;
+            screen.x = com.dchoc.game.DCGame._stage.stageWidth / 2;
             var _loc7_:DCGame = DCGame;
-            screen.y = Number(com.dchoc.game.DCGame._stage.stageHeight) / 2;
+            screen.y = com.dchoc.game.DCGame._stage.stageHeight / 2;
             rect = addBackground(0,0,400,180,3,136,16777215,screen);
             tf = addTextField("World Physics Values (edit numbers, press ok)","center",screen,rect.height / 2 - 5);
             tf.x += rect.width / 2;
@@ -173,8 +172,8 @@ package tuxwars.battle.editor
       
       private static function addTextField(text:String, align:String, screen:MovieClip, y:int, value:* = null) : TextField
       {
-         var obj:* = null;
-         var vtf:* = null;
+         var obj:Object = null;
+         var vtf:TextField = null;
          var tf:TextField = new TextField();
          tf.text = text;
          tf.autoSize = align;
@@ -225,18 +224,21 @@ package tuxwars.battle.editor
       
       private static function getRow() : Row
       {
+         var _loc3_:String = "WorldPhysic";
          var _loc1_:ProjectManager = ProjectManager;
-         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("WorldPhysic");
-         if(!_loc2_._cache["Default"])
+         var _loc4_:String = "Default";
+         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+         if(!_loc2_._cache[_loc4_])
          {
-            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Default");
+            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
             if(!_loc5_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
             }
-            _loc2_._cache["Default"] = _loc5_;
+            _loc2_._cache[_loc4_] = _loc5_;
          }
-         return _loc2_._cache["Default"];
+         return _loc2_._cache[_loc4_];
       }
    }
 }
+

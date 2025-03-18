@@ -9,8 +9,6 @@ package tuxwars.battle.gameobjects
    
    public class Damage extends StatAdd
    {
-       
-      
       private var _damageSourceClasses:Vector.<Class>;
       
       private var _idsOfDamageWithDamage:Vector.<String>;
@@ -139,3 +137,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

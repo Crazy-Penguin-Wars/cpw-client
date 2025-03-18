@@ -4,7 +4,6 @@ package tuxwars.battle.net.messages.history
    
    public class HistoryMessage extends SocketMessage
    {
-      
       public static const SCORE:String = "score";
       
       public static const GAINED_COINS:String = "coins";
@@ -28,7 +27,6 @@ package tuxwars.battle.net.messages.history
       public static const STATISTICS:String = "statistics";
       
       public static const OS:String = "os";
-       
       
       public function HistoryMessage(data:Object)
       {
@@ -39,3 +37,4 @@ package tuxwars.battle.net.messages.history
       }
    }
 }
+

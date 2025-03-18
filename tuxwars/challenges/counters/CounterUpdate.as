@@ -2,8 +2,6 @@ package tuxwars.challenges.counters
 {
    public class CounterUpdate
    {
-       
-      
       private var _playerId:String;
       
       private var _counter:Counter;
@@ -44,3 +42,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

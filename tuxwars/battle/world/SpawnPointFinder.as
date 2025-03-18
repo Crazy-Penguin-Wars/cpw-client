@@ -18,11 +18,9 @@ package tuxwars.battle.world
    
    public class SpawnPointFinder
    {
-      
       private static const NUM_LOCATIONS:int = 100;
       
       private static const TOP_HUD_HEIGHT:int = 69;
-       
       
       private var world:TuxWorld;
       
@@ -42,18 +40,18 @@ package tuxwars.battle.world
          var _loc22_:Number = NaN;
          _loc22_ = 46;
          var _loc21_:Number = NaN;
-         var _loc3_:* = null;
+         var _loc3_:TerrainGameObject = null;
          var _loc23_:Number = NaN;
-         var _loc2_:* = null;
+         var _loc2_:AABB = null;
          var pos:* = NaN;
          var _loc19_:Number = NaN;
          var _loc10_:Number = NaN;
          var _loc5_:int = 0;
-         var _loc8_:* = null;
+         var _loc8_:Vec2 = null;
          var _loc14_:* = undefined;
          var _loc17_:int = 0;
-         var _loc4_:* = null;
-         var _loc9_:* = null;
+         var _loc4_:Vec2 = null;
+         var _loc9_:Vec2 = null;
          LogUtils.log("Finding spawn location...",this,1,"PhysicsWorld",false,false,false);
          var _loc7_:Number = world.calculateNormalZoomLevel();
          var _loc12_:int = world.physicsWorld.level.width * 0.5 - 760 / _loc7_ * 0.5;
@@ -142,6 +140,10 @@ package tuxwars.battle.world
                break;
             }
             LogUtils.log("Not valid random point: " + _loc9_ + " and not valid AABB: " + _loc15_,this,1,"PhysicsWorld",false,false,false);
+            if(false)
+            {
+               return randomPointOnScreen();
+            }
          }
          return _loc9_;
       }
@@ -193,7 +195,7 @@ package tuxwars.battle.world
       private function getLandingPoints(point:Vec2) : Vector.<Vec2>
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:RayResult = null;
          var _loc6_:Vec2 = new Vec2(point.x,world.physicsWorld.level.waterLine);
          var _loc7_:Vector.<Vec2> = new Vector.<Vec2>();
          var _loc4_:Ray = new Ray(point,_loc6_.sub(point));
@@ -214,7 +216,7 @@ package tuxwars.battle.world
       private function intersectsFixture(aabb:AABB) : Boolean
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:Body = null;
          var _loc3_:BodyList = world.physicsWorld.space.bodiesInAABB(aabb);
          for(i = 0; i < _loc3_.length; )
          {
@@ -231,7 +233,7 @@ package tuxwars.battle.world
       private function isSensor(body:Body) : Boolean
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:Shape = null;
          for(i = 0; i < body.shapes.length; )
          {
             _loc2_ = body.shapes.at(i);
@@ -254,3 +256,4 @@ package tuxwars.battle.world
       }
    }
 }
+

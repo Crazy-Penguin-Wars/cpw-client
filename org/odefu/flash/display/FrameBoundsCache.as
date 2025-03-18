@@ -5,13 +5,12 @@ package org.odefu.flash.display
    
    public class FrameBoundsCache
    {
-       
-      
-      private const frameBounds:Vector.<Rectangle> = new Vector.<Rectangle>();
+      private const frameBounds:Vector.<Rectangle>;
       
       public function FrameBoundsCache(mc:MovieClip)
       {
          var i:int = 0;
+         frameBounds = new Vector.<Rectangle>();
          super();
          for(i = 0; i < mc.totalFrames; )
          {
@@ -36,3 +35,4 @@ package org.odefu.flash.display
       }
    }
 }
+

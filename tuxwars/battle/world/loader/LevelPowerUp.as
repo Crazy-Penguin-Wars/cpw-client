@@ -1,7 +1,7 @@
 package tuxwars.battle.world.loader
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import nape.geom.Vec2;
    import org.as3commons.lang.StringUtils;
@@ -9,11 +9,9 @@ package tuxwars.battle.world.loader
    
    public class LevelPowerUp
    {
-      
       private static const POWER_UP_TABLE_NAME:String = "PowerUp";
       
       private static const powerUpNames:Vector.<String> = new Vector.<String>();
-       
       
       private var _id:String;
       
@@ -43,27 +41,30 @@ package tuxwars.battle.world.loader
          var row:Row;
          if(powerUpNames.length == 0)
          {
+            var _loc10_:String = "PowerUp";
             var _loc1_:ProjectManager = ProjectManager;
-            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("PowerUp");
+            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc10_);
             rowsArray = _loc2_._rows;
             for each(row in rowsArray)
             {
+               var _loc11_:String = "ID";
                var _loc4_:Row = row;
                §§push(LogUtils);
                §§push("Adding powerup id: ");
-               if(!_loc4_._cache["ID"])
+               if(!_loc4_._cache[_loc11_])
                {
-                  _loc4_._cache["ID"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","ID");
+                  _loc4_._cache[_loc11_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc11_);
                }
-               var _loc5_:* = _loc4_._cache["ID"];
+               var _loc5_:* = _loc4_._cache[_loc11_];
                §§pop().log(§§pop() + (_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value));
+               var _loc12_:String = "ID";
                var _loc6_:Row = row;
                §§push(powerUpNames);
-               if(!_loc6_._cache["ID"])
+               if(!_loc6_._cache[_loc12_])
                {
-                  _loc6_._cache["ID"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","ID");
+                  _loc6_._cache[_loc12_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc12_);
                }
-               var _loc7_:* = _loc6_._cache["ID"];
+               var _loc7_:* = _loc6_._cache[_loc12_];
                §§pop().push(_loc7_.overrideValue != null ? _loc7_.overrideValue : _loc7_._value);
             }
             powerUpNames.sort(function(str1:String, str2:String):int
@@ -138,3 +139,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.control
    
    public class EnableBoostersMessage extends SocketMessage
    {
-       
-      
       public function EnableBoostersMessage(playerId:String)
       {
          super({
@@ -21,3 +19,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

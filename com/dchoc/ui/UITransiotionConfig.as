@@ -9,7 +9,6 @@ package com.dchoc.ui
    
    public class UITransiotionConfig
    {
-      
       private static const CONFIG_COLUMNS:int = 6;
       
       private static const TRANSITION_TYPE_NONE:int = 0;
@@ -35,7 +34,6 @@ package com.dchoc.ui
       private static var transitionConfigArray:Array = [];
       
       private static var transitionIDsArray:Array = [];
-       
       
       public function UITransiotionConfig()
       {
@@ -68,12 +66,12 @@ package com.dchoc.ui
          var play:Boolean = false;
          var i:int = 0;
          var j:int = 0;
-         var klass:* = null;
-         var mov:* = null;
+         var klass:Class = null;
+         var mov:MovieClip = null;
          var _loc12_:* = uiComponent;
          var exportName:String = getQualifiedClassName(_loc12_._design);
          var className:String = getQualifiedClassName(uiComponent);
-         var n:int = transitionConfigArray.length;
+         var n:int = int(transitionConfigArray.length);
          for(i = 0; i < n; )
          {
             play = false;
@@ -123,3 +121,4 @@ package com.dchoc.ui
       }
    }
 }
+

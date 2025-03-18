@@ -6,8 +6,6 @@ package tuxwars.states
    
    public class TuxLoadingStartUpAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function TuxLoadingStartUpAssetsSubState(game:TuxWarsGame)
       {
          var _loc2_:Tutorial = Tutorial;
@@ -20,3 +18,4 @@ package tuxwars.states
       }
    }
 }
+

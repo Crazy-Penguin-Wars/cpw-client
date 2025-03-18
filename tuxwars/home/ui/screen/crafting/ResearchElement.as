@@ -9,8 +9,6 @@ package tuxwars.home.ui.screen.crafting
    
    public class ResearchElement extends TuxUIElementScreen
    {
-       
-      
       private const RESEARCH_DESCRIPTION:String = "Text_Description";
       
       private const RESEARCH_INGREDIENTS_TEXT:String = "Text_Ingredient";
@@ -34,3 +32,4 @@ package tuxwars.home.ui.screen.crafting
       }
    }
 }
+

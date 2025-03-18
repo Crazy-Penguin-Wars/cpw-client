@@ -8,8 +8,6 @@ package tuxwars.battle.states.player
    
    public class PlayerInactiveState extends PlayerState
    {
-       
-      
       public function PlayerInactiveState(player:PlayerGameObject, params:* = null)
       {
          super(player,params);
@@ -64,3 +62,4 @@ package tuxwars.battle.states.player
       }
    }
 }
+

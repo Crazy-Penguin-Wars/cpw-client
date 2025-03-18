@@ -16,11 +16,9 @@ package tuxwars.battle.gameobjects.player
    
    public class AvatarGameObject extends PhysicsGameObject
    {
-      
       private static const IDLE_CHANCE:int = 70;
       
       private static const IDLE_SOUND_CHANCE:int = 60;
-       
       
       private const _container:Sprite = new Sprite();
       
@@ -40,7 +38,7 @@ package tuxwars.battle.gameobjects.player
          _avatar = new TuxAvatar(def.animationAssets,this);
          _container.addChild(_avatar);
          var _loc3_:DCGame = DCGame;
-         direction = this._displayObject.x <= Number(com.dchoc.game.DCGame._stage.stageWidth) * 0.5 ? 1 : 0;
+         direction = this._displayObject.x <= com.dchoc.game.DCGame._stage.stageWidth * 0.5 ? 1 : 0;
          idleMode = true;
          _playIdleAnim = true;
       }
@@ -135,7 +133,7 @@ package tuxwars.battle.gameobjects.player
       
       private function getIdleAnimation() : String
       {
-         var _loc3_:* = null;
+         var _loc3_:SoundReference = null;
          var _loc2_:int = MathUtils.randomNumber(0,100);
          var _loc1_:int = MathUtils.randomNumber(0,100);
          if(_loc2_ < 70)
@@ -171,3 +169,4 @@ package tuxwars.battle.gameobjects.player
       }
    }
 }
+

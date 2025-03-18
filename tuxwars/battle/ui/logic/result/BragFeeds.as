@@ -5,7 +5,6 @@ package tuxwars.battle.ui.logic.result
    
    public class BragFeeds
    {
-      
       public static const FIRST:String = "First";
       
       public static const FIVE_HUNDRED_POINTS:String = "500Points";
@@ -13,7 +12,6 @@ package tuxwars.battle.ui.logic.result
       public static const FIRST_AND_250_SPREAD:String = "250Spread";
       
       public static const TWO_THOUSAND_TOTAL:String = "2000Game";
-       
       
       public function BragFeeds()
       {
@@ -55,3 +53,4 @@ package tuxwars.battle.ui.logic.result
       }
    }
 }
+

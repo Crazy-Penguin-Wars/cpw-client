@@ -1,12 +1,11 @@
 package tuxwars.home.ui.logic.slotmachine
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    
    public class SlotMachineConfReference
    {
-      
       private static const DEFAULT:String = "Default";
       
       private static const TABLE:String = "SlotMachineConfiguration";
@@ -24,7 +23,6 @@ package tuxwars.home.ui.logic.slotmachine
       private static const SPIN_PRICE:String = "PlayPriceInCash";
       
       private static var row:Row;
-       
       
       public function SlotMachineConfReference()
       {
@@ -34,67 +32,73 @@ package tuxwars.home.ui.logic.slotmachine
       
       public static function get friendAmount1() : int
       {
+         var _loc3_:String = "CentralRowActiveFriends";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["CentralRowActiveFriends"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["CentralRowActiveFriends"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","CentralRowActiveFriends");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["CentralRowActiveFriends"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get friendAmount2() : int
       {
+         var _loc3_:String = "BottomRowActiveFriends";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["BottomRowActiveFriends"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["BottomRowActiveFriends"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","BottomRowActiveFriends");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["BottomRowActiveFriends"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get friendAmount3() : int
       {
+         var _loc3_:String = "TopRowActiveFriends";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TopRowActiveFriends"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TopRowActiveFriends"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TopRowActiveFriends");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TopRowActiveFriends"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get friendAmount4() : int
       {
+         var _loc3_:String = "BottomLeftToTopRightActiveFriends";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["BottomLeftToTopRightActiveFriends"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["BottomLeftToTopRightActiveFriends"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","BottomLeftToTopRightActiveFriends");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["BottomLeftToTopRightActiveFriends"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get friendAmount5() : int
       {
+         var _loc3_:String = "TopLeftToBottomRightActiveFriends";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TopLeftToBottomRightActiveFriends"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TopLeftToBottomRightActiveFriends"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TopLeftToBottomRightActiveFriends");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TopLeftToBottomRightActiveFriends"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get spinPrice() : int
       {
+         var _loc3_:String = "PlayPriceInCash";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PlayPriceInCash"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PlayPriceInCash"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PlayPriceInCash");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PlayPriceInCash"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
@@ -102,18 +106,20 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(!row)
          {
+            var _loc3_:String = "SlotMachineConfiguration";
             var _loc1_:ProjectManager = ProjectManager;
-            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachineConfiguration");
-            if(!_loc2_._cache["Default"])
+            var _loc4_:String = "Default";
+            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+            if(!_loc2_._cache[_loc4_])
             {
-               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Default");
+               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
                if(!_loc5_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
                }
-               _loc2_._cache["Default"] = _loc5_;
+               _loc2_._cache[_loc4_] = _loc5_;
             }
-            row = _loc2_._cache["Default"];
+            row = _loc2_._cache[_loc4_];
             if(!row)
             {
                LogUtils.log("Couldn\'t for default row for SlotMachineConfReference.",3);
@@ -123,3 +129,4 @@ package tuxwars.home.ui.logic.slotmachine
       }
    }
 }
+

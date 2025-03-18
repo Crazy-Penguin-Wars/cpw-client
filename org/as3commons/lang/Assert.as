@@ -5,8 +5,6 @@ package org.as3commons.lang
    
    public final class Assert
    {
-       
-      
       public function Assert()
       {
          super();
@@ -112,7 +110,7 @@ package org.as3commons.lang
       
       public static function dictionaryKeysOfType(dictionary:Dictionary, type:Class, message:String = "") : void
       {
-         var key:* = null;
+         var key:Object = null;
          for(key in dictionary)
          {
             if(!(key is type))
@@ -155,3 +153,4 @@ package org.as3commons.lang
       }
    }
 }
+

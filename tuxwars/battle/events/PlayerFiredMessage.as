@@ -6,8 +6,6 @@ package tuxwars.battle.events
    
    public class PlayerFiredMessage extends Message
    {
-       
-      
       private var _player:PlayerGameObject;
       
       private var _weapon:Weapon;
@@ -30,3 +28,4 @@ package tuxwars.battle.events
       }
    }
 }
+

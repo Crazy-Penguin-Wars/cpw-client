@@ -7,8 +7,6 @@ package tuxwars.battle.gameobjects
    
    public class LevelGameObjectDef extends PhysicsGameObjectDef
    {
-       
-      
       private var element:Element;
       
       public function LevelGameObjectDef(world:Space, element:Element)
@@ -40,3 +38,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

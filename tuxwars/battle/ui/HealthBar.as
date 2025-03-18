@@ -8,7 +8,6 @@ package tuxwars.battle.ui
    
    public class HealthBar extends Sprite
    {
-      
       private static const PLAYER_TAG:String = "player_tag";
       
       private static const PLAYER_TAG_INDEX:String = "Player_Tag_";
@@ -16,7 +15,6 @@ package tuxwars.battle.ui
       private static const TEXT_FIELD:String = "Text_Name";
       
       private static const LIFE_BAR:String = "Life_Bar";
-       
       
       private var healthBar:UIProgressIndicator;
       
@@ -56,3 +54,4 @@ package tuxwars.battle.ui
       }
    }
 }
+

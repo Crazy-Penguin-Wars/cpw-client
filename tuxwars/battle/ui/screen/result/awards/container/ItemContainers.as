@@ -9,9 +9,7 @@ package tuxwars.battle.ui.screen.result.awards.container
    
    public class ItemContainers extends UIContainers
    {
-      
       private static const CONTAINER:String = "Container_Items_";
-       
       
       private var _design:MovieClip;
       
@@ -51,7 +49,7 @@ package tuxwars.battle.ui.screen.result.awards.container
       
       private function calculateContainers() : int
       {
-         var _loc1_:* = null;
+         var _loc1_:DisplayObject = null;
          var i:int = 0;
          do
          {
@@ -65,3 +63,4 @@ package tuxwars.battle.ui.screen.result.awards.container
       }
    }
 }
+

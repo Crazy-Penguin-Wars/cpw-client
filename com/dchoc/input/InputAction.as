@@ -4,10 +4,9 @@ package com.dchoc.input
    
    public interface InputAction
    {
-       
-      
       function execute(param1:Event) : void;
       
       function getType() : String;
    }
 }
+

@@ -8,8 +8,6 @@ package tuxwars.ui.popups.logic.serverconnectionfailed
    
    public class ServerConnectionFailedMessagePopUpLogic extends MessagePopUpLogic
    {
-       
-      
       public function ServerConnectionFailedMessagePopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -31,3 +29,4 @@ package tuxwars.ui.popups.logic.serverconnectionfailed
       }
    }
 }
+

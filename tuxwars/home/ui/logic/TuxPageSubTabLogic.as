@@ -2,8 +2,8 @@ package tuxwars.home.ui.logic
 {
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.logic.home.MoneyResourceElementLogic;
@@ -17,7 +17,6 @@ package tuxwars.home.ui.logic
    
    public class TuxPageSubTabLogic extends TuxPageContentLogic implements IShopLogic
    {
-      
       private static const SUB_TAB:String = "SubTab";
       
       private static const TAB:String = "Tab";
@@ -39,7 +38,6 @@ package tuxwars.home.ui.logic
       private static const SORT_LEVEL:String = "Level";
       
       private static const SORT_PRICE:String = "Price";
-       
       
       private var currentTab:Row;
       
@@ -52,12 +50,13 @@ package tuxwars.home.ui.logic
       public function TuxPageSubTabLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
+         var _loc6_:String = "DefaultTab";
          var _loc4_:* = getCurrentPage();
-         if(!_loc4_._cache["DefaultTab"])
+         if(!_loc4_._cache[_loc6_])
          {
-            _loc4_._cache["DefaultTab"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","DefaultTab");
+            _loc4_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc6_);
          }
-         var _loc3_:Field = _loc4_._cache["DefaultTab"];
+         var _loc3_:Field = _loc4_._cache[_loc6_];
          if(_loc3_)
          {
             var _loc5_:* = _loc3_;
@@ -84,8 +83,8 @@ package tuxwars.home.ui.logic
       
       private static function sortByPrice(item1:ShopItem, item2:ShopItem) : int
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:PriceObject = null;
+         var _loc3_:PriceObject = null;
          if(item1.priceObject && item2.priceObject)
          {
             _loc4_ = item1.priceObject;
@@ -134,25 +133,31 @@ package tuxwars.home.ui.logic
       
       public function getTabs() : Array
       {
+         var _loc5_:String = "Tab";
          var _loc3_:* = getCurrentPage();
-         if(!_loc3_._cache["Tab"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["Tab"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","Tab");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["Tab"];
-         return null is Array ? null : null;
+         var _loc1_:Field = _loc3_._cache[_loc5_];
+         var _loc4_:*;
+         var _loc2_:* = !!_loc1_ ? (_loc4_ = _loc1_, _loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) : null;
+         return _loc2_ is Array ? _loc2_ : (!!_loc2_ ? [_loc2_] : null);
       }
       
       public function get tabSlotSize() : int
       {
          var _loc4_:Array = getTabs();
+         var _loc7_:String = "SlotSize";
          var _loc5_:* = getCurrentPage();
-         if(!_loc5_._cache["SlotSize"])
+         if(!_loc5_._cache[_loc7_])
          {
-            _loc5_._cache["SlotSize"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","SlotSize");
+            _loc5_._cache[_loc7_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc7_);
          }
-         var _loc1_:Field = _loc5_._cache["SlotSize"];
-         var _loc2_:Array = null is Array ? null : null;
+         var _loc1_:Field = _loc5_._cache[_loc7_];
+         var _loc6_:*;
+         var _loc3_:* = !!_loc1_ ? (_loc6_ = _loc1_, _loc6_.overrideValue != null ? _loc6_.overrideValue : _loc6_._value) : null;
+         var _loc2_:Array = _loc3_ is Array ? _loc3_ : (!!_loc3_ ? [_loc3_] : null);
          if(_loc4_ && currentTab && _loc4_.indexOf(currentTab) != -1 && _loc2_)
          {
             return _loc2_[_loc4_.indexOf(currentTab)];
@@ -162,20 +167,21 @@ package tuxwars.home.ui.logic
       
       public function getCurrentTabBigItems() : Vector.<BigShopItem>
       {
-         var _loc2_:* = null;
-         var _loc1_:* = null;
+         var _loc2_:Field = null;
+         var _loc1_:Array = null;
          if(_bigItems)
          {
             return _bigItems;
          }
          if(getCurrentTab())
          {
+            var _loc8_:String = "BigItems";
             var _loc4_:* = getCurrentTab();
-            if(!_loc4_._cache["BigItems"])
+            if(!_loc4_._cache[_loc8_])
             {
-               _loc4_._cache["BigItems"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","BigItems");
+               _loc4_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc8_);
             }
-            _loc2_ = _loc4_._cache["BigItems"];
+            _loc2_ = _loc4_._cache[_loc8_];
             var _loc5_:*;
             _loc1_ = !!_loc2_ ? (_loc5_ = _loc2_, (_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value) as Array) : null;
             for each(var row in _loc1_)
@@ -198,14 +204,15 @@ package tuxwars.home.ui.logic
       
       public function getCurrentTabTID() : String
       {
-         if(currentTab && _loc1_._cache["Name"] != null)
+         if(currentTab && _loc1_._cache[_loc4_] != null)
          {
+            var _loc5_:String = "Name";
             var _loc2_:Row = currentTab;
-            if(!_loc2_._cache["Name"])
+            if(!_loc2_._cache[_loc5_])
             {
-               _loc2_._cache["Name"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Name");
+               _loc2_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc5_);
             }
-            var _loc3_:* = _loc2_._cache["Name"];
+            var _loc3_:* = _loc2_._cache[_loc5_];
             §§push(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value);
          }
          else
@@ -217,15 +224,16 @@ package tuxwars.home.ui.logic
       
       public function get sorting() : Array
       {
-         var _loc1_:* = null;
+         var _loc1_:Field = null;
          if(currentTab)
          {
+            var _loc4_:String = "Sorting";
             var _loc2_:Row = currentTab;
-            if(!_loc2_._cache["Sorting"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["Sorting"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Sorting");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            _loc1_ = _loc2_._cache["Sorting"];
+            _loc1_ = _loc2_._cache[_loc4_];
             var _loc3_:*;
             return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : ["Rating","Price"];
          }
@@ -235,12 +243,13 @@ package tuxwars.home.ui.logic
       override public function setCurrentPage(value:Row) : void
       {
          super.setCurrentPage(value);
+         var _loc5_:String = "DefaultTab";
          var _loc3_:* = getCurrentPage();
-         if(!_loc3_._cache["DefaultTab"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["DefaultTab"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","DefaultTab");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc2_:Field = _loc3_._cache["DefaultTab"];
+         var _loc2_:Field = _loc3_._cache[_loc5_];
          var _loc4_:*;
          setCurrentTab(!!_loc2_ ? (_loc4_ = _loc2_, _loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) : null);
       }
@@ -306,3 +315,4 @@ package tuxwars.home.ui.logic
       }
    }
 }
+

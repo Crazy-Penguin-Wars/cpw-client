@@ -19,7 +19,6 @@ package tuxwars.home.ui.screen.tournament
    
    public class TournamentRewardSlot extends UIStateComponent
    {
-      
       private static const REWARD_CASH:String = "Reward_Cash";
       
       private static const REWARD_COINS:String = "Reward_Coins";
@@ -29,7 +28,6 @@ package tuxwars.home.ui.screen.tournament
       private static const REWARD_ITEM:String = "Reward_Item";
       
       private static const REWARD_MEMBERSHIP:String = "Reward_Membership";
-       
       
       private var _game:TuxWarsGame;
       
@@ -43,8 +41,8 @@ package tuxwars.home.ui.screen.tournament
       
       public function TournamentRewardSlot(design:MovieClip, game:TuxWarsGame, tournamentRewardItem:TournamentRewardItem, positionNumber:int, parent:TuxUIScreen = null, showTooltip:Boolean = true)
       {
-         var slotContainer:* = null;
-         var _loc9_:* = null;
+         var slotContainer:MovieClip = null;
+         var _loc9_:MovieClip = null;
          super(design);
          _game = game;
          _tournamentRewardItem = tournamentRewardItem;
@@ -83,7 +81,6 @@ package tuxwars.home.ui.screen.tournament
                if(_tournamentRewardItem.itemData.type == "Clothing")
                {
                   slotAmountText = "";
-                  break;
                }
                break;
             case "VIP":
@@ -125,8 +122,8 @@ package tuxwars.home.ui.screen.tournament
       
       private function mouseOver(event:MouseEvent) : void
       {
-         var _loc4_:* = null;
-         var tt:* = null;
+         var _loc4_:ShopItem = null;
+         var tt:ItemBaseTooltip = null;
          var b:Boolean = _tournamentRewardItem.type == "Item";
          if(b)
          {
@@ -160,3 +157,4 @@ package tuxwars.home.ui.screen.tournament
       }
    }
 }
+

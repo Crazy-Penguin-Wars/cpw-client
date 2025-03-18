@@ -23,7 +23,6 @@ package tuxwars.ui.components
    
    public class ToolsElementScreen extends TuxUIElementScreen
    {
-      
       private static const TIME_BEFORE_AUTO_CLOSE_SETTINGS:int = 5000;
       
       private static const OPTIONS_CONTAINER:String = "Options_Bar";
@@ -43,7 +42,6 @@ package tuxwars.ui.components
       private static const ANIM_IN:String = "Visible_To_Hover";
       
       private static const ANIM_OUT:String = "Hover_To_Visible";
-       
       
       private var fullscreenOnButton:UIButton;
       
@@ -348,3 +346,4 @@ package tuxwars.ui.components
       }
    }
 }
+

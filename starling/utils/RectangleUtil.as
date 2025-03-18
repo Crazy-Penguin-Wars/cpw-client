@@ -5,8 +5,6 @@ package starling.utils
    
    public class RectangleUtil
    {
-       
-      
       public function RectangleUtil()
       {
          super();
@@ -100,3 +98,4 @@ package starling.utils
       }
    }
 }
+

@@ -1,18 +1,16 @@
 package tuxwars.items.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import tuxwars.items.ShopItem;
    import tuxwars.items.managers.ShopItemManager;
    import tuxwars.items.references.PriceObject;
    
    public class MegaPackData extends ItemData
    {
-      
       private static const ITEM_LIST:String = "ItemList";
       
       private static const ITEM_AMOUNT_LIST:String = "ItemAmountList";
-       
       
       public function MegaPackData(row:Row)
       {
@@ -22,12 +20,13 @@ package tuxwars.items.data
       public function get itemList() : Array
       {
          var _loc2_:* = undefined;
+         var _loc5_:String = "ItemList";
          var _loc3_:Row = row;
-         if(!_loc3_._cache["ItemList"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["ItemList"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","ItemList");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["ItemList"];
+         var _loc1_:Field = _loc3_._cache[_loc5_];
          if(_loc1_)
          {
             var _loc4_:* = _loc1_;
@@ -40,12 +39,13 @@ package tuxwars.items.data
       public function get itemAmountList() : Array
       {
          var _loc2_:* = undefined;
+         var _loc5_:String = "ItemAmountList";
          var _loc3_:Row = row;
-         if(!_loc3_._cache["ItemAmountList"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["ItemAmountList"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","ItemAmountList");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["ItemAmountList"];
+         var _loc1_:Field = _loc3_._cache[_loc5_];
          if(_loc1_)
          {
             var _loc4_:* = _loc1_;
@@ -67,8 +67,8 @@ package tuxwars.items.data
       
       private function cost(isPremium:Boolean) : int
       {
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var _loc3_:ShopItem = null;
+         var _loc2_:PriceObject = null;
          var cost:int = 0;
          for each(var row in itemList)
          {
@@ -83,3 +83,4 @@ package tuxwars.items.data
       }
    }
 }
+

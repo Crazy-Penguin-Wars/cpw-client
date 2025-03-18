@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ZPP_Interactor
    {
-      
-      public static var zpp_pool:ZNPNode_ZPP_Interactor = null;
-       
+      public static var zpp_pool:ZNPNode_ZPP_Interactor;
       
       public var next:ZNPNode_ZPP_Interactor;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

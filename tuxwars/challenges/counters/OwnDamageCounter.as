@@ -10,8 +10,6 @@ package tuxwars.challenges.counters
    
    public class OwnDamageCounter extends Counter
    {
-       
-      
       private var waitingForMatchToEnd:Boolean;
       
       public function OwnDamageCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -31,7 +29,7 @@ package tuxwars.challenges.counters
          var _loc3_:* = msg.firingPlayer;
          if(playerId == _loc3_._id)
          {
-            _loc2_ = msg.affectedPlayers.indexOf(msg.firingPlayer);
+            _loc2_ = int(msg.affectedPlayers.indexOf(msg.firingPlayer));
             if(_loc2_ >= 0)
             {
                updateValue(msg.damageToGameObjects[_loc2_]);
@@ -85,3 +83,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

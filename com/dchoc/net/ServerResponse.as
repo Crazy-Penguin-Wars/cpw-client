@@ -4,8 +4,6 @@ package com.dchoc.net
    
    public class ServerResponse extends Message
    {
-       
-      
       private var _responseCode:int;
       
       private var _serviceId:String;
@@ -52,3 +50,4 @@ package com.dchoc.net
       }
    }
 }
+

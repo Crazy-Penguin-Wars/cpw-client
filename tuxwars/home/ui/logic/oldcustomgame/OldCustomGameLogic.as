@@ -13,13 +13,11 @@ package tuxwars.home.ui.logic.oldcustomgame
    
    public class OldCustomGameLogic extends TuxUILogic
    {
-      
       private static const DEFAULT_PLAYER_NUMBER:String = "2";
       
       private static const DEFAULT_MATCH_TIME:String = "300";
       
       private static const DEFAULT_TURN_TIME:String = "20";
-       
       
       public function OldCustomGameLogic(game:TuxWarsGame, state:TuxState)
       {
@@ -71,3 +69,4 @@ package tuxwars.home.ui.logic.oldcustomgame
       }
    }
 }
+

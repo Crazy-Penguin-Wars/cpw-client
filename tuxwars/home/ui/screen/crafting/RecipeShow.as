@@ -19,15 +19,13 @@ package tuxwars.home.ui.screen.crafting
    
    public class RecipeShow extends UIContainer
    {
-      
       private static const SLOT:String = "Slot_0";
       
       private static const SLOT_RESULT:String = "Slot_Result";
-       
       
-      private const ingredientsContainers:Vector.<IngredientContainers> = new Vector.<IngredientContainers>();
+      private const ingredientsContainers:Vector.<IngredientContainers>;
       
-      private const ingredients:Vector.<ItemData> = new Vector.<ItemData>();
+      private const ingredients:Vector.<ItemData>;
       
       private var title:UIAutoTextField;
       
@@ -35,7 +33,9 @@ package tuxwars.home.ui.screen.crafting
       
       public function RecipeShow(slotIndex:int, recipe:RecipeData, design:MovieClip, parent:TuxUIScreen)
       {
-         var itemData:* = null;
+         var itemData:ItemData = null;
+         ingredientsContainers = new Vector.<IngredientContainers>();
+         ingredients = new Vector.<ItemData>();
          super(design,parent);
          var ingrdientsList:Array = recipe.ingredients;
          var resultItem:ItemData = ItemManager.getItemData(recipe.result);
@@ -81,3 +81,4 @@ package tuxwars.home.ui.screen.crafting
       }
    }
 }
+

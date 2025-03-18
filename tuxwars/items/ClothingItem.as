@@ -9,8 +9,6 @@ package tuxwars.items
    
    public class ClothingItem extends Item
    {
-       
-      
       private var _setReference:SetReference;
       
       private var _slot:String;
@@ -72,3 +70,4 @@ package tuxwars.items
       }
    }
 }
+

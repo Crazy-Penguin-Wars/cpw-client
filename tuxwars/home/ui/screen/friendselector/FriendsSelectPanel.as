@@ -7,9 +7,7 @@ package tuxwars.home.ui.screen.friendselector
    
    public class FriendsSelectPanel extends CellPanel
    {
-      
       public static const CLICK_EVENT:String = "ClickEvent";
-       
       
       private var button:UIButton;
       
@@ -67,3 +65,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

@@ -19,7 +19,6 @@ package tuxwars.home.ui.screen.equipment
    
    public class EquipmentScreen extends TuxPageSubTabScreen
    {
-      
       private static const CONTENT_BUNDLES:String = "Content_Packs";
       
       private static const CONTENT_SUPPLIES:String = "Content_Supplies";
@@ -27,7 +26,6 @@ package tuxwars.home.ui.screen.equipment
       private static const CONTENT_EQUIPMENT:String = "Content_Equipment";
       
       private static const SHOP_SCREEN:String = "shop_screen_new";
-       
       
       private var _objectContainer:ObjectContainer;
       
@@ -168,3 +166,4 @@ package tuxwars.home.ui.screen.equipment
       }
    }
 }
+

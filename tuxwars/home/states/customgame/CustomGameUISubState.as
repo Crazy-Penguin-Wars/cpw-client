@@ -7,11 +7,10 @@ package tuxwars.home.states.customgame
    
    public class CustomGameUISubState extends TuxUIState
    {
-       
-      
       public function CustomGameUISubState(game:TuxWarsGame, params:* = null)
       {
          super(CustomGameScreen,CustomGameLogic,game,params);
       }
    }
 }
+

@@ -47,7 +47,6 @@ package tuxwars.battle
    
    public class BattleManager
    {
-      
       private static const PLAYER_TURN_TEXT:String = "PLAYER_TURN_CHANGE_";
       
       private static const TURN_CHANGE_TEXTS:int = 10;
@@ -63,8 +62,6 @@ package tuxwars.battle
       private static const REMOVED_UNEXPECTED_MESSAGES:String = "unexpected_message";
       
       private static const REMOVED_DISCONNECTED:String = "disconnected";
-      
-      private static const PLAYER_CACHE:Object = {};
       
       private static var tuxGame:TuxWarsGame;
       
@@ -111,7 +108,8 @@ package tuxwars.battle
       private static var _connectedToBattleManager:Boolean;
       
       private static var _boostersEnabled:Boolean;
-       
+      
+      private static const PLAYER_CACHE:Object = {};
       
       public function BattleManager()
       {
@@ -279,7 +277,7 @@ package tuxwars.battle
       
       public static function isLocalPlayersTurn() : Boolean
       {
-         var _loc1_:* = null;
+         var _loc1_:PlayerGameObject = null;
          if(currentPlayerIndex >= 0)
          {
             _loc1_ = getCurrentActivePlayer();
@@ -426,11 +424,11 @@ package tuxwars.battle
       
       public static function showText(text:String, type:int, ignoreLevelScale:Boolean, params:* = null, y:int = 0) : TextEffect
       {
-         var _loc6_:* = null;
+         var _loc6_:TextEffect = null;
          if(getTuxWorld())
          {
             var _loc7_:DCGame = DCGame;
-            _loc6_ = getTuxWorld().addTextEffect(type,text,Number(com.dchoc.game.DCGame._stage.stageWidth) >> 1,y,true,params);
+            _loc6_ = getTuxWorld().addTextEffect(type,text,com.dchoc.game.DCGame._stage.stageWidth >> 1,y,true,params);
             if(ignoreLevelScale)
             {
                getTuxWorld().ignoreLevelSizeScale(_loc6_.movieClip,true,false);
@@ -522,9 +520,9 @@ package tuxwars.battle
       
       private static function battleResponseHandler(response:BattleResponse) : void
       {
-         var _loc5_:* = null;
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc5_:PlayerGameObject = null;
+         var _loc3_:Player = null;
+         var _loc4_:PlayerGameObject = null;
          if(!SocketMessageTypes.isControlMessage(response.responseType))
          {
             return;
@@ -568,9 +566,11 @@ package tuxwars.battle
                if(_loc5_)
                {
                   _loc5_.useEmoticon(_loc2_.emoticon_id);
-                  break;
                }
-               LogUtils.log("Couldn\'t find player: " + response.playerId + " for emoticon: " + _loc2_.emoticon_id,"BattleManager",3);
+               else
+               {
+                  LogUtils.log("Couldn\'t find player: " + response.playerId + " for emoticon: " + _loc2_.emoticon_id,"BattleManager",3);
+               }
                break;
             case 25:
                errorHandler(response);
@@ -580,9 +580,11 @@ package tuxwars.battle
                if(_loc3_)
                {
                   _loc3_.betData = BetManager.getBet(_loc2_.betId);
-                  break;
                }
-               LogUtils.log("Couldn\'t find player: " + _loc2_.id + " for betting: " + _loc2_.betId,"BattleManager",3);
+               else
+               {
+                  LogUtils.log("Couldn\'t find player: " + _loc2_.id + " for betting: " + _loc2_.betId,"BattleManager",3);
+               }
                break;
             case 50:
                MessageCenter.sendMessage("ingameBetPlaced",_loc2_);
@@ -595,9 +597,11 @@ package tuxwars.battle
                if(_loc4_)
                {
                   _loc4_.chickeningOut(response.data.status);
-                  break;
                }
-               LogUtils.log("Couldn\'t find player: " + response.playerId + " for chickening out icon","BattleManager",3);
+               else
+               {
+                  LogUtils.log("Couldn\'t find player: " + response.playerId + " for chickening out icon","BattleManager",3);
+               }
                break;
             case 37:
                _boostersEnabled = true;
@@ -637,7 +641,7 @@ package tuxwars.battle
       
       private static function getPlayerResults() : Vector.<PlayerResult>
       {
-         var _loc3_:* = null;
+         var _loc3_:PlayerGameObject = null;
          var _loc2_:Vector.<PlayerResult> = new Vector.<PlayerResult>();
          for each(var player in players)
          {
@@ -655,7 +659,7 @@ package tuxwars.battle
       private static function startPlayerTurn(nextPlayerIndex:int) : void
       {
          var _loc4_:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:String = null;
          _aiPlayerHasShot = false;
          currentPlayerIndex = nextPlayerIndex;
          var _loc2_:PlayerGameObject = getCurrentActivePlayer();
@@ -735,7 +739,7 @@ package tuxwars.battle
       
       private static function errorHandler(response:BattleResponse) : void
       {
-         var battleResults:* = null;
+         var battleResults:BattleResults = null;
          LogUtils.log("Received an error from the server: code = " + response.data.code + " desc: " + response.data.description,"BattleManager",3,"ErrorLogging",true);
          if(tuxGame.tuxWorld)
          {
@@ -837,3 +841,4 @@ package tuxwars.battle
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.challenges.events
    
    public class ChallengePlayerDiedMessage extends Message
    {
-       
-      
       private var _player:PlayerGameObject;
       
       private var _cause:String;
@@ -29,3 +27,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

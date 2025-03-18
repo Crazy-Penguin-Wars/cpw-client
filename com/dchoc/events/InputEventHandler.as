@@ -4,8 +4,7 @@ package com.dchoc.events
    
    public interface InputEventHandler
    {
-       
-      
       function handleInputEvent(param1:Event) : void;
    }
 }
+

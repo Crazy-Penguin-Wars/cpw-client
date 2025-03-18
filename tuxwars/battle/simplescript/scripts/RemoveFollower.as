@@ -7,8 +7,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class RemoveFollower implements SimpleScriptCore
    {
-       
-      
       public function RemoveFollower()
       {
          super();
@@ -16,7 +14,7 @@ package tuxwars.battle.simplescript.scripts
       
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var _loc6_:* = null;
+         var _loc6_:Follower = null;
          var _loc4_:PhysicsGameObject = params.pgoA;
          var _loc3_:Array = scriptObject.variables[1] is Array ? scriptObject.variables[1] : [scriptObject.variables[1]];
          for each(var followerId in _loc3_)
@@ -31,3 +29,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

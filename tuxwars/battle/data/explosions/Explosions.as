@@ -1,18 +1,16 @@
 package tuxwars.battle.data.explosions
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class Explosions
    {
-      
       private static const EXPLOSION_TABLE:String = "Explosion";
       
-      private static const EXPLOSION_CACHE:Object = {};
-      
       private static var explosionTable:Table;
-       
+      
+      private static const EXPLOSION_CACHE:Object = {};
       
       public function Explosions()
       {
@@ -47,10 +45,12 @@ package tuxwars.battle.data.explosions
       {
          if(!explosionTable)
          {
+            var _loc2_:String = "Explosion";
             var _loc1_:ProjectManager = ProjectManager;
-            explosionTable = com.dchoc.projectdata.ProjectManager.projectData.findTable("Explosion");
+            explosionTable = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return explosionTable;
       }
    }
 }
+

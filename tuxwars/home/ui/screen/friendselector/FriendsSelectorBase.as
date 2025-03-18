@@ -11,8 +11,6 @@ package tuxwars.home.ui.screen.friendselector
    
    public class FriendsSelectorBase extends UIComponent
    {
-       
-      
       public function FriendsSelectorBase(newDesign:DisplayObject)
       {
          super(newDesign);
@@ -41,10 +39,11 @@ package tuxwars.home.ui.screen.friendselector
       
       public function createScrollBar(design:UIButton, hitArea:Sprite, callback:Function) : ScrollBar
       {
-         var returnBar:* = null;
+         var returnBar:ScrollBar = null;
+         var type:String = "vertical";
          var _loc7_:DCGame = DCGame;
          var stage:Stage = com.dchoc.game.DCGame._stage;
-         returnBar = new ScrollBar(design,hitArea,"vertical",stage);
+         returnBar = new ScrollBar(design,hitArea,type,stage);
          returnBar.setProcentage(0);
          returnBar.setMoveCallback(callback);
          return returnBar;
@@ -97,11 +96,11 @@ package tuxwars.home.ui.screen.friendselector
          var itemsCount:uint = list.currentLength;
          if(percentage > 0)
          {
-            itemsLenght = itemsCount - panelCount;
+            itemsLenght = uint(itemsCount - panelCount);
             itemsLenght++;
             returnPanelIndex = Math.ceil(percentage * itemsLenght / 100);
          }
-         returnPanelIndex = CellList.checkIndex(returnPanelIndex,itemsCount - panelCount,0);
+         returnPanelIndex = uint(CellList.checkIndex(returnPanelIndex,itemsCount - panelCount,0));
          if(excluded != null)
          {
             list.updateFromIndex(returnPanelIndex,excluded.dataList);
@@ -113,3 +112,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

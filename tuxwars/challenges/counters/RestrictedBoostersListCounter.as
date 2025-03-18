@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class RestrictedBoostersListCounter extends Counter
    {
-       
-      
       private var invalidated:Boolean;
       
       public function RestrictedBoostersListCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -60,3 +58,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

@@ -2,14 +2,13 @@ package tuxwars.battle.data.levelobjects
 {
    import com.dchoc.events.ErrorMessage;
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class LevelObjects
    {
-      
       private static const TABLE_NAME:String = "LevelObject";
-       
       
       public function LevelObjects()
       {
@@ -30,9 +29,10 @@ package tuxwars.battle.data.levelobjects
       
       private static function getRow(rowName:String) : Row
       {
+         var _loc4_:String = "LevelObject";
          var _loc2_:ProjectManager = ProjectManager;
          var _loc5_:* = rowName;
-         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("LevelObject");
+         var _loc3_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc4_);
          if(!_loc3_._cache[_loc5_])
          {
             var _loc6_:Row = com.dchoc.utils.DCUtils.find(_loc3_.rows,"id",_loc5_);
@@ -46,3 +46,4 @@ package tuxwars.battle.data.levelobjects
       }
    }
 }
+

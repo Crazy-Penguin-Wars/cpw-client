@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class HitsUniqueTargetsCounter extends Counter
    {
-       
-      
       private const playerList:Array = [];
       
       public function HitsUniqueTargetsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -41,3 +39,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

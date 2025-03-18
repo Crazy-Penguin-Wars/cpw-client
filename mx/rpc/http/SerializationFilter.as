@@ -2,11 +2,11 @@ package mx.rpc.http
 {
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class SerializationFilter
    {
-      
       mx_internal static var filterForResultFormatTable:Object = new Object();
-       
       
       public function SerializationFilter()
       {
@@ -60,3 +60,4 @@ package mx.rpc.http
       }
    }
 }
+

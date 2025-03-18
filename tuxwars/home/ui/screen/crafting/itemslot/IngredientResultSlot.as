@@ -12,9 +12,7 @@ package tuxwars.home.ui.screen.crafting.itemslot
    
    public class IngredientResultSlot extends IngredientSlot
    {
-      
       protected static const BUTTON_BUILD:String = "Button_Build";
-       
       
       private var button:UIButton;
       
@@ -68,3 +66,4 @@ package tuxwars.home.ui.screen.crafting.itemslot
       }
    }
 }
+

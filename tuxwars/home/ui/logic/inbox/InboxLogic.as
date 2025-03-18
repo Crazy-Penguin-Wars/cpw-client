@@ -7,8 +7,6 @@ package tuxwars.home.ui.logic.inbox
    
    public class InboxLogic extends TuxUILogic
    {
-       
-      
       public function InboxLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -20,3 +18,4 @@ package tuxwars.home.ui.logic.inbox
       }
    }
 }
+

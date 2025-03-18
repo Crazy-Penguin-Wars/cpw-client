@@ -8,8 +8,6 @@ package tuxwars.battle.emitters
    
    public interface Emission
    {
-       
-      
       function get id() : String;
       
       function get uniqueId() : String;
@@ -81,3 +79,4 @@ package tuxwars.battle.emitters
       function getBoosterExplosionEmissions() : Array;
    }
 }
+

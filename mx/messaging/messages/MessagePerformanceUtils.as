@@ -2,13 +2,11 @@ package mx.messaging.messages
 {
    public class MessagePerformanceUtils
    {
-      
       public static const MPI_HEADER_IN:String = "DSMPII";
       
       public static const MPI_HEADER_OUT:String = "DSMPIO";
       
       public static const MPI_HEADER_PUSH:String = "DSMPIP";
-       
       
       public var mpii:MessagePerformanceInfo;
       
@@ -252,3 +250,4 @@ package mx.messaging.messages
       }
    }
 }
+

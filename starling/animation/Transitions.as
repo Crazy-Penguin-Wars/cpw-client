@@ -5,6 +5,7 @@ package starling.animation
    
    public class Transitions
    {
+      private static var sTransitions:Dictionary;
       
       public static const LINEAR:String = "linear";
       
@@ -39,9 +40,6 @@ package starling.animation
       public static const EASE_IN_OUT_BOUNCE:String = "easeInOutBounce";
       
       public static const EASE_OUT_IN_BOUNCE:String = "easeOutInBounce";
-      
-      private static var sTransitions:Dictionary;
-       
       
       public function Transitions()
       {
@@ -117,13 +115,15 @@ package starling.animation
       
       protected static function easeInBack(ratio:Number) : Number
       {
-         return Math.pow(ratio,2) * ((1.70158 + 1) * ratio - 1.70158);
+         var s:Number = 1.70158;
+         return Math.pow(ratio,2) * ((s + 1) * ratio - s);
       }
       
       protected static function easeOutBack(ratio:Number) : Number
       {
          var invRatio:Number = ratio - 1;
-         return Math.pow(invRatio,2) * ((1.70158 + 1) * invRatio + 1.70158) + 1;
+         var s:Number = 1.70158;
+         return Math.pow(invRatio,2) * ((s + 1) * invRatio + s) + 1;
       }
       
       protected static function easeInOutBack(ratio:Number) : Number
@@ -182,24 +182,26 @@ package starling.animation
       protected static function easeOutBounce(ratio:Number) : Number
       {
          var l:Number = NaN;
-         if(ratio < 1 / 2.75)
+         var s:Number = 7.5625;
+         var p:Number = 2.75;
+         if(ratio < 1 / p)
          {
-            l = 7.5625 * Math.pow(ratio,2);
+            l = s * Math.pow(ratio,2);
          }
-         else if(ratio < 2 / 2.75)
+         else if(ratio < 2 / p)
          {
-            ratio -= 1.5 / 2.75;
-            l = 7.5625 * Math.pow(ratio,2) + 0.75;
+            ratio -= 1.5 / p;
+            l = s * Math.pow(ratio,2) + 0.75;
          }
-         else if(ratio < 2.5 / 2.75)
+         else if(ratio < 2.5 / p)
          {
-            ratio -= 2.25 / 2.75;
-            l = 7.5625 * Math.pow(ratio,2) + 0.9375;
+            ratio -= 2.25 / p;
+            l = s * Math.pow(ratio,2) + 0.9375;
          }
          else
          {
-            ratio -= 2.625 / 2.75;
-            l = 7.5625 * Math.pow(ratio,2) + 0.984375;
+            ratio -= 2.625 / p;
+            l = s * Math.pow(ratio,2) + 0.984375;
          }
          return l;
       }
@@ -224,3 +226,4 @@ package starling.animation
       }
    }
 }
+

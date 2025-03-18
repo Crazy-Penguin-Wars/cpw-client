@@ -5,7 +5,6 @@ package org.as3commons.zip
    
    public class ZipFile
    {
-      
       public static const COMPRESSION_NONE:int = 0;
       
       public static const COMPRESSION_SHRUNK:int = 1;
@@ -31,7 +30,6 @@ package org.as3commons.zip
       protected static var HAS_UNCOMPRESS:Boolean = describeType(ByteArray).factory.method.(@name == "uncompress").parameter.length() > 0;
       
       protected static var HAS_INFLATE:Boolean = describeType(ByteArray).factory.method.(@name == "inflate").length() > 0;
-       
       
       protected var _versionHost:int = 0;
       
@@ -224,7 +222,7 @@ package org.as3commons.zip
       
       public function serialize(stream:IDataOutput, includeAdler32:Boolean, centralDir:Boolean = false, centralDirOffset:uint = 0) : uint
       {
-         var headerId:* = null;
+         var headerId:Object = null;
          var extraBytes:ByteArray = null;
          var compressed:Boolean = false;
          if(stream == null)
@@ -234,18 +232,18 @@ package org.as3commons.zip
          if(centralDir)
          {
             stream.writeUnsignedInt(Zip.SIG_CENTRAL_FILE_HEADER);
-            stream.writeShort(this._versionHost << 8 | 20);
+            stream.writeShort(this._versionHost << 8 | 0x14);
          }
          else
          {
             stream.writeUnsignedInt(Zip.SIG_LOCAL_FILE_HEADER);
          }
-         stream.writeShort(this._versionHost << 8 | 20);
+         stream.writeShort(this._versionHost << 8 | 0x14);
          stream.writeShort(this._filenameEncoding == "utf-8" ? 2048 : 0);
          stream.writeShort(this.isCompressed ? COMPRESSION_DEFLATED : COMPRESSION_NONE);
          var d:Date = this._date != null ? this._date : new Date();
-         var msdosTime:uint = uint(d.getSeconds()) | uint(d.getMinutes()) << 5 | uint(d.getHours()) << 11;
-         var msdosDate:uint = uint(d.getDate()) | uint(d.getMonth() + 1) << 5 | uint(d.getFullYear() - 1980) << 9;
+         var msdosTime:uint = uint(uint(d.getSeconds()) | uint(d.getMinutes()) << 5 | uint(d.getHours()) << 11);
+         var msdosDate:uint = uint(uint(d.getDate()) | uint(d.getMonth() + 1) << 5 | uint(d.getFullYear() - 1980) << 9);
          stream.writeShort(msdosTime);
          stream.writeShort(msdosDate);
          stream.writeUnsignedInt(this._crc32);
@@ -292,7 +290,7 @@ package org.as3commons.zip
             ba.writeShort(4);
             ba.writeUnsignedInt(this._adler32);
          }
-         var extrafieldsSize:uint = ba.position - filenameSize;
+         var extrafieldsSize:uint = uint(ba.position - filenameSize);
          if(centralDir && this._comment.length > 0)
          {
             if(this._filenameEncoding == "utf-8")
@@ -304,7 +302,7 @@ package org.as3commons.zip
                ba.writeMultiByte(this._comment,this._filenameEncoding);
             }
          }
-         var commentSize:uint = ba.position - filenameSize - extrafieldsSize;
+         var commentSize:uint = uint(ba.position - filenameSize - extrafieldsSize);
          stream.writeShort(filenameSize);
          stream.writeShort(extrafieldsSize);
          if(centralDir)
@@ -331,7 +329,7 @@ package org.as3commons.zip
                }
                else
                {
-                  fileSize = this._content.length - 6;
+                  fileSize = uint(this._content.length - 6);
                   stream.writeBytes(this._content,2,fileSize);
                }
             }
@@ -341,7 +339,7 @@ package org.as3commons.zip
                stream.writeBytes(this._content,0,fileSize);
             }
          }
-         var size:uint = 30 + filenameSize + extrafieldsSize + commentSize + fileSize;
+         var size:uint = uint(30 + filenameSize + extrafieldsSize + commentSize + fileSize);
          if(centralDir)
          {
             size += 16;
@@ -419,13 +417,13 @@ package org.as3commons.zip
       {
          var vSrc:uint = uint(data.readUnsignedShort());
          this._versionHost = vSrc >> 8;
-         this._versionNumber = Math.floor((vSrc & 255) / 10) + "." + (vSrc & 255) % 10;
+         this._versionNumber = Math.floor((vSrc & 0xFF) / 10) + "." + (vSrc & 0xFF) % 10;
          var flag:uint = uint(data.readUnsignedShort());
          this._compressionMethod = data.readUnsignedShort();
          this._encrypted = (flag & 1) !== 0;
          this._hasDataDescriptor = (flag & 8) !== 0;
-         this._hasCompressedPatchedData = (flag & 32) !== 0;
-         if((flag & 800) !== 0)
+         this._hasCompressedPatchedData = (flag & 0x20) !== 0;
+         if((flag & 0x0320) !== 0)
          {
             this._filenameEncoding = "utf-8";
          }
@@ -440,12 +438,12 @@ package org.as3commons.zip
          }
          var msdosTime:uint = uint(data.readUnsignedShort());
          var msdosDate:uint = uint(data.readUnsignedShort());
-         var sec:int = msdosTime & 31;
-         var min:int = (msdosTime & 2016) >> 5;
-         var hour:int = (msdosTime & 63488) >> 11;
-         var day:int = msdosDate & 31;
-         var month:int = (msdosDate & 480) >> 5;
-         var year:int = ((msdosDate & 65024) >> 9) + 1980;
+         var sec:int = msdosTime & 0x1F;
+         var min:int = (msdosTime & 0x07E0) >> 5;
+         var hour:int = (msdosTime & 0xF800) >> 11;
+         var day:int = msdosDate & 0x1F;
+         var month:int = (msdosDate & 0x01E0) >> 5;
+         var year:int = ((msdosDate & 0xFE00) >> 9) + 1980;
          this._date = new Date(year,month - 1,day,hour,min,sec,0);
          this._crc32 = data.readUnsignedInt();
          this._sizeCompressed = data.readUnsignedInt();
@@ -511,7 +509,7 @@ package org.as3commons.zip
                   throw new Error("Adler32 checksum not found.");
                }
                this._content.writeByte(120);
-               flg = ~this._deflateSpeedOption << 6 & 192;
+               flg = uint(~this._deflateSpeedOption << 6 & 0xC0);
                flg += 31 - (120 << 8 | flg) % 31;
                this._content.writeByte(flg);
                data.readBytes(this._content,2,this._sizeCompressed);
@@ -594,3 +592,4 @@ package org.as3commons.zip
       }
    }
 }
+

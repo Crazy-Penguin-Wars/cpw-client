@@ -2,9 +2,8 @@ package tuxwars.battle.data.follower
 {
    import com.dchoc.gameobjects.stats.Stat;
    import com.dchoc.gameobjects.stats.Stats;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import nape.geom.Vec2;
    import no.olog.utilfunctions.assert;
@@ -18,13 +17,11 @@ package tuxwars.battle.data.follower
    
    public class Followers
    {
-      
       private static const FOLLOWER_TABLE:String = "Follower";
       
-      private static const FOLLOWER_CACHE:Object = {};
-      
       private static var followersTable:Table;
-       
+      
+      private static const FOLLOWER_CACHE:Object = {};
       
       public function Followers()
       {
@@ -35,7 +32,7 @@ package tuxwars.battle.data.follower
       public static function createFollower(name:String, loc:Vec2, world:PhysicsWorld, firingObjectsAttack:Stat, firingObjectsPlayerBoosterStats:Stats, objectToFollow:PhysicsGameObject, tagger:Tagger) : Follower
       {
          var _loc10_:* = undefined;
-         var _loc13_:* = null;
+         var _loc13_:Follower = null;
          assert("Object to follow is not ",true,objectToFollow is PhysicsGameObject);
          if(!objectToFollow)
          {
@@ -162,10 +159,12 @@ package tuxwars.battle.data.follower
       {
          if(!followersTable)
          {
+            var _loc2_:String = "Follower";
             var _loc1_:ProjectManager = ProjectManager;
-            followersTable = com.dchoc.projectdata.ProjectManager.projectData.findTable("Follower");
+            followersTable = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return followersTable;
       }
    }
 }
+

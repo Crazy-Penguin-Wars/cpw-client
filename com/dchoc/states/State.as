@@ -4,9 +4,7 @@ package com.dchoc.states
    
    public class State extends StateMachine
    {
-       
-      
-      protected var _params;
+      protected var _params:*;
       
       protected var _game:DCGame;
       
@@ -59,3 +57,4 @@ package com.dchoc.states
       }
    }
 }
+

@@ -14,8 +14,6 @@ package com.dchoc.game
    
    public class WorldContainer extends Sprite
    {
-       
-      
       private const _backgroundContainer:Sprite = new Sprite();
       
       private const _objectContainer:Sprite = new Sprite();
@@ -80,8 +78,8 @@ package com.dchoc.game
       
       private function handleTouch(touch:Touch, target:starling.display.DisplayObject) : void
       {
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc4_:Point = null;
+         var _loc3_:flash.events.Event = null;
          if(target && touch.target)
          {
             _loc4_ = touch.getLocation(target);
@@ -131,3 +129,4 @@ package com.dchoc.game
       }
    }
 }
+

@@ -12,8 +12,6 @@ package tuxwars.ui.tooltips
    
    public class TooltipContainerClothing extends TooltipContainer
    {
-       
-      
       private var _attack:UIAutoTextField;
       
       private var _defence:UIAutoTextField;
@@ -74,3 +72,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

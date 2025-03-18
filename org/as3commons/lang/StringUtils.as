@@ -2,7 +2,6 @@ package org.as3commons.lang
 {
    public final class StringUtils
    {
-      
       private static var WIN_BREAK:String = String.fromCharCode(13) + String.fromCharCode(10);
       
       private static var MAC_BREAK:String = String.fromCharCode(13);
@@ -18,7 +17,6 @@ package org.as3commons.lang
       private static const PAD_LIMIT:uint = 8192;
       
       private static const FILENAME_CHARS_NOT_ALLOWED:RegExp = new RegExp("/|\\\\|:|\\*|\\?|<|>|\\||%|\"");
-       
       
       public function StringUtils()
       {
@@ -259,8 +257,13 @@ package org.as3commons.lang
          var buf:String = "";
          var start:int = 0;
          var end:int = 0;
-         while((end = text.indexOf(pattern,start)) != -1)
+         while(true)
          {
+            end = int(text.indexOf(pattern,start));
+            if(end == -1)
+            {
+               break;
+            }
             buf += text.substring(start,end) + repl;
             start = end + pattern.length;
             if(--max == 0)
@@ -362,7 +365,7 @@ package org.as3commons.lang
          {
             return EMPTY;
          }
-         var pos:int = str.indexOf(separator);
+         var pos:int = int(str.indexOf(separator));
          if(pos == INDEX_NOT_FOUND)
          {
             return EMPTY;
@@ -380,7 +383,7 @@ package org.as3commons.lang
          {
             return EMPTY;
          }
-         var pos:int = str.lastIndexOf(separator);
+         var pos:int = int(str.lastIndexOf(separator));
          if(pos == INDEX_NOT_FOUND || pos == str.length - separator.length)
          {
             return EMPTY;
@@ -398,7 +401,7 @@ package org.as3commons.lang
          {
             return EMPTY;
          }
-         var pos:int = str.indexOf(separator);
+         var pos:int = int(str.indexOf(separator));
          if(pos == INDEX_NOT_FOUND)
          {
             return str;
@@ -412,7 +415,7 @@ package org.as3commons.lang
          {
             return str;
          }
-         var pos:int = str.lastIndexOf(separator);
+         var pos:int = int(str.lastIndexOf(separator));
          if(pos == INDEX_NOT_FOUND)
          {
             return str;
@@ -427,10 +430,10 @@ package org.as3commons.lang
          {
             return null;
          }
-         var start:int = str.indexOf(open);
+         var start:int = int(str.indexOf(open));
          if(start != INDEX_NOT_FOUND)
          {
-            end = str.indexOf(close,start + open.length);
+            end = int(str.indexOf(close,start + open.length));
             if(end != INDEX_NOT_FOUND)
             {
                return str.substring(start + open.length,end);
@@ -519,7 +522,7 @@ package org.as3commons.lang
          var index:int = INDEX_NOT_FOUND;
          while(true)
          {
-            index = str.indexOf(searchStr,index + 1);
+            index = int(str.indexOf(searchStr,index + 1));
             if(index < 0)
             {
                break;
@@ -700,7 +703,7 @@ package org.as3commons.lang
       
       private static function testString(str:String, pattern:RegExp) : Boolean
       {
-         return str != null && pattern.test(str);
+         return str != null && Boolean(pattern.test(str));
       }
       
       public static function overlay(str:String, overlay:String, start:int, end:int) : String
@@ -888,12 +891,13 @@ package org.as3commons.lang
       
       public static function rightTrimForChars(string:String, chars:String) : String
       {
+         var from:Number = 0;
          var to:Number = string.length - 1;
-         while(0 < to && chars.indexOf(string.charAt(to)) >= 0)
+         while(from < to && chars.indexOf(string.charAt(to)) >= 0)
          {
             to--;
          }
-         return to >= 0 ? string.substr(0,to + 1) : string;
+         return to >= 0 ? string.substr(from,to + 1) : string;
       }
       
       public static function leftTrimForChar(string:String, char:String) : String
@@ -920,11 +924,11 @@ package org.as3commons.lang
          var result:int = startIndex;
          if(n >= 1)
          {
-            result = haystack.indexOf(needle,result);
+            result = int(haystack.indexOf(needle,result));
             i = 1;
             while(result != -1 && i < n)
             {
-               result = haystack.indexOf(needle,result + 1);
+               result = int(haystack.indexOf(needle,result + 1));
                i++;
             }
          }
@@ -938,7 +942,7 @@ package org.as3commons.lang
       
       public static function characterIsDigit(a:String) : Boolean
       {
-         var charCode:Number = a.charCodeAt(0);
+         var charCode:Number = Number(a.charCodeAt(0));
          return charCode >= 48 && charCode <= 57;
       }
       
@@ -951,6 +955,7 @@ package org.as3commons.lang
          var ib:int = 0;
          var nza:int = 0;
          var nzb:int = 0;
+         var lowerCaseBeforeUpperCase:Boolean = true;
          if(!a)
          {
             a = "";
@@ -1000,9 +1005,10 @@ package org.as3commons.lang
             }
             if(StringUtils.characterIsDigit(ca) && StringUtils.characterIsDigit(cb))
             {
-               if((result = compareRight(a.substring(ia),b.substring(ib))) != 0)
+               result = compareRight(a.substring(ia),b.substring(ib));
+               if(result != 0)
                {
-                  break;
+                  return result;
                }
             }
             if(ca.length == 0 && cb.length == 0)
@@ -1015,11 +1021,11 @@ package org.as3commons.lang
                {
                   if(ca < cb)
                   {
-                     return 1;
+                     return lowerCaseBeforeUpperCase ? 1 : -1;
                   }
                   if(ca > cb)
                   {
-                     return -1;
+                     return lowerCaseBeforeUpperCase ? -1 : 1;
                   }
                }
             }
@@ -1034,7 +1040,7 @@ package org.as3commons.lang
             ia++;
             ib++;
          }
-         return result;
+         return 0;
       }
       
       private static function compareRight(a:String, b:String) : int
@@ -1043,14 +1049,13 @@ package org.as3commons.lang
          var cb:String = null;
          var bias:int = 0;
          var ia:int = 0;
-         var ib:int = 0;
-         while(true)
+         for(var ib:int = 0; true; )
          {
             ca = a.charAt(ia);
             cb = b.charAt(ib);
             if(!StringUtils.characterIsDigit(ca) && !StringUtils.characterIsDigit(cb))
             {
-               break;
+               return bias;
             }
             if(!StringUtils.characterIsDigit(ca))
             {
@@ -1081,7 +1086,7 @@ package org.as3commons.lang
             ia++;
             ib++;
          }
-         return bias;
+         return 0;
       }
       
       public static function tokenizeToArray(string:String, delimiters:String) : Array
@@ -1216,7 +1221,7 @@ package org.as3commons.lang
          var j:Number = NaN;
          var l:Number = NaN;
          var char:String = null;
-         properties = properties || {};
+         properties ||= {};
          var lines:Array = str.split(WIN_BREAK).join("\n").split(MAC_BREAK).join("\n").split("\n");
          var length:Number = lines.length;
          var useNextLine:Boolean = false;
@@ -1269,3 +1274,4 @@ package org.as3commons.lang
       }
    }
 }
+

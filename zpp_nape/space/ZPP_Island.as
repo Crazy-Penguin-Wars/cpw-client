@@ -5,9 +5,7 @@ package zpp_nape.space
    
    public class ZPP_Island
    {
-      
-      public static var zpp_pool:ZPP_Island = null;
-       
+      public static var zpp_pool:ZPP_Island;
       
       public var waket:int;
       
@@ -125,7 +123,7 @@ package zpp_nape.space
                }
                _loc5_._inuse = false;
                modified = true;
-               length = length - 1;
+               --length;
                pushmod = true;
                _loc6_;
                _loc4_ = true;
@@ -154,7 +152,7 @@ package zpp_nape.space
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function iterator_at(param1:int) : ZPP_Island
@@ -181,9 +179,8 @@ package zpp_nape.space
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -204,7 +201,7 @@ package zpp_nape.space
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function inlined_insert(param1:ZPP_Island, param2:ZPP_Island) : ZPP_Island
@@ -221,9 +218,8 @@ package zpp_nape.space
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -271,7 +267,7 @@ package zpp_nape.space
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -287,7 +283,7 @@ package zpp_nape.space
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
       
@@ -335,7 +331,7 @@ package zpp_nape.space
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -386,8 +382,9 @@ package zpp_nape.space
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
    }
 }
+

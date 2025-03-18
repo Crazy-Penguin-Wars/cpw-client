@@ -11,13 +11,11 @@ package tuxwars.battle.data.stats
    
    public class StatReference
    {
-      
       private static const VALUE:String = "Value";
       
       private static const TYPE:String = "Type";
       
       private static const MODIFIER:String = "Modifier";
-       
       
       private var array:Array;
       
@@ -27,7 +25,7 @@ package tuxwars.battle.data.stats
       
       public function StatReference(name:String, array:Array, group:String)
       {
-         var modifierError:* = null;
+         var modifierError:Error = null;
          super();
          assert("Array is null.",true,array != null);
          this.name = name;
@@ -42,13 +40,13 @@ package tuxwars.battle.data.stats
       
       public function getStat() : Stat
       {
-         var _loc4_:* = null;
-         var _loc1_:* = null;
-         var modifierError:* = null;
+         var _loc4_:Array = null;
+         var _loc1_:String = null;
+         var modifierError:Error = null;
          var _loc6_:Number = NaN;
-         var valueError:* = null;
-         var type:* = null;
-         var affects:* = null;
+         var valueError:Error = null;
+         var type:String = null;
+         var affects:String = null;
          var stat:Stat = new Stat(name,0,"","",false);
          for each(var statString in array)
          {
@@ -92,3 +90,4 @@ package tuxwars.battle.data.stats
       }
    }
 }
+

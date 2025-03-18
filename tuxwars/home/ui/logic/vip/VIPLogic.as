@@ -3,8 +3,9 @@ package tuxwars.home.ui.logic.vip
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.net.ServerRequest;
    import com.dchoc.net.ServerResponse;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.data.VIPPriceData;
    import tuxwars.home.states.vip.VIPState;
@@ -18,9 +19,7 @@ package tuxwars.home.ui.logic.vip
    
    public class VIPLogic extends TuxUILogic
    {
-      
       public static const VIP_EXPIRED_FLAG:String = "ShowVIPExpired";
-       
       
       private var priceData:VIPPriceData;
       
@@ -57,9 +56,9 @@ package tuxwars.home.ui.logic.vip
       
       private function serverCallback(response:ServerResponse) : void
       {
-         var iconRow:* = null;
-         var giftItem:* = null;
-         var itemReference:* = null;
+         var iconRow:Row = null;
+         var giftItem:ItemData = null;
+         var itemReference:Object = null;
          if(response.data.vip_active_until)
          {
             MessageCenter.sendEvent(new SetFlagMessage("ShowVIPExpired","true"));
@@ -79,59 +78,62 @@ package tuxwars.home.ui.logic.vip
                   vipScreen.memberShipContainer3.init(game.player.vipMembership,false);
                   var _loc13_:String = "VIPPrice";
                   var _loc5_:ProjectManager = ProjectManager;
+                  var _loc14_:String = "Price2";
                   var _loc6_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc13_);
-                  if(!_loc6_._cache["Price2"])
+                  if(!_loc6_._cache[_loc14_])
                   {
-                     var _loc15_:Row = com.dchoc.utils.DCUtils.find(_loc6_.rows,"id","Price2");
+                     var _loc15_:Row = com.dchoc.utils.DCUtils.find(_loc6_.rows,"id",_loc14_);
                      if(!_loc15_)
                      {
-                        com.dchoc.utils.LogUtils.log("No row with name: \'" + "Price2" + "\' was found in table: \'" + _loc6_.name + "\'",_loc6_,3);
+                        com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc14_ + "\' was found in table: \'" + _loc6_.name + "\'",_loc6_,3);
                      }
-                     _loc6_._cache["Price2"] = _loc15_;
+                     _loc6_._cache[_loc14_] = _loc15_;
                   }
-                  iconRow = _loc6_._cache["Price2"];
+                  iconRow = _loc6_._cache[_loc14_];
+                  var _loc16_:String = "Item";
                   var _loc7_:* = iconRow;
-                  if(!_loc7_._cache["Item"])
+                  if(!_loc7_._cache[_loc16_])
                   {
-                     _loc7_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name","Item");
+                     _loc7_._cache[_loc16_] = com.dchoc.utils.DCUtils.find(_loc7_._fields,"name",_loc16_);
                   }
-                  var _loc8_:* = _loc7_._cache["Item"];
+                  var _loc8_:* = _loc7_._cache[_loc16_];
                   itemReference = _loc8_.overrideValue != null ? _loc8_.overrideValue : _loc8_._value;
                   giftItem = ItemManager.getItemData(itemReference.id);
                   if(giftItem)
                   {
                      game.player.inventory.addItem(giftItem.id,5);
-                     break;
                   }
                   break;
                case "Price3":
                   vipScreen.memberShipContainer1.init(game.player.vipMembership,false);
                   vipScreen.memberShipContainer2.init(game.player.vipMembership,false);
                   vipScreen.memberShipContainer3.init(game.player.vipMembership,true);
+                  var _loc17_:String = "VIPPrice";
                   var _loc9_:ProjectManager = ProjectManager;
-                  var _loc10_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("VIPPrice");
-                  if(!_loc10_._cache["Price3"])
+                  var _loc18_:String = "Price3";
+                  var _loc10_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc17_);
+                  if(!_loc10_._cache[_loc18_])
                   {
-                     var _loc19_:Row = com.dchoc.utils.DCUtils.find(_loc10_.rows,"id","Price3");
+                     var _loc19_:Row = com.dchoc.utils.DCUtils.find(_loc10_.rows,"id",_loc18_);
                      if(!_loc19_)
                      {
-                        com.dchoc.utils.LogUtils.log("No row with name: \'" + "Price3" + "\' was found in table: \'" + _loc10_.name + "\'",_loc10_,3);
+                        com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc18_ + "\' was found in table: \'" + _loc10_.name + "\'",_loc10_,3);
                      }
-                     _loc10_._cache["Price3"] = _loc19_;
+                     _loc10_._cache[_loc18_] = _loc19_;
                   }
-                  iconRow = _loc10_._cache["Price3"];
+                  iconRow = _loc10_._cache[_loc18_];
+                  var _loc20_:String = "Item";
                   var _loc11_:* = iconRow;
-                  if(!_loc11_._cache["Item"])
+                  if(!_loc11_._cache[_loc20_])
                   {
-                     _loc11_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name","Item");
+                     _loc11_._cache[_loc20_] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name",_loc20_);
                   }
-                  var _loc12_:* = _loc11_._cache["Item"];
+                  var _loc12_:* = _loc11_._cache[_loc20_];
                   itemReference = _loc12_.overrideValue != null ? _loc12_.overrideValue : _loc12_._value;
                   giftItem = ItemManager.getItemData(itemReference.id);
                   if(giftItem)
                   {
                      game.player.inventory.addItem(giftItem.id,5);
-                     break;
                   }
             }
             vipScreen.disableOtherButtons(game.player.vipMembership.boughtPackId);
@@ -142,3 +144,4 @@ package tuxwars.home.ui.logic.vip
       }
    }
 }
+

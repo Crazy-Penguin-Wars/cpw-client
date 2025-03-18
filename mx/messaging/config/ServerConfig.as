@@ -13,16 +13,19 @@ package mx.messaging.config
    import mx.resources.ResourceManager;
    import mx.utils.ObjectUtil;
    
+   use namespace mx_internal;
+   
    public class ServerConfig
    {
+      private static var _resourceManager:IResourceManager;
+      
+      public static var serverConfigData:XML;
+      
+      private static var _configFetchedChannels:Object;
       
       public static const CLASS_ATTR:String = "type";
       
       public static const URI_ATTR:String = "uri";
-      
-      private static var _resourceManager:IResourceManager;
-      
-      public static var serverConfigData:XML;
       
       private static var _channelSets:Object = {};
       
@@ -30,10 +33,7 @@ package mx.messaging.config
       
       private static var _unclusteredChannels:Object = {};
       
-      private static var _configFetchedChannels:Object;
-      
       public static var channelSetFactory:Class = ChannelSet;
-       
       
       public function ServerConfig()
       {
@@ -181,7 +181,7 @@ package mx.messaging.config
          if(_configFetchedChannels == null || _configFetchedChannels[channel.endpoint] == null)
          {
             channelSets = channel.channelSets;
-            m = channelSets.length;
+            m = int(channelSets.length);
             for(i = 0; i < m; i++)
             {
                if(getQualifiedClassName(channelSets[i]).indexOf("Advanced") != -1)
@@ -189,7 +189,7 @@ package mx.messaging.config
                   return true;
                }
                messageAgents = ChannelSet(channelSets[i]).messageAgents;
-               n = messageAgents.length;
+               n = int(messageAgents.length);
                for(j = 0; j < n; j++)
                {
                   if(MessageAgent(messageAgents[j]).mx_internal::needsConfig)
@@ -311,7 +311,7 @@ package mx.messaging.config
       
       private static function convertToXML(config:ConfigMap, configXML:XML) : void
       {
-         var propertyKey:* = null;
+         var propertyKey:Object = null;
          var propertyValue:Object = null;
          var propertyValueList:Array = null;
          var i:int = 0;
@@ -361,7 +361,7 @@ package mx.messaging.config
       {
          var result:Array = [];
          var channels:XMLList = destinationConfig.channels.channel;
-         var n:int = channels.length();
+         var n:int = int(channels.length());
          for(var i:int = 0; i < n; i++)
          {
             result.push(channels[i].@ref.toString());
@@ -373,7 +373,7 @@ package mx.messaging.config
       {
          var result:Array = [];
          var channels:XMLList = xml["default-channels"].channel;
-         var n:int = channels.length();
+         var n:int = int(channels.length());
          for(var i:int = 0; i < n; i++)
          {
             result.push(channels[i].@ref.toString());
@@ -386,7 +386,7 @@ package mx.messaging.config
          var destinations:XMLList = null;
          var destinationCount:int = 0;
          destinations = xml..destination.(@id == destinationId);
-         destinationCount = destinations.length();
+         destinationCount = int(destinations.length());
          if(destinationCount == 0)
          {
             return null;
@@ -436,3 +436,4 @@ package mx.messaging.config
       }
    }
 }
+

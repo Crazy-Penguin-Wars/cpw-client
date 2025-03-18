@@ -6,9 +6,10 @@ package mx.events
    import flash.net.URLRequest;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class RSLEvent extends ProgressEvent
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const RSL_ADD_PRELOADED:String = "rslAddPreloaded";
@@ -18,7 +19,6 @@ package mx.events
       public static const RSL_ERROR:String = "rslError";
       
       public static const RSL_PROGRESS:String = "rslProgress";
-       
       
       public var errorText:String;
       
@@ -49,3 +49,4 @@ package mx.events
       }
    }
 }
+

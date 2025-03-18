@@ -9,9 +9,7 @@ package com.dchoc.resources
    
    public class URLResourceLoader
    {
-      
       private static const listnerCounter:Object = {};
-       
       
       private var mc:MovieClip;
       
@@ -77,8 +75,8 @@ package com.dchoc.resources
       
       private function replaceImage() : void
       {
-         var bitmap:* = null;
-         var newMc:* = null;
+         var bitmap:Bitmap = null;
+         var newMc:MovieClip = null;
          var bitmapData:BitmapData = DCResourceManager.instance.get(url);
          if(bitmapData != null)
          {
@@ -164,3 +162,4 @@ package com.dchoc.resources
       }
    }
 }
+

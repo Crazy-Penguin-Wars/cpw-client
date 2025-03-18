@@ -6,11 +6,10 @@ package com.dchoc.ui.base
    import flash.display.DisplayObject;
    import flash.display.MovieClip;
    import flash.events.Event;
+   import flash.external.ExternalInterface;
    
    public class UIComponent
    {
-       
-      
       private const eventListeners:Object = {};
       
       private var _design:DisplayObject;
@@ -27,8 +26,11 @@ package com.dchoc.ui.base
       
       protected function playAnimation(frameLabel:String) : Boolean
       {
+         ExternalInterface.call("console.log","[playAnimation] Going to framelabel:");
+         ExternalInterface.call("console.log",frameLabel);
          if(UIUtils.movieClipContainsLabel(getDesignMovieClip(),frameLabel))
          {
+            ExternalInterface.call("console.log","[playAnimation] That looks good (i think)");
             currentAnimation = frameLabel;
             getDesignMovieClip().gotoAndPlay(frameLabel);
             return true;
@@ -38,7 +40,7 @@ package com.dchoc.ui.base
       
       public function dispose() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:Array = null;
          if(!disposed)
          {
             for(var type in eventListeners)
@@ -66,6 +68,7 @@ package com.dchoc.ui.base
       
       protected function goToFrame(frameLabel:String) : Boolean
       {
+         ExternalInterface.call("console.log",frameLabel);
          if(UIUtils.movieClipContainsLabel(getDesignMovieClip(),frameLabel))
          {
             currentAnimation = frameLabel;
@@ -73,6 +76,8 @@ package com.dchoc.ui.base
             DCUtils.setBitmapSmoothing(true,getDesignMovieClip());
             return true;
          }
+         ExternalInterface.call("console.log","[MichiDebug] frameLabel above is not found in MovieClip with name: :sad:");
+         ExternalInterface.call("console.log",getName());
          return false;
       }
       
@@ -183,3 +188,4 @@ package com.dchoc.ui.base
       }
    }
 }
+

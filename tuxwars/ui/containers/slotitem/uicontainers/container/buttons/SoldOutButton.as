@@ -6,8 +6,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
    
    public class SoldOutButton extends UIButton
    {
-       
-      
       private var _slotElement:SlotElement;
       
       public function SoldOutButton(design:MovieClip, slotElement:SlotElement)
@@ -22,3 +20,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
       }
    }
 }
+

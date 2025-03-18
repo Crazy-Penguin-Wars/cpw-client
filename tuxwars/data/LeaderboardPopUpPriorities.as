@@ -1,19 +1,16 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class LeaderboardPopUpPriorities
    {
-      
       private static const TABLE:String = "LeaderboardPopUpPriority";
       
       private static const PRIORITY:String = "Priority";
       
       private static var _table:Table;
-       
       
       public function LeaderboardPopUpPriorities()
       {
@@ -28,7 +25,7 @@ package tuxwars.data
       
       private static function findPriority(stat:String) : int
       {
-         var _loc2_:* = null;
+         var _loc2_:Field = null;
          if(!tuxwars.data.LeaderboardPopUpPriorities._table)
          {
             tuxwars.data.LeaderboardPopUpPriorities._table = com.dchoc.projectdata.ProjectManager.findTable("LeaderboardPopUpPriority");
@@ -47,12 +44,13 @@ package tuxwars.data
          var _loc3_:Row = _loc4_._cache[_loc7_];
          if(_loc3_)
          {
+            var _loc9_:String = "Priority";
             var _loc5_:* = _loc3_;
-            if(!_loc5_._cache["Priority"])
+            if(!_loc5_._cache[_loc9_])
             {
-               _loc5_._cache["Priority"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","Priority");
+               _loc5_._cache[_loc9_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc9_);
             }
-            _loc2_ = _loc5_._cache["Priority"];
+            _loc2_ = _loc5_._cache[_loc9_];
             var _loc6_:*;
             return !!_loc2_ ? (_loc6_ = _loc2_, _loc6_.overrideValue != null ? _loc6_.overrideValue : _loc6_._value) : 2147483647;
          }
@@ -63,10 +61,12 @@ package tuxwars.data
       {
          if(!_table)
          {
+            var _loc2_:String = "LeaderboardPopUpPriority";
             var _loc1_:ProjectManager = ProjectManager;
-            _table = com.dchoc.projectdata.ProjectManager.projectData.findTable("LeaderboardPopUpPriority");
+            _table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return _table;
       }
    }
 }
+

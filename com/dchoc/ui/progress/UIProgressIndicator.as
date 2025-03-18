@@ -5,9 +5,7 @@ package com.dchoc.ui.progress
    
    public class UIProgressIndicator extends UIComponent
    {
-      
       public static const ANIMATION_TIME:int = 500;
-       
       
       private var fillAnim:MovieClip;
       
@@ -124,7 +122,7 @@ package com.dchoc.ui.progress
          }
          var v:Number = value - min;
          var frame:int = fillAnim.totalFrames * v / (max - min);
-         return Math.max(0,Math.min(frame,fillAnim.totalFrames));
+         return int(Math.max(0,Math.min(frame,fillAnim.totalFrames)));
       }
       
       private function setFrameForGivenValue(value:Number) : void
@@ -180,3 +178,4 @@ package com.dchoc.ui.progress
       }
    }
 }
+

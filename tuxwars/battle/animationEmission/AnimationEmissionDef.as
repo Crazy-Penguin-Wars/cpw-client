@@ -8,8 +8,6 @@ package tuxwars.battle.animationEmission
    
    public class AnimationEmissionDef extends PhysicsEmissionGameObjectDef
    {
-       
-      
       private var _playerAttackValue:Stat;
       
       private var _emissions:Array;
@@ -43,3 +41,4 @@ package tuxwars.battle.animationEmission
       }
    }
 }
+

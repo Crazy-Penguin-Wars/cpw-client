@@ -6,9 +6,7 @@ package mx.messaging.events
    
    public class ChannelFaultEvent extends ChannelEvent
    {
-      
       public static const FAULT:String = "channelFault";
-       
       
       public var faultCode:String;
       
@@ -54,3 +52,4 @@ package mx.messaging.events
       }
    }
 }
+

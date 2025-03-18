@@ -3,22 +3,17 @@ package tuxwars.battle.states
    import com.dchoc.game.DCGame;
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
+   import flash.external.ExternalInterface;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.gameobjects.player.PlayerGameObject;
-   import tuxwars.battle.ui.states.PracticeMessagePopUpSubState;
    import tuxwars.data.SoundMessage;
    import tuxwars.data.SoundReference;
    import tuxwars.data.Sounds;
    import tuxwars.states.TuxState;
-   import tuxwars.states.tutorial.TuxTutorialMoveSubState;
-   import tuxwars.tutorial.Tutorial;
-   import tuxwars.ui.popups.PopUpManager;
    
    public class TuxBattleIdleSubState extends TuxState
    {
-      
       private static const TIME_OF_SILENCE:int = 1000;
-       
       
       private var startTime:int;
       
@@ -41,28 +36,9 @@ package tuxwars.battle.states
       {
          super.enter();
          startTime = DCGame.getTime();
-         var _loc1_:Tutorial = Tutorial;
-         if(tuxwars.tutorial.Tutorial._tutorial)
-         {
-            changeState(new TuxTutorialMoveSubState(tuxGame));
-         }
-         else if(BattleManager.isPracticeMode())
-         {
-            var _loc2_:PopUpManager = PopUpManager;
-            if(!tuxwars.ui.popups.PopUpManager._instance)
-            {
-               tuxwars.ui.popups.PopUpManager._instance = new tuxwars.ui.popups.PopUpManager();
-            }
-            tuxwars.ui.popups.PopUpManager._instance.addPopup(new PracticeMessagePopUpSubState(tuxGame));
-            var _loc3_:PopUpManager = PopUpManager;
-            if(!tuxwars.ui.popups.PopUpManager._instance)
-            {
-               tuxwars.ui.popups.PopUpManager._instance = new tuxwars.ui.popups.PopUpManager();
-            }
-            tuxwars.ui.popups.PopUpManager._instance.showPopUps(this);
-         }
          MessageCenter.addListener("HelpHudStartMoveTimer",setHelpMoveStatus);
          MessageCenter.addListener("HelpHudCancelMoveTimer",removeHelpMoveStatus);
+         ExternalInterface.call("console.log","do we get here?????????");
       }
       
       override public function dispose() : void
@@ -70,10 +46,16 @@ package tuxwars.battle.states
          super.dispose();
          MessageCenter.removeListener("HelpHudStartMoveTimer",setHelpMoveStatus);
          MessageCenter.removeListener("HelpHudCancelMoveTimer",removeHelpMoveStatus);
+         ExternalInterface.call("console.log","disposed");
+         if(BattleManager.getMatchDuration() - BattleManager.getMatchTimeLeft() < 0)
+         {
+            throw new Error("this is a ducktape fix, please don\'t ask me about it xDDD");
+         }
       }
       
       override public function logicUpdate(deltaTime:int) : void
       {
+         ExternalInterface.call("console.log","[MichiDebug1] TuxBattleIdleSubState logicupdate");
          super.logicUpdate(deltaTime);
          if(!messageSent && startTime + 1000 < DCGame.getTime())
          {
@@ -140,3 +122,4 @@ package tuxwars.battle.states
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.control
    
    public class StartGameMessage extends SocketMessage
    {
-       
-      
       public function StartGameMessage()
       {
          super({"t":32});
@@ -18,3 +16,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

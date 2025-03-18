@@ -5,8 +5,6 @@ package tuxwars.home.states.crafting
    
    public class CraftingState extends TuxState
    {
-       
-      
       public function CraftingState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.crafting
       }
    }
 }
+

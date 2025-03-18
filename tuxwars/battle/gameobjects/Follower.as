@@ -13,6 +13,7 @@ package tuxwars.battle.gameobjects
    import nape.geom.Vec2;
    import nape.phys.Body;
    import nape.phys.BodyList;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.emitters.EmitterUtils;
    import tuxwars.battle.gameobjects.player.PlayerGameObject;
@@ -25,7 +26,6 @@ package tuxwars.battle.gameobjects
    
    public class Follower extends PhysicsEmissionGameObject
    {
-      
       public static const TRIGGER_ENTER:String = "Enter";
       
       public static const TRIGGER_UPDATE:String = "Update";
@@ -63,7 +63,6 @@ package tuxwars.battle.gameobjects
       private static const ACTIVATE_ONCE:int = -1;
       
       private static const COLOR_TRANSFORM_RESET:ColorTransform = new ColorTransform();
-       
       
       public var _type:String;
       
@@ -227,7 +226,7 @@ package tuxwars.battle.gameobjects
             removeColorTransform();
             if(followedObject.followers)
             {
-               _loc1_ = followedObject.followers.indexOf(this);
+               _loc1_ = int(followedObject.followers.indexOf(this));
                if(_loc1_ != -1)
                {
                   LogUtils.log("Remove follower: " + shortName + " from object: " + (!!followedObject ? followedObject.shortName : null) + ", stepCount: " + (this.game as tuxwars.TuxWarsGame).tuxWorld.physicsWorld.stepCount,this,0,"Follower",false,false,false);
@@ -249,7 +248,7 @@ package tuxwars.battle.gameobjects
       
       override public function physicsUpdate(deltaTime:int) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:PhysicsGameObject = null;
          var _loc4_:* = undefined;
          super.physicsUpdate(deltaTime);
          if(!body)
@@ -540,7 +539,6 @@ package tuxwars.battle.gameobjects
          switch(_target)
          {
             case "Single":
-               break;
             case "SingleRandom":
                break;
             case "All":
@@ -609,12 +607,12 @@ package tuxwars.battle.gameobjects
       
       private function activate(originalTarget:PhysicsGameObject, target:PhysicsGameObject) : void
       {
-         var _loc5_:* = null;
-         var _loc7_:* = null;
-         var _loc4_:* = null;
+         var _loc5_:PhysicsGameObject = null;
+         var _loc7_:SimpleScriptParams = null;
+         var _loc4_:Vec2 = null;
          var _loc6_:Boolean = false;
-         var _loc8_:* = null;
-         var _loc3_:* = null;
+         var _loc8_:PhysicsGameObject = null;
+         var _loc3_:String = null;
          if(target && target.body && (_selectedTarget == null || _selectedTarget == target) && isActivated())
          {
             _loc5_ = getEmitAt(target);
@@ -672,7 +670,7 @@ package tuxwars.battle.gameobjects
       
       private function getActivationLocation(target:PhysicsGameObject) : Vec2
       {
-         var _loc2_:* = null;
+         var _loc2_:PhysicsGameObject = null;
          switch(_emitAt)
          {
             case "Target":
@@ -700,7 +698,7 @@ package tuxwars.battle.gameobjects
          var _loc2_:int = 0;
          if(response.responseType == 55)
          {
-            _loc2_ = _scriptUniqueIds.indexOf((response as SimpleScriptResponse).scriptId);
+            _loc2_ = int(_scriptUniqueIds.indexOf((response as SimpleScriptResponse).scriptId));
             if(_loc2_ != -1)
             {
                _scriptUniqueIds.splice(_loc2_,1);
@@ -723,7 +721,7 @@ package tuxwars.battle.gameobjects
       
       private function getEmitAt(physicsGameObject:PhysicsGameObject) : PhysicsGameObject
       {
-         var _loc2_:* = null;
+         var _loc2_:PhysicsGameObject = null;
          switch(_emitAt)
          {
             case "Target":
@@ -791,3 +789,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

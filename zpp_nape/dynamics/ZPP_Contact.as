@@ -8,11 +8,9 @@ package zpp_nape.dynamics
    
    public class ZPP_Contact
    {
+      public static var §internal§:Boolean;
       
-      public static var §internal§:Boolean = false;
-      
-      public static var zpp_pool:ZPP_Contact = null;
-       
+      public static var zpp_pool:ZPP_Contact;
       
       public var wrap_position:Vec2;
       
@@ -172,7 +170,7 @@ package zpp_nape.dynamics
                }
                _loc5_._inuse = false;
                modified = true;
-               length = length - 1;
+               --length;
                pushmod = true;
                _loc6_;
                _loc4_ = true;
@@ -212,7 +210,7 @@ package zpp_nape.dynamics
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function iterator_at(param1:int) : ZPP_Contact
@@ -239,9 +237,8 @@ package zpp_nape.dynamics
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -262,7 +259,7 @@ package zpp_nape.dynamics
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function inlined_insert(param1:ZPP_Contact, param2:ZPP_Contact) : ZPP_Contact
@@ -279,9 +276,8 @@ package zpp_nape.dynamics
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -329,7 +325,7 @@ package zpp_nape.dynamics
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -345,7 +341,7 @@ package zpp_nape.dynamics
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
       
@@ -377,7 +373,16 @@ package zpp_nape.dynamics
          var _loc5_:* = null as Vec2;
          var _loc6_:Boolean = false;
          var _loc7_:* = null as ZPP_Vec2;
+         var _loc1_:ZPP_Contact = this;
+         var _loc2_:Number = 0;
+         var _loc3_:Number = 0;
+         var _loc4_:Boolean = false;
          §§push(§§findproperty(wrap_position));
+         if(_loc2_ != _loc2_ || _loc3_ != _loc3_)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Vec2 components cannot be NaN";
+         }
          if(ZPP_PubPool.poolVec2 == null)
          {
             _loc5_ = new Vec2();
@@ -409,8 +414,8 @@ package zpp_nape.dynamics
             }
             _loc7_.weak = false;
             _loc7_._immutable = _loc6_;
-            _loc7_.x = 0;
-            _loc7_.y = 0;
+            _loc7_.x = _loc2_;
+            _loc7_.y = _loc3_;
             §§pop().zpp_inner = _loc7_;
             _loc5_.zpp_inner.outer = _loc5_;
          }
@@ -431,6 +436,11 @@ package zpp_nape.dynamics
             {
                _loc7_._isimmutable();
             }
+            if(_loc2_ != _loc2_ || _loc3_ != _loc3_)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Vec2 components cannot be NaN";
+            }
             §§push(false);
             if(_loc5_ != null && _loc5_.zpp_disp)
             {
@@ -442,7 +452,7 @@ package zpp_nape.dynamics
             {
                _loc7_._validate();
             }
-            if(_loc5_.zpp_inner.x == 0)
+            if(_loc5_.zpp_inner.x == _loc2_)
             {
                §§pop();
                if(_loc5_ != null && _loc5_.zpp_disp)
@@ -455,12 +465,12 @@ package zpp_nape.dynamics
                {
                   _loc7_._validate();
                }
-               §§push(_loc5_.zpp_inner.y == 0);
+               §§push(_loc5_.zpp_inner.y == _loc3_);
             }
             if(!§§pop())
             {
-               _loc5_.zpp_inner.x = 0;
-               _loc5_.zpp_inner.y = 0;
+               _loc5_.zpp_inner.x = _loc2_;
+               _loc5_.zpp_inner.y = _loc3_;
                _loc7_ = _loc5_.zpp_inner;
                if(_loc7_._invalidate != null)
                {
@@ -469,7 +479,7 @@ package zpp_nape.dynamics
             }
             _loc5_;
          }
-         _loc5_.zpp_inner.weak = false;
+         _loc5_.zpp_inner.weak = _loc4_;
          §§pop().wrap_position = _loc5_;
          wrap_position.zpp_inner._inuse = true;
          wrap_position.zpp_inner._immutable = true;
@@ -502,7 +512,7 @@ package zpp_nape.dynamics
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -553,8 +563,9 @@ package zpp_nape.dynamics
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
    }
 }
+

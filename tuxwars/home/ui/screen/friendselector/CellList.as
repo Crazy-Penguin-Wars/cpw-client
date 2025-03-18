@@ -2,23 +2,18 @@ package tuxwars.home.ui.screen.friendselector
 {
    public class CellList
    {
-       
-      
       private var mListIndex:uint = 0;
       
-      private var mPanelList:Vector.<CellPanel>;
+      private var mPanelList:Vector.<CellPanel> = new Vector.<CellPanel>();
       
-      private var mDataList:Vector.<Object>;
+      private var mDataList:Vector.<Object> = new Vector.<Object>();
       
-      private var mOutputList:Vector.<Object>;
+      private var mOutputList:Vector.<Object> = new Vector.<Object>();
       
       private var init:Boolean = false;
       
       public function CellList()
       {
-         mPanelList = new Vector.<CellPanel>();
-         mDataList = new Vector.<Object>();
-         mOutputList = new Vector.<Object>();
          super();
       }
       
@@ -126,9 +121,10 @@ package tuxwars.home.ui.screen.friendselector
       
       public function updateFromIndex(dataIndex:int, excluded:Vector.<Object> = null) : void
       {
-         var panel:* = null;
-         var data:* = null;
+         var panel:CellPanel = null;
+         var data:Object = null;
          mOutputList = new Vector.<Object>();
+         var i:uint = 0;
          var x:uint = 0;
          if(excluded != null && excluded.length > 0)
          {
@@ -145,6 +141,7 @@ package tuxwars.home.ui.screen.friendselector
          }
          var panelIndex:uint = 0;
          var z:* = dataIndex;
+         var countEmpty:uint = 0;
          if(mListIndex != dataIndex || !init)
          {
             if(mOutputList != null && mOutputList.length < dataIndex + mPanelList.length && mOutputList.length > panelList.length)
@@ -184,3 +181,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

@@ -6,8 +6,6 @@ package tuxwars.items.definitions
    
    public class CraftingDef extends ItemDef
    {
-       
-      
       private var _rewardCash:int;
       
       private var _rewardCoin:int;
@@ -45,3 +43,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

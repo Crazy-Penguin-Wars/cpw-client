@@ -5,7 +5,6 @@ package mx.netmon
    
    public class NetworkMonitor
    {
-      
       public static var isMonitoringImpl:Function;
       
       public static var adjustURLRequestImpl:Function;
@@ -19,7 +18,6 @@ package mx.netmon
       public static var monitorResultImpl:Function;
       
       public static var monitorFaultImpl:Function;
-       
       
       public function NetworkMonitor()
       {
@@ -81,3 +79,4 @@ package mx.netmon
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.battle.states.weapon
    
    public class WeaponState extends TuxState
    {
-       
-      
       private var _weapon:Weapon;
       
       public function WeaponState(__weapon:Weapon, game:DCGame, params:* = null)
@@ -30,3 +28,4 @@ package tuxwars.battle.states.weapon
       }
    }
 }
+

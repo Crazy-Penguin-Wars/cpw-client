@@ -9,9 +9,7 @@ package tuxwars.ui.popups.states.crm
    
    public class CRMMessagePopUpSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_CRM:String = "TypeCRM";
-       
       
       public function CRMMessagePopUpSubState(game:TuxWarsGame, params:CRMPopUpData)
       {
@@ -19,3 +17,4 @@ package tuxwars.ui.popups.states.crm
       }
    }
 }
+

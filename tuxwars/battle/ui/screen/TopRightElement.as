@@ -9,9 +9,7 @@ package tuxwars.battle.ui.screen
    
    public class TopRightElement
    {
-      
       private static const TOP_RIGHT:String = "Top_Right";
-       
       
       private var challengesElement:BattleHudChallengesElement;
       
@@ -64,3 +62,4 @@ package tuxwars.battle.ui.screen
       }
    }
 }
+

@@ -4,8 +4,6 @@ package mx.logging
    
    public interface ILogger extends IEventDispatcher
    {
-       
-      
       function get category() : String;
       
       function log(param1:int, param2:String, ... rest) : void;
@@ -21,3 +19,4 @@ package mx.logging
       function warn(param1:String, ... rest) : void;
    }
 }
+

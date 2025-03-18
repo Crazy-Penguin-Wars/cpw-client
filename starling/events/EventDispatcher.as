@@ -4,11 +4,11 @@ package starling.events
    import starling.core.starling_internal;
    import starling.display.DisplayObject;
    
+   use namespace starling_internal;
+   
    public class EventDispatcher
    {
-      
       private static var sBubbleChains:Array = [];
-       
       
       private var mEventListeners:Dictionary;
       
@@ -45,7 +45,7 @@ package starling.events
             listeners = this.mEventListeners[type] as Vector.<Function>;
             if(Boolean(listeners))
             {
-               numListeners = listeners.length;
+               numListeners = int(listeners.length);
                remainingListeners = new Vector.<Function>(0);
                for(i = 0; i < numListeners; i++)
                {
@@ -100,7 +100,7 @@ package starling.events
          var listener:Function = null;
          var numArgs:int = 0;
          var listeners:Vector.<Function> = Boolean(this.mEventListeners) ? this.mEventListeners[event.type] as Vector.<Function> : null;
-         var numListeners:int = listeners == null ? 0 : listeners.length;
+         var numListeners:int = listeners == null ? 0 : int(listeners.length);
          if(Boolean(numListeners))
          {
             event.setCurrentTarget(this);
@@ -145,8 +145,13 @@ package starling.events
          {
             chain = new <EventDispatcher>[element];
          }
-         while((element = element.parent) != null)
+         while(true)
          {
+            element = element.parent;
+            if(element == null)
+            {
+               break;
+            }
             chain[int(length++)] = element;
          }
          for(var i:int = 0; i < length; i++)
@@ -179,3 +184,4 @@ package starling.events
       }
    }
 }
+

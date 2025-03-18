@@ -6,11 +6,10 @@ package tuxwars.home.ui.logic.vipend
    
    public class VipEndPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function VipEndPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
       }
    }
 }
+

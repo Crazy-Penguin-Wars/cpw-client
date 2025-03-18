@@ -1,13 +1,11 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    
    public class Tuner
    {
-      
       private static const TABLE:String = "Tuner";
       
       private static const DEFAULT:String = "Default";
@@ -53,7 +51,6 @@ package tuxwars.data
       private static var _fieldCache:Object;
       
       private static var row:Row;
-       
       
       public function Tuner()
       {
@@ -202,18 +199,20 @@ package tuxwars.data
       {
          if(!row)
          {
+            var _loc3_:String = "Tuner";
             var _loc1_:ProjectManager = ProjectManager;
-            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Tuner");
-            if(!_loc2_._cache["Default"])
+            var _loc4_:String = "Default";
+            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+            if(!_loc2_._cache[_loc4_])
             {
-               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Default");
+               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
                if(!_loc5_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
                }
-               _loc2_._cache["Default"] = _loc5_;
+               _loc2_._cache[_loc4_] = _loc5_;
             }
-            row = _loc2_._cache["Default"];
+            row = _loc2_._cache[_loc4_];
             if(!row)
             {
                LogUtils.log("Couldn\'t for default row for Tuner.",3);
@@ -223,3 +222,4 @@ package tuxwars.data
       }
    }
 }
+

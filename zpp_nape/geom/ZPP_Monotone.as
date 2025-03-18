@@ -12,13 +12,11 @@ package zpp_nape.geom
    
    public class ZPP_Monotone
    {
-      
       public static var sharedPPoly:ZPP_PartitionedPoly;
       
-      public static var queue:ZNPList_ZPP_PartitionVertex = null;
+      public static var queue:ZNPList_ZPP_PartitionVertex;
       
-      public static var edges:ZPP_Set_ZPP_PartitionVertex = null;
-       
+      public static var edges:ZPP_Set_ZPP_PartitionVertex;
       
       public function ZPP_Monotone()
       {
@@ -37,6 +35,7 @@ package zpp_nape.geom
          var _loc7_:Number = 0;
          _loc6_ = _loc3_.x - param1.x;
          _loc7_ = _loc3_.y - param1.y;
+         var _loc9_:Boolean = false;
          if(ZPP_Vec2.zpp_pool == null)
          {
             _loc10_ = new ZPP_Vec2();
@@ -48,7 +47,7 @@ package zpp_nape.geom
             _loc10_.next = null;
          }
          _loc10_.weak = false;
-         _loc10_._immutable = false;
+         _loc10_._immutable = _loc9_;
          _loc10_.x = -_loc5_ - _loc7_;
          _loc10_.y = _loc4_ + _loc6_;
          var _loc8_:ZPP_Vec2 = _loc10_;
@@ -374,6 +373,7 @@ package zpp_nape.geom
                ZPP_Set_ZPP_PartitionVertex.zpp_pool = ZPP_Monotone.edges.next;
                ZPP_Monotone.edges.next = null;
             }
+            null;
             ZPP_Monotone.edges.lt = ZPP_PartitionVertex.edge_lt;
             ZPP_Monotone.edges.swapped = ZPP_PartitionVertex.edge_swap;
          }
@@ -584,3 +584,7 @@ package zpp_nape.geom
       }
    }
 }
+
+import zpp_nape.util.ZNPList_ZPP_PartitionVertex;
+import zpp_nape.util.ZPP_Set_ZPP_PartitionVertex;
+

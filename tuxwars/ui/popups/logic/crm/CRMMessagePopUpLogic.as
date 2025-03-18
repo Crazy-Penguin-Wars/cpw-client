@@ -29,7 +29,6 @@ package tuxwars.ui.popups.logic.crm
    
    public class CRMMessagePopUpLogic extends MessagePopUpLogic
    {
-      
       private static const ON_DISPLAY:String = "ondisplay";
       
       private static const ON_CLICK:String = "onclick";
@@ -53,7 +52,6 @@ package tuxwars.ui.popups.logic.crm
       public static const GO_TO_BUY_COINS:String = "gotobuycoins";
       
       public static const GO_TO_TOURNAMENT:String = "gototournament";
-       
       
       private var shopItem:ShopItem;
       
@@ -91,9 +89,9 @@ package tuxwars.ui.popups.logic.crm
       
       public function runAction() : void
       {
-         var sound:* = null;
-         var parentName:* = null;
-         var sound2:* = null;
+         var sound:SoundReference = null;
+         var parentName:String = null;
+         var sound2:SoundReference = null;
          if(!popupData.sendCRMEventTracking("onclick"))
          {
             CRMService.sendEvent("Game","CRM_Message","Clicked","Click_CRM_Message");
@@ -127,20 +125,21 @@ package tuxwars.ui.popups.logic.crm
                         crmMessagePopUpScreen.coinsButton.setVisible(canAffordItem);
                      }
                      disableButtonUntillServerResponse();
-                     break;
                   }
-                  sound2 = Sounds.getSoundReference("Nomoney");
-                  if(sound2)
+                  else
                   {
-                     MessageCenter.sendEvent(new SoundMessage("PlaySound",sound2.getMusicID(),sound2.getStart(),sound2.getType(),"PlaySound"));
+                     sound2 = Sounds.getSoundReference("Nomoney");
+                     if(sound2)
+                     {
+                        MessageCenter.sendEvent(new SoundMessage("PlaySound",sound2.getMusicID(),sound2.getStart(),sound2.getType(),"PlaySound"));
+                     }
+                     var _loc5_:PopUpManager = PopUpManager;
+                     if(!tuxwars.ui.popups.PopUpManager._instance)
+                     {
+                        tuxwars.ui.popups.PopUpManager._instance = new tuxwars.ui.popups.PopUpManager();
+                     }
+                     tuxwars.ui.popups.PopUpManager._instance.triggerPopup(new NoMoneyPopUpSubState(game,shopItem.priceObject.isPremium ? "Cash" : "Coins"),game.currentState);
                   }
-                  var _loc5_:PopUpManager = PopUpManager;
-                  if(!tuxwars.ui.popups.PopUpManager._instance)
-                  {
-                     tuxwars.ui.popups.PopUpManager._instance = new tuxwars.ui.popups.PopUpManager();
-                  }
-                  tuxwars.ui.popups.PopUpManager._instance.triggerPopup(new NoMoneyPopUpSubState(game,shopItem.priceObject.isPremium ? "Cash" : "Coins"),game.currentState);
-                  break;
                }
                break;
             case "gotobuycoins":
@@ -172,10 +171,11 @@ package tuxwars.ui.popups.logic.crm
                   if(_loc1_.player.isTournamentFinished())
                   {
                      _loc1_.homeState.changeState(new TournamentEndState(_loc1_));
-                     break;
                   }
-                  _loc1_.homeState.changeState(new TournamentState(_loc1_));
-                  break;
+                  else
+                  {
+                     _loc1_.homeState.changeState(new TournamentState(_loc1_));
+                  }
                }
                break;
             case "gotourl":
@@ -258,3 +258,4 @@ package tuxwars.ui.popups.logic.crm
       }
    }
 }
+

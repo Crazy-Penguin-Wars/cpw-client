@@ -5,8 +5,6 @@ package tuxwars.home.states.neighbors
    
    public class NeighborState extends TuxState
    {
-       
-      
       public function NeighborState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.neighbors
       }
    }
 }
+

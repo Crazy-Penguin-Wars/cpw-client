@@ -20,7 +20,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialSubState extends TuxState
    {
-      
       private static const BUBBLE_EXPORT:String = "tutorial_bubble";
       
       private static const READY_BUTTON:String = "Button_Ready";
@@ -32,7 +31,6 @@ package tuxwars.states.tutorial
       public static const ARROW_RIGHT:String = "right";
       
       public static const ARROW_LEFT:String = "left";
-       
       
       private const textField:UIAutoTextField = new UIAutoTextField();
       
@@ -152,3 +150,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

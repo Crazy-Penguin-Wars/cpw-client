@@ -22,9 +22,7 @@ package tuxwars.battle.states
    
    public class TuxBattleEditSubState extends TuxState
    {
-      
       public static const SHOW_EXTRA_INFORMATION:Boolean = false;
-       
       
       private var keyboardHandler:EditKeyboardHandler;
       
@@ -131,7 +129,7 @@ package tuxwars.battle.states
          if(x + tooltip.width > com.dchoc.game.DCGame._stage.stageWidth)
          {
             var _loc13_:DCGame = DCGame;
-            x = Number(com.dchoc.game.DCGame._stage.stageWidth) - tooltip.width;
+            x = com.dchoc.game.DCGame._stage.stageWidth - tooltip.width;
          }
          if(y < 0)
          {
@@ -143,7 +141,7 @@ package tuxwars.battle.states
             if(y + tooltip.height > com.dchoc.game.DCGame._stage.stageHeight)
             {
                var _loc15_:DCGame = DCGame;
-               y = Number(com.dchoc.game.DCGame._stage.stageHeight) - tooltip.height;
+               y = com.dchoc.game.DCGame._stage.stageHeight - tooltip.height;
             }
          }
          tooltip.x = x;
@@ -161,7 +159,7 @@ package tuxwars.battle.states
          string += "ID: " + _loc6_._id;
          var _loc7_:* = tuxGameObject;
          string += " UID: " + _loc7_._uniqueId;
-         if(!(tuxGameObject is TerrainGameObject) && (!!_loc8_.stats ? _loc8_.stats.getStat("HP") : null) != null)
+         if(!(tuxGameObject is TerrainGameObject) && (!!_loc8_.stats ? _loc8_.stats.getStat(_loc17_) : null) != null)
          {
             string += " HP: " + tuxGameObject.calculateHitPoints() + "/" + tuxGameObject.calculateMaxHitPoints();
          }
@@ -201,13 +199,17 @@ package tuxwars.battle.states
                string += _loc14_._id + ", ";
             }
          }
+         if(false)
+         {
+            string += "\n" + tuxGameObject.objClass;
+         }
          tooltipText.text = string;
       }
       
       private function createStateHuds() : void
       {
-         var tf:* = null;
-         var string:* = null;
+         var tf:TextField = null;
+         var string:String = null;
          var w:int = 0;
          var h:int = 0;
          if(!hud)
@@ -228,7 +230,7 @@ package tuxwars.battle.states
             hud.graphics.endFill();
             hud.x = 5;
             var _loc5_:DCGame = DCGame;
-            hud.y = Number(com.dchoc.game.DCGame._stage.stageHeight) - h - 1;
+            hud.y = com.dchoc.game.DCGame._stage.stageHeight - h - 1;
             hud.mouseChildren = false;
             hud.mouseEnabled = false;
             hud.addChild(tf);
@@ -251,3 +253,4 @@ package tuxwars.battle.states
       }
    }
 }
+

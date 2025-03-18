@@ -1,10 +1,11 @@
 package tuxwars.ui.popups.screen.slotmachineprize
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.URLResourceLoader;
    import com.dchoc.ui.buttons.UIButton;
    import com.dchoc.ui.text.UIAutoTextField;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.text.TextField;
    import tuxwars.TuxWarsGame;
@@ -14,13 +15,11 @@ package tuxwars.ui.popups.screen.slotmachineprize
    
    public class SlotMachinePrizePopUpScreen extends PopUpBaseScreen
    {
-      
       public static const TABLE:String = "SlotWin";
       
       private static const TITLE:String = "Title";
       
       private static const PICTURE:String = "Picture";
-       
       
       private const _winslots:Array = [];
       
@@ -40,8 +39,9 @@ package tuxwars.ui.popups.screen.slotmachineprize
       {
          super(game,"flash/ui/slot_machine.swf","popup_prizes");
          headerField.setText("PRIZES");
+         var _loc19_:String = "SlotWin";
          var _loc15_:ProjectManager = ProjectManager;
-         var _loc16_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotWin");
+         var _loc16_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc19_);
          for each(var row in _loc16_._rows)
          {
             _winslots.push(new SlotWinReference(row));
@@ -65,26 +65,29 @@ package tuxwars.ui.popups.screen.slotmachineprize
       {
          var xpScaledValue:int = 0;
          var level:int = _game.player.level;
+         var _loc10_:String = "SlotMachineConfiguration";
          var _loc6_:ProjectManager = ProjectManager;
-         var _loc7_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachineConfiguration");
-         if(!_loc7_._cache["Default"])
+         var _loc11_:String = "Default";
+         var _loc7_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc10_);
+         if(!_loc7_._cache[_loc11_])
          {
-            var _loc12_:Row = com.dchoc.utils.DCUtils.find(_loc7_.rows,"id","Default");
+            var _loc12_:Row = com.dchoc.utils.DCUtils.find(_loc7_.rows,"id",_loc11_);
             if(!_loc12_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc7_.name + "\'",_loc7_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc11_ + "\' was found in table: \'" + _loc7_.name + "\'",_loc7_,3);
             }
-            _loc7_._cache["Default"] = _loc12_;
+            _loc7_._cache[_loc11_] = _loc12_;
          }
-         var _loc8_:* = _loc7_._cache["Default"];
-         if(!_loc8_._cache["XPModifier"])
+         var _loc13_:String = "XPModifier";
+         var _loc8_:* = _loc7_._cache[_loc11_];
+         if(!_loc8_._cache[_loc13_])
          {
-            _loc8_._cache["XPModifier"] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name","XPModifier");
+            _loc8_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name",_loc13_);
          }
-         var _loc9_:* = _loc8_._cache["XPModifier"];
+         var _loc9_:* = _loc8_._cache[_loc13_];
          var modifier:Number = Number(_loc9_.overrideValue != null ? _loc9_.overrideValue : _loc9_._value);
          var baseValue:* = value;
-         return level * (level * (Math.log(level) * (modifier * baseValue))) + baseValue;
+         return int(level * (level * (Math.log(level) * (modifier * baseValue))) + baseValue);
       }
       
       override public function init(params:*) : void
@@ -115,3 +118,4 @@ package tuxwars.ui.popups.screen.slotmachineprize
       }
    }
 }
+

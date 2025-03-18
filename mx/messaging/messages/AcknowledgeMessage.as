@@ -5,9 +5,7 @@ package mx.messaging.messages
    
    public class AcknowledgeMessage extends AsyncMessage implements ISmallMessage
    {
-      
       public static const ERROR_HINT_HEADER:String = "DSErrorHint";
-       
       
       public function AcknowledgeMessage()
       {
@@ -51,7 +49,9 @@ package mx.messaging.messages
       override public function writeExternal(output:IDataOutput) : void
       {
          super.writeExternal(output);
-         output.writeByte(0);
+         var flags:uint = 0;
+         output.writeByte(flags);
       }
    }
 }
+

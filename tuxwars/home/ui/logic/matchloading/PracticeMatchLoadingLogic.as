@@ -17,8 +17,6 @@ package tuxwars.home.ui.logic.matchloading
    
    public class PracticeMatchLoadingLogic extends MatchLoadingLogic
    {
-       
-      
       public function PracticeMatchLoadingLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -43,7 +41,7 @@ package tuxwars.home.ui.logic.matchloading
          MessageCenter.removeListener("BattleAssetsLoaded",battleAssetsLoaded);
          var _loc3_:Object = getMatchData();
          var _loc2_:Object = {};
-         _loc2_["players"] = getPlayers(Number(_loc3_.num_players) - 1,game.player.level,_loc3_);
+         _loc2_["players"] = getPlayers(_loc3_.num_players - 1,game.player.level,_loc3_);
          _loc2_["map"] = _loc3_.map;
          _loc2_["seed"] = MathUtils.randomNumber(0,2147483647);
          _loc2_["battle_time"] = _loc3_.match_time;
@@ -64,10 +62,10 @@ package tuxwars.home.ui.logic.matchloading
       
       private function getPlayers(num:int, playerLevel:int, matchData:Object) : Array
       {
-         var _loc6_:* = null;
-         var _loc7_:* = null;
+         var _loc6_:AIPlayerReference = null;
+         var _loc7_:Array = null;
          var i:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:AIPlayerReference = null;
          var _loc5_:Array = [];
          _loc5_.push({"id":game.player.id});
          if(matchData.opponent)
@@ -91,14 +89,16 @@ package tuxwars.home.ui.logic.matchloading
       
       private function getRandomAIPlayer(playerLevel:int, nameArray:Array) : AIPlayerReference
       {
-         var _loc3_:* = null;
-         do
+         var _loc3_:AIPlayerReference = null;
+         while(true)
          {
             _loc3_ = AIPlayerHelper.getAIPlayerReference(AIPlayerReference.getRandomAI(playerLevel));
+            if(nameArray.indexOf(_loc3_.AIID) == -1)
+            {
+               return _loc3_;
+            }
          }
-         while(nameArray.indexOf(_loc3_.AIID) != -1);
-         
-         return _loc3_;
+         return null;
       }
       
       private function get matchLoadingState() : PracticeMatchLoadingSubState
@@ -107,3 +107,4 @@ package tuxwars.home.ui.logic.matchloading
       }
    }
 }
+

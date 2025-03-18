@@ -5,8 +5,6 @@ package tuxwars.home.states.friendselector
    
    public class FriendSelectorState extends TuxState
    {
-       
-      
       public function FriendSelectorState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.friendselector
       }
    }
 }
+

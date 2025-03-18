@@ -12,8 +12,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class TriggerEmission implements SimpleScriptCore
    {
-       
-      
       public function TriggerEmission()
       {
          super();
@@ -21,11 +19,11 @@ package tuxwars.battle.simplescript.scripts
       
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var directionPoint:* = null;
-         var _loc5_:* = null;
-         var _loc6_:* = null;
-         var _loc10_:* = null;
-         var _loc11_:* = null;
+         var directionPoint:Vec2 = null;
+         var _loc5_:Missile = null;
+         var _loc6_:Follower = null;
+         var _loc10_:Vec2 = null;
+         var _loc11_:Vec2 = null;
          var _loc7_:Emission = params.emission;
          var _loc9_:PhysicsGameObject = params.pgoA;
          var _loc8_:PhysicsGameObject = params.pgoB;
@@ -104,3 +102,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

@@ -32,8 +32,11 @@ package mx.rpc.http
    import mx.utils.StringUtil;
    import mx.utils.URLUtil;
    
+   use namespace mx_internal;
+   
    public class AbstractOperation extends mx.rpc.AbstractOperation
    {
+      private static var _directChannelSet:ChannelSet;
       
       mx_internal static const RESULT_FORMAT_E4X:String = "e4x";
       
@@ -57,9 +60,6 @@ package mx.rpc.http
       
       private static const ERROR_ENCODING:String = "Client.CouldNotEncode";
       
-      private static var _directChannelSet:ChannelSet;
-       
-      
       public var argumentNames:Array;
       
       private var _requestTimeout:int = -1;
@@ -68,7 +68,7 @@ package mx.rpc.http
       
       public var serializationFilter:SerializationFilter;
       
-      public var request:Object;
+      public var request:Object = {};
       
       private var _url:String;
       
@@ -78,7 +78,7 @@ package mx.rpc.http
       
       public var xmlEncode:Function;
       
-      public var headers:Object;
+      public var headers:Object = {};
       
       private var _contentType:String = "application/x-www-form-urlencoded";
       
@@ -86,7 +86,7 @@ package mx.rpc.http
       
       mx_internal var _log:ILogger;
       
-      mx_internal var resourceManager:IResourceManager;
+      mx_internal var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _concurrency:String;
       
@@ -96,9 +96,6 @@ package mx.rpc.http
       
       public function AbstractOperation(service:AbstractService = null, name:String = null)
       {
-         this.request = {};
-         this.headers = {};
-         this.mx_internal::resourceManager = ResourceManager.getInstance();
          super(service,name);
          this.mx_internal::_log = Log.getLogger("mx.rpc.http.HTTPService");
          this.concurrency = Concurrency.MULTIPLE;
@@ -604,7 +601,7 @@ package mx.rpc.http
          for(var i:int = 0; i < params.length; i++)
          {
             param = params[i];
-            equalsIndex = param.indexOf("=");
+            equalsIndex = int(param.indexOf("="));
             if(equalsIndex != -1)
             {
                name = param.substr(0,equalsIndex);
@@ -635,3 +632,4 @@ package mx.rpc.http
       }
    }
 }
+

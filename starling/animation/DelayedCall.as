@@ -5,8 +5,6 @@ package starling.animation
    
    public class DelayedCall extends EventDispatcher implements IAnimatable
    {
-       
-      
       private var mCurrentTime:Number;
       
       private var mTotalTime:Number;
@@ -82,3 +80,4 @@ package starling.animation
       }
    }
 }
+

@@ -28,10 +28,10 @@ package mx.messaging
    import mx.rpc.events.ResultEvent;
    import mx.utils.Base64Encoder;
    
+   use namespace mx_internal;
+   
    public class ChannelSet extends EventDispatcher
    {
-       
-      
       private var _authAgent:AuthenticationAgent;
       
       private var _connecting:Boolean;
@@ -58,7 +58,7 @@ package mx.messaging
       
       private var _shouldHunt:Boolean;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _authenticated:Boolean;
       
@@ -84,7 +84,6 @@ package mx.messaging
       
       public function ChannelSet(channelIds:Array = null, clusteredWithURLLoadBalancing:Boolean = false)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this._clustered = clusteredWithURLLoadBalancing;
          this._connected = false;
@@ -157,14 +156,14 @@ package mx.messaging
             throw new IllegalOperationError(message);
          }
          var channelsToRemove:Array = this._channels.slice();
-         var n:int = channelsToRemove.length;
+         var n:int = int(channelsToRemove.length);
          for(var i:int = 0; i < n; i++)
          {
             this.removeChannel(channelsToRemove[i]);
          }
          if(values != null && values.length > 0)
          {
-            m = values.length;
+            m = int(values.length);
             for(j = 0; j < m; j++)
             {
                this.addChannel(values[j]);
@@ -182,7 +181,7 @@ package mx.messaging
             return this._channelIds;
          }
          ids = [];
-         n = this._channels.length;
+         n = int(this._channels.length);
          for(i = 0; i < n; i++)
          {
             if(this._channels[i] != null)
@@ -211,7 +210,7 @@ package mx.messaging
       {
          var channel:Channel = null;
          this._channelFailoverURIs = value;
-         var n:int = this._channels.length;
+         var n:int = int(this._channels.length);
          for(var i:int = 0; i < n; i++)
          {
             channel = this._channels[i];
@@ -273,7 +272,7 @@ package mx.messaging
             if(value)
             {
                ids = this.channelIds;
-               n = ids.length;
+               n = int(ids.length);
                for(i = 0; i < n; i++)
                {
                   if(ids[i] == null)
@@ -371,7 +370,7 @@ package mx.messaging
             message = this.resourceManager.getString("messaging","cannotRemoveWhenConfigured");
             throw new IllegalOperationError(message);
          }
-         var channelIndex:int = this._channels.indexOf(channel);
+         var channelIndex:int = int(this._channels.indexOf(channel));
          if(channelIndex > -1)
          {
             this._channels.splice(channelIndex,1);
@@ -417,7 +416,7 @@ package mx.messaging
          if(agent == null)
          {
             allMessageAgents = this._messageAgents.slice();
-            n = allMessageAgents.length;
+            n = int(allMessageAgents.length);
             for(i = 0; i < n; i++)
             {
                allMessageAgents[i].disconnect();
@@ -430,7 +429,7 @@ package mx.messaging
          }
          else
          {
-            agentIndex = agent != null ? this._messageAgents.indexOf(agent) : -1;
+            agentIndex = agent != null ? int(this._messageAgents.indexOf(agent)) : -1;
             if(agentIndex != -1)
             {
                this._messageAgents.splice(agentIndex,1);
@@ -443,7 +442,7 @@ package mx.messaging
                }
                else
                {
-                  n2 = this._pendingSends.length;
+                  n2 = int(this._pendingSends.length);
                   for(j = 0; j < n2; j++)
                   {
                      ps = PendingSend(this._pendingSends[j]);
@@ -672,13 +671,13 @@ package mx.messaging
             {
                throw new IllegalOperationError("ChannelSet is in the process of logging in or logging out.");
             }
-            n = this._messageAgents.length;
+            n = int(this._messageAgents.length);
             for(i = 0; i < n; )
             {
                this._messageAgents[i].internalSetCredentials(null);
                i++;
             }
-            n = this._channels.length;
+            n = int(this._channels.length);
             for(i = 0; i < n; i++)
             {
                if(this._channels[i] != null)
@@ -703,7 +702,7 @@ package mx.messaging
             this.send(this._authAgent,msg);
             return token;
          }
-         n2 = this._channels.length;
+         n2 = int(this._channels.length);
          for(i2 = 0; i2 < n2; i2++)
          {
             if(this._channels[i2] != null)
@@ -780,7 +779,7 @@ package mx.messaging
       public function setCredentials(credentials:String, agent:MessageAgent, charset:String = null) : void
       {
          this._credentials = credentials;
-         var n:int = this._channels.length;
+         var n:int = int(this._channels.length);
          for(var i:int = 0; i < n; i++)
          {
             if(this._channels[i] != null)
@@ -800,13 +799,13 @@ package mx.messaging
          if(handlingLogin)
          {
             this._credentials = creds;
-            n = this._messageAgents.length;
+            n = int(this._messageAgents.length);
             for(i = 0; i < n; )
             {
                this._messageAgents[i].internalSetCredentials(creds);
                i++;
             }
-            n = this._channels.length;
+            n = int(this._channels.length);
             for(i = 0; i < n; i++)
             {
                if(this._channels[i] != null)
@@ -997,16 +996,21 @@ package mx.messaging
    }
 }
 
+import flash.events.EventDispatcher;
+import flash.net.Responder;
 import mx.collections.ArrayCollection;
 import mx.core.mx_internal;
-import mx.messaging.ChannelSet;
-import mx.messaging.MessageResponder;
+import mx.logging.Log;
+import mx.messaging.events.ChannelEvent;
+import mx.messaging.messages.AcknowledgeMessage;
+import mx.messaging.messages.ErrorMessage;
 import mx.messaging.messages.IMessage;
+import mx.rpc.AsyncToken;
+
+use namespace mx_internal;
 
 class ClusterMessageResponder extends MessageResponder
 {
-    
-   
    private var _channelSet:ChannelSet;
    
    public function ClusterMessageResponder(message:IMessage, channelSet:ChannelSet)
@@ -1022,12 +1026,12 @@ class ClusterMessageResponder extends MessageResponder
       var n:int = 0;
       var i:int = 0;
       var channelToEndpointMap:Object = null;
-      var channelId:* = null;
+      var channelId:Object = null;
       if(message.body != null && (message.body is Array || message.body is ArrayCollection))
       {
          channelFailoverURIs = {};
          mappings = message.body is Array ? message.body as Array : (message.body as ArrayCollection).toArray();
-         n = mappings.length;
+         n = int(mappings.length);
          for(i = 0; i < n; i++)
          {
             channelToEndpointMap = mappings[i];
@@ -1045,13 +1049,8 @@ class ClusterMessageResponder extends MessageResponder
    }
 }
 
-import mx.messaging.MessageAgent;
-import mx.messaging.messages.IMessage;
-
 class PendingSend
 {
-    
-   
    public var agent:MessageAgent;
    
    public var message:IMessage;
@@ -1064,19 +1063,8 @@ class PendingSend
    }
 }
 
-import mx.core.mx_internal;
-import mx.logging.Log;
-import mx.messaging.ChannelSet;
-import mx.messaging.MessageAgent;
-import mx.messaging.events.ChannelEvent;
-import mx.messaging.messages.AcknowledgeMessage;
-import mx.messaging.messages.ErrorMessage;
-import mx.messaging.messages.IMessage;
-import mx.rpc.AsyncToken;
-
 class AuthenticationAgent extends MessageAgent
 {
-   
    public static const LOGGED_OUT_STATE:int = 0;
    
    public static const LOGGING_IN_STATE:int = 1;
@@ -1086,15 +1074,13 @@ class AuthenticationAgent extends MessageAgent
    public static const LOGGING_OUT_STATE:int = 3;
    
    public static const SHUTDOWN_STATE:int = 4;
-    
    
-   private var tokens:Object;
+   private var tokens:Object = {};
    
    private var _state:int = 0;
    
    public function AuthenticationAgent(channelSet:ChannelSet)
    {
-      this.tokens = {};
       super();
       _log = Log.getLogger("ChannelSet.AuthenticationAgent");
       _agentType = "authentication agent";

@@ -16,9 +16,7 @@ package tuxwars.home.ui.screen.vip
    
    public class ActiveMembershipContainer extends AbstractMembershipContainer
    {
-      
       private static const AVATAR_CONTAINER:String = "Container_Character";
-       
       
       private var timeText:UIAutoTextField;
       
@@ -80,3 +78,4 @@ package tuxwars.home.ui.screen.vip
       }
    }
 }
+

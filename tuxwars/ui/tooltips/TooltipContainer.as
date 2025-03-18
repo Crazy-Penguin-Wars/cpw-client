@@ -10,8 +10,6 @@ package tuxwars.ui.tooltips
    
    public class TooltipContainer extends ContainerTags
    {
-       
-      
       private var _title:UIAutoTextField;
       
       private var _tooltipType:UIAutoTextField;
@@ -68,3 +66,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

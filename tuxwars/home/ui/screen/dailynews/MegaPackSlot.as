@@ -21,8 +21,6 @@ package tuxwars.home.ui.screen.dailynews
    
    public class MegaPackSlot
    {
-       
-      
       private var design:MovieClip;
       
       private var button:UIButton;
@@ -74,9 +72,9 @@ package tuxwars.home.ui.screen.dailynews
       
       private function buyCallback(event:MouseEvent) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:SoundReference = null;
+         var _loc3_:ShopItem = null;
+         var _loc4_:SoundReference = null;
          if(button && parent && design)
          {
             if(itemData.priceInfoReference.priceObject.priceValue <= parent.tuxGame.player.premiumMoney)
@@ -132,3 +130,4 @@ package tuxwars.home.ui.screen.dailynews
       }
    }
 }
+

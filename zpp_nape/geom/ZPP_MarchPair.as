@@ -4,9 +4,7 @@ package zpp_nape.geom
    
    public class ZPP_MarchPair
    {
-      
-      public static var zpp_pool:ZPP_MarchPair = null;
-       
+      public static var zpp_pool:ZPP_MarchPair;
       
       public var spanr:ZPP_MarchSpan;
       
@@ -59,3 +57,4 @@ package zpp_nape.geom
       }
    }
 }
+

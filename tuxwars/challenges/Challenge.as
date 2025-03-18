@@ -1,12 +1,12 @@
 package tuxwars.challenges
 {
+   import avmplus.getQualifiedClassName;
    import com.dchoc.data.GraphicsReference;
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.projectdata.ProjectManager;
    import com.dchoc.resources.DCResourceManager;
-   import com.dchoc.utils.DCUtils;
-   import com.dchoc.utils.LogUtils;
+   import com.dchoc.utils.*;
    import flash.display.MovieClip;
    import tuxwars.TuxWarsGame;
    import tuxwars.battle.events.MatchEndedMessage;
@@ -33,7 +33,6 @@ package tuxwars.challenges
    
    public class Challenge
    {
-      
       public static const SCOPE_TURN:String = "Turn";
       
       public static const SCOPE_MATCH:String = "Match";
@@ -49,7 +48,6 @@ package tuxwars.challenges
       public static const TYPE_IMPOSSIBLE:String = "Impossible";
       
       private static var tuxGame:TuxWarsGame;
-       
       
       private const _counters:Vector.<Counter> = new Vector.<Counter>();
       
@@ -542,9 +540,9 @@ package tuxwars.challenges
       private function init() : void
       {
          var i:int = 0;
-         var param:* = null;
-         var _loc2_:* = null;
-         var _loc3_:int = _data.counters.length;
+         var param:ChallengeParamReference = null;
+         var _loc2_:Counter = null;
+         var _loc3_:int = int(_data.counters.length);
          for(i = 0; i < _loc3_; )
          {
             param = null;
@@ -570,8 +568,8 @@ package tuxwars.challenges
       
       private function updateCounters(data:Object) : void
       {
-         var _loc2_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:Array = null;
+         var _loc4_:Counter = null;
          if(data.counters)
          {
             _loc2_ = data.counters.counter is Array ? data.counters.counter : [data.counters.counter];
@@ -659,3 +657,4 @@ package tuxwars.challenges
       }
    }
 }
+

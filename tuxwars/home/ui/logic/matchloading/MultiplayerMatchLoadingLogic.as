@@ -13,8 +13,6 @@ package tuxwars.home.ui.logic.matchloading
    
    public class MultiplayerMatchLoadingLogic extends MatchLoadingLogic
    {
-       
-      
       private var serverResponseData:Object;
       
       public function MultiplayerMatchLoadingLogic(game:TuxWarsGame, state:TuxState)
@@ -71,8 +69,8 @@ package tuxwars.home.ui.logic.matchloading
       
       private function get matchLoadingState() : MultiplayerMatchLoadingSubState
       {
-         var returnValue:* = null;
-         var qcn:* = null;
+         var returnValue:MultiplayerMatchLoadingSubState = null;
+         var qcn:String = null;
          if(Config.isDev())
          {
             returnValue = state.parent as MultiplayerMatchLoadingSubState;
@@ -95,3 +93,4 @@ package tuxwars.home.ui.logic.matchloading
       }
    }
 }
+

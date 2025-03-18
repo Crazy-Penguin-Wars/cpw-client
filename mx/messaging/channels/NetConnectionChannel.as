@@ -21,10 +21,10 @@ package mx.messaging.channels
    import mx.messaging.messages.MessagePerformanceUtils;
    import mx.netmon.NetworkMonitor;
    
+   use namespace mx_internal;
+   
    public class NetConnectionChannel extends PollingChannel
    {
-       
-      
       mx_internal var _appendToURL:String;
       
       protected var _nc:NetConnection;
@@ -76,11 +76,11 @@ package mx.messaging.channels
          url = endpoint;
          if(this.mx_internal::_appendToURL != null)
          {
-            i = url.indexOf("wsrp-url=");
+            i = int(url.indexOf("wsrp-url="));
             if(i != -1)
             {
                temp = url.substr(i + 9,url.length);
-               j = temp.indexOf("&");
+               j = int(temp.indexOf("&"));
                if(j != -1)
                {
                   temp = temp.substr(0,j);
@@ -228,10 +228,10 @@ package mx.messaging.channels
    }
 }
 
+import flash.net.Responder;
 import mx.core.mx_internal;
 import mx.messaging.MessageAgent;
 import mx.messaging.MessageResponder;
-import mx.messaging.channels.NetConnectionChannel;
 import mx.messaging.events.ChannelEvent;
 import mx.messaging.events.ChannelFaultEvent;
 import mx.messaging.messages.AcknowledgeMessage;
@@ -241,17 +241,16 @@ import mx.messaging.messages.IMessage;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
+use namespace mx_internal;
+
 class NetConnectionMessageResponder extends MessageResponder
 {
-    
-   
    private var handled:Boolean;
    
-   private var resourceManager:IResourceManager;
+   private var resourceManager:IResourceManager = ResourceManager.getInstance();
    
    public function NetConnectionMessageResponder(agent:MessageAgent, msg:IMessage, channel:NetConnectionChannel)
    {
-      this.resourceManager = ResourceManager.getInstance();
       super(agent,msg,channel);
       channel.addEventListener(ChannelEvent.DISCONNECT,this.channelDisconnectHandler);
       channel.addEventListener(ChannelFaultEvent.FAULT,this.channelFaultHandler);

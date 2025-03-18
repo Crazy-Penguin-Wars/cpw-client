@@ -17,10 +17,10 @@ package mx.messaging
    import mx.resources.IResourceManager;
    import mx.resources.ResourceManager;
    
+   use namespace mx_internal;
+   
    public class AbstractConsumer extends MessageAgent
    {
-       
-      
       private var _currentAttempt:int;
       
       private var _resubscribeTimer:Timer;
@@ -29,7 +29,7 @@ package mx.messaging
       
       private var _subscribeMsg:CommandMessage;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _maxFrequency:uint = 0;
       
@@ -43,7 +43,6 @@ package mx.messaging
       
       public function AbstractConsumer()
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          _log = Log.getLogger("mx.messaging.Consumer");
          _agentType = "consumer";
@@ -215,16 +214,16 @@ package mx.messaging
          if(!ackMsg.headers[AcknowledgeMessage.ERROR_HINT_HEADER] && msg is CommandMessage)
          {
             command = msg as CommandMessage;
-            op = command.operation;
+            op = int(command.operation);
             if(op == CommandMessage.MULTI_SUBSCRIBE_OPERATION)
             {
                if(msg.headers.DSlastUnsub != null)
                {
-                  op = CommandMessage.UNSUBSCRIBE_OPERATION;
+                  op = int(CommandMessage.UNSUBSCRIBE_OPERATION);
                }
                else
                {
-                  op = CommandMessage.SUBSCRIBE_OPERATION;
+                  op = int(CommandMessage.SUBSCRIBE_OPERATION);
                }
             }
             switch(op)
@@ -404,7 +403,6 @@ package mx.messaging
                   if(Log.isWarn())
                   {
                      _log.warn("\'{0}\' received a CommandMessage \'{1}\' that could not be handled.",id,CommandMessage.getOperationAsString(command.operation));
-                     break;
                   }
             }
             return;
@@ -506,3 +504,4 @@ package mx.messaging
       }
    }
 }
+

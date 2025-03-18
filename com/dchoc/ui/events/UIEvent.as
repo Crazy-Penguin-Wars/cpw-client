@@ -4,8 +4,6 @@ package com.dchoc.ui.events
    
    public class UIEvent extends Event
    {
-       
-      
       private var parameter:Object;
       
       public function UIEvent(type:String, parameter:Object = null)
@@ -20,3 +18,4 @@ package com.dchoc.ui.events
       }
    }
 }
+

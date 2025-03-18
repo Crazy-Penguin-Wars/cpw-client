@@ -6,8 +6,6 @@ package tuxwars.ui.popups.logic
    
    public class PopUpBaseLogic extends TuxUILogic
    {
-       
-      
       public function PopUpBaseLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -19,3 +17,4 @@ package tuxwars.ui.popups.logic
       }
    }
 }
+

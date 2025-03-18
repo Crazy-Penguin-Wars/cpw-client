@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.control
    
    public class StartTurnMessage extends SocketMessage
    {
-       
-      
       public function StartTurnMessage(id:String)
       {
          super({
@@ -21,3 +19,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

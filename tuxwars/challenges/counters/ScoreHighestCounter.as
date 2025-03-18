@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class ScoreHighestCounter extends Counter
    {
-       
-      
       public function ScoreHighestCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -53,3 +51,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

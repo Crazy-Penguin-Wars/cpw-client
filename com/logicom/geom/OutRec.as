@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    internal final class OutRec
    {
-       
-      
       public var idx:int;
       
       public var isHole:Boolean;
@@ -26,3 +24,4 @@ package com.logicom.geom
       }
    }
 }
+

@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    internal final class LocalMinima
    {
-       
-      
       public var Y:int;
       
       public var leftBound:TEdge;
@@ -18,3 +16,4 @@ package com.logicom.geom
       }
    }
 }
+

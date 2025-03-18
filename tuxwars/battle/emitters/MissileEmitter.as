@@ -23,13 +23,11 @@ package tuxwars.battle.emitters
    
    public class MissileEmitter
    {
-      
       public static const MISSILE_EMITTER:String = "MissileEmitter";
       
       private static var tuxGame:TuxWarsGame;
       
       private static var counter:int;
-       
       
       public function MissileEmitter()
       {
@@ -52,11 +50,11 @@ package tuxwars.battle.emitters
       
       private static function launchMissile(msg:FireEmissionMessage) : void
       {
-         var _loc14_:* = null;
-         var _loc12_:* = null;
+         var _loc14_:Missile = null;
+         var _loc12_:Vec2 = null;
          var _loc9_:Number = NaN;
          var _loc20_:Number = NaN;
-         var _loc3_:* = null;
+         var _loc3_:Follower = null;
          var _loc15_:Emission = msg.emissionObject;
          if(_loc15_ != null && _loc15_.tagger == null)
          {
@@ -103,7 +101,7 @@ package tuxwars.battle.emitters
             }
             var _loc24_:Config = Config;
             _loc9_ = Math.acos(_loc12_.dot(Config.VEC_UP.copy()));
-            _loc20_ = Number(_loc12_.x > 0 ? MathUtils.radiansToDegrees(_loc9_) : -MathUtils.radiansToDegrees(_loc9_));
+            _loc20_ = _loc12_.x > 0 ? MathUtils.radiansToDegrees(_loc9_) : -MathUtils.radiansToDegrees(_loc9_);
             var _loc25_:* = _loc14_;
             _loc25_._displayObject.rotation = _loc20_;
             if(_loc14_ is Mine)
@@ -131,7 +129,7 @@ package tuxwars.battle.emitters
       
       private static function replaceMissileDataWithBoosterMissileData(missileData:MissileData, emissionObject:Emission) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:EmissionMissileReference = null;
          var _loc3_:Array = emissionObject.getBoosterMissileEmissions();
          for each(var er in _loc3_)
          {
@@ -154,3 +152,4 @@ package tuxwars.battle.emitters
       }
    }
 }
+

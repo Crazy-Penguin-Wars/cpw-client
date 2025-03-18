@@ -5,9 +5,7 @@ package nape.callbacks
    
    public final class CbTypeIterator
    {
-      
-      public static var zpp_pool:CbTypeIterator = null;
-       
+      public static var zpp_pool:CbTypeIterator;
       
       public var zpp_next:CbTypeIterator;
       
@@ -75,3 +73,4 @@ package nape.callbacks
       }
    }
 }
+

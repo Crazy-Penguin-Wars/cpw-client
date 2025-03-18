@@ -6,8 +6,6 @@ package tuxwars.ui.containers.player
    
    public class PlayerFreeSlotContainer extends UIContainer
    {
-       
-      
       public function PlayerFreeSlotContainer(design:MovieClip, index:int)
       {
          super(design);
@@ -16,3 +14,4 @@ package tuxwars.ui.containers.player
       }
    }
 }
+

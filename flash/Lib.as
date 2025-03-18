@@ -4,12 +4,11 @@ package flash
    
    public class Lib
    {
-      
       public static var current:MovieClip;
-       
       
       public function Lib()
       {
       }
    }
 }
+

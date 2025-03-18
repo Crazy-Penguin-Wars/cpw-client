@@ -31,8 +31,6 @@ package tuxwars.ui.containers.shop.container.banner
    
    public class BannerMessageButton extends BannerMessage
    {
-       
-      
       private var _buttonCash:UIButton;
       
       private var _buttonCoins:UIButton;
@@ -53,7 +51,7 @@ package tuxwars.ui.containers.shop.container.banner
       
       private function showButton() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:ShopItem = null;
          if(this._design.Message)
          {
             _buttonCash.setVisible(false);
@@ -95,10 +93,10 @@ package tuxwars.ui.containers.shop.container.banner
       
       private function doAction() : void
       {
-         var _loc3_:* = null;
-         var sound:* = null;
-         var parentName:* = null;
-         var sound2:* = null;
+         var _loc3_:ShopItem = null;
+         var sound:SoundReference = null;
+         var parentName:String = null;
+         var sound2:SoundReference = null;
          var _loc1_:TuxWarsGame = game;
          LogUtils.log("Do Action: " + bigShopItem.actionCode,this,0,"UI",true,false,false);
          switch(bigShopItem.actionCode)
@@ -129,20 +127,21 @@ package tuxwars.ui.containers.shop.container.banner
                         _buttonCoins.setVisible(canAffordItem);
                      }
                      disableButtonUntillServerResponse();
-                     break;
                   }
-                  sound2 = Sounds.getSoundReference("Nomoney");
-                  if(sound2)
+                  else
                   {
-                     MessageCenter.sendEvent(new SoundMessage("PlaySound",sound2.getMusicID(),sound2.getStart(),sound2.getType(),"PlaySound"));
+                     sound2 = Sounds.getSoundReference("Nomoney");
+                     if(sound2)
+                     {
+                        MessageCenter.sendEvent(new SoundMessage("PlaySound",sound2.getMusicID(),sound2.getStart(),sound2.getType(),"PlaySound"));
+                     }
+                     var _loc6_:PopUpManager = PopUpManager;
+                     if(!tuxwars.ui.popups.PopUpManager._instance)
+                     {
+                        tuxwars.ui.popups.PopUpManager._instance = new tuxwars.ui.popups.PopUpManager();
+                     }
+                     tuxwars.ui.popups.PopUpManager._instance.triggerPopup(new NoMoneyPopUpSubState(game,_loc3_.priceObject.isPremium ? "Cash" : "Coins"),game.currentState);
                   }
-                  var _loc6_:PopUpManager = PopUpManager;
-                  if(!tuxwars.ui.popups.PopUpManager._instance)
-                  {
-                     tuxwars.ui.popups.PopUpManager._instance = new tuxwars.ui.popups.PopUpManager();
-                  }
-                  tuxwars.ui.popups.PopUpManager._instance.triggerPopup(new NoMoneyPopUpSubState(game,_loc3_.priceObject.isPremium ? "Cash" : "Coins"),game.currentState);
-                  break;
                }
                break;
             case "gotobuycoins":
@@ -172,19 +171,22 @@ package tuxwars.ui.containers.shop.container.banner
                   if(_loc1_.player.isTournamentFinished())
                   {
                      _loc1_.homeState.changeState(new TournamentEndState(_loc1_));
-                     break;
                   }
-                  _loc1_.homeState.changeState(new TournamentState(_loc1_));
-                  break;
+                  else
+                  {
+                     _loc1_.homeState.changeState(new TournamentState(_loc1_));
+                  }
                }
                break;
             case "gotourl":
                if(bigShopItem.actionParamTwo)
                {
                   DCUtils.loadPage(bigShopItem.actionParamOne,bigShopItem.actionParamTwo);
-                  break;
                }
-               DCUtils.loadPage(bigShopItem.actionParamOne);
+               else
+               {
+                  DCUtils.loadPage(bigShopItem.actionParamOne);
+               }
                break;
             case "ok":
             default:
@@ -218,7 +220,7 @@ package tuxwars.ui.containers.shop.container.banner
       
       private function buttonPressed(mouseEvent:MouseEvent) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:ShopItem = null;
          if(bigShopItem.actionCode)
          {
             doAction();
@@ -273,3 +275,4 @@ package tuxwars.ui.containers.shop.container.banner
       }
    }
 }
+

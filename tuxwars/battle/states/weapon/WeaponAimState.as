@@ -5,8 +5,6 @@ package tuxwars.battle.states.weapon
    
    public class WeaponAimState extends WeaponState
    {
-       
-      
       public function WeaponAimState(weapon:Weapon, game:DCGame, params:* = null)
       {
          super(weapon,game,params);
@@ -19,3 +17,4 @@ package tuxwars.battle.states.weapon
       }
    }
 }
+

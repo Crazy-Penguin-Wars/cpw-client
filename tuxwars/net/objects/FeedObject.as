@@ -2,9 +2,7 @@ package tuxwars.net.objects
 {
    public class FeedObject extends JavaScriptCRMObject
    {
-      
       public static const CALL_TYPE:String = "platformPublishFeed";
-       
       
       private var _name:String;
       
@@ -70,3 +68,4 @@ package tuxwars.net.objects
       }
    }
 }
+

@@ -7,11 +7,9 @@ package tuxwars.battle.ui.screen.timer
    
    public class PlayerTimerContainer extends UIContainers
    {
-      
       private static const MAX_PLAYER:int = 4;
       
       public static const TURN_TIMER:String = "Turn_Timer_";
-       
       
       private var currentPlayer:BattleHudPlayerData;
       
@@ -48,3 +46,4 @@ package tuxwars.battle.ui.screen.timer
       }
    }
 }
+

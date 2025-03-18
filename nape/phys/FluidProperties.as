@@ -10,8 +10,6 @@ package nape.phys
    
    public final class FluidProperties
    {
-       
-      
       public var zpp_inner:ZPP_FluidProperties;
       
       public function FluidProperties(param1:Number = 1, param2:Number = 1)
@@ -31,6 +29,7 @@ package nape.phys
             ZPP_FluidProperties.zpp_pool = zpp_inner.next;
             zpp_inner.next = null;
          }
+         null;
          zpp_inner.outer = this;
          if(param1 != zpp_inner.density * 1000)
          {
@@ -314,6 +313,11 @@ package nape.phys
                _loc5_._invalidate = null;
                _loc5_.next = ZPP_Vec2.zpp_pool;
                ZPP_Vec2.zpp_pool = _loc5_;
+               true;
+            }
+            else
+            {
+               false;
             }
             _loc4_;
          }
@@ -602,6 +606,11 @@ package nape.phys
                _loc6_._invalidate = null;
                _loc6_.next = ZPP_Vec2.zpp_pool;
                ZPP_Vec2.zpp_pool = _loc6_;
+               true;
+            }
+            else
+            {
+               false;
             }
             _loc5_;
          }
@@ -610,3 +619,4 @@ package nape.phys
       }
    }
 }
+

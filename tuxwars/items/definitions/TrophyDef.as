@@ -6,8 +6,6 @@ package tuxwars.items.definitions
    
    public class TrophyDef extends ClothingDef
    {
-       
-      
       private var _requiredChallenges:Array;
       
       private var _statTextOverrideDesc:String;
@@ -37,3 +35,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

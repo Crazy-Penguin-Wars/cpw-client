@@ -17,8 +17,6 @@ package tuxwars.battle.ui.screen.afterresultsales
    
    public class AfterResultSalesScreen extends TuxUIScreen
    {
-       
-      
       private const BUTTONS:String = "Slot_0";
       
       private const POPUP_WINNER:String = "popup_winner";
@@ -111,3 +109,4 @@ package tuxwars.battle.ui.screen.afterresultsales
       }
    }
 }
+

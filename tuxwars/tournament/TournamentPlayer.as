@@ -4,8 +4,6 @@ package tuxwars.tournament
    
    public class TournamentPlayer
    {
-       
-      
       private var _dcg_id:String;
       
       private var _rank:int;
@@ -24,7 +22,7 @@ package tuxwars.tournament
       
       public function TournamentPlayer(data:Object)
       {
-         var platformData:* = null;
+         var platformData:Object = null;
          super();
          _dcg_id = data.dcg_id;
          _rank = data.rank;
@@ -57,7 +55,7 @@ package tuxwars.tournament
       
       public function get name() : String
       {
-         var name:* = null;
+         var name:String = null;
          for each(var pd in _platforms_data)
          {
             if(pd.platform == Config.getPlatform())
@@ -74,7 +72,7 @@ package tuxwars.tournament
       
       public function get pic_url() : String
       {
-         var url:* = null;
+         var url:String = null;
          for each(var pd in _platforms_data)
          {
             if(pd.platform == Config.getPlatform())
@@ -125,3 +123,4 @@ package tuxwars.tournament
       }
    }
 }
+

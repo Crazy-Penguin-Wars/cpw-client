@@ -3,9 +3,10 @@ package mx.binding
    import mx.core.mx_internal;
    import mx.events.PropertyChangeEvent;
    
+   use namespace mx_internal;
+   
    public class BindabilityInfo
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const BINDABLE:String = "Bindable";
@@ -19,17 +20,15 @@ package mx.binding
       public static const ACCESSOR:String = "accessor";
       
       public static const METHOD:String = "method";
-       
       
       private var typeDescription:XML;
       
       private var classChangeEvents:Object;
       
-      private var childChangeEvents:Object;
+      private var childChangeEvents:Object = {};
       
       public function BindabilityInfo(typeDescription:XML)
       {
-         this.childChangeEvents = {};
          super();
          this.typeDescription = typeDescription;
       }
@@ -43,7 +42,7 @@ package mx.binding
          {
             changeEvents = this.copyProps(this.getClassChangeEvents(),{});
             childDesc = this.typeDescription.accessor.(@name == childName) + this.typeDescription.method.(@name == childName);
-            numChildren = childDesc.length();
+            numChildren = int(childDesc.length());
             if(numChildren == 0)
             {
                if(!this.typeDescription.@dynamic)
@@ -107,7 +106,7 @@ package mx.binding
       
       private function copyProps(from:Object, to:Object) : Object
       {
-         var propName:* = null;
+         var propName:String = null;
          for(propName in from)
          {
             to[propName] = from[propName];
@@ -116,3 +115,4 @@ package mx.binding
       }
    }
 }
+

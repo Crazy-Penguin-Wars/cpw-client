@@ -9,8 +9,6 @@ package tuxwars.home.ui.logic.privategame.host
    
    public class HostPrivateGameLogic extends PrivateGameLogic
    {
-       
-      
       public function HostPrivateGameLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -27,3 +25,4 @@ package tuxwars.home.ui.logic.privategame.host
       }
    }
 }
+

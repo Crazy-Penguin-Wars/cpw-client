@@ -12,7 +12,6 @@ package tuxwars.ui.containers.slotitem.uicontainers
    
    public class ItemContainers extends UIContainers
    {
-      
       public static const SLOT_USABLE:String = "Slot_Usable";
       
       public static const SLOT_USABLE_LOCKED:String = "Slot_Usable_Locked";
@@ -20,7 +19,6 @@ package tuxwars.ui.containers.slotitem.uicontainers
       public static const SLOT_UNUSABLE:String = "Slot_Unusable";
       
       public static const SLOT_UNUSABLE_LOCKED:String = "Slot_Unusable_Locked";
-       
       
       private var _slotElement:SlotElement;
       
@@ -94,3 +92,4 @@ package tuxwars.ui.containers.slotitem.uicontainers
       }
    }
 }
+

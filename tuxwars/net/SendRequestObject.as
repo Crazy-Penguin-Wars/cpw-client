@@ -6,8 +6,6 @@ package tuxwars.net
    
    public class SendRequestObject
    {
-       
-      
       public var _fromWhereInClient:String;
       
       public var _message:String;
@@ -68,3 +66,4 @@ package tuxwars.net
       }
    }
 }
+

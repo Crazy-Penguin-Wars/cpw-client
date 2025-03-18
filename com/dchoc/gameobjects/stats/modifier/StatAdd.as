@@ -2,8 +2,6 @@ package com.dchoc.gameobjects.stats.modifier
 {
    public class StatAdd extends StatModifier
    {
-       
-      
       public function StatAdd(id:String, value:Number, group:String = "Group_Base", type:String = "Normal", affects:String = "All")
       {
          super(id,value,5,group,type,affects);
@@ -20,3 +18,4 @@ package com.dchoc.gameobjects.stats.modifier
       }
    }
 }
+

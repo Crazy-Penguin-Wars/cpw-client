@@ -8,9 +8,7 @@ package com.dchoc.resources
    
    internal class ResourceLoaderObject
    {
-      
       private static const POLLING_TIMEOUT:int = 15;
-       
       
       internal var resourceName:String;
       
@@ -65,3 +63,4 @@ package com.dchoc.resources
       }
    }
 }
+

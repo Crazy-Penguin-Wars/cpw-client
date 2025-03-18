@@ -6,9 +6,7 @@ package zpp_nape.geom
    
    public class ZPP_ToiEvent
    {
-      
-      public static var zpp_pool:ZPP_ToiEvent = null;
-       
+      public static var zpp_pool:ZPP_ToiEvent;
       
       public var toi:Number;
       
@@ -61,3 +59,4 @@ package zpp_nape.geom
       }
    }
 }
+

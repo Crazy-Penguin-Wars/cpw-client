@@ -32,7 +32,6 @@ package tuxwars.battle.weapons
    
    public class Weapon extends WearableItem implements IStateMachine, Emission
    {
-      
       public static const DRAW_LABEL:String = "draw";
       
       public static const AIM_LABEL:String = "aim";
@@ -40,7 +39,6 @@ package tuxwars.battle.weapons
       public static const FIRE_LABEL:String = "fire";
       
       public static const OUT_LABEL:String = "out";
-       
       
       private const stateMachine:StateMachine = new StateMachine();
       
@@ -298,8 +296,8 @@ package tuxwars.battle.weapons
       
       public function aim(vec:Vec2) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Vec2 = null;
+         var _loc3_:Vec2 = null;
          var _loc4_:Number = NaN;
          if(!isDrawingWeapon())
          {
@@ -341,8 +339,8 @@ package tuxwars.battle.weapons
       
       private function getWeaponClipFromAvatar() : Array
       {
-         var _loc1_:* = null;
-         var _loc2_:* = null;
+         var _loc1_:TuxAvatar = null;
+         var _loc2_:PaperDoll = null;
          if(player)
          {
             _loc1_ = player.avatar;
@@ -525,3 +523,4 @@ package tuxwars.battle.weapons
       }
    }
 }
+

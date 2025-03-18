@@ -6,17 +6,16 @@ package tuxwars.home.ui.screen.challenge
    
    public class ChallengeTypeContainerElementScreens
    {
-      
       private static const ELEMENT:String = "Container_Challenges_";
       
       private static const ELEMENT_ARRAY:Array = ["Battle","Grind","Skill","Impossible"];
-       
       
-      private const elements:Vector.<ChallengeTypeContainerScreen> = new Vector.<ChallengeTypeContainerScreen>();
+      private const elements:Vector.<ChallengeTypeContainerScreen>;
       
       public function ChallengeTypeContainerElementScreens(design:MovieClip, game:TuxWarsGame)
       {
          var i:int = 0;
+         elements = new Vector.<ChallengeTypeContainerScreen>();
          super();
          for(i = 0; i < ELEMENT_ARRAY.length; )
          {
@@ -55,3 +54,4 @@ package tuxwars.home.ui.screen.challenge
       }
    }
 }
+

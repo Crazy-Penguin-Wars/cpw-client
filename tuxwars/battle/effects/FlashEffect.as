@@ -7,9 +7,7 @@ package tuxwars.battle.effects
    
    public class FlashEffect
    {
-      
       private static var FLASH:MovieClip;
-       
       
       public function FlashEffect()
       {
@@ -60,3 +58,4 @@ package tuxwars.battle.effects
       }
    }
 }
+

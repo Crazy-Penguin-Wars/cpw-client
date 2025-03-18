@@ -7,9 +7,7 @@ package zpp_nape.callbacks
    
    public class ZPP_Listener
    {
-      
-      public static var §internal§:Boolean = false;
-       
+      public static var §internal§:Boolean;
       
       public var type:int;
       
@@ -17,7 +15,7 @@ package zpp_nape.callbacks
       
       public var precedence:int;
       
-      public var outer:Listener;
+      public var outer:nape.callbacks.Listener;
       
       public var interaction:ZPP_InteractionListener;
       
@@ -69,3 +67,4 @@ package zpp_nape.callbacks
       }
    }
 }
+

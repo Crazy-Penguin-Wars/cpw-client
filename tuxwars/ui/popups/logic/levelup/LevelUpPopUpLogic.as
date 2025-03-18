@@ -18,8 +18,6 @@ package tuxwars.ui.popups.logic.levelup
    
    public class LevelUpPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       private var _unlockedItems:Vector.<ItemData>;
       
       public const itemDatas:Vector.<ItemData> = new Vector.<ItemData>();
@@ -45,17 +43,17 @@ package tuxwars.ui.popups.logic.levelup
       private function accountCallback(response:ServerResponse) : void
       {
          var _loc10_:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:VipData = null;
          var _loc11_:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:CoinData = null;
          var _loc13_:int = 0;
-         var _loc2_:* = null;
-         var _loc12_:* = null;
-         var _loc14_:* = null;
+         var _loc2_:CashData = null;
+         var _loc12_:Array = null;
+         var _loc14_:Array = null;
          var i:int = 0;
-         var _loc5_:* = null;
+         var _loc5_:String = null;
          var _loc7_:int = 0;
-         var _loc8_:* = null;
+         var _loc8_:ItemData = null;
          if(!game || !game.player || !getScreen())
          {
             LogUtils.log("Level up popup logic has been disposed!",this,3,"UI");
@@ -173,3 +171,4 @@ package tuxwars.ui.popups.logic.levelup
       }
    }
 }
+

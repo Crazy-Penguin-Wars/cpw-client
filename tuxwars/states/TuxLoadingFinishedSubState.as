@@ -4,11 +4,10 @@ package tuxwars.states
    
    public class TuxLoadingFinishedSubState extends TuxState
    {
-       
-      
       public function TuxLoadingFinishedSubState(game:DCGame, params:* = null)
       {
          super(game,params);
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class MatchesWonCounter extends Counter
    {
-       
-      
       public function MatchesWonCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -27,3 +25,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

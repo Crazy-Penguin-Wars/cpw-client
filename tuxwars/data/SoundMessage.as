@@ -5,8 +5,6 @@ package tuxwars.data
    
    public class SoundMessage extends Message
    {
-       
-      
       private var _id:String;
       
       private var _path:String;
@@ -54,3 +52,4 @@ package tuxwars.data
       }
    }
 }
+

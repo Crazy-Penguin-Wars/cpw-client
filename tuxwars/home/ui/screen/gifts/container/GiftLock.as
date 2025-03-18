@@ -12,8 +12,6 @@ package tuxwars.home.ui.screen.gifts.container
    
    public class GiftLock extends GiftBase
    {
-       
-      
       private var levelText:UIAutoTextField;
       
       private var selectedFriendID:String;
@@ -36,3 +34,4 @@ package tuxwars.home.ui.screen.gifts.container
       }
    }
 }
+

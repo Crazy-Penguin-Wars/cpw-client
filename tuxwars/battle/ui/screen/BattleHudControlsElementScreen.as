@@ -36,7 +36,6 @@ package tuxwars.battle.ui.screen
    
    public class BattleHudControlsElementScreen extends TuxUIElementScreen
    {
-      
       private static const BOOSTER_TEXT:String = "Text_Booster";
       
       private static const CHANGE_WEAPON_TEXT:String = "Text_Change_Weapon";
@@ -70,7 +69,6 @@ package tuxwars.battle.ui.screen
       private static const ANIM_IN:String = "Visible_To_Hover";
       
       private static const ANIM_OUT:String = "Hover_To_Visible";
-       
       
       private var radialGroup:UIRadialGroup;
       
@@ -110,7 +108,7 @@ package tuxwars.battle.ui.screen
       
       public function BattleHudControlsElementScreen(design:MovieClip, game:TuxWarsGame)
       {
-         var _loc3_:* = null;
+         var _loc3_:BoosterItem = null;
          super(design,game);
          selectedWeapon = game.player.inventory.getNextWeaponWithAmmo();
          TuxUiUtils.createAutoTextField(design.getChildByName("Text_Booster") as TextField,"BOOSTER");
@@ -150,7 +148,7 @@ package tuxwars.battle.ui.screen
          _boosterButton.setEnabled(!BattleManager.isPracticeMode() || Config.isDev());
          _boosterSelectedButton = TuxUiUtils.createButton(IconCoolDownButton,design,"Button_Booster_Active",boosterActiveCallback,null,"TOOLTIP_BATTLE_BOOSTER",null);
          var _loc4_:BattleOptions = BattleOptions;
-         _boosterSelectedButton.setCoolDownTime(Number(tuxwars.battle.data.BattleOptions.getRow().findField("BoosterCooldown").value) * 1000);
+         _boosterSelectedButton.setCoolDownTime(tuxwars.battle.data.BattleOptions.getRow().findField("BoosterCooldown").value * 1000);
          _boosterSelectedButton.setType("Booster");
          _boosterSelectedButton.setText("");
          _boosterSelectedButton.setEnabled(false);
@@ -334,7 +332,7 @@ package tuxwars.battle.ui.screen
       
       private function boosterActivated(msg:BoosterActivatedMessage) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:BoosterItem = null;
          if(msg.boosterItem == selectedBooster)
          {
             if(selectedBooster.amount > 0)
@@ -514,3 +512,4 @@ package tuxwars.battle.ui.screen
       }
    }
 }
+

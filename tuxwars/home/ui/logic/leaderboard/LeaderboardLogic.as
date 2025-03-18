@@ -1,7 +1,8 @@
 package tuxwars.home.ui.logic.leaderboard
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.logic.TuxPageSubTabLogic;
    import tuxwars.home.ui.screen.leaderboard.LeaderboardScreen;
@@ -10,7 +11,6 @@ package tuxwars.home.ui.logic.leaderboard
    
    public class LeaderboardLogic extends TuxPageSubTabLogic
    {
-      
       private static const TABLE:String = "Screen";
       
       private static const LEADERBOARD_PAGE:String = "Leaderboard";
@@ -20,7 +20,6 @@ package tuxwars.home.ui.logic.leaderboard
       public static const WEEKLY:String = "Weekly";
       
       public static const MONTHLY:String = "Monthly";
-       
       
       private var report:PlayerReport;
       
@@ -33,18 +32,20 @@ package tuxwars.home.ui.logic.leaderboard
       
       public static function getStaticData() : Row
       {
+         var _loc3_:String = "Screen";
          var _loc1_:ProjectManager = ProjectManager;
-         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Screen");
-         if(!_loc2_._cache["Leaderboard"])
+         var _loc4_:String = "Leaderboard";
+         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+         if(!_loc2_._cache[_loc4_])
          {
-            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Leaderboard");
+            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
             if(!_loc5_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Leaderboard" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
             }
-            _loc2_._cache["Leaderboard"] = _loc5_;
+            _loc2_._cache[_loc4_] = _loc5_;
          }
-         return _loc2_._cache["Leaderboard"];
+         return _loc2_._cache[_loc4_];
       }
       
       override public function preInit(params:*) : void
@@ -123,3 +124,4 @@ package tuxwars.home.ui.logic.leaderboard
       }
    }
 }
+

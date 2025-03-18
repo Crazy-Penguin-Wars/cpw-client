@@ -6,8 +6,6 @@ package mx.resources
    
    public interface IResourceManager extends IEventDispatcher
    {
-       
-      
       function get localeChain() : Array;
       
       function set localeChain(param1:Array) : void;
@@ -63,3 +61,4 @@ package mx.resources
       function initializeLocaleChain(param1:Array) : void;
    }
 }
+

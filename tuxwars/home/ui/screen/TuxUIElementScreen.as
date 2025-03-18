@@ -10,11 +10,9 @@ package tuxwars.home.ui.screen
    
    public class TuxUIElementScreen extends UIWindow
    {
-       
-      
       private var _game:TuxWarsGame;
       
-      private var _logic;
+      private var _logic:*;
       
       public function TuxUIElementScreen(design:MovieClip, game:TuxWarsGame)
       {
@@ -64,3 +62,4 @@ package tuxwars.home.ui.screen
       }
    }
 }
+

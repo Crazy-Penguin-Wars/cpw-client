@@ -10,8 +10,6 @@ package tuxwars.home.states.matchloading.levelloading
    
    public class LevelLoadingSubState extends TuxState
    {
-       
-      
       private var vip:Boolean;
       
       private var tournament:Boolean;
@@ -41,3 +39,4 @@ package tuxwars.home.states.matchloading.levelloading
       }
    }
 }
+

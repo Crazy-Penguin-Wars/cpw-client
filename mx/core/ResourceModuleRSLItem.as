@@ -6,13 +6,13 @@ package mx.core
    import mx.events.ResourceEvent;
    import mx.resources.IResourceManager;
    
+   use namespace mx_internal;
+   
    public class ResourceModuleRSLItem extends RSLItem
    {
+      public static var resourceManager:IResourceManager;
       
       mx_internal static const VERSION:String = "4.5.1.21489";
-      
-      public static var resourceManager:IResourceManager;
-       
       
       private var appDomain:ApplicationDomain;
       
@@ -53,3 +53,4 @@ package mx.core
       }
    }
 }
+

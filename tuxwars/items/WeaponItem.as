@@ -8,8 +8,6 @@ package tuxwars.items
    
    public class WeaponItem extends Item
    {
-       
-      
       private var weaponDef:WeaponDef;
       
       public function WeaponItem()
@@ -30,3 +28,4 @@ package tuxwars.items
       }
    }
 }
+

@@ -6,8 +6,6 @@ package com.dchoc.ui.windows
    
    public class UIContainer extends UIStateComponent
    {
-       
-      
       protected var parent:UIComponent;
       
       public function UIContainer(design:MovieClip, parent:UIComponent = null)
@@ -22,3 +20,4 @@ package com.dchoc.ui.windows
       }
    }
 }
+

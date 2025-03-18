@@ -6,11 +6,9 @@ package com.dchoc.utils
    
    public class MathUtils
    {
-      
       public static const ONE80_PER_PI:Number = 57.29577951308232;
       
       public static const PI_PER_ONE80:Number = 0.017453292519943295;
-       
       
       public function MathUtils()
       {
@@ -151,3 +149,4 @@ package com.dchoc.utils
       }
    }
 }
+

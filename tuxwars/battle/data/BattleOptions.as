@@ -1,11 +1,11 @@
 package tuxwars.battle.data
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class BattleOptions
    {
-      
       private static const TABLE_NAME:String = "BattleOptions";
       
       private static const TIME_AFTER_FIRING:String = "TimeAfterFiring";
@@ -55,7 +55,6 @@ package tuxwars.battle.data
       private static const MESSAGE_QUEUE:String = "MessageQueue";
       
       private static var row:Row;
-       
       
       public function BattleOptions()
       {
@@ -65,254 +64,277 @@ package tuxwars.battle.data
       
       public static function getTimeAfterFiring() : int
       {
+         var _loc3_:String = "TimeAfterFiring";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TimeAfterFiring"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TimeAfterFiring"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TimeAfterFiring");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TimeAfterFiring"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getNumberOfPlayers() : int
       {
+         var _loc3_:String = "NumberOfPlayers";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["NumberOfPlayers"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["NumberOfPlayers"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","NumberOfPlayers");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["NumberOfPlayers"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getMatchTime() : int
       {
+         var _loc3_:String = "MatchTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MatchTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MatchTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MatchTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MatchTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getMinMatchTime() : int
       {
+         var _loc3_:String = "MinMatchTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MinMatchTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MinMatchTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MinMatchTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MinMatchTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getMaxMatchTime() : int
       {
+         var _loc3_:String = "MaxMatchTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MaxMatchTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MaxMatchTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MaxMatchTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MaxMatchTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getTurnTime() : int
       {
+         var _loc3_:String = "TurnTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TurnTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TurnTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TurnTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TurnTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getMinTurnTime() : int
       {
+         var _loc3_:String = "MinTurnTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MinTurnTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MinTurnTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MinTurnTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MinTurnTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getMaxTurnTime() : int
       {
+         var _loc3_:String = "MaxTurnTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MaxTurnTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MaxTurnTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MaxTurnTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MaxTurnTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getTurnTimeIncrement() : int
       {
+         var _loc3_:String = "TurnTimeIncrement";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TurnTimeIncrement"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TurnTimeIncrement"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TurnTimeIncrement");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TurnTimeIncrement"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get rankMultiplier1() : Number
       {
+         var _loc3_:String = "RankMultiplier1";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["RankMultiplier1"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["RankMultiplier1"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","RankMultiplier1");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["RankMultiplier1"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get rankMultiplier2() : Number
       {
+         var _loc3_:String = "RankMultiplier2";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["RankMultiplier2"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["RankMultiplier2"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","RankMultiplier2");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["RankMultiplier2"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get rankMultiplier3() : Number
       {
+         var _loc3_:String = "RankMultiplier3";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["RankMultiplier3"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["RankMultiplier3"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","RankMultiplier3");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["RankMultiplier3"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get rankMultiplier4() : Number
       {
+         var _loc3_:String = "RankMultiplier4";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["RankMultiplier4"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["RankMultiplier4"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","RankMultiplier4");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["RankMultiplier4"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get bonusExpModifier() : int
       {
+         var _loc3_:String = "BonusExpModifier";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["BonusExpModifier"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["BonusExpModifier"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","BonusExpModifier");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["BonusExpModifier"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get bonusCoinsModifier() : int
       {
+         var _loc3_:String = "BonusCoinsModifier";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["BonusCoinsModifier"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["BonusCoinsModifier"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","BonusCoinsModifier");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["BonusCoinsModifier"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get disableWorldSync() : Boolean
       {
+         var _loc3_:String = "DisableWorldSync";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["DisableWorldSync"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["DisableWorldSync"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","DisableWorldSync");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["DisableWorldSync"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get boosterCooldown() : int
       {
+         var _loc3_:String = "BoosterCooldown";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["BoosterCooldown"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["BoosterCooldown"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","BoosterCooldown");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["BoosterCooldown"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get timeToRespawn() : int
       {
+         var _loc3_:String = "TimeToRespawn";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TimeToRespawn"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TimeToRespawn"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TimeToRespawn");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TimeToRespawn"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get timeToResume() : int
       {
+         var _loc3_:String = "TimeToResume";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TimeToResume"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TimeToResume"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TimeToResume");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TimeToResume"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get worldUpdateTime() : int
       {
+         var _loc3_:String = "WorldUpdateTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["WorldUpdateTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["WorldUpdateTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","WorldUpdateTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["WorldUpdateTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get timeToStartRematch() : int
       {
+         var _loc3_:String = "TimeToStartRematch";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TimeToStartRematch"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TimeToStartRematch"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TimeToStartRematch");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TimeToStartRematch"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get scoreDamager() : Number
       {
+         var _loc3_:String = "ScoreDamager";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["ScoreDamager"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["ScoreDamager"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","ScoreDamager");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["ScoreDamager"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function get messageQueue() : Boolean
       {
+         var _loc3_:String = "MessageQueue";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["MessageQueue"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["MessageQueue"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","MessageQueue");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["MessageQueue"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
@@ -320,20 +342,23 @@ package tuxwars.battle.data
       {
          if(!row)
          {
+            var _loc3_:String = "BattleOptions";
             var _loc1_:ProjectManager = ProjectManager;
-            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("BattleOptions");
-            if(!_loc2_._cache["Default"])
+            var _loc4_:String = "Default";
+            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+            if(!_loc2_._cache[_loc4_])
             {
-               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Default");
+               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
                if(!_loc5_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
                }
-               _loc2_._cache["Default"] = _loc5_;
+               _loc2_._cache[_loc4_] = _loc5_;
             }
-            row = _loc2_._cache["Default"];
+            row = _loc2_._cache[_loc4_];
          }
          return row;
       }
    }
 }
+

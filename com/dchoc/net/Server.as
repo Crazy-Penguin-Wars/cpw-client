@@ -5,16 +5,15 @@ package com.dchoc.net
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.messages.ServerResponseReceivedMessage;
    import com.dchoc.utils.DCUtils;
+   import flash.external.ExternalInterface;
    
    public class Server
    {
-      
       private static var serverConnection:ServerConnection;
       
       private static const requestBuffer:Array = [];
       
       private static const responseBuffer:Array = [];
-       
       
       public function Server()
       {
@@ -46,25 +45,32 @@ package com.dchoc.net
       
       private static function dataReceived(response:ServerResponse) : void
       {
-         var _loc3_:* = null;
+         ExternalInterface.call("console.log","Begin executing dataReceived()");
+         ExternalInterface.call("console.log",JSON.stringify(response));
+         var _loc3_:Function = null;
          var _loc2_:ServerRequest = findRequest(response.callId);
          if(!_loc2_)
          {
+            ExternalInterface.call("console.log","Did not find request");
             MessageCenter.sendEvent(new ErrorMessage("Request Not Found",response.serviceId,"Request for call id: " + response.serviceId + " was not found."));
             return;
          }
          if(response.data.gameVersion && response.data.gameVersion != Config.getVersion() && Config.getVersion())
          {
+            ExternalInterface.call("console.log","Wrong game version");
             MessageCenter.sendEvent(new Message("Wrong Version"));
          }
          if(response.responseCode == 0)
          {
+            ExternalInterface.call("console.log","Responsecode is 0 yay!!!");
             if(_loc2_.buffered)
             {
+               ExternalInterface.call("console.log","And its in the buffer YAY!!!");
                responseBuffer.push(response);
             }
             else if(_loc2_.hasCallback())
             {
+               ExternalInterface.call("console.log","And it has a callback YAY!!!");
                _loc3_ = _loc2_.callback;
                _loc3_(response);
             }
@@ -109,3 +115,4 @@ package com.dchoc.net
       }
    }
 }
+

@@ -2,9 +2,7 @@ package tuxwars
 {
    public class GameSettings
    {
-      
       private static var showAllWeaponsInPractice:Boolean;
-       
       
       public function GameSettings()
       {
@@ -23,3 +21,4 @@ package tuxwars
       }
    }
 }
+

@@ -9,8 +9,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class Teleport implements SimpleScriptCore
    {
-       
-      
       public function Teleport()
       {
          super();
@@ -18,9 +16,9 @@ package tuxwars.battle.simplescript.scripts
       
       public function run(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var _loc5_:* = null;
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc5_:Emission = null;
+         var _loc4_:Vec2 = null;
+         var _loc3_:PlayerGameObject = null;
          if(scriptObject is Emission)
          {
             _loc5_ = scriptObject as Emission;
@@ -36,3 +34,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

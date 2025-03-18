@@ -5,8 +5,7 @@ package tuxwars.battle.simplescript.scripts
    
    public interface SimpleScriptCore
    {
-       
-      
       function run(param1:SimpleScript, param2:SimpleScriptParams) : *;
    }
 }
+

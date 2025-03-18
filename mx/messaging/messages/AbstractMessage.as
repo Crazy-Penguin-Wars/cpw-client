@@ -9,9 +9,10 @@ package mx.messaging.messages
    import mx.utils.RPCStringUtil;
    import mx.utils.RPCUIDUtil;
    
+   use namespace mx_internal;
+   
    public class AbstractMessage implements IMessage
    {
-      
       public static const DESTINATION_CLIENT_ID_HEADER:String = "DSDstClientId";
       
       public static const ENDPOINT_HEADER:String = "DSEndpoint";
@@ -47,9 +48,8 @@ package mx.messaging.messages
       private static const CLIENT_ID_BYTES_FLAG:uint = 1;
       
       private static const MESSAGE_ID_BYTES_FLAG:uint = 2;
-       
       
-      private var _body:Object;
+      private var _body:Object = {};
       
       private var _clientId:String;
       
@@ -69,7 +69,6 @@ package mx.messaging.messages
       
       public function AbstractMessage()
       {
-         this._body = {};
          super();
       }
       
@@ -340,7 +339,7 @@ package mx.messaging.messages
       
       final protected function getDebugString() : String
       {
-         var propertyName:* = null;
+         var propertyName:String = null;
          var i:uint = 0;
          var name:String = null;
          var value:String = null;
@@ -394,3 +393,4 @@ package mx.messaging.messages
       }
    }
 }
+

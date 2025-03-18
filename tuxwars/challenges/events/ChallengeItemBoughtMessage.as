@@ -4,8 +4,6 @@ package tuxwars.challenges.events
    
    public class ChallengeItemBoughtMessage extends Message
    {
-       
-      
       private var _playerId:String;
       
       public function ChallengeItemBoughtMessage(itemType:String, playerId:String)
@@ -25,3 +23,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

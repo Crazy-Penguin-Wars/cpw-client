@@ -10,6 +10,7 @@ package com.dchoc.resources
    import flash.events.EventDispatcher;
    import flash.events.IOErrorEvent;
    import flash.events.ProgressEvent;
+   import flash.external.ExternalInterface;
    import flash.net.URLRequest;
    import flash.system.ApplicationDomain;
    import flash.system.LoaderContext;
@@ -19,9 +20,6 @@ package com.dchoc.resources
    
    public class DCResourceManager extends EventDispatcher
    {
-      
-      private static const MEDIA_SPEED_DATAS:Vector.<MediaSpeedData> = new Vector.<MediaSpeedData>();
-      
       public static const TYPE_MOVIE_CLIP:String = "MovieClip";
       
       public static const TYPE_BYTE_ARRAY:String = "ByteArray";
@@ -40,8 +38,9 @@ package com.dchoc.resources
       
       private static var crossDomainPrefix:String;
       
+      private static const MEDIA_SPEED_DATAS:Vector.<MediaSpeedData> = new Vector.<MediaSpeedData>();
+      
       public static const instance:DCResourceManager = new DCResourceManager();
-       
       
       private const list:Object = {};
       
@@ -122,22 +121,27 @@ package com.dchoc.resources
       
       public function getFromSWF(resName:String, className:String = null, resType:String = "MovieClip") : *
       {
+         ExternalInterface.call("console.log","Start getting from SWF");
          var _loc6_:int = 0;
-         var _loc5_:* = null;
+         var _loc5_:Class = null;
          if(resName == null)
          {
             return null;
          }
          if(className == null)
          {
-            _loc6_ = resName.lastIndexOf("/");
+            _loc6_ = int(resName.lastIndexOf("/"));
             className = resName.slice(_loc6_ + 1);
             resName = resName.slice(0,_loc6_);
          }
+         ExternalInterface.call("console.log",resName);
+         ExternalInterface.call("console.log",className);
          var _loc4_:ApplicationDomain = getLoadedSWFAppDomain(resName);
+         ExternalInterface.call("console.log",JSON.stringify(_loc4_));
          if(_loc4_ && _loc4_.hasDefinition(className))
          {
             _loc5_ = Class(_loc4_.getDefinition(className));
+            ExternalInterface.call("console.log",JSON.stringify(_loc5_));
             switch(resType)
             {
                case "MovieClip":
@@ -171,7 +175,6 @@ package com.dchoc.resources
             case ".csv":
             case ".json":
             case "TextFile":
-               break;
             case "VariablesTextFile":
                break;
             case ".jpg":
@@ -235,7 +238,7 @@ package com.dchoc.resources
       
       public function isLoaded(resName:String) : Boolean
       {
-         return loaded.hasOwnProperty(resName) ? loaded[resName] : false;
+         return !!loaded.hasOwnProperty(resName) ? loaded[resName] : false;
       }
       
       public function isAddedToLoadingList(resName:String) : Boolean
@@ -266,7 +269,7 @@ package com.dchoc.resources
          var _loc6_:int = 0;
          if(returnType == null)
          {
-            _loc6_ = path.lastIndexOf(".");
+            _loc6_ = int(path.lastIndexOf("."));
             if(_loc6_ != -1)
             {
                returnType = path.substring(_loc6_);
@@ -275,12 +278,17 @@ package com.dchoc.resources
          loaded[resName] = false;
          type[resName] = returnType;
          loadInBackground[resName] = _loadInBackground;
+         ExternalInterface.call("console.log","Start loading file [DCResourceManager.loadFromFile()]: arguments in order:");
+         ExternalInterface.call("console.log",path);
+         ExternalInterface.call("console.log",resName);
+         ExternalInterface.call("console.log",returnType);
+         ExternalInterface.call("console.log",_loadInBackground);
+         ExternalInterface.call("console.log",useContextForSwf);
          switch(returnType)
          {
             case ".csv":
             case ".txt":
             case ".json":
-               break;
             case "TextFile":
                break;
             case "VariablesTextFile":
@@ -308,7 +316,10 @@ package com.dchoc.resources
                }
                else
                {
-                  loaderContext = new LoaderContext(true,ApplicationDomain.currentDomain);
+                  if(true)
+                  {
+                     loaderContext = new LoaderContext(true,ApplicationDomain.currentDomain);
+                  }
                   _loc8_.load(_loc9_,loaderContext);
                }
                resolver[_loc8_.contentLoaderInfo] = new ResourceLoaderObject(resName,_loc9_,loaderContext);
@@ -321,8 +332,8 @@ package com.dchoc.resources
       
       private function progressLoad(event:ProgressEvent) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:URLLoaderWithName = null;
+         var _loc3_:ResourceLoaderObject = null;
          if(event.target is URLLoaderWithName)
          {
             _loc2_ = URLLoaderWithName(event.target);
@@ -353,6 +364,7 @@ package com.dchoc.resources
          var _loc2_:ResourceLoaderObject = resolver[event.target];
          LogUtils.log("Load completed " + _loc2_.resourceName,this,1,"Assets");
          finalizeSpeedData(_loc2_.resourceName,event.target.bytesLoaded);
+         LogUtils.log("So far still works xd",this,1,"Assets");
          event.target.removeEventListener("complete",completeLoad);
          event.target.removeEventListener("progress",progressLoad);
          event.target.removeEventListener("ioError",errorLoad);
@@ -360,7 +372,6 @@ package com.dchoc.resources
          {
             _loc2_.loaderInfo = event.target as LoaderInfo;
             loadSecurityPolicyFile(_loc2_);
-            return;
          }
          finalizeLoading(event.target as LoaderInfo);
       }
@@ -497,3 +508,4 @@ package com.dchoc.resources
       }
    }
 }
+

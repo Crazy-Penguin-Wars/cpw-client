@@ -8,8 +8,6 @@ package tuxwars.battle.ui.screen
    
    public class TopLeftElement
    {
-       
-      
       private var matchTimerElement:MatchTimerElement;
       
       private var _design:MovieClip;
@@ -53,3 +51,4 @@ package tuxwars.battle.ui.screen
       }
    }
 }
+

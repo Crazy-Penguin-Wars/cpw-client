@@ -1,8 +1,8 @@
 package tuxwars.battle.ui.screen.boosterselection
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
+   import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
    import tuxwars.TuxWarsGame;
@@ -16,13 +16,11 @@ package tuxwars.battle.ui.screen.boosterselection
    
    public class BoosterSelectionScreen extends TuxPageSubTabScreen
    {
-      
       private static const BOOSTER_SELECTION:String = "popup_choose_item";
       
       private static const BUTTON_CLOSE:String = "Button_Close";
       
       private static const TEXT_HEADER:String = "Text_Header";
-       
       
       private const TYPE:String = "Type";
       
@@ -75,20 +73,22 @@ package tuxwars.battle.ui.screen.boosterselection
       {
          _objectContainer = new ObjectContainer(contentMoveClip,_game,getButton,"transition_slots_left","transition_slots_right",false);
          var _loc2_:Row = boosterSelectionLogic.getCurrentTab();
+         var _loc7_:String = "Categorys";
          var _loc3_:* = _loc2_;
-         if(!_loc3_._cache["Categorys"])
+         if(!_loc3_._cache[_loc7_])
          {
-            _loc3_._cache["Categorys"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","Categorys");
+            _loc3_._cache[_loc7_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc7_);
          }
-         var _loc1_:Field = _loc3_._cache["Categorys"];
+         var _loc1_:Field = _loc3_._cache[_loc7_];
+         var _loc8_:String = "Type";
          var _loc4_:* = boosterSelectionLogic.getCurrentTab();
          §§push(_objectContainer);
          §§push(boosterSelectionLogic);
-         if(!_loc4_._cache["Type"])
+         if(!_loc4_._cache[_loc8_])
          {
-            _loc4_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","Type");
+            _loc4_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc8_);
          }
-         var _loc5_:* = _loc4_._cache["Type"];
+         var _loc5_:* = _loc4_._cache[_loc8_];
          var _loc6_:*;
          §§pop().init(§§pop().getItems(_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value,!!_loc1_ ? (_loc6_ = _loc1_, _loc6_.overrideValue != null ? _loc6_.overrideValue : _loc6_._value) : null),true);
       }
@@ -134,3 +134,4 @@ package tuxwars.battle.ui.screen.boosterselection
       }
    }
 }
+

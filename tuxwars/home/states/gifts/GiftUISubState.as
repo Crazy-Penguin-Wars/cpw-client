@@ -7,11 +7,10 @@ package tuxwars.home.states.gifts
    
    public class GiftUISubState extends TuxUIState
    {
-       
-      
       public function GiftUISubState(game:TuxWarsGame, params:* = null)
       {
          super(GiftScreen,GiftLogic,game,params);
       }
    }
 }
+

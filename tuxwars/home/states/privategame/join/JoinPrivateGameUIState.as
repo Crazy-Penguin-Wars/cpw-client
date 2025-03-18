@@ -7,11 +7,10 @@ package tuxwars.home.states.privategame.join
    
    public class JoinPrivateGameUIState extends TuxUIState
    {
-       
-      
       public function JoinPrivateGameUIState(game:TuxWarsGame, params:* = null)
       {
          super(JoinPrivateGameScreen,JoinPrivateGameLogic,game,params);
       }
    }
 }
+

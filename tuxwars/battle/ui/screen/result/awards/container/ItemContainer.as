@@ -17,15 +17,13 @@ package tuxwars.battle.ui.screen.result.awards.container
    
    public class ItemContainer extends UIContainer
    {
-      
       private static const SLOT:String = "Slot_0";
-       
       
       private var numSlots:int;
       
       private var _useObjectContainer:Boolean;
       
-      private const slots:Vector.<ItemSlot> = new Vector.<ItemSlot>();
+      private const slots:Vector.<ItemSlot>;
       
       private var objectContainer:ObjectContainer;
       
@@ -41,8 +39,9 @@ package tuxwars.battle.ui.screen.result.awards.container
       
       public function ItemContainer(design:MovieClip, number:int, game:TuxWarsGame, useObjectContainer:Boolean, parent:UIComponent = null)
       {
-         var _loc6_:* = null;
+         var _loc6_:MovieClip = null;
          var i:int = 0;
+         slots = new Vector.<ItemSlot>();
          super(design,parent);
          numSlots = number;
          _useObjectContainer = useObjectContainer;
@@ -75,11 +74,11 @@ package tuxwars.battle.ui.screen.result.awards.container
       public function init(items:Vector.<ItemData>) : void
       {
          var i:int = 0;
-         var currentDesign:* = null;
-         var _loc4_:* = null;
-         var _loc2_:* = null;
-         var _loc3_:* = null;
-         var _loc6_:* = null;
+         var currentDesign:MovieClip = null;
+         var _loc4_:MovieClip = null;
+         var _loc2_:MovieClip = null;
+         var _loc3_:MovieClip = null;
+         var _loc6_:MovieClip = null;
          var value:int = 0;
          LogUtils.log("Init: numSlots: " + numSlots + " itemsLenght: " + items.length + " useObjectContainer: " + _useObjectContainer,this,0,"UI",false);
          if(!_useObjectContainer)
@@ -229,3 +228,4 @@ package tuxwars.battle.ui.screen.result.awards.container
       }
    }
 }
+

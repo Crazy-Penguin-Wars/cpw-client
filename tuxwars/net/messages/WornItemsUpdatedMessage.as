@@ -8,8 +8,6 @@ package tuxwars.net.messages
    
    public class WornItemsUpdatedMessage extends Message
    {
-       
-      
       private var _player:TuxFriend;
       
       private var _clothingItem:ClothingItem;
@@ -56,3 +54,4 @@ package tuxwars.net.messages
       }
    }
 }
+

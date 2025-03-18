@@ -2,8 +2,6 @@ package mx.resources
 {
    public interface IResourceBundle
    {
-       
-      
       function get bundleName() : String;
       
       function get content() : Object;
@@ -11,3 +9,4 @@ package mx.resources
       function get locale() : String;
    }
 }
+

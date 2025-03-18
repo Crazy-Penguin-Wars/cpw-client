@@ -13,7 +13,6 @@ package tuxwars.ui.popups.screen
    
    public class PopUpBaseScreen extends TuxUIScreen
    {
-      
       private static const BUTTON_CLOSE:String = "Button_Close";
       
       private static const BUTTON_OK:String = "Button_Ok";
@@ -21,7 +20,6 @@ package tuxwars.ui.popups.screen
       private static const TEXT_MESSAGE:String = "Text_Message";
       
       private static const TEXT_HEADER:String = "Text_Header";
-       
       
       protected const headerField:UIAutoTextField = new UIAutoTextField();
       
@@ -104,3 +102,4 @@ package tuxwars.ui.popups.screen
       }
    }
 }
+

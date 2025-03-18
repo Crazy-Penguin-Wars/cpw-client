@@ -5,9 +5,7 @@ package nape.phys
    
    public final class CompoundIterator
    {
-      
-      public static var zpp_pool:CompoundIterator = null;
-       
+      public static var zpp_pool:CompoundIterator;
       
       public var zpp_next:CompoundIterator;
       
@@ -75,3 +73,4 @@ package nape.phys
       }
    }
 }
+

@@ -8,6 +8,7 @@ package tuxwars.home.ui.screen.home
    import flash.display.DisplayObject;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
+   import flash.external.ExternalInterface;
    import flash.text.TextField;
    import tuxwars.TuxWarsGame;
    import tuxwars.data.Experience;
@@ -18,13 +19,11 @@ package tuxwars.home.ui.screen.home
    
    public class LevelElementScreen extends TuxUIElementScreen
    {
-      
       private static const LEVEL_ICON:String = "Icon_Level";
       
       private static const LEVEL_NUMBER:String = "Text_Level";
       
       private static const EXP_TEXT:String = "Text";
-       
       
       private var levelProgressBar:UIProgressIndicator;
       
@@ -34,6 +33,7 @@ package tuxwars.home.ui.screen.home
       
       public function LevelElementScreen(design:MovieClip, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] LevelElementScreen is the cause (GOT YOU :troll:)");
          super(design,game);
          levelProgressBar = new UIProgressIndicator(design,Experience.getScore(game.player.level),Experience.getScore(game.player.level + 1));
          levelProgressBar.setValue(game.player.expValue);
@@ -93,3 +93,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

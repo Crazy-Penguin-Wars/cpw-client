@@ -8,8 +8,6 @@ package tuxwars.battle.world.loader
    
    public class TerrainModel
    {
-       
-      
       private var _polygon:Vector.<Vec2>;
       
       private var intersectionPoints:Array;
@@ -29,7 +27,7 @@ package tuxwars.battle.world.loader
       
       public function createNewModels() : Array
       {
-         var _loc2_:* = null;
+         var _loc2_:TerrainModel = null;
          var _loc1_:Array = [];
          for each(var newModel in newModels)
          {
@@ -95,7 +93,7 @@ package tuxwars.battle.world.loader
       private function trimIntersectionPoints() : Vector.<Vector.<Point>>
       {
          var i:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:Array = null;
          var _loc1_:int = 0;
          var _loc5_:int = 0;
          var _loc3_:* = undefined;
@@ -184,3 +182,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

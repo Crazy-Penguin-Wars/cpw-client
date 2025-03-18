@@ -5,8 +5,6 @@ package nape.phys
    
    public final class GravMassMode
    {
-       
-      
       public function GravMassMode()
       {
          if(Boot.skip_constructor)
@@ -92,3 +90,4 @@ package nape.phys
       }
    }
 }
+

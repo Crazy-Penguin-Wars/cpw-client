@@ -9,8 +9,6 @@ package tuxwars.challenges.counters
    
    public class KillsHasBetterEquipmentCounter extends KillsCounter
    {
-       
-      
       public function KillsHasBetterEquipmentCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -18,8 +16,8 @@ package tuxwars.challenges.counters
       
       override public function handlePlayerDied(msg:ChallengePlayerDiedMessage) : void
       {
-         var _loc2_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:Tagger = null;
+         var _loc4_:PlayerGameObject = null;
          var _loc3_:int = 0;
          var _loc6_:int = 0;
          var _loc5_:PlayerGameObject = msg.player;
@@ -56,3 +54,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

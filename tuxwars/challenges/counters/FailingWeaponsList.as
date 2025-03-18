@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class FailingWeaponsList extends CounterLessThan
    {
-       
-      
       private var _invalidated:Boolean;
       
       public function FailingWeaponsList(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -81,3 +79,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

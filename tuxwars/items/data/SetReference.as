@@ -1,9 +1,8 @@
 package tuxwars.items.data
 {
    import com.dchoc.gameobjects.stats.Stats;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import tuxwars.battle.data.follower.FollowerData;
    import tuxwars.battle.data.follower.Followers;
    import tuxwars.items.Equippable;
@@ -12,7 +11,6 @@ package tuxwars.items.data
    
    public class SetReference
    {
-      
       private static const STAT_BONUSES:String = "StatBonuses";
       
       private static const SPECIAL:String = "Special";
@@ -20,7 +18,6 @@ package tuxwars.items.data
       private static const FOLLOWERS:String = "Followers";
       
       private static const STAT_BONUS_DESC_TEXT_OVERRIDE:String = "StatBonusDescTextOverride";
-       
       
       private var _row:Row;
       
@@ -39,28 +36,30 @@ package tuxwars.items.data
       
       public function get statBonusDescTextOverride() : String
       {
+         var _loc4_:String = "StatBonusDescTextOverride";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["StatBonusDescTextOverride"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["StatBonusDescTextOverride"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","StatBonusDescTextOverride");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["StatBonusDescTextOverride"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, ProjectManager.getText(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : "";
       }
       
       public function get statBonuses() : Stats
       {
-         var _loc1_:* = null;
-         var bonusReference:* = null;
+         var _loc1_:Field = null;
+         var bonusReference:StatBonusReference = null;
          if(!_statBonuses)
          {
+            var _loc8_:String = "StatBonuses";
             var _loc4_:Row = _row;
-            if(!_loc4_._cache["StatBonuses"])
+            if(!_loc4_._cache[_loc8_])
             {
-               _loc4_._cache["StatBonuses"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","StatBonuses");
+               _loc4_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc8_);
             }
-            _loc1_ = _loc4_._cache["StatBonuses"];
+            _loc1_ = _loc4_._cache[_loc8_];
             if(_loc1_)
             {
                var _loc5_:* = _loc1_;
@@ -83,26 +82,29 @@ package tuxwars.items.data
       
       public function get special() : SpecialReference
       {
+         var _loc4_:String = "Special";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Special"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Special"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Special");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Special"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, new SpecialReference(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : null;
       }
       
       public function get followers() : Vector.<FollowerData>
       {
+         var _loc4_:String = "Followers";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Followers"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Followers"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Followers");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Followers"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return Followers.getFollowersData(!!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null);
       }
    }
 }
+

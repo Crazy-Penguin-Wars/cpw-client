@@ -7,8 +7,6 @@ package tuxwars.ui.popups.logic.error
    
    public class ErrorPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function ErrorPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -25,3 +23,4 @@ package tuxwars.ui.popups.logic.error
       }
    }
 }
+

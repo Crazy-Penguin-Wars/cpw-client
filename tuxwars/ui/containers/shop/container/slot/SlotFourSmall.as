@@ -11,19 +11,17 @@ package tuxwars.ui.containers.shop.container.slot
    
    public class SlotFourSmall extends Container implements IShopTutorial
    {
-      
       private static const NUMBER_OF_SLOTS:int = 4;
       
       private static const SLOT:String = "Slot_0";
-       
       
       private var _content:Vector.<ItemButton>;
       
       public function SlotFourSmall(design:MovieClip, data:*, game:TuxWarsGame, parent:TuxUIScreen = null)
       {
          var i:int = 0;
-         var _loc6_:* = null;
-         var _loc5_:* = null;
+         var _loc6_:MovieClip = null;
+         var _loc5_:ItemButton = null;
          super(design,data,game,parent);
          if(data is Array)
          {
@@ -85,3 +83,4 @@ package tuxwars.ui.containers.shop.container.slot
       }
    }
 }
+

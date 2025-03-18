@@ -6,11 +6,11 @@ package mx.rpc.events
    import mx.messaging.messages.IMessage;
    import mx.rpc.AsyncToken;
    
+   use namespace mx_internal;
+   
    public class ResultEvent extends AbstractEvent
    {
-      
       public static const RESULT:String = "result";
-       
       
       private var _result:Object;
       
@@ -77,3 +77,4 @@ package mx.rpc.events
       }
    }
 }
+

@@ -9,6 +9,7 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.ui.text.UIAutoTextField;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
+   import flash.external.ExternalInterface;
    import flash.text.TextField;
    import tuxwars.net.CRMService;
    import tuxwars.net.NeighborService;
@@ -18,7 +19,6 @@ package tuxwars.home.ui.screen.home
    
    public class FriendSlot implements IResourceLoaderURL
    {
-      
       private static const SLOT_DISABLED:String = "Slot_Disabled";
       
       private static const SLOT_DEFAULT:String = "Slot_Default";
@@ -30,7 +30,6 @@ package tuxwars.home.ui.screen.home
       private static const LEVEL_FIELD:String = "Text_Level";
       
       private static const PICTURE_CONTAINER:String = "Container_Profile_Picture";
-       
       
       private var slotDefault:MovieClip;
       
@@ -48,11 +47,15 @@ package tuxwars.home.ui.screen.home
       
       public function FriendSlot(design:MovieClip)
       {
-         var _loc2_:* = null;
+         ExternalInterface.call("console.log","[AnnoyingDebug] FriendSlot is the cause (GOT YOU :troll:)");
+         var _loc2_:TextField = null;
          super();
          _design = design;
+         ExternalInterface.call("console.log","[FriendSlot] Point 1 works");
          slotDefault = MovieClip(design.getChildByName("Slot_Default"));
+         ExternalInterface.call("console.log","[FriendSlot] Point 2 works");
          addFriendButton = TuxUiUtils.createButton(UIButton,design,"Slot_Disabled",addFriendCallback,"BUTTON_ADD","TOOLTIP_ADD_FRIEND");
+         ExternalInterface.call("console.log","[FriendSlot] Point 3 works");
          addFriendButton.addEventListener("out",mouseOut,false,0,true);
          addFriendButton.addEventListener("over",mouseOver,false,0,true);
          nameTextField = new UIAutoTextField(slotDefault.getChildByName("Text_Name") as TextField);
@@ -154,3 +157,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

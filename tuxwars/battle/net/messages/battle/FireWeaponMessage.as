@@ -5,19 +5,17 @@ package tuxwars.battle.net.messages.battle
    
    public class FireWeaponMessage extends BattleMessage
    {
-       
-      
       public function FireWeaponMessage(vec:Vec2, loc:Vec2, powerBar:int, weaponId:String, id:String)
       {
          super({
             "t":10,
             "id":id,
-            "x":vec.x,
-            "y":vec.y,
+            "x":int(vec.x),
+            "y":int(vec.y),
             "pb":powerBar,
             "wid":weaponId,
-            "lx":loc.x,
-            "ly":loc.y
+            "lx":int(loc.x),
+            "ly":int(loc.y)
          });
       }
       
@@ -27,3 +25,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

@@ -2,7 +2,6 @@ package com.dchoc.ui
 {
    public class UIStates
    {
-      
       public static const VISIBLE:String = "Visible";
       
       public static const UP:String = "Visible";
@@ -24,7 +23,6 @@ package com.dchoc.ui
       public static const OPEN:String = "Visible";
       
       public static const CLOSED:String = "Close";
-       
       
       public function UIStates()
       {
@@ -32,3 +30,4 @@ package com.dchoc.ui
       }
    }
 }
+

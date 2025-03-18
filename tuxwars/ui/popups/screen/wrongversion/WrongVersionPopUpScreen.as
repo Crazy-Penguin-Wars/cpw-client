@@ -12,8 +12,6 @@ package tuxwars.ui.popups.screen.wrongversion
    
    public class WrongVersionPopUpScreen extends PopUpBaseScreen implements IResourceLoaderURL
    {
-       
-      
       private var loader:URLResourceLoader;
       
       public function WrongVersionPopUpScreen(game:TuxWarsGame)
@@ -52,3 +50,4 @@ package tuxwars.ui.popups.screen.wrongversion
       }
    }
 }
+

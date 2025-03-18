@@ -16,13 +16,11 @@ package tuxwars.battle.simplescript
    
    public class SimpleScriptManager
    {
-      
       private static const PACKAGE:String = "tuxwars.battle.simplescript.scripts.";
       
       private static var _instance:SimpleScriptManager;
       
       private static const waitingScripts:Object = {};
-       
       
       public function SimpleScriptManager()
       {
@@ -36,8 +34,9 @@ package tuxwars.battle.simplescript
       
       public static function get instance() : SimpleScriptManager
       {
-         if(_instance)
+         if(!_instance)
          {
+            new SimpleScriptManager();
          }
          return _instance;
       }
@@ -45,8 +44,8 @@ package tuxwars.battle.simplescript
       public static function parseSimpleScriptFromOdsData(array:Array) : Array
       {
          var i:int = 0;
-         var s:* = null;
-         var _loc3_:* = null;
+         var s:String = null;
+         var _loc3_:Array = null;
          var j:int = 0;
          while(i < array.length)
          {
@@ -90,7 +89,7 @@ package tuxwars.battle.simplescript
       
       public function run(useServerMessage:Boolean, scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var _loc4_:* = null;
+         var _loc4_:String = null;
          if(scriptObject == null)
          {
             LogUtils.log("SimpleScript object is null",this,2,"SimpleScript",false,false,true);
@@ -136,12 +135,12 @@ package tuxwars.battle.simplescript
       
       private function runServerCommand(response:SimpleScriptResponse) : void
       {
-         var _loc3_:* = null;
-         var _loc9_:* = null;
-         var _loc8_:* = null;
-         var _loc6_:* = null;
-         var _loc2_:* = null;
-         var _loc7_:* = null;
+         var _loc3_:Vec2 = null;
+         var _loc9_:Vec2 = null;
+         var _loc8_:Point = null;
+         var _loc6_:Point = null;
+         var _loc2_:SimpleScript = null;
+         var _loc7_:SimpleScriptParams = null;
          var _loc5_:* = undefined;
          var _loc4_:Array = waitingScripts[response.scriptId];
          delete waitingScripts[response.scriptId];
@@ -171,7 +170,7 @@ package tuxwars.battle.simplescript
       
       private function actualRun(scriptObject:SimpleScript, params:SimpleScriptParams) : *
       {
-         var _loc4_:* = null;
+         var _loc4_:SimpleScriptCore = null;
          var _loc3_:String = "tuxwars.battle.simplescript.scripts." + scriptObject.className;
          var _loc5_:Class = getDefinitionByName(_loc3_) as Class;
          if(_loc5_)
@@ -197,3 +196,4 @@ package tuxwars.battle.simplescript
       }
    }
 }
+

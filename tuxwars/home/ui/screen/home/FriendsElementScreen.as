@@ -9,6 +9,7 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.states.slotmachine.SlotMachineState;
    import tuxwars.home.ui.screen.TuxUIElementScreen;
@@ -22,7 +23,6 @@ package tuxwars.home.ui.screen.home
    
    public class FriendsElementScreen extends TuxUIElementScreen
    {
-      
       private static const FRIEND_SLOTS_AMOUNT:int = 5;
       
       private static const FRIEND_BAR:String = "HUD_Friends_Bar";
@@ -48,7 +48,6 @@ package tuxwars.home.ui.screen.home
       private static const CONTAINER_SLOTS:String = "Container_Slots";
       
       private static const FRIEND_SLOT:String = "Slot_0";
-       
       
       private var totalAmountOfAvailableSlots:int;
       
@@ -76,6 +75,7 @@ package tuxwars.home.ui.screen.home
       
       public function FriendsElementScreen(whereToAdd:MovieClip, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] FriendsElementScreen is the cause (GOT YOU :troll:)");
          friendSlots = new Vector.<FriendSlot>();
          friends = new Vector.<Friend>();
          var _loc3_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/home_screen.swf","home_screen");
@@ -178,7 +178,7 @@ package tuxwars.home.ui.screen.home
          cursorPos = 0;
          if(friends.length > 5)
          {
-            _loc2_ = friends.indexOf(game.player.friends.findMe());
+            _loc2_ = int(friends.indexOf(game.player.friends.findMe()));
             centralizedPos = _loc2_ - 2;
             while(centralizedPos < 0)
             {
@@ -210,7 +210,7 @@ package tuxwars.home.ui.screen.home
       private function initSlots(slots:MovieClip) : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:FriendSlot = null;
          totalAmountOfAvailableSlots = slots.numChildren;
          for(i = 0; i < totalAmountOfAvailableSlots; )
          {
@@ -328,3 +328,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

@@ -4,11 +4,11 @@ package starling.animation
    import starling.events.Event;
    import starling.events.EventDispatcher;
    
+   use namespace starling_internal;
+   
    public class Tween extends EventDispatcher implements IAnimatable
    {
-      
       private static var sTweenPool:Vector.<Tween> = new Vector.<Tween>(0);
-       
       
       private var mTarget:Object;
       
@@ -62,7 +62,7 @@ package starling.animation
          this.reset(target,time,transition);
       }
       
-      starling_internal internal static function fromPool(target:Object, time:Number, transition:Object = "linear") : Tween
+      starling_internal static function fromPool(target:Object, time:Number, transition:Object = "linear") : Tween
       {
          if(Boolean(sTweenPool.length))
          {
@@ -71,7 +71,7 @@ package starling.animation
          return new Tween(target,time,transition);
       }
       
-      starling_internal internal static function toPool(tween:Tween) : void
+      starling_internal static function toPool(tween:Tween) : void
       {
          tween.mOnStart = tween.mOnUpdate = tween.mOnRepeat = tween.mOnComplete = null;
          tween.mOnStartArgs = tween.mOnUpdateArgs = tween.mOnRepeatArgs = tween.mOnCompleteArgs = null;
@@ -191,7 +191,7 @@ package starling.animation
          }
          var ratio:Number = this.mCurrentTime / this.mTotalTime;
          var reversed:Boolean = this.mReverse && this.mCurrentCycle % 2 == 1;
-         var numProperties:int = this.mStartValues.length;
+         var numProperties:int = int(this.mStartValues.length);
          for(i = 0; i < numProperties; i++)
          {
             if(isNaN(this.mStartValues[i]))
@@ -433,3 +433,4 @@ package starling.animation
       }
    }
 }
+

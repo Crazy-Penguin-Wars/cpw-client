@@ -2,8 +2,6 @@ package tuxwars.items.references
 {
    public class PriceObject
    {
-       
-      
       private var _isPremiumCurrency:Boolean;
       
       private var _priceValue:int;
@@ -58,3 +56,4 @@ package tuxwars.items.references
       }
    }
 }
+

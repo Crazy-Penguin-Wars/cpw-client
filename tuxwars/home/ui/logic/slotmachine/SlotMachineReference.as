@@ -1,13 +1,12 @@
 package tuxwars.home.ui.logic.slotmachine
 {
    import com.dchoc.data.GraphicsReference;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    
    public class SlotMachineReference
    {
-      
       public static const TABLE:String = "SlotMachine";
       
       public static const SLOTCONF:String = "SlotMachineConfiguration";
@@ -27,7 +26,6 @@ package tuxwars.home.ui.logic.slotmachine
       private static const REWARD_ITEM_AMOUNT:String = "RewardItemAmount";
       
       private static const PLAY_PRICE_IN_CASH:String = "PlayPriceInCash";
-       
       
       private var _row:Row;
       
@@ -68,12 +66,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "SortOrder";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["SortOrder"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["SortOrder"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SortOrder");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["SortOrder"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -88,12 +87,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "PlayPriceInCash";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["PlayPriceInCash"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["PlayPriceInCash"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","PlayPriceInCash");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["PlayPriceInCash"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -108,12 +108,13 @@ package tuxwars.home.ui.logic.slotmachine
       {
          if(_row)
          {
+            var _loc4_:String = "RewardItemAmount";
             var _loc2_:Row = _row;
-            if(!_loc2_._cache["RewardItemAmount"])
+            if(!_loc2_._cache[_loc4_])
             {
-               _loc2_._cache["RewardItemAmount"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","RewardItemAmount");
+               _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
             }
-            §§push(_loc2_._cache["RewardItemAmount"]);
+            §§push(_loc2_._cache[_loc4_]);
          }
          else
          {
@@ -129,12 +130,13 @@ package tuxwars.home.ui.logic.slotmachine
          var rnd:int = 0;
          if(_row)
          {
+            var _loc6_:String = "RewardItem";
             var _loc4_:Row = _row;
-            if(!_loc4_._cache["RewardItem"])
+            if(!_loc4_._cache[_loc6_])
             {
-               _loc4_._cache["RewardItem"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","RewardItem");
+               _loc4_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc6_);
             }
-            §§push(_loc4_._cache["RewardItem"]);
+            §§push(_loc4_._cache[_loc6_]);
          }
          else
          {
@@ -156,3 +158,4 @@ package tuxwars.home.ui.logic.slotmachine
       }
    }
 }
+

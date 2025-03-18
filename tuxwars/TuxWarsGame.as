@@ -11,12 +11,12 @@ package tuxwars
    import com.dchoc.net.Server;
    import com.dchoc.resources.ResourceLoaderURL;
    import com.dchoc.states.State;
-   import com.dchoc.utils.DCUtils;
-   import com.dchoc.utils.LogUtils;
+   import com.dchoc.utils.*;
    import flash.display.Bitmap;
    import flash.display.LoaderInfo;
    import flash.display.Stage;
    import flash.events.KeyboardEvent;
+   import flash.external.ExternalInterface;
    import flash.net.FileReference;
    import flash.utils.ByteArray;
    import no.olog.Olog;
@@ -46,12 +46,9 @@ package tuxwars
    
    public class TuxWarsGame extends DCGame
    {
-      
       private static const ONE_HUNDRED_MEGS:uint = 104857600;
       
-      {
-         ClassReferences;
-      }
+      ClassReferences;
       
       private const _player:Player = new Player(true);
       
@@ -88,12 +85,14 @@ package tuxwars
          Config.init(LoaderInfo(com.dchoc.game.DCGame._stage.root.loaderInfo).parameters);
          if(Config.debugMode)
          {
+            var _loc9_:Boolean = false;
             var _loc3_:Olog = Olog;
-            no.olog.Ocore.setCMI(false);
+            no.olog.Ocore.setCMI(_loc9_);
             var _loc4_:Olog = Olog;
             stage.addChild(no.olog.Owindow.instance);
+            var _loc10_:Boolean = true;
             var _loc5_:Olog = Olog;
-            no.olog.Oplist.stackRepeatedMessages = true;
+            no.olog.Oplist.stackRepeatedMessages = _loc10_;
             Olog.close();
          }
          Server.init();
@@ -161,13 +160,20 @@ package tuxwars
       
       public function loadingCompleted() : void
       {
+         ExternalInterface.call("console.log","[MichiDebug] Start running loadingCompleted()");
          gameLoaded = true;
          Stat.init();
+         ExternalInterface.call("console.log","[MichiDebug] Ran Stat.init() successfully");
          player.inventory.initInventory();
+         ExternalInterface.call("console.log","[MichiDebug] Ran player.inventory.initInventory() successfully");
          var _loc1_:DCGame = DCGame;
+         ExternalInterface.call("console.log","[MichiDebug] Ran DCGame thingy successfully (whatever it does lol)");
          com.dchoc.game.DCGame._stage.addEventListener("keyUp",keyUp,false,0,true);
+         ExternalInterface.call("console.log","[MichiDebug] Ran addEventListener() successfully");
          SoundManager.preLoadSounds();
+         ExternalInterface.call("console.log","[MichiDebug] Ran SoundManager.preLoadSounds() successfully");
          PlayerBattleReportCollector.init(_player);
+         ExternalInterface.call("console.log","[MichiDebug] Ran PlayerBattleReportCollector.init() successfully");
       }
       
       public function setUpDailyNews(data:Array) : void
@@ -217,7 +223,7 @@ package tuxwars
       
       public function get currentState() : *
       {
-         var testState:* = null;
+         var testState:State = null;
          if(state != null)
          {
             testState = state;
@@ -232,7 +238,7 @@ package tuxwars
       
       public function get currentStateParent() : *
       {
-         var testState:* = null;
+         var testState:State = null;
          var previousState:* = null;
          if(state != null)
          {
@@ -295,7 +301,7 @@ package tuxwars
       
       private function errorMessageHandler(msg:ErrorMessage) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          LogUtils.log("ERROR: Code: " + msg.code + " Desc: " + msg.description,"TuxWarsGame",3,"ErrorLogging",true,true);
          if(msg.error)
          {
@@ -378,7 +384,6 @@ package tuxwars
                   if(event.ctrlKey)
                   {
                      saveAll();
-                     break;
                   }
             }
          }
@@ -390,12 +395,13 @@ package tuxwars
       
       private function saveAll(ext:String = "zip") : void
       {
-         var str:* = null;
+         var str:String = null;
+         var _loc14_:String = "All";
          var _loc7_:LogUtils = LogUtils;
          var _loc17_:String = "";
-         if(com.dchoc.utils.LogUtils.DEBUG_LOG.hasOwnProperty("All"))
+         if(com.dchoc.utils.LogUtils.DEBUG_LOG.hasOwnProperty(_loc14_))
          {
-            var _loc16_:Vector.<String> = com.dchoc.utils.LogUtils.DEBUG_LOG["All"];
+            var _loc16_:Vector.<String> = com.dchoc.utils.LogUtils.DEBUG_LOG[_loc14_];
             for each(var _loc15_ in _loc16_)
             {
                _loc17_ += _loc15_ + "\n";
@@ -451,3 +457,4 @@ package tuxwars
       }
    }
 }
+

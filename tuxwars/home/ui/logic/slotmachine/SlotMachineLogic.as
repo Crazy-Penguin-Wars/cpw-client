@@ -3,9 +3,10 @@ package tuxwars.home.ui.logic.slotmachine
    import com.dchoc.data.GraphicsReference;
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.URLResourceLoader;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.data.SoundMessage;
    import tuxwars.data.SoundReference;
@@ -21,8 +22,6 @@ package tuxwars.home.ui.logic.slotmachine
    
    public class SlotMachineLogic extends TuxUILogic
    {
-       
-      
       private const _slots:Array = [];
       
       private const _winslots:Array = [];
@@ -37,13 +36,13 @@ package tuxwars.home.ui.logic.slotmachine
       
       private const CHECK_SEQUENCE:Array = [1,2,0,3,4];
       
-      private var amountOfFriends:Array;
+      private var amountOfFriends:Array = [];
       
-      private var winLines:Array;
+      private var winLines:Array = [];
       
-      private var awardArray:Array;
+      private var awardArray:Array = [];
       
-      private var winMessageArray:Array;
+      private var winMessageArray:Array = [];
       
       private var servedItem:String;
       
@@ -87,15 +86,12 @@ package tuxwars.home.ui.logic.slotmachine
       
       public function SlotMachineLogic(game:TuxWarsGame, state:TuxState)
       {
-         amountOfFriends = [];
-         winLines = [];
-         awardArray = [];
-         winMessageArray = [];
          super(game,state);
          amountFriends = game.player.friends.getOnlyNeighbors().length + 1;
          var aria:Array = [];
+         var _loc30_:String = "SlotMachine";
          var _loc7_:ProjectManager = ProjectManager;
-         var _loc8_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachine");
+         var _loc8_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc30_);
          for each(var row in _loc8_._rows)
          {
             aria.push(new SlotMachineReference(row));
@@ -116,48 +112,55 @@ package tuxwars.home.ui.logic.slotmachine
             _slots.push(hr.id);
             _slots.push(hr);
          }
+         var _loc31_:String = "SlotWin";
          var _loc18_:ProjectManager = ProjectManager;
-         var _loc19_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotWin");
+         var _loc19_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc31_);
          for each(var row2 in _loc19_._rows)
          {
             _winslots.push(new SlotWinReference(row2));
          }
          _winslots.sort(sortWinByPriority);
+         var _loc32_:String = "SlotMachineConfiguration";
          var _loc22_:ProjectManager = ProjectManager;
-         var _loc23_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachineConfiguration");
-         if(!_loc23_._cache["Default"])
+         var _loc33_:String = "Default";
+         var _loc23_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc32_);
+         if(!_loc23_._cache[_loc33_])
          {
-            var _loc34_:Row = com.dchoc.utils.DCUtils.find(_loc23_.rows,"id","Default");
+            var _loc34_:Row = com.dchoc.utils.DCUtils.find(_loc23_.rows,"id",_loc33_);
             if(!_loc34_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc23_.name + "\'",_loc23_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc33_ + "\' was found in table: \'" + _loc23_.name + "\'",_loc23_,3);
             }
-            _loc23_._cache["Default"] = _loc34_;
+            _loc23_._cache[_loc33_] = _loc34_;
          }
-         var _loc24_:* = _loc23_._cache["Default"];
-         if(!_loc24_._cache["MaxDailySlotMachinePlays"])
+         var _loc35_:String = "MaxDailySlotMachinePlays";
+         var _loc24_:* = _loc23_._cache[_loc33_];
+         if(!_loc24_._cache[_loc35_])
          {
-            _loc24_._cache["MaxDailySlotMachinePlays"] = com.dchoc.utils.DCUtils.find(_loc24_._fields,"name","MaxDailySlotMachinePlays");
+            _loc24_._cache[_loc35_] = com.dchoc.utils.DCUtils.find(_loc24_._fields,"name",_loc35_);
          }
-         var _loc25_:* = _loc24_._cache["MaxDailySlotMachinePlays"];
+         var _loc25_:* = _loc24_._cache[_loc35_];
          maxDailySpins = _loc25_.overrideValue != null ? _loc25_.overrideValue : _loc25_._value;
+         var _loc36_:String = "SlotMachineConfiguration";
          var _loc26_:ProjectManager = ProjectManager;
-         var _loc27_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachineConfiguration");
-         if(!_loc27_._cache["Default"])
+         var _loc37_:String = "Default";
+         var _loc27_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc36_);
+         if(!_loc27_._cache[_loc37_])
          {
-            var _loc38_:Row = com.dchoc.utils.DCUtils.find(_loc27_.rows,"id","Default");
+            var _loc38_:Row = com.dchoc.utils.DCUtils.find(_loc27_.rows,"id",_loc37_);
             if(!_loc38_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc27_.name + "\'",_loc27_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc37_ + "\' was found in table: \'" + _loc27_.name + "\'",_loc27_,3);
             }
-            _loc27_._cache["Default"] = _loc38_;
+            _loc27_._cache[_loc37_] = _loc38_;
          }
-         var _loc28_:* = _loc27_._cache["Default"];
-         if(!_loc28_._cache["PlayPriceInCash"])
+         var _loc39_:String = "PlayPriceInCash";
+         var _loc28_:* = _loc27_._cache[_loc37_];
+         if(!_loc28_._cache[_loc39_])
          {
-            _loc28_._cache["PlayPriceInCash"] = com.dchoc.utils.DCUtils.find(_loc28_._fields,"name","PlayPriceInCash");
+            _loc28_._cache[_loc39_] = com.dchoc.utils.DCUtils.find(_loc28_._fields,"name",_loc39_);
          }
-         var _loc29_:* = _loc28_._cache["PlayPriceInCash"];
+         var _loc29_:* = _loc28_._cache[_loc39_];
          costPerSpin = _loc29_.overrideValue != null ? _loc29_.overrideValue : _loc29_._value;
          addListeners();
       }
@@ -205,7 +208,7 @@ package tuxwars.home.ui.logic.slotmachine
       
       private function setStartingPosition() : void
       {
-         var row:* = null;
+         var row:GraphicsReference = null;
          slotMachineScreen.setLineStateDefault(getAmountFriends());
          servedReel1 = Math.round(Math.random() * 23);
          servedReel2 = Math.round(Math.random() * 23);
@@ -223,23 +226,26 @@ package tuxwars.home.ui.logic.slotmachine
       
       public function getReel(returnRow:int, reelNumber:int) : GraphicsReference
       {
+         var _loc9_:String = "SlotMachine";
          var _loc3_:ProjectManager = ProjectManager;
-         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachine");
-         if(returnRow > Number(_loc4_._rows.length) - 1)
+         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc9_);
+         if(returnRow > _loc4_._rows.length - 1)
          {
             returnRow = 0;
          }
          else if(returnRow < -1)
          {
+            var _loc10_:String = "SlotMachine";
             var _loc5_:ProjectManager = ProjectManager;
-            var _loc6_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachine");
-            returnRow = Number(_loc6_._rows.length) - 2;
+            var _loc6_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc10_);
+            returnRow = _loc6_._rows.length - 2;
          }
          else if(returnRow < 0)
          {
+            var _loc11_:String = "SlotMachine";
             var _loc7_:ProjectManager = ProjectManager;
-            var _loc8_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachine");
-            returnRow = Number(_loc8_._rows.length) - 1;
+            var _loc8_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc11_);
+            returnRow = _loc8_._rows.length - 1;
          }
          return (_slots[_slots.indexOf("Set" + (returnRow + 1)) + 1] as SlotMachineReference).getResult(reelNumber);
       }
@@ -252,7 +258,7 @@ package tuxwars.home.ui.logic.slotmachine
       
       public function generateReels(msg:Message) : void
       {
-         var row:* = null;
+         var row:GraphicsReference = null;
          var _loc3_:Object = msg.data;
          _data = _loc3_;
          if(_loc3_ != null)
@@ -398,10 +404,10 @@ package tuxwars.home.ui.logic.slotmachine
       
       private function startWinAnimations() : void
       {
-         var spinlightSound:* = null;
+         var spinlightSound:SoundReference = null;
          var i:int = 0;
          var jackPotLine:int = 0;
-         var sound:* = null;
+         var sound:SoundReference = null;
          if(winLines.length != 0)
          {
             spinlightSound = Sounds.getSoundReference("SlotMachineSpinLightAfter");
@@ -513,7 +519,7 @@ package tuxwars.home.ui.logic.slotmachine
             return false;
          }
          var _loc1_:SlotMachineConfReference = SlotMachineConfReference;
-         game.player.addPremiumMoney(-Number(tuxwars.home.ui.logic.slotmachine.SlotMachineConfReference.getRow().findField("PlayPriceInCash").value));
+         game.player.addPremiumMoney(-tuxwars.home.ui.logic.slotmachine.SlotMachineConfReference.getRow().findField("PlayPriceInCash").value);
          CRMService.sendEvent("Economy","Spend PC","Confirmed","Slotmachine_Pull_Lever");
          return true;
       }
@@ -550,7 +556,7 @@ package tuxwars.home.ui.logic.slotmachine
       public function giveAllRewards() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:ItemData = null;
          for(i = 0; i < awardArray.length / 4; )
          {
             if(awardArray[1 + i * 4] == "Award_Exp")
@@ -583,26 +589,29 @@ package tuxwars.home.ui.logic.slotmachine
       {
          var xpScaledValue:int = 0;
          var level:int = game.player.level;
+         var _loc10_:String = "SlotMachineConfiguration";
          var _loc6_:ProjectManager = ProjectManager;
-         var _loc7_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("SlotMachineConfiguration");
-         if(!_loc7_._cache["Default"])
+         var _loc11_:String = "Default";
+         var _loc7_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc10_);
+         if(!_loc7_._cache[_loc11_])
          {
-            var _loc12_:Row = com.dchoc.utils.DCUtils.find(_loc7_.rows,"id","Default");
+            var _loc12_:Row = com.dchoc.utils.DCUtils.find(_loc7_.rows,"id",_loc11_);
             if(!_loc12_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc7_.name + "\'",_loc7_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc11_ + "\' was found in table: \'" + _loc7_.name + "\'",_loc7_,3);
             }
-            _loc7_._cache["Default"] = _loc12_;
+            _loc7_._cache[_loc11_] = _loc12_;
          }
-         var _loc8_:* = _loc7_._cache["Default"];
-         if(!_loc8_._cache["XPModifier"])
+         var _loc13_:String = "XPModifier";
+         var _loc8_:* = _loc7_._cache[_loc11_];
+         if(!_loc8_._cache[_loc13_])
          {
-            _loc8_._cache["XPModifier"] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name","XPModifier");
+            _loc8_._cache[_loc13_] = com.dchoc.utils.DCUtils.find(_loc8_._fields,"name",_loc13_);
          }
-         var _loc9_:* = _loc8_._cache["XPModifier"];
+         var _loc9_:* = _loc8_._cache[_loc13_];
          var modifier:Number = Number(_loc9_.overrideValue != null ? _loc9_.overrideValue : _loc9_._value);
          var baseValue:* = value;
-         return level * (level * (Math.log(level) * (modifier * baseValue))) + baseValue;
+         return int(level * (level * (Math.log(level) * (modifier * baseValue))) + baseValue);
       }
       
       public function getPlayerCash() : int
@@ -611,3 +620,4 @@ package tuxwars.home.ui.logic.slotmachine
       }
    }
 }
+

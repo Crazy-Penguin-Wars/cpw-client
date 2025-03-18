@@ -8,9 +8,7 @@ package zpp_nape.space
    
    public class ZPP_AABBTree
    {
-      
-      public static var tmpaabb:ZPP_AABB = new ZPP_AABB();
-       
+      public static var tmpaabb:ZPP_AABB;
       
       public var root:ZPP_AABBNode;
       
@@ -43,6 +41,7 @@ package zpp_nape.space
          if(param1 == root)
          {
             root = null;
+            null;
          }
          else
          {
@@ -383,6 +382,7 @@ package zpp_nape.space
                ZPP_AABB.zpp_pool = _loc16_.aabb.next;
                _loc16_.aabb.next = null;
             }
+            null;
             _loc16_.moved = false;
             _loc16_.synced = false;
             _loc16_.first_sync = false;
@@ -962,6 +962,7 @@ package zpp_nape.space
                ZPP_AABB.zpp_pool = _loc16_.aabb.next;
                _loc16_.aabb.next = null;
             }
+            null;
             _loc16_.moved = false;
             _loc16_.synced = false;
             _loc16_.first_sync = false;
@@ -1246,3 +1247,6 @@ package zpp_nape.space
       }
    }
 }
+
+import zpp_nape.geom.ZPP_AABB;
+

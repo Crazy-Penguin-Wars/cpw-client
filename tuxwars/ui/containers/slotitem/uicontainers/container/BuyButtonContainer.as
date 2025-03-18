@@ -16,8 +16,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
    
    public class BuyButtonContainer extends ButtonContainer
    {
-       
-      
       public function BuyButtonContainer(design:MovieClip, parent:UIComponent = null)
       {
          super(design,parent);
@@ -57,10 +55,10 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       
       override protected function buttonPressed(event:MouseEvent) : void
       {
-         var sound:* = null;
-         var parentName:* = null;
-         var sound2:* = null;
-         var _loc4_:* = null;
+         var sound:SoundReference = null;
+         var parentName:String = null;
+         var sound2:SoundReference = null;
+         var _loc4_:String = null;
          if(canAffordItem())
          {
             sound = Sounds.getSoundReference("Buy");
@@ -110,3 +108,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       }
    }
 }
+

@@ -4,8 +4,7 @@ package tuxwars.ui.containers.shopitem
    
    public interface ButtonContainer
    {
-       
-      
       function get button() : UIButton;
    }
 }
+

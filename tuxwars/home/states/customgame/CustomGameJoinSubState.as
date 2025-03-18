@@ -11,8 +11,6 @@ package tuxwars.home.states.customgame
    
    public class CustomGameJoinSubState extends CustomGameConnectSubState
    {
-       
-      
       public function CustomGameJoinSubState(game:TuxWarsGame, gameName:String, request:ServerRequest)
       {
          super(game,gameName,request);
@@ -32,7 +30,7 @@ package tuxwars.home.states.customgame
          }
          if(gameSettings.battle_time)
          {
-            _loc1_.matchData.matchTime = Number(gameSettings.battle_time) / 60;
+            _loc1_.matchData.matchTime = gameSettings.battle_time / 60;
          }
          if(gameSettings.turn_time)
          {
@@ -44,7 +42,7 @@ package tuxwars.home.states.customgame
       
       private function addOpponents(gameModel:PrivateGameModel) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:PlayerSlotData = null;
          var _loc3_:Array = getOpponents();
          for each(var opponent in _loc3_)
          {
@@ -56,7 +54,7 @@ package tuxwars.home.states.customgame
       
       private function updatePlayerClothes(playerSlotData:PlayerSlotData, wornItems:Array) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:ClothingItem = null;
          for each(var itemId in wornItems)
          {
             _loc3_ = ItemManager.createItem(itemId) as ClothingItem;
@@ -78,3 +76,4 @@ package tuxwars.home.states.customgame
       }
    }
 }
+

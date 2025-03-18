@@ -16,9 +16,7 @@ package tuxwars.ui.components
    
    public class DealSpotElement
    {
-      
       private static const DEALSPOT:String = "Deal_spot_button";
-       
       
       private var _design:MovieClip;
       
@@ -60,7 +58,7 @@ package tuxwars.ui.components
       
       private function getDealSpotURL() : void
       {
-         var httpService:* = null;
+         var httpService:HTTPService = null;
          httpService = new HTTPService();
          if(Config.isDev() || Config.isStage())
          {
@@ -107,7 +105,7 @@ package tuxwars.ui.components
       
       private function resultHandler(event:ResultEvent) : void
       {
-         var result:* = null;
+         var result:Object = null;
          try
          {
             result = JSON.parse(event.result as String);
@@ -135,7 +133,7 @@ package tuxwars.ui.components
       
       private function addDealSpotLoader() : void
       {
-         var request:* = null;
+         var request:URLRequest = null;
          var loader:Loader = new Loader();
          var loader_mc:MovieClip = design.getChildByName("loader") as MovieClip;
          try
@@ -172,3 +170,4 @@ package tuxwars.ui.components
       }
    }
 }
+

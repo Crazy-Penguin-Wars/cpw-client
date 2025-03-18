@@ -13,8 +13,6 @@ package tuxwars.home.ui.screen.inbox.container
    
    public class InboxNoGifts extends InboxCore
    {
-       
-      
       private var buttonSendGifts:UIButton;
       
       public function InboxNoGifts(requestDataObj:RequestData, design:MovieClip, parent:UIComponent = null)
@@ -30,3 +28,4 @@ package tuxwars.home.ui.screen.inbox.container
       }
    }
 }
+

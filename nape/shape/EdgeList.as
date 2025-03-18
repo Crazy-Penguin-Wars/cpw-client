@@ -7,8 +7,6 @@ package nape.shape
    
    public final class EdgeList
    {
-       
-      
       public var zpp_inner:ZPP_EdgeList;
       
       public function EdgeList()
@@ -32,7 +30,7 @@ package nape.shape
          }
          var _loc2_:EdgeList = new EdgeList();
          var _loc3_:int = 0;
-         while(_loc3_ < param1.length)
+         while(_loc3_ < int(param1.length))
          {
             _loc4_ = param1[_loc3_];
             _loc3_++;
@@ -645,7 +643,7 @@ package nape.shape
          {
             while(zpp_inner.at_index != param1)
             {
-               zpp_inner.at_index = zpp_inner.at_index + 1;
+               ++zpp_inner.at_index;
                zpp_inner.at_ite = zpp_inner.at_ite.next;
             }
          }
@@ -658,3 +656,4 @@ package nape.shape
       }
    }
 }
+

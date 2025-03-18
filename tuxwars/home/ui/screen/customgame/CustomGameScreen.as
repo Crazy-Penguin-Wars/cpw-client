@@ -17,9 +17,7 @@ package tuxwars.home.ui.screen.customgame
    
    public class CustomGameScreen extends TuxUIScreen
    {
-      
       private static const MIN_NAME_LENGTH:int = 1;
-       
       
       private var input:UIAutoTextField;
       
@@ -132,3 +130,4 @@ package tuxwars.home.ui.screen.customgame
       }
    }
 }
+

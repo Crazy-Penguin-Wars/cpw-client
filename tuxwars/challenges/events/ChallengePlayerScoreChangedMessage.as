@@ -5,8 +5,6 @@ package tuxwars.challenges.events
    
    public class ChallengePlayerScoreChangedMessage extends Message
    {
-       
-      
       private var _player:PlayerGameObject;
       
       private var _amount:int;
@@ -42,3 +40,4 @@ package tuxwars.challenges.events
       }
    }
 }
+

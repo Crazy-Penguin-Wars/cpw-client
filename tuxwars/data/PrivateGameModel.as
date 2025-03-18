@@ -7,8 +7,6 @@ package tuxwars.data
    
    public class PrivateGameModel
    {
-       
-      
       private const _players:Vector.<PlayerSlotData> = new Vector.<PlayerSlotData>();
       
       private var _name:String;
@@ -74,7 +72,7 @@ package tuxwars.data
       
       private function updatePlayers(playerDatas:Array) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:PlayerSlotData = null;
          _players.splice(0,_players.length);
          for each(var playerData in playerDatas)
          {
@@ -85,7 +83,7 @@ package tuxwars.data
       
       private function updatePlayerClothes(playerSlotData:PlayerSlotData, wornItems:Array) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:ClothingItem = null;
          for each(var itemId in wornItems)
          {
             _loc3_ = ItemManager.createItem(itemId) as ClothingItem;
@@ -101,3 +99,4 @@ package tuxwars.data
       }
    }
 }
+

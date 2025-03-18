@@ -4,8 +4,6 @@ package
    
    public dynamic class en_US$messaging_properties extends ResourceBundle
    {
-       
-      
       public function en_US$messaging_properties()
       {
          super("en_US","messaging");
@@ -91,3 +89,4 @@ package
       }
    }
 }
+

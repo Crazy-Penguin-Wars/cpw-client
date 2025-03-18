@@ -1,13 +1,13 @@
 package tuxwars.home.ui.screen.matchloading
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
    import com.dchoc.ui.buttons.UIButton;
    import com.dchoc.ui.buttons.UIToggleButton;
    import com.dchoc.ui.effects.BuyingAnimation;
    import com.dchoc.ui.groups.UIRadialGroup;
    import com.dchoc.ui.text.UIAutoTextField;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import com.dchoc.utils.MathUtils;
    import flash.display.MovieClip;
@@ -30,7 +30,6 @@ package tuxwars.home.ui.screen.matchloading
    
    public class MatchLoadingScreen extends TuxUIScreen
    {
-      
       private static const BET_MAX_AMOUNT:int = 3;
       
       private static const SLOT_OPTION:String = "Slot_Option_0";
@@ -42,19 +41,18 @@ package tuxwars.home.ui.screen.matchloading
       private static const CLOSE_BUTTON:String = "Button_Close";
       
       private static const REMATCH_SLOT_AMOUNT:int = 4;
-       
       
-      private const headerText:UIAutoTextField = new UIAutoTextField();
+      private const headerText:UIAutoTextField;
       
-      private const betTextTitle:UIAutoTextField = new UIAutoTextField();
+      private const betTextTitle:UIAutoTextField;
       
-      private const betTextDescription:UIAutoTextField = new UIAutoTextField();
+      private const betTextDescription:UIAutoTextField;
       
-      private const betShopDescription:UIAutoTextField = new UIAutoTextField();
+      private const betShopDescription:UIAutoTextField;
       
-      private const betCountdown:UIAutoTextField = new UIAutoTextField();
+      private const betCountdown:UIAutoTextField;
       
-      private const messageText:UIAutoTextField = new UIAutoTextField();
+      private const messageText:UIAutoTextField;
       
       private var _closeButton:UIButton;
       
@@ -74,7 +72,13 @@ package tuxwars.home.ui.screen.matchloading
       
       public function MatchLoadingScreen(game:TuxWarsGame)
       {
-         var design:* = null;
+         var design:MovieClip = null;
+         headerText = new UIAutoTextField();
+         betTextTitle = new UIAutoTextField();
+         betTextDescription = new UIAutoTextField();
+         betShopDescription = new UIAutoTextField();
+         betCountdown = new UIAutoTextField();
+         messageText = new UIAutoTextField();
          var _loc2_:Boolean = RematchData.isRematchSet();
          var _loc4_:BattleManager = BattleManager;
          bettingAvailable = tuxwars.battle.BattleManager._customGameName == null && !BattleManager.isPracticeMode() && !BattleManager.isPracticeModeButNotTutorial() && !RematchData.isRematchSet();
@@ -144,14 +148,14 @@ package tuxwars.home.ui.screen.matchloading
       private function initBets() : void
       {
          var i:int = 0;
-         var mcName:* = null;
-         var slotButtonPremium:* = null;
+         var mcName:String = null;
+         var slotButtonPremium:UIToggleButton = null;
          var _loc1_:int = 0;
-         var c:* = null;
-         var slotButton:* = null;
+         var c:MovieClip = null;
+         var slotButton:UIToggleButton = null;
          var _loc2_:int = 0;
-         var cash:* = null;
-         var slotButtonNoBet:* = null;
+         var cash:MovieClip = null;
+         var slotButtonNoBet:UIToggleButton = null;
          radialGroup = new UIRadialGroup();
          betSlotData = BetManager.getBets();
          i = 0;
@@ -202,9 +206,9 @@ package tuxwars.home.ui.screen.matchloading
       {
          var i:int = 0;
          var j:int = 0;
-         var shopRow:* = null;
-         var _loc3_:* = null;
-         var _loc2_:* = null;
+         var shopRow:Row = null;
+         var _loc3_:Object = null;
+         var _loc2_:ItemData = null;
          betShopSlots = new Vector.<SlotElement>();
          var slotCounter:int = 0;
          var slotMC:MovieClip = MovieClip(this._design.getChildByName("Slot_0" + (slotCounter + 1)));
@@ -226,9 +230,10 @@ package tuxwars.home.ui.screen.matchloading
          }
          while(slotMC)
          {
+            var _loc13_:String = "BettingShopItems";
             var _loc9_:ProjectManager = ProjectManager;
             var _loc14_:* = "" + randomArray[slotCounter];
-            var _loc10_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("BettingShopItems");
+            var _loc10_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc13_);
             if(!_loc10_._cache[_loc14_])
             {
                var _loc15_:Row = com.dchoc.utils.DCUtils.find(_loc10_.rows,"id",_loc14_);
@@ -244,12 +249,13 @@ package tuxwars.home.ui.screen.matchloading
                LogUtils.log("No betting sale slot found with id: " + (slotCounter + 1) + " from " + "popup_loading_betting","MatchLoadingScreen",2,"Bet");
                break;
             }
+            var _loc16_:String = "Item";
             var _loc11_:* = shopRow;
-            if(!_loc11_._cache["Item"])
+            if(!_loc11_._cache[_loc16_])
             {
-               _loc11_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name","Item");
+               _loc11_._cache[_loc16_] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name",_loc16_);
             }
-            var _loc12_:* = _loc11_._cache["Item"];
+            var _loc12_:* = _loc11_._cache[_loc16_];
             _loc3_ = _loc12_.overrideValue != null ? _loc12_.overrideValue : _loc12_._value;
             _loc2_ = ItemManager.getItemData(_loc3_.id);
             betShopSlots.push(new SlotElement(slotMC,_game,new ShopItem(_loc2_),this,true));
@@ -261,7 +267,7 @@ package tuxwars.home.ui.screen.matchloading
       private function initRematchSlots() : void
       {
          var index:int = 0;
-         var slotDesign:* = null;
+         var slotDesign:MovieClip = null;
          rematchSlots = new Vector.<RematchSlot>();
          (this._design.getChildByName("Loading_Animiation") as MovieClip).visible = false;
          var _loc3_:Vector.<RematchDataPlayer> = RematchData.getRematchPlayers();
@@ -360,7 +366,7 @@ package tuxwars.home.ui.screen.matchloading
       public function bettingSelectionCompleted(betId:String) : void
       {
          var i:int = 0;
-         var selectedButton:* = null;
+         var selectedButton:UIToggleButton = null;
          var _loc2_:int = BetManager.getBetIndex(betId);
          if(radialGroup)
          {
@@ -388,3 +394,4 @@ package tuxwars.home.ui.screen.matchloading
       }
    }
 }
+

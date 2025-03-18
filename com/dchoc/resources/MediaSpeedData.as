@@ -2,8 +2,6 @@ package com.dchoc.resources
 {
    public class MediaSpeedData
    {
-       
-      
       private var _file:String;
       
       private var _startTime:int;
@@ -63,3 +61,4 @@ package com.dchoc.resources
       }
    }
 }
+

@@ -6,8 +6,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialMatchTimerSubState extends TuxTutorialSubState
    {
-       
-      
       private var startTime:int;
       
       public function TuxTutorialMatchTimerSubState(game:TuxWarsGame)
@@ -41,3 +39,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

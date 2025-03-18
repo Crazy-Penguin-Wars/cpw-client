@@ -10,8 +10,6 @@ package tuxwars.battle.ui.states
    
    public class HUDBoosterSelectionSubState extends TuxState
    {
-       
-      
       private var screenHandler:ScreenHandler;
       
       public function HUDBoosterSelectionSubState(game:TuxWarsGame, params:* = null)
@@ -44,3 +42,4 @@ package tuxwars.battle.ui.states
       }
    }
 }
+

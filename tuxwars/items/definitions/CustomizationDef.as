@@ -6,8 +6,6 @@ package tuxwars.items.definitions
    
    public class CustomizationDef extends ClothingDef
    {
-       
-      
       public function CustomizationDef()
       {
          super();
@@ -20,3 +18,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

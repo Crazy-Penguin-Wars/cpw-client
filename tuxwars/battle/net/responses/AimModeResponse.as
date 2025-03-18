@@ -2,8 +2,6 @@ package tuxwars.battle.net.responses
 {
    public class AimModeResponse extends ActionResponse
    {
-       
-      
       public function AimModeResponse(data:Object)
       {
          super(data);
@@ -15,3 +13,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

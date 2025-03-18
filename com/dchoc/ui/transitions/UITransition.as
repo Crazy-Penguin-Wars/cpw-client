@@ -8,15 +8,14 @@ package com.dchoc.ui.transitions
    import flash.display.DisplayObjectContainer;
    import flash.display.MovieClip;
    import flash.events.Event;
+   import flash.external.ExternalInterface;
    import flash.geom.Matrix;
    import flash.geom.Point;
    import flash.geom.Rectangle;
    
    public class UITransition extends MovieClip
    {
-      
       public static const SAFETY_MARGIN:int = 70;
-       
       
       private var ADD_TARGET_TO_CHILD_NAME:String = "Icon";
       
@@ -42,7 +41,7 @@ package com.dchoc.ui.transitions
       
       public function UITransition(newTarget:DisplayObject, transitionClip:MovieClip, useBitmap:Boolean = true, removeParenting:Boolean = true, deleteTarget:Boolean = false, uiComp:UIComponent = null)
       {
-         var bounds:* = null;
+         var bounds:Rectangle = null;
          super();
          if(newTarget is UIComponent)
          {
@@ -67,7 +66,7 @@ package com.dchoc.ui.transitions
          parentContainer.addChildAt(this,parentChildIndex);
          var iconClip:MovieClip = anim.getChildByName(ADD_TARGET_TO_CHILD_NAME) as MovieClip;
          newPos = new Point(target.x,target.y);
-         if(useBitmap)
+         if(false)
          {
             bufferBitmap = new Bitmap(new BitmapData(newTarget.width + 70,newTarget.height + 70,true,16711680));
             bounds = newTarget.getBounds(newTarget);
@@ -96,7 +95,7 @@ package com.dchoc.ui.transitions
          iconClip.Placeholder.visible = false;
          anim.gotoAndPlay(1);
          anim.addEventListener("transition_end",clean);
-         this.removeParenting = removeParenting;
+         this.removeParenting = false;
          this.deleteTarget = deleteTarget;
          transitioning = true;
       }
@@ -104,6 +103,7 @@ package com.dchoc.ui.transitions
       public function clean(e:Event) : void
       {
          anim.removeEventListener("transition_end",clean);
+         ExternalInterface.call("console.log","[UiTransition] Is disposed");
          if(removeParenting)
          {
             removeClips();
@@ -119,6 +119,9 @@ package com.dchoc.ui.transitions
       public function dispose(skipParentRemoving:Boolean = false) : void
       {
          anim.removeEventListener("transition_end",clean);
+         bufferBitmap.bitmapData.dispose();
+         bufferBitmap = null;
+         ExternalInterface.call("console.log","[UiTransition] Is disposed");
          if(removeParenting)
          {
             removeClips();
@@ -155,6 +158,8 @@ package com.dchoc.ui.transitions
          {
             target.x = newPos.x;
             target.y = newPos.y;
+            bufferBitmap.bitmapData.dispose();
+            bufferBitmap = null;
          }
          else
          {
@@ -178,3 +183,4 @@ package com.dchoc.ui.transitions
       }
    }
 }
+

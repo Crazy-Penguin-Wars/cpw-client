@@ -4,14 +4,13 @@ package tuxwars.states
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.resources.BatchLoader;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.data.assets.AssetsData;
    import tuxwars.ui.components.LoadingIndicatorScreen;
    
    public class TuxBatchLoadingState extends TuxState
    {
-       
-      
       private var batch:BatchLoader;
       
       private var assetsData:AssetsData;
@@ -55,6 +54,8 @@ package tuxwars.states
       
       private function loadError(msg:Message) : void
       {
+         ExternalInterface.call("console.log","loadError() *sadness* : msg:");
+         ExternalInterface.call("console.log",msg);
          if(msg.data.id == batch.id)
          {
             assetLoadError(msg.data.resource);
@@ -70,3 +71,4 @@ package tuxwars.states
       }
    }
 }
+

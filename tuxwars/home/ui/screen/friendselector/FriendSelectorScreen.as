@@ -14,9 +14,7 @@ package tuxwars.home.ui.screen.friendselector
    
    public class FriendSelectorScreen extends TuxUIScreen
    {
-      
       private static const CLOSE_BUTTON:String = "Button_Close";
-       
       
       private var _closeButton:UIButton;
       
@@ -80,3 +78,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

@@ -6,7 +6,6 @@ package tuxwars.battle.emitters
    
    public class LocationWrapper
    {
-      
       private static var MAX_VALUE:uint;
       
       private static var GROWTH_VALUE:uint;
@@ -16,7 +15,6 @@ package tuxwars.battle.emitters
       private static var pool:Vector.<LocationWrapper>;
       
       private static var currentSprite:LocationWrapper;
-       
       
       private var _emissionReference:EmissionReference;
       
@@ -36,7 +34,7 @@ package tuxwars.battle.emitters
          MAX_VALUE = maxPoolSize;
          GROWTH_VALUE = growthValue;
          counter = maxPoolSize;
-         var i:uint = maxPoolSize;
+         var i:uint = uint(maxPoolSize);
          pool = new Vector.<LocationWrapper>(MAX_VALUE);
          while(--i > -1)
          {
@@ -109,3 +107,4 @@ package tuxwars.battle.emitters
       }
    }
 }
+

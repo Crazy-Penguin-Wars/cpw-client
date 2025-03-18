@@ -34,8 +34,6 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SlotMachineScreen extends TuxUIScreen
    {
-       
-      
       private const SLOTMACHINE_SCREEN:String = "slot_machine_popup";
       
       private var buttonClose:UIButton;
@@ -56,9 +54,9 @@ package tuxwars.home.ui.screen.slotmachine
       
       private var freeSpins:UIAutoTextField;
       
-      private const LINE_SEQUENCE:Array = [3,2,1,0,4];
+      private const LINE_SEQUENCE:Array;
       
-      private const DISPLAY_SEQUENCE:Array = [2,1,3,0,4];
+      private const DISPLAY_SEQUENCE:Array;
       
       private var amountOfFriendsToDisplay:Array;
       
@@ -68,11 +66,11 @@ package tuxwars.home.ui.screen.slotmachine
       
       protected var textFriends:TextField;
       
-      private const slotReels:Vector.<SlotMachineReel> = new Vector.<SlotMachineReel>();
+      private const slotReels:Vector.<SlotMachineReel>;
       
-      private const slotLines:Vector.<SlotMachineLine> = new Vector.<SlotMachineLine>();
+      private const slotLines:Vector.<SlotMachineLine>;
       
-      private const jackpotStars:Vector.<MovieClip> = new Vector.<MovieClip>();
+      private const jackpotStars:Vector.<MovieClip>;
       
       private var backGround:MovieClip;
       
@@ -93,7 +91,12 @@ package tuxwars.home.ui.screen.slotmachine
          var i:int = 0;
          var i2:int = 0;
          var i3:int = 0;
+         LINE_SEQUENCE = [3,2,1,0,4];
+         DISPLAY_SEQUENCE = [2,1,3,0,4];
          amountOfFriendsToDisplay = [];
+         slotReels = new Vector.<SlotMachineReel>();
+         slotLines = new Vector.<SlotMachineLine>();
+         jackpotStars = new Vector.<MovieClip>();
          super(game,DCResourceManager.instance.getFromSWF("flash/ui/slot_machine.swf","slot_machine_popup"));
          _game = game;
          var _loc5_:SlotMachineConfReference = SlotMachineConfReference;
@@ -502,3 +505,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

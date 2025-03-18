@@ -13,8 +13,6 @@ package tuxwars.ui.tooltips
    
    public class ChallengeTooltip extends TuxTooltip
    {
-       
-      
       private var challengeData:ChallengeData;
       
       public function ChallengeTooltip(top:Boolean, challengeData:ChallengeData)
@@ -47,8 +45,8 @@ package tuxwars.ui.tooltips
       private function getCounterTextFromData(challengeData:ChallengeData) : String
       {
          var i:int = 0;
-         var _loc2_:* = null;
-         var result:* = null;
+         var _loc2_:String = null;
+         var result:String = null;
          var _loc5_:int = 0;
          var str:String = "";
          for(i = 0; i < challengeData.counters.length; )
@@ -77,3 +75,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

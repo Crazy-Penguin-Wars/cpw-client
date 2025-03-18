@@ -4,9 +4,7 @@ package zpp_nape.geom
    
    public class ZPP_CutVert
    {
-      
-      public static var zpp_pool:ZPP_CutVert = null;
-       
+      public static var zpp_pool:ZPP_CutVert;
       
       public var vert:ZPP_GeomVert;
       
@@ -59,6 +57,7 @@ package zpp_nape.geom
             ZPP_CutVert.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          _loc2_.vert = param1;
          _loc2_.parent = _loc2_;
          _loc2_.rank = 0;
@@ -67,3 +66,4 @@ package zpp_nape.geom
       }
    }
 }
+

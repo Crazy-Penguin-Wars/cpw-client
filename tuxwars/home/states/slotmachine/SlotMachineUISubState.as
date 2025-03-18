@@ -7,11 +7,10 @@ package tuxwars.home.states.slotmachine
    
    public class SlotMachineUISubState extends TuxUIState
    {
-       
-      
       public function SlotMachineUISubState(game:TuxWarsGame, params:* = null)
       {
          super(SlotMachineScreen,SlotMachineLogic,game,params);
       }
    }
 }
+

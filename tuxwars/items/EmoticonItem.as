@@ -10,11 +10,9 @@ package tuxwars.items
    
    public class EmoticonItem extends Item
    {
-      
       public static const EMOTICON_OBJECT_PROPERTY_NAME:String = "item";
       
       public static const EMOTICON_OBJECT_PROPERTY_PLAYER_ID:String = "playerId";
-       
       
       private var _duration:int;
       
@@ -119,3 +117,4 @@ package tuxwars.items
       }
    }
 }
+

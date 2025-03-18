@@ -1,13 +1,11 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class PopUpData
    {
-      
       private static const TABLE:String = "PopupData";
       
       private static const PICTURE:String = "Picture";
@@ -17,7 +15,6 @@ package tuxwars.data
       private static const DESCRIPTION:String = "Description";
       
       private static var _table:Table;
-       
       
       public function PopUpData()
       {
@@ -42,7 +39,7 @@ package tuxwars.data
       
       private static function getValue(id:String, fieldName:String) : *
       {
-         var _loc3_:* = null;
+         var _loc3_:Field = null;
          if(!tuxwars.data.PopUpData._table)
          {
             tuxwars.data.PopUpData._table = com.dchoc.projectdata.ProjectManager.findTable("PopupData");
@@ -78,10 +75,12 @@ package tuxwars.data
       {
          if(!_table)
          {
+            var _loc2_:String = "PopupData";
             var _loc1_:ProjectManager = ProjectManager;
-            _table = com.dchoc.projectdata.ProjectManager.projectData.findTable("PopupData");
+            _table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return _table;
       }
    }
 }
+

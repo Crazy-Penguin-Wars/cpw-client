@@ -6,8 +6,6 @@ package tuxwars.ui.popups.states
    
    public class PopUpBaseLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       private var screen:Class;
       
       private var logic:Class;
@@ -25,3 +23,4 @@ package tuxwars.ui.popups.states
       }
    }
 }
+

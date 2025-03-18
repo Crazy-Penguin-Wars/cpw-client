@@ -5,6 +5,7 @@ package tuxwars.battle.states.player
    import com.dchoc.states.State;
    import com.dchoc.utils.LogUtils;
    import nape.geom.Vec2;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.effects.TextEffect;
    import tuxwars.battle.gameobjects.player.PlayerGameObject;
@@ -16,8 +17,6 @@ package tuxwars.battle.states.player
    
    public class PlayerSpawningState extends PlayerState
    {
-       
-      
       private var allowResuming:Boolean;
       
       public function PlayerSpawningState(player:PlayerGameObject, params:* = null)
@@ -68,8 +67,8 @@ package tuxwars.battle.states.player
       private function preResume() : void
       {
          var _loc3_:int = 0;
-         var _loc1_:* = null;
-         var _loc2_:* = null;
+         var _loc1_:String = null;
+         var _loc2_:TextEffect = null;
          if(player.suicide)
          {
             player.suicide = false;
@@ -91,3 +90,4 @@ package tuxwars.battle.states.player
       }
    }
 }
+

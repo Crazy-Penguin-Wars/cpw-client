@@ -9,11 +9,9 @@ package com.dchoc.gameobjects.stats
    
    public class Stat
    {
+      private static var initialized:Boolean = false;
       
       public static const STAT_MINIMUMS:Dictionary = new Dictionary();
-      
-      private static var initialized:Boolean = false;
-       
       
       protected var name:String;
       
@@ -55,8 +53,8 @@ package com.dchoc.gameobjects.stats
       {
          var aPriority:int = 0;
          var bPriority:int = 0;
-         var aIndex:int = StatTypes.SORT_ORDER.indexOf(modA.getGroup());
-         var bIndex:int = StatTypes.SORT_ORDER.indexOf(modB.getGroup());
+         var aIndex:int = int(StatTypes.SORT_ORDER.indexOf(modA.getGroup()));
+         var bIndex:int = int(StatTypes.SORT_ORDER.indexOf(modB.getGroup()));
          if(aIndex < 0 || bIndex < 0)
          {
             LogUtils.log("Unspecified type for sort (aType: " + modA.getGroup() + " bType: " + modB.getGroup() + ")","Stat",3,"Stats",false,false,false);
@@ -161,7 +159,7 @@ package com.dchoc.gameobjects.stats
       
       public function calculateRoundedValue(affected:PhysicsGameObject = null, affecting:PhysicsGameObject = null, type:String = "Calculate_All", includeTemp:Boolean = true, debugCalculation:Boolean = false) : int
       {
-         return calculateValue(affected,affecting,type,includeTemp,debugCalculation);
+         return int(calculateValue(affected,affecting,type,includeTemp,debugCalculation));
       }
       
       private function applyMinValues(calculatedValue:Number) : Number
@@ -253,7 +251,7 @@ package com.dchoc.gameobjects.stats
          var index:int = 0;
          if(_modifiers)
          {
-            index = _modifiers.indexOf(statModifier);
+            index = int(_modifiers.indexOf(statModifier));
             if(index != -1)
             {
                _modifiers.splice(index,1);
@@ -269,7 +267,7 @@ package com.dchoc.gameobjects.stats
          {
             if(modifier.getGroup() == "Group_Temp")
             {
-               index = _modifiers.indexOf(modifier);
+               index = int(_modifiers.indexOf(modifier));
                _modifiers.splice(index);
                return;
             }
@@ -292,7 +290,7 @@ package com.dchoc.gameobjects.stats
       
       public function toString() : String
       {
-         var s:* = null;
+         var s:String = null;
          if(_modifiers && _modifiers.length > 0)
          {
             s = "\n<Name: " + name + " Modifiers listed below>";
@@ -306,3 +304,4 @@ package com.dchoc.gameobjects.stats
       }
    }
 }
+

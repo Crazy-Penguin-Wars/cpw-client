@@ -2,8 +2,6 @@ package tuxwars.battle.gameobjects
 {
    public class AlwaysEmptyTag extends Tag
    {
-       
-      
       public function AlwaysEmptyTag(physGameObject:PhysicsGameObject)
       {
          super(physGameObject);
@@ -23,3 +21,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

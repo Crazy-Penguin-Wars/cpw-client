@@ -1,13 +1,13 @@
 package tuxwars.battle.data
 {
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
+   import com.dchoc.utils.DCUtils;
    import flash.display.BitmapData;
    import no.olog.utilfunctions.assert;
    
    public class MaterialTheme
    {
-      
       private static const LANDMASS_SWF:String = "LandmassSWF";
       
       private static const LANDMASS_TEXTURE:String = "landmass_bg_tile.png";
@@ -27,7 +27,6 @@ package tuxwars.battle.data
       private static const ANGLE:String = "Angle";
       
       private static const CUSTOM_THEME_NAME:String = "CustomObjects";
-       
       
       private var row:Row;
       
@@ -85,38 +84,41 @@ package tuxwars.battle.data
       
       public function getBorderColor() : uint
       {
+         var _loc3_:String = "BorderColor";
          var _loc1_:Row = row;
          §§push(parseInt);
          §§push(global);
-         if(!_loc1_._cache["BorderColor"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["BorderColor"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","BorderColor");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["BorderColor"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return §§pop()(_loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value);
       }
       
       public function getExplosionBorderColor() : uint
       {
+         var _loc3_:String = "ExplosionBorderColor";
          var _loc1_:Row = row;
          §§push(parseInt);
          §§push(global);
-         if(!_loc1_._cache["ExplosionBorderColor"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["ExplosionBorderColor"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","ExplosionBorderColor");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["ExplosionBorderColor"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return §§pop()(_loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value);
       }
       
       public function getAngle() : int
       {
+         var _loc3_:String = "Angle";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["Angle"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["Angle"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","Angle");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["Angle"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
@@ -143,13 +145,15 @@ package tuxwars.battle.data
       
       private function getLandmassSWF() : String
       {
+         var _loc3_:String = "LandmassSWF";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["LandmassSWF"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["LandmassSWF"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","LandmassSWF");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["LandmassSWF"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
    }
 }
+

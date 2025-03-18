@@ -27,13 +27,13 @@ package mx.messaging
    import mx.utils.Base64Encoder;
    import mx.utils.UIDUtil;
    
+   use namespace mx_internal;
+   
    public class MessageAgent extends EventDispatcher implements IMXMLObject
    {
-      
       mx_internal static const AUTO_CONFIGURED_CHANNELSET:int = 0;
       
       mx_internal static const MANUALLY_ASSIGNED_CHANNELSET:int = 1;
-       
       
       protected var _agentType:String = "mx.messaging.MessageAgent";
       
@@ -57,7 +57,7 @@ package mx.messaging
       
       protected var _ignoreFault:Boolean = false;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _authenticated:Boolean;
       
@@ -69,7 +69,7 @@ package mx.messaging
       
       private var _destination:String = "";
       
-      private var _id:String;
+      private var _id:String = UIDUtil.createUID();
       
       private var _requestTimeout:int = -1;
       
@@ -81,8 +81,6 @@ package mx.messaging
       
       public function MessageAgent()
       {
-         this.resourceManager = ResourceManager.getInstance();
-         this._id = UIDUtil.createUID();
          super();
       }
       
@@ -680,3 +678,4 @@ package mx.messaging
       }
    }
 }
+

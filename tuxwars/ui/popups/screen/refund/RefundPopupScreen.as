@@ -9,7 +9,6 @@ package tuxwars.ui.popups.screen.refund
    
    public class RefundPopupScreen extends PopUpBaseImageScreen
    {
-      
       private static const CASH:String = "cash";
       
       private static const CASH_TID:String = "CASH";
@@ -19,7 +18,6 @@ package tuxwars.ui.popups.screen.refund
       private static const REFUND_CASH_POPUP:String = "refund_cash_popup";
       
       private static const REFUND_COINS_POPUP:String = "refund_coins_popup";
-       
       
       private var cash:Boolean;
       
@@ -32,8 +30,8 @@ package tuxwars.ui.popups.screen.refund
       
       override public function init(params:*) : void
       {
-         var dataString:* = null;
-         var dataArray:* = null;
+         var dataString:String = null;
+         var dataArray:Array = null;
          if(params is String)
          {
             dataString = params as String;
@@ -63,3 +61,4 @@ package tuxwars.ui.popups.screen.refund
       }
    }
 }
+

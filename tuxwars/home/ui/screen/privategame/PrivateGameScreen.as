@@ -19,8 +19,6 @@ package tuxwars.home.ui.screen.privategame
    
    public class PrivateGameScreen extends TuxUIScreen
    {
-       
-      
       private const roomName:UIAutoTextField = new UIAutoTextField();
       
       private const map:UIAutoTextField = new UIAutoTextField();
@@ -117,3 +115,4 @@ package tuxwars.home.ui.screen.privategame
       }
    }
 }
+

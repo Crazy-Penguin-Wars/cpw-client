@@ -6,13 +6,11 @@ package com.dchoc.ui.windows
    
    public class UIModalWindowShade
    {
-      
       public static const MODAL_ALPHA_RECTANGLE_COLOR:Number = 0;
       
       public static var MODAL_ALPHA_RECTANGLE_ALPHA_VALUE:Number = 0.6;
       
       private static const FADE_DURATION:int = 400;
-       
       
       private var square:MovieClip;
       
@@ -89,7 +87,7 @@ package com.dchoc.ui.windows
          var t:Number = NaN;
          if(square)
          {
-            currentTime = new Date().getTime();
+            currentTime = Number(new Date().getTime());
             if(time == -1)
             {
                time = currentTime;
@@ -113,3 +111,4 @@ package com.dchoc.ui.windows
       }
    }
 }
+

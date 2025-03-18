@@ -35,8 +35,6 @@ package tuxwars.home.ui.screen.dailynews
    
    public class SaleSlot
    {
-       
-      
       private const timeText:UIAutoTextField = new UIAutoTextField();
       
       private var data:SaleData;
@@ -138,9 +136,9 @@ package tuxwars.home.ui.screen.dailynews
       
       private function buyItem() : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:SoundReference = null;
+         var _loc3_:ShopItem = null;
+         var _loc4_:SoundReference = null;
          var hasMoney:Boolean = false;
          if(data.premium && data.newPrice <= parent.tuxGame.player.premiumMoney)
          {
@@ -240,3 +238,4 @@ package tuxwars.home.ui.screen.dailynews
       }
    }
 }
+

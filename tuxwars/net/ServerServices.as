@@ -34,13 +34,11 @@ package tuxwars.net
    
    public class ServerServices
    {
-      
       private static var passedLeaderboardFriends:Object;
       
       private static var currentGame:TuxWarsGame;
       
       private static var waitingForCallbackToEquipment:String;
-       
       
       public function ServerServices()
       {
@@ -128,7 +126,7 @@ package tuxwars.net
       
       private static function handleServerError(msg:ServerResponseReceivedMessage) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          LogUtils.log("Server Error: " + msg.response.error,null,3,"Server");
          waitingForCallbackToEquipment = null;
          switch(msg.response.responseCode)
@@ -401,7 +399,7 @@ package tuxwars.net
          if(_loc2_ != null)
          {
             var _loc3_:Tuner = Tuner;
-            currentGame.player.addPremiumMoney(-Number(tuxwars.data.Tuner.getField("ResearchInstantCompleteCost").value));
+            currentGame.player.addPremiumMoney(-tuxwars.data.Tuner.getField("ResearchInstantCompleteCost").value);
             var _loc4_:Research = Research;
             if(!tuxwars.home.ui.screen.crafting.Research._instance)
             {
@@ -619,3 +617,4 @@ package tuxwars.net
       }
    }
 }
+

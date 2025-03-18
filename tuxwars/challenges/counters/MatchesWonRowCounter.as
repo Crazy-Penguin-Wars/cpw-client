@@ -7,8 +7,6 @@ package tuxwars.challenges.counters
    
    public class MatchesWonRowCounter extends Counter
    {
-       
-      
       public function MatchesWonRowCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -28,3 +26,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

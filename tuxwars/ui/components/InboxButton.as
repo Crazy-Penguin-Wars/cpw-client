@@ -11,8 +11,6 @@ package tuxwars.ui.components
    
    public class InboxButton extends UIButton
    {
-       
-      
       private var counter:UIAutoTextField;
       
       private var animatedInbox:MovieClip;
@@ -58,3 +56,4 @@ package tuxwars.ui.components
       }
    }
 }
+

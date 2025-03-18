@@ -8,9 +8,7 @@ package tuxwars.ui.popups.states.wrongversion
    
    public class WrongVersionPopupSubState extends PopUpBaseSubState
    {
-      
       public static const WRONG_VERSION_ERROR:String = "WrongVersionError";
-       
       
       public function WrongVersionPopupSubState(game:DCGame, params:* = null)
       {
@@ -23,3 +21,4 @@ package tuxwars.ui.popups.states.wrongversion
       }
    }
 }
+

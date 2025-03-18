@@ -2,7 +2,6 @@ package tuxwars.battle.gameobjects
 {
    public class TuxStats
    {
-      
       public static const HP:String = "HP";
       
       public static const SCORE:String = "Score";
@@ -42,7 +41,6 @@ package tuxwars.battle.gameobjects
       public static const RESTITUTION:String = "Restitution";
       
       public static const FRICTION:String = "Friction";
-       
       
       public function TuxStats()
       {
@@ -50,3 +48,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

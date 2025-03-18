@@ -15,8 +15,6 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
    
    public class ResearchResultTimer extends ResearchResultBuild
    {
-       
-      
       private var timeTF:UIAutoTextField;
       
       private var timePi:MovieClip;
@@ -69,3 +67,4 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
       }
    }
 }
+

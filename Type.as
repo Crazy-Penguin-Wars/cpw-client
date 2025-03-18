@@ -5,8 +5,6 @@ package
    
    public class Type
    {
-       
-      
       public function Type()
       {
       }
@@ -18,7 +16,7 @@ package
          {
             return null;
          }
-         if(param1.hasOwnProperty("prototype"))
+         if(Boolean(param1.hasOwnProperty("prototype")))
          {
             return null;
          }
@@ -31,3 +29,4 @@ package
       }
    }
 }
+

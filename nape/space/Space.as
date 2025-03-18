@@ -42,8 +42,6 @@ package nape.space
    
    public final class Space
    {
-       
-      
       public var zpp_inner:ZPP_Space;
       
       public function Space(param1:Vec2 = undefined, param2:Broadphase = undefined)
@@ -113,6 +111,11 @@ package nape.space
                _loc5_._invalidate = null;
                _loc5_.next = ZPP_Vec2.zpp_pool;
                ZPP_Vec2.zpp_pool = _loc5_;
+               true;
+            }
+            else
+            {
+               false;
             }
          }
       }
@@ -389,6 +392,11 @@ package nape.space
             _loc7_._invalidate = null;
             _loc7_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc7_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc4_;
       }
@@ -401,8 +409,28 @@ package nape.space
             Boot.lastError = new Error();
             throw "Error: Cannot evaluate shapes in a null shapes :)";
          }
-         Boot.lastError = new Error();
-         throw "Error: Query shape needs to be inside a Body to be well defined :)";
+         if((param1.zpp_inner.body != null ? param1.zpp_inner.body.outer : null) == null)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Query shape needs to be inside a Body to be well defined :)";
+         }
+         if(param1.zpp_inner.type == ZPP_Flags.id_ShapeType_POLYGON)
+         {
+            _loc5_ = param1.zpp_inner.polygon.valid();
+            §§push(_loc5_);
+            if(ZPP_Flags.ValidationResult_VALID == null)
+            {
+               ZPP_Flags.§internal§ = true;
+               ZPP_Flags.ValidationResult_VALID = new ValidationResult();
+               ZPP_Flags.§internal§ = false;
+            }
+            if(§§pop() != ZPP_Flags.ValidationResult_VALID)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Polygon query shape is invalid : " + _loc5_.toString();
+            }
+         }
+         return zpp_inner.shapesInShape(param1.zpp_inner,param2,param3 == null ? null : param3.zpp_inner,param4);
       }
       
       public function shapesInCircle(param1:Vec2, param2:Number, param3:Boolean = false, param4:InteractionFilter = undefined, param5:ShapeList = undefined) : ShapeList
@@ -479,6 +507,11 @@ package nape.space
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc6_;
       }
@@ -757,6 +790,11 @@ package nape.space
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner.wrap_gravity == null)
@@ -800,7 +838,7 @@ package nape.space
             Boot.lastError = new Error();
             throw "Error: Cannot evaluate interaction type for null shapes";
          }
-         if(true)
+         if((param1.zpp_inner.body != null ? param1.zpp_inner.body.outer : null) == null || (param2.zpp_inner.body != null ? param2.zpp_inner.body.outer : null) == null)
          {
             Boot.lastError = new Error();
             throw "Error: Cannot evaluate interaction type for shapes not part of a Body";
@@ -838,27 +876,26 @@ package nape.space
                   ZPP_Flags.InteractionType_FLUID = new InteractionType();
                   ZPP_Flags.§internal§ = false;
                }
-               break;
+               return ZPP_Flags.InteractionType_FLUID;
             case 1:
-               §§push(ZPP_Flags.InteractionType_FLUID);
                if(ZPP_Flags.InteractionType_COLLISION == null)
                {
                   ZPP_Flags.§internal§ = true;
                   ZPP_Flags.InteractionType_COLLISION = new InteractionType();
                   ZPP_Flags.§internal§ = false;
                }
-               break;
+               return ZPP_Flags.InteractionType_COLLISION;
             case 2:
-               §§push(ZPP_Flags.InteractionType_COLLISION);
                if(ZPP_Flags.InteractionType_SENSOR == null)
                {
                   ZPP_Flags.§internal§ = true;
                   ZPP_Flags.InteractionType_SENSOR = new InteractionType();
                   ZPP_Flags.§internal§ = false;
                }
+               return ZPP_Flags.InteractionType_SENSOR;
+            default:
+               return null;
          }
-         ZPP_Flags.InteractionType_SENSOR;
-         return null;
       }
       
       public function get worldLinearDrag() : Number
@@ -944,7 +981,7 @@ package nape.space
                ZPP_Flags.Broadphase_SWEEP_AND_PRUNE = new Broadphase();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.Broadphase_SWEEP_AND_PRUNE);
+            return ZPP_Flags.Broadphase_SWEEP_AND_PRUNE;
          }
          else
          {
@@ -954,9 +991,8 @@ package nape.space
                ZPP_Flags.Broadphase_DYNAMIC_AABB_TREE = new Broadphase();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.Broadphase_DYNAMIC_AABB_TREE);
+            return ZPP_Flags.Broadphase_DYNAMIC_AABB_TREE;
          }
-         return §§pop();
       }
       
       public function get bodies() : BodyList
@@ -983,8 +1019,17 @@ package nape.space
             Boot.lastError = new Error();
             throw "Error: Cannot cast null shape :)";
          }
-         Boot.lastError = new Error();
-         throw "Error: Shape must belong to a body to be cast.";
+         if((param1.zpp_inner.body != null ? param1.zpp_inner.body.outer : null) == null)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Shape must belong to a body to be cast.";
+         }
+         if(param2 < 0 || param2 != param2)
+         {
+            Boot.lastError = new Error();
+            throw "Error: deltaTime must be positive";
+         }
+         return zpp_inner.convexMultiCast(param1.zpp_inner,param2,param4,param3,param5);
       }
       
       public function convexCast(param1:Shape, param2:Number, param3:Boolean = false, param4:InteractionFilter = undefined) : ConvexResult
@@ -994,8 +1039,17 @@ package nape.space
             Boot.lastError = new Error();
             throw "Error: Cannot cast null shape :)";
          }
-         Boot.lastError = new Error();
-         throw "Error: Shape must belong to a body to be cast.";
+         if((param1.zpp_inner.body != null ? param1.zpp_inner.body.outer : null) == null)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Shape must belong to a body to be cast.";
+         }
+         if(param2 < 0 || param2 != param2)
+         {
+            Boot.lastError = new Error();
+            throw "Error: deltaTime must be positive";
+         }
+         return zpp_inner.convexCast(param1.zpp_inner,param2,param4,param3);
       }
       
       public function clear() : void
@@ -1094,6 +1148,11 @@ package nape.space
             _loc7_._invalidate = null;
             _loc7_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc7_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc4_;
       }
@@ -1106,8 +1165,28 @@ package nape.space
             Boot.lastError = new Error();
             throw "Error: Cannot evaluate bodies in a null shapes :)";
          }
-         Boot.lastError = new Error();
-         throw "Error: Query shape needs to be inside a Body to be well defined :)";
+         if((param1.zpp_inner.body != null ? param1.zpp_inner.body.outer : null) == null)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Query shape needs to be inside a Body to be well defined :)";
+         }
+         if(param1.zpp_inner.type == ZPP_Flags.id_ShapeType_POLYGON)
+         {
+            _loc5_ = param1.zpp_inner.polygon.valid();
+            §§push(_loc5_);
+            if(ZPP_Flags.ValidationResult_VALID == null)
+            {
+               ZPP_Flags.§internal§ = true;
+               ZPP_Flags.ValidationResult_VALID = new ValidationResult();
+               ZPP_Flags.§internal§ = false;
+            }
+            if(§§pop() != ZPP_Flags.ValidationResult_VALID)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Polygon query shape is invalid : " + _loc5_.toString();
+            }
+         }
+         return zpp_inner.bodiesInShape(param1.zpp_inner,param2,param3 == null ? null : param3.zpp_inner,param4);
       }
       
       public function bodiesInCircle(param1:Vec2, param2:Number, param3:Boolean = false, param4:InteractionFilter = undefined, param5:BodyList = undefined) : BodyList
@@ -1184,6 +1263,11 @@ package nape.space
             _loc9_._invalidate = null;
             _loc9_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc9_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc6_;
       }
@@ -1262,3 +1346,4 @@ package nape.space
       }
    }
 }
+

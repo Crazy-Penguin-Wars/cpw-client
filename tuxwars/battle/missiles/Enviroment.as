@@ -5,6 +5,7 @@ package tuxwars.battle.missiles
    import com.dchoc.utils.LogUtils;
    import nape.dynamics.ArbiterList;
    import nape.phys.Body;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.events.EmissionMessage;
    import tuxwars.battle.gameobjects.EmissionSpawn;
@@ -14,8 +15,6 @@ package tuxwars.battle.missiles
    
    public class Enviroment extends Missile
    {
-       
-      
       private var _duration:int;
       
       private var _interval:int;
@@ -123,3 +122,4 @@ package tuxwars.battle.missiles
       }
    }
 }
+

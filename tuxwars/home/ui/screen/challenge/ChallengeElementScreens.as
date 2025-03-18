@@ -6,25 +6,23 @@ package tuxwars.home.ui.screen.challenge
    
    public class ChallengeElementScreens
    {
-      
       public static const NUM_SLOTS:int = 4;
       
       private static const ELEMENT:String = "Challenge_Display_";
       
       private static const ELEMENT_MAP:Object = {};
       
-      {
-         ELEMENT_MAP["Battle"] = 0;
-         ELEMENT_MAP["Grind"] = 1;
-         ELEMENT_MAP["Skill"] = 2;
-         ELEMENT_MAP["Impossible"] = 3;
-      }
+      ELEMENT_MAP["Battle"] = 0;
+      ELEMENT_MAP["Grind"] = 1;
+      ELEMENT_MAP["Skill"] = 2;
+      ELEMENT_MAP["Impossible"] = 3;
       
-      private const elements:Vector.<ChallengeElementScreen> = new Vector.<ChallengeElementScreen>(4,true);
+      private const elements:Vector.<ChallengeElementScreen>;
       
       public function ChallengeElementScreens(design:MovieClip, game:TuxWarsGame)
       {
          var i:int = 0;
+         elements = new Vector.<ChallengeElementScreen>(4,true);
          super();
          for(i = 0; i < 4; )
          {
@@ -83,3 +81,4 @@ package tuxwars.home.ui.screen.challenge
       }
    }
 }
+

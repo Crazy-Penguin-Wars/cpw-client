@@ -17,13 +17,11 @@ package starling.display
    
    public class DisplayObject extends EventDispatcher
    {
-      
       private static var sAncestors:Vector.<DisplayObject> = new Vector.<DisplayObject>(0);
       
       private static var sHelperRect:Rectangle = new Rectangle();
       
       private static var sHelperMatrix:Matrix = new Matrix();
-       
       
       private var mX:Number;
       
@@ -299,8 +297,7 @@ package starling.display
          if(this.isEquivalent(this.mSkewX,this.mSkewY))
          {
             this.mRotation = this.mSkewX;
-            this.mSkewY = 0;
-            this.mSkewX = 0;
+            this.mSkewX = this.mSkewY = 0;
          }
          else
          {
@@ -593,3 +590,4 @@ package starling.display
       }
    }
 }
+

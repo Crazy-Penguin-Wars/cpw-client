@@ -14,13 +14,11 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SlotMachineText
    {
-      
       private static const textLabelArray:Array = ["Win","No_Spins","Default"];
       
       private static const finnTextArray:Array = ["VOITIT!","PAINA \'SPIN\'","SPINNIT LOPPU","Lisää spinnejä tai tule huomenna uudestaan"];
       
       private static const engTextArray:Array = ["YOU WIN!","PRESS \'SPIN\'","NO MORE SPINS","Add more or come back tomorrow"];
-       
       
       private var _design:MovieClip;
       
@@ -176,3 +174,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

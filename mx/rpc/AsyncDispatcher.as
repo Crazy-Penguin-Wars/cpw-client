@@ -5,8 +5,6 @@ package mx.rpc
    
    public class AsyncDispatcher
    {
-       
-      
       private var _method:Function;
       
       private var _args:Array;
@@ -31,3 +29,4 @@ package mx.rpc
       }
    }
 }
+

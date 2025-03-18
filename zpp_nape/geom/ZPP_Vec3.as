@@ -5,8 +5,6 @@ package zpp_nape.geom
    
    public class ZPP_Vec3
    {
-       
-      
       public var z:Number;
       
       public var y:Number;
@@ -36,3 +34,4 @@ package zpp_nape.geom
       }
    }
 }
+

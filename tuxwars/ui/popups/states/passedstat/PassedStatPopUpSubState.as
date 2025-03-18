@@ -9,9 +9,7 @@ package tuxwars.ui.popups.states.passedstat
    
    public class PassedStatPopUpSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_PASSED_STAT:String = "PassedStat";
-       
       
       public function PassedStatPopUpSubState(game:TuxWarsGame, data:PassedStatData)
       {
@@ -19,3 +17,4 @@ package tuxwars.ui.popups.states.passedstat
       }
    }
 }
+

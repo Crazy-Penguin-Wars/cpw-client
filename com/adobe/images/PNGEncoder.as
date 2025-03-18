@@ -1,15 +1,14 @@
 package com.adobe.images
 {
    import flash.display.BitmapData;
+   import flash.geom.*;
    import flash.utils.ByteArray;
    
    public class PNGEncoder
    {
-      
       private static var crcTable:Array;
       
       private static var crcTableComputed:Boolean = false;
-       
       
       public function PNGEncoder()
       {
@@ -38,7 +37,7 @@ package com.adobe.images
                for(j = 0; j < img.width; j++)
                {
                   p = img.getPixel(j,i);
-                  IDAT.writeUnsignedInt(uint((p & 16777215) << 8 | 255));
+                  IDAT.writeUnsignedInt(uint((p & 0xFFFFFF) << 8 | 0xFF));
                }
             }
             else
@@ -46,7 +45,7 @@ package com.adobe.images
                for(j = 0; j < img.width; j++)
                {
                   p = img.getPixel32(j,i);
-                  IDAT.writeUnsignedInt(uint((p & 16777215) << 8 | p >>> 24));
+                  IDAT.writeUnsignedInt(uint((p & 0xFFFFFF) << 8 | p >>> 24));
                }
             }
          }
@@ -99,7 +98,7 @@ package com.adobe.images
          c = 4294967295;
          for(var i:int = 0; i < e - p; i++)
          {
-            c = uint(Number(crcTable[(c ^ png.readUnsignedByte()) & uint(255)]) ^ uint(c >>> 8));
+            c = uint(crcTable[(c ^ png.readUnsignedByte()) & uint(255)] ^ uint(c >>> 8));
          }
          c = uint(c ^ uint(4294967295));
          png.position = e;
@@ -107,3 +106,4 @@ package com.adobe.images
       }
    }
 }
+

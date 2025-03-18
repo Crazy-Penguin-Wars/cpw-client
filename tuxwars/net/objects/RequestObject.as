@@ -2,8 +2,6 @@ package tuxwars.net.objects
 {
    public class RequestObject extends JavaScriptCRMObject
    {
-       
-      
       private var _title:String;
       
       private var _message:String;
@@ -44,3 +42,4 @@ package tuxwars.net.objects
       }
    }
 }
+

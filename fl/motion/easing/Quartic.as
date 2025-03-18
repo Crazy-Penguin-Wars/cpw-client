@@ -2,8 +2,6 @@ package fl.motion.easing
 {
    public class Quartic
    {
-       
-      
       public function Quartic()
       {
          super();
@@ -21,7 +19,8 @@ package fl.motion.easing
       
       public static function easeInOut(t:Number, b:Number, c:Number, d:Number) : Number
       {
-         if((t /= d / 2) < 1)
+         t /= d / 2;
+         if(t < 1)
          {
             return c / 2 * t * t * t * t + b;
          }
@@ -29,3 +28,4 @@ package fl.motion.easing
       }
    }
 }
+

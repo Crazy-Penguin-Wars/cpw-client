@@ -8,11 +8,9 @@ package tuxwars.battle.data
    
    public class TuxEmissionGameObjectData extends TuxGameObjectData
    {
-      
       protected static const EMISSIONS:String = "Emitters";
       
       protected static const SIMPLE_SCRIPT:String = "SimpleScript";
-       
       
       protected var _emissions:Array;
       
@@ -48,7 +46,7 @@ package tuxwars.battle.data
       
       public function get simpleScript() : Array
       {
-         var _loc1_:* = null;
+         var _loc1_:Field = null;
          if(!_simpleScript)
          {
             _loc1_ = getField("SimpleScript");
@@ -64,3 +62,4 @@ package tuxwars.battle.data
       }
    }
 }
+

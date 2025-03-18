@@ -1,11 +1,10 @@
 package tuxwars.items
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.IResourceLoaderURL;
    import com.dchoc.resources.ResourceLoaderURL;
    import com.dchoc.resources.URLResourceLoader;
+   import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
    import no.olog.utilfunctions.assert;
    import tuxwars.items.data.ItemData;
@@ -13,7 +12,6 @@ package tuxwars.items
    
    public class BigShopItem extends ShopItem implements IResourceLoaderURL
    {
-      
       private static const SIZE:String = "Size";
       
       private static const SORT_ORDER:String = "SortOrder";
@@ -41,7 +39,6 @@ package tuxwars.items
       private static const ACTION_PARAM_ONE:String = "ActionParamOne";
       
       private static const ACTION_PARAM_TWO:String = "ActionParamTwo";
-       
       
       private var _row:Row;
       
@@ -90,142 +87,154 @@ package tuxwars.items
       
       override public function get size() : int
       {
+         var _loc4_:String = "Size";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Size"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Size"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Size");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Size"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : super.size;
       }
       
       public function get sortOrder() : int
       {
+         var _loc4_:String = "SortOrder";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["SortOrder"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["SortOrder"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SortOrder");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["SortOrder"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get salePercentage() : int
       {
+         var _loc6_:String = "SalePercentage";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["SalePercentage"])
+         if(!_loc2_._cache[_loc6_])
          {
-            _loc2_._cache["SalePercentage"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SalePercentage");
+            _loc2_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc6_);
          }
-         var field:Field = _loc2_._cache["SalePercentage"];
+         var field:Field = _loc2_._cache[_loc6_];
          if(field && (_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) != 0)
          {
             var _loc4_:*;
             return !!field ? (_loc4_ = field, _loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) : 0;
          }
+         var _loc7_:String = "Item";
          var _loc5_:Row = _row;
-         if(!_loc5_._cache["Item"])
+         if(!_loc5_._cache[_loc7_])
          {
-            _loc5_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name","Item");
+            _loc5_._cache[_loc7_] = com.dchoc.utils.DCUtils.find(_loc5_._fields,"name",_loc7_);
          }
-         field = _loc5_._cache["Item"];
+         field = _loc5_._cache[_loc7_];
          return field && priceObject ? priceObject.salePercentage : 0;
       }
       
       public function get bigType() : String
       {
+         var _loc4_:String = "BigType";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["BigType"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["BigType"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","BigType");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["BigType"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get text() : String
       {
+         var _loc4_:String = "Text";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Text"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Text"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Text");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Text"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get actionCode() : String
       {
+         var _loc4_:String = "ActionCode";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["ActionCode"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["ActionCode"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","ActionCode");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["ActionCode"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get actionLabel() : String
       {
+         var _loc4_:String = "ActionLabel";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["ActionLabel"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["ActionLabel"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","ActionLabel");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["ActionLabel"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, ProjectManager.getText(_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)) : ProjectManager.getText("BUTTON_OK");
       }
       
       private function get overrideTag() : String
       {
+         var _loc4_:String = "Tag";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Tag"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Tag"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Tag");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Tag"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get actionParamOne() : String
       {
+         var _loc4_:String = "ActionParamOne";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["ActionParamOne"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["ActionParamOne"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","ActionParamOne");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["ActionParamOne"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get actionParamTwo() : String
       {
+         var _loc4_:String = "ActionParamTwo";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["ActionParamTwo"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["ActionParamTwo"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","ActionParamTwo");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["ActionParamTwo"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get item() : ItemData
       {
+         var _loc5_:String = "Item";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Item"])
+         if(!_loc2_._cache[_loc5_])
          {
-            _loc2_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Item");
+            _loc2_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc2_._cache["Item"];
+         var _loc1_:Field = _loc2_._cache[_loc5_];
          if(_loc1_ && (_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) is Row)
          {
             var _loc4_:* = _loc1_;
@@ -237,35 +246,38 @@ package tuxwars.items
       
       public function get replace() : Boolean
       {
+         var _loc4_:String = "Replace";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Replace"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Replace"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Replace");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Replace"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : false;
       }
       
       public function getResourceUrl() : String
       {
+         var _loc6_:String = "ImageURL";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["ImageURL"])
+         if(!_loc2_._cache[_loc6_])
          {
-            _loc2_._cache["ImageURL"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","ImageURL");
+            _loc2_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc6_);
          }
-         var field:Field = _loc2_._cache["ImageURL"];
+         var field:Field = _loc2_._cache[_loc6_];
          if(field)
          {
             var _loc3_:* = field;
             return _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value;
          }
+         var _loc7_:String = "Image";
          var _loc4_:Row = _row;
-         if(!_loc4_._cache["Image"])
+         if(!_loc4_._cache[_loc7_])
          {
-            _loc4_._cache["Image"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","Image");
+            _loc4_._cache[_loc7_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc7_);
          }
-         field = _loc4_._cache["Image"];
+         field = _loc4_._cache[_loc7_];
          var _loc5_:*;
          return !!field ? (_loc5_ = field, Config.getDataDir() + (_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value)) : null;
       }
@@ -292,12 +304,13 @@ package tuxwars.items
                return "tag_new";
             }
          }
+         var _loc3_:String = "Item";
          var _loc2_:Row = _row;
-         if(!_loc2_._cache["Item"])
+         if(!_loc2_._cache[_loc3_])
          {
-            _loc2_._cache["Item"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Item");
+            _loc2_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc3_);
          }
-         var _loc1_:Field = _loc2_._cache["Item"];
+         var _loc1_:Field = _loc2_._cache[_loc3_];
          return !!_loc1_ ? super.tag : null;
       }
       
@@ -311,3 +324,4 @@ package tuxwars.items
       }
    }
 }
+

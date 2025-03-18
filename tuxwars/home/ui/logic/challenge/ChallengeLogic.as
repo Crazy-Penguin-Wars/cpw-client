@@ -8,8 +8,6 @@ package tuxwars.home.ui.logic.challenge
    
    public class ChallengeLogic extends TuxUILogic
    {
-       
-      
       public function ChallengeLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -31,3 +29,4 @@ package tuxwars.home.ui.logic.challenge
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.net.messages
    
    public class ShopItemCouponMessage extends Message
    {
-       
-      
       private var _sourceObject:TuxUIScreen;
       
       public function ShopItemCouponMessage(couponData:CouponData, sourceObject:TuxUIScreen)
@@ -28,3 +26,4 @@ package tuxwars.net.messages
       }
    }
 }
+

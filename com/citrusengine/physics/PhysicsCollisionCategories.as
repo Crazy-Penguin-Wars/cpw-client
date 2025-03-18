@@ -2,7 +2,6 @@ package com.citrusengine.physics
 {
    public class PhysicsCollisionCategories
    {
-      
       private static var _allCategories:uint = 0;
       
       private static var _numCategories:uint = 0;
@@ -10,7 +9,6 @@ package com.citrusengine.physics
       private static var _categoryIndexes:Array = [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384];
       
       private static var _categoryNames:Object = {};
-       
       
       public function PhysicsCollisionCategories()
       {
@@ -93,7 +91,7 @@ package com.citrusengine.physics
             }
             else
             {
-               categories &= ~int(_categoryNames[name]);
+               categories &= ~_categoryNames[name];
             }
          }
          return categories;
@@ -105,3 +103,4 @@ package com.citrusengine.physics
       }
    }
 }
+

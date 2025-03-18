@@ -18,8 +18,6 @@ package tuxwars.battle.explosions
    
    public class Explosion implements Emission, SimpleScript, StatsInterface
    {
-       
-      
       private const emissionData:Object = {};
       
       private var _id:String;
@@ -287,6 +285,7 @@ package tuxwars.battle.explosions
       
       public function get className() : String
       {
+         var className:String = null;
          if(_simpleScript.length > 0)
          {
             return _simpleScript[0];
@@ -381,3 +380,4 @@ package tuxwars.battle.explosions
       }
    }
 }
+

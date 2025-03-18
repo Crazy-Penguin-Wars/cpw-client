@@ -7,8 +7,6 @@ package tuxwars.home.ui.logic.gifts
    
    public class GiftLogic extends TuxUILogic
    {
-       
-      
       public function GiftLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -20,3 +18,4 @@ package tuxwars.home.ui.logic.gifts
       }
    }
 }
+

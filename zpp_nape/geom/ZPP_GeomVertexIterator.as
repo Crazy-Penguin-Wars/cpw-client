@@ -5,11 +5,9 @@ package zpp_nape.geom
    
    public class ZPP_GeomVertexIterator
    {
+      public static var zpp_pool:ZPP_GeomVertexIterator;
       
-      public static var zpp_pool:ZPP_GeomVertexIterator = null;
-      
-      public static var §internal§:Boolean = false;
-       
+      public static var §internal§:Boolean;
       
       public var start:ZPP_GeomVert;
       
@@ -53,6 +51,7 @@ package zpp_nape.geom
             ZPP_GeomVertexIterator.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.outer.zpp_inner = _loc3_;
          _loc3_.ptr = param1;
          _loc3_.forward = param2;
@@ -62,3 +61,4 @@ package zpp_nape.geom
       }
    }
 }
+

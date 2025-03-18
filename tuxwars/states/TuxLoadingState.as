@@ -11,6 +11,7 @@ package tuxwars.states
    import com.dchoc.ui.buttons.UIButton;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.data.ConfigUpdater;
    import tuxwars.home.states.homestate.HomeState;
@@ -23,8 +24,6 @@ package tuxwars.states
    
    public class TuxLoadingState extends TuxLoadingScreenState
    {
-       
-      
       private const getAccountInfoRequest:ServerRequest = new ServerRequest("GetAccountInformation",null,true);
       
       private var videoPlayer:DCVideoPlayer;
@@ -62,36 +61,51 @@ package tuxwars.states
       
       override public function logicUpdate(deltaTime:int) : void
       {
+         ExternalInterface.call("console.log","[MichiDebug] Start debugging logicUpdate() in TuxLoadingState");
          super.logicUpdate(deltaTime);
          var _loc2_:ServerResponse = Server.findResponse(getAccountInfoRequest.callId);
          if(_loc2_ && !state)
          {
             textField.setText(ProjectManager.getText("LOADING"));
+            ExternalInterface.call("console.log","[MichiDebug] Ran textField.setText() successfully");
             updateLoadingBar();
+            ExternalInterface.call("console.log","[MichiDebug] Ran updateLoadingBar() successfully");
             TournamentManager.init(tuxGame);
+            ExternalInterface.call("console.log","[MichiDebug] Ran TournamentManager.init() successfully");
             setUpTutorial(_loc2_.data);
+            ExternalInterface.call("console.log","[MichiDebug] Ran setUpTutorial() successfully");
             setUpIntro();
+            ExternalInterface.call("console.log","[MichiDebug] Ran setUpIntro() successfully");
             InboxManager.updateFromAccountInfo({
                "incoming_neighbor_requests":_loc2_.data.incoming_neighbor_requests,
                "incoming_gift_requests":_loc2_.data.incoming_gift_requests
             });
+            ExternalInterface.call("console.log","[MichiDebug] Ran InboxManager.updateFromAccountInfo() successfully");
             tuxGame.player.init(_loc2_.data);
+            ExternalInterface.call("console.log","[MichiDebug] Ran tuxGame.player.init() successfully");
             TournamentManager.triggerContentUpdate(true,true,true);
+            ExternalInterface.call("console.log","[MichiDebug] Ran TournamentManager.triggerContentUpdate() successfully");
             if(_loc2_.data.custom_content)
             {
                configOverrides = _loc2_.data.custom_content.content is Array ? _loc2_.data.custom_content.content : [_loc2_.data.custom_content.content];
                ConfigUpdater.updateConfig(configOverrides);
+               ExternalInterface.call("console.log","[MichiDebug] Ran ConfigUpdater.updateConfig() successfully");
             }
             setUpCRMMessages(_loc2_.data);
+            ExternalInterface.call("console.log","[MichiDebug] Ran setUpCRMMessages() successfully");
             tuxGame.setUpDailyNews(getDailyContent(_loc2_.data));
+            ExternalInterface.call("console.log","[MichiDebug] Ran tuxGame.setUpDailyNews() successfully");
             tuxGame.setUpGiftingInfo(_loc2_.data.friends);
+            ExternalInterface.call("console.log","[MichiDebug] Ran tuxGame.setUpGiftingInfo() successfully");
             Server.removeResponse(_loc2_);
             changeState(new TuxLoadingStartUpSharedAssetsSubState(tuxGame));
          }
          if(state is TuxLoadingFinishedSubState && !videoPlayer.playing)
          {
             tuxGame.loadingCompleted();
+            ExternalInterface.call("console.log","[MichiDebug] Ran tuxGame.loadingCompleted() successfully");
             tuxGame.changeState(new HomeState(tuxGame),true);
+            ExternalInterface.call("console.log","[MichiDebug] Ran tuxGame.changeState() successfully");
          }
       }
       
@@ -121,7 +135,7 @@ package tuxwars.states
       
       private function getMessages(data:Object, displayOn:String) : Array
       {
-         var _loc4_:* = null;
+         var _loc4_:Array = null;
          var _loc5_:Array = [];
          if(data.popup && data.popup.content)
          {
@@ -152,8 +166,8 @@ package tuxwars.states
       private function setUpTutorial(data:Object) : void
       {
          var tutorialFlagFound:Boolean = false;
-         var _loc4_:* = null;
-         var _loc6_:* = null;
+         var _loc4_:Array = null;
+         var _loc6_:String = null;
          var _loc3_:Object = data.flags;
          if(_loc3_)
          {
@@ -184,7 +198,7 @@ package tuxwars.states
       
       private function getTutorialStep(step:String, data:Object) : String
       {
-         var _loc3_:* = null;
+         var _loc3_:Array = null;
          if(step == "TutorialCustomizationDone")
          {
             _loc3_ = data.items.item is Array ? data.items.item : [data.items.item];
@@ -216,7 +230,7 @@ package tuxwars.states
       
       private function addSkipIntroButton() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:MovieClip = null;
          var _loc2_:Tutorial = Tutorial;
          if(tuxwars.tutorial.Tutorial._tutorial && !skipButton)
          {
@@ -229,9 +243,9 @@ package tuxwars.states
                var _loc3_:DCGame = DCGame;
                com.dchoc.game.DCGame._stage.addChild(skipButton.getDesignMovieClip());
                var _loc4_:DCGame = DCGame;
-               skipButton.setX(Number(com.dchoc.game.DCGame._stage.stageWidth) - _loc1_.width - 10);
+               skipButton.setX(com.dchoc.game.DCGame._stage.stageWidth - _loc1_.width - 10);
                var _loc5_:DCGame = DCGame;
-               skipButton.setY(Number(com.dchoc.game.DCGame._stage.stageHeight) - _loc1_.height - 10);
+               skipButton.setY(com.dchoc.game.DCGame._stage.stageHeight - _loc1_.height - 10);
             }
          }
       }
@@ -260,3 +274,4 @@ package tuxwars.states
       }
    }
 }
+

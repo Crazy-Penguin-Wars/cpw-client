@@ -14,20 +14,18 @@ package tuxwars.battle.ui.screen.emoticonselection
    
    public class EmoticonSelectionScreen extends TuxUIElementScreen
    {
-      
       private static const ANIM_IN:String = "Visible_To_Hover";
       
       private static const ANIM_OUT:String = "Hover_To_Visible";
       
       private static const EMOTE_CONTAINER:String = "Tooltip_Emote";
-       
       
       private var emoteContainer:MovieClip;
       
       public function EmoticonSelectionScreen(from:MovieClip, game:TuxWarsGame)
       {
-         var _loc3_:* = null;
-         var _loc5_:* = null;
+         var _loc3_:MovieClip = null;
+         var _loc5_:IconToggleButton = null;
          emoteContainer = from.getChildByName("Tooltip_Emote") as MovieClip;
          super(emoteContainer,game);
          emoteContainer.mouseEnabled = false;
@@ -93,3 +91,4 @@ package tuxwars.battle.ui.screen.emoticonselection
       }
    }
 }
+

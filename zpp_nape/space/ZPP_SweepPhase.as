@@ -21,8 +21,6 @@ package zpp_nape.space
    
    public class ZPP_SweepPhase extends ZPP_Broadphase
    {
-       
-      
       public var list:ZPP_SweepData;
       
       public var failed:BodyList;
@@ -96,6 +94,7 @@ package zpp_nape.space
          var _loc10_:* = null as ZPP_Shape;
          var _loc11_:* = null as ZPP_InteractionFilter;
          sync_broadphase();
+         var _loc6_:Boolean = false;
          if(ZPP_Vec2.zpp_pool == null)
          {
             _loc7_ = new ZPP_Vec2();
@@ -107,7 +106,7 @@ package zpp_nape.space
             _loc7_.next = null;
          }
          _loc7_.weak = false;
-         _loc7_._immutable = false;
+         _loc7_._immutable = _loc6_;
          _loc7_.x = param1;
          _loc7_.y = param2;
          var _loc5_:ZPP_Vec2 = _loc7_;
@@ -387,8 +386,7 @@ package zpp_nape.space
             _loc8_.outer.zpp_inner = null;
             _loc8_.outer = null;
          }
-         _loc8_.wrap_max = null;
-         _loc8_.wrap_min = null;
+         _loc8_.wrap_min = _loc8_.wrap_max = null;
          _loc8_._invalidate = null;
          _loc8_._validate = null;
          _loc8_.next = ZPP_AABB.zpp_pool;
@@ -530,8 +528,7 @@ package zpp_nape.space
             _loc8_.outer.zpp_inner = null;
             _loc8_.outer = null;
          }
-         _loc8_.wrap_max = null;
-         _loc8_.wrap_min = null;
+         _loc8_.wrap_min = _loc8_.wrap_max = null;
          _loc8_._invalidate = null;
          _loc8_._validate = null;
          _loc8_.next = ZPP_AABB.zpp_pool;
@@ -658,6 +655,7 @@ package zpp_nape.space
          var _loc11_:* = null as Body;
          var _loc12_:* = null as ZPP_InteractionFilter;
          sync_broadphase();
+         var _loc6_:Boolean = false;
          if(ZPP_Vec2.zpp_pool == null)
          {
             _loc7_ = new ZPP_Vec2();
@@ -669,7 +667,7 @@ package zpp_nape.space
             _loc7_.next = null;
          }
          _loc7_.weak = false;
-         _loc7_._immutable = false;
+         _loc7_._immutable = _loc6_;
          _loc7_.x = param1;
          _loc7_.y = param2;
          var _loc5_:ZPP_Vec2 = _loc7_;
@@ -951,6 +949,7 @@ package zpp_nape.space
             ZPP_SweepData.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          param1.sweep = _loc2_;
          _loc2_.shape = param1;
          _loc2_.aabb = param1.aabb;
@@ -963,3 +962,4 @@ package zpp_nape.space
       }
    }
 }
+

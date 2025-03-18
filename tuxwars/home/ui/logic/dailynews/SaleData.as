@@ -1,15 +1,13 @@
 package tuxwars.home.ui.logic.dailynews
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.items.data.ItemData;
    import tuxwars.items.managers.ItemManager;
    
    public class SaleData
    {
-       
-      
       private var _itemId:String;
       
       private var _title:String;
@@ -76,9 +74,10 @@ package tuxwars.home.ui.logic.dailynews
       
       private function get priceField() : Field
       {
+         var _loc4_:String = "ItemPrice";
          var _loc1_:ProjectManager = ProjectManager;
          var _loc5_:String = itemId;
-         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("ItemPrice");
+         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc4_);
          if(!_loc2_._cache[_loc5_])
          {
             var _loc6_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc5_);
@@ -88,12 +87,13 @@ package tuxwars.home.ui.logic.dailynews
             }
             _loc2_._cache[_loc5_] = _loc6_;
          }
+         var _loc7_:* = premium ? "Premium" : "InGame";
          var _loc3_:* = _loc2_._cache[_loc5_];
-         if(!_loc3_._cache["Premium"])
+         if(!_loc3_._cache[_loc7_])
          {
-            _loc3_._cache["Premium"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","Premium");
+            _loc3_._cache[_loc7_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc7_);
          }
-         return _loc3_._cache["Premium"];
+         return _loc3_._cache[_loc7_];
       }
       
       private function find(data:Array, str:String) : String
@@ -114,3 +114,4 @@ package tuxwars.home.ui.logic.dailynews
       }
    }
 }
+

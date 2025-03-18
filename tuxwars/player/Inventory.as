@@ -6,6 +6,7 @@ package tuxwars.player
    import com.dchoc.projectdata.Row;
    import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
+   import flash.external.ExternalInterface;
    import no.olog.utilfunctions.assert;
    import tuxwars.battle.BattleManager;
    import tuxwars.challenges.events.ChallengeItemGainedMessage;
@@ -16,24 +17,20 @@ package tuxwars.player
    
    public class Inventory
    {
-      
       public static const ITEM_ADDED:String = "ItemAdded";
       
       public static const ITEM_REMOVED:String = "ItemRemoved";
       
       public static const ITEM_UNLOCKED:String = "ItemUnlocked";
-       
       
-      private var CACHE:Object;
+      private var CACHE:Object = {};
       
-      private var items:Vector.<Item>;
+      private var items:Vector.<Item> = new Vector.<Item>();
       
       private var player:TuxFriend;
       
       public function Inventory(player:TuxFriend)
       {
-         CACHE = {};
-         items = new Vector.<Item>();
          super();
          this.player = player;
       }
@@ -45,8 +42,9 @@ package tuxwars.player
       
       public function initInventory() : void
       {
+         var _loc7_:String = "Item";
          var _loc3_:ProjectManager = ProjectManager;
-         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Item");
+         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc7_);
          var _loc1_:Array = _loc4_._rows;
          for each(var row in _loc1_)
          {
@@ -83,8 +81,8 @@ package tuxwars.player
       
       public function setItem(itemId:String, amount:int, sendUpdate:Boolean = true) : Item
       {
-         var message:* = null;
-         var error:* = null;
+         var message:String = null;
+         var error:Error = null;
          var _loc6_:int = 0;
          assert("ItemID is null.",true,itemId != null);
          if(amount < 0)
@@ -124,8 +122,8 @@ package tuxwars.player
       
       public function addItem(itemId:String, amount:int = 1, sendUpdate:Boolean = true, sendChallengeUpdate:Boolean = true) : Item
       {
-         var _loc5_:* = null;
-         var _loc6_:* = null;
+         var _loc5_:String = null;
+         var _loc6_:Item = null;
          assert("ItemID is null.",true,itemId != null);
          if(amount < 0)
          {
@@ -164,7 +162,7 @@ package tuxwars.player
       
       public function removeItem(itemId:String, amount:int = 1, sendUpdate:Boolean = true) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Item = null;
          var _loc5_:int = 0;
          assert("Item is null.",true,itemId != null);
          if(amount < 0)
@@ -209,7 +207,9 @@ package tuxwars.player
       
       public function getItem(id:String, ignoreAmount:Boolean = false) : Item
       {
-         var item:* = null;
+         ExternalInterface.call("console.log","getItem() with id:");
+         ExternalInterface.call("console.log",id);
+         var item:Item = null;
          if(!CACHE.hasOwnProperty(id))
          {
             item = DCUtils.find(items,"id",id);
@@ -284,3 +284,4 @@ package tuxwars.player
       }
    }
 }
+

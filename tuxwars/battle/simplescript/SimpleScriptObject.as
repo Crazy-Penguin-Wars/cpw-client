@@ -4,17 +4,15 @@ package tuxwars.battle.simplescript
    
    public class SimpleScriptObject implements SimpleScript
    {
-       
-      
       private const array:Array = [];
       
       private var _id:String;
       
       private var _uniqueId:String;
       
-      private var _params;
+      private var _params:*;
       
-      private var _parent;
+      private var _parent:*;
       
       public function SimpleScriptObject(className:String, variables:Array, params:* = null, parent:* = null)
       {
@@ -86,3 +84,4 @@ package tuxwars.battle.simplescript
       }
    }
 }
+

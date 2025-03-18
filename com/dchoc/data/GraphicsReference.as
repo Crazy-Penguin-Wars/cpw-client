@@ -1,16 +1,14 @@
 package com.dchoc.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    
    public class GraphicsReference
    {
-      
       private static const SWF:String = "SWF";
       
       private static const EXPORT:String = "Export";
-       
       
       private var _swf:String;
       
@@ -66,7 +64,7 @@ package com.dchoc.data
       
       private function getField(name:String) : Field
       {
-         var _loc2_:* = null;
+         var _loc2_:Field = null;
          if(!_fieldCache.hasOwnProperty(name))
          {
             var _loc4_:* = name;
@@ -91,3 +89,4 @@ package com.dchoc.data
       }
    }
 }
+

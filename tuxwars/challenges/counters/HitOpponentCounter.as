@@ -10,8 +10,6 @@ package tuxwars.challenges.counters
    
    public class HitOpponentCounter extends Counter
    {
-       
-      
       private const currentTargets:Object = {};
       
       private var lastValue:int;
@@ -88,7 +86,7 @@ package tuxwars.challenges.counters
       
       private function updateExisitingPlayers(players:Vector.<PlayerGameObject>) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:PlayerGameObject = null;
          for(var id in currentTargets)
          {
             _loc3_ = DCUtils.find(players,"id",id);
@@ -122,3 +120,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

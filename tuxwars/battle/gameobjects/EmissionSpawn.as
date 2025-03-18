@@ -18,9 +18,7 @@ package tuxwars.battle.gameobjects
    
    public class EmissionSpawn implements Emission, FiringDirection
    {
-      
       private static const SPAWN:String = "_Spawn";
-       
       
       private var _id:String;
       
@@ -72,7 +70,7 @@ package tuxwars.battle.gameobjects
       
       public function EmissionSpawn(emission:Emission, location:Vec2, tagger:Tagger)
       {
-         var _loc4_:* = null;
+         var _loc4_:Missile = null;
          _emissionData = {};
          super();
          if(emission.emissions == null)
@@ -431,3 +429,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

@@ -6,7 +6,6 @@ package starling.utils
    
    public class VertexData
    {
-      
       public static const ELEMENTS_PER_VERTEX:int = 8;
       
       public static const POSITION_OFFSET:int = 0;
@@ -16,7 +15,6 @@ package starling.utils
       public static const TEXCOORD_OFFSET:int = 6;
       
       private static var sHelperPoint:Point = new Point();
-       
       
       private var mRawData:Vector.<Number>;
       
@@ -64,9 +62,9 @@ package starling.utils
       public function append(data:VertexData) : void
       {
          this.mRawData.fixed = false;
-         var targetIndex:int = this.mRawData.length;
+         var targetIndex:int = int(this.mRawData.length);
          var rawData:Vector.<Number> = data.mRawData;
-         var rawDataLength:int = rawData.length;
+         var rawDataLength:int = int(rawData.length);
          for(var i:int = 0; i < rawDataLength; i++)
          {
             this.mRawData[int(targetIndex++)] = rawData[i];
@@ -93,9 +91,9 @@ package starling.utils
       {
          var offset:int = this.getOffset(vertexID) + COLOR_OFFSET;
          var multiplier:Number = this.mPremultipliedAlpha ? this.mRawData[int(offset + 3)] : 1;
-         this.mRawData[offset] = (color >> 16 & 255) / 255 * multiplier;
-         this.mRawData[int(offset + 1)] = (color >> 8 & 255) / 255 * multiplier;
-         this.mRawData[int(offset + 2)] = (color & 255) / 255 * multiplier;
+         this.mRawData[offset] = (color >> 16 & 0xFF) / 255 * multiplier;
+         this.mRawData[int(offset + 1)] = (color >> 8 & 0xFF) / 255 * multiplier;
+         this.mRawData[int(offset + 2)] = (color & 0xFF) / 255 * multiplier;
       }
       
       public function getColor(vertexID:int) : uint
@@ -357,3 +355,4 @@ package starling.utils
       }
    }
 }
+

@@ -9,8 +9,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialTurnTimerSubState extends TuxTutorialSubState
    {
-       
-      
       public function TuxTutorialTurnTimerSubState(game:TuxWarsGame)
       {
          super(game,"TUTORIAL_SHOOT_SECOND");
@@ -43,3 +41,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

@@ -20,9 +20,7 @@ package tuxwars.items
    
    public class ShopItem
    {
-      
       private static const TT:String = "TT_";
-       
       
       private const _placeholders:Array = [];
       
@@ -47,10 +45,10 @@ package tuxwars.items
       
       public function get icon() : MovieClip
       {
-         var _loc2_:* = null;
-         var _loc4_:* = null;
+         var _loc2_:String = null;
+         var _loc4_:Error = null;
          var _loc3_:* = undefined;
-         var _loc1_:* = null;
+         var _loc1_:MovieClip = null;
          if(_itemData.iconRef == null)
          {
             _loc2_ = "No configured icon for shopItem: " + toString();
@@ -168,10 +166,10 @@ package tuxwars.items
       
       public function get description() : String
       {
-         var s:* = null;
-         var requierdChallenges:* = null;
-         var _loc5_:* = null;
-         var challengeData:* = null;
+         var s:String = null;
+         var requierdChallenges:String = null;
+         var _loc5_:String = null;
+         var challengeData:ChallengeData = null;
          if(_itemData && _itemData.type == "Trophy" && _itemData is TrophyData)
          {
             s = "";
@@ -287,7 +285,6 @@ package tuxwars.items
          {
             case "Clothing":
             case "Customization":
-               break;
             case "Trophy":
                break;
             default:
@@ -371,3 +368,4 @@ package tuxwars.items
       }
    }
 }
+

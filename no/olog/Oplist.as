@@ -2,7 +2,6 @@ package no.olog
 {
    internal class Oplist
    {
-      
       internal static var loggingEnabled:Boolean = true;
       
       internal static var rememberWindowState:Boolean = true;
@@ -56,12 +55,6 @@ package no.olog
       internal static const TB_FONT:String = "_sans";
       
       internal static const TB_FONT_SIZE:uint = 10;
-      
-      internal static const TB_COLORS:Array = [5855577,2500134,1644825,460551];
-      
-      internal static const TB_RATIOS:Array = [0,128,129,255];
-      
-      internal static const TB_ALPHAS:Array = [1,1,1,1];
       
       internal static const TB_PADDING:int = 13;
       
@@ -141,19 +134,11 @@ package no.olog
       
       internal static const LEADING:int = 1;
       
-      internal static const LEVEL_STRINGS:Array = ["[info] ","[debug] ","[* warning] ","[** error] ","[success] ","[event] ","","","","[marker] "];
-      
-      internal static const TEXT_COLORS_HEX:Array = ["#9AB28E","#ffffff","#ffcc00","#FF7F7F","#42d73b","#4CDBFF","#ffffff","#ffffff","#ffffff","#00ffff"];
-      
-      internal static const TEXT_COLORS_UINT:Array = [10138254,16777215,16763904,16744319,4380475,5037055,16777215,16777215,16777215,65535];
-      
       internal static const TEXT_COLOR_LAST_INDEX:int = 5;
       
       internal static const TEXT_COLOR_LAST_ERROR_INDEX:int = 3;
       
       internal static const MARKER_COLOR_INDEX:int = 9;
-      
-      internal static const TAB_STOPS:Array = [10,250,300,400,500,600,700];
       
       internal static const ORIGIN_DELIMITER:String = " › ";
       
@@ -175,8 +160,21 @@ package no.olog
       
       internal static const OLOG_EVENT:String = "OlogEvent";
       
+      internal static const TB_COLORS:Array = [5855577,2500134,1644825,460551];
+      
+      internal static const TB_RATIOS:Array = [0,128,129,255];
+      
+      internal static const TB_ALPHAS:Array = [1,1,1,1];
+      
+      internal static const LEVEL_STRINGS:Array = ["[info] ","[debug] ","[* warning] ","[** error] ","[success] ","[event] ","","","","[marker] "];
+      
+      internal static const TEXT_COLORS_HEX:Array = ["#9AB28E","#ffffff","#ffcc00","#FF7F7F","#42d73b","#4CDBFF","#ffffff","#ffffff","#ffffff","#00ffff"];
+      
+      internal static const TEXT_COLORS_UINT:Array = [10138254,16777215,16763904,16744319,4380475,5037055,16777215,16777215,16777215,65535];
+      
+      internal static const TAB_STOPS:Array = [10,250,300,400,500,600,700];
+      
       internal static const SUPPORTED_TYPES:Array = ["String","Number","int","Array","XML","XMLList","Vector","XML","Sprite","MovieClip","Event","ErrorEvent","Error","UncaughtErrorEvent","Object"];
-       
       
       public function Oplist()
       {
@@ -184,3 +182,4 @@ package no.olog
       }
    }
 }
+

@@ -1,20 +1,20 @@
 package com.dchoc.projectdata
 {
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import mx.utils.StringUtil;
    import no.olog.utilfunctions.assert;
    import org.as3commons.lang.StringUtils;
    
    public class Field
    {
-       
-      
       public var name:String;
       
-      private var _value;
+      private var _value:*;
       
       private var _row:Row;
       
-      private var overrideValue;
+      private var overrideValue:*;
       
       public function Field(row:Row, name:String, value:* = null)
       {
@@ -51,12 +51,12 @@ package com.dchoc.projectdata
       
       private function convertToPointer(value:*) : *
       {
-         var stringValue:* = null;
+         var stringValue:String = null;
          var _loc2_:Number = NaN;
-         var array:* = null;
+         var array:Array = null;
          var i:int = 0;
-         var string:* = null;
-         var stringArray:* = null;
+         var string:String = null;
+         var stringArray:Array = null;
          if(value is String)
          {
             stringValue = value as String;
@@ -112,8 +112,8 @@ package com.dchoc.projectdata
       
       public function get asArray() : Array
       {
-         var _loc3_:* = null;
-         var _loc1_:* = null;
+         var _loc3_:Array = null;
+         var _loc1_:Array = null;
          if(_value is String)
          {
             _loc3_ = _value.split(",");
@@ -141,3 +141,4 @@ package com.dchoc.projectdata
       }
    }
 }
+

@@ -5,8 +5,6 @@ package zpp_nape.geom
    
    public class ZPP_GeomPoly
    {
-       
-      
       public var vertices:ZPP_GeomVert;
       
       public var outer:GeomPoly;
@@ -23,3 +21,4 @@ package zpp_nape.geom
       }
    }
 }
+

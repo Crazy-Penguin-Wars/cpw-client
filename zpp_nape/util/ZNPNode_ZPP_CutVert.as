@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ZPP_CutVert
    {
-      
-      public static var zpp_pool:ZNPNode_ZPP_CutVert = null;
-       
+      public static var zpp_pool:ZNPNode_ZPP_CutVert;
       
       public var next:ZNPNode_ZPP_CutVert;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

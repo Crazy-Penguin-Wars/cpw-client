@@ -1,19 +1,18 @@
 package tuxwars.home.ui.logic
 {
    import com.dchoc.states.StateMachine;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.screenhandlers.ILogic;
    import tuxwars.states.TuxState;
    
    public class TuxUILogic implements ILogic
    {
-       
-      
-      private var _screen;
+      private var _screen:*;
       
       private var _game:TuxWarsGame;
       
-      private var _params;
+      private var _params:*;
       
       private var _state:TuxState;
       
@@ -73,7 +72,9 @@ package tuxwars.home.ui.logic
       
       public function close(exitState:StateMachine = null) : void
       {
+         ExternalInterface.call("console.log","[TuxUILogic] close()");
          _screen.close(exitState);
       }
    }
 }
+

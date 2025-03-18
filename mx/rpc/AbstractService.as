@@ -11,12 +11,13 @@ package mx.rpc
    import mx.resources.ResourceManager;
    import mx.rpc.events.AbstractEvent;
    
+   use namespace mx_internal;
+   use namespace flash_proxy;
+   
    [Bindable(event="operationsChange")]
    public dynamic class AbstractService extends Proxy implements IEventDispatcher
    {
-       
-      
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _managers:Array;
       
@@ -34,7 +35,6 @@ package mx.rpc
       
       public function AbstractService(destination:String = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this.eventDispatcher = new EventDispatcher(this);
          this.mx_internal::asyncRequest = new AsyncRequest();
@@ -97,7 +97,7 @@ package mx.rpc
             {
                mgr.service = this;
             }
-            if(this._initialized && mgr.hasOwnProperty("initialize"))
+            if(this._initialized && Boolean(mgr.hasOwnProperty("initialize")))
             {
                mgr.initialize();
             }
@@ -112,7 +112,7 @@ package mx.rpc
       public function set operations(ops:Object) : void
       {
          var op:AbstractOperation = null;
-         var i:* = null;
+         var i:String = null;
          for(i in ops)
          {
             op = AbstractOperation(ops[i]);
@@ -201,7 +201,7 @@ package mx.rpc
       
       override flash_proxy function nextNameIndex(index:int) : int
       {
-         var op:* = null;
+         var op:String = null;
          if(index == 0)
          {
             this.nextNameArray = [];
@@ -278,3 +278,4 @@ package mx.rpc
       }
    }
 }
+

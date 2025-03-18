@@ -6,11 +6,10 @@ package tuxwars.ui.popups.states.serverconnectionfailed
    
    public class ServerConnectionFailedMessagePopUpSubState extends MessagePopUpSubState
    {
-       
-      
       public function ServerConnectionFailedMessagePopUpSubState(game:TuxWarsGame)
       {
          super(game,ServerConnectionFailedMessagePopUpLogic);
       }
    }
 }
+

@@ -15,9 +15,7 @@ package tuxwars.battle.world
    
    public class Water implements Collider
    {
-      
       public static const WATER_MASK:int = 2;
-       
       
       private const bodies:Vector.<Body> = new Vector.<Body>();
       
@@ -51,11 +49,11 @@ package tuxwars.battle.world
       
       public function physicsUpdate() : void
       {
-         var _loc4_:* = null;
-         var _loc2_:* = null;
-         var _loc7_:* = null;
-         var _loc6_:* = null;
-         var _loc1_:* = null;
+         var _loc4_:PhysicsGameObject = null;
+         var _loc2_:Vec2 = null;
+         var _loc7_:Follower = null;
+         var _loc6_:Tagger = null;
+         var _loc1_:Follower = null;
          addBodies();
          removeBodies();
          for each(var body in bodies)
@@ -117,7 +115,7 @@ package tuxwars.battle.world
       
       private function addBodies() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:PhysicsGameObject = null;
          for each(var body in toAdd)
          {
             bodies.push(body);
@@ -132,7 +130,7 @@ package tuxwars.battle.world
       
       private function removeBodies() : void
       {
-         var _loc2_:* = null;
+         var _loc2_:PhysicsGameObject = null;
          for each(var body in toRemove)
          {
             removeBody(body);
@@ -147,9 +145,9 @@ package tuxwars.battle.world
       
       private function removeBody(body:Body) : void
       {
-         var _loc4_:* = null;
-         var _loc5_:* = null;
-         var _loc3_:int = bodies.indexOf(body);
+         var _loc4_:PhysicsGameObject = null;
+         var _loc5_:Follower = null;
+         var _loc3_:int = int(bodies.indexOf(body));
          if(_loc3_ >= 0)
          {
             bodies.splice(_loc3_,1);
@@ -169,3 +167,4 @@ package tuxwars.battle.world
       }
    }
 }
+

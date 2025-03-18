@@ -9,8 +9,6 @@ package tuxwars.ui.popups.screen.passedstat
    
    public class PlayerSlot implements IResourceLoaderURL
    {
-       
-      
       private var player:TuxFriend;
       
       private var design:MovieClip;
@@ -55,3 +53,4 @@ package tuxwars.ui.popups.screen.passedstat
       }
    }
 }
+

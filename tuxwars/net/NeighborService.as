@@ -16,13 +16,11 @@ package tuxwars.net
    
    public class NeighborService
    {
-      
       public static const CRM_TYPE_INVITE:String = "Invite";
       
       public static const PLATFORM_REQUEST_INVITE:int = 7;
       
       private static var currentGame:TuxWarsGame;
-       
       
       public function NeighborService()
       {
@@ -64,7 +62,7 @@ package tuxwars.net
       
       public static function sendNeighborRequest(titleTID:String, messageTID:String, to:Array, fromWhereInClient:String, titleTIDParam:Array = null, messageTIDParam:Array = null, TODOFilters:Array = null) : void
       {
-         var sendRequest:* = null;
+         var sendRequest:SendRequestObject = null;
          LogUtils.log("Send Neighbor Request to: " + (to != null ? to.toString() : null) + " from: " + fromWhereInClient + " with filters: " + (TODOFilters != null ? TODOFilters.toString() : null),"NeighborService",0,"Neighbor",false,false,false);
          if(to == null && Config.useHomemadeFriendSelector())
          {
@@ -100,7 +98,7 @@ package tuxwars.net
       
       private static function callbackCatcher(msg:Message) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Object = null;
          if(msg.data)
          {
             if(Config.debugMode)
@@ -129,10 +127,10 @@ package tuxwars.net
       
       private static function afterSendRequestCallback(msg:Message) : void
       {
-         var _loc5_:* = null;
-         var _loc2_:* = null;
-         var _loc3_:* = null;
-         var _loc4_:* = null;
+         var _loc5_:Object = null;
+         var _loc2_:Array = null;
+         var _loc3_:String = null;
+         var _loc4_:String = null;
          if(msg.data)
          {
             LogUtils.log(msg.data,null,0,"Neighbor");
@@ -155,8 +153,8 @@ package tuxwars.net
       
       private static function notifyGameServerOfSendNeighborRequest(requestID:String, recipientIDs:String, responsePlatformId:String) : void
       {
-         var _loc5_:* = null;
-         var _loc4_:* = null;
+         var _loc5_:Object = null;
+         var _loc4_:ServerRequest = null;
          LogUtils.log("Send neighbor requestID:" + requestID + " to recipientIDs: " + recipientIDs + " responsePlatformId: " + responsePlatformId,"_NeighborService",0,"Neighbor",false,false,false);
          if(requestID != null && recipientIDs != null)
          {
@@ -250,3 +248,4 @@ package tuxwars.net
       }
    }
 }
+

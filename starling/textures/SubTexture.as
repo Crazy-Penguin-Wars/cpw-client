@@ -7,9 +7,7 @@ package starling.textures
    
    public class SubTexture extends Texture
    {
-      
       private static var sTexCoords:Point = new Point();
-       
       
       private var mParent:Texture;
       
@@ -141,3 +139,4 @@ package starling.textures
       }
    }
 }
+

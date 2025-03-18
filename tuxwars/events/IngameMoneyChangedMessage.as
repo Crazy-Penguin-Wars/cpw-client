@@ -4,8 +4,6 @@ package tuxwars.events
    
    public class IngameMoneyChangedMessage extends Message
    {
-       
-      
       private var _amount:int;
       
       private var _ingameMoney:int;
@@ -28,3 +26,4 @@ package tuxwars.events
       }
    }
 }
+

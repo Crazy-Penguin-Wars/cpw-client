@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class CollisionDamageToSelfNotTaggedCounter extends Counter
    {
-       
-      
       public function CollisionDamageToSelfNotTaggedCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -17,7 +15,7 @@ package tuxwars.challenges.counters
       
       override public function handleTakeCollisionDamage(msg:ChallengeTakeCollisionDamageMessage) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:PhysicsGameObject = null;
          if(msg.damagedObject)
          {
             var _loc3_:* = msg.damagedObject;
@@ -54,3 +52,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

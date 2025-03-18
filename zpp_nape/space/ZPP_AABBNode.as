@@ -6,9 +6,7 @@ package zpp_nape.space
    
    public class ZPP_AABBNode
    {
-      
-      public static var zpp_pool:ZPP_AABBNode = null;
-       
+      public static var zpp_pool:ZPP_AABBNode;
       
       public var synced:Boolean;
       
@@ -62,3 +60,4 @@ package zpp_nape.space
       }
    }
 }
+

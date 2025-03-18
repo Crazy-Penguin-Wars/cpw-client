@@ -4,8 +4,6 @@ package tuxwars.battle.net.responses
    
    public class AimResponse extends ActionResponse
    {
-       
-      
       public function AimResponse(data:Object)
       {
          super(data);
@@ -27,3 +25,4 @@ package tuxwars.battle.net.responses
       }
    }
 }
+

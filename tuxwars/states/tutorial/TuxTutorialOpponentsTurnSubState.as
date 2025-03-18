@@ -8,8 +8,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialOpponentsTurnSubState extends TuxTutorialSubState
    {
-       
-      
       public function TuxTutorialOpponentsTurnSubState(game:TuxWarsGame)
       {
          super(game,null);
@@ -43,3 +41,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

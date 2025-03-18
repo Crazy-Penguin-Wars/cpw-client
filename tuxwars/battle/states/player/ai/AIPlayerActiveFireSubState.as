@@ -11,8 +11,6 @@ package tuxwars.battle.states.player.ai
    
    public class AIPlayerActiveFireSubState extends PlayerActiveFireSubState
    {
-       
-      
       private var messageSent:Boolean;
       
       public function AIPlayerActiveFireSubState(player:PlayerGameObject, params:* = null)
@@ -39,9 +37,11 @@ package tuxwars.battle.states.player.ai
       override protected function finished() : void
       {
          (player as AIPlayerGameObject).target = null;
+         var _loc2_:Boolean = true;
          var _loc1_:BattleManager = BattleManager;
-         tuxwars.battle.BattleManager._aiPlayerHasShot = true;
+         tuxwars.battle.BattleManager._aiPlayerHasShot = _loc2_;
          parent.changeState(new PlayerInactiveState(player));
       }
    }
 }
+

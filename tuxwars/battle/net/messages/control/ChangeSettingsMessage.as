@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.control
    
    public class ChangeSettingsMessage extends SocketMessage
    {
-       
-      
       public function ChangeSettingsMessage(map:String, matchTime:int, turnTime:int)
       {
          super({
@@ -17,3 +15,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SecondTextFieldButton extends UIButton
    {
-       
-      
       private var _spinButtonText:UIAutoTextField;
       
       private var _textSecond:String;
@@ -39,3 +37,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

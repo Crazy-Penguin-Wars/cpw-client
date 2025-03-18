@@ -5,8 +5,6 @@ package tuxwars.home.states.money
    
    public class MoneyState extends TuxState
    {
-       
-      
       public function MoneyState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.money
       }
    }
 }
+

@@ -14,21 +14,19 @@ package zpp_nape.geom
    
    public class ZPP_Simple
    {
+      public static var sweep:ZPP_SimpleSweep;
       
-      public static var sweep:ZPP_SimpleSweep = null;
+      public static var inthash:FastHash2_Hashable2_Boolfalse;
       
-      public static var inthash:FastHash2_Hashable2_Boolfalse = null;
+      public static var vertices:ZPP_Set_ZPP_SimpleVert;
       
-      public static var vertices:ZPP_Set_ZPP_SimpleVert = null;
+      public static var queue:ZPP_Set_ZPP_SimpleEvent;
       
-      public static var queue:ZPP_Set_ZPP_SimpleEvent = null;
+      public static var ints:ZPP_Set_ZPP_SimpleEvent;
       
-      public static var ints:ZPP_Set_ZPP_SimpleEvent = null;
+      public static var list_vertices:ZNPList_ZPP_SimpleVert;
       
-      public static var list_vertices:ZNPList_ZPP_SimpleVert = null;
-      
-      public static var list_queue:ZNPList_ZPP_SimpleEvent = null;
-       
+      public static var list_queue:ZNPList_ZPP_SimpleEvent;
       
       public function ZPP_Simple()
       {
@@ -36,12 +34,1127 @@ package zpp_nape.geom
       
       public static function decompose(param1:ZPP_GeomVert, param2:ZNPList_ZPP_GeomVert = undefined) : ZNPList_ZPP_GeomVert
       {
-         /*
-          * Decompilatie fout
-          * Timeout (1 minuut) werd bereikt
-          * Instruction count: 3231
-          */
-         throw new flash.errors.IllegalOperationError("Niet gedecompileerd vanwege timeout");
+         var _loc7_:* = null as ZPP_GeomVert;
+         var _loc8_:* = null as ZPP_GeomVert;
+         var _loc9_:* = null as ZPP_SimpleVert;
+         var _loc10_:* = null as ZPP_SimpleVert;
+         var _loc11_:* = null as ZPP_Set_ZPP_SimpleVert;
+         var _loc12_:* = null as ZPP_Set_ZPP_SimpleVert;
+         var _loc13_:* = null as ZPP_SimpleEvent;
+         var _loc14_:* = null as ZPP_SimpleEvent;
+         var _loc15_:* = null as ZPP_SimpleEvent;
+         var _loc16_:* = null as ZPP_SimpleSeg;
+         var _loc17_:* = null as ZPP_SimpleSeg;
+         var _loc18_:* = null as ZPP_Set_ZPP_SimpleEvent;
+         var _loc19_:* = null as ZPP_Set_ZPP_SimpleEvent;
+         var _loc20_:* = null as ZPP_Set_ZPP_SimpleEvent;
+         var _loc21_:* = null as Hashable2_Boolfalse;
+         var _loc22_:* = null as Hashable2_Boolfalse;
+         var _loc23_:* = null as ZPP_SimpleEvent;
+         var _loc24_:* = null as ZPP_SimpleSeg;
+         var _loc25_:* = null as ZPP_SimpleSeg;
+         var _loc26_:Boolean = false;
+         var _loc27_:Boolean = false;
+         var _loc28_:Boolean = false;
+         var _loc29_:* = null as ZPP_SimpleVert;
+         var _loc30_:* = null as ZPP_Set_ZPP_SimpleSeg;
+         var _loc31_:* = null as ZPP_Set_ZPP_SimpleSeg;
+         var _loc34_:int = 0;
+         var _loc35_:* = null as Hashable2_Boolfalse;
+         if(ZPP_Simple.sweep == null)
+         {
+            ZPP_Simple.sweep = new ZPP_SimpleSweep();
+            ZPP_Simple.inthash = new FastHash2_Hashable2_Boolfalse();
+         }
+         if(ZPP_Simple.vertices == null)
+         {
+            if(ZPP_Set_ZPP_SimpleVert.zpp_pool == null)
+            {
+               ZPP_Simple.vertices = new ZPP_Set_ZPP_SimpleVert();
+            }
+            else
+            {
+               ZPP_Simple.vertices = ZPP_Set_ZPP_SimpleVert.zpp_pool;
+               ZPP_Set_ZPP_SimpleVert.zpp_pool = ZPP_Simple.vertices.next;
+               ZPP_Simple.vertices.next = null;
+            }
+            null;
+            ZPP_Simple.vertices.lt = ZPP_SimpleVert.less_xy;
+            ZPP_Simple.vertices.swapped = ZPP_SimpleVert.swap_nodes;
+         }
+         if(ZPP_Simple.queue == null)
+         {
+            if(ZPP_Set_ZPP_SimpleEvent.zpp_pool == null)
+            {
+               ZPP_Simple.queue = new ZPP_Set_ZPP_SimpleEvent();
+            }
+            else
+            {
+               ZPP_Simple.queue = ZPP_Set_ZPP_SimpleEvent.zpp_pool;
+               ZPP_Set_ZPP_SimpleEvent.zpp_pool = ZPP_Simple.queue.next;
+               ZPP_Simple.queue.next = null;
+            }
+            null;
+            ZPP_Simple.queue.lt = ZPP_SimpleEvent.less_xy;
+            ZPP_Simple.queue.swapped = ZPP_SimpleEvent.swap_nodes;
+         }
+         var _loc3_:ZPP_SimpleVert = null;
+         var _loc4_:ZPP_SimpleVert = null;
+         var _loc5_:ZPP_GeomVert = param1;
+         var _loc6_:ZPP_GeomVert = param1;
+         if(_loc5_ != null)
+         {
+            _loc7_ = _loc5_;
+            do
+            {
+               _loc8_ = _loc7_;
+               if(ZPP_SimpleVert.zpp_pool == null)
+               {
+                  _loc10_ = new ZPP_SimpleVert();
+               }
+               else
+               {
+                  _loc10_ = ZPP_SimpleVert.zpp_pool;
+                  ZPP_SimpleVert.zpp_pool = _loc10_.next;
+                  _loc10_.next = null;
+               }
+               null;
+               _loc10_.x = _loc8_.x;
+               _loc10_.y = _loc8_.y;
+               _loc9_ = _loc10_;
+               _loc12_ = ZPP_Simple.vertices.parent;
+               while(_loc12_ != null)
+               {
+                  if(ZPP_Simple.vertices.lt(_loc9_,_loc12_.data))
+                  {
+                     _loc12_ = _loc12_.prev;
+                  }
+                  else
+                  {
+                     if(!ZPP_Simple.vertices.lt(_loc12_.data,_loc9_))
+                     {
+                        break;
+                     }
+                     _loc12_ = _loc12_.next;
+                  }
+               }
+               _loc11_ = _loc12_;
+               if(_loc11_ != null)
+               {
+                  _loc10_ = _loc9_;
+                  _loc10_.links.clear();
+                  _loc10_.node = null;
+                  _loc10_.forced = false;
+                  _loc10_.next = ZPP_SimpleVert.zpp_pool;
+                  ZPP_SimpleVert.zpp_pool = _loc10_;
+                  _loc9_ = _loc11_.data;
+               }
+               else
+               {
+                  _loc9_.node = ZPP_Simple.vertices.insert(_loc9_);
+               }
+               if(_loc4_ != null)
+               {
+                  if(ZPP_SimpleEvent.zpp_pool == null)
+                  {
+                     _loc14_ = new ZPP_SimpleEvent();
+                  }
+                  else
+                  {
+                     _loc14_ = ZPP_SimpleEvent.zpp_pool;
+                     ZPP_SimpleEvent.zpp_pool = _loc14_.next;
+                     _loc14_.next = null;
+                  }
+                  null;
+                  _loc14_.vertex = _loc4_;
+                  _loc13_ = _loc14_;
+                  if(ZPP_SimpleEvent.zpp_pool == null)
+                  {
+                     _loc15_ = new ZPP_SimpleEvent();
+                  }
+                  else
+                  {
+                     _loc15_ = ZPP_SimpleEvent.zpp_pool;
+                     ZPP_SimpleEvent.zpp_pool = _loc15_.next;
+                     _loc15_.next = null;
+                  }
+                  null;
+                  _loc15_.vertex = _loc9_;
+                  _loc14_ = _loc15_;
+                  if(ZPP_SimpleEvent.less_xy(_loc13_,_loc14_))
+                  {
+                     _loc13_.type = 1;
+                     _loc14_.type = 2;
+                     _loc16_ = ZPP_SimpleSeg.get(_loc4_,_loc9_);
+                  }
+                  else
+                  {
+                     _loc13_.type = 2;
+                     _loc14_.type = 1;
+                     _loc16_ = ZPP_SimpleSeg.get(_loc9_,_loc4_);
+                  }
+                  _loc13_.segment = _loc14_.segment = _loc16_;
+                  ZPP_Simple.queue.insert(_loc13_);
+                  ZPP_Simple.queue.insert(_loc14_);
+                  _loc4_.links.insert(_loc9_);
+                  _loc9_.links.insert(_loc4_);
+               }
+               _loc4_ = _loc9_;
+               if(_loc3_ == null)
+               {
+                  _loc3_ = _loc9_;
+               }
+               _loc7_ = _loc7_.next;
+            }
+            while(_loc7_ != _loc6_);
+            
+         }
+         if(ZPP_SimpleEvent.zpp_pool == null)
+         {
+            _loc14_ = new ZPP_SimpleEvent();
+         }
+         else
+         {
+            _loc14_ = ZPP_SimpleEvent.zpp_pool;
+            ZPP_SimpleEvent.zpp_pool = _loc14_.next;
+            _loc14_.next = null;
+         }
+         null;
+         _loc14_.vertex = _loc4_;
+         _loc13_ = _loc14_;
+         if(ZPP_SimpleEvent.zpp_pool == null)
+         {
+            _loc15_ = new ZPP_SimpleEvent();
+         }
+         else
+         {
+            _loc15_ = ZPP_SimpleEvent.zpp_pool;
+            ZPP_SimpleEvent.zpp_pool = _loc15_.next;
+            _loc15_.next = null;
+         }
+         null;
+         _loc15_.vertex = _loc3_;
+         _loc14_ = _loc15_;
+         if(ZPP_SimpleEvent.less_xy(_loc13_,_loc14_))
+         {
+            _loc13_.type = 1;
+            _loc14_.type = 2;
+            _loc16_ = ZPP_SimpleSeg.get(_loc4_,_loc3_);
+         }
+         else
+         {
+            _loc13_.type = 2;
+            _loc14_.type = 1;
+            _loc16_ = ZPP_SimpleSeg.get(_loc3_,_loc4_);
+         }
+         _loc13_.segment = _loc14_.segment = _loc16_;
+         ZPP_Simple.queue.insert(_loc13_);
+         ZPP_Simple.queue.insert(_loc14_);
+         _loc4_.links.insert(_loc3_);
+         _loc3_.links.insert(_loc4_);
+         if(ZPP_Simple.ints == null)
+         {
+            if(ZPP_Set_ZPP_SimpleEvent.zpp_pool == null)
+            {
+               ZPP_Simple.ints = new ZPP_Set_ZPP_SimpleEvent();
+            }
+            else
+            {
+               ZPP_Simple.ints = ZPP_Set_ZPP_SimpleEvent.zpp_pool;
+               ZPP_Set_ZPP_SimpleEvent.zpp_pool = ZPP_Simple.ints.next;
+               ZPP_Simple.ints.next = null;
+            }
+            null;
+            ZPP_Simple.ints.lt = ZPP_SimpleEvent.less_xy;
+         }
+         while(true)
+         {
+            if(ZPP_Simple.queue.empty())
+            {
+               var _loc32_:int = 0;
+               var _loc33_:int = int(ZPP_Simple.inthash.table.length);
+               while(_loc32_ < _loc33_)
+               {
+                  _loc34_ = _loc32_++;
+                  _loc21_ = ZPP_Simple.inthash.table[_loc34_];
+                  if(_loc21_ != null)
+                  {
+                     while(_loc21_ != null)
+                     {
+                        _loc22_ = _loc21_.hnext;
+                        _loc21_.hnext = null;
+                        _loc35_ = _loc21_;
+                        _loc35_.next = Hashable2_Boolfalse.zpp_pool;
+                        Hashable2_Boolfalse.zpp_pool = _loc35_;
+                        _loc21_ = _loc22_;
+                     }
+                     ZPP_Simple.inthash.table[_loc34_] = null;
+                  }
+               }
+               if(param2 == null)
+               {
+                  param2 = new ZNPList_ZPP_GeomVert();
+               }
+               while(!ZPP_Simple.vertices.empty())
+               {
+                  ZPP_Simple.clip_polygon(ZPP_Simple.vertices,param2);
+               }
+               return param2;
+            }
+            _loc13_ = ZPP_Simple.queue.pop_front();
+            ZPP_Simple.sweep.sweepx = _loc13_.vertex.x;
+            if(_loc13_.type == 1)
+            {
+               _loc16_ = _loc13_.segment;
+               ZPP_Simple.sweep.add(_loc16_);
+               if(_loc16_.next != null && _loc16_ != null && !(_loc16_.next.id < _loc16_.id ? ZPP_Simple.inthash.has(_loc16_.next.id,_loc16_.id) : ZPP_Simple.inthash.has(_loc16_.id,_loc16_.next.id)))
+               {
+                  _loc14_ = ZPP_Simple.sweep.intersection(_loc16_.next,_loc16_);
+                  if(_loc14_ != null)
+                  {
+                     if(_loc14_.vertex.x >= ZPP_Simple.sweep.sweepx)
+                     {
+                        _loc19_ = ZPP_Simple.queue.parent;
+                        while(_loc19_ != null)
+                        {
+                           if(ZPP_Simple.queue.lt(_loc14_,_loc19_.data))
+                           {
+                              _loc19_ = _loc19_.prev;
+                           }
+                           else
+                           {
+                              if(!ZPP_Simple.queue.lt(_loc19_.data,_loc14_))
+                              {
+                                 break;
+                              }
+                              _loc19_ = _loc19_.next;
+                           }
+                        }
+                        _loc18_ = _loc19_;
+                        if(_loc18_ == null)
+                        {
+                           _loc20_ = ZPP_Simple.ints.parent;
+                           while(_loc20_ != null)
+                           {
+                              if(ZPP_Simple.ints.lt(_loc14_,_loc20_.data))
+                              {
+                                 _loc20_ = _loc20_.prev;
+                              }
+                              else
+                              {
+                                 if(!ZPP_Simple.ints.lt(_loc20_.data,_loc14_))
+                                 {
+                                    break;
+                                 }
+                                 _loc20_ = _loc20_.next;
+                              }
+                           }
+                           _loc19_ = _loc20_;
+                           if(_loc19_ != null)
+                           {
+                              _loc9_ = _loc14_.vertex;
+                              _loc9_.links.clear();
+                              _loc9_.node = null;
+                              _loc9_.forced = false;
+                              _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                              ZPP_SimpleVert.zpp_pool = _loc9_;
+                              _loc14_.vertex = _loc19_.data.vertex;
+                              _loc19_.data = _loc14_;
+                              ZPP_Simple.queue.insert(_loc14_);
+                           }
+                           else
+                           {
+                              ZPP_Simple.queue.insert(_loc14_);
+                              ZPP_Simple.ints.insert(_loc14_);
+                           }
+                           if(_loc16_.next.id < _loc16_.id)
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc16_.next.id;
+                              _loc22_.di = _loc16_.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                           else
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc16_.id;
+                              _loc22_.di = _loc16_.next.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                        }
+                        else
+                        {
+                           _loc15_ = _loc18_.data;
+                           if(_loc15_.segment != _loc14_.segment || _loc14_.segment2 != _loc15_.segment2)
+                           {
+                              break;
+                           }
+                           _loc9_ = _loc14_.vertex;
+                           _loc9_.links.clear();
+                           _loc9_.node = null;
+                           _loc9_.forced = false;
+                           _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                           ZPP_SimpleVert.zpp_pool = _loc9_;
+                           _loc23_ = _loc14_;
+                           _loc23_.vertex = null;
+                           _loc23_.segment = _loc23_.segment2 = null;
+                           _loc23_.node = null;
+                           _loc23_.next = ZPP_SimpleEvent.zpp_pool;
+                           ZPP_SimpleEvent.zpp_pool = _loc23_;
+                        }
+                     }
+                     else
+                     {
+                        _loc9_ = _loc14_.vertex;
+                        _loc9_.links.clear();
+                        _loc9_.node = null;
+                        _loc9_.forced = false;
+                        _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                        ZPP_SimpleVert.zpp_pool = _loc9_;
+                        _loc15_ = _loc14_;
+                        _loc15_.vertex = null;
+                        _loc15_.segment = _loc15_.segment2 = null;
+                        _loc15_.node = null;
+                        _loc15_.next = ZPP_SimpleEvent.zpp_pool;
+                        ZPP_SimpleEvent.zpp_pool = _loc15_;
+                     }
+                  }
+               }
+               if(_loc16_ != null && _loc16_.prev != null && !(_loc16_.id < _loc16_.prev.id ? ZPP_Simple.inthash.has(_loc16_.id,_loc16_.prev.id) : ZPP_Simple.inthash.has(_loc16_.prev.id,_loc16_.id)))
+               {
+                  _loc14_ = ZPP_Simple.sweep.intersection(_loc16_,_loc16_.prev);
+                  if(_loc14_ != null)
+                  {
+                     if(_loc14_.vertex.x >= ZPP_Simple.sweep.sweepx)
+                     {
+                        _loc19_ = ZPP_Simple.queue.parent;
+                        while(_loc19_ != null)
+                        {
+                           if(ZPP_Simple.queue.lt(_loc14_,_loc19_.data))
+                           {
+                              _loc19_ = _loc19_.prev;
+                           }
+                           else
+                           {
+                              if(!ZPP_Simple.queue.lt(_loc19_.data,_loc14_))
+                              {
+                                 break;
+                              }
+                              _loc19_ = _loc19_.next;
+                           }
+                        }
+                        _loc18_ = _loc19_;
+                        if(_loc18_ == null)
+                        {
+                           _loc20_ = ZPP_Simple.ints.parent;
+                           while(_loc20_ != null)
+                           {
+                              if(ZPP_Simple.ints.lt(_loc14_,_loc20_.data))
+                              {
+                                 _loc20_ = _loc20_.prev;
+                              }
+                              else
+                              {
+                                 if(!ZPP_Simple.ints.lt(_loc20_.data,_loc14_))
+                                 {
+                                    break;
+                                 }
+                                 _loc20_ = _loc20_.next;
+                              }
+                           }
+                           _loc19_ = _loc20_;
+                           if(_loc19_ != null)
+                           {
+                              _loc9_ = _loc14_.vertex;
+                              _loc9_.links.clear();
+                              _loc9_.node = null;
+                              _loc9_.forced = false;
+                              _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                              ZPP_SimpleVert.zpp_pool = _loc9_;
+                              _loc14_.vertex = _loc19_.data.vertex;
+                              _loc19_.data = _loc14_;
+                              ZPP_Simple.queue.insert(_loc14_);
+                           }
+                           else
+                           {
+                              ZPP_Simple.queue.insert(_loc14_);
+                              ZPP_Simple.ints.insert(_loc14_);
+                           }
+                           if(_loc16_.id < _loc16_.prev.id)
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc16_.id;
+                              _loc22_.di = _loc16_.prev.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                           else
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc16_.prev.id;
+                              _loc22_.di = _loc16_.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                        }
+                        else
+                        {
+                           _loc15_ = _loc18_.data;
+                           if(_loc15_.segment != _loc14_.segment || _loc14_.segment2 != _loc15_.segment2)
+                           {
+                              Boot.lastError = new Error();
+                              throw "corner case 2, shiiiit.";
+                           }
+                           _loc9_ = _loc14_.vertex;
+                           _loc9_.links.clear();
+                           _loc9_.node = null;
+                           _loc9_.forced = false;
+                           _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                           ZPP_SimpleVert.zpp_pool = _loc9_;
+                           _loc23_ = _loc14_;
+                           _loc23_.vertex = null;
+                           _loc23_.segment = _loc23_.segment2 = null;
+                           _loc23_.node = null;
+                           _loc23_.next = ZPP_SimpleEvent.zpp_pool;
+                           ZPP_SimpleEvent.zpp_pool = _loc23_;
+                        }
+                     }
+                     else
+                     {
+                        _loc9_ = _loc14_.vertex;
+                        _loc9_.links.clear();
+                        _loc9_.node = null;
+                        _loc9_.forced = false;
+                        _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                        ZPP_SimpleVert.zpp_pool = _loc9_;
+                        _loc15_ = _loc14_;
+                        _loc15_.vertex = null;
+                        _loc15_.segment = _loc15_.segment2 = null;
+                        _loc15_.node = null;
+                        _loc15_.next = ZPP_SimpleEvent.zpp_pool;
+                        ZPP_SimpleEvent.zpp_pool = _loc15_;
+                     }
+                  }
+               }
+            }
+            else if(_loc13_.type == 2)
+            {
+               _loc16_ = _loc13_.segment;
+               if(_loc16_.node != null)
+               {
+                  _loc17_ = _loc16_.next;
+                  _loc24_ = _loc16_.prev;
+                  ZPP_Simple.sweep.remove(_loc16_);
+                  _loc25_ = _loc16_;
+                  _loc25_.left = _loc25_.right = null;
+                  _loc25_.prev = null;
+                  _loc25_.node = null;
+                  _loc25_.vertices.clear();
+                  _loc25_.next = ZPP_SimpleSeg.zpp_pool;
+                  ZPP_SimpleSeg.zpp_pool = _loc25_;
+                  if(_loc17_ != null && _loc24_ != null && !(_loc17_.id < _loc24_.id ? ZPP_Simple.inthash.has(_loc17_.id,_loc24_.id) : ZPP_Simple.inthash.has(_loc24_.id,_loc17_.id)))
+                  {
+                     _loc14_ = ZPP_Simple.sweep.intersection(_loc17_,_loc24_);
+                     if(_loc14_ != null)
+                     {
+                        if(_loc14_.vertex.x >= ZPP_Simple.sweep.sweepx)
+                        {
+                           _loc19_ = ZPP_Simple.queue.parent;
+                           while(_loc19_ != null)
+                           {
+                              if(ZPP_Simple.queue.lt(_loc14_,_loc19_.data))
+                              {
+                                 _loc19_ = _loc19_.prev;
+                              }
+                              else
+                              {
+                                 if(!ZPP_Simple.queue.lt(_loc19_.data,_loc14_))
+                                 {
+                                    break;
+                                 }
+                                 _loc19_ = _loc19_.next;
+                              }
+                           }
+                           _loc18_ = _loc19_;
+                           if(_loc18_ == null)
+                           {
+                              _loc20_ = ZPP_Simple.ints.parent;
+                              while(_loc20_ != null)
+                              {
+                                 if(ZPP_Simple.ints.lt(_loc14_,_loc20_.data))
+                                 {
+                                    _loc20_ = _loc20_.prev;
+                                 }
+                                 else
+                                 {
+                                    if(!ZPP_Simple.ints.lt(_loc20_.data,_loc14_))
+                                    {
+                                       break;
+                                    }
+                                    _loc20_ = _loc20_.next;
+                                 }
+                              }
+                              _loc19_ = _loc20_;
+                              if(_loc19_ != null)
+                              {
+                                 _loc9_ = _loc14_.vertex;
+                                 _loc9_.links.clear();
+                                 _loc9_.node = null;
+                                 _loc9_.forced = false;
+                                 _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                                 ZPP_SimpleVert.zpp_pool = _loc9_;
+                                 _loc14_.vertex = _loc19_.data.vertex;
+                                 _loc19_.data = _loc14_;
+                                 ZPP_Simple.queue.insert(_loc14_);
+                              }
+                              else
+                              {
+                                 ZPP_Simple.queue.insert(_loc14_);
+                                 ZPP_Simple.ints.insert(_loc14_);
+                              }
+                              if(_loc17_.id < _loc24_.id)
+                              {
+                                 §§push(ZPP_Simple.inthash);
+                                 if(Hashable2_Boolfalse.zpp_pool == null)
+                                 {
+                                    _loc22_ = new Hashable2_Boolfalse();
+                                 }
+                                 else
+                                 {
+                                    _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                    Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                    _loc22_.next = null;
+                                 }
+                                 null;
+                                 _loc22_.id = _loc17_.id;
+                                 _loc22_.di = _loc24_.id;
+                                 _loc21_ = _loc22_;
+                                 _loc21_.value = true;
+                                 §§pop().add(_loc21_);
+                              }
+                              else
+                              {
+                                 §§push(ZPP_Simple.inthash);
+                                 if(Hashable2_Boolfalse.zpp_pool == null)
+                                 {
+                                    _loc22_ = new Hashable2_Boolfalse();
+                                 }
+                                 else
+                                 {
+                                    _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                    Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                    _loc22_.next = null;
+                                 }
+                                 null;
+                                 _loc22_.id = _loc24_.id;
+                                 _loc22_.di = _loc17_.id;
+                                 _loc21_ = _loc22_;
+                                 _loc21_.value = true;
+                                 §§pop().add(_loc21_);
+                              }
+                           }
+                           else
+                           {
+                              _loc15_ = _loc18_.data;
+                              if(_loc15_.segment != _loc14_.segment || _loc14_.segment2 != _loc15_.segment2)
+                              {
+                                 Boot.lastError = new Error();
+                                 throw "corner case 2, shiiiit.";
+                              }
+                              _loc9_ = _loc14_.vertex;
+                              _loc9_.links.clear();
+                              _loc9_.node = null;
+                              _loc9_.forced = false;
+                              _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                              ZPP_SimpleVert.zpp_pool = _loc9_;
+                              _loc23_ = _loc14_;
+                              _loc23_.vertex = null;
+                              _loc23_.segment = _loc23_.segment2 = null;
+                              _loc23_.node = null;
+                              _loc23_.next = ZPP_SimpleEvent.zpp_pool;
+                              ZPP_SimpleEvent.zpp_pool = _loc23_;
+                           }
+                        }
+                        else
+                        {
+                           _loc9_ = _loc14_.vertex;
+                           _loc9_.links.clear();
+                           _loc9_.node = null;
+                           _loc9_.forced = false;
+                           _loc9_.next = ZPP_SimpleVert.zpp_pool;
+                           ZPP_SimpleVert.zpp_pool = _loc9_;
+                           _loc15_ = _loc14_;
+                           _loc15_.vertex = null;
+                           _loc15_.segment = _loc15_.segment2 = null;
+                           _loc15_.node = null;
+                           _loc15_.next = ZPP_SimpleEvent.zpp_pool;
+                           ZPP_SimpleEvent.zpp_pool = _loc15_;
+                        }
+                     }
+                  }
+               }
+            }
+            else
+            {
+               _loc9_ = _loc13_.vertex;
+               _loc26_ = _loc9_.node == null;
+               _loc16_ = _loc13_.segment;
+               _loc17_ = _loc13_.segment2;
+               if(_loc17_.next != _loc16_)
+               {
+                  _loc24_ = _loc16_;
+                  _loc16_ = _loc17_;
+                  _loc17_ = _loc24_;
+               }
+               _loc11_ = _loc16_.vertices.parent;
+               while(_loc11_ != null)
+               {
+                  if(_loc16_.vertices.lt(_loc9_,_loc11_.data))
+                  {
+                     _loc11_ = _loc11_.prev;
+                  }
+                  else
+                  {
+                     if(!_loc16_.vertices.lt(_loc11_.data,_loc9_))
+                     {
+                        break;
+                     }
+                     _loc11_ = _loc11_.next;
+                  }
+               }
+               _loc27_ = _loc11_ == null;
+               _loc11_ = _loc17_.vertices.parent;
+               while(_loc11_ != null)
+               {
+                  if(_loc17_.vertices.lt(_loc9_,_loc11_.data))
+                  {
+                     _loc11_ = _loc11_.prev;
+                  }
+                  else
+                  {
+                     if(!_loc17_.vertices.lt(_loc11_.data,_loc9_))
+                     {
+                        break;
+                     }
+                     _loc11_ = _loc11_.next;
+                  }
+               }
+               _loc28_ = _loc11_ == null;
+               if(_loc27_)
+               {
+                  _loc11_ = _loc16_.vertices.insert(_loc9_);
+                  _loc10_ = _loc9_ == _loc16_.left ? _loc9_ : _loc16_.vertices.predecessor_node(_loc11_).data;
+                  _loc29_ = _loc9_ == _loc16_.right ? _loc9_ : _loc16_.vertices.successor_node(_loc11_).data;
+                  _loc10_.links.remove(_loc29_);
+                  if(_loc9_ != _loc10_)
+                  {
+                     _loc10_.links.insert(_loc9_);
+                  }
+                  _loc29_.links.remove(_loc10_);
+                  if(_loc9_ != _loc29_)
+                  {
+                     _loc29_.links.insert(_loc9_);
+                  }
+                  if(_loc9_ != _loc10_)
+                  {
+                     _loc9_.links.insert(_loc10_);
+                  }
+                  if(_loc9_ != _loc29_)
+                  {
+                     _loc9_.links.insert(_loc29_);
+                  }
+               }
+               if(_loc28_)
+               {
+                  _loc11_ = _loc17_.vertices.insert(_loc9_);
+                  _loc10_ = _loc9_ == _loc17_.left ? _loc9_ : _loc17_.vertices.predecessor_node(_loc11_).data;
+                  _loc29_ = _loc9_ == _loc17_.right ? _loc9_ : _loc17_.vertices.successor_node(_loc11_).data;
+                  _loc10_.links.remove(_loc29_);
+                  if(_loc9_ != _loc10_)
+                  {
+                     _loc10_.links.insert(_loc9_);
+                  }
+                  _loc29_.links.remove(_loc10_);
+                  if(_loc9_ != _loc29_)
+                  {
+                     _loc29_.links.insert(_loc9_);
+                  }
+                  if(_loc9_ != _loc10_)
+                  {
+                     _loc9_.links.insert(_loc10_);
+                  }
+                  if(_loc9_ != _loc29_)
+                  {
+                     _loc9_.links.insert(_loc29_);
+                  }
+               }
+               if(_loc26_)
+               {
+                  _loc9_.node = ZPP_Simple.vertices.insert(_loc9_);
+               }
+               _loc9_.forced = true;
+               if(_loc26_)
+               {
+                  _loc30_ = _loc16_.node;
+                  _loc31_ = _loc17_.node;
+                  _loc30_.data = _loc17_;
+                  _loc31_.data = _loc16_;
+                  _loc16_.node = _loc31_;
+                  _loc17_.node = _loc30_;
+                  _loc17_.next = _loc16_.next;
+                  _loc16_.next = _loc17_;
+                  _loc16_.prev = _loc17_.prev;
+                  _loc17_.prev = _loc16_;
+                  if(_loc16_.prev != null)
+                  {
+                     _loc16_.prev.next = _loc16_;
+                  }
+                  if(_loc17_.next != null)
+                  {
+                     _loc17_.next.prev = _loc17_;
+                  }
+               }
+               if(_loc17_.next != null && _loc17_ != null && !(_loc17_.next.id < _loc17_.id ? ZPP_Simple.inthash.has(_loc17_.next.id,_loc17_.id) : ZPP_Simple.inthash.has(_loc17_.id,_loc17_.next.id)))
+               {
+                  _loc14_ = ZPP_Simple.sweep.intersection(_loc17_.next,_loc17_);
+                  if(_loc14_ != null)
+                  {
+                     if(_loc14_.vertex.x >= ZPP_Simple.sweep.sweepx)
+                     {
+                        _loc19_ = ZPP_Simple.queue.parent;
+                        while(_loc19_ != null)
+                        {
+                           if(ZPP_Simple.queue.lt(_loc14_,_loc19_.data))
+                           {
+                              _loc19_ = _loc19_.prev;
+                           }
+                           else
+                           {
+                              if(!ZPP_Simple.queue.lt(_loc19_.data,_loc14_))
+                              {
+                                 break;
+                              }
+                              _loc19_ = _loc19_.next;
+                           }
+                        }
+                        _loc18_ = _loc19_;
+                        if(_loc18_ == null)
+                        {
+                           _loc20_ = ZPP_Simple.ints.parent;
+                           while(_loc20_ != null)
+                           {
+                              if(ZPP_Simple.ints.lt(_loc14_,_loc20_.data))
+                              {
+                                 _loc20_ = _loc20_.prev;
+                              }
+                              else
+                              {
+                                 if(!ZPP_Simple.ints.lt(_loc20_.data,_loc14_))
+                                 {
+                                    break;
+                                 }
+                                 _loc20_ = _loc20_.next;
+                              }
+                           }
+                           _loc19_ = _loc20_;
+                           if(_loc19_ != null)
+                           {
+                              _loc10_ = _loc14_.vertex;
+                              _loc10_.links.clear();
+                              _loc10_.node = null;
+                              _loc10_.forced = false;
+                              _loc10_.next = ZPP_SimpleVert.zpp_pool;
+                              ZPP_SimpleVert.zpp_pool = _loc10_;
+                              _loc14_.vertex = _loc19_.data.vertex;
+                              _loc19_.data = _loc14_;
+                              ZPP_Simple.queue.insert(_loc14_);
+                           }
+                           else
+                           {
+                              ZPP_Simple.queue.insert(_loc14_);
+                              ZPP_Simple.ints.insert(_loc14_);
+                           }
+                           if(_loc17_.next.id < _loc17_.id)
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc17_.next.id;
+                              _loc22_.di = _loc17_.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                           else
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc17_.id;
+                              _loc22_.di = _loc17_.next.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                        }
+                        else
+                        {
+                           _loc15_ = _loc18_.data;
+                           if(_loc15_.segment != _loc14_.segment || _loc14_.segment2 != _loc15_.segment2)
+                           {
+                              Boot.lastError = new Error();
+                              throw "corner case 2, shiiiit.";
+                           }
+                           _loc10_ = _loc14_.vertex;
+                           _loc10_.links.clear();
+                           _loc10_.node = null;
+                           _loc10_.forced = false;
+                           _loc10_.next = ZPP_SimpleVert.zpp_pool;
+                           ZPP_SimpleVert.zpp_pool = _loc10_;
+                           _loc23_ = _loc14_;
+                           _loc23_.vertex = null;
+                           _loc23_.segment = _loc23_.segment2 = null;
+                           _loc23_.node = null;
+                           _loc23_.next = ZPP_SimpleEvent.zpp_pool;
+                           ZPP_SimpleEvent.zpp_pool = _loc23_;
+                        }
+                     }
+                     else
+                     {
+                        _loc10_ = _loc14_.vertex;
+                        _loc10_.links.clear();
+                        _loc10_.node = null;
+                        _loc10_.forced = false;
+                        _loc10_.next = ZPP_SimpleVert.zpp_pool;
+                        ZPP_SimpleVert.zpp_pool = _loc10_;
+                        _loc15_ = _loc14_;
+                        _loc15_.vertex = null;
+                        _loc15_.segment = _loc15_.segment2 = null;
+                        _loc15_.node = null;
+                        _loc15_.next = ZPP_SimpleEvent.zpp_pool;
+                        ZPP_SimpleEvent.zpp_pool = _loc15_;
+                     }
+                  }
+               }
+               if(_loc16_ != null && _loc16_.prev != null && !(_loc16_.id < _loc16_.prev.id ? ZPP_Simple.inthash.has(_loc16_.id,_loc16_.prev.id) : ZPP_Simple.inthash.has(_loc16_.prev.id,_loc16_.id)))
+               {
+                  _loc14_ = ZPP_Simple.sweep.intersection(_loc16_,_loc16_.prev);
+                  if(_loc14_ != null)
+                  {
+                     if(_loc14_.vertex.x >= ZPP_Simple.sweep.sweepx)
+                     {
+                        _loc19_ = ZPP_Simple.queue.parent;
+                        while(_loc19_ != null)
+                        {
+                           if(ZPP_Simple.queue.lt(_loc14_,_loc19_.data))
+                           {
+                              _loc19_ = _loc19_.prev;
+                           }
+                           else
+                           {
+                              if(!ZPP_Simple.queue.lt(_loc19_.data,_loc14_))
+                              {
+                                 break;
+                              }
+                              _loc19_ = _loc19_.next;
+                           }
+                        }
+                        _loc18_ = _loc19_;
+                        if(_loc18_ == null)
+                        {
+                           _loc20_ = ZPP_Simple.ints.parent;
+                           while(_loc20_ != null)
+                           {
+                              if(ZPP_Simple.ints.lt(_loc14_,_loc20_.data))
+                              {
+                                 _loc20_ = _loc20_.prev;
+                              }
+                              else
+                              {
+                                 if(!ZPP_Simple.ints.lt(_loc20_.data,_loc14_))
+                                 {
+                                    break;
+                                 }
+                                 _loc20_ = _loc20_.next;
+                              }
+                           }
+                           _loc19_ = _loc20_;
+                           if(_loc19_ != null)
+                           {
+                              _loc10_ = _loc14_.vertex;
+                              _loc10_.links.clear();
+                              _loc10_.node = null;
+                              _loc10_.forced = false;
+                              _loc10_.next = ZPP_SimpleVert.zpp_pool;
+                              ZPP_SimpleVert.zpp_pool = _loc10_;
+                              _loc14_.vertex = _loc19_.data.vertex;
+                              _loc19_.data = _loc14_;
+                              ZPP_Simple.queue.insert(_loc14_);
+                           }
+                           else
+                           {
+                              ZPP_Simple.queue.insert(_loc14_);
+                              ZPP_Simple.ints.insert(_loc14_);
+                           }
+                           if(_loc16_.id < _loc16_.prev.id)
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc16_.id;
+                              _loc22_.di = _loc16_.prev.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                           else
+                           {
+                              §§push(ZPP_Simple.inthash);
+                              if(Hashable2_Boolfalse.zpp_pool == null)
+                              {
+                                 _loc22_ = new Hashable2_Boolfalse();
+                              }
+                              else
+                              {
+                                 _loc22_ = Hashable2_Boolfalse.zpp_pool;
+                                 Hashable2_Boolfalse.zpp_pool = _loc22_.next;
+                                 _loc22_.next = null;
+                              }
+                              null;
+                              _loc22_.id = _loc16_.prev.id;
+                              _loc22_.di = _loc16_.id;
+                              _loc21_ = _loc22_;
+                              _loc21_.value = true;
+                              §§pop().add(_loc21_);
+                           }
+                        }
+                        else
+                        {
+                           _loc15_ = _loc18_.data;
+                           if(_loc15_.segment != _loc14_.segment || _loc14_.segment2 != _loc15_.segment2)
+                           {
+                              Boot.lastError = new Error();
+                              throw "corner case 2, shiiiit.";
+                           }
+                           _loc10_ = _loc14_.vertex;
+                           _loc10_.links.clear();
+                           _loc10_.node = null;
+                           _loc10_.forced = false;
+                           _loc10_.next = ZPP_SimpleVert.zpp_pool;
+                           ZPP_SimpleVert.zpp_pool = _loc10_;
+                           _loc23_ = _loc14_;
+                           _loc23_.vertex = null;
+                           _loc23_.segment = _loc23_.segment2 = null;
+                           _loc23_.node = null;
+                           _loc23_.next = ZPP_SimpleEvent.zpp_pool;
+                           ZPP_SimpleEvent.zpp_pool = _loc23_;
+                        }
+                     }
+                     else
+                     {
+                        _loc10_ = _loc14_.vertex;
+                        _loc10_.links.clear();
+                        _loc10_.node = null;
+                        _loc10_.forced = false;
+                        _loc10_.next = ZPP_SimpleVert.zpp_pool;
+                        ZPP_SimpleVert.zpp_pool = _loc10_;
+                        _loc15_ = _loc14_;
+                        _loc15_.vertex = null;
+                        _loc15_.segment = _loc15_.segment2 = null;
+                        _loc15_.node = null;
+                        _loc15_.next = ZPP_SimpleEvent.zpp_pool;
+                        ZPP_SimpleEvent.zpp_pool = _loc15_;
+                     }
+                  }
+               }
+               ZPP_Simple.ints.remove(_loc13_);
+            }
+            _loc14_ = _loc13_;
+            _loc14_.vertex = null;
+            _loc14_.segment = _loc14_.segment2 = null;
+            _loc14_.node = null;
+            _loc14_.next = ZPP_SimpleEvent.zpp_pool;
+            ZPP_SimpleEvent.zpp_pool = _loc14_;
+         }
+         Boot.lastError = new Error();
+         throw "corner case 2, shiiiit.";
       }
       
       public static function clip_polygon(param1:ZPP_Set_ZPP_SimpleVert, param2:ZNPList_ZPP_GeomVert) : void
@@ -110,6 +1223,16 @@ package zpp_nape.geom
             _loc9_.links.remove(_loc4_);
             if(_loc9_ == _loc5_)
             {
+               if(_loc4_.links.empty())
+               {
+                  param1.remove(_loc4_);
+                  _loc16_ = _loc4_;
+                  _loc16_.links.clear();
+                  _loc16_.node = null;
+                  _loc16_.forced = false;
+                  _loc16_.next = ZPP_SimpleVert.zpp_pool;
+                  ZPP_SimpleVert.zpp_pool = _loc16_;
+               }
                break;
             }
             if(ZPP_GeomVert.zpp_pool == null)
@@ -247,16 +1370,6 @@ package zpp_nape.geom
                _loc9_ = _loc16_;
             }
          }
-         if(_loc4_.links.empty())
-         {
-            param1.remove(_loc4_);
-            _loc16_ = _loc4_;
-            _loc16_.links.clear();
-            _loc16_.node = null;
-            _loc16_.forced = false;
-            _loc16_.next = ZPP_SimpleVert.zpp_pool;
-            ZPP_SimpleVert.zpp_pool = _loc16_;
-         }
          param1.remove(_loc5_);
          _loc16_ = _loc5_;
          _loc16_.links.clear();
@@ -318,6 +1431,7 @@ package zpp_nape.geom
                   ZPP_SimpleVert.zpp_pool = _loc8_.next;
                   _loc8_.next = null;
                }
+               null;
                _loc8_.x = _loc7_.x;
                _loc8_.y = _loc7_.y;
                §§pop().add(_loc8_);
@@ -348,6 +1462,7 @@ package zpp_nape.geom
                ZPP_SimpleEvent.zpp_pool = _loc14_.next;
                _loc14_.next = null;
             }
+            null;
             _loc14_.vertex = _loc8_;
             _loc13_ = §§pop().add(_loc14_);
             §§push(_loc9_);
@@ -361,6 +1476,7 @@ package zpp_nape.geom
                ZPP_SimpleEvent.zpp_pool = _loc15_.next;
                _loc15_.next = null;
             }
+            null;
             _loc15_.vertex = _loc12_;
             _loc14_ = §§pop().add(_loc15_);
             _loc13_.segment = _loc14_.segment = ZPP_SimpleEvent.less_xy(_loc13_,_loc14_) ? (_loc13_.type = 1, _loc14_.type = 2, ZPP_SimpleSeg.get(_loc8_,_loc12_)) : (_loc13_.type = 2, _loc14_.type = 1, ZPP_SimpleSeg.get(_loc12_,_loc8_));
@@ -379,6 +1495,7 @@ package zpp_nape.geom
             ZPP_SimpleEvent.zpp_pool = _loc14_.next;
             _loc14_.next = null;
          }
+         null;
          _loc14_.vertex = _loc8_;
          _loc13_ = §§pop().add(_loc14_);
          §§push(_loc9_);
@@ -392,6 +1509,7 @@ package zpp_nape.geom
             ZPP_SimpleEvent.zpp_pool = _loc15_.next;
             _loc15_.next = null;
          }
+         null;
          _loc15_.vertex = _loc12_;
          _loc14_ = §§pop().add(_loc15_);
          _loc13_.segment = _loc14_.segment = ZPP_SimpleEvent.less_xy(_loc13_,_loc14_) ? (_loc13_.type = 1, _loc14_.type = 2, ZPP_SimpleSeg.get(_loc8_,_loc12_)) : (_loc13_.type = 2, _loc14_.type = 1, ZPP_SimpleSeg.get(_loc12_,_loc8_));
@@ -538,3 +1656,10 @@ package zpp_nape.geom
       }
    }
 }
+
+import zpp_nape.util.FastHash2_Hashable2_Boolfalse;
+import zpp_nape.util.ZNPList_ZPP_SimpleEvent;
+import zpp_nape.util.ZNPList_ZPP_SimpleVert;
+import zpp_nape.util.ZPP_Set_ZPP_SimpleEvent;
+import zpp_nape.util.ZPP_Set_ZPP_SimpleVert;
+

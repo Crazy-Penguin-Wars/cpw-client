@@ -2,7 +2,6 @@ package tuxwars.items.managers
 {
    public class Slots
    {
-      
       public static const HEAD:String = "Head";
       
       public static const TORSO:String = "Torso";
@@ -24,7 +23,6 @@ package tuxwars.items.managers
       public static const ACCESSORY_UNDER_HAT:String = "AccessoryUnderHat";
       
       private static const SLOTS:Array = ["Head","Torso","Feet","Weapon","Booster","Color","Face","AccessoryOverHat","AccessoryUnderHat"];
-       
       
       public function Slots()
       {
@@ -65,3 +63,4 @@ package tuxwars.items.managers
       }
    }
 }
+

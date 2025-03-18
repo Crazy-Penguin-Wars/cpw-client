@@ -2,8 +2,6 @@ package tuxwars.home.ui.screenhandlers
 {
    public interface ILogic
    {
-       
-      
       function preInit(param1:*) : void;
       
       function init(param1:*) : void;
@@ -19,3 +17,4 @@ package tuxwars.home.ui.screenhandlers
       function get params() : *;
    }
 }
+

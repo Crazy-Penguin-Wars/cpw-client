@@ -6,9 +6,7 @@ package zpp_nape.util
    
    public class ZPP_ContactList
    {
-      
-      public static var §internal§:Boolean = false;
-       
+      public static var §internal§:Boolean;
       
       public var zip_length:Boolean;
       
@@ -136,3 +134,4 @@ package zpp_nape.util
       }
    }
 }
+

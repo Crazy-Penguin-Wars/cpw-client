@@ -10,8 +10,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
    
    public class LockButton extends SaleButton
    {
-       
-      
       private var _lockIcon:MovieClip;
       
       private var _lockIconVip:MovieClip;
@@ -169,3 +167,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
       }
    }
 }
+

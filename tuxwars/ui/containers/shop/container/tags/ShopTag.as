@@ -9,8 +9,6 @@ package tuxwars.ui.containers.shop.container.tags
    
    public class ShopTag extends Container
    {
-       
-      
       private var _uiTextField:UIAutoTextField;
       
       public function ShopTag(design:MovieClip, data:*, game:TuxWarsGame, tid:String, parent:UIComponent = null, useTidAsText:Boolean = false)
@@ -42,3 +40,4 @@ package tuxwars.ui.containers.shop.container.tags
       }
    }
 }
+

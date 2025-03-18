@@ -11,18 +11,14 @@ package tuxwars.challenges.counters
    
    public class FireWeaponIDCollideAffectsIDNoDamage extends Counter
    {
-       
-      
       private var weaponIdFired:String;
       
-      private var whoHit:Vector.<PhysicsGameObject>;
+      private var whoHit:Vector.<PhysicsGameObject> = new Vector.<PhysicsGameObject>();
       
-      private var contacts:Vector.<PhysicsGameObject>;
+      private var contacts:Vector.<PhysicsGameObject> = new Vector.<PhysicsGameObject>();
       
       public function FireWeaponIDCollideAffectsIDNoDamage(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
-         whoHit = new Vector.<PhysicsGameObject>();
-         contacts = new Vector.<PhysicsGameObject>();
          super(challenge,id,targetValue,playerId,params);
       }
       
@@ -69,3 +65,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

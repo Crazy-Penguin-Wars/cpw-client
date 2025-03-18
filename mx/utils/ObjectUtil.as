@@ -7,9 +7,10 @@ package mx.utils
    import mx.collections.IList;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class ObjectUtil
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       private static var defaultToStringExcludes:Array = ["password","credentials"];
@@ -17,7 +18,6 @@ package mx.utils
       private static var refCount:int = 0;
       
       private static var CLASS_INFO_CACHE:Object = {};
-       
       
       public function ObjectUtil()
       {
@@ -48,7 +48,7 @@ package mx.utils
       {
          var v:Object = null;
          var p:* = undefined;
-         if(Boolean(value) && value.hasOwnProperty("uid"))
+         if(Boolean(value) && Boolean(value.hasOwnProperty("uid")))
          {
             result.uid = value.uid;
          }
@@ -56,7 +56,7 @@ package mx.utils
          for each(p in classInfo.properties)
          {
             v = value[p];
-            if(Boolean(v) && v.hasOwnProperty("uid"))
+            if(Boolean(v) && Boolean(v.hasOwnProperty("uid")))
             {
                cloneInternal(result[p],v);
             }
@@ -123,7 +123,7 @@ package mx.utils
             a = a.toLocaleLowerCase();
             b = b.toLocaleLowerCase();
          }
-         var result:int = a.localeCompare(b);
+         var result:int = int(a.localeCompare(b));
          if(result < -1)
          {
             result = -1;
@@ -149,8 +149,8 @@ package mx.utils
          {
             return -1;
          }
-         var na:Number = a.getTime();
-         var nb:Number = b.getTime();
+         var na:Number = Number(a.getTime());
+         var nb:Number = Number(b.getTime());
          if(na < nb)
          {
             return -1;
@@ -493,7 +493,7 @@ package mx.utils
          excludeObject = {};
          if(Boolean(excludes))
          {
-            n = excludes.length;
+            n = int(excludes.length);
             for(i = 0; i < n; i++)
             {
                excludeObject[excludes[i]] = 1;
@@ -538,7 +538,7 @@ package mx.utils
          {
             if(className == "XML")
             {
-               n = properties.length();
+               n = int(properties.length());
                for(i = 0; i < n; i++)
                {
                   p = properties[i].name();
@@ -550,7 +550,7 @@ package mx.utils
             }
             else
             {
-               n = properties.length();
+               n = int(properties.length());
                uris = options.uris;
                for(i = 0; i < n; i++)
                {
@@ -606,6 +606,7 @@ package mx.utils
                            catch(e:Error)
                            {
                            }
+                           continue;
                         }
                      }
                   }
@@ -747,7 +748,7 @@ package mx.utils
       {
          var i:uint = 0;
          var excl:String = null;
-         var flag:* = null;
+         var flag:String = null;
          var value:String = null;
          var key:String = getQualifiedClassName(o);
          if(excludes != null)
@@ -778,7 +779,7 @@ package mx.utils
       
       private static function arrayCompare(a:Array, b:Array, currentDepth:int, desiredDepth:int, refs:Dictionary) : int
       {
-         var key:* = null;
+         var key:Object = null;
          var result:int = 0;
          if(a.length != b.length)
          {
@@ -842,7 +843,7 @@ package mx.utils
                result = numericCompare(a[i],b[i]);
                if(result != 0)
                {
-                  i = a.length;
+                  i = int(a.length);
                }
             }
          }
@@ -897,3 +898,4 @@ package mx.utils
       }
    }
 }
+

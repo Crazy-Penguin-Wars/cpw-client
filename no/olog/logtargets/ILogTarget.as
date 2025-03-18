@@ -4,8 +4,7 @@ package no.olog.logtargets
    
    public interface ILogTarget
    {
-       
-      
       function writeLogLine(param1:Oline) : void;
    }
 }
+

@@ -4,6 +4,7 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.events.FullScreenEvent;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.logic.home.HomeLogic;
    import tuxwars.home.ui.screen.TuxUIScreen;
@@ -12,8 +13,6 @@ package tuxwars.home.ui.screen.home
    
    public class HomeScreen extends TuxUIScreen implements IHomeScreen
    {
-       
-      
       private var backgroundElement:BackgroundElementScreen;
       
       private var darkBackground:DarkBackgroundElementWindow;
@@ -36,6 +35,7 @@ package tuxwars.home.ui.screen.home
       
       public function HomeScreen(game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] HomeScreen is the cause (why did i do all that work to discover this)");
          super(game,new MovieClip());
          var _loc2_:MovieClip = getDesignMovieClip();
          _loc2_.name = "HomeScreen";
@@ -181,3 +181,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

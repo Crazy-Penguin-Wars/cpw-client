@@ -8,8 +8,6 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SlotMachineLine
    {
-       
-      
       private var _design:MovieClip;
       
       private var _lineNumber:int;
@@ -93,3 +91,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

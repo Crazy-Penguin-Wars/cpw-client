@@ -7,17 +7,16 @@ package tuxwars.battle.ui.screen.result.position
    
    public class PositionContainer extends UIContainer
    {
-      
       private static const SLOT:String = "Slot_";
-       
       
-      private const slots:Vector.<PositionSlot> = new Vector.<PositionSlot>();
+      private const slots:Vector.<PositionSlot>;
       
       private var numSlots:int;
       
       public function PositionContainer(design:MovieClip, parent:UIComponent, numSlots:int)
       {
          var i:int = 0;
+         slots = new Vector.<PositionSlot>();
          super(design,parent);
          this.numSlots = numSlots;
          for(i = 0; i < numSlots; )
@@ -53,3 +52,4 @@ package tuxwars.battle.ui.screen.result.position
       }
    }
 }
+

@@ -8,11 +8,9 @@ package starling.display
    
    public class Quad extends DisplayObject
    {
-      
       private static var sHelperPoint:Point = new Point();
       
       private static var sHelperMatrix:Matrix = new Matrix();
-       
       
       private var mTinted:Boolean;
       
@@ -161,3 +159,4 @@ package starling.display
       }
    }
 }
+

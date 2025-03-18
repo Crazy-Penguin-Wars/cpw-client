@@ -5,8 +5,6 @@ package tuxwars.battle.actions
    
    public class PlayerControlsMouseUpAction extends PlayerControlsAction
    {
-       
-      
       public function PlayerControlsMouseUpAction(moveControls:PlayerMoveControls)
       {
          super("mouseUp",moveControls);
@@ -18,3 +16,4 @@ package tuxwars.battle.actions
       }
    }
 }
+

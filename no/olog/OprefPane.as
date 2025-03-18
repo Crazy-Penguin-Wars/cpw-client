@@ -8,9 +8,7 @@ package no.olog
    
    internal class OprefPane extends Sprite
    {
-      
       private static const DELIMITER:String = "  |  ";
-       
       
       private var _bg:Shape;
       
@@ -26,6 +24,7 @@ package no.olog
       
       private function _init() : void
       {
+         var p:uint = 5;
          _bg = new Shape();
          _bg.graphics.beginFill(10066329);
          _bg.graphics.drawRect(0,0,400,20);
@@ -39,8 +38,8 @@ package no.olog
          _field.width = 400;
          _field.styleSheet = _getStyleSheet();
          _field.addEventListener("link",_onTextLink);
-         _field.x = 5;
-         _field.y = 5;
+         _field.x = p;
+         _field.y = p;
          addChild(_field);
          _menu += "<menu>";
          _menu += "<header>Utilities</header>";
@@ -50,7 +49,7 @@ package no.olog
          _menu += "<a href=\"event:clear\">Clear</a>";
          _menu += "</menu>";
          _field.htmlText = _menu;
-         _bg.height = _field.height + 5 * 2;
+         _bg.height = _field.height + p * 2;
       }
       
       private function _onTextLink(event:TextEvent) : void
@@ -100,3 +99,4 @@ package no.olog
       }
    }
 }
+

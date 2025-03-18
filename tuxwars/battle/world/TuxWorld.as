@@ -53,7 +53,6 @@ package tuxwars.battle.world
    
    public class TuxWorld extends GameWorld
    {
-      
       private static const MINUTE:int = 60000;
       
       private static const TEN_SECONDS:int = 10000;
@@ -61,7 +60,6 @@ package tuxwars.battle.world
       private static const PENGUIN_PIVOT_POINT_TOP:int = 65;
       
       private static const PENGUIN_PIVOT_POINT_BOTTOM:int = 55;
-       
       
       private const updateWorldMessages:Vector.<UpdateGameWorldMessage> = new Vector.<UpdateGameWorldMessage>();
       
@@ -99,7 +97,7 @@ package tuxwars.battle.world
       
       private var _gameEnded:Boolean;
       
-      private var levelSizeScaleIgnoreds:Vector.<DisplayObject>;
+      private var levelSizeScaleIgnoreds:Vector.<DisplayObject> = new Vector.<DisplayObject>();
       
       private var _turnEnd:Boolean;
       
@@ -113,7 +111,6 @@ package tuxwars.battle.world
       
       public function TuxWorld(game:TuxWarsGame)
       {
-         levelSizeScaleIgnoreds = new Vector.<DisplayObject>();
          super(game);
       }
       
@@ -262,7 +259,7 @@ package tuxwars.battle.world
       public function getIndexOfPlayerWithId(id:String) : int
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:PlayerGameObject = null;
          for(i = 0; i < _players.length; )
          {
             _loc2_ = _players[i];
@@ -324,7 +321,7 @@ package tuxwars.battle.world
       
       public function addTextEffect(type:int, text:String, locX:int, locY:int, useFeedbackLayer:Boolean, params:* = null) : TextEffect
       {
-         var fx:* = null;
+         var fx:TextEffect = null;
          var _loc7_:int = 0;
          _loc7_ = 70;
          if(textFXQueue.length >= 1)
@@ -336,15 +333,15 @@ package tuxwars.battle.world
                {
                   type = 5;
                   var _loc10_:DCGame = DCGame;
-                  locX = Number(com.dchoc.game.DCGame._stage.stageWidth) >> 1;
+                  locX = com.dchoc.game.DCGame._stage.stageWidth >> 1;
                   var _loc11_:DCGame = DCGame;
-                  locY = Number(com.dchoc.game.DCGame._stage.stageHeight) * _loc7_ / 100;
+                  locY = com.dchoc.game.DCGame._stage.stageHeight * _loc7_ / 100;
                }
                else
                {
                   var _loc12_:DCGame = DCGame;
                   var _loc13_:DCGame = DCGame;
-                  fx.setXY(Number(com.dchoc.game.DCGame._stage.stageWidth) >> 1,Number(com.dchoc.game.DCGame._stage.stageHeight) * _loc7_ / 100);
+                  fx.setXY(com.dchoc.game.DCGame._stage.stageWidth >> 1,com.dchoc.game.DCGame._stage.stageHeight * _loc7_ / 100);
                }
             }
          }
@@ -364,13 +361,13 @@ package tuxwars.battle.world
       
       public function ignoreLevelSizeScale(mc:DisplayObject, scaleYDistanceAboveCharacter:Boolean, scaleYDistanceBelowCharacter:Boolean) : void
       {
-         var _loc5_:Number = 1 / Number(this._camera.zoom);
+         var _loc5_:Number = 1 / this._camera.zoom;
          mc.scaleX = _loc5_;
          mc.scaleY = _loc5_;
          var yCoordinateChange:Number = 0;
          if(scaleYDistanceAboveCharacter)
          {
-            yCoordinateChange = -(65 + Number(this._camera.zoom) * 10);
+            yCoordinateChange = -(65 + this._camera.zoom * 10);
             if(mc.y > 0)
             {
                yCoordinateChange += mc.y;
@@ -378,7 +375,7 @@ package tuxwars.battle.world
          }
          else if(scaleYDistanceBelowCharacter)
          {
-            yCoordinateChange = 55 - Number(this._camera.zoom) * 10;
+            yCoordinateChange = 55 - this._camera.zoom * 10;
          }
          mc.y = yCoordinateChange;
          storeIgnoredLevelSizeScaleObject(mc);
@@ -403,8 +400,8 @@ package tuxwars.battle.world
       {
          var i:int = 0;
          var _loc8_:Number = NaN;
-         var _loc9_:int = physicsWorld.level.width * Number(this._camera.zoom);
-         var _loc7_:int = physicsWorld.level.height * Number(this._camera.zoom);
+         var _loc9_:int = physicsWorld.level.width * this._camera.zoom;
+         var _loc7_:int = physicsWorld.level.height * this._camera.zoom;
          var _loc6_:int = _loc9_ * 0.5;
          var _loc4_:int = _loc7_ * 0.5;
          var _loc11_:DCGame = DCGame;
@@ -419,7 +416,7 @@ package tuxwars.battle.world
          {
             if(levelSizeScaleIgnoreds[i] && levelSizeScaleIgnoreds[i].parent)
             {
-               _loc8_ = 1 / Number(this._camera.zoom);
+               _loc8_ = 1 / this._camera.zoom;
                levelSizeScaleIgnoreds[i].scaleX = _loc8_;
                levelSizeScaleIgnoreds[i].scaleY = _loc8_;
             }
@@ -573,9 +570,9 @@ package tuxwars.battle.world
          var _loc4_:int = 0;
          var _loc2_:Object = response.data;
          var _loc9_:BattleSimulation = BattleManager.getSimulation();
-         var _loc7_:int = int(_loc2_.hasOwnProperty("mtl") ? _loc2_.mtl : _loc9_.getMatchTimeLeft() - worldUpdateTime);
+         var _loc7_:int = int(!!_loc2_.hasOwnProperty("mtl") ? _loc2_.mtl : _loc9_.getMatchTimeLeft() - worldUpdateTime);
          _loc9_.updateMatchTime(_loc7_);
-         var _loc8_:int = int(_loc2_.hasOwnProperty("ttl") ? _loc2_.ttl : _loc9_.getTurnTimeLeft() - worldUpdateTime);
+         var _loc8_:int = int(!!_loc2_.hasOwnProperty("ttl") ? _loc2_.ttl : _loc9_.getTurnTimeLeft() - worldUpdateTime);
          _loc9_.updateTurnTime(_loc8_);
          handleRespawningPlayers(_loc2_.respawn);
          handleResumingPlayers(_loc2_.resume);
@@ -589,7 +586,7 @@ package tuxwars.battle.world
          else if((shownOneMinuteLeft || _loc3_ <= 60000) && !shownTenSecondsLeft && _loc6_ <= 10000 && _loc3_ > 10000)
          {
             var _loc10_:DCGame = DCGame;
-            BattleManager.showText(ProjectManager.getText("MATCH_TEN_SECONDS_LEFT"),5,false,null,Number(com.dchoc.game.DCGame._stage.stageHeight) / 2);
+            BattleManager.showText(ProjectManager.getText("MATCH_TEN_SECONDS_LEFT"),5,false,null,com.dchoc.game.DCGame._stage.stageHeight / 2);
             shownTenSecondsLeft = true;
          }
          if(_loc9_.getMatchTimeLeft() < 10000)
@@ -600,7 +597,7 @@ package tuxwars.battle.world
             {
                counterFlags[_loc4_] = true;
                var _loc11_:DCGame = DCGame;
-               BattleManager.showText(null,7,false,_loc4_,Number(com.dchoc.game.DCGame._stage.stageHeight) / 2);
+               BattleManager.showText(null,7,false,_loc4_,com.dchoc.game.DCGame._stage.stageHeight / 2);
             }
          }
          update(worldUpdateTime);
@@ -608,8 +605,8 @@ package tuxwars.battle.world
       
       private function handleRespawningPlayers(players:Array) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:String = null;
+         var _loc3_:PlayerGameObject = null;
          for each(var data in players)
          {
             _loc2_ = data.dead_dude;
@@ -628,8 +625,8 @@ package tuxwars.battle.world
       
       private function handleResumingPlayers(players:Array) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:String = null;
+         var _loc3_:PlayerGameObject = null;
          for each(var data in players)
          {
             _loc2_ = data.dead_dude;
@@ -650,7 +647,7 @@ package tuxwars.battle.world
       {
          var i:int = 0;
          var j:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:FeedbackItem = null;
          if(particleSystem)
          {
             particleSystem.logicUpdate(deltaTime);
@@ -761,8 +758,8 @@ package tuxwars.battle.world
       {
          var _loc2_:int = 0;
          var i:int = 0;
-         var _loc5_:* = null;
-         var _loc4_:* = null;
+         var _loc5_:Player = null;
+         var _loc4_:PlayerGameObjectDef = null;
          _players = [];
          var _loc10_:BattleManager = BattleManager;
          var _loc8_:Random = new Random(tuxwars.battle.BattleManager._seed,"Create Players Random",Config.debugMode);
@@ -817,7 +814,8 @@ package tuxwars.battle.world
       private function calculateZoomLevel(level:Level) : Number
       {
          var _loc2_:DCGame = DCGame;
-         return Number(com.dchoc.game.DCGame._stage.stageHeight) / level.height;
+         return com.dchoc.game.DCGame._stage.stageHeight / level.height;
       }
    }
 }
+

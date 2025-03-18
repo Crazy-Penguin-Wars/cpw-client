@@ -2,8 +2,6 @@ package org.as3commons.lang
 {
    public interface IIterator
    {
-       
-      
       function first() : void;
       
       function last() : void;
@@ -11,3 +9,4 @@ package org.as3commons.lang
       function next() : Object;
    }
 }
+

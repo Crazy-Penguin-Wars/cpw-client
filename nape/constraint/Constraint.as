@@ -15,8 +15,6 @@ package nape.constraint
    
    public class Constraint
    {
-       
-      
       public var zpp_inner:ZPP_Constraint;
       
       public var debugDraw:Boolean;
@@ -198,6 +196,10 @@ package nape.constraint
          var _loc2_:* = null as ConstraintList;
          if((zpp_inner.compound == null ? null : zpp_inner.compound.outer) != param1)
          {
+            if((zpp_inner.compound == null ? null : zpp_inner.compound.outer) != null)
+            {
+               (zpp_inner.compound == null ? null : zpp_inner.compound.outer).zpp_inner.wrap_constraints.remove(this);
+            }
             if(param1 != null)
             {
                _loc2_ = param1.zpp_inner.wrap_constraints;
@@ -374,3 +376,4 @@ package nape.constraint
       }
    }
 }
+

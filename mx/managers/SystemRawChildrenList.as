@@ -5,11 +5,11 @@ package mx.managers
    import mx.core.IChildList;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class SystemRawChildrenList implements IChildList
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       private var owner:SystemManager;
       
@@ -75,3 +75,4 @@ package mx.managers
       }
    }
 }
+

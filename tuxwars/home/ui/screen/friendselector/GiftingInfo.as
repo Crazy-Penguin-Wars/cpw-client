@@ -2,13 +2,11 @@ package tuxwars.home.ui.screen.friendselector
 {
    public class GiftingInfo
    {
-      
       private static const FILTER_ALL_FRIENDS:int = 0;
       
       private static const FILTER_APP_FRIENDS:int = 1;
       
       private static const FILTER_NON_APP_FRIENDS:int = 2;
-       
       
       private var mFriends:Object;
       
@@ -118,7 +116,7 @@ package tuxwars.home.ui.screen.friendselector
       
       public function addGiftForFriends(giftId:String, friendsList:String) : void
       {
-         var previous:* = null;
+         var previous:String = null;
          var friendsReceivingGift:Array = friendsList.split(",");
          for each(var friendToAddGiftTo in friendsReceivingGift)
          {
@@ -161,3 +159,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

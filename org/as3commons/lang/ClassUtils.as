@@ -6,6 +6,7 @@ package org.as3commons.lang
    
    public final class ClassUtils
    {
+      private static var _timer:Timer;
       
       public static const CLEAR_CACHE_INTERVAL:uint = 60000;
       
@@ -20,9 +21,6 @@ package org.as3commons.lang
       public static var clearCacheInterval:uint = CLEAR_CACHE_INTERVAL;
       
       private static var _describeTypeCache:Object = {};
-      
-      private static var _timer:Timer;
-       
       
       public function ClassUtils()
       {
@@ -43,7 +41,7 @@ package org.as3commons.lang
       public static function forName(name:String, applicationDomain:ApplicationDomain = null) : Class
       {
          var result:Class = null;
-         applicationDomain = applicationDomain || ApplicationDomain.currentDomain;
+         applicationDomain ||= ApplicationDomain.currentDomain;
          if(!applicationDomain)
          {
             applicationDomain = ApplicationDomain.currentDomain;
@@ -74,7 +72,7 @@ package org.as3commons.lang
       
       public static function getNameFromFullyQualifiedName(fullyQualifiedName:String) : String
       {
-         var startIndex:int = fullyQualifiedName.indexOf(PACKAGE_CLASS_SEPARATOR);
+         var startIndex:int = int(fullyQualifiedName.indexOf(PACKAGE_CLASS_SEPARATOR));
          if(startIndex == -1)
          {
             return fullyQualifiedName;
@@ -100,7 +98,7 @@ package org.as3commons.lang
       public static function isPrivateClass(object:*) : Boolean
       {
          var className:String = object is Class ? getQualifiedClassName(object) : object.toString();
-         var index:int = className.indexOf("::");
+         var index:int = int(className.indexOf("::"));
          var inRootPackage:Boolean = index == -1;
          if(inRootPackage)
          {
@@ -299,7 +297,7 @@ package org.as3commons.lang
          var interfacesDescription:XMLList = classDescription.factory.implementsInterface;
          if(Boolean(interfacesDescription))
          {
-            numInterfaces = interfacesDescription.length();
+            numInterfaces = int(interfacesDescription.length());
             for(i = 0; i < numInterfaces; i++)
             {
                fullyQualifiedInterfaceName = interfacesDescription[i].@type.toString();
@@ -315,7 +313,7 @@ package org.as3commons.lang
       
       public static function getImplementedInterfaces(clazz:Class, applicationDomain:ApplicationDomain = null) : Array
       {
-         applicationDomain = applicationDomain || ApplicationDomain.currentDomain;
+         applicationDomain ||= ApplicationDomain.currentDomain;
          var result:Array = getFullyQualifiedImplementedInterfaceNames(clazz);
          for(var i:int = 0; i < result.length; i++)
          {
@@ -438,3 +436,4 @@ package org.as3commons.lang
       }
    }
 }
+

@@ -2,8 +2,6 @@ package mx.styles
 {
    public interface IStyleClient extends ISimpleStyleClient
    {
-       
-      
       function get className() : String;
       
       function get inheritingStyles() : Object;
@@ -33,3 +31,4 @@ package mx.styles
       function registerEffects(param1:Array) : void;
    }
 }
+

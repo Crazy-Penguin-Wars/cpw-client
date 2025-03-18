@@ -6,9 +6,7 @@ package zpp_nape.space
    
    public class ZPP_SweepData
    {
-      
-      public static var zpp_pool:ZPP_SweepData = null;
-       
+      public static var zpp_pool:ZPP_SweepData;
       
       public var shape:ZPP_Shape;
       
@@ -31,3 +29,4 @@ package zpp_nape.space
       }
    }
 }
+

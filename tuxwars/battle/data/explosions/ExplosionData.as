@@ -13,7 +13,6 @@ package tuxwars.battle.data.explosions
    
    public class ExplosionData extends TuxGameData
    {
-      
       private static const ATTACK:String = "Attack";
       
       private static const EXPLOSION_SHAPE:String = "ExplosionShape";
@@ -37,7 +36,6 @@ package tuxwars.battle.data.explosions
       private static const SHAKE_STRENGTH:String = "ShakeEffectStrength";
       
       private static const FLASH:String = "Flash";
-       
       
       private var _explosionShapeReference:ExplosionShapeReference;
       
@@ -51,7 +49,7 @@ package tuxwars.battle.data.explosions
       public function get attack() : Stat
       {
          var value:* = undefined;
-         var statReference:* = null;
+         var statReference:StatReference = null;
          var _loc1_:Field = getField("Attack");
          if(_loc1_)
          {
@@ -66,7 +64,7 @@ package tuxwars.battle.data.explosions
       
       public function get explosionShape() : ExplosionShapeReference
       {
-         var _loc1_:* = null;
+         var _loc1_:Field = null;
          if(!_explosionShapeReference)
          {
             _loc1_ = getField("ExplosionShape");
@@ -164,3 +162,4 @@ package tuxwars.battle.data.explosions
       }
    }
 }
+

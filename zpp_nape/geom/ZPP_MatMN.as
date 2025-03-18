@@ -5,8 +5,6 @@ package zpp_nape.geom
    
    public class ZPP_MatMN
    {
-       
-      
       public var x:Vector.<Number>;
       
       public var outer:MatMN;
@@ -31,3 +29,4 @@ package zpp_nape.geom
       }
    }
 }
+

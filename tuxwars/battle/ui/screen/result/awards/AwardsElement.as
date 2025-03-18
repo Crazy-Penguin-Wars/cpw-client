@@ -26,7 +26,6 @@ package tuxwars.battle.ui.screen.result.awards
    
    public class AwardsElement
    {
-      
       private static const BUTTON_LEFT:String = "Button_Scroll_Left";
       
       private static const BUTTON_RIGHT:String = "Button_Scroll_Right";
@@ -34,7 +33,6 @@ package tuxwars.battle.ui.screen.result.awards
       private static const BUTTON_GET:String = "Button_Get";
       
       private static const POSITION_BONUS_TEXT:String = "RESULTS_POSITION_BONUS_";
-       
       
       private var addButton:UIButton;
       
@@ -159,13 +157,13 @@ package tuxwars.battle.ui.screen.result.awards
       
       public function init(results:BattleResults) : void
       {
-         var _loc6_:* = null;
-         var _loc3_:* = null;
-         var _loc7_:* = null;
-         var _loc4_:* = null;
-         var _loc2_:* = null;
-         var _loc9_:* = null;
-         var _loc11_:* = null;
+         var _loc6_:String = null;
+         var _loc3_:String = null;
+         var _loc7_:String = null;
+         var _loc4_:String = null;
+         var _loc2_:CashData = null;
+         var _loc9_:ItemData = null;
+         var _loc11_:BetData = null;
          coinsAwardField.setText(results.coinsGained.toString());
          expAwardField.setText(results.expGained.toString());
          positionBonusField.setText(ProjectManager.getText("RESULTS_POSITION_BONUS_" + results.getPosition(game.player.id)));
@@ -186,15 +184,15 @@ package tuxwars.battle.ui.screen.result.awards
          addButton = TuxUiUtils.createButton(UIButton,noMembershipContainer,"Button_Get",getButtonCallback,"RESULTS_GET_MEMBERSHIP_BUTTON");
          if(BattleManager.isVIP() && !tuxwars.tutorial.Tutorial._tutorial)
          {
-            _loc6_ = ((results.coinsGained + results.getCoinsPositionBonus(game.player.id)) * VIPData.getIngameMoneyMultiplier() - results.coinsGained - results.getCoinsPositionBonus(game.player.id)).toString();
-            _loc3_ = ((results.expGained + results.getExpPositionBonus(game.player.id)) * VIPData.getExpMultiplier() - results.expGained - results.getExpPositionBonus(game.player.id)).toString();
+            _loc6_ = (int((results.coinsGained + results.getCoinsPositionBonus(game.player.id)) * VIPData.getIngameMoneyMultiplier() - results.coinsGained - results.getCoinsPositionBonus(game.player.id))).toString();
+            _loc3_ = (int((results.expGained + results.getExpPositionBonus(game.player.id)) * VIPData.getExpMultiplier() - results.expGained - results.getExpPositionBonus(game.player.id))).toString();
             setUpMembershipAwards(membershipContainer,_loc6_,_loc3_);
             addButton.setVisible(false);
          }
          else
          {
-            _loc7_ = ((results.coinsGained + results.getCoinsPositionBonus(game.player.id)) * VIPData.getIngameMoneyMultiplier() - results.coinsGained - results.getCoinsPositionBonus(game.player.id)).toString();
-            _loc4_ = ((results.expGained + results.getExpPositionBonus(game.player.id)) * VIPData.getExpMultiplier() - results.expGained - results.getExpPositionBonus(game.player.id)).toString();
+            _loc7_ = (int((results.coinsGained + results.getCoinsPositionBonus(game.player.id)) * VIPData.getIngameMoneyMultiplier() - results.coinsGained - results.getCoinsPositionBonus(game.player.id))).toString();
+            _loc4_ = (int((results.expGained + results.getExpPositionBonus(game.player.id)) * VIPData.getExpMultiplier() - results.expGained - results.getExpPositionBonus(game.player.id))).toString();
             setUpMembershipAwards(noMembershipContainer,_loc7_,_loc4_);
             var _loc14_:Tutorial = Tutorial;
             addButton.setVisible(!tuxwars.tutorial.Tutorial._tutorial);
@@ -273,39 +271,42 @@ package tuxwars.battle.ui.screen.result.awards
                            cashBetBonusWinField.setText("" + IngameBetData.getPayout());
                            awardBetContainerWinCash.visible = true;
                            awardBetContainerWinCoin.visible = false;
-                           break;
                         }
-                        if(_loc11_.valueIngame > 0)
+                        else if(_loc11_.valueIngame > 0)
                         {
                            betContainerWin.visible = true;
                            coinBetBonusWinField.setText("" + IngameBetData.getPayout());
                            awardBetContainerWinCash.visible = false;
                            awardBetContainerWinCoin.visible = true;
-                           break;
                         }
-                        betContainerNoBet.visible = true;
-                        break;
+                        else
+                        {
+                           betContainerNoBet.visible = true;
+                        }
                      }
-                     if(_loc11_.valuePremium > 0 && IngameBetData.getBetAmount() > 0)
+                     else if(_loc11_.valuePremium > 0 && IngameBetData.getBetAmount() > 0)
                      {
                         betContainerLose.visible = true;
                         cashBetBonusLoseField.setText("-" + IngameBetData.getBetAmount());
                         awardBetContainerLoseCash.visible = true;
                         awardBetContainerLoseCoin.visible = false;
-                        break;
                      }
-                     if(_loc11_.valueIngame > 0 && IngameBetData.getBetAmount() > 0)
+                     else if(_loc11_.valueIngame > 0 && IngameBetData.getBetAmount() > 0)
                      {
                         betContainerLose.visible = true;
                         coinBetBonusLoseField.setText("-" + IngameBetData.getBetAmount());
                         awardBetContainerLoseCash.visible = false;
                         awardBetContainerLoseCoin.visible = true;
-                        break;
                      }
-                     betContainerNoBet.visible = true;
-                     break;
+                     else
+                     {
+                        betContainerNoBet.visible = true;
+                     }
                   }
-                  betContainerNoBet.visible = true;
+                  else
+                  {
+                     betContainerNoBet.visible = true;
+                  }
                   break;
                }
             }
@@ -352,3 +353,4 @@ package tuxwars.battle.ui.screen.result.awards
       }
    }
 }
+

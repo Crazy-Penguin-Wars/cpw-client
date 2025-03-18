@@ -2,7 +2,6 @@ package tuxwars
 {
    public class Assets
    {
-      
       public static const CHARACTER_UI:String = "flash/ui/character_ui.swf";
       
       public static const INGAME_BATTLE_HUD:String = "flash/ui/ingame.swf";
@@ -52,7 +51,6 @@ package tuxwars
       public static const PENGUIN_ANIMATIONS:String = "flash/characters/penguin_animations.swf";
       
       public static const OVERHEAD_ANIMATIONS:String = "flash/characters/penguin_overhead_animations.swf";
-       
       
       public function Assets()
       {
@@ -65,3 +63,4 @@ package tuxwars
       }
    }
 }
+

@@ -23,8 +23,6 @@ package tuxwars.battle.states.player
    
    public class PlayerActiveFireSubState extends PlayerState
    {
-       
-      
       private var playerAnimationPlayed:Boolean;
       
       private var finishHandled:Boolean;
@@ -36,8 +34,8 @@ package tuxwars.battle.states.player
       
       override public function enter() : void
       {
-         var _loc2_:* = null;
-         var _loc1_:* = null;
+         var _loc2_:Vec2 = null;
+         var _loc1_:Vec2 = null;
          LogUtils.log(player + " Entering PlayerActiveFireSubState",null);
          super.enter();
          if(player.mode != "FireMode")
@@ -56,7 +54,7 @@ package tuxwars.battle.states.player
       
       override public function handleMessage(response:ActionResponse) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:FireWeaponResponse = null;
          super.handleMessage(response);
          LogUtils.addDebugLine("HandleMessage","Handling response: " + response.responseType,"PlayerActiveFireSubState");
          switch(response.responseType - 3)
@@ -132,7 +130,7 @@ package tuxwars.battle.states.player
       private function fireEmissions() : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:EmissionReference = null;
          var _loc6_:Number = NaN;
          var _loc5_:int = 0;
          var _loc4_:Weapon = player.weapon;
@@ -186,3 +184,4 @@ package tuxwars.battle.states.player
       }
    }
 }
+

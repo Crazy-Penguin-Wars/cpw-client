@@ -11,7 +11,6 @@ package tuxwars.ui.tooltips
    
    public class TooltipContent extends Content
    {
-      
       public static const RIGHT:String = "Right";
       
       public static const LEFT:String = "Left";
@@ -19,7 +18,6 @@ package tuxwars.ui.tooltips
       public static const UP:String = "Up";
       
       public static const DOWN:String = "Down";
-       
       
       public function TooltipContent(design:DisplayObject, data:*, game:TuxWarsGame, parent:TuxUIScreen = null)
       {
@@ -67,3 +65,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

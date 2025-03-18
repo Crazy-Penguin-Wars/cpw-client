@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    public class IntRect
    {
-       
-      
       public var left:int;
       
       public var top:int;
@@ -22,3 +20,4 @@ package com.logicom.geom
       }
    }
 }
+

@@ -7,11 +7,9 @@ package tuxwars.battle.data
    
    public class TuxGameObjectData extends TuxGameData
    {
-      
       private static const PHYSICS:String = "Physics";
       
       private static const HIT_POINTS:String = "HitPoints";
-       
       
       protected var physics:PhysicsReference;
       
@@ -44,3 +42,4 @@ package tuxwars.battle.data
       }
    }
 }
+

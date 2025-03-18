@@ -6,6 +6,7 @@ package tuxwars.battle.rewards
    import flash.display.MovieClip;
    import flash.geom.Point;
    import org.as3commons.lang.StringUtils;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleManager;
    import tuxwars.battle.gameobjects.Follower;
    import tuxwars.battle.gameobjects.LevelGameObject;
@@ -23,7 +24,6 @@ package tuxwars.battle.rewards
    
    public class RewardsHandler
    {
-      
       private static const PREMIUM:String = "Cash";
       
       private static const IN_GAME:String = "Coin";
@@ -33,7 +33,6 @@ package tuxwars.battle.rewards
       private static const ITEM:String = "Item";
       
       private static const COUPON:String = "Coupon";
-       
       
       private const _itemsLooted:Vector.<LootItem> = new Vector.<LootItem>();
       
@@ -151,15 +150,16 @@ package tuxwars.battle.rewards
       
       public function addInGameMoneyGained(gain:int, targetObject:PhysicsGameObject) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Stat = null;
          var _loc3_:Number = NaN;
          if(gain > 0)
          {
             var _loc5_:PlayerGameObject = playerGameObject;
             var _loc6_:* = targetObject;
             LogUtils.log("Player: " + _loc5_._id + " gained ingame money: " + gain + " from targetId:" + _loc6_._id,"RewardsHandler",1,"Player",false,false,false);
+            var _loc8_:String = "CoinsBonus";
             var _loc7_:PlayerGameObject = playerGameObject;
-            _loc4_ = !!_loc7_.stats ? _loc7_.stats.getStat("CoinsBonus") : null;
+            _loc4_ = !!_loc7_.stats ? _loc7_.stats.getStat(_loc8_) : null;
             if(_loc4_ != null && _loc4_.isPercentage())
             {
                _loc3_ = gain * _loc4_.calculateValue();
@@ -248,15 +248,16 @@ package tuxwars.battle.rewards
       
       private function addExperienceGained(gain:int, targetObject:PhysicsGameObject) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Stat = null;
          var _loc4_:Number = NaN;
          if(gain > 0)
          {
             var _loc5_:PlayerGameObject = playerGameObject;
             var _loc6_:* = targetObject;
             LogUtils.log("Player: " + _loc5_._id + " gained exp: " + gain + " from tragetID: " + _loc6_._id,"RewardsHandler",1,"Player",false,false,false);
+            var _loc8_:String = "ExpBonus";
             var _loc7_:PlayerGameObject = playerGameObject;
-            _loc3_ = !!_loc7_.stats ? _loc7_.stats.getStat("ExpBonus") : null;
+            _loc3_ = !!_loc7_.stats ? _loc7_.stats.getStat(_loc8_) : null;
             if(_loc3_ != null && _loc3_.isPercentage())
             {
                _loc4_ = gain * _loc3_.calculateValue();
@@ -271,7 +272,7 @@ package tuxwars.battle.rewards
       
       public function addLootItemFor(targetObject:PhysicsGameObject, id:String, amount:int = 1) : void
       {
-         var item:* = null;
+         var item:Item = null;
          if(id)
          {
             item = ItemManager.createItem(id);
@@ -361,7 +362,7 @@ package tuxwars.battle.rewards
       
       private function generateGraphicsToPickUp(targetObject:PhysicsGameObject, iconName:String, value:int, icon:MovieClip = null) : void
       {
-         var _loc5_:* = null;
+         var _loc5_:Point = null;
          if(BattleManager.getLocalPlayer() != null && playerGameObject != null && _loc6_._id == _loc7_._id)
          {
             var _loc8_:*;
@@ -385,18 +386,19 @@ package tuxwars.battle.rewards
                   if(icon != null)
                   {
                      world.addFeedbackItem("drop_generic_item",_loc5_,value,RewardConfig.getAppearTime(),RewardConfig.getWaitTime(),RewardConfig.getFlyTime(),null,null,icon);
-                     break;
                   }
-                  world.addFeedbackItem("drop_generic_item",_loc5_,value,RewardConfig.getAppearTime(),RewardConfig.getWaitTime(),RewardConfig.getFlyTime(),RewardConfig.getSWF("Item"),RewardConfig.getExport("Item"));
-                  break;
+                  else
+                  {
+                     world.addFeedbackItem("drop_generic_item",_loc5_,value,RewardConfig.getAppearTime(),RewardConfig.getWaitTime(),RewardConfig.getFlyTime(),RewardConfig.getSWF("Item"),RewardConfig.getExport("Item"));
+                  }
             }
          }
       }
       
       private function calculateCraftingDrop(damage:int, targetObject:PhysicsGameObject) : void
       {
-         var _loc4_:* = null;
-         var follower:* = null;
+         var _loc4_:ItemData = null;
+         var follower:Follower = null;
          var _loc6_:Number = NaN;
          var _loc5_:Number = NaN;
          var _loc7_:Number = targetObject is LevelGameObject ? RewardConfig.getCraftingPropDropChance() : RewardConfig.getCraftingDefaultDropChance();
@@ -428,7 +430,7 @@ package tuxwars.battle.rewards
       
       private function calculateWeaponDrop(damage:int, targetObject:PhysicsGameObject) : void
       {
-         var lootItem:* = null;
+         var lootItem:ItemData = null;
          var _loc4_:Number = RewardConfig.getAmmunitionDefaultDropChance();
          if(checkIfToGiveItemReward(_loc4_))
          {
@@ -442,7 +444,7 @@ package tuxwars.battle.rewards
       
       private function calculateRecipeDrop(damage:int, targetObject:PhysicsGameObject) : void
       {
-         var lootItem:* = null;
+         var lootItem:ItemData = null;
          var _loc4_:Number = RewardConfig.getRecipeDropChance();
          if(checkIfToGiveItemReward(_loc4_))
          {
@@ -456,7 +458,7 @@ package tuxwars.battle.rewards
       
       private function calculateCouponDrop(damage:int, targetObject:PhysicsGameObject) : void
       {
-         var lootItem:* = null;
+         var lootItem:ItemData = null;
          if(hasGotCoupon)
          {
             return;
@@ -510,7 +512,7 @@ package tuxwars.battle.rewards
       {
          var _loc3_:* = undefined;
          var _loc5_:int = 0;
-         var _loc4_:* = null;
+         var _loc4_:ItemData = null;
          var _loc6_:Number = RewardConfig.getEquipmentDefaultDropChance();
          if(checkIfToGiveItemReward(_loc6_))
          {
@@ -526,8 +528,9 @@ package tuxwars.battle.rewards
       
       private function checkIfToGiveItemReward(chanceModifier:Number) : Boolean
       {
+         var _loc8_:String = "Luck";
          var _loc5_:PlayerGameObject = playerGameObject;
-         var _loc3_:int = int((!!_loc5_.stats ? _loc5_.stats.getStat("Luck") : null).calculateRoundedValue());
+         var _loc3_:int = int((!!_loc5_.stats ? _loc5_.stats.getStat(_loc8_) : null).calculateRoundedValue());
          var _loc4_:Number = Math.log(_loc3_ + 2) * 0.4342944819032518 * chanceModifier + _loc3_ / 100;
          var _loc2_:Number = Random.float(0,100);
          if(_loc4_ >= _loc2_)
@@ -605,7 +608,7 @@ package tuxwars.battle.rewards
       private function getWornItemsModifiedByTarget(filteredItems:Vector.<ItemData>, target:PhysicsGameObject) : Vector.<ItemData>
       {
          var _loc5_:* = undefined;
-         var _loc4_:* = null;
+         var _loc4_:PlayerGameObject = null;
          if(target is PlayerGameObject)
          {
             LogUtils.log("Starting dropRatio modification for player: " + player.id,this,0,"RewardHandlerMisc",false,false,false);
@@ -634,7 +637,7 @@ package tuxwars.battle.rewards
       
       public function syncRewardHandler() : void
       {
-         var itemData:* = null;
+         var itemData:ItemData = null;
          if(!player)
          {
             var _loc3_:PlayerGameObject = playerGameObject;
@@ -662,3 +665,4 @@ package tuxwars.battle.rewards
       }
    }
 }
+

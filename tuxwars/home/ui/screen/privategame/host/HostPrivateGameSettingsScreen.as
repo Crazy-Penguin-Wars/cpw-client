@@ -22,8 +22,6 @@ package tuxwars.home.ui.screen.privategame.host
    
    public class HostPrivateGameSettingsScreen extends TuxUIScreen
    {
-       
-      
       private const map:UIAutoTextField = new UIAutoTextField();
       
       private var closeButton:UIButton;
@@ -161,3 +159,4 @@ package tuxwars.home.ui.screen.privategame.host
       }
    }
 }
+

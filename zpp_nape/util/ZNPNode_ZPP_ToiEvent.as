@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ZPP_ToiEvent
    {
-      
-      public static var zpp_pool:ZNPNode_ZPP_ToiEvent = null;
-       
+      public static var zpp_pool:ZNPNode_ZPP_ToiEvent;
       
       public var next:ZNPNode_ZPP_ToiEvent;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

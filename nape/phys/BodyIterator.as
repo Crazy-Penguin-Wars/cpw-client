@@ -5,9 +5,7 @@ package nape.phys
    
    public final class BodyIterator
    {
-      
-      public static var zpp_pool:BodyIterator = null;
-       
+      public static var zpp_pool:BodyIterator;
       
       public var zpp_next:BodyIterator;
       
@@ -75,3 +73,4 @@ package nape.phys
       }
    }
 }
+

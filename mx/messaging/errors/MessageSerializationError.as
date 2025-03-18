@@ -4,8 +4,6 @@ package mx.messaging.errors
    
    public class MessageSerializationError extends MessagingError
    {
-       
-      
       public var fault:ErrorMessage;
       
       public function MessageSerializationError(msg:String, fault:ErrorMessage)
@@ -15,3 +13,4 @@ package mx.messaging.errors
       }
    }
 }
+

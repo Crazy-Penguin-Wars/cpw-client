@@ -6,8 +6,6 @@ package mx.styles
    
    public interface IStyleManager
    {
-       
-      
       function get inheritingStyles() : Object;
       
       function set inheritingStyles(param1:Object) : void;
@@ -63,3 +61,4 @@ package mx.styles
       function styleDeclarationsChanged() : void;
    }
 }
+

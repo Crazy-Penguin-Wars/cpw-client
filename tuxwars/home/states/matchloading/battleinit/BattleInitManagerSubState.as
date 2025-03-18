@@ -7,8 +7,6 @@ package tuxwars.home.states.matchloading.battleinit
    
    public class BattleInitManagerSubState extends TuxState
    {
-       
-      
       public function BattleInitManagerSubState(game:TuxWarsGame, params:* = null)
       {
          super(game,params);
@@ -22,3 +20,4 @@ package tuxwars.home.states.matchloading.battleinit
       }
    }
 }
+

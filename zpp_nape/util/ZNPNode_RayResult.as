@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_RayResult
    {
-      
-      public static var zpp_pool:ZNPNode_RayResult = null;
-       
+      public static var zpp_pool:ZNPNode_RayResult;
       
       public var next:ZNPNode_RayResult;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

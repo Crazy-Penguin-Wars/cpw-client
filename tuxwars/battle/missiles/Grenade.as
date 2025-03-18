@@ -10,8 +10,6 @@ package tuxwars.battle.missiles
    
    public class Grenade extends TimerMissile
    {
-       
-      
       public function Grenade(def:MissileDef, game:DCGame)
       {
          super(def,game);
@@ -34,3 +32,4 @@ package tuxwars.battle.missiles
       }
    }
 }
+

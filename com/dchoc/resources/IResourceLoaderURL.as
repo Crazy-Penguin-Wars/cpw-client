@@ -4,10 +4,9 @@ package com.dchoc.resources
    
    public interface IResourceLoaderURL
    {
-       
-      
       function getResourceUrl() : String;
       
       function getTargetMovieClip() : MovieClip;
    }
 }
+

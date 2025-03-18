@@ -4,9 +4,7 @@ package com.dchoc.resources
    
    public class URLLoaderWithName extends URLLoader
    {
-      
       private static var counter:int;
-       
       
       private var id:int;
       
@@ -23,3 +21,4 @@ package com.dchoc.resources
       }
    }
 }
+

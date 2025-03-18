@@ -14,7 +14,6 @@ package tuxwars.home.ui.screen.money
    
    public class MoneyContainer
    {
-      
       private static const TEXT_FIELD:String = "Text";
       
       private static const TEXT_FREE_FIELD:String = "Text_Free";
@@ -22,7 +21,6 @@ package tuxwars.home.ui.screen.money
       private static const BUY_TEXT:String = "buy_text";
       
       private static const BUY_DISCOUNT_TEXT:String = "buy_text_discount";
-       
       
       private var moneyAmountTextField:UIAutoTextField;
       
@@ -158,3 +156,4 @@ package tuxwars.home.ui.screen.money
       }
    }
 }
+

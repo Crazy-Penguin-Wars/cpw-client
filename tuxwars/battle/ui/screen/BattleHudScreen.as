@@ -10,8 +10,6 @@ package tuxwars.battle.ui.screen
    
    public class BattleHudScreen extends TuxUIScreen implements IBattleHudScreen
    {
-       
-      
       private var _topLeftElement:TopLeftElement;
       
       private var _topRightElement:TopRightElement;
@@ -107,3 +105,4 @@ package tuxwars.battle.ui.screen
       }
    }
 }
+

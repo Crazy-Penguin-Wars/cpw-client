@@ -4,9 +4,7 @@ package zpp_nape.util
    
    public class Hashable2_Boolfalse
    {
-      
-      public static var zpp_pool:Hashable2_Boolfalse = null;
-       
+      public static var zpp_pool:Hashable2_Boolfalse;
       
       public var value:Boolean;
       
@@ -44,6 +42,7 @@ package zpp_nape.util
             Hashable2_Boolfalse.zpp_pool = _loc5_.next;
             _loc5_.next = null;
          }
+         null;
          _loc5_.id = param1;
          _loc5_.di = param2;
          var _loc4_:Hashable2_Boolfalse = _loc5_;
@@ -64,6 +63,7 @@ package zpp_nape.util
             Hashable2_Boolfalse.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.id = param1;
          _loc3_.di = param2;
          return _loc3_;
@@ -85,11 +85,12 @@ package zpp_nape.util
                Hashable2_Boolfalse.zpp_pool = _loc5_.next;
                _loc5_.next = null;
             }
+            null;
             _loc5_.id = param1;
             _loc5_.di = param2;
             _loc4_ = _loc5_;
             _loc4_.value = param3;
-            §§push(_loc4_);
+            return _loc4_;
          }
          else
          {
@@ -103,13 +104,13 @@ package zpp_nape.util
                Hashable2_Boolfalse.zpp_pool = _loc5_.next;
                _loc5_.next = null;
             }
+            null;
             _loc5_.id = param2;
             _loc5_.di = param1;
             _loc4_ = _loc5_;
             _loc4_.value = param3;
-            §§push(_loc4_);
+            return _loc4_;
          }
-         return §§pop();
       }
       
       public static function ordered_get_persist(param1:int, param2:int) : Hashable2_Boolfalse
@@ -127,9 +128,10 @@ package zpp_nape.util
                Hashable2_Boolfalse.zpp_pool = _loc3_.next;
                _loc3_.next = null;
             }
+            null;
             _loc3_.id = param1;
             _loc3_.di = param2;
-            §§push(_loc3_);
+            return _loc3_;
          }
          else
          {
@@ -143,11 +145,12 @@ package zpp_nape.util
                Hashable2_Boolfalse.zpp_pool = _loc3_.next;
                _loc3_.next = null;
             }
+            null;
             _loc3_.id = param2;
             _loc3_.di = param1;
-            §§push(_loc3_);
+            return _loc3_;
          }
-         return §§pop();
       }
    }
 }
+

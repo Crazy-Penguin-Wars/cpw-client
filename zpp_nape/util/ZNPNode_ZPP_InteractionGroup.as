@@ -5,9 +5,7 @@ package zpp_nape.util
    
    public class ZNPNode_ZPP_InteractionGroup
    {
-      
-      public static var zpp_pool:ZNPNode_ZPP_InteractionGroup = null;
-       
+      public static var zpp_pool:ZNPNode_ZPP_InteractionGroup;
       
       public var next:ZNPNode_ZPP_InteractionGroup;
       
@@ -24,3 +22,4 @@ package zpp_nape.util
       }
    }
 }
+

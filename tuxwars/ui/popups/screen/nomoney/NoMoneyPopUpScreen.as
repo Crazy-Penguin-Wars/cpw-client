@@ -2,12 +2,11 @@ package tuxwars.ui.popups.screen.nomoney
 {
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.IResourceLoaderURL;
    import com.dchoc.resources.ResourceLoaderURL;
    import com.dchoc.resources.URLResourceLoader;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
@@ -20,7 +19,6 @@ package tuxwars.ui.popups.screen.nomoney
    
    public class NoMoneyPopUpScreen extends PopUpBaseScreen implements IResourceLoaderURL
    {
-      
       public static const TABLE:String = "PopupData";
       
       private static const TITLE:String = "Title";
@@ -28,7 +26,6 @@ package tuxwars.ui.popups.screen.nomoney
       private static const DESCRIPTION:String = "Description";
       
       private static const PICTURE:String = "Picture";
-       
       
       private var loader:URLResourceLoader;
       
@@ -41,62 +38,68 @@ package tuxwars.ui.popups.screen.nomoney
       
       override public function init(params:*) : void
       {
-         var row:* = null;
+         var row:Row = null;
          super.init(params);
+         var _loc15_:String = "PopupData";
          var _loc6_:ProjectManager = ProjectManager;
-         var _loc2_:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable("PopupData");
+         var _loc2_:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc15_);
          if(currencyIsCoins())
          {
+            var _loc16_:String = "no_coins_popup";
             var _loc7_:* = _loc2_;
-            if(!_loc7_._cache["no_coins_popup"])
+            if(!_loc7_._cache[_loc16_])
             {
-               var _loc17_:Row = com.dchoc.utils.DCUtils.find(_loc7_.rows,"id","no_coins_popup");
+               var _loc17_:Row = com.dchoc.utils.DCUtils.find(_loc7_.rows,"id",_loc16_);
                if(!_loc17_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "no_coins_popup" + "\' was found in table: \'" + _loc7_.name + "\'",_loc7_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc16_ + "\' was found in table: \'" + _loc7_.name + "\'",_loc7_,3);
                }
-               _loc7_._cache["no_coins_popup"] = _loc17_;
+               _loc7_._cache[_loc16_] = _loc17_;
             }
-            row = _loc7_._cache["no_coins_popup"];
+            row = _loc7_._cache[_loc16_];
             CRMService.sendEvent("PopUp","Shown","Not_Enough_Coins");
          }
          else
          {
+            var _loc18_:String = "no_cash_popup";
             var _loc8_:* = _loc2_;
-            if(!_loc8_._cache["no_cash_popup"])
+            if(!_loc8_._cache[_loc18_])
             {
-               var _loc19_:Row = com.dchoc.utils.DCUtils.find(_loc8_.rows,"id","no_cash_popup");
+               var _loc19_:Row = com.dchoc.utils.DCUtils.find(_loc8_.rows,"id",_loc18_);
                if(!_loc19_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "no_cash_popup" + "\' was found in table: \'" + _loc8_.name + "\'",_loc8_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc18_ + "\' was found in table: \'" + _loc8_.name + "\'",_loc8_,3);
                }
-               _loc8_._cache["no_cash_popup"] = _loc19_;
+               _loc8_._cache[_loc18_] = _loc19_;
             }
-            row = _loc8_._cache["no_cash_popup"];
+            row = _loc8_._cache[_loc18_];
             CRMService.sendEvent("PopUp","Shown","Not_Enough_Cash");
          }
+         var _loc20_:String = "Picture";
          var _loc9_:* = row;
          §§push(Config.getDataDir());
-         if(!_loc9_._cache["Picture"])
+         if(!_loc9_._cache[_loc20_])
          {
-            _loc9_._cache["Picture"] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name","Picture");
+            _loc9_._cache[_loc20_] = com.dchoc.utils.DCUtils.find(_loc9_._fields,"name",_loc20_);
          }
-         var _loc10_:* = _loc9_._cache["Picture"];
+         var _loc10_:* = _loc9_._cache[_loc20_];
          imageID = §§pop() + (_loc10_.overrideValue != null ? _loc10_.overrideValue : _loc10_._value);
          loader = ResourceLoaderURL.getInstance().load(this);
+         var _loc21_:String = "Title";
          var _loc11_:* = row;
-         if(!_loc11_._cache["Title"])
+         if(!_loc11_._cache[_loc21_])
          {
-            _loc11_._cache["Title"] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name","Title");
+            _loc11_._cache[_loc21_] = com.dchoc.utils.DCUtils.find(_loc11_._fields,"name",_loc21_);
          }
-         var _loc12_:* = _loc11_._cache["Title"];
+         var _loc12_:* = _loc11_._cache[_loc21_];
          var _loc4_:String = _loc12_.overrideValue != null ? _loc12_.overrideValue : _loc12_._value;
+         var _loc22_:String = "Description";
          var _loc13_:* = row;
-         if(!_loc13_._cache["Description"])
+         if(!_loc13_._cache[_loc22_])
          {
-            _loc13_._cache["Description"] = com.dchoc.utils.DCUtils.find(_loc13_._fields,"name","Description");
+            _loc13_._cache[_loc22_] = com.dchoc.utils.DCUtils.find(_loc13_._fields,"name",_loc22_);
          }
-         var _loc14_:* = _loc13_._cache["Description"];
+         var _loc14_:* = _loc13_._cache[_loc22_];
          var _loc3_:String = _loc14_.overrideValue != null ? _loc14_.overrideValue : _loc14_._value;
          headerField.setText(ProjectManager.getText(_loc4_));
          messageField.setText(ProjectManager.getText(_loc3_));
@@ -185,3 +188,4 @@ package tuxwars.ui.popups.screen.nomoney
       }
    }
 }
+

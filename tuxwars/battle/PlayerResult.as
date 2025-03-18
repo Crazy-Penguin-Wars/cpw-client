@@ -4,8 +4,6 @@ package tuxwars.battle
    
    public class PlayerResult
    {
-       
-      
       private var _player:Player;
       
       private var _score:int;
@@ -44,3 +42,4 @@ package tuxwars.battle
       }
    }
 }
+

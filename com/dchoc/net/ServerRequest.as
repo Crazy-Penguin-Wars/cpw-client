@@ -6,8 +6,6 @@ package com.dchoc.net
    
    public class ServerRequest extends Message
    {
-       
-      
       private var _serviceId:String;
       
       private var _buffered:Boolean;
@@ -79,3 +77,4 @@ package com.dchoc.net
       }
    }
 }
+

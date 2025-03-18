@@ -23,8 +23,6 @@ package tuxwars.home.ui.screen.dailynews
    
    public class DailyRewardContainer extends UIContainer
    {
-       
-      
       private var _design:MovieClip;
       
       private var _dayNumber:int;
@@ -151,8 +149,8 @@ package tuxwars.home.ui.screen.dailynews
       
       private function mouseOver(event:MouseEvent) : void
       {
-         var _loc3_:* = null;
-         var tt:* = null;
+         var _loc3_:ShopItem = null;
+         var tt:ItemBaseTooltip = null;
          if(_iconData)
          {
             _loc3_ = ShopItemManager.getShopItem(_iconData);
@@ -190,3 +188,4 @@ package tuxwars.home.ui.screen.dailynews
       }
    }
 }
+

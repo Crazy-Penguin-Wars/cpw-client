@@ -7,11 +7,9 @@ package tuxwars.ui.containers.shop.container
    
    public class Container extends UIContainer
    {
-       
-      
       private var _game:TuxWarsGame;
       
-      private var _data;
+      private var _data:*;
       
       public function Container(design:MovieClip, data:*, game:TuxWarsGame, parent:UIComponent = null)
       {
@@ -39,3 +37,4 @@ package tuxwars.ui.containers.shop.container
       }
    }
 }
+

@@ -5,8 +5,6 @@ package mx.core
    
    public interface IChildList
    {
-       
-      
       function get numChildren() : int;
       
       function addChild(param1:DisplayObject) : DisplayObject;
@@ -30,3 +28,4 @@ package mx.core
       function contains(param1:DisplayObject) : Boolean;
    }
 }
+

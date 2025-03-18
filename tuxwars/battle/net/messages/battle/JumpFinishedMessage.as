@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class JumpFinishedMessage extends BattleMessage
    {
-       
-      
       public function JumpFinishedMessage(id:String)
       {
          super({
@@ -20,3 +18,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

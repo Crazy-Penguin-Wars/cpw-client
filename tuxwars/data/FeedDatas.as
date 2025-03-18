@@ -1,16 +1,14 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    
    public class FeedDatas
    {
-      
       private static const TABLE_NAME:String = "Feed";
       
       private static var table:Table;
-       
       
       public function FeedDatas()
       {
@@ -45,10 +43,12 @@ package tuxwars.data
       {
          if(!table)
          {
+            var _loc2_:String = "Feed";
             var _loc1_:ProjectManager = ProjectManager;
-            table = com.dchoc.projectdata.ProjectManager.projectData.findTable("Feed");
+            table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc2_);
          }
          return table;
       }
    }
 }
+

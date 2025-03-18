@@ -6,8 +6,6 @@ package tuxwars.home.states.friendselector
    
    public class FriendSelectorLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function FriendSelectorLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getFriendSelectorAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.friendselector
       }
    }
 }
+

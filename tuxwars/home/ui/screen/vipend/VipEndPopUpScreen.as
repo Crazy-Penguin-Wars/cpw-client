@@ -8,8 +8,6 @@ package tuxwars.home.ui.screen.vipend
    
    public class VipEndPopUpScreen extends PopUpBaseScreen
    {
-       
-      
       public function VipEndPopUpScreen(game:TuxWarsGame)
       {
          super(game,"flash/ui/popups.swf","popup_expired");
@@ -40,3 +38,4 @@ package tuxwars.home.ui.screen.vipend
       }
    }
 }
+

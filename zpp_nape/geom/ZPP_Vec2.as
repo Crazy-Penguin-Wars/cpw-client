@@ -5,9 +5,7 @@ package zpp_nape.geom
    
    public class ZPP_Vec2
    {
-      
-      public static var zpp_pool:ZPP_Vec2 = null;
-       
+      public static var zpp_pool:ZPP_Vec2;
       
       public var y:Number;
       
@@ -164,7 +162,7 @@ package zpp_nape.geom
                }
                _loc5_._inuse = false;
                modified = true;
-               length = length - 1;
+               --length;
                pushmod = true;
                _loc6_;
                _loc4_ = true;
@@ -193,7 +191,7 @@ package zpp_nape.geom
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function iterator_at(param1:int) : ZPP_Vec2
@@ -220,9 +218,8 @@ package zpp_nape.geom
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -243,7 +240,7 @@ package zpp_nape.geom
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function inlined_insert(param1:ZPP_Vec2, param2:ZPP_Vec2) : ZPP_Vec2
@@ -260,9 +257,8 @@ package zpp_nape.geom
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -310,7 +306,7 @@ package zpp_nape.geom
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -326,7 +322,7 @@ package zpp_nape.geom
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
       
@@ -374,7 +370,7 @@ package zpp_nape.geom
          }
          _loc2_._inuse = false;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -425,8 +421,9 @@ package zpp_nape.geom
          _loc2_.next = next;
          next = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
    }
 }
+

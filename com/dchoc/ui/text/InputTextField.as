@@ -6,9 +6,7 @@ package com.dchoc.ui.text
    
    public class InputTextField extends TextField
    {
-      
       private static const MAX_CHARS_NUM:int = 40;
-       
       
       private var mEmptyText:String = "";
       
@@ -121,3 +119,4 @@ package com.dchoc.ui.text
       }
    }
 }
+

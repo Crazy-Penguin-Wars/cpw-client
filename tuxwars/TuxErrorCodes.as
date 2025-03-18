@@ -2,7 +2,6 @@ package tuxwars
 {
    public class TuxErrorCodes
    {
-      
       public static const UNSPECIFIED:String = "Unspecified";
       
       public static const USER_GENERATED:String = "UserGenerated";
@@ -30,7 +29,6 @@ package tuxwars
       public static const PARTICLE_LOADING_ERROR:String = "Particle Loading Error";
       
       public static const RECIPER_RESULT_ERROR:String = "Reciper Result Error";
-       
       
       public function TuxErrorCodes()
       {
@@ -39,3 +37,4 @@ package tuxwars
       }
    }
 }
+

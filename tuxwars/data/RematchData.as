@@ -8,7 +8,6 @@ package tuxwars.data
    
    public class RematchData
    {
-      
       public static const STATUS_WAITING:int = 0;
       
       public static const STATUS_READY:int = 1;
@@ -20,7 +19,6 @@ package tuxwars.data
       private static var _rematchReadyPlayers:Vector.<RematchDataPlayer>;
       
       private static var _customGameName:String;
-       
       
       public function RematchData()
       {
@@ -49,8 +47,8 @@ package tuxwars.data
       public static function setRematchPlayer(playerObject:PlayerGameObject) : void
       {
          var i:int = 0;
-         var avatar:* = null;
-         var wornItems:* = null;
+         var avatar:TuxAvatar = null;
+         var wornItems:Object = null;
          if(!_rematchReadyPlayers)
          {
             _rematchReadyPlayers = new Vector.<RematchDataPlayer>();
@@ -97,3 +95,4 @@ package tuxwars.data
       }
    }
 }
+

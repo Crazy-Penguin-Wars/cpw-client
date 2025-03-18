@@ -7,13 +7,11 @@ package tuxwars.battle.data.particles
    
    public class Particles
    {
-      
       private static var particleFile:Object;
       
-      private static const PARTICLES_CACHE:Object = {};
-      
       private static var particlesTable:Table;
-       
+      
+      private static const PARTICLES_CACHE:Object = {};
       
       public function Particles()
       {
@@ -23,7 +21,7 @@ package tuxwars.battle.data.particles
       
       public static function getParticlesReference(name:String) : ParticleReference
       {
-         var particleReference:* = null;
+         var particleReference:ParticleReference = null;
          if(!name)
          {
             return null;
@@ -48,7 +46,7 @@ package tuxwars.battle.data.particles
       
       public static function setParticleData(particleFileData:String) : void
       {
-         var data:* = null;
+         var data:Object = null;
          try
          {
             data = JSON.parse(particleFileData);
@@ -65,3 +63,4 @@ package tuxwars.battle.data.particles
       }
    }
 }
+

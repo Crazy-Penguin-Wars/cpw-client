@@ -16,7 +16,6 @@ package com.dchoc.ui.buttons
    
    public class UIButton extends UIStateComponent
    {
-      
       public static const ON_CLICK:String = "on_click";
       
       public static const ON_OVER:String = "on_olick";
@@ -24,7 +23,6 @@ package com.dchoc.ui.buttons
       private static const TEXT_FIELD_NAME:String = "Text";
       
       protected static const BUTTON_USE_HAND_CURSOR:Boolean = true;
-       
       
       protected const HIT_AREA:String = "Hit_Area";
       
@@ -50,7 +48,7 @@ package com.dchoc.ui.buttons
       
       private var mouseDownCallback:Function;
       
-      private var sounds:Object;
+      private var sounds:Object = {};
       
       private var soundStatus:Boolean = true;
       
@@ -58,7 +56,6 @@ package com.dchoc.ui.buttons
       
       public function UIButton(design:MovieClip, parameter:Object = null, useDefaultSound:Boolean = true, sounds:Object = null, customSoundStatus:Boolean = false)
       {
-         sounds = {};
          super(design);
          design.stop();
          design.mouseEnabled = true;
@@ -145,9 +142,12 @@ package com.dchoc.ui.buttons
       
       protected function setHandCursor(show:Boolean) : void
       {
-         getDesignMovieClip().buttonMode = show;
-         getDesignMovieClip().mouseChildren = !show;
-         getDesignMovieClip().useHandCursor = show;
+         if(true)
+         {
+            getDesignMovieClip().buttonMode = show;
+            getDesignMovieClip().mouseChildren = !show;
+            getDesignMovieClip().useHandCursor = show;
+         }
       }
       
       override protected function playAnimation(frameLabel:String) : Boolean
@@ -214,8 +214,8 @@ package com.dchoc.ui.buttons
       
       protected function mouseUpHandler(event:MouseEvent) : void
       {
-         var sound:* = null;
-         var sound2:* = null;
+         var sound:String = null;
+         var sound2:SoundReference = null;
          if(isButtonDown)
          {
             if(soundStatus)
@@ -263,8 +263,8 @@ package com.dchoc.ui.buttons
       
       protected function mouseOverCallback(event:MouseEvent) : void
       {
-         var sound:* = null;
-         var sound2:* = null;
+         var sound:String = null;
+         var sound2:SoundReference = null;
          if(soundStatus)
          {
             sound = getButtonSound("on_olick");
@@ -316,8 +316,8 @@ package com.dchoc.ui.buttons
       
       override protected function updateTextField() : void
       {
-         var autoTextField:* = null;
-         var _loc1_:* = null;
+         var autoTextField:UIAutoTextField = null;
+         var _loc1_:DisplayObjectContainer = null;
          if(text == null)
          {
             return;
@@ -431,3 +431,4 @@ package com.dchoc.ui.buttons
       }
    }
 }
+

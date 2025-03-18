@@ -9,8 +9,6 @@ package tuxwars.ui.popups.screen.error
    
    public class ErrorPopUpScreen extends PopUpBaseImageScreen
    {
-       
-      
       public function ErrorPopUpScreen(game:TuxWarsGame)
       {
          super(game,"flash/ui/popups.swf","popup_message");
@@ -78,3 +76,4 @@ package tuxwars.ui.popups.screen.error
       }
    }
 }
+

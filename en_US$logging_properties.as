@@ -4,8 +4,6 @@ package
    
    public dynamic class en_US$logging_properties extends ResourceBundle
    {
-       
-      
       public function en_US$logging_properties()
       {
          super("en_US","logging");
@@ -24,3 +22,4 @@ package
       }
    }
 }
+

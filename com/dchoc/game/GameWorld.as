@@ -16,9 +16,7 @@ package com.dchoc.game
    
    public class GameWorld extends StateMachine
    {
-      
       private static const inputSystem:InputSystem = new InputSystem();
-       
       
       private const _objectContainer:WorldObjectContainer = new WorldObjectContainer();
       
@@ -267,3 +265,4 @@ package com.dchoc.game
       }
    }
 }
+

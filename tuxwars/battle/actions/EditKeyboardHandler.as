@@ -9,8 +9,6 @@ package tuxwars.battle.actions
    
    public class EditKeyboardHandler extends AbstractKeyboardInputAction
    {
-       
-      
       private var editState:TuxBattleEditSubState;
       
       public function EditKeyboardHandler(battleState:TuxBattleEditSubState)
@@ -37,3 +35,4 @@ package tuxwars.battle.actions
       }
    }
 }
+

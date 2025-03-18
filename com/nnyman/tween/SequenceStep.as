@@ -4,8 +4,6 @@ package com.nnyman.tween
    
    public class SequenceStep
    {
-       
-      
       public var target:Object;
       
       public var easing:Function;
@@ -24,11 +22,11 @@ package com.nnyman.tween
       
       public var currentTime:int = 0;
       
-      public var startValues:Object;
+      public var startValues:Object = {};
       
-      public var changeValues:Object;
+      public var changeValues:Object = {};
       
-      public var destinationValues:Object;
+      public var destinationValues:Object = {};
       
       public var started:Boolean;
       
@@ -36,9 +34,6 @@ package com.nnyman.tween
       
       public function SequenceStep(data:Object)
       {
-         startValues = {};
-         changeValues = {};
-         destinationValues = {};
          super();
          if(data.hasOwnProperty("target"))
          {
@@ -122,7 +117,7 @@ package com.nnyman.tween
                for(var property in destinationValues)
                {
                   startValues[property] = target[property];
-                  changeValues[property] = Number(destinationValues[property]) - Number(startValues[property]);
+                  changeValues[property] = destinationValues[property] - startValues[property];
                }
                started = true;
             }
@@ -148,3 +143,4 @@ package com.nnyman.tween
       }
    }
 }
+

@@ -8,8 +8,6 @@ package tuxwars.battle.actions
    
    public class PlayerKeyDownAction extends AbstractKeyboardInputAction
    {
-       
-      
       private var player:PlayerGameObject;
       
       public function PlayerKeyDownAction(player:PlayerGameObject)
@@ -20,7 +18,7 @@ package tuxwars.battle.actions
       
       override public function execute(event:Event) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:KeyboardEvent = null;
          if(BattleManager.getTurnTimeLeft() > 0)
          {
             _loc2_ = event as KeyboardEvent;
@@ -43,3 +41,4 @@ package tuxwars.battle.actions
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.battle.ui.states.couponfound
    
    public class CouponFoundState extends TuxState
    {
-       
-      
       public function CouponFoundState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.battle.ui.states.couponfound
       }
    }
 }
+

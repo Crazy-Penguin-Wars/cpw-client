@@ -10,11 +10,9 @@ package tuxwars.battle.world
    
    public class WaterGraphics extends Sprite
    {
-      
       private static const TILE_WIDTH:int = 198;
       
       public static const TILE_HEIGHT:int = 106;
-       
       
       public function WaterGraphics(level:Level)
       {
@@ -63,3 +61,4 @@ package tuxwars.battle.world
       }
    }
 }
+

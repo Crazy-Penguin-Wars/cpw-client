@@ -2,8 +2,6 @@ package tuxwars.home.ui.screenhandlers
 {
    public interface IScreen
    {
-       
-      
       function init(param1:*) : void;
       
       function logicUpdate(param1:int) : void;
@@ -21,3 +19,4 @@ package tuxwars.home.ui.screenhandlers
       function get params() : *;
    }
 }
+

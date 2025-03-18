@@ -2,8 +2,6 @@ package com.dchoc.avatar.paperdoll
 {
    public class BodyPart
    {
-       
-      
       private var clipName:String;
       
       private var className:String;
@@ -36,3 +34,4 @@ package com.dchoc.avatar.paperdoll
       }
    }
 }
+

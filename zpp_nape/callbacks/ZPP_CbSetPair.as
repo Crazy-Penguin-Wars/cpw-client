@@ -7,9 +7,7 @@ package zpp_nape.callbacks
    
    public class ZPP_CbSetPair
    {
-      
-      public static var zpp_pool:ZPP_CbSetPair = null;
-       
+      public static var zpp_pool:ZPP_CbSetPair;
       
       public var zip_listeners:Boolean;
       
@@ -103,3 +101,4 @@ package zpp_nape.callbacks
       }
    }
 }
+

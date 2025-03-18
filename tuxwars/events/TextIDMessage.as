@@ -4,8 +4,6 @@ package tuxwars.events
    
    public class TextIDMessage extends Message
    {
-       
-      
       public function TextIDMessage(tid:String)
       {
          super("TextID",tid);
@@ -17,3 +15,4 @@ package tuxwars.events
       }
    }
 }
+

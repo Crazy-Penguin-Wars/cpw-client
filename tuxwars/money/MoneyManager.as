@@ -6,9 +6,7 @@ package tuxwars.money
    
    public class MoneyManager
    {
-      
       private static const MONEY_CACHE:Object = {};
-       
       
       public function MoneyManager()
       {
@@ -136,3 +134,4 @@ package tuxwars.money
       }
    }
 }
+

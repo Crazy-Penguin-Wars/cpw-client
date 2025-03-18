@@ -1,10 +1,10 @@
 package mx.core
 {
+   use namespace mx_internal;
+   
    public class RSLData
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       private var _applicationDomainTarget:String;
       
@@ -81,3 +81,4 @@ package mx.core
       }
    }
 }
+

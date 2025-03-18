@@ -17,7 +17,6 @@ package no.olog
    
    internal class Owindow extends Sprite
    {
-      
       internal static var exists:Boolean;
       
       private static var _i:Owindow;
@@ -59,7 +58,6 @@ package no.olog
       private static var _prefPaneOpen:Boolean;
       
       private static var _lastUnreadColorIndex:int = 0;
-       
       
       public function Owindow()
       {
@@ -165,7 +163,7 @@ package no.olog
       
       internal static function createCMI() : void
       {
-         var target:* = null;
+         var target:DisplayObjectContainer = null;
          if(_cmi)
          {
             return;
@@ -199,7 +197,7 @@ package no.olog
             return;
          }
          var cmis:Array = _i.stage.contextMenu["customItems"];
-         var num:int = cmis.length;
+         var num:int = int(cmis.length);
          for(i = 0; i < num; )
          {
             if(cmis[i] == _cmi)
@@ -318,8 +316,9 @@ package no.olog
       
       private static function _drawUnreadBackground(color:uint) : void
       {
-         var margin:Number = (28 - 18) * 0.5;
-         var backgroundRadius:Number = 18 * 0.5;
+         var size:Number = 18;
+         var margin:Number = (28 - size) * 0.5;
+         var backgroundRadius:Number = size * 0.5;
          var backgroundYPos:Number = backgroundRadius + margin;
          var g:Graphics = _unreadCountDisplay.graphics;
          g.clear();
@@ -344,23 +343,25 @@ package no.olog
       
       private static function _resize(w:int, h:int) : void
       {
+         var titlebarHeight:int = 28;
+         var padding:int = 5;
          if(w > 100)
          {
             _drawTitleBarBg(w);
             _titleBarBg.width = w;
-            _titleBarField.width = w - 5 * 2;
-            _unreadCountDisplay.x = w - _unreadCountDisplay.width - 5;
+            _titleBarField.width = w - padding * 2;
+            _unreadCountDisplay.x = w - _unreadCountDisplay.width - padding;
             _bg.width = w;
-            _field.width = w - 5 * 2;
+            _field.width = w - padding * 2;
             _dragger.x = w - _dragger.width;
-            _prefsButton.x = w - _prefsButton.width * 0.5 - 5;
+            _prefsButton.x = w - _prefsButton.width * 0.5 - padding;
             _prefPane.width = w;
             _positionMemUsageField();
          }
          if(h > 100)
          {
-            _bg.height = h - 28;
-            _field.height = h - 28 - 5 * 2;
+            _bg.height = h - titlebarHeight;
+            _field.height = h - titlebarHeight - padding * 2;
             _dragger.y = h - _dragger.height;
             _prefPane.y = h - _prefPane.height;
          }
@@ -368,12 +369,13 @@ package no.olog
       
       private static function _drawTitleBarBg(w:int) : void
       {
+         var h:int = 28;
          var matrix:Matrix = new Matrix();
-         matrix.createGradientBox(w,28,1.5707963267948966);
+         matrix.createGradientBox(w,h,1.5707963267948966);
          var g:Graphics = _titleBarBg.graphics;
          g.clear();
          g.beginGradientFill("linear",Oplist.TB_COLORS,Oplist.TB_ALPHAS,Oplist.TB_RATIOS,matrix);
-         g.drawRoundRectComplex(0,0,w,28,5,5,0,0);
+         g.drawRoundRectComplex(0,0,w,h,5,5,0,0);
          g.endFill();
       }
       
@@ -435,14 +437,15 @@ package no.olog
       
       private function _initPrefPane() : void
       {
+         var bSize:Number = 12.6;
          _prefsButton = _getTitleBarButton();
          var g:Graphics = _prefsButton.graphics;
          g.beginFill(10066329,1);
-         g.drawCircle(0,0,12.6 * 0.2);
+         g.drawCircle(0,0,bSize * 0.2);
          g.endFill();
          _addTitleBarButtonMouseOver(_prefsButton);
          _prefsButton.addEventListener("click",_onPrefsClick);
-         _prefsButton.x = 400 - 12.6 * 0.5 - 5;
+         _prefsButton.x = 400 - bSize * 0.5 - 5;
          _prefsButton.y = _titleBarBg.height * 0.5 - 1;
          _prefsButton.alpha = 0.7;
          addChild(_prefsButton);
@@ -454,9 +457,10 @@ package no.olog
       
       private function _initTitleBar() : void
       {
-         var g:* = null;
+         var g:Graphics = null;
+         var w:int = 400;
          _titleBarBg = new Sprite();
-         _drawTitleBarBg(400);
+         _drawTitleBarBg(w);
          _titleBarBg.doubleClickEnabled = true;
          _titleBarBg.addEventListener("mouseDown",_onTitleBarDown);
          _titleBarBg.addEventListener("mouseUp",_onTitleBarUp);
@@ -471,13 +475,14 @@ package no.olog
          _titleBarField.y = (28 - _titleBarField.textHeight) * 0.5 - 3;
          addChild(_titleBarField);
          _titlebarButtonWrapper = new Sprite();
+         var bSize:Number = 12.6;
          _closeBtn = _getTitleBarButton();
          g = Owindow._closeBtn.graphics;
          g.lineStyle(2,16777215);
-         g.moveTo(12.6 * -0.15,12.6 * -0.15);
-         g.lineTo(12.6 * 0.15,12.6 * 0.15);
-         g.moveTo(12.6 * 0.15,12.6 * -0.15);
-         g.lineTo(12.6 * -0.15,12.6 * 0.15);
+         g.moveTo(bSize * -0.15,bSize * -0.15);
+         g.lineTo(bSize * 0.15,bSize * 0.15);
+         g.moveTo(bSize * 0.15,bSize * -0.15);
+         g.lineTo(bSize * -0.15,bSize * 0.15);
          _addTitleBarButtonMouseOver(_closeBtn);
          _closeBtn.addEventListener("click",close);
          _closeBtn.alpha = 0.7;
@@ -485,10 +490,10 @@ package no.olog
          _maximizeBtn = _getTitleBarButton();
          g = _maximizeBtn.graphics;
          g.lineStyle(2,16777215);
-         g.moveTo(12.6 * -0.2,0);
-         g.lineTo(12.6 * 0.2,0);
-         g.moveTo(0,12.6 * -0.2);
-         g.lineTo(0,12.6 * 0.2);
+         g.moveTo(bSize * -0.2,0);
+         g.lineTo(bSize * 0.2,0);
+         g.moveTo(0,bSize * -0.2);
+         g.lineTo(0,bSize * 0.2);
          _addTitleBarButtonMouseOver(_maximizeBtn);
          _maximizeBtn.addEventListener("click",_onMaximizeClick);
          _maximizeBtn.alpha = 0.7;
@@ -497,8 +502,8 @@ package no.olog
          _minimizeBtn = _getTitleBarButton();
          g = _minimizeBtn.graphics;
          g.lineStyle(2,16777215);
-         g.moveTo(12.6 * -0.2,0);
-         g.lineTo(12.6 * 0.2,0);
+         g.moveTo(bSize * -0.2,0);
+         g.lineTo(bSize * 0.2,0);
          _addTitleBarButtonMouseOver(_minimizeBtn);
          _minimizeBtn.addEventListener("click",_onMinimizeClick);
          _minimizeBtn.alpha = 0.7;
@@ -511,11 +516,12 @@ package no.olog
       
       private function _getTitleBarButton() : Sprite
       {
+         var r:Number = 6.3;
          var b:Sprite = new Sprite();
          var g:Graphics = b.graphics;
          g.lineStyle(1,10066329);
          g.beginFill(0,1);
-         g.drawCircle(0,0,6.3);
+         g.drawCircle(0,0,r);
          g.endFill();
          return b;
       }
@@ -691,3 +697,4 @@ package no.olog
       }
    }
 }
+

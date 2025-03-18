@@ -7,8 +7,6 @@ package com.dchoc.avatar.paperdoll.animations
    
    public class PaperDollAnimation extends MovieClip
    {
-       
-      
       private const FRAME_LABEL_IN:String = "in";
       
       private const FRAME_LABEL_LOOP:String = "loop";
@@ -93,7 +91,7 @@ package com.dchoc.avatar.paperdoll.animations
       
       public function finish(callback:Function = null, showOutro:Boolean = true) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:FrameLabel = null;
          finishAnim = true;
          finishAnimCallback = callback;
          if(showOutro)
@@ -119,7 +117,7 @@ package com.dchoc.avatar.paperdoll.animations
       
       private function onFinish() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:Function = null;
          clean();
          if(finishAnimCallback != null)
          {
@@ -198,3 +196,4 @@ package com.dchoc.avatar.paperdoll.animations
       }
    }
 }
+

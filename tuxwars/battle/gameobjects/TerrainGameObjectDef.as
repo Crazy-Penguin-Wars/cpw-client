@@ -10,8 +10,6 @@ package tuxwars.battle.gameobjects
    
    public class TerrainGameObjectDef extends PhysicsGameObjectDef
    {
-       
-      
       private var terrainModel:TerrainModel;
       
       private var terrainDisplayObjectDef:TerrainDisplayObjectDef;
@@ -80,3 +78,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

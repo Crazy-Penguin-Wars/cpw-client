@@ -3,17 +3,17 @@ package mx.managers
    import mx.core.Singleton;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class CursorManager
    {
+      private static var implClassDependency:CursorManagerImpl;
+      
+      private static var _impl:ICursorManager;
       
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const NO_CURSOR:int = 0;
-      
-      private static var implClassDependency:CursorManagerImpl;
-      
-      private static var _impl:ICursorManager;
-       
       
       public function CursorManager()
       {
@@ -110,3 +110,4 @@ package mx.managers
       }
    }
 }
+

@@ -5,8 +5,6 @@ package zpp_nape.geom
    
    public class ZPP_SimpleSweep
    {
-       
-      
       public var tree:ZPP_Set_ZPP_SimpleSeg;
       
       public var sweepx:Number;
@@ -29,6 +27,7 @@ package zpp_nape.geom
             ZPP_Set_ZPP_SimpleSeg.zpp_pool = tree.next;
             tree.next = null;
          }
+         null;
          tree.lt = edge_lt;
          tree.swapped = swap_nodes;
       }
@@ -148,6 +147,7 @@ package zpp_nape.geom
                ZPP_SimpleVert.zpp_pool = _loc14_.next;
                _loc14_.next = null;
             }
+            null;
             _loc14_.x = 0.5 * (param1.left.x + _loc3_ * _loc10_ + param2.left.x + _loc5_ * _loc11_);
             _loc14_.y = 0.5 * (param1.left.y + _loc4_ * _loc10_ + param2.left.y + _loc6_ * _loc11_);
             _loc12_ = _loc14_;
@@ -162,6 +162,7 @@ package zpp_nape.geom
             ZPP_SimpleEvent.zpp_pool = _loc16_.next;
             _loc16_.next = null;
          }
+         null;
          _loc16_.vertex = _loc12_;
          _loc15_ = _loc16_;
          _loc15_.type = 0;
@@ -345,3 +346,4 @@ package zpp_nape.geom
       }
    }
 }
+

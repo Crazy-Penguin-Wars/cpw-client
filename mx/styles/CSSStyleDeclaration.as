@@ -9,17 +9,17 @@ package mx.styles
    import mx.managers.SystemManagerGlobals;
    import mx.utils.ObjectUtil;
    
+   use namespace mx_internal;
+   
    public class CSSStyleDeclaration extends EventDispatcher
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       private static const NOT_A_COLOR:uint = 4294967295;
       
       private static const FILTERMAP_PROP:String = "__reserved__filterMap";
-       
       
-      private var clones:Dictionary;
+      private var clones:Dictionary = new Dictionary(true);
       
       mx_internal var selectorRefCount:int = 0;
       
@@ -39,7 +39,6 @@ package mx.styles
       
       public function CSSStyleDeclaration(selector:Object = null, styleManager:IStyleManager2 = null, autoRegisterWithStyleManager:Boolean = true)
       {
-         this.clones = new Dictionary(true);
          super();
          if(!styleManager)
          {
@@ -185,6 +184,7 @@ package mx.styles
       
       mx_internal function equals(styleDeclaration:CSSStyleDeclaration) : Boolean
       {
+         var obj:Object = null;
          if(styleDeclaration == null)
          {
             return false;
@@ -285,7 +285,7 @@ package mx.styles
             this.mx_internal::setLocalStyle(styleProp,newValue);
          }
          var sms:Array = SystemManagerGlobals.topLevelSystemManagers;
-         var n:int = sms.length;
+         var n:int = int(sms.length);
          if(regenerate)
          {
             for(i = 0; i < n; i++)
@@ -600,3 +600,4 @@ package mx.styles
       }
    }
 }
+

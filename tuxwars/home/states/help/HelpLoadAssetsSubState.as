@@ -6,8 +6,6 @@ package tuxwars.home.states.help
    
    public class HelpLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function HelpLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getHelpAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.help
       }
    }
 }
+

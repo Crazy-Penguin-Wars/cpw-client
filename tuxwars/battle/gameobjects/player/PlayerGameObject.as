@@ -64,7 +64,6 @@ package tuxwars.battle.gameobjects.player
    
    public class PlayerGameObject extends AvatarGameObject implements IScore
    {
-      
       public static const MODE_WALK:String = "WalkMode";
       
       public static const MODE_AIM:String = "AimMode";
@@ -74,7 +73,6 @@ package tuxwars.battle.gameobjects.player
       private static const SEPARATOR:String = "_";
       
       private static const CHICKEN_OUT_GRAPHIC_EXPORT:String = "chicken_out";
-       
       
       private var _checkForShoot:Boolean = true;
       
@@ -92,7 +90,7 @@ package tuxwars.battle.gameobjects.player
       
       private var _inventory:Inventory;
       
-      private var _wornItemsContainer:WornItems;
+      private var _wornItemsContainer:WornItems = new WornItems(null,this);
       
       private var _rewardsHandler:RewardsHandler;
       
@@ -133,7 +131,6 @@ package tuxwars.battle.gameobjects.player
       public function PlayerGameObject(def:PlayerGameObjectDef, game:TuxWarsGame)
       {
          _inventory = def.inventory;
-         _wornItemsContainer = new WornItems(null,this);
          super(def,game);
          resetSuicideTagger = new Tagger(this);
          activate();
@@ -187,7 +184,7 @@ package tuxwars.battle.gameobjects.player
       
       override public function physicsUpdate(deltaTime:int) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Damage = null;
          if(!body)
          {
             return;
@@ -423,7 +420,7 @@ package tuxwars.battle.gameobjects.player
       public function reduceScoreFromDamage(idOfScore:String, damage:int) : void
       {
          var _loc5_:BattleOptions = BattleOptions;
-         var scoreBasedOnDamage:int = damage * (100 / (90 + damage / 3)) * (-1 * Number(tuxwars.battle.data.BattleOptions.getRow().findField("ScoreDamager").value));
+         var scoreBasedOnDamage:int = damage * (100 / (90 + damage / 3)) * (-1 * tuxwars.battle.data.BattleOptions.getRow().findField("ScoreDamager").value);
          LogUtils.log("Converted: " + damage + " to score: " + scoreBasedOnDamage,"PlayerGameObject",0,"Score",false,false,false);
          var score:int = getScore();
          if(scoreBasedOnDamage + score < 0)
@@ -443,8 +440,8 @@ package tuxwars.battle.gameobjects.player
          {
             LogUtils.addDebugLine("Error",e.message);
             LogUtils.addDebugLine("Error",e.getStackTrace());
-            return 0;
          }
+         return 0;
       }
       
       override public function canTakeDamage() : Boolean
@@ -551,7 +548,7 @@ package tuxwars.battle.gameobjects.player
       
       override public function changeAnimation(animName:String, loop:Boolean = true, callback:Function = null) : Boolean
       {
-         var _loc4_:* = null;
+         var _loc4_:String = null;
          if(avatar.currentAnimation)
          {
             _loc4_ = avatar.currentAnimation.classDefinitionName;
@@ -565,7 +562,7 @@ package tuxwars.battle.gameobjects.player
       
       public function aim(vec:Vec2 = null) : Vec2
       {
-         var _loc2_:Vec2 = !!vec ? vec.copy() : Vec2.get(container.mouseX,container.mouseY);
+         var _loc2_:Vec2 = !!vec ? vec.copy() : Vec2.get(int(container.mouseX),int(container.mouseY));
          if(direction == 1 && _loc2_.x < 0)
          {
             direction = 0;
@@ -782,8 +779,8 @@ package tuxwars.battle.gameobjects.player
       
       private function die() : void
       {
-         var _loc1_:* = null;
-         var _loc2_:* = null;
+         var _loc1_:Tagger = null;
+         var _loc2_:PlayerGameObject = null;
          if(!isDead() && !isSpawning() && isPossibleToDieBasedOnWeaponState())
          {
             LogUtils.log(this._id + " is dead. Rest In Pieces.",this,1,"Match",false,false,true);
@@ -809,7 +806,7 @@ package tuxwars.battle.gameobjects.player
       private function findSpawnPoint() : Vec2
       {
          var _loc2_:SpawnPointFinder = new SpawnPointFinder((this.game as tuxwars.TuxWarsGame).tuxWorld);
-         var _loc1_:Number = Number(Circle(body.shapes.at(0)).radius) * 2;
+         var _loc1_:Number = Circle(body.shapes.at(0)).radius * 2;
          var _loc3_:Vec2 = _loc2_.findSpawnLocation(_loc1_);
          if(!_loc3_)
          {
@@ -913,11 +910,11 @@ package tuxwars.battle.gameobjects.player
       
       private function sendDieMessage() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:SpawnPointFinder = null;
          if(!dieMessageSent && !isDead() && !isSpawning() && isPossibleToDieBasedOnWeaponState() && (BattleManager.isLocalPlayersTurn() || BattleManager.isPracticeMode()))
          {
             _loc1_ = new SpawnPointFinder((this.game as tuxwars.TuxWarsGame).tuxWorld,new Random(getTimer()));
-            MessageCenter.sendEvent(new DieMessage(this._id,_loc1_.findSpawnLocation(Number(Circle(body.shapes.at(0)).radius) * 2),_loc1_.wasRandomPoint));
+            MessageCenter.sendEvent(new DieMessage(this._id,_loc1_.findSpawnLocation(Circle(body.shapes.at(0)).radius * 2),_loc1_.wasRandomPoint));
             dieMessageSent = true;
          }
       }
@@ -1020,7 +1017,7 @@ package tuxwars.battle.gameobjects.player
       
       private function addBetEffect(msg:Message) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:TextEffect = null;
          if(this._id == msg.data.id)
          {
             _loc2_ = (this.game as tuxwars.TuxWarsGame).tuxWorld.addTextEffect(8,null,container.x,container.y,false);
@@ -1047,3 +1044,4 @@ package tuxwars.battle.gameobjects.player
       }
    }
 }
+

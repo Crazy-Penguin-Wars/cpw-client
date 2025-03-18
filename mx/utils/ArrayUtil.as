@@ -2,11 +2,11 @@ package mx.utils
 {
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class ArrayUtil
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       public function ArrayUtil()
       {
@@ -28,7 +28,7 @@ package mx.utils
       
       public static function getItemIndex(item:Object, source:Array) : int
       {
-         var n:int = source.length;
+         var n:int = int(source.length);
          for(var i:int = 0; i < n; i++)
          {
             if(source[i] === item)
@@ -40,3 +40,4 @@ package mx.utils
       }
    }
 }
+

@@ -1,8 +1,8 @@
 package tuxwars.home.ui.screen.leaderboard
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
    import com.dchoc.resources.DCResourceManager;
+   import com.dchoc.utils.DCUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.logic.leaderboard.LeaderboardLogic;
    import tuxwars.home.ui.screen.TuxPageSubTabScreen;
@@ -11,11 +11,9 @@ package tuxwars.home.ui.screen.leaderboard
    
    public class LeaderboardScreen extends TuxPageSubTabScreen
    {
-      
       private static const CONTENT_TEXT:String = "Container_Text";
       
       private static const CONTENT_BARS:String = "Container_Bars";
-       
       
       private var personalStatsElement:PersonalStatsElement;
       
@@ -107,14 +105,16 @@ package tuxwars.home.ui.screen.leaderboard
       
       private function getTab() : String
       {
+         var _loc4_:String = "Categorys";
          var _loc2_:* = leaderboardLogic.getCurrentTab();
-         if(!_loc2_._cache["Categorys"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Categorys"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Categorys");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Categorys"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:* = _loc1_;
          return (_loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value)[0];
       }
    }
 }
+

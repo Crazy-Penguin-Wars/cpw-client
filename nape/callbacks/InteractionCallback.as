@@ -6,8 +6,6 @@ package nape.callbacks
    
    public final class InteractionCallback extends Callback
    {
-       
-      
       public function InteractionCallback()
       {
          if(Boot.skip_constructor)
@@ -42,3 +40,4 @@ package nape.callbacks
       }
    }
 }
+

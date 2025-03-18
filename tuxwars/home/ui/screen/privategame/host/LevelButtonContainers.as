@@ -8,11 +8,9 @@ package tuxwars.home.ui.screen.privategame.host
    
    public class LevelButtonContainers extends UIContainers implements ButtonContainers
    {
-      
       private static const BUTTON_DEFAULT:String = "Slot_Default";
       
       private static const BUTTON_LOCKED:String = "Slot_Locked";
-       
       
       private var parent:HostPrivateGameSettingsScreen;
       
@@ -56,3 +54,4 @@ package tuxwars.home.ui.screen.privategame.host
       }
    }
 }
+

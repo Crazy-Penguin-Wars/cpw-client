@@ -3,16 +3,15 @@ package com.dchoc.resources
    import com.dchoc.events.DCLoadingEvent;
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.utils.LogUtils;
+   import flash.external.ExternalInterface;
    
    public class BatchLoader
    {
+      private static var idCounter:int;
       
       public static const FILES_LOADED:String = "FilesLoaded";
       
       public static const LOAD_ERROR:String = "LoadError";
-      
-      private static var idCounter:int;
-       
       
       private var _id:String;
       
@@ -22,19 +21,33 @@ package com.dchoc.resources
       {
          super();
          this.files = files.slice();
-         _id = idCounter.toString();
-         idCounter++;
+         this._id = idCounter.toString();
+         ++idCounter;
       }
       
       public function get id() : String
       {
-         return _id;
+         return this._id;
+      }
+      
+      public function notifyListeners() : void
+      {
+         LogUtils.log("[MichiDebug] " + JSON.stringify(this.files),this,1,"Assets",true,false,true);
+         if(this.files.length == 0)
+         {
+            DCResourceManager.instance.removeCustomEventListener("complete",this.fileLoaded);
+            DCResourceManager.instance.removeCustomEventListener("error",this.fileLoaded);
+            MessageCenter.sendMessage("FilesLoaded",this.id);
+         }
       }
       
       public function load(useContextForSwf:Boolean = false) : void
       {
+         var file:* = undefined;
+         var alreadyLoadedFile:* = undefined;
+         ExternalInterface.call("console.log",JSON.stringify(this.files));
          var _loc4_:Array = [];
-         for each(var file in files)
+         for each(file in this.files)
          {
             if(DCResourceManager.instance.isLoaded(file))
             {
@@ -42,47 +55,41 @@ package com.dchoc.resources
             }
             else
             {
-               DCResourceManager.instance.addCustomEventListener("complete",fileLoaded,file);
-               DCResourceManager.instance.addCustomEventListener("error",error,file);
+               DCResourceManager.instance.addCustomEventListener("complete",this.fileLoaded,file);
+               DCResourceManager.instance.addCustomEventListener("error",this.error,file);
                DCResourceManager.instance.load(Config.getDataDir() + file,file,null,true,useContextForSwf);
             }
          }
-         for each(var alreadyLoadedFile in _loc4_)
+         for each(alreadyLoadedFile in _loc4_)
          {
-            files.splice(files.indexOf(alreadyLoadedFile),1);
+            this.files.splice(this.files.indexOf(alreadyLoadedFile),1);
          }
-         notifyListeners();
+         ExternalInterface.call("console.log","Listeners notfied of:");
+         ExternalInterface.call("console.log",JSON.stringify(this.files));
+         ExternalInterface.call("console.log",JSON.stringify(_loc4_));
+         this.notifyListeners();
       }
       
       private function fileLoaded(event:DCLoadingEvent) : void
       {
-         var _loc2_:int = files.indexOf(event.resourceName);
+         var _loc2_:int = int(this.files.indexOf(event.resourceName));
          if(_loc2_ != -1)
          {
-            files.splice(_loc2_,1);
+            this.files.splice(_loc2_,1);
          }
-         notifyListeners();
+         this.notifyListeners();
       }
       
       private function error(event:DCLoadingEvent) : void
       {
          LogUtils.log("Failed to load: " + event.resourceName,this,3,"Assets",true,false,true);
-         DCResourceManager.instance.removeCustomEventListener("complete",fileLoaded);
-         DCResourceManager.instance.removeCustomEventListener("error",fileLoaded);
+         DCResourceManager.instance.removeCustomEventListener("complete",this.fileLoaded);
+         DCResourceManager.instance.removeCustomEventListener("error",this.fileLoaded);
          MessageCenter.sendMessage("LoadError",{
-            "id":id,
+            "id":this.id,
             "resource":event.resourceName
          });
       }
-      
-      private function notifyListeners() : void
-      {
-         if(files.length == 0)
-         {
-            DCResourceManager.instance.removeCustomEventListener("complete",fileLoaded);
-            DCResourceManager.instance.removeCustomEventListener("error",fileLoaded);
-            MessageCenter.sendMessage("FilesLoaded",id);
-         }
-      }
    }
 }
+

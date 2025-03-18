@@ -4,13 +4,11 @@ package starling.textures
    
    public class TextureSmoothing
    {
-      
       public static const NONE:String = "none";
       
       public static const BILINEAR:String = "bilinear";
       
       public static const TRILINEAR:String = "trilinear";
-       
       
       public function TextureSmoothing()
       {
@@ -24,3 +22,4 @@ package starling.textures
       }
    }
 }
+

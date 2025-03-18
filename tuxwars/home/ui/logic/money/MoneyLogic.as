@@ -7,8 +7,6 @@ package tuxwars.home.ui.logic.money
    
    public class MoneyLogic extends TuxUILogic
    {
-       
-      
       public function MoneyLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -27,3 +25,4 @@ package tuxwars.home.ui.logic.money
       }
    }
 }
+

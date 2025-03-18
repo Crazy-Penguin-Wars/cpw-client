@@ -5,8 +5,6 @@ package tuxwars.items.definitions
    
    public class WeaponDef extends ItemDef
    {
-       
-      
       private var _animationType:String;
       
       private var _targeting:String;
@@ -51,3 +49,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

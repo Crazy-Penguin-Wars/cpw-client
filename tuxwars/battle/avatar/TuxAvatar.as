@@ -12,7 +12,6 @@ package tuxwars.battle.avatar
    
    public class TuxAvatar extends UserAvatar
    {
-      
       public static const IDLE:String = "idle";
       
       public static const IDLE_1:String = "idle01";
@@ -20,8 +19,6 @@ package tuxwars.battle.avatar
       public static const IDLE_2:String = "idle02";
       
       public static const IDLE_3:String = "idle03";
-      
-      public static const IDLE_ANIMS:Array = ["idle01","idle02","idle03"];
       
       public static const WALK:String = "walk";
       
@@ -46,7 +43,8 @@ package tuxwars.battle.avatar
       public static const WIN:String = "win";
       
       public static const LOSE1:String = "lose_01";
-       
+      
+      public static const IDLE_ANIMS:Array = ["idle01","idle02","idle03"];
       
       private const _clothesList:Array = [];
       
@@ -179,7 +177,7 @@ package tuxwars.battle.avatar
       private function updateClothing() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:WearableItem = null;
          for(i = _clothesList.length - 1; i >= 0; )
          {
             _loc1_ = _clothesList[i];
@@ -201,3 +199,4 @@ package tuxwars.battle.avatar
       }
    }
 }
+

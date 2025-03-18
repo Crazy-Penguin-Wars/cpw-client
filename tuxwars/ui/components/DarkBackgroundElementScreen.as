@@ -7,8 +7,6 @@ package tuxwars.ui.components
    
    public class DarkBackgroundElementScreen extends TuxUIElementScreen
    {
-       
-      
       public function DarkBackgroundElementScreen(whereToAdd:MovieClip, game:TuxWarsGame, container:MovieClip, setInBackground:Boolean = false)
       {
          var _loc5_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/hud_shared.swf","dark_back");
@@ -26,3 +24,4 @@ package tuxwars.ui.components
       }
    }
 }
+

@@ -1,13 +1,12 @@
 package tuxwars.items.references
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import no.olog.utilfunctions.assert;
    
    public class PriceInfoReference
    {
-      
       private static const UNLOCK_PRICE_PREMIUM:String = "UnlockPricePremium";
       
       private static const INGAME:String = "InGame";
@@ -17,7 +16,6 @@ package tuxwars.items.references
       private static const SALE_PERCENTAGE:String = "SalePercentage";
       
       private static const POPULARITY_SORT_ORDER:String = "PopularitySortOrder";
-       
       
       private var row:Row;
       
@@ -35,31 +33,33 @@ package tuxwars.items.references
       
       public function get unlockPricePremium() : int
       {
+         var _loc4_:String = "UnlockPricePremium";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["UnlockPricePremium"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["UnlockPricePremium"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","UnlockPricePremium");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["UnlockPricePremium"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       public function get popularitySortOrder() : int
       {
+         var _loc4_:String = "PopularitySortOrder";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["PopularitySortOrder"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["PopularitySortOrder"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","PopularitySortOrder");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["PopularitySortOrder"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       private function createPriceObject() : PriceObject
       {
-         var _loc1_:* = null;
+         var _loc1_:PriceObject = null;
          if(inGamePrice > 0 && premiumPrice > 0)
          {
             LogUtils.log("PriceReference has both currencies configured:" + toString(),"PriceInfoReference",3,"ErrorLogging",true,true);
@@ -80,47 +80,51 @@ package tuxwars.items.references
       
       private function get inGamePrice() : int
       {
+         var _loc4_:String = "InGame";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["InGame"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["InGame"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","InGame");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["InGame"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       private function get premiumPrice() : int
       {
+         var _loc4_:String = "Premium";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Premium"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Premium"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Premium");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Premium"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : 0;
       }
       
       private function get inGamePriceOriginal() : int
       {
+         var _loc3_:String = "InGame";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["InGame"])
+         if(!_loc2_._cache[_loc3_])
          {
-            _loc2_._cache["InGame"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","InGame");
+            _loc2_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc3_);
          }
-         var _loc1_:Field = _loc2_._cache["InGame"];
+         var _loc1_:Field = _loc2_._cache[_loc3_];
          return !!_loc1_ ? _loc1_.originalValue : 0;
       }
       
       private function get premiumPriceOriginal() : int
       {
+         var _loc3_:String = "Premium";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Premium"])
+         if(!_loc2_._cache[_loc3_])
          {
-            _loc2_._cache["Premium"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Premium");
+            _loc2_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc3_);
          }
-         var _loc1_:Field = _loc2_._cache["Premium"];
+         var _loc1_:Field = _loc2_._cache[_loc3_];
          return !!_loc1_ ? _loc1_.originalValue : 0;
       }
       
@@ -139,3 +143,4 @@ package tuxwars.items.references
       }
    }
 }
+

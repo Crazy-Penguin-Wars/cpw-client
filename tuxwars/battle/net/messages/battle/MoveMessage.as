@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class MoveMessage extends BattleMessage
    {
-       
-      
       public function MoveMessage(direction:int, id:String)
       {
          super({
@@ -21,3 +19,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

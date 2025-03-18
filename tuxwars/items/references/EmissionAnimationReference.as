@@ -1,20 +1,18 @@
 package tuxwars.items.references
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import no.olog.utilfunctions.assert;
    import tuxwars.battle.data.animationEmissions.AnimationEmissionData;
    import tuxwars.battle.data.animationEmissions.AnimationEmissions;
    
    public class EmissionAnimationReference
    {
-      
       private static const ANIMATION:String = "Animation";
       
       private static const TARGET:String = "Target";
       
       private static const SOUND_ID:String = "SoundID";
-       
       
       private var row:Row;
       
@@ -39,12 +37,13 @@ package tuxwars.items.references
       
       public function getAnimationEmissionData() : AnimationEmissionData
       {
+         var _loc5_:String = "Animation";
          var _loc3_:Row = row;
-         if(!_loc3_._cache["Animation"])
+         if(!_loc3_._cache[_loc5_])
          {
-            _loc3_._cache["Animation"] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name","Animation");
+            _loc3_._cache[_loc5_] = com.dchoc.utils.DCUtils.find(_loc3_._fields,"name",_loc5_);
          }
-         var _loc1_:Field = _loc3_._cache["Animation"];
+         var _loc1_:Field = _loc3_._cache[_loc5_];
          var _loc4_:*;
          var _loc2_:Row = _loc1_ != null ? (_loc4_ = _loc1_, (_loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) as Row) : null;
          return _loc2_ != null ? AnimationEmissions.getAnimationEmissionData(_loc2_.id) : null;
@@ -52,26 +51,29 @@ package tuxwars.items.references
       
       public function getTarget() : String
       {
+         var _loc4_:String = "Target";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["Target"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["Target"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","Target");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["Target"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return _loc1_ != null ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
       
       public function get soundID() : String
       {
+         var _loc4_:String = "SoundID";
          var _loc2_:Row = row;
-         if(!_loc2_._cache["SoundID"])
+         if(!_loc2_._cache[_loc4_])
          {
-            _loc2_._cache["SoundID"] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name","SoundID");
+            _loc2_._cache[_loc4_] = com.dchoc.utils.DCUtils.find(_loc2_._fields,"name",_loc4_);
          }
-         var _loc1_:Field = _loc2_._cache["SoundID"];
+         var _loc1_:Field = _loc2_._cache[_loc4_];
          var _loc3_:*;
          return !!_loc1_ ? (_loc3_ = _loc1_, _loc3_.overrideValue != null ? _loc3_.overrideValue : _loc3_._value) : null;
       }
    }
 }
+

@@ -11,8 +11,6 @@ package tuxwars.home.ui.logic.help
    
    public class HelpLogic extends TuxUILogic
    {
-       
-      
       private const _helpPages:Array = [];
       
       private var _currentPageIndex:int;
@@ -23,8 +21,9 @@ package tuxwars.home.ui.logic.help
       {
          super(game,state);
          var aria:Array = [];
+         var _loc12_:String = "HelpData";
          var _loc6_:ProjectManager = ProjectManager;
-         var _loc7_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("HelpData");
+         var _loc7_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc12_);
          for each(var row in _loc7_._rows)
          {
             aria.push(new HelpReference(row));
@@ -113,3 +112,4 @@ package tuxwars.home.ui.logic.help
       }
    }
 }
+

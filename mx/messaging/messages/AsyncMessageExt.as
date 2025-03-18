@@ -5,8 +5,6 @@ package mx.messaging.messages
    
    public class AsyncMessageExt extends AsyncMessage implements IExternalizable
    {
-       
-      
       private var _message:AsyncMessage;
       
       public function AsyncMessageExt(message:AsyncMessage = null)
@@ -37,3 +35,4 @@ package mx.messaging.messages
       }
    }
 }
+

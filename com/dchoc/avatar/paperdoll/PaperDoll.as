@@ -13,15 +13,13 @@ package com.dchoc.avatar.paperdoll
    
    public class PaperDoll extends MovieClip
    {
-       
-      
       private const bodyParts:Vector.<BodyPart> = new Vector.<BodyPart>();
       
       private var _currentAnimation:PaperDollAnimation;
       
       private var currentAnimationCallback:Function;
       
-      private var currentClothes:Dictionary;
+      private var currentClothes:Dictionary = new Dictionary(true);
       
       private var _color:IAvatarColor;
       
@@ -39,7 +37,6 @@ package com.dchoc.avatar.paperdoll
       
       public function PaperDoll(swfFileName:String, color:AvatarColor, gender:int)
       {
-         currentClothes = new Dictionary(true);
          super();
          _swfFileName = swfFileName;
          _color = color;
@@ -143,14 +140,14 @@ package com.dchoc.avatar.paperdoll
       
       public function unwear(slot:ClothesSlot) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Array = null;
          var _loc3_:int = 0;
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:DisplayObject = null;
          if(currentClothes[slot])
          {
             _loc4_ = CurrentClothes(currentClothes[slot]).clips;
-            _loc3_ = _loc4_.length;
+            _loc3_ = int(_loc4_.length);
             for(i = 0; i < _loc3_; )
             {
                _loc2_ = _loc4_[i];
@@ -212,8 +209,8 @@ package com.dchoc.avatar.paperdoll
       
       private function startNextAnimation() : void
       {
-         var _loc2_:* = null;
-         var _loc1_:* = null;
+         var _loc2_:Function = null;
+         var _loc1_:MovieClip = null;
          if(currentAnimationCallback != null)
          {
             _loc2_ = currentAnimationCallback;
@@ -237,8 +234,8 @@ package com.dchoc.avatar.paperdoll
       public function redrawCurrentClothes() : void
       {
          var i:int = 0;
-         var _loc2_:* = null;
-         var _loc1_:* = null;
+         var _loc2_:ClothesSlot = null;
+         var _loc1_:CurrentClothes = null;
          for(i = 0; i < ClothesSlot.TYPE_NAMES.length; )
          {
             _loc2_ = ClothesSlot.getSlotByID(i);
@@ -274,12 +271,12 @@ package com.dchoc.avatar.paperdoll
       private function addClothes(filename:String, bodyParts:Vector.<BodyPart>, prevClothes:Array = null) : Array
       {
          var i:int = 0;
-         var _loc4_:* = null;
-         var _loc10_:* = null;
-         var _loc6_:* = null;
-         var _loc9_:* = null;
-         var _loc8_:* = null;
-         var _loc11_:* = null;
+         var _loc4_:BodyPart = null;
+         var _loc10_:String = null;
+         var _loc6_:MovieClip = null;
+         var _loc9_:String = null;
+         var _loc8_:MovieClip = null;
+         var _loc11_:DisplayObjectContainer = null;
          var _loc7_:Array = [];
          var _loc5_:MovieClip = _currentAnimation.getChildAt(0) as MovieClip;
          if(_loc5_)
@@ -344,7 +341,7 @@ package com.dchoc.avatar.paperdoll
       private function applyColor(mc:DisplayObjectContainer, color:IAvatarColor) : void
       {
          var i:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:DisplayObject = null;
          if(!mc)
          {
             return;
@@ -369,7 +366,7 @@ package com.dchoc.avatar.paperdoll
       
       private function getBodyPartClip(clipName:String) : MovieClip
       {
-         var _loc4_:* = null;
+         var _loc4_:Array = null;
          var j:int = 0;
          var anim:MovieClip = _currentAnimation.getChildAt(0) as MovieClip;
          var clip:* = clipName;
@@ -423,8 +420,6 @@ package com.dchoc.avatar.paperdoll
 
 class CurrentClothes
 {
-    
-   
    private var _clips:Array;
    
    private var _fileName:String;
@@ -442,12 +437,12 @@ class CurrentClothes
       _fileName = null;
    }
    
-   private function get clips() : Array
+   internal function get clips() : Array
    {
       return _clips;
    }
    
-   private function get fileName() : String
+   internal function get fileName() : String
    {
       return _fileName;
    }

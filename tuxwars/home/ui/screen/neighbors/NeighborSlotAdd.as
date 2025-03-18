@@ -13,11 +13,9 @@ package tuxwars.home.ui.screen.neighbors
    
    public class NeighborSlotAdd extends NeighborSlot
    {
-      
       private static const TEXT_FIELD_DESCRIPTION:String = "Text_Description";
       
       private static const BUTTON_ADD:String = "Button_Add";
-       
       
       private var descriptionTextField:TextField;
       
@@ -51,3 +49,4 @@ package tuxwars.home.ui.screen.neighbors
       }
    }
 }
+

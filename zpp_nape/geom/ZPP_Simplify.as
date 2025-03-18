@@ -5,9 +5,7 @@ package zpp_nape.geom
    
    public class ZPP_Simplify
    {
-      
-      public static var stack:ZNPList_ZPP_SimplifyP = null;
-       
+      public static var stack:ZNPList_ZPP_SimplifyP;
       
       public function ZPP_Simplify()
       {
@@ -96,6 +94,7 @@ package zpp_nape.geom
                ZPP_SimplifyV.zpp_pool = _loc10_.next;
                _loc10_.next = null;
             }
+            null;
             _loc10_.x = _loc8_.x;
             _loc10_.y = _loc8_.y;
             _loc10_.flag = false;
@@ -117,6 +116,7 @@ package zpp_nape.geom
                      ZPP_SimplifyP.zpp_pool = _loc11_.next;
                      _loc11_.next = null;
                   }
+                  null;
                   _loc11_.min = _loc6_;
                   _loc11_.max = _loc9_;
                   §§pop().add(_loc11_);
@@ -176,6 +176,7 @@ package zpp_nape.geom
                   ZPP_SimplifyP.zpp_pool = _loc11_.next;
                   _loc11_.next = null;
                }
+               null;
                _loc11_.min = _loc4_;
                _loc11_.max = _loc5_;
                §§pop().add(_loc11_);
@@ -190,6 +191,7 @@ package zpp_nape.geom
                   ZPP_SimplifyP.zpp_pool = _loc11_.next;
                   _loc11_.next = null;
                }
+               null;
                _loc11_.min = _loc5_;
                _loc11_.max = _loc4_;
                §§pop().add(_loc11_);
@@ -220,6 +222,7 @@ package zpp_nape.geom
                      ZPP_SimplifyP.zpp_pool = _loc11_.next;
                      _loc11_.next = null;
                   }
+                  null;
                   _loc11_.min = _loc4_;
                   _loc11_.max = _loc7_;
                   §§pop().add(_loc11_);
@@ -234,6 +237,7 @@ package zpp_nape.geom
                      ZPP_SimplifyP.zpp_pool = _loc11_.next;
                      _loc11_.next = null;
                   }
+                  null;
                   _loc11_.min = _loc7_;
                   _loc11_.max = _loc4_;
                   §§pop().add(_loc11_);
@@ -252,6 +256,7 @@ package zpp_nape.geom
                      ZPP_SimplifyP.zpp_pool = _loc11_.next;
                      _loc11_.next = null;
                   }
+                  null;
                   _loc11_.min = _loc5_;
                   _loc11_.max = _loc7_;
                   §§pop().add(_loc11_);
@@ -266,6 +271,7 @@ package zpp_nape.geom
                      ZPP_SimplifyP.zpp_pool = _loc11_.next;
                      _loc11_.next = null;
                   }
+                  null;
                   _loc11_.min = _loc7_;
                   _loc11_.max = _loc5_;
                   §§pop().add(_loc11_);
@@ -285,6 +291,7 @@ package zpp_nape.geom
                ZPP_SimplifyP.zpp_pool = _loc11_.next;
                _loc11_.next = null;
             }
+            null;
             _loc11_.min = _loc6_;
             _loc11_.max = _loc7_;
             §§pop().add(_loc11_);
@@ -325,6 +332,7 @@ package zpp_nape.geom
                   ZPP_SimplifyP.zpp_pool = _loc16_.next;
                   _loc16_.next = null;
                }
+               null;
                _loc16_.min = _loc9_;
                _loc16_.max = _loc12_;
                §§pop().add(_loc16_);
@@ -339,6 +347,7 @@ package zpp_nape.geom
                   ZPP_SimplifyP.zpp_pool = _loc16_.next;
                   _loc16_.next = null;
                }
+               null;
                _loc16_.min = _loc12_;
                _loc16_.max = _loc10_;
                §§pop().add(_loc16_);
@@ -377,9 +386,13 @@ package zpp_nape.geom
                _loc18_ = _loc19_;
                _loc18_.forced = _loc3_.forced;
             }
-            _loc3_ = _loc3_ != null && _loc3_.prev == _loc3_ ? (_loc3_.next = _loc3_.prev = null, _loc9_ = _loc3_, _loc9_.next = ZPP_SimplifyV.zpp_pool, ZPP_SimplifyV.zpp_pool = _loc9_, _loc3_ = null) : (_loc9_ = _loc3_.next, _loc3_.prev.next = _loc3_.next, _loc3_.next.prev = _loc3_.prev, _loc3_.next = _loc3_.prev = null, _loc10_ = _loc3_, _loc10_.next = ZPP_SimplifyV.zpp_pool, ZPP_SimplifyV.zpp_pool = _loc10_, _loc3_ = null, _loc9_);
+            _loc3_ = null;
+            _loc3_ = _loc3_ != null && _loc3_.prev == _loc3_ ? (_loc3_.next = _loc3_.prev = null, _loc9_ = _loc3_, _loc9_.next = ZPP_SimplifyV.zpp_pool, ZPP_SimplifyV.zpp_pool = _loc9_, _loc3_) : (_loc9_ = _loc3_.next, _loc3_.prev.next = _loc3_.next, _loc3_.next.prev = _loc3_.prev, _loc3_.next = _loc3_.prev = null, _loc10_ = _loc3_, _loc10_.next = ZPP_SimplifyV.zpp_pool, ZPP_SimplifyV.zpp_pool = _loc10_, _loc3_ = null, _loc9_);
          }
          return _loc18_;
       }
    }
 }
+
+import zpp_nape.util.ZNPList_ZPP_SimplifyP;
+

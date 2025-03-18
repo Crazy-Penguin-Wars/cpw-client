@@ -4,11 +4,10 @@ package com.dchoc.ui.base
    import com.dchoc.utils.DCUtils;
    import flash.display.DisplayObject;
    import flash.events.Event;
+   import flash.external.ExternalInterface;
    
    public class UIStateComponent extends UIComponent
    {
-       
-      
       protected var state:String;
       
       private var showTransitions:Boolean;
@@ -32,6 +31,7 @@ package com.dchoc.ui.base
             {
                if(setState("Visible"))
                {
+                  super.setVisible(value);
                   addEventListener("transition_end",showAnimEnded);
                   return;
                }
@@ -69,6 +69,12 @@ package com.dchoc.ui.base
       
       public function setState(newState:String, fallBackState:String = null) : Boolean
       {
+         ExternalInterface.call("console.log","[setState] Old state:");
+         ExternalInterface.call("console.log",state);
+         ExternalInterface.call("console.log","[setState] Going to state:");
+         ExternalInterface.call("console.log",newState);
+         ExternalInterface.call("console.log","[setState] With fallBackState:");
+         ExternalInterface.call("console.log",fallBackState);
          if(state == newState)
          {
             return false;
@@ -85,6 +91,7 @@ package com.dchoc.ui.base
             return false;
          }
          var transitionFound:Boolean = true;
+         ExternalInterface.call("console.log","[setState] line 92");
          if(playAnimation(state + "_To_" + newState))
          {
             addEventListener("transition_end",clipAnimEnded);
@@ -150,3 +157,4 @@ package com.dchoc.ui.base
       }
    }
 }
+

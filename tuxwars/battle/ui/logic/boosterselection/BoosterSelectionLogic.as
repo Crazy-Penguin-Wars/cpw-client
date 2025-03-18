@@ -1,8 +1,9 @@
 package tuxwars.battle.ui.logic.boosterselection
 {
    import com.dchoc.messages.MessageCenter;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.TuxWarsGame;
    import tuxwars.battle.ui.screen.boosterselection.BoosterSelectionScreen;
    import tuxwars.home.ui.logic.TuxPageSubTabLogic;
@@ -13,13 +14,11 @@ package tuxwars.battle.ui.logic.boosterselection
    
    public class BoosterSelectionLogic extends TuxPageSubTabLogic
    {
-      
       private static const TABLE:String = "Screen";
       
       private static const SHOP:String = "BoosterSelection";
       
       private static const BOOSTER_SELECTION_TUTORIAL:String = "BoosterSelectionTutorial";
-       
       
       public function BoosterSelectionLogic(game:TuxWarsGame, state:TuxState)
       {
@@ -28,7 +27,7 @@ package tuxwars.battle.ui.logic.boosterselection
       
       public static function getStaticData() : Row
       {
-         var rowName:* = null;
+         var rowName:String = null;
          var _loc2_:Tutorial = Tutorial;
          if(tuxwars.tutorial.Tutorial._tutorial)
          {
@@ -38,9 +37,10 @@ package tuxwars.battle.ui.logic.boosterselection
          {
             rowName = "BoosterSelection";
          }
+         var _loc5_:String = "Screen";
          var _loc3_:ProjectManager = ProjectManager;
          var _loc6_:* = rowName;
-         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Screen");
+         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc5_);
          if(!_loc4_._cache[_loc6_])
          {
             var _loc7_:Row = com.dchoc.utils.DCUtils.find(_loc4_.rows,"id",_loc6_);
@@ -95,3 +95,4 @@ package tuxwars.battle.ui.logic.boosterselection
       }
    }
 }
+

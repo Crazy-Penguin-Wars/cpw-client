@@ -2,8 +2,6 @@ package mx.messaging.messages
 {
    public class MessagePerformanceInfo
    {
-       
-      
       public var messageSize:int;
       
       public var sendTime:Number = 0;
@@ -65,3 +63,4 @@ package mx.messaging.messages
       }
    }
 }
+

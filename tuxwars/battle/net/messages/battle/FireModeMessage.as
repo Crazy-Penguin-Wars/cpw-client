@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class FireModeMessage extends BattleMessage
    {
-       
-      
       public function FireModeMessage(id:String)
       {
          super({
@@ -20,3 +18,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

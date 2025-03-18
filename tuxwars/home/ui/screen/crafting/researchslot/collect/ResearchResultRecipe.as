@@ -12,8 +12,6 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
    
    public class ResearchResultRecipe extends ResearchResultBuild
    {
-       
-      
       private var icon:MovieClip;
       
       private var recipeData:RecipeData;
@@ -101,3 +99,4 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
       }
    }
 }
+

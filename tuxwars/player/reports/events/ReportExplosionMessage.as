@@ -6,8 +6,6 @@ package tuxwars.player.reports.events
    
    public class ReportExplosionMessage extends Message
    {
-       
-      
       private const _affectedPlayers:Vector.<PlayerGameObject> = new Vector.<PlayerGameObject>();
       
       private var _affectedGameObjects:Vector.<PhysicsGameObject>;
@@ -61,7 +59,7 @@ package tuxwars.player.reports.events
       public function damageTo(id:String) : int
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:PhysicsGameObject = null;
          for(i = 0; i < affectedGameObjects.length; )
          {
             _loc2_ = affectedGameObjects[i];
@@ -87,3 +85,4 @@ package tuxwars.player.reports.events
       }
    }
 }
+

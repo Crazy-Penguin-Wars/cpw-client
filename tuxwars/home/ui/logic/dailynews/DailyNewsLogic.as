@@ -11,8 +11,6 @@ package tuxwars.home.ui.logic.dailynews
    
    public class DailyNewsLogic extends TuxUILogic
    {
-       
-      
       public function DailyNewsLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -48,3 +46,4 @@ package tuxwars.home.ui.logic.dailynews
       }
    }
 }
+

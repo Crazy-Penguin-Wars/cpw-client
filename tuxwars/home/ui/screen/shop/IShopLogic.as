@@ -6,8 +6,6 @@ package tuxwars.home.ui.screen.shop
    
    public interface IShopLogic
    {
-       
-      
       function getCurrentTab() : Row;
       
       function getCurrentTabBigItems() : Vector.<BigShopItem>;
@@ -17,3 +15,4 @@ package tuxwars.home.ui.screen.shop
       function getItems(param1:String, param2:Array = null, param3:Boolean = true) : Vector.<ShopItem>;
    }
 }
+

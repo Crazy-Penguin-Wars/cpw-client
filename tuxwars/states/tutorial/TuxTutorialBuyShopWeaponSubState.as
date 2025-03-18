@@ -16,8 +16,6 @@ package tuxwars.states.tutorial
    
    public class TuxTutorialBuyShopWeaponSubState extends TuxTutorialSubState
    {
-       
-      
       private var buyClicked:Boolean;
       
       private var tabClicked:Boolean;
@@ -137,3 +135,4 @@ package tuxwars.states.tutorial
       }
    }
 }
+

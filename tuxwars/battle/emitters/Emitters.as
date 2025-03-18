@@ -4,8 +4,6 @@ package tuxwars.battle.emitters
    
    public class Emitters
    {
-       
-      
       public function Emitters()
       {
          super();
@@ -49,3 +47,4 @@ package tuxwars.battle.emitters
       }
    }
 }
+

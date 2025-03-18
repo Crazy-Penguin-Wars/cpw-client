@@ -8,9 +8,10 @@ package mx.rpc.http
    import mx.rpc.AsyncToken;
    import mx.utils.URLUtil;
    
+   use namespace mx_internal;
+   
    public class HTTPService extends AbstractInvoker
    {
-      
       public static const RESULT_FORMAT_E4X:String = "e4x";
       
       public static const RESULT_FORMAT_FLASHVARS:String = "flashvars";
@@ -36,7 +37,6 @@ package mx.rpc.http
       public static const ERROR_DECODING:String = "Client.CouldNotDecode";
       
       public static const ERROR_ENCODING:String = "Client.CouldNotEncode";
-       
       
       mx_internal var operation:AbstractOperation;
       
@@ -312,15 +312,16 @@ package mx.rpc.http
    }
 }
 
+import flash.events.EventDispatcher;
 import mx.core.mx_internal;
+import mx.rpc.AbstractInvoker;
+import mx.rpc.AbstractOperation;
 import mx.rpc.events.AbstractEvent;
-import mx.rpc.http.AbstractOperation;
-import mx.rpc.http.HTTPService;
+
+use namespace mx_internal;
 
 class HTTPOperation extends AbstractOperation
 {
-    
-   
    private var httpService:HTTPService;
    
    public function HTTPOperation(httpService:HTTPService, name:String = null)

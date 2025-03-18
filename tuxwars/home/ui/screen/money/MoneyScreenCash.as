@@ -15,7 +15,6 @@ package tuxwars.home.ui.screen.money
    
    public class MoneyScreenCash extends TuxUIScreen
    {
-      
       public static const MONEY_SCREEN_CASH:String = "popup_get_cash_new";
       
       private static const TEXT_HEADER:String = "Text_Header";
@@ -27,11 +26,10 @@ package tuxwars.home.ui.screen.money
       private static const DISCOUNT_LABEL:String = "discount_label";
       
       private static const SLOT_INDEX:String = "Slot_0";
-       
       
       private var headerTextField:TextField;
       
-      private var moneySlots:Vector.<MoneyContainer>;
+      private var moneySlots:Vector.<MoneyContainer> = new Vector.<MoneyContainer>();
       
       private var buttonClose:UIButton;
       
@@ -39,7 +37,6 @@ package tuxwars.home.ui.screen.money
       
       public function MoneyScreenCash(game:TuxWarsGame)
       {
-         moneySlots = new Vector.<MoneyContainer>();
          super(game,DCResourceManager.instance.getFromSWF("flash/ui/top_bar_popups.swf","popup_get_cash_new"));
          if(game.homeState)
          {
@@ -119,3 +116,4 @@ package tuxwars.home.ui.screen.money
       }
    }
 }
+

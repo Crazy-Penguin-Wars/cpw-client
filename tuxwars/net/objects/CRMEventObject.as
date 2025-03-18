@@ -4,8 +4,6 @@ package tuxwars.net.objects
    
    public class CRMEventObject extends JavaScriptObject
    {
-       
-      
       private var _group:String;
       
       private var _type:String;
@@ -46,3 +44,4 @@ package tuxwars.net.objects
       }
    }
 }
+

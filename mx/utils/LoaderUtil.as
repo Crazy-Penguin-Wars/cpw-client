@@ -11,9 +11,10 @@ package mx.utils
    import mx.events.Request;
    import mx.managers.SystemManagerGlobals;
    
+   use namespace mx_internal;
+   
    public class LoaderUtil
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       mx_internal static var urlFilters:Array = [{
@@ -23,7 +24,6 @@ package mx.utils
          "searchString":"/[[IMPORT]]/",
          "filterFunction":importURLFilter
       }];
-       
       
       public function LoaderUtil()
       {
@@ -40,7 +40,8 @@ package mx.utils
          for(var i:uint = 0; i < n; i++)
          {
             searchString = LoaderUtil.mx_internal::urlFilters[i].searchString;
-            if((index = url.indexOf(searchString)) != -1)
+            index = int(url.indexOf(searchString));
+            if(index != -1)
             {
                urlFilter = LoaderUtil.mx_internal::urlFilters[i].filterFunction;
                url = urlFilter(url,index);
@@ -60,11 +61,13 @@ package mx.utils
          var absoluteURL:String = url;
          if(Boolean(rootURL) && !(url.indexOf(":") > -1 || url.indexOf("/") == 0 || url.indexOf("\\") == 0))
          {
-            if((index = rootURL.indexOf("?")) != -1)
+            index = int(rootURL.indexOf("?"));
+            if(index != -1)
             {
                rootURL = rootURL.substring(0,index);
             }
-            if((index = rootURL.indexOf("#")) != -1)
+            index = int(rootURL.indexOf("#"));
+            if(index != -1)
             {
                rootURL = rootURL.substring(0,index);
             }
@@ -106,7 +109,7 @@ package mx.utils
          var moduleFactories:Array = null;
          while(currentModuleFactory != moduleFactory)
          {
-            n = rsls.length;
+            n = int(rsls.length);
             for(i = 0; i < n; i++)
             {
                rsl = rsls[i];
@@ -118,7 +121,7 @@ package mx.utils
                      loadedLength++;
                      if(currentModuleFactory != topLevelModuleFactory)
                      {
-                        index = rslsToLoad.indexOf(rsl);
+                        index = int(rslsToLoad.indexOf(rsl));
                         if(index != -1)
                         {
                            rslsToLoad.splice(index,1);
@@ -184,11 +187,13 @@ package mx.utils
          var fragmentUrlIndex:int = 0;
          var index:int = 0;
          var decoded:String = url;
-         if((searchStringIndex = decoded.indexOf("?")) != -1)
+         searchStringIndex = int(decoded.indexOf("?"));
+         if(searchStringIndex != -1)
          {
             decoded = decoded.substring(0,searchStringIndex);
          }
-         if((fragmentUrlIndex = decoded.indexOf("#")) != -1)
+         fragmentUrlIndex = int(decoded.indexOf("#"));
+         if(fragmentUrlIndex != -1)
          {
             decoded = decoded.substring(0,fragmentUrlIndex);
          }
@@ -284,7 +289,7 @@ package mx.utils
          {
             for each(rsl in preloadedRSLs)
             {
-               n = rsl.length;
+               n = int(rsl.length);
                for(i = 0; i < n; i++)
                {
                   if(rsl[i].digest == digest)
@@ -307,7 +312,7 @@ package mx.utils
          var phRSLs:Array = moduleFactory.info()["placeholderRsls"];
          if(Boolean(phRSLs))
          {
-            n = phRSLs.length;
+            n = int(phRSLs.length);
             for(i = 0; i < n; i++)
             {
                rsl = phRSLs[i];
@@ -342,7 +347,7 @@ package mx.utils
       
       private static function updateRSLModuleFactory(rsl:Array, moduleFactory:IFlexModuleFactory) : void
       {
-         var n:int = rsl.length;
+         var n:int = int(rsl.length);
          for(var i:int = 0; i < n; i++)
          {
             rsl[i].moduleFactory = moduleFactory;
@@ -361,8 +366,9 @@ package mx.utils
       
       private static function importURLFilter(url:String, index:int) : String
       {
-         var protocolIndex:int = url.indexOf("://");
+         var protocolIndex:int = int(url.indexOf("://"));
          return url.substring(0,protocolIndex + 3) + url.substring(index + 12);
       }
    }
 }
+

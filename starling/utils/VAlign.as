@@ -4,13 +4,11 @@ package starling.utils
    
    public final class VAlign
    {
-      
       public static const TOP:String = "top";
       
       public static const CENTER:String = "center";
       
       public static const BOTTOM:String = "bottom";
-       
       
       public function VAlign()
       {
@@ -24,3 +22,4 @@ package starling.utils
       }
    }
 }
+

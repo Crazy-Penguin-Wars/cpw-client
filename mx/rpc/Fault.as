@@ -2,8 +2,6 @@ package mx.rpc
 {
    public class Fault extends Error
    {
-       
-      
       public var content:Object;
       
       public var rootCause:Object;
@@ -46,3 +44,4 @@ package mx.rpc
       }
    }
 }
+

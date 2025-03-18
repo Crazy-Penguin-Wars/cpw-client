@@ -4,6 +4,7 @@ package tuxwars.battle.simplescript.scripts
    import nape.geom.Vec2;
    import no.olog.utilfunctions.assert;
    import org.as3commons.lang.StringUtils;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.gameobjects.PhysicsGameObject;
    import tuxwars.battle.gameobjects.player.PlayerGameObject;
    import tuxwars.battle.simplescript.SimpleScript;
@@ -11,8 +12,6 @@ package tuxwars.battle.simplescript.scripts
    
    public class ApplyForce implements SimpleScriptCore
    {
-       
-      
       public function ApplyForce()
       {
          super();
@@ -58,3 +57,4 @@ package tuxwars.battle.simplescript.scripts
       }
    }
 }
+

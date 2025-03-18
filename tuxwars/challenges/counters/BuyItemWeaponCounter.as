@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class BuyItemWeaponCounter extends Counter
    {
-       
-      
       public function BuyItemWeaponCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:*)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -17,7 +15,7 @@ package tuxwars.challenges.counters
       
       override public function handleItemBought(msg:ChallengeItemBoughtMessage) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:ItemData = null;
          if(playerId == msg.playerId)
          {
             _loc2_ = ItemManager.getItemData(msg.itemId);
@@ -40,3 +38,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

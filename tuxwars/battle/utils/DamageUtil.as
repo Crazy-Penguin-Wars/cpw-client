@@ -13,8 +13,6 @@ package tuxwars.battle.utils
    
    public class DamageUtil
    {
-       
-      
       public function DamageUtil()
       {
          super();
@@ -22,10 +20,11 @@ package tuxwars.battle.utils
       
       public static function damageRecieved(weaponStat:Stat, attacker:Emission, defender:PhysicsGameObject, radiusInPhysicsScale:Number, attackerLocation:Vec2, defenderLocation:Vec2) : int
       {
-         var _loc11_:* = null;
+         var _loc11_:Stat = null;
          var _loc9_:Number = getAttackValue(weaponStat,attacker,defender);
+         var _loc14_:String = "Defence";
          var _loc13_:* = defender;
-         var d:Number = Number((!!_loc13_.stats ? _loc13_.stats.getStat("Defence") : null).calculateValue());
+         var d:Number = Number((!!_loc13_.stats ? _loc13_.stats.getStat(_loc14_) : null).calculateValue());
          if(defender is PlayerGameObject)
          {
             _loc11_ = PlayerGameObject(defender).findPlayerBoosterStat("Defence");
@@ -43,8 +42,8 @@ package tuxwars.battle.utils
       
       private static function getAttackValue(weaponStat:Stat, attacker:Emission, defender:PhysicsGameObject) : Number
       {
-         var _loc9_:* = null;
-         var _loc8_:* = null;
+         var _loc9_:Stat = null;
+         var _loc8_:Stat = null;
          var newWeaponStat:Stat = null;
          var newAttackStat:Stat = null;
          if(attacker && attacker.playerBoosterStats)
@@ -63,7 +62,7 @@ package tuxwars.battle.utils
             }
          }
          var _loc4_:Number = newWeaponStat != null ? newWeaponStat.calculateValue() : weaponStat.calculateValue();
-         var _loc6_:Number = newAttackStat != null ? newAttackStat.calculateValue(defender,null) : attacker.playerAttackValueStat.calculateValue(defender,null);
+         var _loc6_:Number = newAttackStat != null ? newAttackStat.calculateValue(defender,(attacker != null ? attacker.tagger : null) != null ? attacker.tagger.gameObject : null) : attacker.playerAttackValueStat.calculateValue(defender,(attacker != null ? attacker.tagger : null) != null ? attacker.tagger.gameObject : null);
          var _loc10_:Number = _loc4_ + _loc4_ / 135 * (125 * (_loc6_ / (_loc6_ + 100)));
          LogUtils.log("Attack value: " + _loc10_ + " (weap: " + _loc4_ + " stat: " + _loc6_ + "), attacker: " + attacker.shortName,"DamageUtil",0,"DamageCalculation",false,false,false);
          return _loc10_;
@@ -71,9 +70,9 @@ package tuxwars.battle.utils
       
       public static function scaleValueAccordingToDistance(radiusInPhysicsScale:Number, valueToScale:Number, attackerLocation:Vec2, defenderLocation:Vec2, defenderObject:PhysicsGameObject, attacker:Emission, type:String) : Number
       {
-         var _loc11_:* = null;
+         var _loc11_:ShapeList = null;
          var i:int = 0;
-         var _loc9_:* = null;
+         var _loc9_:Shape = null;
          var value:Number = NaN;
          var _loc8_:Number = getMinPercentage(defenderObject,type);
          var _loc10_:Vec2 = attackerLocation.sub(defenderLocation);
@@ -146,3 +145,4 @@ package tuxwars.battle.utils
       }
    }
 }
+

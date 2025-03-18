@@ -2,8 +2,6 @@ package tuxwars.net.objects
 {
    public class ShowPaymentObject extends JavaScriptCRMObject
    {
-       
-      
       private var _currencyType:String;
       
       public function ShowPaymentObject(currencyType:String, method:String = null, to:Array = null, filters:Array = null, toPlatform:String = null, forcedRequest:Boolean = false)
@@ -28,3 +26,4 @@ package tuxwars.net.objects
       }
    }
 }
+

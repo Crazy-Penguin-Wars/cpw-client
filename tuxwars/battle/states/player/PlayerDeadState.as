@@ -10,8 +10,6 @@ package tuxwars.battle.states.player
    
    public class PlayerDeadState extends PlayerState
    {
-       
-      
       public function PlayerDeadState(player:PlayerGameObject, params:* = null)
       {
          super(player,params);
@@ -62,3 +60,4 @@ package tuxwars.battle.states.player
       }
    }
 }
+

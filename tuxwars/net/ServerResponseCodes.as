@@ -2,7 +2,6 @@ package tuxwars.net
 {
    public class ServerResponseCodes
    {
-      
       public static const RESPONSE_OK:int = 0;
       
       public static const NOT_ENOUGH_CURRENCY:int = 11;
@@ -20,7 +19,6 @@ package tuxwars.net
       public static const ACCOUNT_NOT_FOUND:int = 2;
       
       public static const INTERNAL_SERVER_NOT_READY:int = 1070;
-       
       
       public function ServerResponseCodes()
       {
@@ -28,3 +26,4 @@ package tuxwars.net
       }
    }
 }
+

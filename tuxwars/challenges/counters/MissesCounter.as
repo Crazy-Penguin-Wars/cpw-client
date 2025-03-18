@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class MissesCounter extends CounterLessThan
    {
-       
-      
       private var _invalidated:Boolean;
       
       public function MissesCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -67,3 +65,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

@@ -10,9 +10,7 @@ package tuxwars.battle.missiles
    
    public class MissileDef extends PhysicsEmissionGameObjectDef
    {
-      
       private static const PACKAGE:String = "tuxwars.battle.missiles.";
-       
       
       private var _timer:int;
       
@@ -96,3 +94,4 @@ package tuxwars.battle.missiles
       }
    }
 }
+

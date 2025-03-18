@@ -17,8 +17,6 @@ package nape.dynamics
    
    public final class CollisionArbiter extends Arbiter
    {
-       
-      
       public function CollisionArbiter()
       {
          if(Boot.skip_constructor)
@@ -1132,3 +1130,4 @@ package nape.dynamics
       }
    }
 }
+

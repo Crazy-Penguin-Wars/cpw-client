@@ -1,19 +1,15 @@
 package tuxwars.data
 {
    import avmplus.getQualifiedClassName;
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    
    public class ConfigUpdater
    {
-      
       private static const ID:String = "id".toLowerCase();
       
       private static var classNameThis:String = getQualifiedClassName(ConfigUpdater);
-       
       
       public function ConfigUpdater()
       {
@@ -23,7 +19,7 @@ package tuxwars.data
       
       public static function updateConfig(data:Array) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Array = null;
          if(data == null || data.length == 0)
          {
             return;
@@ -62,7 +58,7 @@ package tuxwars.data
       private static function handleItem(tableName:String, tableConfig:Table, row:Object, showExtraInformation:Boolean = false) : void
       {
          var hasField:Boolean = false;
-         var _loc5_:* = null;
+         var _loc5_:Field = null;
          if(row.Id == null)
          {
             return;
@@ -118,3 +114,4 @@ package tuxwars.data
       }
    }
 }
+

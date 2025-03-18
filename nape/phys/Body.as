@@ -3,6 +3,7 @@ package nape.phys
    import flash.Boot;
    import nape.callbacks.InteractionType;
    import nape.constraint.Constraint;
+   import nape.constraint.ConstraintIterator;
    import nape.constraint.ConstraintList;
    import nape.dynamics.Arbiter;
    import nape.dynamics.ArbiterIterator;
@@ -37,8 +38,6 @@ package nape.phys
    
    public final class Body extends Interactor
    {
-       
-      
       public var zpp_inner:ZPP_Body;
       
       public var debugDraw:Boolean;
@@ -263,6 +262,11 @@ package nape.phys
                   _loc9_._invalidate = null;
                   _loc9_.next = ZPP_Vec2.zpp_pool;
                   ZPP_Vec2.zpp_pool = _loc9_;
+                  true;
+               }
+               else
+               {
+                  false;
                }
             }
             zpp_inner_i.insert_cbtype(ZPP_CbType.ANY_BODY.zpp_inner);
@@ -292,6 +296,7 @@ package nape.phys
             _loc3_.zip_axis = false;
             _loc3_.axisx = Math.sin(_loc3_.rot);
             _loc3_.axisy = Math.cos(_loc3_.rot);
+            null;
          }
          var _loc4_:Number = 0;
          var _loc5_:Number = 0;
@@ -387,6 +392,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          if(_loc4_ != _loc4_ || _loc5_ != _loc5_)
          {
@@ -515,6 +525,7 @@ package nape.phys
             _loc3_.zip_axis = false;
             _loc3_.axisx = Math.sin(_loc3_.rot);
             _loc3_.axisy = Math.cos(_loc3_.rot);
+            null;
          }
          var _loc4_:Number = 0;
          var _loc5_:Number = 0;
@@ -592,6 +603,11 @@ package nape.phys
             _loc10_._invalidate = null;
             _loc10_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc10_;
+            true;
+         }
+         else
+         {
+            false;
          }
          if(_loc4_ != _loc4_ || _loc5_ != _loc5_)
          {
@@ -778,6 +794,11 @@ package nape.phys
             _loc7_._invalidate = null;
             _loc7_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc7_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -1354,6 +1375,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner.wrap_vel == null)
@@ -1660,6 +1686,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner.wrap_svel == null)
@@ -1685,6 +1716,14 @@ package nape.phys
          }
          if((zpp_inner.space == null ? null : zpp_inner.space.outer) != param1)
          {
+            if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null)
+            {
+               zpp_inner.component.woken = false;
+            }
+            if((zpp_inner.space == null ? null : zpp_inner.space.outer) != null)
+            {
+               (zpp_inner.space == null ? null : zpp_inner.space.outer).zpp_inner.wrap_bodies.remove(this);
+            }
             if(param1 != null)
             {
                _loc2_ = param1.zpp_inner.wrap_bodies;
@@ -1917,6 +1956,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner.wrap_pos == null)
@@ -2177,6 +2221,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner.wrap_kinvel == null)
@@ -2586,6 +2635,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(zpp_inner.wrap_force == null)
@@ -2606,6 +2660,10 @@ package nape.phys
          var _loc2_:* = null as BodyList;
          if((zpp_inner.compound == null ? null : zpp_inner.compound.outer) != param1)
          {
+            if((zpp_inner.compound == null ? null : zpp_inner.compound.outer) != null)
+            {
+               (zpp_inner.compound == null ? null : zpp_inner.compound.outer).zpp_inner.wrap_bodies.remove(this);
+            }
             if(param1 != null)
             {
                _loc2_ = param1.zpp_inner.wrap_bodies;
@@ -2854,6 +2912,11 @@ package nape.phys
             _loc12_._invalidate = null;
             _loc12_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc12_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc8_;
          _loc9_ = (param2 - zpp_inner.rot) * _loc4_;
@@ -2926,6 +2989,11 @@ package nape.phys
             _loc12_._invalidate = null;
             _loc12_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc12_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -3256,6 +3324,11 @@ package nape.phys
             _loc12_._invalidate = null;
             _loc12_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc12_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc8_;
          if(zpp_inner.wrap_pos == null)
@@ -3397,6 +3470,11 @@ package nape.phys
             _loc12_._invalidate = null;
             _loc12_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc12_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -3543,6 +3621,7 @@ package nape.phys
             _loc3_.zip_axis = false;
             _loc3_.axisx = Math.sin(_loc3_.rot);
             _loc3_.axisy = Math.cos(_loc3_.rot);
+            null;
          }
          var _loc4_:Number = 0;
          var _loc5_:Number = 0;
@@ -3640,6 +3719,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          if(_loc4_ != _loc4_ || _loc5_ != _loc5_)
          {
@@ -3768,6 +3852,7 @@ package nape.phys
             _loc3_.zip_axis = false;
             _loc3_.axisx = Math.sin(_loc3_.rot);
             _loc3_.axisy = Math.cos(_loc3_.rot);
+            null;
          }
          var _loc4_:Number = 0;
          var _loc5_:Number = 0;
@@ -3865,6 +3950,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          var _loc9_:Number = _loc4_ + zpp_inner.posx;
          var _loc10_:Number = _loc5_ + zpp_inner.posy;
@@ -4064,6 +4154,7 @@ package nape.phys
                {
                   _loc2_.axisx = Math.sin(_loc2_.rot);
                   _loc2_.axisy = Math.cos(_loc2_.rot);
+                  null;
                }
                else
                {
@@ -4768,15 +4859,484 @@ package nape.phys
       public function crushFactor() : Number
       {
          var _loc6_:* = null as Vec2;
+         var _loc7_:Boolean = false;
          var _loc8_:* = null as ZPP_Vec2;
          var _loc10_:* = null as Arbiter;
+         var _loc11_:int = 0;
          var _loc12_:* = null as Vec3;
          var _loc13_:* = null as Vec2;
          var _loc14_:* = null as ZPP_Vec2;
          var _loc16_:* = null as ConstraintList;
          var _loc17_:* = null as Constraint;
-         Boot.lastError = new Error();
-         throw "Error: Makes no sense to see how much an object not taking part in a simulation is being crushed";
+         if((zpp_inner.space == null ? null : zpp_inner.space.outer) == null)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Makes no sense to see how much an object not taking part in a simulation is being crushed";
+         }
+         var _loc1_:Number = 0;
+         var _loc3_:Number = 0;
+         var _loc4_:Number = 0;
+         var _loc5_:Boolean = false;
+         if(_loc3_ != _loc3_ || _loc4_ != _loc4_)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Vec2 components cannot be NaN";
+         }
+         if(ZPP_PubPool.poolVec2 == null)
+         {
+            _loc6_ = new Vec2();
+         }
+         else
+         {
+            _loc6_ = ZPP_PubPool.poolVec2;
+            ZPP_PubPool.poolVec2 = _loc6_.zpp_pool;
+            _loc6_.zpp_pool = null;
+            _loc6_.zpp_disp = false;
+            if(_loc6_ == ZPP_PubPool.nextVec2)
+            {
+               ZPP_PubPool.nextVec2 = null;
+            }
+         }
+         if(_loc6_.zpp_inner == null)
+         {
+            _loc7_ = false;
+            §§push(_loc6_);
+            if(ZPP_Vec2.zpp_pool == null)
+            {
+               _loc8_ = new ZPP_Vec2();
+            }
+            else
+            {
+               _loc8_ = ZPP_Vec2.zpp_pool;
+               ZPP_Vec2.zpp_pool = _loc8_.next;
+               _loc8_.next = null;
+            }
+            _loc8_.weak = false;
+            _loc8_._immutable = _loc7_;
+            _loc8_.x = _loc3_;
+            _loc8_.y = _loc4_;
+            §§pop().zpp_inner = _loc8_;
+            _loc6_.zpp_inner.outer = _loc6_;
+         }
+         else
+         {
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._immutable)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Vec2 is immutable";
+            }
+            if(_loc8_._isimmutable != null)
+            {
+               _loc8_._isimmutable();
+            }
+            if(_loc3_ != _loc3_ || _loc4_ != _loc4_)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Vec2 components cannot be NaN";
+            }
+            §§push(false);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            if(_loc6_.zpp_inner.x == _loc3_)
+            {
+               §§pop();
+               if(_loc6_ != null && _loc6_.zpp_disp)
+               {
+                  Boot.lastError = new Error();
+                  throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+               }
+               _loc8_ = _loc6_.zpp_inner;
+               if(_loc8_._validate != null)
+               {
+                  _loc8_._validate();
+               }
+               §§push(_loc6_.zpp_inner.y == _loc4_);
+            }
+            if(!§§pop())
+            {
+               _loc6_.zpp_inner.x = _loc3_;
+               _loc6_.zpp_inner.y = _loc4_;
+               _loc8_ = _loc6_.zpp_inner;
+               if(_loc8_._invalidate != null)
+               {
+                  _loc8_._invalidate(_loc8_);
+               }
+            }
+            _loc6_;
+         }
+         _loc6_.zpp_inner.weak = _loc5_;
+         var _loc2_:Vec2 = _loc6_;
+         if(zpp_inner.wrap_arbiters == null)
+         {
+            zpp_inner.wrap_arbiters = ZPP_ArbiterList.get(zpp_inner.arbiters,true);
+         }
+         var _loc9_:ArbiterIterator = zpp_inner.wrap_arbiters.iterator();
+         while(true)
+         {
+            _loc9_.zpp_inner.zpp_inner.valmod();
+            _loc11_ = _loc9_.zpp_inner.zpp_gl();
+            _loc9_.zpp_critical = true;
+            if(!(_loc9_.zpp_i < _loc11_ ? true : (_loc9_.zpp_next = ArbiterIterator.zpp_pool, ArbiterIterator.zpp_pool = _loc9_, _loc9_.zpp_inner = null, false)))
+            {
+               break;
+            }
+            _loc9_.zpp_critical = false;
+            _loc9_.zpp_i = (_loc11_ = _loc9_.zpp_i) + 1;
+            _loc10_ = _loc9_.zpp_inner.at(_loc11_);
+            _loc12_ = _loc10_.totalImpulse(this);
+            _loc6_ = _loc12_.xy();
+            _loc2_.addeq(_loc6_);
+            §§push(_loc1_);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            §§push(Math);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            §§push(_loc6_.zpp_inner.x);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            §§push(§§pop() * _loc6_.zpp_inner.x);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            §§push(_loc6_.zpp_inner.y);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            _loc1_ = §§pop() + Number(§§pop().sqrt(§§pop() + §§pop() * _loc6_.zpp_inner.y));
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._immutable)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Vec2 is immutable";
+            }
+            if(_loc8_._isimmutable != null)
+            {
+               _loc8_._isimmutable();
+            }
+            if(_loc6_.zpp_inner._inuse)
+            {
+               Boot.lastError = new Error();
+               throw "Error: This Vec2 is not disposable";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            _loc6_.zpp_inner.outer = null;
+            _loc6_.zpp_inner = null;
+            _loc13_ = _loc6_;
+            _loc13_.zpp_pool = null;
+            if(ZPP_PubPool.nextVec2 != null)
+            {
+               ZPP_PubPool.nextVec2.zpp_pool = _loc13_;
+            }
+            else
+            {
+               ZPP_PubPool.poolVec2 = _loc13_;
+            }
+            ZPP_PubPool.nextVec2 = _loc13_;
+            _loc13_.zpp_disp = true;
+            _loc14_ = _loc8_;
+            if(_loc14_.outer != null)
+            {
+               _loc14_.outer.zpp_inner = null;
+               _loc14_.outer = null;
+            }
+            _loc14_._isimmutable = null;
+            _loc14_._validate = null;
+            _loc14_._invalidate = null;
+            _loc14_.next = ZPP_Vec2.zpp_pool;
+            ZPP_Vec2.zpp_pool = _loc14_;
+            _loc12_.dispose();
+         }
+         if(zpp_inner.wrap_constraints == null)
+         {
+            zpp_inner.wrap_constraints = ZPP_ConstraintList.get(zpp_inner.constraints,true);
+         }
+         _loc16_ = zpp_inner.wrap_constraints;
+         _loc16_.zpp_inner.valmod();
+         var _loc15_:ConstraintIterator = ConstraintIterator.get(_loc16_);
+         while(true)
+         {
+            _loc15_.zpp_inner.zpp_inner.valmod();
+            _loc16_ = _loc15_.zpp_inner;
+            _loc16_.zpp_inner.valmod();
+            if(_loc16_.zpp_inner.zip_length)
+            {
+               _loc16_.zpp_inner.zip_length = false;
+               _loc16_.zpp_inner.user_length = _loc16_.zpp_inner.inner.length;
+            }
+            _loc11_ = _loc16_.zpp_inner.user_length;
+            _loc15_.zpp_critical = true;
+            if(!(_loc15_.zpp_i < _loc11_ ? true : (_loc15_.zpp_next = ConstraintIterator.zpp_pool, ConstraintIterator.zpp_pool = _loc15_, _loc15_.zpp_inner = null, false)))
+            {
+               break;
+            }
+            _loc15_.zpp_critical = false;
+            _loc15_.zpp_i = (_loc11_ = _loc15_.zpp_i) + 1;
+            _loc17_ = _loc15_.zpp_inner.at(_loc11_);
+            _loc12_ = _loc17_.bodyImpulse(this);
+            _loc6_ = _loc12_.xy();
+            _loc2_.addeq(_loc6_);
+            §§push(_loc1_);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            §§push(Math);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            §§push(_loc6_.zpp_inner.x);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            §§push(§§pop() * _loc6_.zpp_inner.x);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            §§push(_loc6_.zpp_inner.y);
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._validate != null)
+            {
+               _loc8_._validate();
+            }
+            _loc1_ = §§pop() + Number(§§pop().sqrt(§§pop() + §§pop() * _loc6_.zpp_inner.y));
+            if(_loc6_ != null && _loc6_.zpp_disp)
+            {
+               Boot.lastError = new Error();
+               throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            if(_loc8_._immutable)
+            {
+               Boot.lastError = new Error();
+               throw "Error: Vec2 is immutable";
+            }
+            if(_loc8_._isimmutable != null)
+            {
+               _loc8_._isimmutable();
+            }
+            if(_loc6_.zpp_inner._inuse)
+            {
+               Boot.lastError = new Error();
+               throw "Error: This Vec2 is not disposable";
+            }
+            _loc8_ = _loc6_.zpp_inner;
+            _loc6_.zpp_inner.outer = null;
+            _loc6_.zpp_inner = null;
+            _loc13_ = _loc6_;
+            _loc13_.zpp_pool = null;
+            if(ZPP_PubPool.nextVec2 != null)
+            {
+               ZPP_PubPool.nextVec2.zpp_pool = _loc13_;
+            }
+            else
+            {
+               ZPP_PubPool.poolVec2 = _loc13_;
+            }
+            ZPP_PubPool.nextVec2 = _loc13_;
+            _loc13_.zpp_disp = true;
+            _loc14_ = _loc8_;
+            if(_loc14_.outer != null)
+            {
+               _loc14_.outer.zpp_inner = null;
+               _loc14_.outer = null;
+            }
+            _loc14_._isimmutable = null;
+            _loc14_._validate = null;
+            _loc14_._invalidate = null;
+            _loc14_.next = ZPP_Vec2.zpp_pool;
+            ZPP_Vec2.zpp_pool = _loc14_;
+            _loc12_.dispose();
+         }
+         §§push(_loc1_);
+         if(_loc2_ != null && _loc2_.zpp_disp)
+         {
+            Boot.lastError = new Error();
+            throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+         }
+         §§push(Math);
+         if(_loc2_ != null && _loc2_.zpp_disp)
+         {
+            Boot.lastError = new Error();
+            throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+         }
+         _loc8_ = _loc2_.zpp_inner;
+         if(_loc8_._validate != null)
+         {
+            _loc8_._validate();
+         }
+         §§push(_loc2_.zpp_inner.x);
+         if(_loc2_ != null && _loc2_.zpp_disp)
+         {
+            Boot.lastError = new Error();
+            throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+         }
+         _loc8_ = _loc2_.zpp_inner;
+         if(_loc8_._validate != null)
+         {
+            _loc8_._validate();
+         }
+         §§push(§§pop() * _loc2_.zpp_inner.x);
+         if(_loc2_ != null && _loc2_.zpp_disp)
+         {
+            Boot.lastError = new Error();
+            throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+         }
+         _loc8_ = _loc2_.zpp_inner;
+         if(_loc8_._validate != null)
+         {
+            _loc8_._validate();
+         }
+         §§push(_loc2_.zpp_inner.y);
+         if(_loc2_ != null && _loc2_.zpp_disp)
+         {
+            Boot.lastError = new Error();
+            throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+         }
+         _loc8_ = _loc2_.zpp_inner;
+         if(_loc8_._validate != null)
+         {
+            _loc8_._validate();
+         }
+         §§push(§§pop() - Number(§§pop().sqrt(§§pop() + §§pop() * _loc2_.zpp_inner.y)));
+         if(zpp_inner.world)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Space::world has no mass";
+         }
+         zpp_inner.validate_mass();
+         if(zpp_inner.massMode == ZPP_Flags.id_MassMode_DEFAULT && zpp_inner.shapes.head == null)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Given current mass mode, Body::mass only makes sense if it contains shapes";
+         }
+         _loc3_ = §§pop() / (zpp_inner.cmass * (zpp_inner.space == null ? null : zpp_inner.space.outer).zpp_inner.pre_dt);
+         if(_loc2_ != null && _loc2_.zpp_disp)
+         {
+            Boot.lastError = new Error();
+            throw "Error: " + "Vec2" + " has been disposed and cannot be used!";
+         }
+         _loc8_ = _loc2_.zpp_inner;
+         if(_loc8_._immutable)
+         {
+            Boot.lastError = new Error();
+            throw "Error: Vec2 is immutable";
+         }
+         if(_loc8_._isimmutable != null)
+         {
+            _loc8_._isimmutable();
+         }
+         if(_loc2_.zpp_inner._inuse)
+         {
+            Boot.lastError = new Error();
+            throw "Error: This Vec2 is not disposable";
+         }
+         _loc8_ = _loc2_.zpp_inner;
+         _loc2_.zpp_inner.outer = null;
+         _loc2_.zpp_inner = null;
+         _loc6_ = _loc2_;
+         _loc6_.zpp_pool = null;
+         if(ZPP_PubPool.nextVec2 != null)
+         {
+            ZPP_PubPool.nextVec2.zpp_pool = _loc6_;
+         }
+         else
+         {
+            ZPP_PubPool.poolVec2 = _loc6_;
+         }
+         ZPP_PubPool.nextVec2 = _loc6_;
+         _loc6_.zpp_disp = true;
+         _loc14_ = _loc8_;
+         if(_loc14_.outer != null)
+         {
+            _loc14_.outer.zpp_inner = null;
+            _loc14_.outer = null;
+         }
+         _loc14_._isimmutable = null;
+         _loc14_._validate = null;
+         _loc14_._invalidate = null;
+         _loc14_.next = ZPP_Vec2.zpp_pool;
+         ZPP_Vec2.zpp_pool = _loc14_;
+         return _loc3_;
       }
       
       public function copy() : Body
@@ -4868,6 +5428,11 @@ package nape.phys
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return _loc3_;
       }
@@ -5106,6 +5671,11 @@ package nape.phys
                _loc6_._invalidate = null;
                _loc6_.next = ZPP_Vec2.zpp_pool;
                ZPP_Vec2.zpp_pool = _loc6_;
+               true;
+            }
+            else
+            {
+               false;
             }
             return this;
          }
@@ -5236,6 +5806,11 @@ package nape.phys
                _loc6_._invalidate = null;
                _loc6_.next = ZPP_Vec2.zpp_pool;
                ZPP_Vec2.zpp_pool = _loc6_;
+               true;
+            }
+            else
+            {
+               false;
             }
          }
          if(!param3)
@@ -5293,6 +5868,11 @@ package nape.phys
             _loc6_._invalidate = null;
             _loc6_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc6_;
+            true;
+         }
+         else
+         {
+            false;
          }
          return this;
       }
@@ -5351,6 +5931,7 @@ package nape.phys
          zpp_inner.validate_localCOM();
          _loc2_ = -zpp_inner.localCOMx;
          var _loc3_:Number = -zpp_inner.localCOMy;
+         var _loc4_:Boolean = false;
          if(_loc2_ != _loc2_ || _loc3_ != _loc3_)
          {
             Boot.lastError = new Error();
@@ -5452,7 +6033,7 @@ package nape.phys
             }
             _loc5_;
          }
-         _loc5_.zpp_inner.weak = false;
+         _loc5_.zpp_inner.weak = _loc4_;
          var _loc1_:Vec2 = _loc5_;
          translateShapes(_loc1_);
          _loc5_ = localVectorToWorld(_loc1_);
@@ -5587,3 +6168,4 @@ package nape.phys
       }
    }
 }
+

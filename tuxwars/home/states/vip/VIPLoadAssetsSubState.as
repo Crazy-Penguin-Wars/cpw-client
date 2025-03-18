@@ -6,8 +6,6 @@ package tuxwars.home.states.vip
    
    public class VIPLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function VIPLoadAssetsSubState(game:TuxWarsGame, params:* = null)
       {
          super(game,AssetsData.getVIPAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.vip
       }
    }
 }
+

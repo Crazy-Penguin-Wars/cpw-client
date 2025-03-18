@@ -6,8 +6,6 @@ package tuxwars.home.ui.logic.home
    
    public class CharacterAvatarElementLogic extends TuxUIElementLogic
    {
-       
-      
       public function CharacterAvatarElementLogic(game:TuxWarsGame)
       {
          super(game);
@@ -19,3 +17,4 @@ package tuxwars.home.ui.logic.home
       }
    }
 }
+

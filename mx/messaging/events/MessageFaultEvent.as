@@ -5,9 +5,7 @@ package mx.messaging.events
    
    public class MessageFaultEvent extends Event
    {
-      
       public static const FAULT:String = "fault";
-       
       
       public var message:ErrorMessage;
       
@@ -53,3 +51,4 @@ package mx.messaging.events
       }
    }
 }
+

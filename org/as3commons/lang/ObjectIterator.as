@@ -2,9 +2,7 @@ package org.as3commons.lang
 {
    internal final class ObjectIterator implements IIterator
    {
-      
       private static var descriptions:Object = {};
-       
       
       private var index:int;
       
@@ -68,3 +66,4 @@ package org.as3commons.lang
       }
    }
 }
+

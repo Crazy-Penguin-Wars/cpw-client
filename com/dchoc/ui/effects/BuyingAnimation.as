@@ -7,7 +7,6 @@ package com.dchoc.ui.effects
    
    public class BuyingAnimation
    {
-      
       private static const CONTENT:String = "Content";
       
       private static const BUY_ANIM:String = "buy_anim";
@@ -21,7 +20,6 @@ package com.dchoc.ui.effects
       private static var animText:TextField;
       
       private static var animIcon:MovieClip;
-       
       
       public function BuyingAnimation()
       {
@@ -31,7 +29,7 @@ package com.dchoc.ui.effects
       
       public static function startAnimation(parent:MovieClip, amount:Number, icon:MovieClip) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:MovieClip = null;
          var i:int = 0;
          if(!mainClip)
          {
@@ -93,3 +91,4 @@ package com.dchoc.ui.effects
       }
    }
 }
+

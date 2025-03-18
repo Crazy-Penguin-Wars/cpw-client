@@ -6,8 +6,6 @@ package tuxwars.battle.net
    
    public class ResponseQueue
    {
-       
-      
       private const queue:Vector.<BattleResponse> = new Vector.<BattleResponse>();
       
       private var queueSupport:Boolean;
@@ -51,3 +49,4 @@ package tuxwars.battle.net
       }
    }
 }
+

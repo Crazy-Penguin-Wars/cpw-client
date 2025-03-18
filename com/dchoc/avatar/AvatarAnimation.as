@@ -2,8 +2,6 @@ package com.dchoc.avatar
 {
    public class AvatarAnimation
    {
-       
-      
       private var _classDefinitionName:String;
       
       private var _looping:Boolean;
@@ -44,3 +42,4 @@ package com.dchoc.avatar
       }
    }
 }
+

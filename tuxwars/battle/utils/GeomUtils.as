@@ -7,13 +7,11 @@ package tuxwars.battle.utils
    
    public final class GeomUtils
    {
-      
       private static const DBL_EPSILON:Number = 2.220446049250313e-16;
       
       public static const ANGLE_LESS:String = "AngleLess";
       
       public static const ANGLE_MORE:String = "AngleMore";
-       
       
       public function GeomUtils()
       {
@@ -25,7 +23,7 @@ package tuxwars.battle.utils
       {
          var i:int = 0;
          var _loc2_:Vector.<Point> = new Vector.<Point>();
-         var _loc3_:int = polygon.length;
+         var _loc3_:int = int(polygon.length);
          for(i = 0; i < _loc3_; )
          {
             _loc2_.push(polygon[i].toPoint());
@@ -38,7 +36,7 @@ package tuxwars.battle.utils
       {
          var i:int = 0;
          var _loc2_:Array = [];
-         var _loc3_:int = vecList.length;
+         var _loc3_:int = int(vecList.length);
          for(i = 0; i < _loc3_; )
          {
             _loc2_.push(vecList[i].toPoint());
@@ -51,7 +49,7 @@ package tuxwars.battle.utils
       {
          var i:int = 0;
          var _loc2_:Array = [];
-         var _loc3_:int = pointPoly.length;
+         var _loc3_:int = int(pointPoly.length);
          for(i = 0; i < _loc3_; )
          {
             _loc2_.push(Vec2.fromPoint(pointPoly[i]));
@@ -64,7 +62,7 @@ package tuxwars.battle.utils
       {
          var i:int = 0;
          var _loc2_:Vector.<Vec2> = new Vector.<Vec2>();
-         var _loc3_:int = pointPoly.length;
+         var _loc3_:int = int(pointPoly.length);
          for(i = 0; i < _loc3_; )
          {
             _loc2_.push(Vec2.fromPoint(pointPoly[i]));
@@ -145,9 +143,9 @@ package tuxwars.battle.utils
       {
          var count:int = 0;
          var i:int = 0;
-         var _loc6_:* = null;
+         var _loc6_:Vec2 = null;
          var _loc4_:Number = NaN;
-         var _loc3_:* = null;
+         var _loc3_:Vec2 = null;
          var p1:* = polygon[0];
          for(i = 1; i <= polygon.length; )
          {
@@ -275,14 +273,14 @@ package tuxwars.battle.utils
       
       private static function intersect(line1:Array, line2:Array) : Vec2
       {
-         var _loc7_:Number = Number(line1[1].x) - Number(line1[0].x);
-         var _loc6_:Number = Number(line2[0].x) - Number(line2[1].x);
-         var _loc4_:Number = Number(line2[0].x) - Number(line1[0].x);
-         var _loc9_:Number = Number(line1[1].y) - Number(line1[0].y);
-         var _loc8_:Number = Number(line2[0].y) - Number(line2[1].y);
-         var _loc5_:Number = Number(line2[0].y) - Number(line1[0].y);
+         var _loc7_:Number = line1[1].x - line1[0].x;
+         var _loc6_:Number = line2[0].x - line2[1].x;
+         var _loc4_:Number = line2[0].x - line1[0].x;
+         var _loc9_:Number = line1[1].y - line1[0].y;
+         var _loc8_:Number = line2[0].y - line2[1].y;
+         var _loc5_:Number = line2[0].y - line1[0].y;
          var _loc3_:Number = (_loc6_ * _loc5_ - _loc8_ * _loc4_) / (_loc9_ * _loc6_ - _loc7_ * _loc8_);
-         return new Vec2(line1[0].x + _loc3_ * (Number(line1[1].x) - Number(line1[0].x)),line1[0].y + _loc3_ * (Number(line1[1].y) - Number(line1[0].y)));
+         return new Vec2(line1[0].x + _loc3_ * (line1[1].x - line1[0].x),line1[0].y + _loc3_ * (line1[1].y - line1[0].y));
       }
       
       public static function isCW(polygon:Vector.<Vec2>) : Boolean
@@ -295,17 +293,17 @@ package tuxwars.battle.utils
       public static function expandPolygon(polygon:Vector.<Vec2>, distance:Number) : Vector.<Vec2>
       {
          var i:int = 0;
-         var _loc13_:* = null;
-         var _loc12_:* = null;
-         var _loc15_:* = null;
-         var _loc4_:* = null;
-         var _loc14_:* = null;
-         var _loc16_:* = null;
-         var _loc11_:* = null;
-         var _loc7_:* = null;
-         var _loc6_:* = null;
-         var _loc8_:* = null;
-         var _loc5_:* = null;
+         var _loc13_:Vec2 = null;
+         var _loc12_:Vec2 = null;
+         var _loc15_:Vec2 = null;
+         var _loc4_:Vec2 = null;
+         var _loc14_:Vec2 = null;
+         var _loc16_:Vec2 = null;
+         var _loc11_:Vec2 = null;
+         var _loc7_:Vec2 = null;
+         var _loc6_:Vec2 = null;
+         var _loc8_:Vec2 = null;
+         var _loc5_:Vec2 = null;
          var _loc9_:Vector.<Vec2> = new Vector.<Vec2>();
          var _loc3_:Function = isCW(polygon) ? vecRot90CCW : vecRot90CW;
          for(i = 0; i < polygon.length; )
@@ -394,7 +392,7 @@ package tuxwars.battle.utils
          var area:Number = 0;
          for(i = 0; i < _loc4_.length - 1; )
          {
-            area += (Number(_loc4_[i + 1].x) - Number(_loc4_[i].x)) * (_loc4_[i + 1].y + _loc4_[i].y) / 2;
+            area += (_loc4_[i + 1].x - _loc4_[i].x) * (_loc4_[i + 1].y + _loc4_[i].y) / 2;
             i++;
          }
          return area < 0;
@@ -434,7 +432,7 @@ package tuxwars.battle.utils
       private static function findStartIndex(points:Vector.<Vec2>) : int
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:Vec2 = null;
          for(i = 0; i < points.length; )
          {
             _loc2_ = i == 0 ? points[points.length - 1] : points[i - 1];
@@ -496,3 +494,4 @@ package tuxwars.battle.utils
       }
    }
 }
+

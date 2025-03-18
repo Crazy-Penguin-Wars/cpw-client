@@ -9,11 +9,9 @@ package tuxwars.home.states.friendselector
    
    public class FriendSelectorUISubState extends TuxUIState
    {
-       
-      
       public function FriendSelectorUISubState(game:TuxWarsGame, params:* = null)
       {
-         var c:* = null;
+         var c:Class = null;
          if(SendRequestObject(params).type == "GIFT")
          {
             c = FriendSelectorGiftScreen;
@@ -26,3 +24,4 @@ package tuxwars.home.states.friendselector
       }
    }
 }
+

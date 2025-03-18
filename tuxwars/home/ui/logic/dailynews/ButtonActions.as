@@ -2,7 +2,6 @@ package tuxwars.home.ui.logic.dailynews
 {
    public class ButtonActions
    {
-      
       public static const DIRECT_BUY:String = "directBuy";
       
       public static const OPEN_SUPPLIES:String = "OpenSupplies";
@@ -16,7 +15,6 @@ package tuxwars.home.ui.logic.dailynews
       public static const OPEN_MEMBERSHIP:String = "OpenMembership";
       
       public static const OPEN_CRAFTING:String = "OpenCrafting";
-       
       
       public function ButtonActions()
       {
@@ -24,3 +22,4 @@ package tuxwars.home.ui.logic.dailynews
       }
    }
 }
+

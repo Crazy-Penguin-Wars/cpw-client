@@ -13,8 +13,6 @@ package tuxwars.challenges.counters
    
    public class MissileFlyTimeCounter extends Counter
    {
-       
-      
       public function MissileFlyTimeCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -47,7 +45,7 @@ package tuxwars.challenges.counters
       
       override public function handlePhysicsObjectContact(msg:ChallengePhysicsObjectContactMessage) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:PlayerGameObject = null;
          var _loc2_:int = 0;
          var _loc4_:Tagger = msg.object.tag.findLatestPlayerTagger();
          if(_loc4_)
@@ -76,3 +74,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

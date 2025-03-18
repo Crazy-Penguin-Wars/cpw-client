@@ -11,8 +11,6 @@ package tuxwars.challenges.counters
    
    public class DeathsByDamageIdCounter extends Counter
    {
-       
-      
       public function DeathsByDamageIdCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -20,7 +18,7 @@ package tuxwars.challenges.counters
       
       public static function cleanID(statModifier:StatModifier) : Array
       {
-         var b:* = null;
+         var b:Array = null;
          var i:int = 0;
          var index:int = 0;
          if(statModifier)
@@ -42,8 +40,8 @@ package tuxwars.challenges.counters
       
       override public function handlePlayerDied(msg:ChallengePlayerDiedMessage) : void
       {
-         var lastHpStatModifier:* = null;
-         var cleanedIds:* = null;
+         var lastHpStatModifier:Damage = null;
+         var cleanedIds:Array = null;
          var _loc6_:* = msg.player;
          if(_loc6_._id == playerId)
          {
@@ -87,3 +85,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

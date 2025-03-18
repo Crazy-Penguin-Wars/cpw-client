@@ -1,7 +1,7 @@
 package tuxwars.home.ui.screen.shop
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
    import no.olog.utilfunctions.assert;
@@ -12,9 +12,7 @@ package tuxwars.home.ui.screen.shop
    
    public class ShopHelper
    {
-      
       public static const TYPE:String = "Type";
-       
       
       public function ShopHelper()
       {
@@ -23,7 +21,7 @@ package tuxwars.home.ui.screen.shop
       
       public static function initSubTabObjectContainer(contentMoveClip:MovieClip, oldPage:int, game:TuxWarsGame, getButton:Function, shopLogic:IShopLogic) : ObjectContainer
       {
-         var objectsOnPage:* = null;
+         var objectsOnPage:Array = null;
          var emptySlotsToAdd:int = 0;
          var nextBigItemIndex:int = 0;
          var objectPageA:int = 0;
@@ -32,26 +30,29 @@ package tuxwars.home.ui.screen.shop
          var roomOnObjectPageB:* = 0;
          var _loc14_:ObjectContainer = new ObjectContainer(contentMoveClip,game,getButton,"transition_slots_left","transition_slots_right",false);
          var _loc15_:Row = shopLogic.getCurrentTab();
+         var _loc35_:String = "Categorys";
          var _loc26_:* = _loc15_;
-         if(!_loc26_._cache["Categorys"])
+         if(!_loc26_._cache[_loc35_])
          {
-            _loc26_._cache["Categorys"] = com.dchoc.utils.DCUtils.find(_loc26_._fields,"name","Categorys");
+            _loc26_._cache[_loc35_] = com.dchoc.utils.DCUtils.find(_loc26_._fields,"name",_loc35_);
          }
-         var _loc10_:Field = _loc26_._cache["Categorys"];
+         var _loc10_:Field = _loc26_._cache[_loc35_];
          var _loc9_:Vector.<BigShopItem> = shopLogic.getCurrentTabBigItems();
+         var _loc36_:String = "Type";
          var _loc27_:* = _loc15_;
-         if(!_loc27_._cache["Type"])
+         if(!_loc27_._cache[_loc36_])
          {
-            _loc27_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc27_._fields,"name","Type");
+            _loc27_._cache[_loc36_] = com.dchoc.utils.DCUtils.find(_loc27_._fields,"name",_loc36_);
          }
-         if(_loc27_._cache["Type"])
+         if(_loc27_._cache[_loc36_])
          {
+            var _loc37_:String = "Type";
             var _loc28_:* = _loc15_;
-            if(!_loc28_._cache["Type"])
+            if(!_loc28_._cache[_loc37_])
             {
-               _loc28_._cache["Type"] = com.dchoc.utils.DCUtils.find(_loc28_._fields,"name","Type");
+               _loc28_._cache[_loc37_] = com.dchoc.utils.DCUtils.find(_loc28_._fields,"name",_loc37_);
             }
-            var _loc29_:* = _loc28_._cache["Type"];
+            var _loc29_:* = _loc28_._cache[_loc37_];
             §§push(_loc29_.overrideValue != null ? _loc29_.overrideValue : _loc29_._value);
          }
          else
@@ -120,7 +121,6 @@ package tuxwars.home.ui.screen.shop
                         if(items.length > nextItemIndex)
                         {
                            LogUtils.log("Infinite loop or other problem in counting objects to page","ShopHelper",3,"UI",false,false,false);
-                           break;
                         }
                         break;
                      }
@@ -147,7 +147,6 @@ package tuxwars.home.ui.screen.shop
                      if(items.length > nextItemIndex)
                      {
                         LogUtils.log("Infinite loop or other problem in counting objects to page","ShopHelper",3,"UI",false,false,false);
-                        break;
                      }
                      break;
                   }
@@ -166,7 +165,7 @@ package tuxwars.home.ui.screen.shop
       public static function sortingMagic(oldData:*) : Array
       {
          var j:int = 0;
-         var temp:* = null;
+         var temp:ShopItem = null;
          var _loc3_:* = (oldData as Array).slice();
          var count:int = 0;
          for each(var si in _loc3_)
@@ -202,3 +201,4 @@ package tuxwars.home.ui.screen.shop
       }
    }
 }
+

@@ -4,11 +4,10 @@ package tuxwars.home.ui.screen.friendselector
    
    public class FriendSelectorInviteScreen extends FriendSelectorScreen
    {
-       
-      
       public function FriendSelectorInviteScreen(game:TuxWarsGame)
       {
          super(game,"popup_invite_friends");
       }
    }
 }
+

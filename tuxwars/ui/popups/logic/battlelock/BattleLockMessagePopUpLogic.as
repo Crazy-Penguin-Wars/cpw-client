@@ -8,11 +8,9 @@ package tuxwars.ui.popups.logic.battlelock
    
    public class BattleLockMessagePopUpLogic extends MessagePopUpLogic
    {
-      
       private static const TABLE:String = "PopupData";
       
       private static const PICTURE:String = "Picture";
-       
       
       public function BattleLockMessagePopUpLogic(game:TuxWarsGame, state:TuxState)
       {
@@ -35,3 +33,4 @@ package tuxwars.ui.popups.logic.battlelock
       }
    }
 }
+

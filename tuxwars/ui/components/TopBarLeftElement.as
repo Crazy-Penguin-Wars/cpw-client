@@ -22,7 +22,6 @@ package tuxwars.ui.components
    
    public class TopBarLeftElement
    {
-      
       private static const BUTTON_GIFTS:String = "Button_Gifts";
       
       private static const BUTTON_MONEY:String = "Button_Add";
@@ -38,7 +37,6 @@ package tuxwars.ui.components
       private static const BUTTON_NEWS:String = "Button_News";
       
       private static const BUTTON_EARNGOLD:String = "Button_cash";
-       
       
       private var _design:MovieClip;
       
@@ -199,3 +197,4 @@ package tuxwars.ui.components
       }
    }
 }
+

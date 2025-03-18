@@ -2,8 +2,6 @@ package com.logicom.geom
 {
    internal final class IntersectNode
    {
-       
-      
       public var edge1:TEdge;
       
       public var edge2:TEdge;
@@ -18,3 +16,4 @@ package com.logicom.geom
       }
    }
 }
+

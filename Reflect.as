@@ -2,8 +2,6 @@ package
 {
    public class Reflect
    {
-       
-      
       public function Reflect()
       {
       }
@@ -45,7 +43,7 @@ package
          var _loc2_:* = {};
          var _loc3_:int = 0;
          var _loc4_:Array = Reflect.fields(param1);
-         while(_loc3_ < _loc4_.length)
+         while(_loc3_ < int(_loc4_.length))
          {
             _loc5_ = _loc4_[_loc3_];
             _loc3_++;
@@ -55,3 +53,4 @@ package
       }
    }
 }
+

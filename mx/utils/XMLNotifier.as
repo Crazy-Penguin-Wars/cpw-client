@@ -3,13 +3,13 @@ package mx.utils
    import flash.utils.Dictionary;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class XMLNotifier
    {
+      private static var instance:XMLNotifier;
       
       mx_internal static const VERSION:String = "4.5.1.21489";
-      
-      private static var instance:XMLNotifier;
-       
       
       public function XMLNotifier(x:XMLNotifierSingleton)
       {
@@ -29,7 +29,7 @@ package mx.utils
       {
          var notificationFunction:Function = function(currentTarget:Object, ty:String, tar:Object, value:Object, detail:Object):void
          {
-            var notifiable:* = null;
+            var notifiable:Object = null;
             var xmlWatchers:Dictionary = arguments.callee.watched;
             if(xmlWatchers != null)
             {
@@ -113,8 +113,6 @@ package mx.utils
 
 class XMLNotifierSingleton
 {
-    
-   
    public function XMLNotifierSingleton()
    {
       super();

@@ -9,13 +9,11 @@ package tuxwars.home.ui.screen.crafting.researchslot
    
    public class ResearchContainers extends UIContainers
    {
-      
       public static const COMPLETED:String = "Slot_Done";
       
       public static const ONGOING:String = "Slot_Ongoing";
       
       public static const START:String = "Slot_Default";
-       
       
       public function ResearchContainers(design:MovieClip, game:TuxWarsGame)
       {
@@ -65,3 +63,4 @@ package tuxwars.home.ui.screen.crafting.researchslot
       }
    }
 }
+

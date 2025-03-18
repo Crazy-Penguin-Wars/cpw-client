@@ -7,8 +7,6 @@ package tuxwars.battle.gameobjects
    
    public class FollowerDef extends PhysicsEmissionGameObjectDef
    {
-       
-      
       private var _type:String;
       
       private var _emitAt:String;
@@ -150,3 +148,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

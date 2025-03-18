@@ -8,11 +8,10 @@ package tuxwars.ui.popups.states.refund
    
    public class RefundPopupSubState extends PopUpBaseSubState
    {
-       
-      
       public function RefundPopupSubState(game:DCGame, params:* = null)
       {
          super("TypeInformation",game,RefundPopupScreen,PopUpBaseLogic,AssetsData.getPopupAssets(),params);
       }
    }
 }
+

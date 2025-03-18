@@ -5,13 +5,11 @@ package tuxwars.battle.net.messages.control
    
    public class ChickeningOutMessage extends SocketMessage
    {
-      
       public static const STATUS_CANCEL:int = 0;
       
       public static const STATUS_CHICKENING_OUT:int = 1;
       
       public static const STATUS_CHICKENED_OUT:int = 2;
-       
       
       public function ChickeningOutMessage(playerId:String, status:int)
       {
@@ -28,3 +26,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

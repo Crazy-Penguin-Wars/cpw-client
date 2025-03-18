@@ -11,7 +11,6 @@ package tuxwars.home.ui.screen.crafting.researchslot
    
    public class ResearchContainerDone extends ResearchContainer
    {
-      
       public static const RECEPIE:String = "Slot_Recipe";
       
       public static const MONEY_EXP:String = "Slot_Money_and_Exp";
@@ -19,7 +18,6 @@ package tuxwars.home.ui.screen.crafting.researchslot
       public static const EXP:String = "Slot_Exp";
       
       public static const MONEY:String = "Slot_Money";
-       
       
       public function ResearchContainerDone(design:MovieClip, titleTid:String, descriptionTid:String, game:TuxWarsGame, parent:UIComponent = null)
       {
@@ -75,3 +73,4 @@ package tuxwars.home.ui.screen.crafting.researchslot
       }
    }
 }
+

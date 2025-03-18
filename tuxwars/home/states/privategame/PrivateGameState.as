@@ -6,8 +6,6 @@ package tuxwars.home.states.privategame
    
    public class PrivateGameState extends TuxState
    {
-       
-      
       public function PrivateGameState(game:TuxWarsGame, gameModel:PrivateGameModel)
       {
          super(game,gameModel);
@@ -19,3 +17,4 @@ package tuxwars.home.states.privategame
       }
    }
 }
+

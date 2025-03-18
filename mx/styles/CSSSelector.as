@@ -2,10 +2,10 @@ package mx.styles
 {
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class CSSSelector
    {
-       
-      
       private var _ancestor:CSSSelector;
       
       private var _conditions:Array;
@@ -152,3 +152,4 @@ package mx.styles
       }
    }
 }
+

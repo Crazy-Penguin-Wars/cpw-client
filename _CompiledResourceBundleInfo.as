@@ -2,8 +2,6 @@ package
 {
    public dynamic class _CompiledResourceBundleInfo
    {
-       
-      
       public function _CompiledResourceBundleInfo()
       {
       }
@@ -19,3 +17,4 @@ package
       }
    }
 }
+

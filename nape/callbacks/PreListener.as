@@ -8,8 +8,6 @@ package nape.callbacks
    
    public final class PreListener extends Listener
    {
-       
-      
       public var zpp_inner_zn:ZPP_InteractionListener;
       
       public function PreListener(param1:InteractionType, param2:*, param3:*, param4:Function, param5:int = 0, param6:Boolean = false)
@@ -166,6 +164,10 @@ package nape.callbacks
                ZPP_Flags.§internal§ = false;
             }
             ZPP_Flags.InteractionType_ANY;
+         }
+         else
+         {
+            null;
          }
       }
       
@@ -371,7 +373,7 @@ package nape.callbacks
                ZPP_Flags.InteractionType_COLLISION = new InteractionType();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.InteractionType_COLLISION);
+            return ZPP_Flags.InteractionType_COLLISION;
          }
          else if(_loc1_ == ZPP_Flags.id_InteractionType_SENSOR)
          {
@@ -381,7 +383,7 @@ package nape.callbacks
                ZPP_Flags.InteractionType_SENSOR = new InteractionType();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.InteractionType_SENSOR);
+            return ZPP_Flags.InteractionType_SENSOR;
          }
          else if(_loc1_ == ZPP_Flags.id_InteractionType_FLUID)
          {
@@ -391,7 +393,7 @@ package nape.callbacks
                ZPP_Flags.InteractionType_FLUID = new InteractionType();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.InteractionType_FLUID);
+            return ZPP_Flags.InteractionType_FLUID;
          }
          else if(_loc1_ == ZPP_Flags.id_InteractionType_ANY)
          {
@@ -401,13 +403,12 @@ package nape.callbacks
                ZPP_Flags.InteractionType_ANY = new InteractionType();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.InteractionType_ANY);
+            return ZPP_Flags.InteractionType_ANY;
          }
          else
          {
-            §§push(null);
+            return null;
          }
-         return §§pop();
       }
       
       public function get handler() : Function
@@ -416,3 +417,4 @@ package nape.callbacks
       }
    }
 }
+

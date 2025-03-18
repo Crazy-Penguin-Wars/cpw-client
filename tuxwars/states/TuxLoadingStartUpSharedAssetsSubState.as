@@ -5,8 +5,6 @@ package tuxwars.states
    
    public class TuxLoadingStartUpSharedAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function TuxLoadingStartUpSharedAssetsSubState(game:DCGame)
       {
          super(game,AssetsData.getStartUpSharedAssets());
@@ -19,3 +17,4 @@ package tuxwars.states
       }
    }
 }
+

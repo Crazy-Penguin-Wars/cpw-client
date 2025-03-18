@@ -22,7 +22,6 @@ package tuxwars.battle.ui.screen.result.position
    
    public class PositionSlot
    {
-      
       private static const ACTIVE_SLOT:String = "Slot_Active";
       
       private static const DEFAULT_SLOT:String = "Slot_Default";
@@ -54,7 +53,6 @@ package tuxwars.battle.ui.screen.result.position
       private static const AVATAR_CONTAINER:String = "Container_Character";
       
       private static var tuxGame:TuxWarsGame;
-       
       
       private var avatar:TuxAvatar;
       
@@ -149,10 +147,10 @@ package tuxwars.battle.ui.screen.result.position
       
       private function playFanfare(position:int) : void
       {
-         var _loc2_:* = null;
-         var _loc5_:* = null;
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:SoundReference = null;
+         var _loc5_:SoundReference = null;
+         var _loc4_:SoundReference = null;
+         var _loc3_:SoundReference = null;
          switch(position - 1)
          {
             case 0:
@@ -160,7 +158,6 @@ package tuxwars.battle.ui.screen.result.position
                if(_loc2_)
                {
                   MessageCenter.sendEvent(new SoundMessage("PlaySound",_loc2_.getMusicID(),_loc2_.getStart(),_loc2_.getType(),"PlaySound"));
-                  break;
                }
                break;
             case 1:
@@ -168,7 +165,6 @@ package tuxwars.battle.ui.screen.result.position
                if(_loc5_)
                {
                   MessageCenter.sendEvent(new SoundMessage("PlaySound",_loc5_.getMusicID(),_loc5_.getStart(),_loc5_.getType(),"PlaySound"));
-                  break;
                }
                break;
             case 2:
@@ -176,7 +172,6 @@ package tuxwars.battle.ui.screen.result.position
                if(_loc4_)
                {
                   MessageCenter.sendEvent(new SoundMessage("PlaySound",_loc4_.getMusicID(),_loc4_.getStart(),_loc4_.getType(),"PlaySound"));
-                  break;
                }
                break;
             case 3:
@@ -184,7 +179,6 @@ package tuxwars.battle.ui.screen.result.position
                if(_loc3_)
                {
                   MessageCenter.sendEvent(new SoundMessage("PlaySound",_loc3_.getMusicID(),_loc3_.getStart(),_loc3_.getType(),"PlaySound"));
-                  break;
                }
          }
       }
@@ -246,7 +240,7 @@ package tuxwars.battle.ui.screen.result.position
       private function compareTournamentPoints(design:MovieClip, position:int, pointsDisabled:Boolean) : void
       {
          var positionPoints:int = 0;
-         var tournamentPoints:* = null;
+         var tournamentPoints:UIAutoTextField = null;
          _containerPoints.visible = true;
          switch(position - 1)
          {
@@ -284,7 +278,7 @@ package tuxwars.battle.ui.screen.result.position
       private function showTrophy(leagueSortPriority:int) : void
       {
          var counter:int = 0;
-         var _loc3_:* = null;
+         var _loc3_:MovieClip = null;
          trophies.visible = true;
          for(counter = 1; counter <= 5; )
          {
@@ -295,3 +289,4 @@ package tuxwars.battle.ui.screen.result.position
       }
    }
 }
+

@@ -16,8 +16,6 @@ package tuxwars.battle.emitters
    
    public class EmitterUtils
    {
-       
-      
       public function EmitterUtils()
       {
          super();
@@ -25,12 +23,12 @@ package tuxwars.battle.emitters
       
       public static function getFiringDirection(emissionObject:Emission, emissionReference:EmissionReference, random:Random, dir:Vec2 = null) : Vec2
       {
-         var newDir:* = null;
-         var _loc10_:* = null;
-         var _loc11_:* = null;
-         var _loc6_:* = null;
-         var _loc9_:* = null;
-         var _loc7_:* = null;
+         var newDir:Vec2 = null;
+         var _loc10_:FiringDirection = null;
+         var _loc11_:Vec2 = null;
+         var _loc6_:Vec2 = null;
+         var _loc9_:Vec2 = null;
+         var _loc7_:Vec2 = null;
          LogUtils.log("Determinating firing direction for emission: " + emissionObject.shortName + " emission ref: " + emissionReference.id + " dir: " + dir,"EmitterUtils",1,"Emitter",false,false,false);
          var _loc8_:int = emissionReference.getDirectionAndOffsetBy(random);
          if(dir != null)
@@ -123,7 +121,7 @@ package tuxwars.battle.emitters
       
       public static function getModifiedFiringDirection(firingPlayer:PlayerGameObject, emissionReference:EmissionReference, boosterMissileEmitsArray:Array, originalDir:Vec2, count:int, loopCount:int, random:Random) : Vec2
       {
-         var _loc22_:* = null;
+         var _loc22_:Stat = null;
          var _loc9_:Number = NaN;
          var _loc12_:int = 0;
          var _loc11_:int = 0;
@@ -149,8 +147,9 @@ package tuxwars.battle.emitters
          }
          if(firingPlayer)
          {
+            var _loc27_:String = "ShotSpread";
             var _loc26_:* = firingPlayer;
-            _loc22_ = !!_loc26_.stats ? _loc26_.stats.getStat("ShotSpread") : null;
+            _loc22_ = !!_loc26_.stats ? _loc26_.stats.getStat(_loc27_) : null;
             if((angleBetweneLimitingAnglesInDegrees > 0 || angleToLimitingAngleOneInDegrees > 0) && _loc22_ != null)
             {
                _loc9_ = _loc22_.calculateValue();
@@ -211,7 +210,7 @@ package tuxwars.battle.emitters
          var _loc10_:int = 0;
          var _loc11_:int = 0;
          var _loc9_:int = 0;
-         var _loc7_:* = null;
+         var _loc7_:Vec2 = null;
          var offsetBy:int = Math.abs(emissionReference.getDirectionAndOffsetBy(random));
          if(Math.abs(offsetBy) >= 0)
          {
@@ -300,47 +299,46 @@ package tuxwars.battle.emitters
                case "player":
                case "enemy":
                   _loc2_.push("PENGUIN");
-                  continue;
+                  break;
                case "object":
                case "levelobject":
                   _loc2_.push("LEVEL_OBJECT");
-                  continue;
+                  break;
                case "powerup":
                   _loc2_.push("POWER_UP");
-                  continue;
+                  break;
                case "terrain":
                case "stone":
                case "ice":
                case "metal":
-                  break;
                case "wood":
+                  _loc2_.push("TERRAIN");
                   break;
                case "weapon":
                case "missile":
                case "mine":
                case "grenade":
                   _loc2_.push("MISSILE");
-                  continue;
+                  break;
                case "water":
                   _loc2_.push("WATER");
-                  continue;
+                  break;
                case "follower":
                   _loc2_.push("FOLLOWER");
-                  continue;
+                  break;
                case "none":
-                  continue;
+                  break;
                default:
                   LogUtils.log("AffectsType: " + affects + " not included in switch case for masking of bits!","EmitterUtils",2,"AffectsGameObject",true,true,true);
-                  continue;
+                  break;
             }
-            _loc2_.push("TERRAIN");
          }
          return _loc2_;
       }
       
       public static function handleBoosters(emission:Emission, otherEmission:Emission, firingPlayer:PlayerGameObject) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Stat = null;
          if(otherEmission && emission)
          {
             emission.playerBoosterStats = otherEmission.playerBoosterStats;
@@ -408,7 +406,7 @@ package tuxwars.battle.emitters
       
       public static function copyParams(emission:Emission, otherEmission:Emission, newDirection:Vec2 = null) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:Object = null;
          var _loc5_:Object = !!emission.getEmissionsParams("Params") ? emission.getEmissionsParams("Params") : null;
          if(_loc5_)
          {
@@ -427,3 +425,4 @@ package tuxwars.battle.emitters
       }
    }
 }
+

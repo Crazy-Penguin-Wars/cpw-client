@@ -4,11 +4,10 @@ package tuxwars.battle.net.messages.battle
    
    public class BattleMessage extends SocketMessage
    {
-       
-      
       public function BattleMessage(data:Object)
       {
          super(data);
       }
    }
 }
+

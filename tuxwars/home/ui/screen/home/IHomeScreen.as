@@ -4,10 +4,9 @@ package tuxwars.home.ui.screen.home
    
    public interface IHomeScreen extends IScreen
    {
-       
-      
       function setDarkBackground(param1:Boolean, param2:*, param3:Boolean) : void;
       
       function refreshFriends() : void;
    }
 }
+

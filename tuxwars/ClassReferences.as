@@ -20,26 +20,23 @@ package tuxwars
    
    public class ClassReferences
    {
-      
-      {
-         UITooltip;
-         UIWindow;
-         Grenade;
-         Mine;
-         Enviroment;
-         FeedbackItem;
-         Chance;
-         ValueBasedOnChance;
-         Teleport;
-         AddJoint;
-         Delay;
-         TriggerEmission;
-         Ray;
-         Homing;
-         ApplyForce;
-         Kill;
-         RemoveFollower;
-      }
+      UITooltip;
+      UIWindow;
+      Grenade;
+      Mine;
+      Enviroment;
+      FeedbackItem;
+      Chance;
+      ValueBasedOnChance;
+      Teleport;
+      AddJoint;
+      Delay;
+      TriggerEmission;
+      Ray;
+      Homing;
+      ApplyForce;
+      Kill;
+      RemoveFollower;
       
       public function ClassReferences()
       {
@@ -47,3 +44,4 @@ package tuxwars
       }
    }
 }
+

@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.battle
    
    public class UseBoosterMessage extends BattleMessage
    {
-       
-      
       public function UseBoosterMessage(boosterId:String, playerId:String)
       {
          super({
@@ -21,3 +19,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

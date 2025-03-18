@@ -16,8 +16,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
    
    public class ButtonContainer extends UIContainer
    {
-       
-      
       private var _button:SoldOutButton;
       
       public function ButtonContainer(design:MovieClip, parent:UIComponent = null)
@@ -147,3 +145,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       }
    }
 }
+

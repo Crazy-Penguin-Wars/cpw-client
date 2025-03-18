@@ -6,11 +6,10 @@ package tuxwars.ui.popups.logic.slotmachineprizelogic
    
    public class SlotMachinePrizeLogic extends PopUpBaseLogic
    {
-       
-      
       public function SlotMachinePrizeLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
       }
    }
 }
+

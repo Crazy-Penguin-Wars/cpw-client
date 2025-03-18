@@ -7,11 +7,9 @@ package zpp_nape.geom
    
    public class ZPP_PartitionVertex
    {
+      public static var nextId:int;
       
-      public static var nextId:int = 0;
-      
-      public static var zpp_pool:ZPP_PartitionVertex = null;
-       
+      public static var zpp_pool:ZPP_PartitionVertex;
       
       public var y:Number;
       
@@ -74,6 +72,7 @@ package zpp_nape.geom
             ZPP_PartitionVertex.zpp_pool = _loc2_.next;
             _loc2_.next = null;
          }
+         null;
          _loc2_.x = param1.x;
          _loc2_.y = param1.y;
          return _loc2_;
@@ -216,7 +215,8 @@ package zpp_nape.geom
                         _loc10_ = _loc10_.next;
                         _loc15_--;
                      }
-                     else if(_loc5_ == 1 ? (_loc1_ = _loc10_.elt.x - x, _loc2_ = _loc10_.elt.y - y, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, (_loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1)) == 1) : (_loc1_ = prev.x - x, _loc2_ = prev.y - y, _loc3_ = _loc10_.elt.x - x, _loc4_ = _loc10_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, _loc17_ = _loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1), _loc1_ = prev.x - x, _loc2_ = prev.y - y, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, _loc18_ = _loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1), _loc17_ * _loc18_ == 1 || _loc17_ * _loc18_ == 0 && (_loc17_ == 1 || _loc18_ == 1) ? (_loc1_ = _loc10_.elt.x - x, _loc2_ = _loc10_.elt.y - y, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, (_loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1)) == 1) : (_loc17_ == -1 || _loc18_ == -1 ? _loc18_ == -1 : (_loc17_ == 0 && _loc18_ == 0 ? (_loc1_ = x - prev.x, _loc2_ = y - prev.y, _loc3_ = _loc10_.elt.x - x, _loc4_ = _loc10_.elt.y - y, _loc6_ = _loc1_ * _loc3_ + _loc2_ * _loc4_, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc19_ = _loc1_ * _loc3_ + _loc2_ * _loc4_, _loc6_ < 0 && _loc19_ > 0 ? true : (_loc19_ < 0 && _loc6_ > 0 ? false : true)) : true))))
+                     else if(_loc5_ == 1 ? (_loc1_ = _loc10_.elt.x - x, _loc2_ = _loc10_.elt.y - y, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, (_loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1)) == 1) : (_loc1_ = prev.x - x, _loc2_ = prev.y - y, _loc3_ = _loc10_.elt.x - x, _loc4_ = _loc10_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, _loc17_ = _loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1), _loc1_ = prev.x - x, _loc2_ = prev.y - y, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, _loc18_ = _loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1), _loc17_ * _loc18_ == 1 || _loc17_ * _loc18_ == 0 && (_loc17_ == 1 || _loc18_ == 1) ? (_loc1_ = _loc10_.elt.x - x, _loc2_ = _loc10_.elt.y - y, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc6_ = _loc4_ * _loc1_ - _loc3_ * _loc2_, (_loc6_ > 0 ? -1 : (_loc6_ == 0 ? 0 : 1)) == 1) : (_loc17_ == -1 || _loc18_ == -1 ? _loc18_ == -1 : (_loc17_ == 0 && _loc18_ == 0 ? (_loc1_ = x - prev
+                     .x, _loc2_ = y - prev.y, _loc3_ = _loc10_.elt.x - x, _loc4_ = _loc10_.elt.y - y, _loc6_ = _loc1_ * _loc3_ + _loc2_ * _loc4_, _loc3_ = _loc11_.elt.x - x, _loc4_ = _loc11_.elt.y - y, _loc19_ = _loc1_ * _loc3_ + _loc2_ * _loc4_, _loc6_ < 0 && _loc19_ > 0 ? true : (_loc19_ < 0 && _loc6_ > 0 ? false : true)) : true))))
                      {
                         _loc12_ = _loc10_;
                         _loc10_ = _loc10_.next;
@@ -269,6 +269,7 @@ package zpp_nape.geom
             ZPP_PartitionVertex.zpp_pool = _loc1_.next;
             _loc1_.next = null;
          }
+         null;
          _loc1_.x = x;
          _loc1_.y = y;
          _loc1_.forced = forced;
@@ -280,3 +281,4 @@ package zpp_nape.geom
       }
    }
 }
+

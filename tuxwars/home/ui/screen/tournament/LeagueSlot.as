@@ -11,7 +11,6 @@ package tuxwars.home.ui.screen.tournament
    
    public class LeagueSlot implements IResourceLoaderURL
    {
-      
       private static const SLOT_LEAST:String = "Slot_Least";
       
       private static const SLOT_DEFAULT:String = "Slot_Default";
@@ -37,7 +36,6 @@ package tuxwars.home.ui.screen.tournament
       private static const TEXT_POINTS_VALUE:String = "Text_Points_Value";
       
       private static const PICTURE_CONTAINER:String = "Container_Profile_Picture";
-       
       
       private var _player:TournamentPlayer;
       
@@ -72,9 +70,9 @@ package tuxwars.home.ui.screen.tournament
       
       public function setPlayer(player:TournamentPlayer, tournament:Tournament, playerIndex:int) : void
       {
-         var slotGraphicsName:* = null;
-         var tagIcon:* = null;
-         var tagText:* = null;
+         var slotGraphicsName:String = null;
+         var tagIcon:MovieClip = null;
+         var tagText:TextField = null;
          _player = player;
          var _loc6_:Boolean = tournament.league.findMyIndex() == playerIndex;
          hideSlots();
@@ -185,3 +183,4 @@ package tuxwars.home.ui.screen.tournament
       }
    }
 }
+

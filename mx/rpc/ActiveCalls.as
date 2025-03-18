@@ -2,10 +2,10 @@ package mx.rpc
 {
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class ActiveCalls
    {
-       
-      
       private var calls:Object;
       
       private var callOrder:Array;
@@ -25,7 +25,7 @@ package mx.rpc
       
       public function getAllMessages() : Array
       {
-         var id:* = null;
+         var id:String = null;
          var msgs:Array = [];
          for(id in this.calls)
          {
@@ -69,3 +69,4 @@ package mx.rpc
       }
    }
 }
+

@@ -4,8 +4,11 @@ package mx.utils
    import mx.core.IFlexModuleFactory;
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class MediaQueryParser
    {
+      private static var _instance:MediaQueryParser;
       
       public static var platformMap:Object = {
          "AND":"android",
@@ -16,12 +19,9 @@ package mx.utils
          "QNX":"qnx"
       };
       
-      private static var _instance:MediaQueryParser;
-       
+      mx_internal var goodQueries:Object = {};
       
-      mx_internal var goodQueries:Object;
-      
-      mx_internal var badQueries:Object;
+      mx_internal var badQueries:Object = {};
       
       public var type:String = "screen";
       
@@ -31,8 +31,6 @@ package mx.utils
       
       public function MediaQueryParser(moduleFactory:IFlexModuleFactory = null)
       {
-         this.mx_internal::goodQueries = {};
-         this.mx_internal::badQueries = {};
          super();
          this.applicationDpi = DensityUtil.getRuntimeDPI();
          if(Boolean(moduleFactory))
@@ -84,7 +82,7 @@ package mx.utils
             return false;
          }
          var mediaQueries:Array = expression.split(", ");
-         var n:int = mediaQueries.length;
+         var n:int = int(mediaQueries.length);
          for(var i:int = 0; i < n; i++)
          {
             mediaQuery = mediaQueries[i];
@@ -99,7 +97,7 @@ package mx.utils
                mediaQuery = mediaQuery.substr(4);
             }
             expressions = this.tokenizeMediaQuery(mediaQuery);
-            numExpressions = expressions.length;
+            numExpressions = int(expressions.length);
             if(expressions[0] == "all" || expressions[0] == this.type)
             {
                if(numExpressions == 1 && !notFlag)
@@ -134,7 +132,7 @@ package mx.utils
       {
          var c:String = null;
          var tokens:Array = [];
-         var pos:int = mediaQuery.indexOf("(");
+         var pos:int = int(mediaQuery.indexOf("("));
          if(pos == 0)
          {
             tokens.push("all");
@@ -201,7 +199,7 @@ package mx.utils
          var parts:Array = null;
          var min:Boolean = false;
          var max:Boolean = false;
-         var n:int = expressions.length;
+         var n:int = int(expressions.length);
          for(var i:int = 0; i < n; i++)
          {
             expr = expressions[i];
@@ -270,7 +268,7 @@ package mx.utils
          }
          if(type == "number")
          {
-            index = s.indexOf("dpi");
+            index = int(s.indexOf("dpi"));
             if(index != -1)
             {
                s = s.substr(0,index);
@@ -302,7 +300,7 @@ package mx.utils
       {
          var part:String = null;
          var c:String = null;
-         var i:int = s.indexOf("-");
+         var i:int = int(s.indexOf("-"));
          while(i > 0)
          {
             part = s.substr(i + 1);
@@ -310,7 +308,7 @@ package mx.utils
             c = part.charAt(0);
             c = c.toUpperCase();
             s += c + part.substr(1);
-            i = s.indexOf("-");
+            i = int(s.indexOf("-"));
          }
          return s;
       }
@@ -326,3 +324,4 @@ package mx.utils
       }
    }
 }
+

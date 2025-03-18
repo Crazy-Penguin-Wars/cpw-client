@@ -15,13 +15,11 @@ package tuxwars.home.ui.screen.money
    
    public class MoneySlot
    {
-      
       private static const TEXT_FIELD:String = "Text";
       
       private static const TEXT_FREE_FIELD:String = "Text_Free";
       
       private static const BUTTON_BUY:String = "Button_Buy";
-       
       
       private var moneyAmountTextField:UIAutoTextField;
       
@@ -108,3 +106,4 @@ package tuxwars.home.ui.screen.money
       }
    }
 }
+

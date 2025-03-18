@@ -6,9 +6,7 @@ package zpp_nape.geom
    
    public class ZPP_SimpleVert
    {
-      
-      public static var zpp_pool:ZPP_SimpleVert = null;
-       
+      public static var zpp_pool:zpp_nape.geom.ZPP_SimpleVert;
       
       public var y:Number;
       
@@ -16,7 +14,7 @@ package zpp_nape.geom
       
       public var node:ZPP_Set_ZPP_SimpleVert;
       
-      public var next:ZPP_SimpleVert;
+      public var next:zpp_nape.geom.ZPP_SimpleVert;
       
       public var links:ZPP_Set_ZPP_SimpleVert;
       
@@ -48,37 +46,40 @@ package zpp_nape.geom
             ZPP_Set_ZPP_SimpleVert.zpp_pool = links.next;
             links.next = null;
          }
-         links.lt = ZPP_SimpleVert.less_xy;
+         null;
+         links.lt = zpp_nape.geom.ZPP_SimpleVert.less_xy;
       }
       
-      public static function less_xy(param1:ZPP_SimpleVert, param2:ZPP_SimpleVert) : Boolean
+      public static function less_xy(param1:zpp_nape.geom.ZPP_SimpleVert, param2:zpp_nape.geom.ZPP_SimpleVert) : Boolean
       {
          return param1.y < param2.y || param1.y == param2.y && param1.x < param2.x;
       }
       
-      public static function swap_nodes(param1:ZPP_SimpleVert, param2:ZPP_SimpleVert) : void
+      public static function swap_nodes(param1:zpp_nape.geom.ZPP_SimpleVert, param2:zpp_nape.geom.ZPP_SimpleVert) : void
       {
          var _loc3_:ZPP_Set_ZPP_SimpleVert = param1.node;
          param1.node = param2.node;
          param2.node = _loc3_;
       }
       
-      public static function get(param1:Number, param2:Number) : ZPP_SimpleVert
+      public static function get(param1:Number, param2:Number) : zpp_nape.geom.ZPP_SimpleVert
       {
-         var _loc3_:* = null as ZPP_SimpleVert;
-         if(ZPP_SimpleVert.zpp_pool == null)
+         var _loc3_:* = null as zpp_nape.geom.ZPP_SimpleVert;
+         if(zpp_nape.geom.ZPP_SimpleVert.zpp_pool == null)
          {
-            _loc3_ = new ZPP_SimpleVert();
+            _loc3_ = new zpp_nape.geom.ZPP_SimpleVert();
          }
          else
          {
-            _loc3_ = ZPP_SimpleVert.zpp_pool;
-            ZPP_SimpleVert.zpp_pool = _loc3_.next;
+            _loc3_ = zpp_nape.geom.ZPP_SimpleVert.zpp_pool;
+            zpp_nape.geom.ZPP_SimpleVert.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.x = param1;
          _loc3_.y = param2;
          return _loc3_;
       }
    }
 }
+

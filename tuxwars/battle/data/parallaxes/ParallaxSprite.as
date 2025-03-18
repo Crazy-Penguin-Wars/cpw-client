@@ -5,8 +5,6 @@ package tuxwars.battle.data.parallaxes
    
    public class ParallaxSprite extends Sprite
    {
-       
-      
       public var rp:Point;
       
       public function ParallaxSprite()
@@ -22,7 +20,7 @@ package tuxwars.battle.data.parallaxes
       
       public function getX() : Number
       {
-         var p:* = null;
+         var p:Point = null;
          if(this.parent)
          {
             p = this.parent.globalToLocal(this.localToGlobal(rp));
@@ -33,7 +31,7 @@ package tuxwars.battle.data.parallaxes
       
       public function setX(value:Number) : void
       {
-         var p:* = null;
+         var p:Point = null;
          if(this.parent)
          {
             p = parent.globalToLocal(this.localToGlobal(rp));
@@ -51,7 +49,7 @@ package tuxwars.battle.data.parallaxes
       
       public function getY() : Number
       {
-         var p:* = null;
+         var p:Point = null;
          if(this.parent)
          {
             p = this.parent.globalToLocal(this.localToGlobal(rp));
@@ -62,7 +60,7 @@ package tuxwars.battle.data.parallaxes
       
       public function setY(value:Number) : void
       {
-         var p:* = null;
+         var p:Point = null;
          if(this.parent)
          {
             p = this.parent.globalToLocal(this.localToGlobal(rp));
@@ -79,3 +77,4 @@ package tuxwars.battle.data.parallaxes
       }
    }
 }
+

@@ -20,8 +20,6 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
    
    public class ResearchResultBuild extends UIContainer
    {
-       
-      
       private var _button:UIButton;
       
       private var ingridientsSlots:int;
@@ -69,7 +67,7 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
       
       protected function updateButton(msg:Message) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:RecipeData = null;
          var _loc2_:* = undefined;
          var _loc4_:Research = Research;
          if(!tuxwars.home.ui.screen.crafting.Research._instance)
@@ -188,3 +186,4 @@ package tuxwars.home.ui.screen.crafting.researchslot.collect
       }
    }
 }
+

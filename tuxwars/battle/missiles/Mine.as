@@ -16,8 +16,6 @@ package tuxwars.battle.missiles
    
    public class Mine extends Missile
    {
-       
-      
       private var activationTime:int = 250;
       
       private var primed:Boolean;
@@ -45,7 +43,6 @@ package tuxwars.battle.missiles
          {
             case "weapon":
             case "mine":
-               break;
             case "object":
                break;
             default:
@@ -113,3 +110,4 @@ package tuxwars.battle.missiles
       }
    }
 }
+

@@ -10,8 +10,6 @@ package nape.dynamics
    
    public class Arbiter
    {
-       
-      
       public var zpp_inner:ZPP_Arbiter;
       
       public function Arbiter()
@@ -193,7 +191,7 @@ package nape.dynamics
                ZPP_Flags.PreFlag_ACCEPT = new PreFlag();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.PreFlag_ACCEPT);
+            return ZPP_Flags.PreFlag_ACCEPT;
          }
          else if(_loc1_ == ZPP_Flags.id_ImmState_ACCEPT)
          {
@@ -203,7 +201,7 @@ package nape.dynamics
                ZPP_Flags.PreFlag_ACCEPT_ONCE = new PreFlag();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.PreFlag_ACCEPT_ONCE);
+            return ZPP_Flags.PreFlag_ACCEPT_ONCE;
          }
          else if(_loc1_ == (ZPP_Flags.id_ImmState_IGNORE | ZPP_Flags.id_ImmState_ALWAYS))
          {
@@ -213,7 +211,7 @@ package nape.dynamics
                ZPP_Flags.PreFlag_IGNORE = new PreFlag();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.PreFlag_IGNORE);
+            return ZPP_Flags.PreFlag_IGNORE;
          }
          else
          {
@@ -223,9 +221,8 @@ package nape.dynamics
                ZPP_Flags.PreFlag_IGNORE_ONCE = new PreFlag();
                ZPP_Flags.§internal§ = false;
             }
-            §§push(ZPP_Flags.PreFlag_IGNORE_ONCE);
+            return ZPP_Flags.PreFlag_IGNORE_ONCE;
          }
-         return §§pop();
       }
       
       public function get shape2() : Shape
@@ -289,3 +286,4 @@ package nape.dynamics
       }
    }
 }
+

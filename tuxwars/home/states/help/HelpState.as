@@ -5,8 +5,6 @@ package tuxwars.home.states.help
    
    public class HelpState extends TuxState
    {
-       
-      
       public function HelpState(game:DCGame, params:* = null)
       {
          super(game,params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.help
       }
    }
 }
+

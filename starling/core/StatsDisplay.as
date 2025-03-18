@@ -13,8 +13,6 @@ package starling.core
    
    internal class StatsDisplay extends Sprite
    {
-       
-      
       private var mBackground:Quad;
       
       private var mTextField:TextField;
@@ -72,3 +70,4 @@ package starling.core
       }
    }
 }
+

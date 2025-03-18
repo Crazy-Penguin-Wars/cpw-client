@@ -2,7 +2,6 @@ package tuxwars.net
 {
    public class ServiceIDs
    {
-      
       public static const GET_ACCOUNT_INFO:String = "GetAccountInformation";
       
       public static const PLAY_NOW:String = "PlayNow";
@@ -84,7 +83,6 @@ package tuxwars.net
       public static const GET_TOURNAMENT_INFORMATION:String = "GetTournamentInformation";
       
       public static const COLLECT_TOURNAMENT_REWARDS:String = "CollectTournamentRewards";
-       
       
       public function ServiceIDs()
       {
@@ -93,3 +91,4 @@ package tuxwars.net
       }
    }
 }
+

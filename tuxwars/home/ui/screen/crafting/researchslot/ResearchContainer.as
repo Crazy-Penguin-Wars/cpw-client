@@ -15,11 +15,9 @@ package tuxwars.home.ui.screen.crafting.researchslot
    
    public class ResearchContainer extends UIContainer
    {
-       
+      protected const ingredientSlots:Vector.<MovieClip>;
       
-      protected const ingredientSlots:Vector.<MovieClip> = new Vector.<MovieClip>();
-      
-      protected const addedMovieClips:Object = {};
+      protected const addedMovieClips:Object;
       
       private var resultSlotMC:MovieClip;
       
@@ -28,7 +26,9 @@ package tuxwars.home.ui.screen.crafting.researchslot
       public function ResearchContainer(design:MovieClip, titleTid:String, descriptionTid:String, parent:UIComponent = null)
       {
          var count:int = 0;
-         var _loc5_:* = null;
+         var _loc5_:MovieClip = null;
+         ingredientSlots = new Vector.<MovieClip>();
+         addedMovieClips = {};
          super(design,parent);
          TuxUiUtils.createAutoTextField(design.getChildByName("Text") as TextField,titleTid);
          if(design.getChildByName("Text_Description"))
@@ -87,7 +87,7 @@ package tuxwars.home.ui.screen.crafting.researchslot
       private function updateIconsInternal(items:Vector.<ItemData>) : void
       {
          var count:int = 0;
-         var icon:* = null;
+         var icon:MovieClip = null;
          if(items && items.length > 0)
          {
             count = 0;
@@ -127,7 +127,7 @@ package tuxwars.home.ui.screen.crafting.researchslot
       
       protected function clearSlots() : void
       {
-         var icon:* = null;
+         var icon:MovieClip = null;
          var count:int = 0;
          for each(var mc in ingredientSlots)
          {
@@ -155,3 +155,4 @@ package tuxwars.home.ui.screen.crafting.researchslot
       }
    }
 }
+

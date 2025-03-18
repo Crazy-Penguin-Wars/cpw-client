@@ -6,8 +6,6 @@ package tuxwars.home.states.crafting
    
    public class CraftingLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function CraftingLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getCraftingAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.crafting
       }
    }
 }
+

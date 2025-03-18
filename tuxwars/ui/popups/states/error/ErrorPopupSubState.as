@@ -9,9 +9,7 @@ package tuxwars.ui.popups.states.error
    
    public class ErrorPopupSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_ERROR:String = "TypeError";
-       
       
       public function ErrorPopupSubState(game:DCGame, params:* = null)
       {
@@ -29,3 +27,4 @@ package tuxwars.ui.popups.states.error
       }
    }
 }
+

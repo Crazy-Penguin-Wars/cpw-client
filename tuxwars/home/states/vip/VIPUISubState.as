@@ -7,11 +7,10 @@ package tuxwars.home.states.vip
    
    public class VIPUISubState extends TuxUIState
    {
-       
-      
       public function VIPUISubState(game:TuxWarsGame, params:* = null)
       {
          super(VIPScreen,VIPLogic,game,params);
       }
    }
 }
+

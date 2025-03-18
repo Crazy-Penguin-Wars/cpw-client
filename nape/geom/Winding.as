@@ -5,8 +5,6 @@ package nape.geom
    
    public final class Winding
    {
-       
-      
       public function Winding()
       {
          if(Boot.skip_constructor)
@@ -92,3 +90,4 @@ package nape.geom
       }
    }
 }
+

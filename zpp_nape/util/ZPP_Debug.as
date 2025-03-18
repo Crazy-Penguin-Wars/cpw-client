@@ -14,9 +14,7 @@ package zpp_nape.util
    
    public class ZPP_Debug
    {
-      
-      public static var §internal§:Boolean = false;
-       
+      public static var §internal§:Boolean;
       
       public var xnull:Boolean;
       
@@ -88,6 +86,7 @@ package zpp_nape.util
             ZPP_AABB.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.minx = 0;
          _loc3_.miny = 0;
          _loc3_.maxx = param1;
@@ -104,6 +103,7 @@ package zpp_nape.util
             ZPP_AABB.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.minx = 0;
          _loc3_.miny = 0;
          _loc3_.maxx = param1;
@@ -120,12 +120,13 @@ package zpp_nape.util
          var _loc8_:* = null as ZPP_Vec2;
          var _loc3_:Mat23 = xform.outer;
          _loc2_ = _loc3_.zpp_inner.a * _loc3_.zpp_inner.d - _loc3_.zpp_inner.b * _loc3_.zpp_inner.c;
-         var _loc1_:Number = Number(_loc2_ < 0 ? -_loc2_ : _loc2_);
+         var _loc1_:Number = _loc2_ < 0 ? -_loc2_ : _loc2_;
          xdet = _loc1_ == 0 ? 0 : (sf32(_loc1_,0), si32(1597463007 - (li32(0) >> 1),0), _loc2_ = lf32(0), 1 / (_loc2_ * (1.5 - 0.5 * _loc1_ * _loc2_ * _loc2_)));
          xnull = xform.a == 1 && xform.b == 0 && xform.c == 0 && xform.d == 1 && xform.tx == 0 && xform.ty == 0;
          _loc3_ = xform.outer.inverse();
          _loc1_ = 0;
          _loc2_ = 0;
+         var _loc5_:Boolean = false;
          if(_loc1_ != _loc1_ || _loc2_ != _loc2_)
          {
             Boot.lastError = new Error();
@@ -227,7 +228,7 @@ package zpp_nape.util
             }
             _loc6_;
          }
-         _loc6_.zpp_inner.weak = false;
+         _loc6_.zpp_inner.weak = _loc5_;
          var _loc4_:Vec2 = _loc6_;
          _loc6_ = _loc3_.transform(_loc4_);
          §§push(iport);
@@ -757,9 +758,9 @@ package zpp_nape.util
       
       public function sup_setbg(param1:int) : void
       {
-         bg_r = param1 >> 16 & 255;
-         bg_g = param1 >> 8 & 255;
-         bg_b = param1 & 255;
+         bg_r = param1 >> 16 & 0xFF;
+         bg_g = param1 >> 8 & 0xFF;
+         bg_b = param1 & 0xFF;
          bg_col = param1;
       }
       
@@ -858,3 +859,4 @@ package zpp_nape.util
       }
    }
 }
+

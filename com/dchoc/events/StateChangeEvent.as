@@ -5,8 +5,6 @@ package com.dchoc.events
    
    public class StateChangeEvent extends Event
    {
-       
-      
       private var _state:State;
       
       private var _prevState:State;
@@ -29,3 +27,4 @@ package com.dchoc.events
       }
    }
 }
+

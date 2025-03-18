@@ -7,11 +7,11 @@ package starling.events
    import starling.utils.MatrixUtil;
    import starling.utils.formatString;
    
+   use namespace starling_internal;
+   
    public class Touch
    {
-      
       private static var sHelperMatrix:Matrix = new Matrix();
-       
       
       private var mID:int;
       
@@ -120,8 +120,13 @@ package starling.events
             element = this.mTarget;
             this.mBubbleChain.length = 1;
             this.mBubbleChain[0] = element;
-            while((element = element.parent) != null)
+            while(true)
             {
+               element = element.parent;
+               if(element == null)
+               {
+                  break;
+               }
                this.mBubbleChain[int(length++)] = element;
             }
          }
@@ -191,7 +196,7 @@ package starling.events
          return this.mHeight;
       }
       
-      starling_internal internal function dispatchEvent(event:TouchEvent) : void
+      starling_internal function dispatchEvent(event:TouchEvent) : void
       {
          if(Boolean(this.mTarget))
          {
@@ -199,18 +204,18 @@ package starling.events
          }
       }
       
-      starling_internal internal function get bubbleChain() : Vector.<EventDispatcher>
+      starling_internal function get bubbleChain() : Vector.<EventDispatcher>
       {
          return this.mBubbleChain.concat();
       }
       
-      starling_internal internal function setTarget(value:DisplayObject) : void
+      starling_internal function setTarget(value:DisplayObject) : void
       {
          this.mTarget = value;
          this.updateBubbleChain();
       }
       
-      starling_internal internal function setPosition(globalX:Number, globalY:Number) : void
+      starling_internal function setPosition(globalX:Number, globalY:Number) : void
       {
          this.mPreviousGlobalX = this.mGlobalX;
          this.mPreviousGlobalY = this.mGlobalY;
@@ -218,30 +223,31 @@ package starling.events
          this.mGlobalY = globalY;
       }
       
-      starling_internal internal function setSize(width:Number, height:Number) : void
+      starling_internal function setSize(width:Number, height:Number) : void
       {
          this.mWidth = width;
          this.mHeight = height;
       }
       
-      starling_internal internal function setPhase(value:String) : void
+      starling_internal function setPhase(value:String) : void
       {
          this.mPhase = value;
       }
       
-      starling_internal internal function setTapCount(value:int) : void
+      starling_internal function setTapCount(value:int) : void
       {
          this.mTapCount = value;
       }
       
-      starling_internal internal function setTimestamp(value:Number) : void
+      starling_internal function setTimestamp(value:Number) : void
       {
          this.mTimestamp = value;
       }
       
-      starling_internal internal function setPressure(value:Number) : void
+      starling_internal function setPressure(value:Number) : void
       {
          this.mPressure = value;
       }
    }
 }
+

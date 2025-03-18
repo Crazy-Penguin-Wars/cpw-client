@@ -7,11 +7,10 @@ package tuxwars.home.states.leaderboard
    
    public class LeaderboardUISubState extends TuxUIState
    {
-       
-      
       public function LeaderboardUISubState(game:TuxWarsGame, params:* = null)
       {
          super(LeaderboardScreen,LeaderboardLogic,game,params);
       }
    }
 }
+

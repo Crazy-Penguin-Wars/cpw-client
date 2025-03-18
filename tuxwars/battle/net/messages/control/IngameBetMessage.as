@@ -4,8 +4,6 @@ package tuxwars.battle.net.messages.control
    
    public class IngameBetMessage extends SocketMessage
    {
-       
-      
       public function IngameBetMessage(id:String)
       {
          super({
@@ -15,3 +13,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

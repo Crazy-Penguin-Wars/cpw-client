@@ -1,11 +1,10 @@
 package tuxwars.data.assets
 {
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    
    public class AssetsData
    {
-      
       private static const START_UP_SHARED:String = "StartUpShared";
       
       private static const START_UP:String = "StartUp";
@@ -65,7 +64,6 @@ package tuxwars.data.assets
       private static const SWF:String = "SWF";
       
       private static const USE_CONTEXT:String = "UseContext";
-       
       
       private var tableName:String;
       
@@ -229,13 +227,14 @@ package tuxwars.data.assets
          var _loc3_:Array = getTableRows(tableName);
          for each(var row in _loc3_)
          {
+            var _loc8_:String = "SWF";
             var _loc4_:* = row;
             §§push(_loc1_);
-            if(!_loc4_._cache["SWF"])
+            if(!_loc4_._cache[_loc8_])
             {
-               _loc4_._cache["SWF"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","SWF");
+               _loc4_._cache[_loc8_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc8_);
             }
-            var _loc5_:* = _loc4_._cache["SWF"];
+            var _loc5_:* = _loc4_._cache[_loc8_];
             §§pop().push(_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value);
          }
          return _loc1_;
@@ -250,3 +249,4 @@ package tuxwars.data.assets
       }
    }
 }
+

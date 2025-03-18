@@ -24,11 +24,11 @@ package mx.messaging.channels
    import mx.resources.IResourceManager;
    import mx.resources.ResourceManager;
    
+   use namespace mx_internal;
+   
    public class DirectHTTPChannel extends Channel
    {
-      
       private static var clientCounter:uint;
-       
       
       mx_internal var clientId:String;
       
@@ -104,10 +104,10 @@ package mx.messaging.channels
       {
          var requestHeaders:Array = null;
          var header:URLRequestHeader = null;
-         var h:* = null;
+         var h:String = null;
          var urlVariables:URLVariables = null;
          var body:Object = null;
-         var p:* = null;
+         var p:String = null;
          var httpMsg:HTTPRequestMessage = HTTPRequestMessage(message);
          var result:URLRequest = new URLRequest();
          var url:String = httpMsg.url;
@@ -181,11 +181,11 @@ import flash.events.Event;
 import flash.events.HTTPStatusEvent;
 import flash.events.IOErrorEvent;
 import flash.events.SecurityErrorEvent;
+import flash.net.Responder;
 import flash.net.URLLoader;
 import mx.core.mx_internal;
 import mx.messaging.MessageAgent;
 import mx.messaging.MessageResponder;
-import mx.messaging.channels.DirectHTTPChannel;
 import mx.messaging.messages.AbstractMessage;
 import mx.messaging.messages.AcknowledgeMessage;
 import mx.messaging.messages.ErrorMessage;
@@ -194,21 +194,20 @@ import mx.messaging.messages.IMessage;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
+use namespace mx_internal;
+
 class DirectHTTPMessageResponder extends MessageResponder
 {
-    
-   
    private var clientId:String;
    
    private var lastStatus:int;
    
-   private var resourceManager:IResourceManager;
+   private var resourceManager:IResourceManager = ResourceManager.getInstance();
    
    public var urlLoader:URLLoader;
    
    public function DirectHTTPMessageResponder(agent:MessageAgent, msg:IMessage, channel:DirectHTTPChannel, urlLoader:URLLoader)
    {
-      this.resourceManager = ResourceManager.getInstance();
       super(agent,msg,channel);
       this.urlLoader = urlLoader;
       this.clientId = channel.mx_internal::clientId;

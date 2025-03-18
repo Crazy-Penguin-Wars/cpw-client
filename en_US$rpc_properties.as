@@ -4,8 +4,6 @@ package
    
    public dynamic class en_US$rpc_properties extends ResourceBundle
    {
-       
-      
       public function en_US$rpc_properties()
       {
          super("en_US","rpc");
@@ -69,3 +67,4 @@ package
       }
    }
 }
+

@@ -8,8 +8,6 @@ package tuxwars.net
    
    public class FeedService
    {
-       
-      
       public function FeedService()
       {
          super();
@@ -18,7 +16,7 @@ package tuxwars.net
       
       public static function publishMessage(feedName:String, contentParams:Array = null, to:String = null) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:FeedObject = null;
          var _loc5_:FeedData = FeedDatas.findFeedData(feedName);
          if(_loc5_)
          {
@@ -48,3 +46,4 @@ package tuxwars.net
       }
    }
 }
+

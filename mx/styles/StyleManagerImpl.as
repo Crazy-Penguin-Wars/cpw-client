@@ -23,15 +23,15 @@ package mx.styles
    import mx.resources.ResourceManager;
    import mx.utils.MediaQueryParser;
    
+   use namespace mx_internal;
+   
    public class StyleManagerImpl extends EventDispatcher implements IStyleManager2
    {
+      private static var instance:IStyleManager2;
       
       mx_internal static const VERSION:String = "4.5.1.21489";
       
-      private static var instance:IStyleManager2;
-      
       private static var _qualifiedTypeSelectors:Boolean = true;
-       
       
       private var mqp:MediaQueryParser;
       
@@ -278,7 +278,7 @@ package mx.styles
       public function get inheritingStyles() : Object
       {
          var otherStyles:Object = null;
-         var obj:* = null;
+         var obj:Object = null;
          if(Boolean(this.mergedInheritingStylesCache))
          {
             return this.mergedInheritingStylesCache;
@@ -352,7 +352,7 @@ package mx.styles
       
       public function get selectors() : Array
       {
-         var i:* = null;
+         var i:String = null;
          var otherSelectors:Array = null;
          var theSelectors:Array = [];
          for(i in this._selectors)
@@ -404,7 +404,7 @@ package mx.styles
          {
             if(subject.charAt(0) != ".")
             {
-               index = subject.lastIndexOf(".");
+               index = int(subject.lastIndexOf("."));
                if(index != -1)
                {
                   subject = subject.substr(index + 1);
@@ -443,7 +443,7 @@ package mx.styles
          {
             if(selector.charAt(0) != ".")
             {
-               index = selector.lastIndexOf(".");
+               index = int(selector.lastIndexOf("."));
                if(index != -1)
                {
                   selector = selector.substr(index + 1);
@@ -477,7 +477,7 @@ package mx.styles
          {
             if(selector.charAt(0) != ".")
             {
-               index = selector.lastIndexOf(".");
+               index = int(selector.lastIndexOf("."));
                if(index != -1)
                {
                   selector = selector.substr(index + 1);
@@ -619,7 +619,7 @@ package mx.styles
          var sm:ISystemManager = null;
          var cm:Object = null;
          var sms:Array = SystemManagerGlobals.topLevelSystemManagers;
-         var n:int = sms.length;
+         var n:int = int(sms.length);
          for(var i:int = 0; i < n; i++)
          {
             sm = sms[i];
@@ -784,7 +784,7 @@ package mx.styles
          {
             return;
          }
-         var n:int = colors.length;
+         var n:int = int(colors.length);
          for(var i:int = 0; i < n; i++)
          {
             if(colors[i] != null && isNaN(colors[i]))
@@ -933,8 +933,6 @@ import mx.modules.IModuleInfo;
 
 class StyleEventDispatcher extends EventDispatcher
 {
-    
-   
    public function StyleEventDispatcher(moduleInfo:IModuleInfo)
    {
       super();
@@ -959,13 +957,8 @@ class StyleEventDispatcher extends EventDispatcher
    }
 }
 
-import mx.modules.IModuleInfo;
-import mx.styles.IStyleModule;
-
 class StyleModuleInfo
 {
-    
-   
    public var errorHandler:Function;
    
    public var readyHandler:Function;

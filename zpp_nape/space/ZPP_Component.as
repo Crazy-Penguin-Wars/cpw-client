@@ -6,9 +6,7 @@ package zpp_nape.space
    
    public class ZPP_Component
    {
-      
-      public static var zpp_pool:ZPP_Component = null;
-       
+      public static var zpp_pool:ZPP_Component;
       
       public var woken:Boolean;
       
@@ -54,3 +52,4 @@ package zpp_nape.space
       }
    }
 }
+

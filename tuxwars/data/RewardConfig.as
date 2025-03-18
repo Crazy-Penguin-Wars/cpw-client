@@ -1,13 +1,11 @@
 package tuxwars.data
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    import com.dchoc.utils.LogUtils;
    
    public class RewardConfig
    {
-      
       private static const TABLE:String = "BattleRewardDropOption";
       
       private static const DEFAULT:String = "Default";
@@ -73,7 +71,6 @@ package tuxwars.data
       private static const EXPORT:String = "Export";
       
       private static var row:Row;
-       
       
       public function RewardConfig()
       {
@@ -83,243 +80,265 @@ package tuxwars.data
       
       public static function getDamageCollectionTime() : int
       {
+         var _loc3_:String = "DamageCollectionTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["DamageCollectionTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["DamageCollectionTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","DamageCollectionTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["DamageCollectionTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getAppearTime() : int
       {
+         var _loc3_:String = "AppearTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["AppearTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["AppearTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","AppearTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["AppearTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getWaitTime() : int
       {
+         var _loc3_:String = "WaitTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["WaitTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["WaitTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","WaitTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["WaitTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getFlyTime() : int
       {
+         var _loc3_:String = "FlyTime";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["FlyTime"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["FlyTime"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","FlyTime");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["FlyTime"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getDamageToGold() : Number
       {
+         var _loc3_:String = "DamageToGold";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["DamageToGold"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["DamageToGold"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","DamageToGold");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["DamageToGold"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getDamageToExperience() : Number
       {
+         var _loc3_:String = "DamageToExperience";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["DamageToExperience"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["DamageToExperience"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","DamageToExperience");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["DamageToExperience"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getPropGoldExpModifier() : Number
       {
+         var _loc3_:String = "PropGoldExpModifier";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PropGoldExpModifier"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PropGoldExpModifier"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PropGoldExpModifier");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PropGoldExpModifier"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getPenguineKillBonusGoldExp() : int
       {
+         var _loc3_:String = "PenguinKillBonusGoldExp";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PenguinKillBonusGoldExp"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PenguinKillBonusGoldExp"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PenguinKillBonusGoldExp");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PenguinKillBonusGoldExp"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getRecipeDropChance() : Number
       {
+         var _loc3_:String = "RecipeDropChance";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["RecipeDropChance"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["RecipeDropChance"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","RecipeDropChance");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["RecipeDropChance"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getCouponDropChance() : Number
       {
+         var _loc3_:String = "CouponDropChance";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["CouponDropChance"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["CouponDropChance"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","CouponDropChance");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["CouponDropChance"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getCraftingDefaultDropChance() : Number
       {
+         var _loc3_:String = "CraftingDefaultDropChance";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["CraftingDefaultDropChance"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["CraftingDefaultDropChance"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","CraftingDefaultDropChance");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["CraftingDefaultDropChance"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getCraftingPropDropChance() : Number
       {
+         var _loc3_:String = "CraftingPropDropChance";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["CraftingPropDropChance"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["CraftingPropDropChance"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","CraftingPropDropChance");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["CraftingPropDropChance"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getAmmunitionDefaultDropChance() : Number
       {
+         var _loc3_:String = "AmmunitionDefaultDropChance";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["AmmunitionDefaultDropChance"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["AmmunitionDefaultDropChance"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","AmmunitionDefaultDropChance");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["AmmunitionDefaultDropChance"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getEquipmentDefaultDropChance() : Number
       {
+         var _loc3_:String = "EquipmentDefaultDropChance";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["EquipmentDefaultDropChance"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["EquipmentDefaultDropChance"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","EquipmentDefaultDropChance");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["EquipmentDefaultDropChance"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getTargetWornItemDropRatioAdd() : Number
       {
+         var _loc3_:String = "TargetWornItemDropRatioAdd";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TargetWornItemDropRatioAdd"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TargetWornItemDropRatioAdd"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TargetWornItemDropRatioAdd");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TargetWornItemDropRatioAdd"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getTargetWornItemDropRatioMultiply() : Number
       {
+         var _loc3_:String = "TargetWornItemDropRatioMultiply";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TargetWornItemDropRatioMultiply"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TargetWornItemDropRatioMultiply"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TargetWornItemDropRatioMultiply");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TargetWornItemDropRatioMultiply"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getTaggedObjectThreshold() : int
       {
+         var _loc3_:String = "TaggedObjectThreshold";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["TaggedObjectThreshold"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["TaggedObjectThreshold"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","TaggedObjectThreshold");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["TaggedObjectThreshold"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getPremiumDropChance() : Number
       {
+         var _loc3_:String = "PremiumDropChance";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PremiumDropChance"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PremiumDropChance"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PremiumDropChance");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PremiumDropChance"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getPremiumDropChanceAddOnKill() : Number
       {
+         var _loc3_:String = "PremiumDropChanceAddOnKill";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PremiumDropChanceAddOnKill"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PremiumDropChanceAddOnKill"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PremiumDropChanceAddOnKill");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PremiumDropChanceAddOnKill"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getPremiumDropChanceEarly() : Number
       {
+         var _loc3_:String = "PremiumDropChanceEarly";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PremiumDropChanceEarly"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PremiumDropChanceEarly"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PremiumDropChanceEarly");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PremiumDropChanceEarly"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getPremiumDropChanceDecrease() : Number
       {
+         var _loc3_:String = "PremiumDropChanceDecrease";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PremiumDropChanceDecrease"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PremiumDropChanceDecrease"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PremiumDropChanceDecrease");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PremiumDropChanceDecrease"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public static function getPremiumCashAmount() : Number
       {
+         var _loc3_:String = "PremiumCashAmount";
          var _loc1_:* = getRow();
-         if(!_loc1_._cache["PremiumCashAmount"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["PremiumCashAmount"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","PremiumCashAmount");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["PremiumCashAmount"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
@@ -327,18 +346,20 @@ package tuxwars.data
       {
          if(!row)
          {
+            var _loc3_:String = "BattleRewardDropOption";
             var _loc1_:ProjectManager = ProjectManager;
-            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("BattleRewardDropOption");
-            if(!_loc2_._cache["Default"])
+            var _loc4_:String = "Default";
+            var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+            if(!_loc2_._cache[_loc4_])
             {
-               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Default");
+               var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
                if(!_loc5_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "Default" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
                }
-               _loc2_._cache["Default"] = _loc5_;
+               _loc2_._cache[_loc4_] = _loc5_;
             }
-            row = _loc2_._cache["Default"];
+            row = _loc2_._cache[_loc4_];
             if(!row)
             {
                LogUtils.log("Couldn\'t for default row for BattleRewardConfig.",3);
@@ -352,12 +373,13 @@ package tuxwars.data
          var _loc3_:Row = getIconRow(rowName);
          if(_loc3_ != null)
          {
+            var _loc6_:String = "Export";
             var _loc4_:* = _loc3_;
-            if(!_loc4_._cache["Export"])
+            if(!_loc4_._cache[_loc6_])
             {
-               _loc4_._cache["Export"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","Export");
+               _loc4_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc6_);
             }
-            §§push(_loc4_._cache["Export"]);
+            §§push(_loc4_._cache[_loc6_]);
          }
          else
          {
@@ -373,12 +395,13 @@ package tuxwars.data
          var _loc3_:Row = getIconRow(rowName);
          if(_loc3_ != null)
          {
+            var _loc6_:String = "SWF";
             var _loc4_:* = _loc3_;
-            if(!_loc4_._cache["SWF"])
+            if(!_loc4_._cache[_loc6_])
             {
-               _loc4_._cache["SWF"] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name","SWF");
+               _loc4_._cache[_loc6_] = com.dchoc.utils.DCUtils.find(_loc4_._fields,"name",_loc6_);
             }
-            §§push(_loc4_._cache["SWF"]);
+            §§push(_loc4_._cache[_loc6_]);
          }
          else
          {
@@ -391,9 +414,10 @@ package tuxwars.data
       
       private static function getIconRow(value:String) : Row
       {
+         var _loc5_:String = "BattleRewardIconDefault";
          var _loc3_:ProjectManager = ProjectManager;
          var _loc6_:* = value;
-         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("BattleRewardIconDefault");
+         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc5_);
          if(!_loc4_._cache[_loc6_])
          {
             var _loc7_:Row = com.dchoc.utils.DCUtils.find(_loc4_.rows,"id",_loc6_);
@@ -412,3 +436,4 @@ package tuxwars.data
       }
    }
 }
+

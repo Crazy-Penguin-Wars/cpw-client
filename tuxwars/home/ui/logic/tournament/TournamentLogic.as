@@ -6,8 +6,6 @@ package tuxwars.home.ui.logic.tournament
    
    public class TournamentLogic extends TuxUILogic
    {
-       
-      
       public function TournamentLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -29,3 +27,4 @@ package tuxwars.home.ui.logic.tournament
       }
    }
 }
+

@@ -6,11 +6,10 @@ package tuxwars.ui.popups.states.battlelock
    
    public class BattleLockMessagePopUpSubState extends MessagePopUpSubState
    {
-       
-      
       public function BattleLockMessagePopUpSubState(game:TuxWarsGame)
       {
          super(game,BattleLockMessagePopUpLogic);
       }
    }
 }
+

@@ -9,8 +9,6 @@ package tuxwars.home.states
    
    public class BattleAssetLoadingSubState extends TuxState
    {
-       
-      
       private const batchLoaders:Vector.<BatchLoader> = new Vector.<BatchLoader>();
       
       private var numLoadedBatches:int;
@@ -67,3 +65,4 @@ package tuxwars.home.states
       }
    }
 }
+

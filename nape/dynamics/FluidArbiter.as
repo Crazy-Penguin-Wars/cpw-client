@@ -12,8 +12,6 @@ package nape.dynamics
    
    public final class FluidArbiter extends Arbiter
    {
-       
-      
       public function FluidArbiter()
       {
          if(Boot.skip_constructor)
@@ -382,6 +380,11 @@ package nape.dynamics
             _loc8_._invalidate = null;
             _loc8_.next = ZPP_Vec2.zpp_pool;
             ZPP_Vec2.zpp_pool = _loc8_;
+            true;
+         }
+         else
+         {
+            false;
          }
          _loc4_;
          if(!zpp_inner.active)
@@ -536,3 +539,4 @@ package nape.dynamics
       }
    }
 }
+

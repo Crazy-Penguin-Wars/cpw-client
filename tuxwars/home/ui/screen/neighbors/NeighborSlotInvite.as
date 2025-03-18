@@ -8,9 +8,7 @@ package tuxwars.home.ui.screen.neighbors
    
    public class NeighborSlotInvite
    {
-      
       private static const BUTTON_INVITE:String = "Button_Invite";
-       
       
       private var buttonInvite:UIButton;
       
@@ -45,3 +43,4 @@ package tuxwars.home.ui.screen.neighbors
       }
    }
 }
+

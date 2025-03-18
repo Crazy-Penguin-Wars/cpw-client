@@ -5,9 +5,10 @@ package mx.events
    import mx.core.mx_internal;
    import mx.modules.IModuleInfo;
    
+   use namespace mx_internal;
+   
    public class ModuleEvent extends ProgressEvent
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
       
       public static const ERROR:String = "error";
@@ -19,7 +20,6 @@ package mx.events
       public static const SETUP:String = "setup";
       
       public static const UNLOAD:String = "unload";
-       
       
       public var errorText:String;
       
@@ -47,3 +47,4 @@ package mx.events
       }
    }
 }
+

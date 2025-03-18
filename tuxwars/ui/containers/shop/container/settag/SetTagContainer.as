@@ -11,8 +11,6 @@ package tuxwars.ui.containers.shop.container.settag
    
    public class SetTagContainer extends Container
    {
-       
-      
       private var _setText:UIAutoTextField;
       
       private var _atkText:UIAutoTextField;
@@ -85,3 +83,4 @@ package tuxwars.ui.containers.shop.container.settag
       }
    }
 }
+

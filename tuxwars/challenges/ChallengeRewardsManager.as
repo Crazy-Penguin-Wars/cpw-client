@@ -11,11 +11,9 @@ package tuxwars.challenges
    
    public class ChallengeRewardsManager
    {
-      
       private static var _instance:ChallengeRewardsManager;
       
       private static var _tuxGame:TuxWarsGame;
-       
       
       public function ChallengeRewardsManager()
       {
@@ -45,10 +43,10 @@ package tuxwars.challenges
       
       private function updateChallengesServerResponse(msg:Message) : void
       {
-         var completedChallenges:* = null;
-         var _loc2_:* = null;
-         var _loc4_:* = null;
-         var _loc3_:* = null;
+         var completedChallenges:Object = null;
+         var _loc2_:Challenges = null;
+         var _loc4_:Array = null;
+         var _loc3_:Challenge = null;
          if(msg.data)
          {
             if(msg.data.confirmation_results && msg.data.confirmation_results.earned_trophies)
@@ -102,7 +100,7 @@ package tuxwars.challenges
       
       private function activateNewChallenges(data:Object) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Challenges = null;
          if(data)
          {
             var _loc3_:ChallengeManager = ChallengeManager;
@@ -124,7 +122,7 @@ package tuxwars.challenges
       
       private function giveTrophies(data:Object) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Array = null;
          if(data)
          {
             _loc3_ = data.item is Array ? data.item : [data.item];
@@ -167,3 +165,4 @@ package tuxwars.challenges
       }
    }
 }
+

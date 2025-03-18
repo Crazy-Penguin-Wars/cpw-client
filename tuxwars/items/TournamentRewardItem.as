@@ -6,8 +6,6 @@ package tuxwars.items
    
    public class TournamentRewardItem
    {
-       
-      
       private var _type:String;
       
       private var _amount:int;
@@ -79,3 +77,4 @@ package tuxwars.items
       }
    }
 }
+

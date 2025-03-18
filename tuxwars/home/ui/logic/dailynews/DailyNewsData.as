@@ -2,8 +2,6 @@ package tuxwars.home.ui.logic.dailynews
 {
    public class DailyNewsData
    {
-       
-      
       private const _addDatas:Vector.<AddData> = new Vector.<AddData>();
       
       private var _saleLeft:SaleData;
@@ -89,3 +87,4 @@ package tuxwars.home.ui.logic.dailynews
       }
    }
 }
+

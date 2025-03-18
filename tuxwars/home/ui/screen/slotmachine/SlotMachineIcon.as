@@ -7,8 +7,6 @@ package tuxwars.home.ui.screen.slotmachine
    
    public class SlotMachineIcon
    {
-       
-      
       private var _design:MovieClip;
       
       private var _slotNumber:int;
@@ -78,3 +76,4 @@ package tuxwars.home.ui.screen.slotmachine
       }
    }
 }
+

@@ -7,16 +7,13 @@ package com.dchoc.utils
    
    public class LogUtils
    {
-      
       public static const CATEGORY_ALL:String = "All";
       
       private static const PERMANENT_DEBUG_LOG:Vector.<String> = new Vector.<String>();
       
       private static const DEBUG_LOG:Object = {};
       
-      {
-         DEBUG_LOG["All"] = new Vector.<String>();
-      }
+      DEBUG_LOG["All"] = new Vector.<String>();
       
       public function LogUtils()
       {
@@ -55,7 +52,7 @@ package com.dchoc.utils
       
       public static function addDebugLine(category:String, line:String, sourceObj:* = null) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:String = null;
          if(DebugCategories.PROD_LOG[category] || Config.debugMode)
          {
             _loc4_ = category + " (" + DCGame.getTime() + "): " + line + (sourceObj != null ? " <Src:" + sourceObj + ">" : "");
@@ -88,12 +85,12 @@ package com.dchoc.utils
          {
             return;
          }
-         toOlog = toOlog && level > 1;
+         toOlog &&= level > 0;
          if(!toOlog && openLogWindow)
          {
             openLogWindow = false;
          }
-         openLogWindow = openLogWindow && level > 2;
+         openLogWindow &&= level > 0;
          if(message.toString() == "[object Object]")
          {
             message = JSON.stringify(message);
@@ -136,7 +133,7 @@ package com.dchoc.utils
       
       public static function getKeyNames(obj:Object) : String
       {
-         var s:* = null;
+         var s:String = null;
          if(obj)
          {
             s = "";
@@ -201,3 +198,4 @@ package com.dchoc.utils
       }
    }
 }
+

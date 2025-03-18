@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.chat
    
    public class ChatMessage extends SocketMessage
    {
-       
-      
       public function ChatMessage(id:String, text:String, tid:String = null)
       {
          super({
@@ -23,3 +21,4 @@ package tuxwars.battle.net.messages.chat
       }
    }
 }
+

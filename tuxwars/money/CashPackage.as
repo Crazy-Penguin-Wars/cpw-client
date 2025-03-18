@@ -4,8 +4,6 @@ package tuxwars.money
    
    public class CashPackage
    {
-       
-      
       private var _id:String;
       
       private var _amount:int;
@@ -64,3 +62,4 @@ package tuxwars.money
       }
    }
 }
+

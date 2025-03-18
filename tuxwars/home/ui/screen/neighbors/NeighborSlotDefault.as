@@ -12,11 +12,9 @@ package tuxwars.home.ui.screen.neighbors
    
    public class NeighborSlotDefault extends NeighborSlot
    {
-      
       private static const BUTTON_SEND:String = "Button_Send";
       
       private static const BUTTON_REMOVE:String = "Button_Remove";
-       
       
       private var sendButton:UIButton;
       
@@ -61,3 +59,4 @@ package tuxwars.home.ui.screen.neighbors
       }
    }
 }
+

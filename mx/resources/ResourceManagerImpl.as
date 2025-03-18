@@ -19,19 +19,19 @@ package mx.resources
    import mx.modules.ModuleManager;
    import mx.utils.StringUtil;
    
+   use namespace mx_internal;
+   
    public class ResourceManagerImpl extends EventDispatcher implements IResourceManager
    {
+      private static var instance:IResourceManager;
       
       mx_internal static const VERSION:String = "4.5.1.21489";
       
-      private static var instance:IResourceManager;
-       
-      
       private var bundleDictionary:Dictionary;
       
-      private var localeMap:Object;
+      private var localeMap:Object = {};
       
-      private var resourceModules:Object;
+      private var resourceModules:Object = {};
       
       private var initializedForNonFrameworkApp:Boolean = false;
       
@@ -39,8 +39,6 @@ package mx.resources
       
       public function ResourceManagerImpl()
       {
-         this.localeMap = {};
-         this.resourceModules = {};
          super();
          var info:Object = SystemManagerGlobals.info;
          if(Boolean(info))
@@ -80,8 +78,8 @@ package mx.resources
          var bundleName:String = null;
          var bundles:Array = [];
          var bundleCount:uint = 0;
-         var n:int = Boolean(locales) ? locales.length : 0;
-         var m:int = Boolean(bundleNames) ? bundleNames.length : 0;
+         var n:int = Boolean(locales) ? int(locales.length) : 0;
+         var m:int = Boolean(bundleNames) ? int(bundleNames.length) : 0;
          for(var i:int = 0; i < n; i++)
          {
             locale = locales[i];
@@ -99,7 +97,7 @@ package mx.resources
       {
          var packageName:String = null;
          var localName:String = bundleName;
-         var colonIndex:int = bundleName.indexOf(":");
+         var colonIndex:int = int(bundleName.indexOf(":"));
          if(colonIndex != -1)
          {
             packageName = bundleName.substring(0,colonIndex);
@@ -251,7 +249,7 @@ package mx.resources
             bundles = rmi.resourceModule.resourceBundles;
             if(Boolean(bundles))
             {
-               n = bundles.length;
+               n = int(bundles.length);
                for(i = 0; i < n; i++)
                {
                   locale = bundles[i].locale;
@@ -300,7 +298,7 @@ package mx.resources
       private function getResourceBundleInternal(locale:String, bundleName:String, ignoreWeakReferenceBundles:Boolean) : IResourceBundle
       {
          var localeBundleNameString:String = null;
-         var obj:* = null;
+         var obj:Object = null;
          var bundleMap:Object = this.localeMap[locale];
          if(!bundleMap)
          {
@@ -352,7 +350,7 @@ package mx.resources
       
       public function getLocales() : Array
       {
-         var p:* = null;
+         var p:String = null;
          var locales:Array = [];
          for(p in this.localeMap)
          {
@@ -368,7 +366,7 @@ package mx.resources
       
       public function getBundleNamesForLocale(locale:String) : Array
       {
-         var p:* = null;
+         var p:String = null;
          var bundleNames:Array = [];
          for(p in this.localeMap[locale])
          {
@@ -384,12 +382,12 @@ package mx.resources
          var bundleObject:Object = null;
          var bundle:IResourceBundle = null;
          var localeBundleNameString:String = null;
-         var obj:* = null;
+         var obj:Object = null;
          if(!this._localeChain)
          {
             return null;
          }
-         var n:int = this._localeChain.length;
+         var n:int = int(this._localeChain.length);
          for(var i:int = 0; i < n; i++)
          {
             locale = this.localeChain[i];
@@ -463,7 +461,7 @@ package mx.resources
          }
          var value:* = resourceBundle.content[resourceName];
          var array:Array = String(value).split(",");
-         var n:int = array.length;
+         var n:int = int(array.length);
          for(var i:int = 0; i < n; i++)
          {
             array[i] = StringUtil.trim(array[i]);
@@ -577,7 +575,7 @@ package mx.resources
       private function dumpResourceModule(resourceModule:*) : void
       {
          var bundle:ResourceBundle = null;
-         var p:* = null;
+         var p:String = null;
          for each(bundle in resourceModule.resourceBundles)
          {
             trace(bundle.locale,bundle.bundleName);
@@ -589,13 +587,13 @@ package mx.resources
    }
 }
 
+import flash.events.EventDispatcher;
+import mx.events.ModuleEvent;
+import mx.events.ResourceEvent;
 import mx.modules.IModuleInfo;
-import mx.resources.IResourceModule;
 
 class ResourceModuleInfo
 {
-    
-   
    public var errorHandler:Function;
    
    public var moduleInfo:IModuleInfo;
@@ -613,15 +611,8 @@ class ResourceModuleInfo
    }
 }
 
-import flash.events.EventDispatcher;
-import mx.events.ModuleEvent;
-import mx.events.ResourceEvent;
-import mx.modules.IModuleInfo;
-
 class ResourceEventDispatcher extends EventDispatcher
 {
-    
-   
    public function ResourceEventDispatcher(moduleInfo:IModuleInfo)
    {
       super();

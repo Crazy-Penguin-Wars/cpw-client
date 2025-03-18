@@ -16,7 +16,6 @@ package tuxwars.ui.components
    
    public class ObjectContainer extends TuxUIElementScreen
    {
-      
       public static const TRANSITION_SLOTS_LEFT:String = "transition_slots_left";
       
       public static const TRANSITION_SLOTS_RIGHT:String = "transition_slots_right";
@@ -46,7 +45,6 @@ package tuxwars.ui.components
       private static const BUTTON_SCROLL_LEFT:String = "Button_Scroll_Left";
       
       private static const BUTTON_SCROLL_RIGHT:String = "Button_Scroll_Right";
-       
       
       private const containerForObjects:Array = [];
       
@@ -62,7 +60,7 @@ package tuxwars.ui.components
       
       private var containerType:String;
       
-      private var slotObjects;
+      private var slotObjects:*;
       
       private var container:MovieClip;
       
@@ -111,9 +109,10 @@ package tuxwars.ui.components
       private function countObjects(name:String) : int
       {
          var i:int = 0;
-         var _loc2_:* = null;
+         var _loc2_:DisplayObject = null;
          var count:int = 0;
-         for(i = 0; i < container.numChildren; )
+         i = 0;
+         while(i < container.numChildren)
          {
             _loc2_ = container.getChildAt(i);
             if(_loc2_ != null && _loc2_.name.indexOf(name) != -1)
@@ -129,7 +128,7 @@ package tuxwars.ui.components
       {
          assert("Will cause divide / zero",true,objectsPerPage > 0);
          var _loc5_:int = numPages;
-         numPages = Math.ceil(Number(slotObjects.length) / objectsPerPage);
+         numPages = Math.ceil(slotObjects.length / objectsPerPage);
          var currentPageToShow:* = -1;
          if(numPages > initialPageToShow)
          {
@@ -246,7 +245,8 @@ package tuxwars.ui.components
       private function hideAllButtons() : void
       {
          var i:int = 0;
-         for(i = 1; i <= objectsPerPage; )
+         i = 1;
+         while(i <= objectsPerPage)
          {
             if(containerType == "Slot_")
             {
@@ -280,7 +280,7 @@ package tuxwars.ui.components
       
       private function addObject(slotIndex:int, object:*) : void
       {
-         var _loc4_:* = null;
+         var _loc4_:ButtonContainers = null;
          var _loc3_:* = getSlotContentObject(slotIndex,object,container.getChildByName((containerType == "Slot_" ? "Slot_" : "Container_") + getIndexString(slotIndex + 1)));
          if(_loc3_ != null)
          {
@@ -307,7 +307,7 @@ package tuxwars.ui.components
       private function getObjectsOnPage(index:int) : *
       {
          var _loc3_:int = index * objectsPerPage;
-         var _loc2_:int = Number(slotObjects.length) - _loc3_;
+         var _loc2_:int = slotObjects.length - _loc3_;
          var _loc4_:int = _loc3_ + (_loc2_ < objectsPerPage ? _loc2_ : objectsPerPage);
          return slotObjects.slice(_loc3_,_loc4_);
       }
@@ -336,28 +336,15 @@ package tuxwars.ui.components
       {
          if(_curPage + 1 < numPages)
          {
-            if(_transitionBefore == null || _transitionAfter == null || !_transitionBefore.isTransitioning() && !_transitionAfter.isTransitioning())
+            ++_curPage;
+            showPage(_curPage);
+            if(_curPage == numPages - 1)
             {
-               _curPage++;
-               if(_transitionNameRight)
-               {
-                  transitionBeforeEnded(null);
-                  _transitionBefore = TuxUiUtils.createTransition(_transitionBefore,container,_transitionNameRight + "_close",transitionBeforeEnded);
-               }
-               showPage(_curPage);
-               if(_transitionNameRight)
-               {
-                  transitionAfterEnded(null);
-                  _transitionAfter = TuxUiUtils.createTransition(_transitionAfter,container,_transitionNameRight + "_open",transitionAfterEnded);
-               }
-               if(_curPage == numPages - 1)
-               {
-                  scrollRightButton.setEnabled(false);
-               }
-               if(!scrollLeftButton.getEnabled())
-               {
-                  scrollLeftButton.setEnabled(true);
-               }
+               scrollRightButton.setEnabled(false);
+            }
+            if(!scrollLeftButton.getEnabled())
+            {
+               scrollLeftButton.setEnabled(true);
             }
          }
       }
@@ -366,28 +353,15 @@ package tuxwars.ui.components
       {
          if(_curPage - 1 >= 0)
          {
-            if(_transitionBefore == null || _transitionAfter == null || !_transitionBefore.isTransitioning() && !_transitionAfter.isTransitioning())
+            --_curPage;
+            showPage(_curPage);
+            if(_curPage == 0)
             {
-               _curPage--;
-               if(_transitionNameLeft)
-               {
-                  transitionBeforeEnded(null);
-                  _transitionBefore = TuxUiUtils.createTransition(_transitionBefore,container,_transitionNameLeft + "_close",transitionBeforeEnded);
-               }
-               showPage(_curPage);
-               if(_transitionNameLeft)
-               {
-                  transitionAfterEnded(null);
-                  _transitionAfter = TuxUiUtils.createTransition(_transitionAfter,container,_transitionNameLeft + "_open",transitionAfterEnded);
-               }
-               if(_curPage == 0)
-               {
-                  scrollLeftButton.setEnabled(false);
-               }
-               if(!scrollRightButton.getEnabled())
-               {
-                  scrollRightButton.setEnabled(true);
-               }
+               scrollLeftButton.setEnabled(false);
+            }
+            if(!scrollRightButton.getEnabled())
+            {
+               scrollRightButton.setEnabled(true);
             }
          }
       }
@@ -418,3 +392,4 @@ package tuxwars.ui.components
       }
    }
 }
+

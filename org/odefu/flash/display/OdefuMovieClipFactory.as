@@ -9,8 +9,6 @@ package org.odefu.flash.display
    
    public final class OdefuMovieClipFactory
    {
-       
-      
       public function OdefuMovieClipFactory()
       {
          super();
@@ -76,3 +74,4 @@ package org.odefu.flash.display
       }
    }
 }
+

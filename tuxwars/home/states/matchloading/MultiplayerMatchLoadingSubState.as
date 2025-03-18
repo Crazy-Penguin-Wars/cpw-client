@@ -8,13 +8,12 @@ package tuxwars.home.states.matchloading
    
    public class MultiplayerMatchLoadingSubState extends MatchLoadingSubState
    {
-       
-      
       public function MultiplayerMatchLoadingSubState(game:TuxWarsGame, request:ServerRequest)
       {
          super(game,request);
+         var _loc4_:* = null;
          var _loc3_:BattleManager = BattleManager;
-         tuxwars.battle.BattleManager._customGameName = null;
+         tuxwars.battle.BattleManager._customGameName = _loc4_;
          BattleManager.setPracticeMode(false);
       }
       
@@ -39,3 +38,4 @@ package tuxwars.home.states.matchloading
       }
    }
 }
+

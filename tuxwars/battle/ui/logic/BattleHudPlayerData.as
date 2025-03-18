@@ -4,7 +4,6 @@ package tuxwars.battle.ui.logic
    
    public class BattleHudPlayerData
    {
-      
       public static const ACTIVE:String = "Active";
       
       public static const IDLE:String = "Idle";
@@ -12,7 +11,6 @@ package tuxwars.battle.ui.logic
       public static const DISABLED:String = "Disabled";
       
       public static const EMPTY:String = "Empty";
-       
       
       private var _name:String;
       
@@ -119,3 +117,4 @@ package tuxwars.battle.ui.logic
       }
    }
 }
+

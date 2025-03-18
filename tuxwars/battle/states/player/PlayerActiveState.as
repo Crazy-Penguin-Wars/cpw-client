@@ -17,8 +17,6 @@ package tuxwars.battle.states.player
    
    public class PlayerActiveState extends PlayerState
    {
-       
-      
       private var keyUpAction:PlayerKeyUpAction;
       
       private var keyDownAction:PlayerKeyDownAction;
@@ -35,7 +33,7 @@ package tuxwars.battle.states.player
       
       override public function enter() : void
       {
-         var _loc1_:* = null;
+         var _loc1_:SoundReference = null;
          super.enter();
          player.idleMode = true;
          if(BattleManager.isLocalPlayersTurn())
@@ -124,3 +122,4 @@ package tuxwars.battle.states.player
       }
    }
 }
+

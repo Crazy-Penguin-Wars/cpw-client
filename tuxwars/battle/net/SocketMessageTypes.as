@@ -2,7 +2,6 @@ package tuxwars.battle.net
 {
    public class SocketMessageTypes
    {
-      
       public static const UPDATE_WORLD:int = 1;
       
       public static const AIM:int = 2;
@@ -128,7 +127,6 @@ package tuxwars.battle.net
       public static const BATTLE_MESSAGES:Array = [1,9,2,7,3,4,5,6,11,10,12,8,35,36,34,22,55];
       
       public static const CONTROL_MESSAGES:Array = [21,26,29,15,17,19,20,24,16,25,18,13,60,27,23,41,40,37,50,51];
-       
       
       public function SocketMessageTypes()
       {
@@ -187,3 +185,4 @@ package tuxwars.battle.net
       }
    }
 }
+

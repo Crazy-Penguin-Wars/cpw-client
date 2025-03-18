@@ -2,8 +2,6 @@ package mx.collections
 {
    public interface ISortField
    {
-       
-      
       function get arraySortOnOptions() : int;
       
       function get compareFunction() : Function;
@@ -29,3 +27,4 @@ package mx.collections
       function reverse() : void;
    }
 }
+

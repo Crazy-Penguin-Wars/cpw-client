@@ -7,8 +7,6 @@ package tuxwars.home.states.customgame
    
    public class CustomGameHostSubState extends CustomGameConnectSubState
    {
-       
-      
       public function CustomGameHostSubState(game:TuxWarsGame, gameName:String, request:ServerRequest)
       {
          super(game,gameName,request);
@@ -25,3 +23,4 @@ package tuxwars.home.states.customgame
       }
    }
 }
+

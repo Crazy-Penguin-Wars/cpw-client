@@ -13,8 +13,6 @@ package tuxwars.home.ui.screen.inbox.container
    
    public class InboxNeighbor extends InboxCore
    {
-       
-      
       private var accept:UIButton;
       
       private var ignore:UIButton;
@@ -68,3 +66,4 @@ package tuxwars.home.ui.screen.inbox.container
       }
    }
 }
+

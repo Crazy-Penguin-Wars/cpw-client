@@ -1,11 +1,11 @@
 package com.dchoc.camera
 {
    import com.dchoc.game.GameWorld;
+   import com.dchoc.game.WorldContainer;
+   import starling.core.Starling;
    
    public class Camera
    {
-       
-      
       protected var _world:GameWorld;
       
       protected var _zoom:Number;
@@ -75,3 +75,4 @@ package com.dchoc.camera
       }
    }
 }
+

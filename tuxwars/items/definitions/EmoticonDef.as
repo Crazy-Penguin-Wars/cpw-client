@@ -6,8 +6,6 @@ package tuxwars.items.definitions
    
    public class EmoticonDef extends ItemDef
    {
-       
-      
       private var _duration:int;
       
       public function EmoticonDef()
@@ -29,3 +27,4 @@ package tuxwars.items.definitions
       }
    }
 }
+

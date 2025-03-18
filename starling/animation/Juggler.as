@@ -6,8 +6,6 @@ package starling.animation
    
    public class Juggler implements IAnimatable
    {
-       
-      
       private var mObjects:Vector.<IAnimatable>;
       
       private var mElapsedTime:Number;
@@ -49,7 +47,7 @@ package starling.animation
          {
             dispatcher.removeEventListener(Event.REMOVE_FROM_JUGGLER,this.onRemove);
          }
-         var index:int = this.mObjects.indexOf(object);
+         var index:int = int(this.mObjects.indexOf(object));
          if(index != -1)
          {
             this.mObjects[index] = null;
@@ -101,7 +99,7 @@ package starling.animation
       
       public function tween(target:Object, time:Number, properties:Object) : void
       {
-         var property:* = null;
+         var property:String = null;
          var value:Object = null;
          var tween:Tween = Tween.starling_internal::fromPool(target,time);
          for(property in properties)
@@ -133,7 +131,7 @@ package starling.animation
       {
          var i:int = 0;
          var object:IAnimatable = null;
-         var numObjects:int = this.mObjects.length;
+         var numObjects:int = int(this.mObjects.length);
          var currentIndex:int = 0;
          this.mElapsedTime += time;
          if(numObjects == 0)
@@ -156,7 +154,7 @@ package starling.animation
          }
          if(currentIndex != i)
          {
-            numObjects = this.mObjects.length;
+            numObjects = int(this.mObjects.length);
             while(i < numObjects)
             {
                this.mObjects[int(currentIndex++)] = this.mObjects[int(i++)];
@@ -181,3 +179,4 @@ package starling.animation
       }
    }
 }
+

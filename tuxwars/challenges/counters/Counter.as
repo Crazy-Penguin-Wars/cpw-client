@@ -27,8 +27,6 @@ package tuxwars.challenges.counters
    
    public class Counter
    {
-       
-      
       private var _challenge:Challenge;
       
       private var _targetValue:int;
@@ -247,3 +245,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

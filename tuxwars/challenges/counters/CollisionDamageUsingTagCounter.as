@@ -8,8 +8,6 @@ package tuxwars.challenges.counters
    
    public class CollisionDamageUsingTagCounter extends Counter
    {
-       
-      
       public function CollisionDamageUsingTagCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
       {
          super(challenge,id,targetValue,playerId,params);
@@ -17,7 +15,7 @@ package tuxwars.challenges.counters
       
       override public function handleTakeCollisionDamage(msg:ChallengeTakeCollisionDamageMessage) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:PlayerGameObject = null;
          if(msg.playerTaggerOfObjectDoingDamage)
          {
             var _loc3_:* = msg.playerTaggerOfObjectDoingDamage;
@@ -49,3 +47,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

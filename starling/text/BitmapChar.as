@@ -6,8 +6,6 @@ package starling.text
    
    public class BitmapChar
    {
-       
-      
       private var mTexture:Texture;
       
       private var mCharID:int;
@@ -90,3 +88,4 @@ package starling.text
       }
    }
 }
+

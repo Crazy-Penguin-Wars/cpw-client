@@ -7,11 +7,11 @@ package tuxwars.utils
    import com.dchoc.ui.transitions.UITransition;
    import com.dchoc.utils.LogUtils;
    import flash.display.MovieClip;
+   import flash.external.ExternalInterface;
    import flash.text.TextField;
    
    public class TuxUiUtils
    {
-      
       public static const TOP:String = "top";
       
       public static const BOTTOM:String = "bottom";
@@ -21,7 +21,6 @@ package tuxwars.utils
       public static const RIGHT:String = "right";
       
       public static const CENTER:String = "center";
-       
       
       public function TuxUiUtils()
       {
@@ -61,16 +60,23 @@ package tuxwars.utils
       
       public static function createButton(klass:Class, mc:MovieClip, childName:String, clickCallback:Function = null, tid:String = null, parameter:Object = null, tidParams:Array = null) : *
       {
+         ExternalInterface.call("console.log","[createButton] Start running");
          var _loc9_:* = childName != null ? mc.getChildByName(childName) as MovieClip : mc;
+         ExternalInterface.call("console.log","[createButton] Point 1 works");
+         ExternalInterface.call("console.log",_loc9_ == null);
          var _loc8_:* = new klass(_loc9_);
+         ExternalInterface.call("console.log","[createButton] Point 2 works");
          _loc8_.setParameter(parameter);
+         ExternalInterface.call("console.log","[createButton] Point 3 works");
          if(tid != null)
          {
             _loc8_.setText(ProjectManager.getText(tid,tidParams));
+            ExternalInterface.call("console.log","[createButton] Point 4 works");
          }
          if(clickCallback != null)
          {
             _loc8_.setMouseClickFunction(clickCallback);
+            ExternalInterface.call("console.log","[createButton] Point 5 works");
          }
          return _loc8_;
       }
@@ -139,7 +145,7 @@ package tuxwars.utils
          var inc:Number = Math.pow(10,maxDecimals);
          var str:String = String(Math.round(inc * number) / inc);
          hasSep = str.indexOf(".") == -1;
-         var sep:int = hasSep ? str.length : str.indexOf(".");
+         var sep:int = int(hasSep ? str.length : str.indexOf("."));
          var ret:String = (hasSep && !forceDecimals ? "" : (siStyle ? "," : ".")) + str.substr(sep + 1);
          if(forceDecimals)
          {
@@ -182,3 +188,4 @@ package tuxwars.utils
       }
    }
 }
+

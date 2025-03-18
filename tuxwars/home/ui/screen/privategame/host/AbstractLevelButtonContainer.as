@@ -12,8 +12,6 @@ package tuxwars.home.ui.screen.privategame.host
    
    public class AbstractLevelButtonContainer extends UIContainer implements ButtonContainer
    {
-       
-      
       private var _levelData:LevelData;
       
       private var _button:UIToggleButton;
@@ -45,3 +43,4 @@ package tuxwars.home.ui.screen.privategame.host
       }
    }
 }
+

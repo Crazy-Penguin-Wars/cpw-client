@@ -6,8 +6,6 @@ package tuxwars.home.states.slotmachine
    
    public class SlotMachineLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       public function SlotMachineLoadAssetsSubState(game:DCGame, params:* = null)
       {
          super(game,AssetsData.getSlotMachineAssets(),params);
@@ -19,3 +17,4 @@ package tuxwars.home.states.slotmachine
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.tournament
    
    public class League
    {
-       
-      
       private var _game:TuxWarsGame;
       
       private var _id:String;
@@ -51,7 +49,7 @@ package tuxwars.tournament
       
       private var _divisionId:String;
       
-      private var _players:Vector.<TournamentPlayer>;
+      private var _players:Vector.<TournamentPlayer> = new Vector.<TournamentPlayer>();
       
       private var _rewardId:String;
       
@@ -59,7 +57,6 @@ package tuxwars.tournament
       
       public function League(game:TuxWarsGame, data:LeagueData)
       {
-         _players = new Vector.<TournamentPlayer>();
          super();
          _game = game;
          _id = data.id;
@@ -356,3 +353,4 @@ package tuxwars.tournament
       }
    }
 }
+

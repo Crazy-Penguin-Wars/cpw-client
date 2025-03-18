@@ -6,8 +6,6 @@ package tuxwars.utils
    
    public class SyncChecker
    {
-       
-      
       public function SyncChecker()
       {
          super();
@@ -16,9 +14,9 @@ package tuxwars.utils
       
       public static function check(serviceId:String, data:Object, game:TuxWarsGame) : void
       {
-         var _loc6_:* = null;
-         var _loc8_:* = null;
-         var _loc7_:* = null;
+         var _loc6_:Array = null;
+         var _loc8_:Array = null;
+         var _loc7_:Item = null;
          var msg:String = "";
          if(data.level != game.player.level)
          {
@@ -71,3 +69,4 @@ package tuxwars.utils
       }
    }
 }
+

@@ -3,6 +3,7 @@ package tuxwars.home.ui.screen.home
    import com.dchoc.resources.DCResourceManager;
    import com.dchoc.utils.DCUtils;
    import flash.display.MovieClip;
+   import flash.external.ExternalInterface;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.logic.home.MoneyResourceElementLogic;
    import tuxwars.ui.components.DealSpotElement;
@@ -11,9 +12,7 @@ package tuxwars.home.ui.screen.home
    
    public class TopRightElementScreen
    {
-      
       private static const RESOURCE:String = "HUD_money";
-       
       
       private var _moneyResourceElementScreen:MoneyResourceElementScreen;
       
@@ -25,6 +24,7 @@ package tuxwars.home.ui.screen.home
       
       public function TopRightElementScreen(whereToAdd:MovieClip, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] TopRightElementScreen is the cause (GOT YOU :troll:)");
          super();
          var _loc3_:MovieClip = DCResourceManager.instance.getFromSWF("flash/ui/home_screen.swf","home_screen");
          DCUtils.stopMovieClip(_loc3_);
@@ -78,3 +78,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

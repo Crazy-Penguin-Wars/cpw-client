@@ -8,8 +8,6 @@ package tuxwars.home.ui.logic.home
    
    public class HomeLogic extends TuxUILogic
    {
-       
-      
       private var _levelElementLogic:LevelElementLogic;
       
       private var _moneyResourceElementLogic:MoneyResourceElementLogic;
@@ -81,3 +79,4 @@ package tuxwars.home.ui.logic.home
       }
    }
 }
+

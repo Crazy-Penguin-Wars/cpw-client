@@ -6,8 +6,6 @@ package nape.callbacks
    
    public final class ConstraintCallback extends Callback
    {
-       
-      
       public function ConstraintCallback()
       {
          if(Boot.skip_constructor)
@@ -31,3 +29,4 @@ package nape.callbacks
       }
    }
 }
+

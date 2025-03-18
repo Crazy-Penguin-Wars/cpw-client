@@ -14,8 +14,6 @@ package tuxwars.home.states
    
    public class BattleLoadAssetsSubState extends TuxBatchLoadingState
    {
-       
-      
       private var loadedAssets:Boolean;
       
       private var particlesLoaded:Boolean;
@@ -86,3 +84,4 @@ package tuxwars.home.states
       }
    }
 }
+

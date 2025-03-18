@@ -13,8 +13,6 @@ package tuxwars.ui.popups.logic.passedstat
    
    public class PassedStatPopUpLogic extends PopUpBaseLogic
    {
-       
-      
       public function PassedStatPopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -78,3 +76,4 @@ package tuxwars.ui.popups.logic.passedstat
       }
    }
 }
+

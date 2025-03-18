@@ -6,8 +6,6 @@ package tuxwars.items
    
    public class MegaPackItem extends Item
    {
-       
-      
       private var _itemList:Array;
       
       private var _itemAmountList:Array;
@@ -37,3 +35,4 @@ package tuxwars.items
       }
    }
 }
+

@@ -7,8 +7,6 @@ package tuxwars.ui.popups.logic.hostleft
    
    public class HostLeftMessagePopUpLogic extends MessagePopUpLogic
    {
-       
-      
       public function HostLeftMessagePopUpLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -25,3 +23,4 @@ package tuxwars.ui.popups.logic.hostleft
       }
    }
 }
+

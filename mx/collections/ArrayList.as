@@ -17,13 +17,13 @@ package mx.collections
    import mx.utils.ArrayUtil;
    import mx.utils.UIDUtil;
    
+   use namespace mx_internal;
+   
    public class ArrayList extends EventDispatcher implements IList, IExternalizable, IPropertyChangeNotifier
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _dispatchEvents:int = 0;
       
@@ -33,7 +33,6 @@ package mx.collections
       
       public function ArrayList(source:Array = null)
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
          this.disableEvents();
          this.source = source;
@@ -63,14 +62,14 @@ package mx.collections
          var event:CollectionEvent = null;
          if(Boolean(this._source) && Boolean(this._source.length))
          {
-            len = this._source.length;
+            len = int(this._source.length);
             for(i = 0; i < len; i++)
             {
                this.stopTrackUpdates(this._source[i]);
             }
          }
          this._source = Boolean(s) ? s : [];
-         len = this._source.length;
+         len = int(this._source.length);
          for(i = 0; i < len; i++)
          {
             this.startTrackUpdates(this._source[i]);
@@ -314,7 +313,7 @@ package mx.collections
          if(this._dispatchEvents == 0 && hasEventListener(PropertyChangeEvent.PROPERTY_CHANGE))
          {
             objEvent = PropertyChangeEvent(event.clone());
-            index = this.getItemIndex(event.target);
+            index = uint(this.getItemIndex(event.target));
             objEvent.property = index.toString() + "." + event.property;
             dispatchEvent(objEvent);
          }
@@ -337,3 +336,4 @@ package mx.collections
       }
    }
 }
+

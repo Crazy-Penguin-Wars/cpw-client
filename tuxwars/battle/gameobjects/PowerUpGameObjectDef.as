@@ -9,8 +9,6 @@ package tuxwars.battle.gameobjects
    
    public class PowerUpGameObjectDef extends PhysicsEmissionGameObjectDef
    {
-       
-      
       private var _powerUp:LevelPowerUp;
       
       private var _result:LevelPowerUpResult;
@@ -61,3 +59,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

@@ -5,8 +5,6 @@ package tuxwars.home.states.customgame
    
    public class CustomGameState extends TuxState
    {
-       
-      
       public function CustomGameState(game:TuxWarsGame, params:* = null)
       {
          super(game,params);
@@ -20,3 +18,4 @@ package tuxwars.home.states.customgame
       }
    }
 }
+

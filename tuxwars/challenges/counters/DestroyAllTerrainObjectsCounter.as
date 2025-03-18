@@ -9,8 +9,6 @@ package tuxwars.challenges.counters
    
    public class DestroyAllTerrainObjectsCounter extends Counter
    {
-       
-      
       private var originalArea:Number;
       
       public function DestroyAllTerrainObjectsCounter(challenge:Challenge, id:String, targetValue:int, playerId:String, params:ChallengeParamReference)
@@ -52,7 +50,7 @@ package tuxwars.challenges.counters
       
       private function calculateTerrainArea() : Number
       {
-         var _loc1_:* = null;
+         var _loc1_:TerrainGameObject = null;
          var area:Number = 0;
          var _loc5_:* = tuxGame.tuxWorld;
          var _loc3_:Vector.<GameObject> = _loc5_._gameObjects.findGameObjectsbyClass(TerrainGameObject);
@@ -65,3 +63,4 @@ package tuxwars.challenges.counters
       }
    }
 }
+

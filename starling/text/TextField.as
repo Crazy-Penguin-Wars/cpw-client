@@ -22,11 +22,9 @@ package starling.text
    
    public class TextField extends DisplayObjectContainer
    {
-      
       private static const BITMAP_FONT_DATA_NAME:String = "starling.display.TextField.BitmapFonts";
       
       private static var sNativeTextField:flash.text.TextField = new flash.text.TextField();
-       
       
       private var mFontSize:Number;
       
@@ -558,3 +556,4 @@ package starling.text
       }
    }
 }
+

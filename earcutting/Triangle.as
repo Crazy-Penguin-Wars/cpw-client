@@ -5,8 +5,6 @@ package earcutting
    
    public class Triangle
    {
-       
-      
       public var p0:Point;
       
       public var p1:Point;
@@ -53,3 +51,4 @@ package earcutting
       }
    }
 }
+

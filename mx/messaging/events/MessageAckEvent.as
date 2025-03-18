@@ -6,9 +6,7 @@ package mx.messaging.events
    
    public class MessageAckEvent extends MessageEvent
    {
-      
       public static const ACKNOWLEDGE:String = "acknowledge";
-       
       
       public var correlation:IMessage;
       
@@ -48,3 +46,4 @@ package mx.messaging.events
       }
    }
 }
+

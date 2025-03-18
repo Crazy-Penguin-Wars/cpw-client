@@ -5,8 +5,6 @@ package tuxwars.ui.tooltips
    
    public class ItemTooltip extends TuxTooltip
    {
-       
-      
       private var title:String;
       
       private var desc:String;
@@ -25,3 +23,4 @@ package tuxwars.ui.tooltips
       }
    }
 }
+

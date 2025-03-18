@@ -7,10 +7,10 @@ package mx.rpc
    import mx.rpc.events.FaultEvent;
    import mx.rpc.events.ResultEvent;
    
+   use namespace mx_internal;
+   
    public dynamic class AsyncToken extends EventDispatcher
    {
-       
-      
       private var _message:IMessage;
       
       private var _responders:Array;
@@ -105,3 +105,4 @@ package mx.rpc
       }
    }
 }
+

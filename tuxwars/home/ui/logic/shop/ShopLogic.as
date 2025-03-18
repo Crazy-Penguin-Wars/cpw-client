@@ -3,8 +3,9 @@ package tuxwars.home.ui.logic.shop
    import com.dchoc.messages.Message;
    import com.dchoc.messages.MessageCenter;
    import com.dchoc.net.ServerRequest;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.GameSettings;
    import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleResults;
@@ -24,13 +25,11 @@ package tuxwars.home.ui.logic.shop
    
    public class ShopLogic extends TuxPageSubTabLogic
    {
-      
       private static const TABLE:String = "Screen";
       
       private static const SHOP:String = "Shop";
       
       private static const WEAPON_SELECTION_TUTORIAL:String = "WeaponSelectionPractice";
-       
       
       private var _characterAvatarLogic:CharacterAvatarElementLogic;
       
@@ -43,40 +42,44 @@ package tuxwars.home.ui.logic.shop
       
       public static function getStaticData() : Row
       {
+         var _loc3_:String = "Screen";
          var _loc1_:ProjectManager = ProjectManager;
-         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Screen");
-         if(!_loc2_._cache["Shop"])
+         var _loc4_:String = "Shop";
+         var _loc2_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc3_);
+         if(!_loc2_._cache[_loc4_])
          {
-            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id","Shop");
+            var _loc5_:Row = com.dchoc.utils.DCUtils.find(_loc2_.rows,"id",_loc4_);
             if(!_loc5_)
             {
-               com.dchoc.utils.LogUtils.log("No row with name: \'" + "Shop" + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
+               com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc4_ + "\' was found in table: \'" + _loc2_.name + "\'",_loc2_,3);
             }
-            _loc2_._cache["Shop"] = _loc5_;
+            _loc2_._cache[_loc4_] = _loc5_;
          }
-         return _loc2_._cache["Shop"];
+         return _loc2_._cache[_loc4_];
       }
       
       override public function init(params:*) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:Row = null;
          super.init(params);
          _characterAvatarLogic.init(params);
          var _loc3_:Tutorial = Tutorial;
          if(tuxwars.tutorial.Tutorial._tutorial && tuxwars.tutorial.Tutorial._tutorialStep == "TutorialStart")
          {
+            var _loc7_:String = "Page";
             var _loc5_:ProjectManager = ProjectManager;
-            var _loc6_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Page");
-            if(!_loc6_._cache["Customization"])
+            var _loc8_:String = "Customization";
+            var _loc6_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc7_);
+            if(!_loc6_._cache[_loc8_])
             {
-               var _loc9_:Row = com.dchoc.utils.DCUtils.find(_loc6_.rows,"id","Customization");
+               var _loc9_:Row = com.dchoc.utils.DCUtils.find(_loc6_.rows,"id",_loc8_);
                if(!_loc9_)
                {
-                  com.dchoc.utils.LogUtils.log("No row with name: \'" + "Customization" + "\' was found in table: \'" + _loc6_.name + "\'",_loc6_,3);
+                  com.dchoc.utils.LogUtils.log("No row with name: \'" + _loc8_ + "\' was found in table: \'" + _loc6_.name + "\'",_loc6_,3);
                }
-               _loc6_._cache["Customization"] = _loc9_;
+               _loc6_._cache[_loc8_] = _loc9_;
             }
-            _loc2_ = _loc6_._cache["Customization"];
+            _loc2_ = _loc6_._cache[_loc8_];
             setCurrentPage(_loc2_);
             shopScreen.updatePageContent(_loc2_);
             shopScreen.tabGroup.setSelectedIndex(1);
@@ -101,7 +104,7 @@ package tuxwars.home.ui.logic.shop
       
       override public function getData() : Row
       {
-         var rowName:* = null;
+         var rowName:String = null;
          var _loc2_:Tutorial = Tutorial;
          if(tuxwars.tutorial.Tutorial._tutorial)
          {
@@ -111,9 +114,10 @@ package tuxwars.home.ui.logic.shop
          {
             rowName = "Shop";
          }
+         var _loc5_:String = "Screen";
          var _loc3_:ProjectManager = ProjectManager;
          var _loc6_:* = rowName;
-         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable("Screen");
+         var _loc4_:* = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc5_);
          if(!_loc4_._cache[_loc6_])
          {
             var _loc7_:Row = com.dchoc.utils.DCUtils.find(_loc4_.rows,"id",_loc6_);
@@ -128,8 +132,8 @@ package tuxwars.home.ui.logic.shop
       
       override public function itemSelected(shopItem:ShopItem) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:Player = null;
+         var _loc3_:WornItems = null;
          var _loc4_:Boolean = false;
          if(shopItem && (shopItem.type == "Clothing" || shopItem.type == "Customization" || shopItem.type == "Trophy"))
          {
@@ -210,3 +214,4 @@ package tuxwars.home.ui.logic.shop
       }
    }
 }
+

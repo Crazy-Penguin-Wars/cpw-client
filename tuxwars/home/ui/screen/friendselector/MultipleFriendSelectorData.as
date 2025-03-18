@@ -2,8 +2,6 @@ package tuxwars.home.ui.screen.friendselector
 {
    public class MultipleFriendSelectorData
    {
-       
-      
       private var mHeader:String;
       
       private var mDescription:String;
@@ -74,3 +72,4 @@ package tuxwars.home.ui.screen.friendselector
       }
    }
 }
+

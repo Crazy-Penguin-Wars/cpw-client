@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.battle
    
    public class DieMessage extends BattleMessage
    {
-       
-      
       public function DieMessage(id:String, loc:Vec2, sleep:Boolean)
       {
          super({
@@ -24,3 +22,4 @@ package tuxwars.battle.net.messages.battle
       }
    }
 }
+

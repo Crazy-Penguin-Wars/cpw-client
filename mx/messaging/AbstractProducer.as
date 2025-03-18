@@ -14,10 +14,10 @@ package mx.messaging
    import mx.resources.IResourceManager;
    import mx.resources.ResourceManager;
    
+   use namespace mx_internal;
+   
    public class AbstractProducer extends MessageAgent
    {
-       
-      
       private var _connectMsg:CommandMessage;
       
       private var _currentAttempt:int;
@@ -26,7 +26,7 @@ package mx.messaging
       
       protected var _shouldBeConnected:Boolean;
       
-      private var resourceManager:IResourceManager;
+      private var resourceManager:IResourceManager = ResourceManager.getInstance();
       
       private var _autoConnect:Boolean = true;
       
@@ -40,7 +40,6 @@ package mx.messaging
       
       public function AbstractProducer()
       {
-         this.resourceManager = ResourceManager.getInstance();
          super();
       }
       
@@ -206,7 +205,7 @@ package mx.messaging
       
       public function send(message:IMessage) : void
       {
-         var header:* = null;
+         var header:String = null;
          var errMsg2:ErrorMessage = null;
          if(!connected && this.autoConnect)
          {
@@ -346,3 +345,4 @@ package mx.messaging
       }
    }
 }
+

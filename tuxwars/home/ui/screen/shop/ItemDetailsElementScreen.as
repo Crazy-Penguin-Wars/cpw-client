@@ -4,6 +4,7 @@ package tuxwars.home.ui.screen.shop
    import com.dchoc.utils.DCUtils;
    import flash.display.DisplayObject;
    import flash.display.MovieClip;
+   import flash.external.ExternalInterface;
    import flash.text.TextField;
    import tuxwars.TuxWarsGame;
    import tuxwars.home.ui.screen.TuxUIElementScreen;
@@ -12,7 +13,6 @@ package tuxwars.home.ui.screen.shop
    
    public class ItemDetailsElementScreen extends TuxUIElementScreen
    {
-      
       private static const TOOLTIP:String = "Tooltip";
       
       private static const NAME:String = "Text_Name";
@@ -20,7 +20,6 @@ package tuxwars.home.ui.screen.shop
       private static const DESCRIPTION:String = "Text_Description";
       
       private static const ICON_CONTAINER:String = "Container_Item";
-       
       
       private var currentItem:ShopItem;
       
@@ -34,6 +33,7 @@ package tuxwars.home.ui.screen.shop
       
       public function ItemDetailsElementScreen(design:DisplayObject, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[ItemDetailsElementScreen] Testing lol");
          var _loc3_:MovieClip = (design as MovieClip).getChildByName("Tooltip") as MovieClip;
          super(_loc3_,game);
          var tf:TextField = _loc3_.getChildByName("Text_Name") as TextField;
@@ -92,3 +92,4 @@ package tuxwars.home.ui.screen.shop
       }
    }
 }
+

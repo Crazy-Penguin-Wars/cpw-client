@@ -17,13 +17,11 @@ package zpp_nape.geom
    
    public class ZPP_Ray
    {
-      
-      public static var §internal§:Boolean = false;
-       
+      public static var §internal§:Boolean;
       
       public var zip_dir:Boolean;
       
-      public var userData;
+      public var userData:*;
       
       public var originy:Number;
       
@@ -381,6 +379,7 @@ package zpp_nape.geom
             ZPP_AABB.zpp_pool = _loc7_.next;
             _loc7_.next = null;
          }
+         null;
          _loc7_.minx = _loc1_;
          _loc7_.miny = _loc3_;
          _loc7_.maxx = _loc2_;
@@ -464,44 +463,49 @@ package zpp_nape.geom
          }
          if(_loc9_)
          {
-            _loc12_ = param1.gverts.next;
-            _loc13_ = _loc12_;
-            _loc14_ = _loc8_.elt;
-            if(param2 || _loc14_.gnormx * dirx + _loc14_.gnormy * diry < 0)
+            do
             {
-               _loc15_ = 0;
-               _loc16_ = 0;
-               _loc15_ = _loc13_.x - _loc11_.x;
-               _loc16_ = _loc13_.y - _loc11_.y;
-               _loc17_ = 0;
-               _loc18_ = 0;
-               _loc17_ = _loc11_.x - originx;
-               _loc18_ = _loc11_.y - originy;
-               _loc19_ = _loc16_ * dirx - _loc15_ * diry;
-               if(_loc19_ * _loc19_ > Config.epsilon)
+               _loc12_ = param1.gverts.next;
+               _loc13_ = _loc12_;
+               _loc14_ = _loc8_.elt;
+               if(param2 || _loc14_.gnormx * dirx + _loc14_.gnormy * diry < 0)
                {
-                  _loc19_ = 1 / _loc19_;
-                  _loc20_ = (_loc16_ * _loc17_ - _loc15_ * _loc18_) * _loc19_;
-                  if(_loc20_ > 0 && _loc20_ <= maxdist && (_loc20_ < _loc4_ || _loc20_ > _loc5_))
+                  _loc15_ = 0;
+                  _loc16_ = 0;
+                  _loc15_ = _loc13_.x - _loc11_.x;
+                  _loc16_ = _loc13_.y - _loc11_.y;
+                  _loc17_ = 0;
+                  _loc18_ = 0;
+                  _loc17_ = _loc11_.x - originx;
+                  _loc18_ = _loc11_.y - originy;
+                  _loc19_ = _loc16_ * dirx - _loc15_ * diry;
+                  if(_loc19_ * _loc19_ > Config.epsilon)
                   {
-                     _loc21_ = (diry * _loc17_ - dirx * _loc18_) * _loc19_;
-                     if(_loc21_ > -Config.epsilon && _loc21_ < 1 + Config.epsilon)
+                     _loc19_ = 1 / _loc19_;
+                     _loc20_ = (_loc16_ * _loc17_ - _loc15_ * _loc18_) * _loc19_;
+                     if(_loc20_ > 0 && _loc20_ <= maxdist && (_loc20_ < _loc4_ || _loc20_ > _loc5_))
                      {
-                        if(_loc20_ < _loc4_)
+                        _loc21_ = (diry * _loc17_ - dirx * _loc18_) * _loc19_;
+                        if(_loc21_ > -Config.epsilon && _loc21_ < 1 + Config.epsilon)
                         {
-                           _loc4_ = _loc20_;
-                           _loc6_ = _loc8_.elt;
-                        }
-                        if(_loc20_ > _loc5_)
-                        {
-                           _loc5_ = _loc20_;
-                           _loc7_ = _loc8_.elt;
+                           if(_loc20_ < _loc4_)
+                           {
+                              _loc4_ = _loc20_;
+                              _loc6_ = _loc8_.elt;
+                           }
+                           if(_loc20_ > _loc5_)
+                           {
+                              _loc5_ = _loc20_;
+                              _loc7_ = _loc8_.elt;
+                           }
                         }
                      }
                   }
                }
+               _loc8_ = _loc8_.next;
             }
-            _loc8_ = _loc8_.next;
+            while(false);
+            
          }
          if(_loc6_ != null)
          {
@@ -654,6 +658,7 @@ package zpp_nape.geom
                ZNPNode_RayResult.zpp_pool = _loc30_.next;
                _loc30_.next = null;
             }
+            null;
             _loc30_.elt = _loc22_;
             _loc27_ = _loc30_;
             if(_loc26_ == null)
@@ -667,7 +672,7 @@ package zpp_nape.geom
                _loc26_.next = _loc27_;
             }
             _loc29_.pushmod = _loc29_.modified = true;
-            _loc29_.length = _loc29_.length + 1;
+            ++_loc29_.length;
             _loc27_;
          }
          if(_loc7_ != null && _loc6_ != _loc7_)
@@ -821,6 +826,7 @@ package zpp_nape.geom
                ZNPNode_RayResult.zpp_pool = _loc30_.next;
                _loc30_.next = null;
             }
+            null;
             _loc30_.elt = _loc22_;
             _loc27_ = _loc30_;
             if(_loc26_ == null)
@@ -834,7 +840,7 @@ package zpp_nape.geom
                _loc26_.next = _loc27_;
             }
             _loc29_.pushmod = _loc29_.modified = true;
-            _loc29_.length = _loc29_.length + 1;
+            ++_loc29_.length;
             _loc27_;
          }
       }
@@ -899,36 +905,41 @@ package zpp_nape.geom
          }
          if(_loc7_)
          {
-            _loc10_ = param1.gverts.next;
-            _loc11_ = _loc10_;
-            _loc12_ = _loc6_.elt;
-            if(param2 || _loc12_.gnormx * dirx + _loc12_.gnormy * diry < 0)
+            do
             {
-               _loc13_ = 0;
-               _loc14_ = 0;
-               _loc13_ = _loc11_.x - _loc9_.x;
-               _loc14_ = _loc11_.y - _loc9_.y;
-               _loc15_ = 0;
-               _loc16_ = 0;
-               _loc15_ = _loc9_.x - originx;
-               _loc16_ = _loc9_.y - originy;
-               _loc17_ = _loc14_ * dirx - _loc13_ * diry;
-               if(_loc17_ * _loc17_ > Config.epsilon)
+               _loc10_ = param1.gverts.next;
+               _loc11_ = _loc10_;
+               _loc12_ = _loc6_.elt;
+               if(param2 || _loc12_.gnormx * dirx + _loc12_.gnormy * diry < 0)
                {
-                  _loc17_ = 1 / _loc17_;
-                  _loc18_ = (_loc14_ * _loc15_ - _loc13_ * _loc16_) * _loc17_;
-                  if(_loc18_ > 0 && _loc18_ < _loc4_ && _loc18_ <= maxdist)
+                  _loc13_ = 0;
+                  _loc14_ = 0;
+                  _loc13_ = _loc11_.x - _loc9_.x;
+                  _loc14_ = _loc11_.y - _loc9_.y;
+                  _loc15_ = 0;
+                  _loc16_ = 0;
+                  _loc15_ = _loc9_.x - originx;
+                  _loc16_ = _loc9_.y - originy;
+                  _loc17_ = _loc14_ * dirx - _loc13_ * diry;
+                  if(_loc17_ * _loc17_ > Config.epsilon)
                   {
-                     _loc19_ = (diry * _loc15_ - dirx * _loc16_) * _loc17_;
-                     if(_loc19_ > -Config.epsilon && _loc19_ < 1 + Config.epsilon)
+                     _loc17_ = 1 / _loc17_;
+                     _loc18_ = (_loc14_ * _loc15_ - _loc13_ * _loc16_) * _loc17_;
+                     if(_loc18_ > 0 && _loc18_ < _loc4_ && _loc18_ <= maxdist)
                      {
-                        _loc4_ = _loc18_;
-                        _loc5_ = _loc6_.elt;
+                        _loc19_ = (diry * _loc15_ - dirx * _loc16_) * _loc17_;
+                        if(_loc19_ > -Config.epsilon && _loc19_ < 1 + Config.epsilon)
+                        {
+                           _loc4_ = _loc18_;
+                           _loc5_ = _loc6_.elt;
+                        }
                      }
                   }
                }
+               _loc6_ = _loc6_.next;
             }
-            _loc6_ = _loc6_.next;
+            while(false);
+            
          }
          if(_loc5_ != null)
          {
@@ -1111,6 +1122,7 @@ package zpp_nape.geom
                      {
                         _loc4_.localCOMx = _loc4_.lverts.next.x;
                         _loc4_.localCOMy = _loc4_.lverts.next.y;
+                        null;
                      }
                      else if(_loc4_.lverts.next.next.next == null)
                      {
@@ -1171,6 +1183,7 @@ package zpp_nape.geom
                   _loc12_.zip_axis = false;
                   _loc12_.axisx = Math.sin(_loc12_.rot);
                   _loc12_.axisy = Math.cos(_loc12_.rot);
+                  null;
                }
                param1.worldCOMx = param1.body.posx + (param1.body.axisy * param1.localCOMx - param1.body.axisx * param1.localCOMy);
                param1.worldCOMy = param1.body.posy + (param1.localCOMx * param1.body.axisx + param1.localCOMy * param1.body.axisy);
@@ -1348,6 +1361,7 @@ package zpp_nape.geom
                   ZNPNode_RayResult.zpp_pool = _loc31_.next;
                   _loc31_.next = null;
                }
+               null;
                _loc31_.elt = _loc23_;
                _loc28_ = _loc31_;
                if(_loc27_ == null)
@@ -1361,7 +1375,7 @@ package zpp_nape.geom
                   _loc27_.next = _loc28_;
                }
                _loc30_.pushmod = _loc30_.modified = true;
-               _loc30_.length = _loc30_.length + 1;
+               ++_loc30_.length;
                _loc28_;
             }
          }
@@ -1527,6 +1541,7 @@ package zpp_nape.geom
                   ZNPNode_RayResult.zpp_pool = _loc31_.next;
                   _loc31_.next = null;
                }
+               null;
                _loc31_.elt = _loc23_;
                _loc28_ = _loc31_;
                if(_loc27_ == null)
@@ -1540,7 +1555,7 @@ package zpp_nape.geom
                   _loc27_.next = _loc28_;
                }
                _loc30_.pushmod = _loc30_.modified = true;
-               _loc30_.length = _loc30_.length + 1;
+               ++_loc30_.length;
                _loc28_;
             }
             if(_loc18_ > 0 && _loc18_ <= maxdist && param2)
@@ -1701,6 +1716,7 @@ package zpp_nape.geom
                   ZNPNode_RayResult.zpp_pool = _loc31_.next;
                   _loc31_.next = null;
                }
+               null;
                _loc31_.elt = _loc23_;
                _loc28_ = _loc31_;
                if(_loc27_ == null)
@@ -1714,7 +1730,7 @@ package zpp_nape.geom
                   _loc27_.next = _loc28_;
                }
                _loc30_.pushmod = _loc30_.modified = true;
-               _loc30_.length = _loc30_.length + 1;
+               ++_loc30_.length;
                _loc28_;
             }
          }
@@ -1761,6 +1777,7 @@ package zpp_nape.geom
                      {
                         _loc4_.localCOMx = _loc4_.lverts.next.x;
                         _loc4_.localCOMy = _loc4_.lverts.next.y;
+                        null;
                      }
                      else if(_loc4_.lverts.next.next.next == null)
                      {
@@ -1821,6 +1838,7 @@ package zpp_nape.geom
                   _loc12_.zip_axis = false;
                   _loc12_.axisx = Math.sin(_loc12_.rot);
                   _loc12_.axisy = Math.cos(_loc12_.rot);
+                  null;
                }
                param1.worldCOMx = param1.body.posx + (param1.body.axisy * param1.localCOMx - param1.body.axisx * param1.localCOMy);
                param1.worldCOMy = param1.body.posy + (param1.localCOMx * param1.body.axisx + param1.localCOMy * param1.body.axisy);
@@ -2250,70 +2268,79 @@ package zpp_nape.geom
             return 0;
          }
          _loc4_ = -1;
-         if(!(dirx >= 0 && originx >= param1.maxx))
+         while(!(dirx >= 0 && originx >= param1.maxx))
          {
-            if(!(dirx <= 0 && originx <= param1.minx))
+            if(dirx <= 0 && originx <= param1.minx)
             {
-               if(!(diry >= 0 && originy >= param1.maxy))
+               break;
+            }
+            if(diry >= 0 && originy >= param1.maxy)
+            {
+               break;
+            }
+            if(diry <= 0 && originy <= param1.miny)
+            {
+               break;
+            }
+            if(dirx > 0)
+            {
+               _loc5_ = (param1.minx - originx) * idirx;
+               if(_loc5_ >= 0 && _loc5_ <= maxdist)
                {
-                  if(!(diry <= 0 && originy <= param1.miny))
+                  _loc6_ = originy + _loc5_ * diry;
+                  if(_loc6_ >= param1.miny && _loc6_ <= param1.maxy)
                   {
-                     if(dirx > 0)
-                     {
-                        _loc5_ = (param1.minx - originx) * idirx;
-                        if(_loc5_ >= 0 && _loc5_ <= maxdist)
-                        {
-                           _loc6_ = originy + _loc5_ * diry;
-                           if(_loc6_ >= param1.miny && _loc6_ <= param1.maxy)
-                           {
-                              _loc4_ = _loc5_;
-                           }
-                           §§goto(addr309);
-                        }
-                     }
-                     else if(dirx < 0)
-                     {
-                        _loc5_ = (param1.maxx - originx) * idirx;
-                        if(_loc5_ >= 0 && _loc5_ <= maxdist)
-                        {
-                           _loc6_ = originy + _loc5_ * diry;
-                           if(_loc6_ >= param1.miny && _loc6_ <= param1.maxy)
-                           {
-                              _loc4_ = _loc5_;
-                           }
-                           §§goto(addr309);
-                        }
-                     }
-                     if(diry > 0)
-                     {
-                        _loc5_ = (param1.miny - originy) * idiry;
-                        if(_loc5_ >= 0 && _loc5_ <= maxdist)
-                        {
-                           _loc6_ = originx + _loc5_ * dirx;
-                           if(_loc6_ >= param1.minx && _loc6_ <= param1.maxx)
-                           {
-                              _loc4_ = _loc5_;
-                           }
-                        }
-                     }
-                     else if(diry < 0)
-                     {
-                        _loc5_ = (param1.maxy - originy) * idiry;
-                        if(_loc5_ >= 0 && _loc5_ <= maxdist)
-                        {
-                           _loc6_ = originx + _loc5_ * dirx;
-                           if(_loc6_ >= param1.minx && _loc6_ <= param1.maxx)
-                           {
-                              _loc4_ = _loc5_;
-                           }
-                        }
-                     }
+                     _loc4_ = _loc5_;
+                     break;
                   }
                }
             }
+            else if(dirx < 0)
+            {
+               _loc5_ = (param1.maxx - originx) * idirx;
+               if(_loc5_ >= 0 && _loc5_ <= maxdist)
+               {
+                  _loc6_ = originy + _loc5_ * diry;
+                  if(_loc6_ >= param1.miny && _loc6_ <= param1.maxy)
+                  {
+                     _loc4_ = _loc5_;
+                     break;
+                  }
+               }
+            }
+            if(diry > 0)
+            {
+               _loc5_ = (param1.miny - originy) * idiry;
+               if(_loc5_ >= 0 && _loc5_ <= maxdist)
+               {
+                  _loc6_ = originx + _loc5_ * dirx;
+                  if(_loc6_ >= param1.minx && _loc6_ <= param1.maxx)
+                  {
+                     _loc4_ = _loc5_;
+                     break;
+                  }
+               }
+            }
+            else if(diry < 0)
+            {
+               _loc5_ = (param1.maxy - originy) * idiry;
+               if(_loc5_ >= 0 && _loc5_ <= maxdist)
+               {
+                  _loc6_ = originx + _loc5_ * dirx;
+                  if(_loc6_ >= param1.minx && _loc6_ <= param1.maxx)
+                  {
+                     _loc4_ = _loc5_;
+                     break;
+                  }
+               }
+            }
+            if(true)
+            {
+               break;
+            }
          }
-         addr309:
          return _loc4_;
       }
    }
 }
+

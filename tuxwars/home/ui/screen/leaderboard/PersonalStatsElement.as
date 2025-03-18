@@ -23,9 +23,7 @@ package tuxwars.home.ui.screen.leaderboard
    
    public class PersonalStatsElement extends TuxUIElementScreen
    {
-      
       private static const CONTAINER_ROW:String = "Container_Row0";
-       
       
       private const group:UIRadialGroup = new UIRadialGroup();
       
@@ -108,7 +106,7 @@ package tuxwars.home.ui.screen.leaderboard
          {
             tuxwars.data.PlayerReportDatas.initReportDatas();
          }
-         numPages = §§pop().ceil(Number(tuxwars.data.PlayerReportDatas.PLAYER_REPORT_DATAS.length) / numContainerRows);
+         numPages = §§pop().ceil(tuxwars.data.PlayerReportDatas.PLAYER_REPORT_DATAS.length / numContainerRows);
          curPage = 0;
          showPage(curPage);
          downButton.setEnabled(curPage < numPages && numPages > 1);
@@ -145,8 +143,9 @@ package tuxwars.home.ui.screen.leaderboard
       
       private function showStat(data:PlayerReportData, mc:MovieClip) : void
       {
+         var _loc3_:* = !!stats.hasOwnProperty(data.dataField) ? stats[data.dataField] : 0;
          TuxUiUtils.createAutoTextField(mc.Text_Description,data.description);
-         TuxUiUtils.createAutoTextFieldWithText(mc.Text_Value,formatStatValue(0,data.dataField));
+         TuxUiUtils.createAutoTextFieldWithText(mc.Text_Value,formatStatValue(_loc3_,data.dataField));
          mc.visible = true;
       }
       
@@ -168,7 +167,7 @@ package tuxwars.home.ui.screen.leaderboard
       private function hideStatFields() : void
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:DisplayObject = null;
          for(i = 0; i < getDesignMovieClip().numChildren; )
          {
             _loc1_ = getDesignMovieClip().getChildAt(i);
@@ -183,7 +182,7 @@ package tuxwars.home.ui.screen.leaderboard
       private function get numContainerRows() : int
       {
          var i:int = 0;
-         var _loc1_:* = null;
+         var _loc1_:DisplayObject = null;
          if(_numContainerRows == -1)
          {
             _numContainerRows++;
@@ -208,7 +207,7 @@ package tuxwars.home.ui.screen.leaderboard
          {
             tuxwars.data.PlayerReportDatas.initReportDatas();
          }
-         var _loc2_:int = Number(tuxwars.data.PlayerReportDatas.PLAYER_REPORT_DATAS.length) - _loc3_;
+         var _loc2_:int = tuxwars.data.PlayerReportDatas.PLAYER_REPORT_DATAS.length - _loc3_;
          var _loc4_:int = _loc3_ + (_loc2_ < numContainerRows ? _loc2_ : numContainerRows);
          var _loc6_:PlayerReportDatas = PlayerReportDatas;
          if(tuxwars.data.PlayerReportDatas.PLAYER_REPORT_DATAS.length == 0)
@@ -279,3 +278,4 @@ package tuxwars.home.ui.screen.leaderboard
       }
    }
 }
+

@@ -11,13 +11,11 @@ package tuxwars.trophys
    
    public class TrophyManager
    {
+      private static var initialized:Boolean = false;
       
       private static const CHALLENGE_TYPES:Array = ["Battle","Grind","Skill","Impossible"];
       
       private static const FIRST_CHALLENGES:Object = {};
-      
-      private static var initialized:Boolean = false;
-       
       
       public function TrophyManager()
       {
@@ -27,9 +25,9 @@ package tuxwars.trophys
       
       public static function addTrophies(player:Player) : void
       {
-         var _loc2_:* = null;
+         var _loc2_:ChallengeData = null;
          var challengeData:* = null;
-         var tempChallengeData:* = null;
+         var tempChallengeData:ChallengeData = null;
          var hasTrophy:Boolean = false;
          if(!initialized)
          {
@@ -96,3 +94,4 @@ package tuxwars.trophys
       }
    }
 }
+

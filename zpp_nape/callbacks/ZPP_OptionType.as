@@ -12,8 +12,6 @@ package zpp_nape.callbacks
    
    public class ZPP_OptionType
    {
-       
-      
       public var wrap_includes:CbTypeList;
       
       public var wrap_excludes:CbTypeList;
@@ -175,6 +173,7 @@ package zpp_nape.callbacks
                         ZNPNode_ZPP_CbType.zpp_pool = _loc7_.next;
                         _loc7_.next = null;
                      }
+                     null;
                      _loc7_.elt = param2;
                      _loc4_ = _loc7_;
                      if(_loc3_ == null)
@@ -188,7 +187,7 @@ package zpp_nape.callbacks
                         _loc3_.next = _loc4_;
                      }
                      _loc6_.pushmod = _loc6_.modified = true;
-                     _loc6_.length = _loc6_.length + 1;
+                     ++_loc6_.length;
                      _loc4_;
                   }
                }
@@ -235,6 +234,7 @@ package zpp_nape.callbacks
                      ZNPNode_ZPP_CbType.zpp_pool = _loc7_.next;
                      _loc7_.next = null;
                   }
+                  null;
                   _loc7_.elt = param2;
                   _loc4_ = _loc7_;
                   if(_loc3_ == null)
@@ -248,7 +248,7 @@ package zpp_nape.callbacks
                      _loc3_.next = _loc4_;
                   }
                   _loc6_.pushmod = _loc6_.modified = true;
-                  _loc6_.length = _loc6_.length + 1;
+                  ++_loc6_.length;
                   _loc4_;
                }
             }
@@ -330,7 +330,7 @@ package zpp_nape.callbacks
             }
             _loc9_ = param2;
             _loc6_ = 0;
-            while(_loc6_ < _loc9_.length)
+            while(_loc6_ < int(_loc9_.length))
             {
                _loc10_ = _loc9_[_loc6_];
                _loc6_++;
@@ -346,3 +346,4 @@ package zpp_nape.callbacks
       }
    }
 }
+

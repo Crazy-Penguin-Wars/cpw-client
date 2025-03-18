@@ -5,8 +5,6 @@ package tuxwars.battle.rewards
    
    public class EmptyRewardsHandler extends RewardsHandler
    {
-       
-      
       public function EmptyRewardsHandler(player:PlayerGameObject)
       {
          super(player);
@@ -41,3 +39,4 @@ package tuxwars.battle.rewards
       }
    }
 }
+

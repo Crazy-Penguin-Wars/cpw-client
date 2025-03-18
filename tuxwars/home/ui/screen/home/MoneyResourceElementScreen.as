@@ -24,7 +24,6 @@ package tuxwars.home.ui.screen.home
    
    public class MoneyResourceElementScreen extends TuxUIElementScreen
    {
-      
       private static const SALDO:String = "Saldo";
       
       private static const ADD_INGAME:String = "Button_Add_Coins";
@@ -34,7 +33,6 @@ package tuxwars.home.ui.screen.home
       private static const INGAME:String = "Text_Coins";
       
       private static const PREMIUM:String = "Text_Cash";
-       
       
       private var inGameField:UIAutoTextField;
       
@@ -46,6 +44,7 @@ package tuxwars.home.ui.screen.home
       
       public function MoneyResourceElementScreen(from:MovieClip, game:TuxWarsGame)
       {
+         ExternalInterface.call("console.log","[AnnoyingDebug] MoneyResourceElementScreen is the cause (GOT YOU :troll:)");
          var _loc3_:MovieClip = from.getChildByName("Saldo") as MovieClip;
          if(_loc3_)
          {
@@ -187,3 +186,4 @@ package tuxwars.home.ui.screen.home
       }
    }
 }
+

@@ -6,8 +6,6 @@ package tuxwars.battle.world.loader
    
    public class TerrainTexture
    {
-       
-      
       private var terrainTextureSWF:String;
       
       private var terrainTextureExport:String;
@@ -43,12 +41,12 @@ package tuxwars.battle.world.loader
       public function getTextureBitmapData() : BitmapData
       {
          var _loc3_:int = 0;
-         var objectType:* = null;
-         var _loc2_:* = null;
-         var resBMData:* = null;
+         var objectType:String = null;
+         var _loc2_:MovieClip = null;
+         var resBMData:BitmapData = null;
          if(terrainTextureSWF && terrainTextureExport)
          {
-            _loc3_ = terrainTextureExport.lastIndexOf(".");
+            _loc3_ = int(terrainTextureExport.lastIndexOf("."));
             objectType = ".swf";
             if(_loc3_ != -1)
             {
@@ -67,3 +65,4 @@ package tuxwars.battle.world.loader
       }
    }
 }
+

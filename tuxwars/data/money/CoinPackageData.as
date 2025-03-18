@@ -1,10 +1,10 @@
 package tuxwars.data.money
 {
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    
    public class CoinPackageData
    {
-      
       private static const ID:String = "ID";
       
       private static const AMOUNT:String = "Amount";
@@ -14,7 +14,6 @@ package tuxwars.data.money
       private static const CREDIT_COST:String = "CreditCost";
       
       private static const SORT_PRIORITY:String = "SortPriority";
-       
       
       private var row:Row;
       
@@ -26,57 +25,63 @@ package tuxwars.data.money
       
       public function get id() : String
       {
+         var _loc3_:String = "ID";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["ID"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["ID"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","ID");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["ID"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public function get amount() : int
       {
+         var _loc3_:String = "Amount";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["Amount"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["Amount"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","Amount");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["Amount"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public function get extraAmount() : int
       {
+         var _loc3_:String = "ExtraAmount";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["ExtraAmount"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["ExtraAmount"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","ExtraAmount");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["ExtraAmount"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public function get creditCost() : int
       {
+         var _loc3_:String = "CreditCost";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["CreditCost"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["CreditCost"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","CreditCost");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["CreditCost"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
       
       public function get sortPriority() : int
       {
+         var _loc3_:String = "SortPriority";
          var _loc1_:Row = row;
-         if(!_loc1_._cache["SortPriority"])
+         if(!_loc1_._cache[_loc3_])
          {
-            _loc1_._cache["SortPriority"] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name","SortPriority");
+            _loc1_._cache[_loc3_] = com.dchoc.utils.DCUtils.find(_loc1_._fields,"name",_loc3_);
          }
-         var _loc2_:* = _loc1_._cache["SortPriority"];
+         var _loc2_:* = _loc1_._cache[_loc3_];
          return _loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value;
       }
    }
 }
+

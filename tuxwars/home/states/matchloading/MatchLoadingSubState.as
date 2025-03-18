@@ -13,8 +13,6 @@ package tuxwars.home.states.matchloading
    
    public class MatchLoadingSubState extends TuxState
    {
-       
-      
       public function MatchLoadingSubState(game:TuxWarsGame, params:* = null)
       {
          game.battleServer.init(game);
@@ -24,8 +22,8 @@ package tuxwars.home.states.matchloading
       
       override public function enter() : void
       {
-         var _loc2_:* = null;
-         var _loc1_:* = null;
+         var _loc2_:TuxWarsGame = null;
+         var _loc1_:HomeState = null;
          super.enter();
          if(allowEnterGame)
          {
@@ -66,3 +64,4 @@ package tuxwars.home.states.matchloading
       }
    }
 }
+

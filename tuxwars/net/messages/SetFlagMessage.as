@@ -4,8 +4,6 @@ package tuxwars.net.messages
    
    public class SetFlagMessage extends ServerRequest
    {
-       
-      
       public function SetFlagMessage(key:String, value:String, expires:int = -1, buffered:Boolean = false, callback:Function = null)
       {
          var _loc6_:Object = {
@@ -20,3 +18,4 @@ package tuxwars.net.messages
       }
    }
 }
+

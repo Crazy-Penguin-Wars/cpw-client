@@ -3,12 +3,11 @@ package tuxwars.battle.graphics
    import com.dchoc.resources.DCResourceManager;
    import flash.display.MovieClip;
    import flash.events.Event;
+   import tuxwars.TuxWarsGame;
    import tuxwars.battle.gameobjects.player.PlayerGameObject;
    
    public class InfoContainer
    {
-       
-      
       private const countDown:Array = [];
       
       private var _player:PlayerGameObject;
@@ -92,3 +91,4 @@ package tuxwars.battle.graphics
       }
    }
 }
+

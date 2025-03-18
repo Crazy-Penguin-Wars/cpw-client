@@ -12,7 +12,6 @@ package tuxwars.battle.ui.screen
    
    public class BottomElement
    {
-      
       private static const BOTTOM:String = "Bottom";
       
       private static const BETTING:String = "Betting";
@@ -20,7 +19,6 @@ package tuxwars.battle.ui.screen
       private static const EXIT_BUTTON:String = "Button_Exit";
       
       private static const BUTTON_OPTIONS:String = "Button_Options";
-       
       
       private var toolsElementScreen:ToolsElementScreen;
       
@@ -114,3 +112,4 @@ package tuxwars.battle.ui.screen
       }
    }
 }
+

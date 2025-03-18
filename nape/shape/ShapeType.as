@@ -5,8 +5,6 @@ package nape.shape
    
    public final class ShapeType
    {
-       
-      
       public function ShapeType()
       {
          if(Boot.skip_constructor)
@@ -70,3 +68,4 @@ package nape.shape
       }
    }
 }
+

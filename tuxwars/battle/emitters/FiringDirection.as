@@ -5,8 +5,6 @@ package tuxwars.battle.emitters
    
    public interface FiringDirection
    {
-       
-      
       function get id() : String;
       
       function get uniqueId() : String;
@@ -26,3 +24,4 @@ package tuxwars.battle.emitters
       function getBody() : Body;
    }
 }
+

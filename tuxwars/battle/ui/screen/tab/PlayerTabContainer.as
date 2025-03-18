@@ -8,13 +8,11 @@ package tuxwars.battle.ui.screen.tab
    
    public class PlayerTabContainer extends UIContainers
    {
-      
       public static const STATUS_ACTIVE:String = "Slot_Active";
       
       public static const STATUS_DISABLED:String = "Slot_Disabled";
       
       public static const STATUS_EMPTY:String = "Slot_Empty";
-       
       
       public function PlayerTabContainer(design:MovieClip, parent:UIComponent, playerName:String)
       {
@@ -47,21 +45,18 @@ package tuxwars.battle.ui.screen.tab
                if(player.status != "Active" && player.status != "Idle")
                {
                   changeToNewState(player.status);
-                  break;
                }
                break;
             case "Slot_Disabled":
                if(player.status != "Disabled")
                {
                   changeToNewState(player.status);
-                  break;
                }
                break;
             default:
                if(player.status != "Empty")
                {
                   changeToNewState(player.status);
-                  break;
                }
          }
          updateContent(player);
@@ -73,14 +68,15 @@ package tuxwars.battle.ui.screen.tab
          {
             case "Active":
             case "Idle":
-               show("Slot_Active");
+               show("Slot_Active",false);
                break;
             case "Disabled":
-               show("Slot_Disabled");
+               show("Slot_Disabled",false);
                break;
             default:
-               show("Slot_Empty");
+               show("Slot_Empty",false);
          }
       }
    }
 }
+

@@ -2,7 +2,6 @@ package tuxwars.events
 {
    public class TuxMessageTypes
    {
-      
       public static const TEXT_ID:String = "TextID";
       
       public static const ERROR_MESSAGE:String = "ErrorMessage";
@@ -326,7 +325,6 @@ package tuxwars.events
       public static const INGAME_BET_PLACED:String = "ingameBetPlaced";
       
       public static const INGAME_BET_MULTIPLIER_UPDATED:String = "ingameBetMultiplierChanged";
-       
       
       public function TuxMessageTypes()
       {
@@ -335,3 +333,4 @@ package tuxwars.events
       }
    }
 }
+

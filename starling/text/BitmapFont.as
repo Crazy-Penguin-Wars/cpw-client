@@ -12,7 +12,6 @@ package starling.text
    
    public class BitmapFont
    {
-      
       public static const NATIVE_SIZE:int = -1;
       
       public static const MINI:String = "mini";
@@ -24,7 +23,6 @@ package starling.text
       private static const CHAR_NEWLINE:int = 10;
       
       private static const CHAR_CARRIAGE_RETURN:int = 13;
-       
       
       private var mTexture:Texture;
       
@@ -141,7 +139,7 @@ package starling.text
          var charLocation:CharLocation = null;
          var char:Image = null;
          var charLocations:Vector.<CharLocation> = this.arrangeChars(width,height,text,fontSize,hAlign,vAlign,autoScale,kerning);
-         var numChars:int = charLocations.length;
+         var numChars:int = int(charLocations.length);
          var sprite:Sprite = new Sprite();
          for(var i:int = 0; i < numChars; i++)
          {
@@ -160,7 +158,7 @@ package starling.text
       {
          var charLocation:CharLocation = null;
          var charLocations:Vector.<CharLocation> = this.arrangeChars(width,height,text,fontSize,hAlign,vAlign,autoScale,kerning);
-         var numChars:int = charLocations.length;
+         var numChars:int = int(charLocations.length);
          this.mHelperImage.color = color;
          if(numChars > 8192)
          {
@@ -228,7 +226,7 @@ package starling.text
                for(i = 0; i < numChars; i++)
                {
                   lineFull = false;
-                  charID = text.charCodeAt(i);
+                  charID = int(text.charCodeAt(i));
                   char = this.getChar(charID);
                   if(charID == CHAR_NEWLINE || charID == CHAR_CARRIAGE_RETURN)
                   {
@@ -308,7 +306,7 @@ package starling.text
             }
          }
          var finalLocations:Vector.<CharLocation> = new Vector.<CharLocation>(0);
-         var numLines:int = lines.length;
+         var numLines:int = int(lines.length);
          var bottom:Number = currentY + this.mLineHeight;
          var yOffset:int = 0;
          if(vAlign == VAlign.BOTTOM)
@@ -322,7 +320,7 @@ package starling.text
          for(var lineID:int = 0; lineID < numLines; lineID++)
          {
             line = lines[lineID];
-            numChars = line.length;
+            numChars = int(line.length);
             if(numChars != 0)
             {
                lastLocation = line[line.length - 1];
@@ -390,12 +388,8 @@ package starling.text
    }
 }
 
-import starling.text.BitmapChar;
-
 class CharLocation
 {
-    
-   
    public var char:BitmapChar;
    
    public var scale:Number;

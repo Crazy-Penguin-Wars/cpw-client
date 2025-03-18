@@ -7,13 +7,11 @@ package tuxwars.data
    
    public class Sounds
    {
-      
-      private static const SOUNDS_CACHE:Object = {};
-      
       private static var _themeplayed:Boolean = false;
       
       private static var _secondarythemeplayed:Boolean = false;
-       
+      
+      private static const SOUNDS_CACHE:Object = {};
       
       public function Sounds()
       {
@@ -38,7 +36,7 @@ package tuxwars.data
       
       public static function playTheme() : void
       {
-         var sound:* = null;
+         var sound:SoundReference = null;
          var _loc3_:SoundReference = Sounds.getSoundReference("GameAlmostOver");
          var _loc2_:SoundReference = Sounds.getSoundReference("BriefingMusic");
          if(!_themeplayed)
@@ -163,3 +161,4 @@ package tuxwars.data
       }
    }
 }
+

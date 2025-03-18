@@ -2,11 +2,11 @@ package mx.resources
 {
    import mx.core.mx_internal;
    
+   use namespace mx_internal;
+   
    public class LocaleSorter
    {
-      
       mx_internal static const VERSION:String = "4.5.1.21489";
-       
       
       public function LocaleSorter()
       {
@@ -40,7 +40,7 @@ package mx.resources
          {
             hasLocale[locales[j]] = j;
          }
-         for(i = 0,l = preferenceLocales.length; i < l; i++)
+         for(i = 0,l = int(preferenceLocales.length); i < l; i++)
          {
             plocale = LocaleID.fromString(preferenceLocales[i]);
             promote(preferenceLocales[i]);
@@ -58,7 +58,7 @@ package mx.resources
                   promote(locale);
                }
             }
-            for(j = 0,k = locales.length; j < k; j++)
+            for(j = 0,k = int(locales.length); j < k; j++)
             {
                locale = locales[j];
                if(plocale.isSiblingOf(LocaleID.fromString(locale)))
@@ -69,7 +69,7 @@ package mx.resources
          }
          if(addAll)
          {
-            for(j = 0,k = locales.length; j < k; j++)
+            for(j = 0,k = int(locales.length); j < k; j++)
             {
                promote(locales[j]);
             }
@@ -109,7 +109,6 @@ package mx.resources
 
 class LocaleID
 {
-   
    public static const STATE_PRIMARY_LANGUAGE:int = 0;
    
    public static const STATE_EXTENDED_LANGUAGES:int = 1;
@@ -123,7 +122,6 @@ class LocaleID
    public static const STATE_EXTENSIONS:int = 5;
    
    public static const STATE_PRIVATES:int = 6;
-    
    
    private var lang:String = "";
    
@@ -131,22 +129,18 @@ class LocaleID
    
    private var region:String = "";
    
-   private var extended_langs:Array;
+   private var extended_langs:Array = [];
    
-   private var variants:Array;
+   private var variants:Array = [];
    
-   private var extensions:Object;
+   private var extensions:Object = {};
    
-   private var privates:Array;
+   private var privates:Array = [];
    
    private var privateLangs:Boolean = false;
    
    public function LocaleID()
    {
-      this.extended_langs = [];
-      this.variants = [];
-      this.extensions = {};
-      this.privates = [];
       super();
    }
    
@@ -167,7 +161,7 @@ class LocaleID
       var localeID:LocaleID = new LocaleID();
       var state:int = int(STATE_PRIMARY_LANGUAGE);
       var subtags:Array = str.replace(/-/g,"_").split("_");
-      for(var i:int = 0,var l:int = subtags.length; i < l; i++)
+      for(var i:int = 0,var l:int = int(subtags.length); i < l; i++)
       {
          subtag = subtags[i].toLowerCase();
          if(state == STATE_PRIMARY_LANGUAGE)
@@ -242,7 +236,7 @@ class LocaleID
    
    public function canonicalize() : void
    {
-      var i:* = null;
+      var i:String = null;
       for(i in this.extensions)
       {
          if(this.extensions.hasOwnProperty(i))
@@ -276,7 +270,7 @@ class LocaleID
    
    public function toString() : String
    {
-      var i:* = null;
+      var i:String = null;
       var stack:Array = [this.lang];
       appendElements(stack,this.extended_langs);
       if(this.script != "")
@@ -316,12 +310,12 @@ class LocaleID
    
    public function transformToParent() : Boolean
    {
-      var i:* = null;
+      var i:String = null;
       var lastExtension:Array = null;
       var defaultRegion:String = null;
       if(this.privates.length > 0)
       {
-         this.privates.splice(Number(this.privates.length) - 1,1);
+         this.privates.splice(this.privates.length - 1,1);
          return true;
       }
       var lastExtensionName:String = null;
@@ -345,7 +339,7 @@ class LocaleID
       }
       if(this.variants.length > 0)
       {
-         this.variants.splice(Number(this.variants.length) - 1,1);
+         this.variants.splice(this.variants.length - 1,1);
          return true;
       }
       if(this.script != "")
@@ -376,7 +370,7 @@ class LocaleID
       }
       if(this.extended_langs.length > 0)
       {
-         this.extended_langs.splice(Number(this.extended_langs.length) - 1,1);
+         this.extended_langs.splice(this.extended_langs.length - 1,1);
          return true;
       }
       return false;
@@ -385,7 +379,6 @@ class LocaleID
 
 class LocaleRegistry
 {
-   
    private static const SCRIPTS:Array = ["","latn","ethi","arab","beng","cyrl","thaa","tibt","grek","gujr","hebr","deva","armn","jpan","geor","khmr","knda","kore","laoo","mlym","mymr","orya","guru","sinh","taml","telu","thai","nkoo","blis","hans","hant","mong","syrc"];
    
    private static const SCRIPT_BY_ID:Object = {
@@ -679,7 +672,6 @@ class LocaleRegistry
          "ne":1
       }
    };
-    
    
    public function LocaleRegistry()
    {

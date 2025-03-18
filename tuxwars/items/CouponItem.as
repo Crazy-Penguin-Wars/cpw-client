@@ -6,8 +6,6 @@ package tuxwars.items
    
    public class CouponItem extends Item
    {
-       
-      
       private var _itemId:String;
       
       private var _ingamePrice:int;
@@ -45,3 +43,4 @@ package tuxwars.items
       }
    }
 }
+

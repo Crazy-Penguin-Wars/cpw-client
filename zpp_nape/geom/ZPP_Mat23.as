@@ -5,9 +5,7 @@ package zpp_nape.geom
    
    public class ZPP_Mat23
    {
-      
-      public static var zpp_pool:ZPP_Mat23 = null;
-       
+      public static var zpp_pool:ZPP_Mat23;
       
       public var ty:Number;
       
@@ -57,6 +55,7 @@ package zpp_nape.geom
             ZPP_Mat23.zpp_pool = _loc1_.next;
             _loc1_.next = null;
          }
+         null;
          return _loc1_;
       }
       
@@ -92,3 +91,4 @@ package zpp_nape.geom
       }
    }
 }
+

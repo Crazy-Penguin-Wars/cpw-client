@@ -22,8 +22,6 @@ package tuxwars.home.ui.screen.gifts.container
    
    public class GiftBase extends UIContainer
    {
-       
-      
       private var _shopItem:ShopItem;
       
       private var _gift:GiftReference;
@@ -36,7 +34,7 @@ package tuxwars.home.ui.screen.gifts.container
       
       public function GiftBase(design:MovieClip, gift:GiftReference, game:TuxWarsGame, parent:UIComponent = null)
       {
-         var icon:* = null;
+         var icon:MovieClip = null;
          super(design,parent);
          iconContainer = design.getChildByName("Icon") as MovieClip;
          if(gift.itemData)
@@ -85,8 +83,8 @@ package tuxwars.home.ui.screen.gifts.container
       
       private function mouseOver(event:MouseEvent) : void
       {
-         var tooltip:* = null;
-         var _loc3_:* = null;
+         var tooltip:TuxTooltip = null;
+         var _loc3_:ShopItem = null;
          var b:Boolean = false;
          if(gift.itemData)
          {
@@ -106,21 +104,21 @@ package tuxwars.home.ui.screen.gifts.container
                   tooltip = TooltipManager.showTooltip(new ItemBaseTooltip(_loc3_,TooltipsData.getBoosterTooltipGraphics(),_game),this._design);
                }
                var _loc5_:DCGame = DCGame;
-               b = tooltip.getX() > Number(com.dchoc.game.DCGame._stage.width) / 3;
+               b = tooltip.getX() > com.dchoc.game.DCGame._stage.width / 3;
                if(b)
                {
                   var _loc6_:DCGame = DCGame;
-                  (tooltip as ItemBaseTooltip).content.containers.show((tooltip.getY() > Number(com.dchoc.game.DCGame._stage.height) / 2 ? "Up" : "Down") + "Left",false);
+                  (tooltip as ItemBaseTooltip).content.containers.show((tooltip.getY() > com.dchoc.game.DCGame._stage.height / 2 ? "Up" : "Down") + "Left",false);
                }
                tooltip.setX(tooltip.getX() + (b ? 0 : this._design.width));
-               tooltip.setY(tooltip.getY() + Number(this._design.height) / 2);
+               tooltip.setY(tooltip.getY() + this._design.height / 2);
                ((tooltip as ItemBaseTooltip).content.containers.getCurrentContainer() as TooltipContainer).amountTextField.setText("");
             }
          }
          else
          {
             tooltip = TooltipManager.showTooltip(new ItemTooltip(_gift.name,_gift.description),this._design);
-            tooltip.setX(tooltip.getX() + Number(this._design.width) * 0.5);
+            tooltip.setX(tooltip.getX() + this._design.width * 0.5);
          }
       }
       
@@ -135,3 +133,4 @@ package tuxwars.home.ui.screen.gifts.container
       }
    }
 }
+

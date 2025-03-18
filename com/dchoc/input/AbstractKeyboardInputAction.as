@@ -2,9 +2,7 @@ package com.dchoc.input
 {
    public class AbstractKeyboardInputAction extends AbstractInputAction implements KeyboardInputAction
    {
-      
       public static const ANY_KEY:int = -1;
-       
       
       private var _keyCode:int;
       
@@ -20,3 +18,4 @@ package com.dchoc.input
       }
    }
 }
+

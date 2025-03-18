@@ -6,11 +6,10 @@ package tuxwars.home.ui.screen.privategame.join
    
    public class JoinPrivateGameScreen extends PrivateGameScreen
    {
-       
-      
       public function JoinPrivateGameScreen(game:TuxWarsGame)
       {
          super(game,DCResourceManager.instance.getFromSWF("flash/ui/multiplayer.swf","multiplayer_private"),"JOIN_GAME_HEADER");
       }
    }
 }
+

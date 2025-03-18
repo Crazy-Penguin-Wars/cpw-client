@@ -13,8 +13,6 @@ package tuxwars.home.ui.logic.privategame.host
    
    public class HostPrivateGameSettingsLogic extends TuxUILogic
    {
-       
-      
       public function HostPrivateGameSettingsLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
@@ -64,3 +62,4 @@ package tuxwars.home.ui.logic.privategame.host
       }
    }
 }
+

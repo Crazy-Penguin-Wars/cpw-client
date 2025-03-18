@@ -5,8 +5,6 @@ package mx.preloaders
    
    public interface IPreloaderDisplay extends IEventDispatcher
    {
-       
-      
       function get backgroundAlpha() : Number;
       
       function set backgroundAlpha(param1:Number) : void;
@@ -36,3 +34,4 @@ package mx.preloaders
       function initialize() : void;
    }
 }
+

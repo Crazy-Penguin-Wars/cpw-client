@@ -1,9 +1,9 @@
 package tuxwars.battle.ui.logic.afterresultsales
 {
    import com.dchoc.net.ServerRequest;
-   import com.dchoc.projectdata.ProjectManager;
-   import com.dchoc.projectdata.Row;
-   import com.dchoc.projectdata.Table;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
+   import com.dchoc.utils.LogUtils;
    import tuxwars.GameSettings;
    import tuxwars.TuxWarsGame;
    import tuxwars.battle.BattleResults;
@@ -21,7 +21,6 @@ package tuxwars.battle.ui.logic.afterresultsales
    
    public class AfterResultSalesLogic extends TuxUILogic
    {
-      
       public static var GO_HOME:int = 0;
       
       public static var PLAY_AGAIN:int = 1;
@@ -29,7 +28,6 @@ package tuxwars.battle.ui.logic.afterresultsales
       public static var PLAY_AGAIN_TOURNAMENT:int = 2;
       
       public static var PLAY_AGAIN_CUSTOM:int = 3;
-       
       
       private var _rematchIdentifier:String;
       
@@ -52,8 +50,9 @@ package tuxwars.battle.ui.logic.afterresultsales
       
       public function getShopItem(winner:Boolean, index:int) : ShopItem
       {
+         var _loc8_:* = winner ? "AfterResultsSalesWinner" : "AfterResultsSalesLoser";
          var _loc4_:ProjectManager = ProjectManager;
-         var _loc3_:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable("AfterResultsSalesWinner");
+         var _loc3_:Table = com.dchoc.projectdata.ProjectManager.projectData.findTable(_loc8_);
          var _loc9_:* = index.toString();
          var _loc5_:* = _loc3_;
          §§push(§§findproperty(ShopItem));
@@ -67,12 +66,13 @@ package tuxwars.battle.ui.logic.afterresultsales
             }
             _loc5_._cache[_loc9_] = _loc10_;
          }
+         var _loc11_:String = "ItemId";
          var _loc6_:* = _loc5_._cache[_loc9_];
-         if(!_loc6_._cache["ItemId"])
+         if(!_loc6_._cache[_loc11_])
          {
-            _loc6_._cache["ItemId"] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name","ItemId");
+            _loc6_._cache[_loc11_] = com.dchoc.utils.DCUtils.find(_loc6_._fields,"name",_loc11_);
          }
-         var _loc7_:* = _loc6_._cache["ItemId"];
+         var _loc7_:* = _loc6_._cache[_loc11_];
          return new §§pop().ShopItem(§§pop().getItemData(_loc7_.overrideValue != null ? _loc7_.overrideValue : _loc7_._value));
       }
       
@@ -90,7 +90,7 @@ package tuxwars.battle.ui.logic.afterresultsales
       
       public function playAgain(battleResults:BattleResults) : void
       {
-         var _loc3_:* = null;
+         var _loc3_:Object = null;
          var _loc2_:TuxWarsGame = game;
          if(!game.homeState)
          {
@@ -130,3 +130,4 @@ package tuxwars.battle.ui.logic.afterresultsales
       }
    }
 }
+

@@ -4,9 +4,7 @@ package org.as3commons.zip.utils
    
    public class ChecksumUtil
    {
-      
       private static var crcTable:Array = makeCRCTable();
-       
       
       public function ChecksumUtil()
       {
@@ -26,7 +24,7 @@ package org.as3commons.zip.utils
             {
                if(Boolean(c & 1))
                {
-                  c = 3988292384 ^ c >>> 1;
+                  c = uint(3988292384 ^ c >>> 1);
                }
                else
                {
@@ -47,16 +45,16 @@ package org.as3commons.zip.utils
          }
          if(len == 0)
          {
-            len = data.length - start;
+            len = uint(data.length - start);
          }
          if(len + start > data.length)
          {
-            len = data.length - start;
+            len = uint(data.length - start);
          }
          var c:uint = 4294967295;
          for(i = start; i < len; i++)
          {
-            c = uint(crcTable[(c ^ Number(data[i])) & 255]) ^ c >>> 8;
+            c = uint(uint(crcTable[(c ^ data[i]) & 0xFF]) ^ c >>> 8);
          }
          return c ^ 4294967295;
       }
@@ -69,11 +67,11 @@ package org.as3commons.zip.utils
          }
          if(len == 0)
          {
-            len = data.length - start;
+            len = uint(data.length - start);
          }
          if(len + start > data.length)
          {
-            len = data.length - start;
+            len = uint(data.length - start);
          }
          var i:uint = start;
          var a:uint = 1;
@@ -88,3 +86,4 @@ package org.as3commons.zip.utils
       }
    }
 }
+

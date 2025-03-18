@@ -4,8 +4,7 @@ package tuxwars.battle.ui.logic
    
    public interface IBattleHudLogic extends ILogic
    {
-       
-      
       function getHudPlayersData() : Object;
    }
 }
+

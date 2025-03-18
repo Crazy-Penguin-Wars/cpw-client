@@ -19,13 +19,11 @@ package starling.core
    
    public class RenderSupport
    {
-      
       private static var sPoint:Point = new Point();
       
       private static var sRectangle:Rectangle = new Rectangle();
       
       private static var sAssembler:AGALMiniAssembler = new AGALMiniAssembler();
-       
       
       private var mProjectionMatrix:Matrix;
       
@@ -272,8 +270,8 @@ package starling.core
          if(Boolean(value))
          {
             this.mScissorRectangle.setTo(value.x,value.y,value.width,value.height);
-            width = Boolean(this.mRenderTarget) ? this.mRenderTarget.root.nativeWidth : this.mBackBufferWidth;
-            height = Boolean(this.mRenderTarget) ? this.mRenderTarget.root.nativeHeight : this.mBackBufferHeight;
+            width = Boolean(this.mRenderTarget) ? int(this.mRenderTarget.root.nativeWidth) : this.mBackBufferWidth;
+            height = Boolean(this.mRenderTarget) ? int(this.mRenderTarget.root.nativeHeight) : this.mBackBufferHeight;
             MatrixUtil.transformCoords(this.mProjectionMatrix,value.x,value.y,sPoint);
             sRectangle.x = Math.max(0,(sPoint.x + 1) / 2) * width;
             sRectangle.y = Math.max(0,(-sPoint.y + 1) / 2) * height;
@@ -338,3 +336,4 @@ package starling.core
       }
    }
 }
+

@@ -4,7 +4,6 @@ package com.dchoc.ui.text
    
    public class UIAutoTextField
    {
-      
       public static const ALIGNMENT_TOP:int = 0;
       
       public static const ALIGNMENT_VCENTER:int = 1;
@@ -20,7 +19,6 @@ package com.dchoc.ui.text
       public static const COMMAND_CAPS:String = "@CAPS";
       
       public static const COMMAND_VERTICAL_CENTER:String = "@VC";
-       
       
       private var textField:TextField;
       
@@ -230,3 +228,4 @@ package com.dchoc.ui.text
       }
    }
 }
+

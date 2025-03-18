@@ -1,11 +1,10 @@
 package tuxwars.battle.gameobjects
 {
-   import com.dchoc.projectdata.Field;
-   import com.dchoc.projectdata.Row;
+   import com.dchoc.projectdata.*;
+   import com.dchoc.utils.DCUtils;
    
    public class ColorReference
    {
-      
       private static const RED_MULTIPLIER:String = "RedMultiplier";
       
       private static const GREEN_MULTIPLIER:String = "GreenMultiplier";
@@ -21,7 +20,6 @@ package tuxwars.battle.gameobjects
       private static const BLUE_OFFSET:String = "BlueOffset";
       
       private static const ALPHA_OFFSET:String = "AlphaOffset";
-       
       
       private var _fieldCache:Object;
       
@@ -97,7 +95,7 @@ package tuxwars.battle.gameobjects
       
       private function getField(name:String) : Field
       {
-         var _loc2_:* = null;
+         var _loc2_:Field = null;
          if(!_fieldCache.hasOwnProperty(name))
          {
             var _loc4_:* = name;
@@ -118,3 +116,4 @@ package tuxwars.battle.gameobjects
       }
    }
 }
+

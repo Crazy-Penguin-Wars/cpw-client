@@ -7,9 +7,7 @@ package tuxwars.ui.popups.states.message
    
    public class MessagePopUpSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE:String = "MessageType";
-       
       
       public function MessagePopUpSubState(game:TuxWarsGame, logic:Class, params:* = null)
       {
@@ -17,3 +15,4 @@ package tuxwars.ui.popups.states.message
       }
    }
 }
+

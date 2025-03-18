@@ -13,13 +13,11 @@ package tuxwars.ui.popups.screen.exitquestion
    
    public class ExitQuestionPopUpScreen extends PopUpBaseScreen
    {
-      
       private static const BUTTON_EXIT:String = "Button_Exit";
       
       private static const TEXT_MESSAGE:String = "Text_Message";
       
       private static const TEXT_HEADER:String = "Text_Header";
-       
       
       private const header:UIAutoTextField = new UIAutoTextField();
       
@@ -58,3 +56,4 @@ package tuxwars.ui.popups.screen.exitquestion
       }
    }
 }
+

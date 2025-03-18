@@ -18,7 +18,6 @@ package tuxwars.battle.ui.screen.ingamebetting
    
    public class IngameBettingScreen extends TuxUIElementScreen
    {
-      
       private static const DEFAULT_MULTIPLIER:int = 2;
       
       private static const LAST_SECONDS_TO_DISABLE_BETTING:int = 60;
@@ -34,7 +33,6 @@ package tuxwars.battle.ui.screen.ingamebetting
       private static const BUTTON_BET_CASH:String = "Button_Bet_Cash";
       
       private static const BUTTON_BET_COINS:String = "Button_Bet_Coins";
-       
       
       private var saldoCoins:TextField;
       
@@ -135,7 +133,7 @@ package tuxwars.battle.ui.screen.ingamebetting
       
       private function updateMultiplier(isActive:Boolean, value:int, playEffect:Boolean) : void
       {
-         var tf:* = null;
+         var tf:TextField = null;
          var effectAllowed:Boolean = playEffect && value != currentMultiplier;
          currentMultiplier = value;
          if(isActive)
@@ -166,8 +164,8 @@ package tuxwars.battle.ui.screen.ingamebetting
       
       private function updatePayout(playEffect:Boolean, addedAmount:int) : void
       {
-         var tf:* = null;
-         var mc:* = null;
+         var tf:TextField = null;
+         var mc:MovieClip = null;
          IngameBetData.addToPayout(addedAmount);
          if(currentBetIsCash)
          {
@@ -323,3 +321,4 @@ package tuxwars.battle.ui.screen.ingamebetting
       }
    }
 }
+

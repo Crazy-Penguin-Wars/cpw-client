@@ -6,11 +6,10 @@ package tuxwars.home.ui.logic.neighbors
    
    public class NeighborLogic extends TuxUILogic
    {
-       
-      
       public function NeighborLogic(game:TuxWarsGame, state:TuxState)
       {
          super(game,state);
       }
    }
 }
+

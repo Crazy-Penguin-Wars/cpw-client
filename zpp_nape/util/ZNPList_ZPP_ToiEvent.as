@@ -5,8 +5,6 @@ package zpp_nape.util
    
    public class ZNPList_ZPP_ToiEvent
    {
-       
-      
       public var pushmod:Boolean;
       
       public var modified:Boolean;
@@ -114,7 +112,7 @@ package zpp_nape.util
                _loc7_.next = ZNPNode_ZPP_ToiEvent.zpp_pool;
                ZNPNode_ZPP_ToiEvent.zpp_pool = _loc7_;
                modified = true;
-               length = length - 1;
+               --length;
                pushmod = true;
                _loc6_;
                _loc4_ = true;
@@ -146,7 +144,7 @@ package zpp_nape.util
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function iterator_at(param1:int) : ZNPNode_ZPP_ToiEvent
@@ -172,6 +170,7 @@ package zpp_nape.util
             ZNPNode_ZPP_ToiEvent.zpp_pool = _loc4_.next;
             _loc4_.next = null;
          }
+         null;
          _loc4_.elt = param2;
          var _loc3_:ZNPNode_ZPP_ToiEvent = _loc4_;
          if(param1 == null)
@@ -184,9 +183,8 @@ package zpp_nape.util
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -210,7 +208,7 @@ package zpp_nape.util
             pushmod = true;
          }
          modified = true;
-         length = length - 1;
+         --length;
       }
       
       public function inlined_insert(param1:ZNPNode_ZPP_ToiEvent, param2:ZPP_ToiEvent) : ZNPNode_ZPP_ToiEvent
@@ -226,6 +224,7 @@ package zpp_nape.util
             ZNPNode_ZPP_ToiEvent.zpp_pool = _loc4_.next;
             _loc4_.next = null;
          }
+         null;
          _loc4_.elt = param2;
          var _loc3_:ZNPNode_ZPP_ToiEvent = _loc4_;
          if(param1 == null)
@@ -238,9 +237,8 @@ package zpp_nape.util
             _loc3_.next = param1.next;
             param1.next = _loc3_;
          }
-         modified = true;
-         pushmod = true;
-         length = length + 1;
+         pushmod = modified = true;
+         ++length;
          return _loc3_;
       }
       
@@ -291,7 +289,7 @@ package zpp_nape.util
          _loc4_.next = ZNPNode_ZPP_ToiEvent.zpp_pool;
          ZNPNode_ZPP_ToiEvent.zpp_pool = _loc4_;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -313,7 +311,7 @@ package zpp_nape.util
                pushmod = true;
             }
             modified = true;
-            length = length - 1;
+            --length;
          }
          pushmod = true;
       }
@@ -331,12 +329,13 @@ package zpp_nape.util
             ZNPNode_ZPP_ToiEvent.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.elt = param1;
          var _loc2_:ZNPNode_ZPP_ToiEvent = _loc3_;
          _loc2_.next = head;
          head = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
       
@@ -387,7 +386,7 @@ package zpp_nape.util
          _loc4_.next = ZNPNode_ZPP_ToiEvent.zpp_pool;
          ZNPNode_ZPP_ToiEvent.zpp_pool = _loc4_;
          modified = true;
-         length = length - 1;
+         --length;
          pushmod = true;
          return _loc3_;
       }
@@ -409,7 +408,7 @@ package zpp_nape.util
                pushmod = true;
             }
             modified = true;
-            length = length - 1;
+            --length;
          }
          pushmod = true;
       }
@@ -457,13 +456,15 @@ package zpp_nape.util
             ZNPNode_ZPP_ToiEvent.zpp_pool = _loc3_.next;
             _loc3_.next = null;
          }
+         null;
          _loc3_.elt = param1;
          var _loc2_:ZNPNode_ZPP_ToiEvent = _loc3_;
          _loc2_.next = head;
          head = _loc2_;
          modified = true;
-         length = length + 1;
+         ++length;
          return param1;
       }
    }
 }
+

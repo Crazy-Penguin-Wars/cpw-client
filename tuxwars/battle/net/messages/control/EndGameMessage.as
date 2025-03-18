@@ -5,8 +5,6 @@ package tuxwars.battle.net.messages.control
    
    public class EndGameMessage extends SocketMessage
    {
-       
-      
       public function EndGameMessage()
       {
          super({"t":19});
@@ -18,3 +16,4 @@ package tuxwars.battle.net.messages.control
       }
    }
 }
+

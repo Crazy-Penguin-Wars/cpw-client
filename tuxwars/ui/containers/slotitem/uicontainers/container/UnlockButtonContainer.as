@@ -13,8 +13,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
    
    public class UnlockButtonContainer extends ButtonContainer
    {
-       
-      
       public function UnlockButtonContainer(design:MovieClip, parent:UIComponent = null)
       {
          super(design,parent);
@@ -46,8 +44,8 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       
       override protected function buttonPressed(event:MouseEvent) : void
       {
-         var _loc2_:* = null;
-         var _loc3_:* = null;
+         var _loc2_:SoundReference = null;
+         var _loc3_:SoundReference = null;
          if(shopItem.unlockPrice <= slotElement.game.player.premiumMoney)
          {
             button.setEnabled(false);
@@ -87,3 +85,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       }
    }
 }
+

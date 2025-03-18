@@ -11,8 +11,6 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
    
    public class ShopItemButton extends IconButton
    {
-       
-      
       private var _newText:UIAutoTextField;
       
       private var _soldOutText:UIAutoTextField;
@@ -100,3 +98,4 @@ package tuxwars.ui.containers.slotitem.uicontainers.container.buttons
       }
    }
 }
+

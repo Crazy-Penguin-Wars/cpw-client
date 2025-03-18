@@ -4,9 +4,7 @@ package tuxwars.data
    
    public class MatchData
    {
-      
       public static const RANDOM_MAP:String = "RANDOM";
-       
       
       private var _mapId:String;
       
@@ -60,8 +58,9 @@ package tuxwars.data
       public function update(data:Object) : void
       {
          _mapId = !!data.map ? data.map : _mapId;
-         _matchTime = !!data.battle_time ? Number(data.battle_time) / 60 : _matchTime;
+         _matchTime = !!data.battle_time ? data.battle_time / 60 : _matchTime;
          _turnTime = !!data.turn_time ? data.turn_time : _turnTime;
       }
    }
 }
+

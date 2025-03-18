@@ -16,9 +16,7 @@ package tuxwars.ui.components
    
    public class LoadingIndicatorScreen
    {
-      
       private static const LOADING_DEFAULT:String = "loading_default";
-       
       
       private var _game:TuxWarsGame;
       
@@ -58,9 +56,9 @@ package tuxwars.ui.components
                }
                _loadingImage = DCResourceManager.instance.getFromSWF("flash/ui/loading_anim.swf","loading_default");
                var _loc7_:DCGame = DCGame;
-               _loadingImage.x = Number(com.dchoc.game.DCGame._stage.stageWidth) * 0.5;
+               _loadingImage.x = com.dchoc.game.DCGame._stage.stageWidth * 0.5;
                var _loc8_:DCGame = DCGame;
-               _loadingImage.y = Number(com.dchoc.game.DCGame._stage.stageHeight) * 0.5;
+               _loadingImage.y = com.dchoc.game.DCGame._stage.stageHeight * 0.5;
                if(_loadingImage)
                {
                   _loadingText = TuxUiUtils.createAutoTextField(_loadingImage.Text_Message,loadingTID);
@@ -106,9 +104,9 @@ package tuxwars.ui.components
          if(_loadingImage)
          {
             var _loc4_:DCGame = DCGame;
-            _loadingImage.x = Number(com.dchoc.game.DCGame._stage.stageWidth) * 0.5;
+            _loadingImage.x = com.dchoc.game.DCGame._stage.stageWidth * 0.5;
             var _loc5_:DCGame = DCGame;
-            _loadingImage.y = Number(com.dchoc.game.DCGame._stage.stageHeight) * 0.5;
+            _loadingImage.y = com.dchoc.game.DCGame._stage.stageHeight * 0.5;
          }
       }
       
@@ -131,7 +129,6 @@ package tuxwars.ui.components
          switch(getQualifiedClassName(current))
          {
             case getQualifiedClassName(TuxLoadingStartUpSharedAssetsSubState):
-               break;
             case getQualifiedClassName(TuxLoadingStartUpAssetsSubState):
                break;
             default:
@@ -141,3 +138,4 @@ package tuxwars.ui.components
       }
    }
 }
+

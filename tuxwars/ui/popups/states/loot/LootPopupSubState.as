@@ -10,9 +10,7 @@ package tuxwars.ui.popups.states.loot
    
    public class LootPopupSubState extends PopUpBaseSubState
    {
-      
       public static const TYPE_LOOT:String = "TypeLoot";
-       
       
       public function LootPopupSubState(game:DCGame, item:ItemData)
       {
@@ -21,3 +19,4 @@ package tuxwars.ui.popups.states.loot
       }
    }
 }
+
