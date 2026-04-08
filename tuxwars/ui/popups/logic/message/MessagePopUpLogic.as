@@ -1,0 +1,36 @@
+package tuxwars.ui.popups.logic.message
+{
+   import tuxwars.TuxWarsGame;
+   import tuxwars.states.TuxState;
+   import tuxwars.ui.popups.logic.PopUpBaseLogic;
+   import tuxwars.ui.popups.screen.message.MessagePopUpScreen;
+   
+   public class MessagePopUpLogic extends PopUpBaseLogic
+   {
+      public function MessagePopUpLogic(param1:TuxWarsGame, param2:TuxState)
+      {
+         super(param1,param2);
+      }
+      
+      public function get headerText() : String
+      {
+         return null;
+      }
+      
+      public function get messageText() : String
+      {
+         return null;
+      }
+      
+      public function get messageScreen() : MessagePopUpScreen
+      {
+         return screen;
+      }
+      
+      public function get picture() : String
+      {
+         return null;
+      }
+   }
+}
+
