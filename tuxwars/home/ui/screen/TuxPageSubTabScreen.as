@@ -1,4 +1,4 @@
-package tuxwars.home.ui.screen
+﻿package tuxwars.home.ui.screen
 {
    import com.dchoc.projectdata.*;
    import com.dchoc.ui.buttons.*;
@@ -169,7 +169,7 @@ package tuxwars.home.ui.screen
             }
             _loc4_++;
          }
-         this._sortText = TuxUiUtils.createAutoTextFieldWithText(this._contentSort.Text as TextField,!_loc2_ ? ProjectManager.getText("SORTING") : "");
+         this._sortText = TuxUiUtils.createAutoTextFieldWithText(this._contentSort.Text as TextField,_loc2_ ? ProjectManager.getText("SORTING") : "");
       }
       
       private function sortPressed(param1:UIButtonEvent) : void

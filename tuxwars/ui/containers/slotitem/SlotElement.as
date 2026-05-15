@@ -1,4 +1,4 @@
-package tuxwars.ui.containers.slotitem
+﻿package tuxwars.ui.containers.slotitem
 {
    import com.dchoc.ui.base.UIStateComponent;
    import com.dchoc.utils.*;
@@ -105,7 +105,7 @@ package tuxwars.ui.containers.slotitem
          {
             if(this._shopItem.itemData.type == "Weapon")
             {
-               TooltipManager.showTooltip(new ItemBaseTooltip(this._shopItem,TooltipsData.getWeaponTooltipGraphics(),this._game),this._design);
+               //TooltipManager.showTooltip(new ItemBaseTooltip(this._shopItem,TooltipsData.getWeaponTooltipGraphics(),this._game),this._design);
             }
             else if(this._shopItem.itemData.type == "Clothing")
             {
@@ -113,7 +113,7 @@ package tuxwars.ui.containers.slotitem
             }
             else
             {
-               TooltipManager.showTooltip(new ItemBaseTooltip(this._shopItem,TooltipsData.getBoosterTooltipGraphics(),this._game),this._design);
+               //TooltipManager.showTooltip(new ItemBaseTooltip(this._shopItem,TooltipsData.getBoosterTooltipGraphics(),this._game),this._design);
             }
          }
          else

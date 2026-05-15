@@ -1,4 +1,4 @@
-package tuxwars.home.ui.logic
+﻿package tuxwars.home.ui.logic
 {
    import com.dchoc.messages.*;
    import com.dchoc.projectdata.*;
@@ -149,7 +149,6 @@ package tuxwars.home.ui.logic
       
       public function get tabSlotSize() : int
       {
-         var _loc5_:* = undefined;
          var _loc1_:Array = this.getTabs();
          var _loc2_:String = "SlotSize";
          var _loc3_:* = getCurrentPage();
@@ -157,9 +156,8 @@ package tuxwars.home.ui.logic
          {
             _loc3_.getCache[_loc2_] = DCUtils.find(_loc3_.getFields(),"name",_loc2_);
          }
-         _loc5_ = _loc4_;
          var _loc4_:Field = _loc3_.getCache[_loc2_];
-         var _loc6_:* = !!_loc4_ ? (_loc5_.overrideValue != null ? _loc5_.overrideValue : _loc5_._value) : null;
+         var _loc6_:* = !!_loc4_ ? (_loc4_.overrideValue != null ? _loc4_.overrideValue : _loc4_._value) : null;
          var _loc7_:Array = _loc6_ is Array ? _loc6_ : (!!_loc6_ ? [_loc6_] : null);
          if(_loc1_ && this.currentTab && _loc1_.indexOf(this.currentTab) != -1 && Boolean(_loc7_))
          {
