@@ -259,7 +259,7 @@ package tuxwars.battle.gameobjects
          {
             return;
          }
-         if(!this._markedForRemoval)
+         if(!this.markedForRemoval)
          {
             _loc2_ = this.followedObject;
             if(_loc2_ == null || !_loc2_.body)
@@ -287,7 +287,7 @@ package tuxwars.battle.gameobjects
                   (_loc2_ as PlayerGameObject).followerIdsAtDeath.push(this._id);
                }
             }
-            if(this._markedForRemoval)
+            if(this.markedForRemoval)
             {
                return;
             }
@@ -313,7 +313,7 @@ package tuxwars.battle.gameobjects
             }
          }
          this.updateDuration(param1);
-         if(!this._markedForRemoval)
+         if(!this.markedForRemoval)
          {
             if(this._scriptUniqueIds.length <= 0)
             {
@@ -494,7 +494,7 @@ package tuxwars.battle.gameobjects
       public function get hasFollowedObject() : Boolean
       {
          var _loc1_:PhysicsGameObject = this.followedObject;
-         return _loc1_ != null && !_loc2_._markedForRemoval;
+         return _loc1_ != null && !_loc2_.markedForRemoval;
       }
       
       public function get followedObject() : PhysicsGameObject
@@ -508,7 +508,7 @@ package tuxwars.battle.gameobjects
       
       public function get followedObjectReal() : PhysicsGameObject
       {
-         if(this._followedObjectReal != null && Boolean(_loc1_._markedForRemoval))
+         if(this._followedObjectReal != null && Boolean(_loc1_.markedForRemoval))
          {
             return null;
          }

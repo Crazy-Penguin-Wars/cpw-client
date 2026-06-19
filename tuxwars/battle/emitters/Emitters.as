@@ -13,7 +13,6 @@ package tuxwars.battle.emitters
       public static function addListeners() : void
       {
          MissileEmitter.addListeners();
-         var _loc1_:ExplosionEmitter = ExplosionEmitter;
          if(!ExplosionEmitter._instance)
          {
             ExplosionEmitter._instance = new ExplosionEmitter();
@@ -25,7 +24,6 @@ package tuxwars.battle.emitters
       public static function removeListeners() : void
       {
          MissileEmitter.removeListeners();
-         var _loc1_:ExplosionEmitter = ExplosionEmitter;
          if(!ExplosionEmitter._instance)
          {
             ExplosionEmitter._instance = new ExplosionEmitter();
@@ -38,7 +36,6 @@ package tuxwars.battle.emitters
       {
          LogUtils.log("Disposing emitters!",Emitters,0,"Emitter",false,false,false);
          removeListeners();
-         var _loc1_:ExplosionEmitter = ExplosionEmitter;
          if(!ExplosionEmitter._instance)
          {
             ExplosionEmitter._instance = new ExplosionEmitter();

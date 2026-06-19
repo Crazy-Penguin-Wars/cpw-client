@@ -258,7 +258,7 @@ package com.dchoc.gameobjects
          {
             _loc2_ = this.gameObjects[_loc1_];
             _loc3_ = _loc2_;
-            if(_loc3_._markedForRemoval)
+            if(_loc3_.markedForRemoval)
             {
                LogUtils.log("Remove GameObject: " + _loc2_.shortName + " after markedForRemoval",this,0,"GameObjects",false,false,false);
                this.removeGameObject(_loc2_);

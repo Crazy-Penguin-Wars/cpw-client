@@ -333,7 +333,7 @@ package tuxwars.battle.world
          var _loc9_:TextEffect = new TextEffect(param1,param2,param3,param4,param6);
          if(param5)
          {
-            DCGame._infoLayer.addChild(_loc9_.movieClip);
+            DCGame.infoContainer.addChild(_loc9_.movieClip);
          }
          else
          {
@@ -602,7 +602,7 @@ package tuxwars.battle.world
          {
             _loc2_ = _loc4_.dead_dude;
             _loc3_ = this.findPlayer(_loc2_);
-            if(_loc3_ && _loc3_.isDead() && !_loc5_._markedForRemoval)
+            if(_loc3_ && _loc3_.isDead() && !_loc5_.markedForRemoval)
             {
                LogUtils.log("Respawning player " + _loc3_,this,1,"Player",false,false,false);
                _loc3_.changeState(new PlayerSpawningState(_loc3_,_loc4_),true);
@@ -623,7 +623,7 @@ package tuxwars.battle.world
          {
             _loc2_ = _loc4_.dead_dude;
             _loc3_ = this.findPlayer(_loc2_);
-            if(_loc3_ && _loc3_.isSpawning() && !_loc5_._markedForRemoval)
+            if(_loc3_ && _loc3_.isSpawning() && !_loc5_.markedForRemoval)
             {
                LogUtils.log("Resuming player: " + _loc3_,this,1,"Player",false,false,false);
                PlayerSpawningState(_loc3_.state).resume();

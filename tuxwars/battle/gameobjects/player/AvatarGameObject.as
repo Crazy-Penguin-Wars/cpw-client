@@ -1,4 +1,4 @@
-package tuxwars.battle.gameobjects.player
+﻿package tuxwars.battle.gameobjects.player
 {
    import com.dchoc.avatar.*;
    import com.dchoc.game.DCGame;
@@ -34,7 +34,7 @@ package tuxwars.battle.gameobjects.player
          this._container.mouseEnabled = false;
          this._avatar = new TuxAvatar(param1.animationAssets,this);
          this._container.addChild(this._avatar);
-         direction = this._displayObject.x <= DCGame.getStage().stageWidth * 0.5 ? 1 : 0;
+         direction = this.displayObject.x <= DCGame.getStage().stageWidth * 0.5 ? 1 : 0;
          this.idleMode = true;
          this._playIdleAnim = true;
       }

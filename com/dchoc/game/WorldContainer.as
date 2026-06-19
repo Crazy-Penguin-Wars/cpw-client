@@ -100,7 +100,7 @@ package com.dchoc.game
                _loc4_ = this._world;
                if(!_loc4_._objectContainer.contains(_loc3_))
                {
-                  if(!DCGame._infoLayer.contains(_loc3_))
+                  if(!DCGame.infoLayer.contains(_loc3_))
                   {
                      return false;
                   }

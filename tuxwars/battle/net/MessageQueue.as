@@ -46,7 +46,7 @@ package tuxwars.battle.net
             for each(_loc2_ in this.practiceMessages)
             {
                _loc3_ = this.server;
-               _loc3_._responseQueue.addResponse(_loc2_);
+               _loc3_.responseQueue.addResponse(_loc2_);
             }
             this.practiceMessages.splice(0,this.practiceMessages.length);
          }

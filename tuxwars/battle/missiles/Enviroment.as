@@ -102,7 +102,7 @@ package tuxwars.battle.missiles
       
       override protected function outOfWorld() : void
       {
-         if(!this._markedForRemoval)
+         if(!this.markedForRemoval)
          {
             markForRemoval();
             emptyCollectedDamage();

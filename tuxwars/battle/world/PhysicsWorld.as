@@ -195,12 +195,10 @@ package tuxwars.battle.world
       
       public function createGameObject(param1:PhysicsGameObjectDef, param2:Boolean = true) : *
       {
-         var _loc4_:* = undefined;
          var _loc3_:PhysicsGameObject = this.world.createGameObject(param1);
          if(param2)
          {
-            _loc4_ = _loc3_;
-            this.addDisplayObject(_loc4_.displayObject);
+            this.addDisplayObject(_loc3_.displayObject);
          }
          return _loc3_;
       }
@@ -539,11 +537,9 @@ package tuxwars.battle.world
       {
          var _loc2_:PhysicsGameObjectDef = new (param1.getGameObjectDefClass())(this.space,param1);
          var _loc3_:PhysicsGameObject = this.createGameObject(_loc2_);
-         var _loc4_:* = _loc3_;
-         _loc4_.displayObject.x = param1.getLocation().x;
-         var _loc5_:* = _loc3_;
-         _loc5_.displayObject.y = param1.getLocation().y;
-         _loc2_.dispose();
+         _loc3_.displayObject.x = param1.getLocation().x;
+         _loc3_.displayObject.y = param1.getLocation().y;
+         _loc3_.dispose();
       }
       
       private function createJoint(param1:Joint) : void

@@ -1,4 +1,4 @@
-package tuxwars.battle.ui.logic.bets
+﻿package tuxwars.battle.ui.logic.bets
 {
    import com.dchoc.projectdata.*;
    import com.dchoc.utils.DCUtils;
@@ -84,7 +84,6 @@ package tuxwars.battle.ui.logic.bets
       
       public static function getBetingTime() : int
       {
-         var _loc9_:* = undefined;
          var _loc1_:String = "BettingSettings";
          var _loc2_:Table = ProjectManager.findTable(_loc1_);
          var _loc3_:int = 0;
@@ -97,9 +96,8 @@ package tuxwars.battle.ui.logic.bets
          {
             _loc7_.getCache[_loc6_] = DCUtils.find(_loc7_.getFields(),"name",_loc6_);
          }
-         _loc9_ = _loc8_;
          var _loc8_:Field = _loc7_.getCache[_loc6_];
-         return !!_loc8_ ? (_loc9_.overrideValue != null ? int(_loc9_.overrideValue) : int(_loc9_._value)) : 0;
+         return !!_loc8_ ? (_loc8_.overrideValue != null ? int(_loc8_.overrideValue) : int(_loc8_._value)) : 0;
       }
    }
 }

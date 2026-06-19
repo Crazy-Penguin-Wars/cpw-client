@@ -177,7 +177,7 @@ package tuxwars.battle.gameobjects
       
       override protected function outOfWorld() : void
       {
-         if(!this._markedForRemoval)
+         if(!this.markedForRemoval)
          {
             MessageCenter.sendEvent(new ChallengeLevelObjectDestroyed(this,null));
          }
@@ -265,7 +265,7 @@ package tuxwars.battle.gameobjects
          var _loc3_:* = undefined;
          var _loc1_:Tagger = null;
          var _loc2_:PlayerGameObject = null;
-         if(!this._markedForRemoval)
+         if(!this.markedForRemoval)
          {
             (this.game as TuxWarsGame).tuxWorld.addParticle(Particles.getParticlesReference("ObjectDestroyed"),bodyLocation.x,bodyLocation.y);
             markForRemoval();

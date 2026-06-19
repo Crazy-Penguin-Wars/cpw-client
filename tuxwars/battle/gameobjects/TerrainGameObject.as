@@ -334,7 +334,7 @@ package tuxwars.battle.gameobjects
       {
          if(this.isDynamic())
          {
-            if(!this._markedForRemoval)
+            if(!this.markedForRemoval)
             {
                markForRemoval();
                LogUtils.log(this._id + ": Out of world!","TerrainGameObject",1,"GameObjects",false,false,false);

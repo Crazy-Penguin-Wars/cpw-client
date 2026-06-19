@@ -16,7 +16,7 @@ package com.dchoc.game
    {
       private static const inputSystem:InputSystem = new InputSystem();
       
-      private const _objectContainer:WorldObjectContainer = new WorldObjectContainer();
+      public const _objectContainer:WorldObjectContainer = new WorldObjectContainer();
       
       private const _backgroundContainer:MovieClip = new MovieClip();
       
@@ -28,7 +28,7 @@ package com.dchoc.game
       
       private var _game:DCGame;
       
-      private var _camera:Camera;
+      public var _camera:Camera;
       
       private var _worldReady:Boolean;
       

@@ -31,17 +31,17 @@ package com.dchoc.gameobjects
       
       private var _graphics:GraphicsReference;
       
-      private var _name:String;
+      public var _name:String;
       
       private var _markedForRemoval:Boolean;
       
       private var _direction:int = 0;
       
-      private var _game:DCGame;
+      public var _game:DCGame;
       
       private var _objClass:Class;
       
-      private var _id:String;
+      public var _id:String;
       
       private var _uniqueId:String;
       
@@ -92,9 +92,9 @@ package com.dchoc.gameobjects
       override public function dispose() : void
       {
          super.dispose();
-         if((!!this.graphics ? this._displayObject.getChildByName(this.graphics.export) : null) is OdefuMovieClip)
+         if((!!this._graphics ? this._displayObject.getChildByName(this._graphics.export) : null) is OdefuMovieClip)
          {
-            Starling.juggler.remove(!!this.graphics ? this._displayObject.getChildByName(this.graphics.export) : null);
+            Starling.juggler.remove(!!this._graphics ? this._displayObject.getChildByName(this._graphics.export) : null);
          }
          if(this._displayObject.parent)
          {
@@ -108,7 +108,7 @@ package com.dchoc.gameobjects
       override public function logicUpdate(param1:int) : void
       {
          super.logicUpdate(param1);
-         if(!this._graphicsLoaded && this.graphics && Boolean(DCResourceManager.instance.isLoaded(this.graphics.swf)))
+         if(!this._graphicsLoaded && this._graphics && Boolean(DCResourceManager.instance.isLoaded(this._graphics.swf)))
          {
             this.loadGraphics();
          }
@@ -210,7 +210,7 @@ package com.dchoc.gameobjects
       
       final public function get displayObject() : *
       {
-         return !!this.graphics ? this._displayObject.getChildByName(this.graphics.export) : null;
+         return this._displayObject;
       }
       
       final public function get gameDisplayObject() : GameDisplayObject
@@ -224,10 +224,10 @@ package com.dchoc.gameobjects
          switch(this._resourceType)
          {
             case "BitmapData":
-               _loc1_ = DCResourceManager.instance.getFromSWF(this.graphics.swf,this.graphics.export,"BitmapData");
+               _loc1_ = DCResourceManager.instance.getFromSWF(this._graphics.swf,this._graphics.export,"BitmapData");
                return new Bitmap(_loc1_,"auto",true);
             case "MovieClip":
-               return DCResourceManager.instance.getFromSWF(this.graphics.swf,this.graphics.export);
+               return DCResourceManager.instance.getFromSWF(this._graphics.swf,this._graphics.export);
             default:
                return null;
          }
@@ -295,14 +295,14 @@ package com.dchoc.gameobjects
          {
             _loc1_ = Texture.fromBitmapData(Bitmap(_loc4_).bitmapData);
             _loc2_ = new Image(_loc1_);
-            _loc2_.name = this.graphics.export;
+            _loc2_.name = this._graphics.export;
             this._displayObject.addChild(_loc2_);
             Bitmap(_loc4_).bitmapData.dispose();
          }
          else if(_loc4_ is MovieClip && _loc4_.width > 0 && _loc4_.height > 0)
          {
             _loc3_ = OdefuMovieClipFactory.create(_loc4_ as MovieClip,25);
-            _loc3_.name = this.graphics.export;
+            _loc3_.name = this._graphics.export;
             Starling.juggler.add(_loc3_);
             this._displayObject.addChild(_loc3_);
          }

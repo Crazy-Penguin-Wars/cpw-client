@@ -45,7 +45,6 @@ package tuxwars.challenges
       {
          this.addListeners();
          PhysicsUpdater.register(this,"ChallengeManager");
-         var _loc1_:ChallengeRewardsManager = ChallengeRewardsManager;
          if(!ChallengeRewardsManager._instance)
          {
             ChallengeRewardsManager._instance = new ChallengeRewardsManager();
@@ -57,7 +56,6 @@ package tuxwars.challenges
       {
          this.removeListeners();
          PhysicsUpdater.unregister(this,"ChallengeManager");
-         var _loc1_:ChallengeRewardsManager = ChallengeRewardsManager;
          if(!ChallengeRewardsManager._instance)
          {
             ChallengeRewardsManager._instance = new ChallengeRewardsManager();

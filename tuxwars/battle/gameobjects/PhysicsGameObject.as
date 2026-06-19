@@ -358,7 +358,7 @@ package tuxwars.battle.gameobjects
       
       protected function outOfWorld() : void
       {
-         if(!this._markedForRemoval)
+         if(!this.markedForRemoval)
          {
             this._lastLinearDirection = this.body.velocity.copy();
             this.markForRemoval();

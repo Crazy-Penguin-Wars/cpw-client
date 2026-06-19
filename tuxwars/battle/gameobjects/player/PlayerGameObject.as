@@ -348,7 +348,7 @@ package tuxwars.battle.gameobjects.player
       {
          if(param2 != 0)
          {
-            if(!this._markedForRemoval)
+            if(!this.markedForRemoval)
             {
                LogUtils.log(this._id + " got " + param2 + " score from " + param1,"PlayerGameObject",0,"Score",false,false,false);
                if(this.playerStats)
@@ -372,17 +372,17 @@ package tuxwars.battle.gameobjects.player
                   }
                   else
                   {
-                     LogUtils.log(this._id + " stat score is null, markedForRemoval: " + this._markedForRemoval,"PlayerGameObject",2,"Score");
+                     LogUtils.log(this._id + " stat score is null, markedForRemoval: " + this.markedForRemoval,"PlayerGameObject",2,"Score");
                   }
                }
                else
                {
-                  LogUtils.log(this._id + " stats are null, markedForRemoval: " + this._markedForRemoval,"PlayerGameObject",2,"Score");
+                  LogUtils.log(this._id + " stats are null, markedForRemoval: " + this.markedForRemoval,"PlayerGameObject",2,"Score");
                }
             }
             else
             {
-               LogUtils.log(this._id + " is marked for removal: " + this._markedForRemoval + ", example player get markedForRemoval when they are disconnected","PlayerGameObject",0,"Score");
+               LogUtils.log(this._id + " is marked for removal: " + this.markedForRemoval + ", example player get markedForRemoval when they are disconnected","PlayerGameObject",0,"Score");
             }
          }
       }

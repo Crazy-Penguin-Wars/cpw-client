@@ -93,7 +93,7 @@ package tuxwars.battle.gameobjects
       
       public function isFinished() : Boolean
       {
-         return this._markedForRemoval;
+         return this.markedForRemoval;
       }
       
       public function readyToEmit() : Boolean

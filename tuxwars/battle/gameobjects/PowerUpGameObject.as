@@ -75,7 +75,7 @@ package tuxwars.battle.gameobjects
          {
             return;
          }
-         if(Boolean(this.powerUpUsed) && !this._markedForRemoval)
+         if(Boolean(this.powerUpUsed) && !this.markedForRemoval)
          {
             LogUtils.log("PowerUp: " + this._id + " picked up",this);
             if(!this.particlesShown)
