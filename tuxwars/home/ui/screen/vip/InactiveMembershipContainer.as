@@ -225,7 +225,6 @@ package tuxwars.home.ui.screen.vip
       
       private function itemMouseOver(param1:MouseEvent) : void
       {
-         trace("itemMouseOver");
          var _loc2_:ShopItem = ShopItemManager.getShopItem(this.giftItem);
          if(_loc2_)
          {

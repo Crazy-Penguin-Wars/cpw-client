@@ -26,7 +26,6 @@ package tuxwars.home.ui.screen.vip
          }
          if(param2)
          {
-            trace("pack active");
             show(param1.vip ? "ActiveContainer" : "InactiveContainer",false);
          }
          else

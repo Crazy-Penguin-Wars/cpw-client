@@ -1,4 +1,4 @@
-package tuxwars.battle.weapons
+﻿package tuxwars.battle.weapons
 {
    import com.dchoc.avatar.WearableItem;
    import com.dchoc.avatar.paperdoll.*;
@@ -290,8 +290,6 @@ package tuxwars.battle.weapons
       
       public function aim(param1:Vec2) : void
       {
-         var _loc5_:Config = null;
-         var _loc6_:Config = null;
          var _loc2_:Vec2 = null;
          var _loc3_:Vec2 = null;
          var _loc4_:Number = Number(NaN);
@@ -300,7 +298,7 @@ package tuxwars.battle.weapons
             if(this.weaponClip)
             {
                this._weaponControls.updateAiming(param1.copy());
-               _loc2_ = this.player.direction == 1 ? (_loc5_ = Config, Config.VEC_RIGHT.copy()) : (_loc6_ = Config, Config.VEC_LEFT.copy());
+               _loc2_ = this.player.direction == 1 ? Config.VEC_RIGHT.copy() : Config.VEC_LEFT.copy();
                _loc3_ = param1.copy();
                if(_loc3_.length != 0)
                {

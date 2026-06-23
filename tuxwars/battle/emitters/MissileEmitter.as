@@ -43,7 +43,6 @@ package tuxwars.battle.emitters
       private static function launchMissile(param1:FireEmissionMessage) : void
       {
          var _loc21_:* = undefined;
-         var _loc22_:Config = null;
          var _loc23_:* = undefined;
          var _loc24_:* = undefined;
          var _loc25_:* = undefined;
@@ -96,7 +95,6 @@ package tuxwars.battle.emitters
             {
                _loc3_.normalise();
             }
-            _loc22_ = Config;
             _loc4_ = Math.acos(_loc3_.dot(Config.VEC_UP.copy()));
             _loc5_ = _loc3_.x > 0 ? Number(MathUtils.radiansToDegrees(_loc4_)) : -MathUtils.radiansToDegrees(_loc4_);
             _loc23_ = _loc2_;

@@ -87,7 +87,8 @@ package tuxwars.battle.ui.logic.weaponselection
       public function exit() : void
       {
          close(game.battleState.hud);
-         trace("Ducktape fix: doing this twice because for some reason it won\'t dispose the first time.");
+         // Ducktape fix: doing this twice because for some reason it won't dispose the first time.
+         // edit later: does it still tho? just leaving the comment
       }
       
       private function weaponSelected(param1:Message) : void

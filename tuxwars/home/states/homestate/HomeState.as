@@ -108,7 +108,6 @@ package tuxwars.home.states.homestate
             {
                tuxGame._slotMachineShown = true;
                changeState(new SlotMachineState(tuxGame));
-               trace("tuxGame.player.vipMembership.:" + tuxGame.player.vipMembership.vip);
             }
             else if(!tuxGame._VIPMembershipShown && !tuxGame.player.vipMembership.vip && !tuxGame.player._expiredVipMembershipPopup)
             {

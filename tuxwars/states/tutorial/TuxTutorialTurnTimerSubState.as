@@ -19,7 +19,7 @@ package tuxwars.states.tutorial
          BattleManager.getSimulation().resume();
          var _loc1_:* = DCGame.getTime();
          var _loc2_:* = BattleManager.getSimulation();
-         _loc2_._turnStartTime = _loc1_;
+         _loc2_.turnStartTime = _loc1_;
          addTutorialArrow("bottom",tuxGame.battleState.hud.screen.topRightElement.design.Container_Arrow);
          MessageCenter.addListener("PlayerTurnEnded",this.playerTurnEnded);
       }

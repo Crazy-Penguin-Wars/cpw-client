@@ -344,18 +344,18 @@ package tuxwars.battle.gameobjects
       
       override public function enteredWater() : void
       {
-         var _loc1_:SoundHelper = SoundHelper;
-         if(SoundHelper._instance == null)
+         
+         if(SoundHelper.instance == null)
          {
             new SoundHelper();
          }
-         var _loc2_:String = SoundHelper._instance.AreaReceiver(this.calculateTotalArea());
-         var _loc3_:SoundHelper = SoundHelper;
-         if(SoundHelper._instance == null)
+         var _loc2_:String = SoundHelper.instance.AreaReceiver(this.calculateTotalArea());
+         
+         if(SoundHelper.instance == null)
          {
             new SoundHelper();
          }
-         var _loc4_:String = SoundHelper._instance.SpeedReceiver(this.linearVelocity.length);
+         var _loc4_:String = SoundHelper.instance.SpeedReceiver(this.linearVelocity.length);
          var _loc5_:SoundReference = Sounds.getSoundReference("WaterHit" + _loc2_ + _loc4_);
          if(_loc5_)
          {

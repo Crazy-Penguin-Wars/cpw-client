@@ -227,7 +227,6 @@
       
       public static function getLoadingScreen() : DisplayObjectContainer
       {
-         trace("test");
          return new loading_swf();
       }
       

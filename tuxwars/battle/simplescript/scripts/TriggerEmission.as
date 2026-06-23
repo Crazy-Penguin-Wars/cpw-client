@@ -19,7 +19,6 @@ package tuxwars.battle.simplescript.scripts
       {
          var _loc13_:* = undefined;
          var _loc14_:* = undefined;
-         var _loc15_:Config = null;
          var _loc3_:Vec2 = null;
          var _loc4_:Missile = null;
          var _loc5_:Follower = null;
@@ -74,7 +73,6 @@ package tuxwars.battle.simplescript.scripts
          }
          if(_loc3_ == null || _loc3_.length == 0)
          {
-            _loc15_ = Config;
             _loc3_ = Config.VEC_UP.copy();
          }
          var _loc11_:String = !!(param1.variables[1] as String) ? (param1.variables[1] as String).toLowerCase() : null;

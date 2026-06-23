@@ -602,7 +602,7 @@ package tuxwars.battle.world
          {
             _loc2_ = _loc4_.dead_dude;
             _loc3_ = this.findPlayer(_loc2_);
-            if(_loc3_ && _loc3_.isDead() && !_loc5_.markedForRemoval)
+            if(_loc3_ && _loc3_.isDead() && !_loc3_.markedForRemoval)
             {
                LogUtils.log("Respawning player " + _loc3_,this,1,"Player",false,false,false);
                _loc3_.changeState(new PlayerSpawningState(_loc3_,_loc4_),true);
@@ -623,7 +623,7 @@ package tuxwars.battle.world
          {
             _loc2_ = _loc4_.dead_dude;
             _loc3_ = this.findPlayer(_loc2_);
-            if(_loc3_ && _loc3_.isSpawning() && !_loc5_.markedForRemoval)
+            if(_loc3_ && _loc3_.isSpawning() && !_loc3_.markedForRemoval)
             {
                LogUtils.log("Resuming player: " + _loc3_,this,1,"Player",false,false,false);
                PlayerSpawningState(_loc3_.state).resume();
@@ -697,16 +697,16 @@ package tuxwars.battle.world
       
       private function update(param1:int) : void
       {
-         trace("Disabled try-catch because of the insanely useless error message");
-         trace("try");
-         trace("{");
+         // Disabled try-catch because of the insanely useless error message
+         //try
+         //{
          this._physicsWorld.updatePhysicsWorld(param1);
-         trace("}");
-         trace("catch(e:Error)");
-         trace("{");
-         trace("   LogUtils.log(e.getStackTrace(),this,3,\'ErrorLogging\');");
-         trace("   MessageCenter.sendEvent(new ErrorMessage(\'TuxWorld Error\',\'update\',\'TuxWorld Exception somewhere\',null,null,\'error_tuxworld\'));");
-         trace("}");
+         //}
+         //catch(e:Error)
+         //{
+         //   LogUtils.log(e.getStackTrace(),this,3,\'ErrorLogging\');
+         //   MessageCenter.sendEvent(new ErrorMessage(\'TuxWorld Error\',\'update\',\'TuxWorld Exception somewhere\',null,null,\'error_tuxworld\'));
+         //}
       }
       
       private function endGameConfirm() : void

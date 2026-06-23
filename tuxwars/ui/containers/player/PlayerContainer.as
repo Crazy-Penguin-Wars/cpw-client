@@ -19,7 +19,7 @@ package tuxwars.ui.containers.player
          this.slotContainers.add("Ready",new PlayerReadySlotContainer(param1.Container_Ready,param2));
          this.slotContainers.getContainer("Free").setVisible(true);
          this.slotContainers.getContainer("Ready").setVisible(false);
-         trace("slotContainers.show(\'Free\',false);");
+         // slotContainers.show(\'Free\',false);
       }
       
       public function init(param1:PlayerSlotData) : void
@@ -28,9 +28,9 @@ package tuxwars.ui.containers.player
          this.slotContainers.getContainer("Ready").setVisible(true);
          var _loc2_:PlayerReadySlotContainer = this.slotContainers.getContainer("Ready") as PlayerReadySlotContainer;
          _loc2_.init(param1);
-         trace("Temporary solution until we figure out how to add transitions");
-         trace("slotContainers.show(\'Ready\');");
-         trace("slotContainers.setVisible(true);");
+         // Temporary solution until we figure out how to add transitions
+         //slotContainers.show(\'Ready\');
+         //slotContainers.setVisible(true);
       }
       
       public function dispose() : void
@@ -42,7 +42,7 @@ package tuxwars.ui.containers.player
       {
          this.slotContainers.getContainer("Free").setVisible(true);
          this.slotContainers.getContainer("Ready").setVisible(false);
-         trace("slotContainers.show(\'Free\',false);");
+         // slotContainers.show(\'Free\',false);
       }
    }
 }

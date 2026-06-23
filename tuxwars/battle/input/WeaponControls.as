@@ -1,4 +1,4 @@
-package tuxwars.battle.input
+﻿package tuxwars.battle.input
 {
    import com.dchoc.messages.*;
    import com.dchoc.resources.*;
@@ -107,7 +107,6 @@ package tuxwars.battle.input
       public function updateAiming(param1:Vec2) : void
       {
          var _loc8_:* = undefined;
-         var _loc9_:Config = null;
          var _loc2_:Number = Number(NaN);
          var _loc3_:Vec2 = null;
          var _loc4_:Number = Number(NaN);
@@ -162,7 +161,6 @@ package tuxwars.battle.input
                {
                   param1.normalise();
                }
-               _loc9_ = Config;
                _loc6_ = Math.acos(param1.dot(Config.VEC_UP.copy()));
                _loc7_ = param1.x > 0 ? Number(MathUtils.radiansToDegrees(_loc6_)) : -MathUtils.radiansToDegrees(_loc6_);
                if(this.weapon.targeting == "Activation")

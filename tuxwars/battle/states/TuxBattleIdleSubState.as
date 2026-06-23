@@ -34,7 +34,7 @@ package tuxwars.battle.states
       override public function enter() : void
       {
          super.enter();
-         trace("Ducktape fix: merged this into TuxBattleState except for the practice popup");
+         // Ducktape fix: merged this into TuxBattleState except for the practice popup
          if(Tutorial._tutorial)
          {
             changeState(new TuxTutorialMoveSubState(tuxGame));

@@ -1,4 +1,4 @@
-package tuxwars.battle.gameobjects.player
+﻿package tuxwars.battle.gameobjects.player
 {
    import com.citrusengine.physics.*;
    import com.dchoc.avatar.*;
@@ -592,7 +592,7 @@ package tuxwars.battle.gameobjects.player
       
       override public function affectsGameObject(param1:String, param2:PhysicsGameObject) : Boolean
       {
-         if(param1 == "penguin" || param1 == "player" && (param2 == null || param2 is PlayerGameObject && _loc3_._id == this._id) || param1 == "enemy" && (param2 == null || param2 is PlayerGameObject && _loc4_._id != this._id))
+         if(param1 == "penguin" || param1 == "player" && (param2 == null || param2 is PlayerGameObject && param2._id == this._id) || param1 == "enemy" && (param2 == null || param2 is PlayerGameObject && param2._id != this._id))
          {
             return true;
          }
@@ -767,7 +767,7 @@ package tuxwars.battle.gameobjects.player
             LogUtils.log(this._id + " is dead. Rest In Pieces.",this,1,"Match",false,false,true);
             LogUtils.log(this._id + " state: " + state,this,1,"Match",false,false,true);
             _loc1_ = tag.findLatestPlayerTagger();
-            if(Boolean(_loc1_) && _loc3_._id != this._id)
+            if(Boolean(_loc1_) && _loc1_.gameObject._id != this._id)
             {
                _loc2_ = _loc1_.gameObject as PlayerGameObject;
                _loc2_.addScore("Killed_" + this._id,Tuner.getField("KillOpponentBonus").value,false);
@@ -926,7 +926,7 @@ package tuxwars.battle.gameobjects.player
          {
             LogUtils.log(this._id + " was Suicide: " + false + " last tagger not self",this,1,"Match",false,false,true);
          }
-         return (!param1 || _loc4_._id == this._id) && _loc5_._id == this._id;
+         return (!param1 || param1.gameObject._id == this._id) && _loc2_._id == this._id;
       }
       
       private function getLatestTagger() : Tagger

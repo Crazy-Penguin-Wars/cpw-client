@@ -539,7 +539,7 @@ package tuxwars.battle.world
          var _loc3_:PhysicsGameObject = this.createGameObject(_loc2_);
          _loc3_.displayObject.x = param1.getLocation().x;
          _loc3_.displayObject.y = param1.getLocation().y;
-         _loc3_.dispose();
+         _loc2_.dispose();
       }
       
       private function createJoint(param1:Joint) : void

@@ -380,7 +380,7 @@ package tuxwars.battle
             if(battleSimulation)
             {
                _loc4_ = battleSimulation;
-               MessageCenter.sendEvent(new PlayerTurnEndedMessage(_loc2_,_loc4_._turnStartTime - battleSimulation.getTurnTimeLeft()));
+               MessageCenter.sendEvent(new PlayerTurnEndedMessage(_loc2_,_loc4_.turnStartTime - battleSimulation.getTurnTimeLeft()));
                _loc2_.changeState(new PlayerInactiveState(_loc2_),true);
                _loc2_.reduceBoosterDurations("Turn",1);
             }

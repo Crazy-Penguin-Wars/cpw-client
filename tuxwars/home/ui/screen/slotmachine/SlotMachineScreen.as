@@ -160,7 +160,6 @@ package tuxwars.home.ui.screen.slotmachine
       public function setSpinsLeft() : void
       {
          this.spinsLeft = this.slotMachineLogic.returnMaxDailySpins() - this._game2.player.slotMachineSpinsUsed;
-         trace("Spins Left: " + this.spinsLeft);
          if(this.spinsLeft >= 0)
          {
             this.spins.setText("" + this.spinsLeft);

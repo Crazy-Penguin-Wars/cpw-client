@@ -187,7 +187,7 @@ package tuxwars.battle.gameobjects
       override protected function updateTag(param1:PhysicsGameObject) : void
       {
          var _loc2_:Vector.<Tagger> = tag.playerTaggers;
-         if(param1 is PlayerGameObject && Boolean(this.containsOtherPlayer(_loc2_,_loc3_._uniqueId)))
+         if(param1 is PlayerGameObject && Boolean(this.containsOtherPlayer(_loc2_,param1._uniqueId)))
          {
             LogUtils.log("Skipping tagging this: " + shortName + " other: " + param1.shortName,this,1,"LevelObjects",false,false,false);
             return;

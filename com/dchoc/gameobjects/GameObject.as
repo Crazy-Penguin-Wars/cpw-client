@@ -21,7 +21,7 @@ package com.dchoc.gameobjects
       
       public static const DIR_RIGHT:int = 1;
       
-      private const _displayObject:GameDisplayObject = new GameDisplayObject();
+      public const _displayObject:GameDisplayObject = new GameDisplayObject();
       
       private var _resourceType:String = "MovieClip";
       
@@ -43,7 +43,7 @@ package com.dchoc.gameobjects
       
       public var _id:String;
       
-      private var _uniqueId:String;
+      public var _uniqueId:String;
       
       private var _tableName:String;
       

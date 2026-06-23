@@ -20,8 +20,6 @@ package tuxwars.battle.emitters
       
       public static function getFiringDirection(param1:Emission, param2:EmissionReference, param3:Random, param4:Vec2 = null) : Vec2
       {
-         var _loc12_:Config = null;
-         var _loc13_:Config = null;
          var _loc5_:Vec2 = null;
          var _loc6_:FiringDirection = null;
          var _loc7_:Vec2 = null;
@@ -90,8 +88,7 @@ package tuxwars.battle.emitters
                _loc10_ = _loc6_.explosionDirection;
                if(!_loc10_)
                {
-                  _loc12_ = Config;
-                  _loc5_ = Config.VEC_UP.copy();
+                  Config.VEC_UP.copy();
                }
                else if(_loc11_ < 0)
                {
@@ -107,8 +104,7 @@ package tuxwars.battle.emitters
          }
          if(_loc5_ == null)
          {
-            _loc13_ = Config;
-            _loc5_ = Config.VEC_UP.copy();
+            Config.VEC_UP.copy();
          }
          LogUtils.log("Returning firing direction for emission: " + param1.shortName + " emission ref: " + param2.id + " newDir: " + _loc5_,"EmitterUtils",1,"Emitter",false,false,false);
          if(_loc5_.length != 0)

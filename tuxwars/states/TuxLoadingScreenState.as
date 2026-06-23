@@ -39,9 +39,7 @@ package tuxwars.states
       public function TuxLoadingScreenState(param1:TuxWarsGame, param2:* = null)
       {
          super(param1,param2);
-         trace("until here it works");
          this.loadingScreen = Config.getLoadingScreen();
-         trace("but here?");
          this.hideErrorPopup();
          this.progressBar = new UIProgressIndicator(this.loadingScreen.getChildByName("Slider_Loading") as MovieClip,0,this.maxValue);
          this.textField = TuxUiUtils.createAutoTextFieldWithText(this.loadingScreen.getChildByName("Text") as TextField,"");

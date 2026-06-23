@@ -46,10 +46,10 @@ package tuxwars.battle.gameobjects
       {
          var _loc2_:Tagger = null;
          var _loc3_:Tagger = this.latestTagger;
-         if(!_loc3_ || !_loc3_.gameObject || _loc4_._id != _loc5_._id)
+         if(!_loc3_ || !_loc3_.gameObject || _loc3_.gameObject._id != param1._id)
          {
             _loc2_ = this.findLatestPlayerTagger();
-            if(!_loc2_ || _loc6_._id != _loc7_._id)
+            if(!_loc2_ || _loc2_.gameObject._id != param1._id)
             {
                this._taggers.push(new Tagger(param1));
             }

@@ -55,7 +55,7 @@ package tuxwars.battle.states
       public function TuxBattleState(param1:TuxWarsGame, param2:* = null)
       {
          super(param1,param2);
-         trace("Ducktape fix: merged TuxBattleIdleSubState into this because i couldn\'t figure out why it was leaving that state when it wasn\'t supposed to lmao");
+         // Ducktape fix: merged TuxBattleIdleSubState into this because i couldn't figure out why it was leaving that state when it wasn't supposed to lmao
          var _loc3_:* = param1.world;
          _loc3_._objectContainer.addEventListener("enterFrame",this.frameRendered);
          if(Config.debugMode)
