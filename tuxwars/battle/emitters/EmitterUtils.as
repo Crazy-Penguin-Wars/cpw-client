@@ -88,7 +88,7 @@ package tuxwars.battle.emitters
                _loc10_ = _loc6_.explosionDirection;
                if(!_loc10_)
                {
-                  Config.VEC_UP.copy();
+                  _loc5_ = Config.VEC_UP.copy();
                }
                else if(_loc11_ < 0)
                {
@@ -104,7 +104,7 @@ package tuxwars.battle.emitters
          }
          if(_loc5_ == null)
          {
-            Config.VEC_UP.copy();
+            _loc5_ = Config.VEC_UP.copy();
          }
          LogUtils.log("Returning firing direction for emission: " + param1.shortName + " emission ref: " + param2.id + " newDir: " + _loc5_,"EmitterUtils",1,"Emitter",false,false,false);
          if(_loc5_.length != 0)

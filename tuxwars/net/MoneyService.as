@@ -48,7 +48,7 @@ package tuxwars.net
       {
          LogUtils.log("Money purchase package: " + param1 + " cost: " + param2,"MoneyService",0,"Money",true,false,true);
          CRMService.sendEvent("Game","Settings_changed","Clicked","FullScreen off");
-         DCGame.setFullScreen(false,"showAll");
+         DCGame.setFullScreen(false);
          JavaScriptServices.callJavascript(createObject(param1,param2,ProjectManager.getText(param3,param5),ProjectManager.getText(param4,param6),null),false);
       }
       

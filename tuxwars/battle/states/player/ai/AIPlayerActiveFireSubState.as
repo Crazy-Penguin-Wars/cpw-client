@@ -37,7 +37,7 @@ package tuxwars.battle.states.player.ai
       {
          (player as AIPlayerGameObject).target = null;
          var _loc1_:Boolean = true;
-         BattleManager._aiPlayerHasShot = _loc1_;
+         BattleManager.aiPlayerHasShot = _loc1_;
          parent.changeState(new PlayerInactiveState(player));
       }
    }

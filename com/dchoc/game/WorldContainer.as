@@ -1,4 +1,4 @@
-package com.dchoc.game
+﻿package com.dchoc.game
 {
    import flash.events.*;
    import flash.geom.*;
@@ -39,10 +39,8 @@ package com.dchoc.game
       
       public function fullscreenChanged(param1:Boolean) : void
       {
-         var _loc2_:DCGame = null;
-         var _loc4_:DCGame = null;
-         var _loc3_:int = int(param1 ? (_loc2_ = DCGame, DCGame.getStage().fullScreenWidth) : 760);
-         var _loc5_:int = int(param1 ? (_loc4_ = DCGame, DCGame.getStage().fullScreenHeight) : 668);
+         var _loc3_:int = int(param1 ? DCGame.getStage().fullScreenWidth : 760);
+         var _loc5_:int = int(param1 ? DCGame.getStage().fullScreenHeight : 668);
          Starling.current.viewPort = new Rectangle(0,0,_loc3_,_loc5_);
          Starling.current.stage.stageWidth = _loc3_;
          Starling.current.stage.stageHeight = _loc5_;

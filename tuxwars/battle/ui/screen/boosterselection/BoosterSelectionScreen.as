@@ -1,4 +1,4 @@
-package tuxwars.battle.ui.screen.boosterselection
+﻿package tuxwars.battle.ui.screen.boosterselection
 {
    import com.dchoc.projectdata.*;
    import com.dchoc.resources.*;
@@ -115,7 +115,6 @@ package tuxwars.battle.ui.screen.boosterselection
       
       override protected function closeScreen(param1:MouseEvent) : void
       {
-         this.boosterSelectionLogic.exit();
          this.boosterSelectionLogic.exit();
       }
       

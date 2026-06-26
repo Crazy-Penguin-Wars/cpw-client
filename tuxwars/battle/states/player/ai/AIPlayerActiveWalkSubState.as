@@ -55,7 +55,7 @@ package tuxwars.battle.states.player.ai
             {
                _loc3_ = player;
                MessageCenter.sendEvent(new StopMessage(_loc3_._id));
-               if(!BattleManager._aiPlayerHasShot)
+               if(!BattleManager.aiPlayerHasShot)
                {
                   (player as AIPlayerGameObject).target = this.targetVec;
                   _loc4_ = player;
@@ -96,7 +96,7 @@ package tuxwars.battle.states.player.ai
          var _loc2_:RayResultList = null;
          var _loc3_:int = 0;
          var _loc4_:Body = null;
-         if(BattleManager._aiPlayerHasShot)
+         if(BattleManager.aiPlayerHasShot)
          {
             this.targetVec = null;
             return;

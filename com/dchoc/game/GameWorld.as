@@ -26,7 +26,7 @@ package com.dchoc.game
       
       private var __gameObjects:GameObjects;
       
-      private var _game:DCGame;
+      public var _game:DCGame;
       
       public var _camera:Camera;
       

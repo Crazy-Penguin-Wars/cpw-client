@@ -57,6 +57,8 @@ package tuxwars.ui.components
       
       private function getDealSpotURL() : void
       {
+         // Disabled for now
+         /*
          var _loc1_:HTTPService = null;
          _loc1_ = new HTTPService();
          if(Config.isDev() || Config.isStage())
@@ -81,6 +83,7 @@ package tuxwars.ui.components
          _loc1_.send();
          this.federalCallTime = getTimer();
          this.mDealStopEnable = false;
+         */
       }
       
       private function progressHandler(param1:ProgressEvent) : void

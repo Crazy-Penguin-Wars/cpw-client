@@ -756,7 +756,7 @@ package tuxwars.battle.world
          var _loc4_:Player = null;
          var _loc5_:PlayerGameObjectDef = null;
          this._players = [];
-         var _loc6_:Random = new Random(BattleManager._seed,"Create Players Random",Config.debugMode);
+         var _loc6_:Random = new Random(BattleManager.seed,"Create Players Random",Config.debugMode);
          var _loc7_:Vector.<Vec2> = this._physicsWorld.getStartLocations();
          var _loc8_:* = new Vector.<Vec2>();
          if(Tutorial._tutorial)

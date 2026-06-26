@@ -133,7 +133,7 @@ package tuxwars.battle
          vip = param6;
          _boostersEnabled = true;
          players = param5;
-         _aiPlayerHasShot = false;
+         aiPlayerHasShot = false;
          currentPlayerIndex = -1;
          prevPlayerIndex = players.length - 1;
          matchStarted = false;
@@ -656,7 +656,7 @@ package tuxwars.battle
          var _loc6_:* = undefined;
          var _loc2_:int = 0;
          var _loc3_:String = null;
-         _aiPlayerHasShot = false;
+         aiPlayerHasShot = false;
          currentPlayerIndex = param1;
          var _loc4_:PlayerGameObject = getCurrentActivePlayer();
          _loc4_.infoContainer.resetCountDownFlags();

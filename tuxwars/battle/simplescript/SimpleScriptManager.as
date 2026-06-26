@@ -19,6 +19,22 @@ package tuxwars.battle.simplescript
       private static const PACKAGE:String = "tuxwars.battle.simplescript.scripts.";
       
       private static const waitingScripts:Object = {};
+
+      // We have to mention these classes somewhere because Adobe Animate
+      // won't include them in the compiled SWF otherwise
+      private static const _keepAlive:Array = [
+         AddJoint,
+         ApplyForce,
+         Chance,
+         Delay,
+         Homing,
+         Kill,
+         Ray,
+         RemoveFollower,
+         Teleport,
+         TriggerEmission,
+         ValueBasedOnChance
+      ];
       
       public function SimpleScriptManager()
       {

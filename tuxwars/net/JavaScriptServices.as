@@ -42,7 +42,7 @@ package tuxwars.net
          {
             if(param2)
             {
-               DCGame.setFullScreen(false,"showAll");
+               DCGame.setFullScreen(false);
                MessageCenter.sendMessage("FullScreen",false);
             }
             ExternalInterface.call("fromFlash",param1.callType,JSON.stringify(param1));

@@ -81,44 +81,67 @@
       {
          super();
       }
+
+      public static function initFromLogin(param1:Object) : void
+      {
+         serverURL = param1.serverURL;
+         dataDir = param1.dataDir;
+         token = param1.token;
+         userId = param1.userId;
+         platformUserId = param1.platformUserId;
+         languageCode = param1.languageCode;
+         platform = param1.platform;
+         env = param1.env;
+         version = param1.version;
+         secure = param1.secure == "true";
+         debugMode = env == "dev" || env == "dev_local" || env == "stage";
+         devMode = env == "dev" || env == "dev_local";
+         stageMode = env == "stage";
+      }
       
       public static function init(param1:Object) : void
       {
          var _loc5_:* = undefined;
          var _loc2_:Array = null;
-         serverURL = param1.server;
-         smUseHomemadeFriendSelector = true;
-         secure = param1.secure == "true";
-         if(serverURL)
-         {
-            dataDir = param1.data;
-            token = param1.token;
-            userId = param1.uid;
-            platformUserId = param1.platformUserId;
-            languageCode = param1.language;
-            platform = param1.platform;
-            env = param1.env;
-            version = param1.version;
-            debugMode = param1.env == "dev" || param1.env == "dev_local" || param1.env == "stage";
-            devMode = param1.env == "dev" || param1.env == "dev_local";
-            stageMode = param1.env == "stage";
+         if (serverURL) {
+            // already initialized from login page
             MessageCenter.sendMessage("ConfigLoaded");
-         }
-         else
-         {
-            dataDir = "http://127.0.0.1:8000/assets/";
-			userId = "57a1b524-3d78-4f59-8e82-a52c15d11208";
-			token = "local";
-            languageCode = "en";
-            debugMode = false;
-            devMode = true;
-            platform = "FB";
-            env = "dev";
-            DCResourceManager.instance.load("../config.txt","Config","VariablesTextFile",true);
-            DCResourceManager.instance.addCustomEventListener("complete",loadConfigComplete,"Config");
-            serverURL = "http:/127.0.0.1:8000/api/";
-            offlineMode = false;
-            MessageCenter.sendMessage("ConfigLoaded");
+         } else {
+            serverURL = param1.server;
+            smUseHomemadeFriendSelector = true;
+            secure = param1.secure == "true";
+            if(serverURL)
+            {
+               dataDir = param1.data;
+               token = param1.token;
+               userId = param1.uid;
+               platformUserId = param1.platformUserId;
+               languageCode = param1.language;
+               platform = param1.platform;
+               env = param1.env;
+               version = param1.version;
+               debugMode = param1.env == "dev" || param1.env == "dev_local" || param1.env == "stage";
+               devMode = param1.env == "dev" || param1.env == "dev_local";
+               stageMode = param1.env == "stage";
+               MessageCenter.sendMessage("ConfigLoaded");
+            }
+            else
+            {
+               // only for developing
+               dataDir = "http://127.0.0.1:8000/assets/";
+               userId = "57a1b524-3d78-4f59-8e82-a52c15d11208";
+               token = "local";
+               languageCode = "en";
+               debugMode = false;
+               devMode = true;
+               platform = "FB";
+               env = "dev";
+               DCResourceManager.instance.load("../config.txt","Config","VariablesTextFile",true);
+               DCResourceManager.instance.addCustomEventListener("complete",loadConfigComplete,"Config");
+               serverURL = "http:/127.0.0.1:8000/api/";
+               offlineMode = false;
+               MessageCenter.sendMessage("ConfigLoaded");
+            }
          }
          var _loc3_:Boolean = debugMode;
          var _loc4_:Boolean = debugMode;

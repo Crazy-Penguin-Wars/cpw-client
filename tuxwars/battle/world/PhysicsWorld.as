@@ -628,7 +628,7 @@ package tuxwars.battle.world
       {
          if(!this._powerUpSpawnRandom)
          {
-            this._powerUpSpawnRandom = new Random(BattleManager._seed,"PowerUp Spawn Random",Config.debugMode);
+            this._powerUpSpawnRandom = new Random(BattleManager.seed,"PowerUp Spawn Random",Config.debugMode);
          }
          return this._powerUpSpawnRandom;
       }

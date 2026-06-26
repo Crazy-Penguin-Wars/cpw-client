@@ -98,7 +98,7 @@ package tuxwars.battle.rewards
          this.lifeTime -= param1;
          if(this.targetObject != null)
          {
-            _loc2_ = Boolean(this.targetObject.isDeadHP()) || Boolean(_loc7_.markedForRemoval);
+            _loc2_ = Boolean(this.targetObject.isDeadHP()) || Boolean(this.targetObject.markedForRemoval);
             if(this.lifeTime <= 0 || _loc2_)
             {
                if(_loc2_)

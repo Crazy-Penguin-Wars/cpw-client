@@ -143,7 +143,7 @@ package tuxwars.home.ui.screen.home
          }
          else
          {
-            DCGame.setFullScreen(false,"showAll");
+            DCGame.setFullScreen(false);
             MessageCenter.sendMessage("showMoneyState",false);
          }
       }

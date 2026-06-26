@@ -61,18 +61,14 @@ package com.dchoc.game
       
       public static function isFullScreen() : Boolean
       {
-         return DCGame.getStage().displayState == "fullScreen";
+         return DCGame.getStage().displayState == "fullScreenInteractive";
       }
       
-      public static function setFullScreen(param1:Boolean, param2:String = null) : void
+      public static function setFullScreen(param1:Boolean) : void
       {
-         if(param2)
-         {
-            setScaleMode(param2);
-         }
          if(param1)
          {
-            DCGame.getStage().displayState = "fullScreen";
+            DCGame.getStage().displayState = "fullScreenInteractive";
          }
          else
          {

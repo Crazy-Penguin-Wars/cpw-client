@@ -69,6 +69,7 @@ package tuxwars.battle.ui.logic.boosterselection
       public function exit() : void
       {
          close(game.battleState.hud);
+         close(game.battleState.hud);
       }
       
       override public function itemSelected(param1:ShopItem) : void

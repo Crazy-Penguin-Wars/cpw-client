@@ -1,4 +1,4 @@
-package tuxwars
+﻿package tuxwars
 {
    import com.adobe.images.*;
    import com.citrusengine.physics.*;
@@ -74,8 +74,7 @@ package tuxwars
          ServerServices.init(this);
          JavaScriptServices.init(this);
          super(param1);
-         trace(JSON.stringify(LoaderInfo(param1.root.loaderInfo).parameters));
-         Config.init(LoaderInfo(param1.root.loaderInfo).parameters);
+         Config.init(param1.loaderInfo.parameters);
          Server.init();
          ResourceLoaderURL.getInstance();
          if(!ChallengeManager.instance)
@@ -88,7 +87,6 @@ package tuxwars
          {
             PhysicsCollisionCategories.Add(_loc2_);
          }
-         trace("done");
       }
       
       public function createStarling() : void

@@ -1,4 +1,4 @@
-package tuxwars.battle.states.player
+﻿package tuxwars.battle.states.player
 {
    import com.dchoc.messages.*;
    import com.dchoc.projectdata.*;
@@ -63,7 +63,6 @@ package tuxwars.battle.states.player
       
       private function preResume() : void
       {
-         var _loc4_:Tuner = null;
          var _loc5_:PlayerGameObject = null;
          var _loc6_:PlayerGameObject = null;
          var _loc1_:int = 0;
@@ -72,7 +71,7 @@ package tuxwars.battle.states.player
          if(player.suicide)
          {
             player.suicide = false;
-            _loc1_ = int(player.getScore() > Math.abs(Tuner.getField("SuicidePenalty").value) ? (_loc4_ = Tuner, Tuner.getField("SuicidePenalty").value) : -player.getScore());
+            _loc1_ = int(player.getScore() > Math.abs(Tuner.getField("SuicidePenalty").value) ? Tuner.getField("SuicidePenalty").value : -player.getScore());
             if(_loc1_ < 0 || Config.isDev())
             {
                player.addScore("Suicide",_loc1_);

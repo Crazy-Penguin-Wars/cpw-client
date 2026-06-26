@@ -161,7 +161,7 @@ package tuxwars.net
          var _loc3_:Object = {
             "item_id":_loc2_.id,
             "amount":1,
-            "in_battle":BattleManager.isBattleInProgress() || BattleManager._connectedToBattleManager
+            "in_battle":BattleManager.isBattleInProgress() || BattleManager.connectedToBattleManager
          };
          var _loc4_:ServerRequest = new ServerRequest("BuyItem",_loc3_,false,buyItemCallback);
          MessageCenter.sendEvent(_loc4_);
@@ -170,7 +170,7 @@ package tuxwars.net
       private static function buyItemCallback(param1:ServerResponse) : void
       {
          var _loc2_:Object = param1.data;
-         if((BattleManager.isBattleInProgress() || BattleManager._connectedToBattleManager) && !Tutorial._tutorial)
+         if((BattleManager.isBattleInProgress() || BattleManager.connectedToBattleManager) && !Tutorial._tutorial)
          {
             MessageCenter.sendEvent(new PurchaseMessage());
          }
@@ -184,7 +184,7 @@ package tuxwars.net
          var _loc3_:Object = {
             "item_id":_loc2_.id,
             "amount":1,
-            "in_battle":BattleManager.isBattleInProgress() || BattleManager._connectedToBattleManager
+            "in_battle":BattleManager.isBattleInProgress() || BattleManager.connectedToBattleManager
          };
          var _loc4_:ServerRequest = new ServerRequest("BuyLevelUpSale",_loc3_,false,buyItemLevelUpSalesCallback);
          MessageCenter.sendEvent(_loc4_);
@@ -202,7 +202,7 @@ package tuxwars.net
          var _loc2_:CouponData = param1.couponData;
          var _loc3_:Object = {
             "coupon_id":_loc2_.id,
-            "in_battle":BattleManager.isBattleInProgress() || BattleManager._connectedToBattleManager
+            "in_battle":BattleManager.isBattleInProgress() || BattleManager.connectedToBattleManager
          };
          var _loc4_:ServerRequest = new ServerRequest("AcceptCouponItem",_loc3_,false,buyItemCouponCallback);
          MessageCenter.sendEvent(_loc4_);
@@ -238,8 +238,8 @@ package tuxwars.net
             "highestFps":_loc2_.highestFps,
             "levelName":_loc2_.levelName,
             "timeBetweenTurns":_loc2_.timeBetweenTurns,
-            "playerTurnsTime":BattleManager._playerTurnsTime,
-            "playerTurnsTimeDiff":BattleManager._playerTurnsTimeDiffRealActual
+            "playerTurnsTime":BattleManager.playerTurnsTime,
+            "playerTurnsTimeDiff":BattleManager.playerTurnsTimeDiffRealActual
          };
          var _loc4_:ServerRequest = new ServerRequest("ClientTracking",_loc3_);
          MessageCenter.sendEvent(_loc4_);
@@ -278,7 +278,7 @@ package tuxwars.net
       
       private static function unlockItemCallback(param1:ServerResponse) : void
       {
-         if(Boolean(BattleManager.isBattleInProgress()) || Boolean(BattleManager._connectedToBattleManager))
+         if(Boolean(BattleManager.isBattleInProgress()) || Boolean(BattleManager.connectedToBattleManager))
          {
             MessageCenter.sendEvent(new PurchaseMessage());
          }

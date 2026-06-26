@@ -494,7 +494,7 @@ package tuxwars.battle.gameobjects
       public function get hasFollowedObject() : Boolean
       {
          var _loc1_:PhysicsGameObject = this.followedObject;
-         return _loc1_ != null && !_loc2_.markedForRemoval;
+         return _loc1_ != null && !_loc1_.markedForRemoval;
       }
       
       public function get followedObject() : PhysicsGameObject
@@ -508,7 +508,7 @@ package tuxwars.battle.gameobjects
       
       public function get followedObjectReal() : PhysicsGameObject
       {
-         if(this._followedObjectReal != null && Boolean(_loc1_.markedForRemoval))
+         if(this._followedObjectReal != null && Boolean(this._followedObjectReal.markedForRemoval))
          {
             return null;
          }

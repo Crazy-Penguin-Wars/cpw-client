@@ -232,7 +232,7 @@ package tuxwars.ui.components
       {
          this.resetSettingsCloseTimer();
          CRMService.sendEvent("Game","Settings_changed","Clicked","FullScreen on");
-         DCGame.setFullScreen(true,"noScale");
+         DCGame.setFullScreen(true);
          this.fullscreenOnButton.setVisible(false);
          this.fullscreenOffButton.setVisible(true);
          param1.stopImmediatePropagation();
@@ -242,7 +242,7 @@ package tuxwars.ui.components
       {
          this.resetSettingsCloseTimer();
          CRMService.sendEvent("Game","Settings_changed","Clicked","FullScreen off");
-         DCGame.setFullScreen(false,"showAll");
+         DCGame.setFullScreen(false);
          this.fullscreenOnButton.setVisible(true);
          this.fullscreenOffButton.setVisible(false);
          param1.stopImmediatePropagation();

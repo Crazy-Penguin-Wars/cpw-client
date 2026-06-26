@@ -307,7 +307,7 @@ package tuxwars.battle.ui.screen
       
       private function boosterActiveCallback(param1:MouseEvent) : void
       {
-         if(Boolean(this._boosterSelectedButton.cooldownDone) && Boolean(BattleManager._boostersEnabled))
+         if(Boolean(this._boosterSelectedButton.cooldownDone) && Boolean(BattleManager.boostersEnabled))
          {
             TooltipManager.removeTooltip();
             MessageCenter.sendEvent(new UseBoosterMessage(this.selectedBooster.id,game.player.id));
