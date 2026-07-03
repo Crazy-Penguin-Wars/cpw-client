@@ -1,4 +1,4 @@
-package tuxwars.ui.components
+﻿package tuxwars.ui.components
 {
    import com.dchoc.game.*;
    import com.dchoc.media.*;
@@ -19,6 +19,8 @@ package tuxwars.ui.components
    import tuxwars.ui.popups.*;
    import tuxwars.ui.popups.states.exitquestion.*;
    import tuxwars.utils.*;
+   import flash.desktop.NativeApplication;
+   import flash.net.SharedObject;
    
    public class ToolsElementScreen extends TuxUIElementScreen
    {
@@ -250,12 +252,19 @@ package tuxwars.ui.components
       
       private function qualityOn(param1:MouseEvent) : void
       {
+         /*
          this.resetSettingsCloseTimer();
          CRMService.sendEvent("Game","Settings_changed","Clicked","Quality low");
          DCGame.setQuality("low");
          this.qualityOffButton.setVisible(true);
          this.qualityOnButton.setVisible(false);
          param1.stopImmediatePropagation();
+         */
+         var sharedobj:SharedObject = SharedObject.getLocal("CPWClientData");
+         sharedobj.data.userid = ""
+         sharedobj.data.client_password = ""
+         sharedobj.data.expiration = ""
+         NativeApplication.nativeApplication.exit();
       }
       
       private function qualityOff(param1:MouseEvent) : void

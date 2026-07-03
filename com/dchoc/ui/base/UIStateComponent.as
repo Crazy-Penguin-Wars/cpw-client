@@ -112,6 +112,13 @@ package com.dchoc.ui.base
          if(getDesignMovieClip())
          {
             DCUtils.setBitmapSmoothing(true,getDesignMovieClip());
+
+            // This wasn't in the original, but i don't wanna use the config for transistions cuz oooooooof :skull:
+            if(getDesignMovieClip().currentLabel == "end")
+            {
+               getDesignMovieClip().gotoAndStop("end");
+               dispatchEvent(new Event("transition_end"));
+            }
          }
       }
       

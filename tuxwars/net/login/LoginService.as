@@ -6,6 +6,13 @@
     import flash.geom.Rectangle;
     import flash.media.StageWebView;
     import flash.display.Stage;
+	import flash.net.SharedObject;
+    import flash.net.URLLoader;
+    import flash.net.URLRequest;
+    import flash.net.URLRequestMethod;
+    import flash.net.URLRequestHeader;
+    import flash.net.URLLoaderDataFormat;
+    import flash.events.IOErrorEvent;
 
     public class LoginService extends EventDispatcher {
         private var webView:StageWebView;
@@ -17,8 +24,23 @@
         }
 
         public function showLogin() : void {
+            var sharedobj:SharedObject = SharedObject.getLocal("CPWClientData");
+            if (sharedobj && sharedobj.data.client_password != "" && sharedobj.data.expiration != "" && sharedobj.data.userid != "") {
+                var expiration:Date = new Date(sharedobj.data.expiration);
+                if (expiration > new Date()) {
+                    // Log in with client password instead
+                    doFastLogin(sharedobj.data.userid, sharedobj.data.client_password);
+                    return;
+                }
+            }
+
             var config:Object = {
-                userAgent: "TuxWarsDesktop/1.0"
+                userAgent: "TuxWarsDesktop/1.0",
+                enableDevTools: false,
+                enableContextMenu: false,
+                enableKeyboardShortcuts: false,
+                enableStatusBar: false,
+                enableZoom: false
             };
 
             webView = new StageWebView(config);
@@ -58,16 +80,118 @@
             trace("WebView error: " + event.text);
         }
 
-        private function handleLoginComplete(url: String) : void {
+        private function handleLoginComplete(url:String):void
+        {
             var query:String = url.split("?")[1];
-            loginParameters = parseQueryString(query);
+            var params:Object = parseQueryString(query);
+
+            if (!params.code)
+            {
+                trace("Missing auth code");
+                closeLogin();
+                return;
+            }
+
+            exchangeParams(params.code);
+        }
+
+        private function exchangeParams(code:String):void
+        {
+            var request:URLRequest = new URLRequest("http://127.0.0.1:8000/exchange");
+            request.method = URLRequestMethod.POST;
+
+            request.requestHeaders = [
+                new URLRequestHeader("Content-Type", "application/json")
+            ];
+
+            request.data = JSON.stringify({
+                code: code
+            });
+
+            var loader:URLLoader = new URLLoader();
+            loader.dataFormat = URLLoaderDataFormat.TEXT;
+
+            loader.addEventListener(Event.COMPLETE, onExchangeComplete);
+            loader.addEventListener(IOErrorEvent.IO_ERROR, onExchangeError);
+
+            loader.load(request);
+        }
+
+        private function onExchangeComplete(event:Event):void
+        {
+            var loader:URLLoader = URLLoader(event.target);
+            var loginParameters:Object = JSON.parse(loader.data);
+
+            Config.initFromLogin(loginParameters);
+
+            if (loginParameters.rememberme) {
+                var sharedobj:SharedObject = SharedObject.getLocal("CPWClientData");
+                sharedobj.data.client_password = loginParameters.client_password.password;
+                sharedobj.data.expiration = loginParameters.client_password.expiration;
+                sharedobj.data.userid = loginParameters.userId;
+            }
+
+            closeLogin();
+
+            // start the game
+            dispatchEvent(new Event(Event.COMPLETE));
+        }
+
+        private function onExchangeError(event:IOErrorEvent):void
+        {
+            trace("Exchange failed: " + event.text);
+            closeLogin();
+        }
+
+        private function doFastLogin(userid: String, client_password):void
+        {
+            var request:URLRequest = new URLRequest("http://127.0.0.1:8000/fastlogin");
+            request.method = URLRequestMethod.POST;
+
+            request.requestHeaders = [
+                new URLRequestHeader("Content-Type", "application/json")
+            ];
+
+            request.data = JSON.stringify({
+                userid: userid,
+                client_password: client_password
+            });
+
+            var loader:URLLoader = new URLLoader();
+            loader.dataFormat = URLLoaderDataFormat.TEXT;
+
+            loader.addEventListener(Event.COMPLETE, onFastLoginComplete);
+            loader.addEventListener(IOErrorEvent.IO_ERROR, onFastLoginError);
+
+            loader.load(request);
+        }
+
+        private function onFastLoginComplete(event:Event):void
+        {
+            var loader:URLLoader = URLLoader(event.target);
+            var loginParameters:Object = JSON.parse(loader.data);
+
+            if(loginParameters.error) {
+                var sharedobj:SharedObject = SharedObject.getLocal("CPWClientData");
+                sharedobj.data.userid = ""
+                sharedobj.data.client_password = ""
+                sharedobj.data.expiration = ""
+                showLogin()
+                return
+            }
 
             Config.initFromLogin(loginParameters);
 
             closeLogin();
-            
+
             // start the game
             dispatchEvent(new Event(Event.COMPLETE));
+        }
+
+        private function onFastLoginError(event:IOErrorEvent):void
+        {
+            trace("Exchange failed: " + event.text);
+            closeLogin();
         }
 
         public function closeLogin() : void {
