@@ -54,7 +54,7 @@ package tuxwars.home.states.matchloading.connecting
             MessageCenter.addListener("ServerConnected",this.battleServerConnected);
             this.matchMakerKey = _loc1_.matchKey.toString();
             LogUtils.log("Match maker key: " + this.matchMakerKey,this,1,"Match",true);
-            MessageCenter.sendEvent(new BattleServerConnectMessage(_loc1_.address,_loc1_.port));
+            MessageCenter.sendEvent(new BattleServerConnectMessage(_loc1_.host,_loc1_.port));
          }
          else
          {
@@ -117,8 +117,8 @@ package tuxwars.home.states.matchloading.connecting
             MessageCenter.sendEvent(new BattleServerDisconnectMessage());
             MessageCenter.addListener("ServerConnected",this.battleServerConnected);
             _loc2_ = param1.data;
-            LogUtils.log("Connecting to " + _loc2_.address + ":" + _loc2_.port,this,1,"Server",true);
-            MessageCenter.sendEvent(new BattleServerConnectMessage(_loc2_.address,_loc2_.port));
+            LogUtils.log("Connecting to " + _loc2_.host + ":" + _loc2_.port,this,1,"Server",true);
+            MessageCenter.sendEvent(new BattleServerConnectMessage(_loc2_.host,_loc2_.port));
          }
          else if(param1.responseType == 21)
          {

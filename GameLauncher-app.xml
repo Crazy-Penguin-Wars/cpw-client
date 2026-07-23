@@ -28,10 +28,8 @@
     <systemChrome>standard</systemChrome>
     <transparent>false</transparent>
     <visible>true</visible>
-    <fullScreen>false</fullScreen>
     <aspectRatio>portrait</aspectRatio>
     <renderMode>direct</renderMode>
-    <fullScreenInteractive>true</fullScreenInteractive>
     <maximizable>true</maximizable>
     <minimizable>true</minimizable>
     <resizable>true</resizable>
@@ -42,4 +40,4 @@
   <icon/>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
-</application>
+  <supportedProfiles>desktop extendedDesktop </supportedProfiles></application>
