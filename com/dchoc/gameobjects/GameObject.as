@@ -299,9 +299,9 @@ package com.dchoc.gameobjects
             this._displayObject.addChild(_loc2_);
             Bitmap(_loc4_).bitmapData.dispose();
          }
-         else if(_loc4_ is MovieClip && _loc4_.width > 0 && _loc4_.height > 0)
+         else if(_loc4_ is flash.display.MovieClip && _loc4_.width > 0 && _loc4_.height > 0)
          {
-            _loc3_ = OdefuMovieClipFactory.create(_loc4_ as MovieClip,25);
+            _loc3_ = OdefuMovieClipFactory.create(_loc4_ as flash.display.MovieClip,25);
             _loc3_.name = this._graphics.export;
             Starling.juggler.add(_loc3_);
             this._displayObject.addChild(_loc3_);

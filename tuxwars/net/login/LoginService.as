@@ -17,13 +17,20 @@
     public class LoginService extends EventDispatcher {
         private var webView:StageWebView;
         private var stage:Stage;
+		private var serverurl:String;
 
         public function LoginService(stage: Stage) {
             super();
             this.stage = stage;
+
+            if (CONFIG::LOCAL_SERVER_MODE){
+                this.serverurl = "http://127.0.0.1:8000"
+            } else {
+                this.serverurl = "https://cpw-server.onrender.com"
+            }
         }
 
-        public function showLogin() : void {
+        public function startLogin() : void {
             var sharedobj:SharedObject = SharedObject.getLocal("CPWClientData");
             if (sharedobj && sharedobj.data.client_password != "" && sharedobj.data.expiration != "" && sharedobj.data.userid != "") {
                 var expiration:Date = new Date(sharedobj.data.expiration);
@@ -34,6 +41,10 @@
                 }
             }
 
+            showLogin();
+        }
+
+        public function showLogin() : void {
             var config:Object = {
                 userAgent: "TuxWarsDesktop/1.0",
                 enableDevTools: false,
@@ -52,7 +63,7 @@
             webView.addEventListener(LocationChangeEvent.LOCATION_CHANGING, onLocationChanging);
             webView.addEventListener(ErrorEvent.ERROR, onWebViewError);
 
-            webView.loadURL("http://127.0.0.1:8000/login");
+            webView.loadURL(this.serverurl + "/login");
         }
 
         private function resizeWebView() : void {
@@ -69,7 +80,6 @@
         // The server tries to redirect, we intercept it
         // doing it this way cuz it also works on android at some point:tm: (and externalinterface not appparently)
         private function onLocationChanging(event: LocationChangeEvent) : void {
-            // Intercept your sentinel URL
             if (event.location.indexOf("success") != -1) {
                 event.preventDefault(); // Stop the redirect
                 handleLoginComplete(event.location);
@@ -97,7 +107,8 @@
 
         private function exchangeParams(code:String):void
         {
-            var request:URLRequest = new URLRequest("http://127.0.0.1:8000/exchange");
+            var request:URLRequest = new URLRequest(this.serverurl + "/exchange");
+            
             request.method = URLRequestMethod.POST;
 
             request.requestHeaders = [
@@ -145,7 +156,7 @@
 
         private function doFastLogin(userid: String, client_password):void
         {
-            var request:URLRequest = new URLRequest("http://127.0.0.1:8000/fastlogin");
+            var request:URLRequest = new URLRequest(this.serverurl + "/fastlogin");
             request.method = URLRequestMethod.POST;
 
             request.requestHeaders = [
@@ -190,8 +201,8 @@
 
         private function onFastLoginError(event:IOErrorEvent):void
         {
-            trace("Exchange failed: " + event.text);
-            closeLogin();
+            trace("Fast login failed, show regular login page");
+            showLogin();
         }
 
         public function closeLogin() : void {

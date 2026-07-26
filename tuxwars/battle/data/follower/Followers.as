@@ -1,4 +1,4 @@
-package tuxwars.battle.data.follower
+﻿package tuxwars.battle.data.follower
 {
    import com.dchoc.gameobjects.stats.Stat;
    import com.dchoc.gameobjects.stats.Stats;
@@ -61,7 +61,7 @@ package tuxwars.battle.data.follower
             _loc8_ = param6.followers;
             for each(_loc13_ in _loc8_)
             {
-               if((_loc13_._type == "Status" || _loc13_._type == "StatusPermanent") && _loc15_._id == _loc10_.id)
+               if((_loc13_._type == "Status" || _loc13_._type == "StatusPermanent") && _loc13_._id == _loc10_.id)
                {
                   LogUtils.log("Found matching status on object: " + param6.shortName,Followers,0,"Follower",false,false,false);
                   _loc13_.resetLifeTime();

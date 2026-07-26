@@ -1,4 +1,4 @@
-package tuxwars.battle
+﻿package tuxwars.battle
 {
    import com.dchoc.game.DCGame;
    import com.dchoc.messages.*;
@@ -365,18 +365,16 @@ package tuxwars.battle
       
       public static function turnEnd() : void
       {
-         var _loc3_:* = undefined;
          var _loc4_:BattleSimulation = null;
          var _loc1_:Number = Number(NaN);
-         if(!practiceMode && !_loc3_.turnChange)
+         if(!practiceMode && !battleSimulation.changingTurns)
          {
             battleSimulation.endTurn();
          }
          var _loc2_:PlayerGameObject = getCurrentActivePlayer();
          if(_loc2_)
          {
-            _loc3_ = _loc2_;
-            LogUtils.addDebugLine("Game","Ending player\'s turn " + _loc3_._id,"BattleManager");
+            LogUtils.addDebugLine("Game","Ending player\'s turn " + _loc2_._id,"BattleManager");
             if(battleSimulation)
             {
                _loc4_ = battleSimulation;

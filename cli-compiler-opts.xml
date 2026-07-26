@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flex-config>
+    <compiler>
+        <source-path>
+            <path-element>.</path-element>
+        </source-path>
+        <library-path>
+            <path-element>bin/core.swc</path-element>
+            <path-element>bin/framework.swc</path-element>
+            <path-element>bin/mx.swc</path-element>
+            <path-element>bin/nape-release.swc</path-element>
+            <path-element>bin/starling.swc</path-element>
+            <path-element>bin/rpc.swc</path-element>
+            <path-element>bin/GameLauncherLibrary.swc</path-element>
+        </library-path>
+        <define>
+            <name>CONFIG::BUILD_FOR_BROWSER</name>
+            <value>true</value>
+        </define>
+        <define>
+            <name>CONFIG::BUILD_FOR_PC</name>
+            <value>false</value>
+        </define>
+        <define>
+            <name>CONFIG::LOCAL_SERVER_MODE</name>
+            <value>true</value>
+        </define>
+        <strict>false</strict>
+    </compiler>
+    <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
+    <warnings>true</warnings>
+    <target-player>32.0</target-player>
+    <swf-version>43</swf-version>
+</flex-config>

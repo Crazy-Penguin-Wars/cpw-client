@@ -1,4 +1,4 @@
-package tuxwars.battle.rewards
+﻿package tuxwars.battle.rewards
 {
    import com.dchoc.gameobjects.stats.Stat;
    import com.dchoc.utils.*;
@@ -185,7 +185,7 @@ package tuxwars.battle.rewards
       
       public function damageDoneToTarget(param1:int, param2:PhysicsGameObject) : void
       {
-         if(param1 <= 0 || param2 == null || _loc3_._id == _loc4_._id)
+         if(param1 <= 0 || param2 == null || this.playerGameObject._id == param2._id)
          {
             return;
          }
@@ -374,15 +374,13 @@ package tuxwars.battle.rewards
          return param1;
       }
       
-      private function generateGraphicsToPickUp(param1:PhysicsGameObject, param2:String, param3:int, param4:MovieClip = null) : void
-      {
-         var _loc6_:* = undefined;
-         var _loc7_:* = undefined;
-         var _loc5_:Point = null;
-         if(BattleManager.getLocalPlayer() != null && this.playerGameObject != null && _loc6_._id == _loc7_._id)
-         {
-            _loc5_ = param1 is AvatarGameObject ? new Point(AvatarGameObject(param1).container.x,AvatarGameObject(param1).container.y) : (_loc6_ = param1, _loc7_ = param1, new Point(_loc6_._displayObject.x,_loc7_._displayObject.y));
-            switch(param2)
+	  private function generateGraphicsToPickUp(param1:PhysicsGameObject, param2:String, param3:int, param4:MovieClip = null) : void
+	  {
+	     var _loc5_:Point = null;
+	     if(BattleManager.getLocalPlayer() != null && this.playerGameObject != null && BattleManager.getLocalPlayer()._id == this.playerGameObject._id)
+	     {
+		    _loc5_ = param1 is AvatarGameObject ? new Point(AvatarGameObject(param1).container.x,AvatarGameObject(param1).container.y) : new Point(PhysicsGameObject(param1)._displayObject.x, PhysicsGameObject(param1)._displayObject.y);
+		    switch(param2)
             {
                case "Coin":
                   this.world.addFeedbackItem("drop_coins",_loc5_,param3,RewardConfig.getAppearTime(),RewardConfig.getWaitTime(),RewardConfig.getFlyTime(),RewardConfig.getSWF("Coin"),RewardConfig.getExport("Coin"));

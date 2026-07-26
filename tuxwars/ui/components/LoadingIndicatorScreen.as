@@ -115,10 +115,10 @@ package tuxwars.ui.components
       
       private function addLoadingScreen(param1:State) : Boolean
       {
-         switch(getQualifiedClassName(param1))
+         switch(flash.utils.getQualifiedClassName(param1))
          {
-            case getQualifiedClassName(TuxLoadingStartUpSharedAssetsSubState):
-            case getQualifiedClassName(TuxLoadingStartUpAssetsSubState):
+            case flash.utils.getQualifiedClassName(TuxLoadingStartUpSharedAssetsSubState):
+            case flash.utils.getQualifiedClassName(TuxLoadingStartUpAssetsSubState):
                return false;
             default:
                return true;

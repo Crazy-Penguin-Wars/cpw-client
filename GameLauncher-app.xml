@@ -17,22 +17,24 @@
 	</name>
 -->
 <application xmlns="http://ns.adobe.com/air/application/51.2">
-  <id>GameLauncher</id>
+  <id>com.crazypenguin.wars</id>
   <versionNumber>1.0</versionNumber>
-  <filename>GameLauncher</filename>
+  <filename>Crazy Penguin Wars</filename>
   <description/>
-  <name>GameLauncher</name>
+  <name>Crazy Penguin Wars</name>
   <copyright/>
   <initialWindow>
     <content>GameLauncher.swf</content>
     <systemChrome>standard</systemChrome>
     <transparent>false</transparent>
     <visible>true</visible>
-    <aspectRatio>portrait</aspectRatio>
+    <aspectRatio>landscape</aspectRatio>
     <renderMode>direct</renderMode>
     <maximizable>true</maximizable>
     <minimizable>true</minimizable>
     <resizable>true</resizable>
+    <fullScreen>true</fullScreen>
+    <autoOrients>false</autoOrients>
   </initialWindow>
   <windows>
     <UseWebView2>true</UseWebView2>
@@ -40,4 +42,15 @@
   <icon/>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
-  <supportedProfiles>desktop extendedDesktop </supportedProfiles></application>
+  <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice </supportedProfiles>
+  <android>
+    <manifestAdditions><![CDATA[<manifest>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+</manifest>]]></manifestAdditions>
+  </android>
+  <versionLabel/>
+</application>

@@ -7,13 +7,18 @@
    import flash.events.FullScreenEvent;
    import tuxwars.*;
    import tuxwars.net.*;
-   import tuxwars.net.login.LoginService;
+   CONFIG::BUILD_FOR_PC {
+      import tuxwars.net.login.LoginService;
+   }
    import flash.system.Capabilities;
    
    public class GameLauncher extends Sprite
    {
       private var game:TuxWarsGame;
-      private var loginUI:LoginService;
+
+      CONFIG::BUILD_FOR_PC {
+         private var loginUI:LoginService;
+      }
       
       public function GameLauncher()
       {
@@ -26,36 +31,29 @@
          removeEventListener("addedToStage",this.addedToStage);
          DCResourceManager.setCrossDomainPrefix("tuxwars");
          CRMService.sendEvent("Level","Session Started","OnFlash",Config.getOSStr());
-         var _loc2_:Date = new Date();
+		  
+		 CONFIG::BUILD_FOR_BROWSER {
+			 var _loc2_:Date = new Date();
+			 Config.setGameCreatedDate(new Date());
+			 LogUtils.log("Creating game. " + _loc2_,"GameLauncher",1,"Game",true,false,true);
+			 this.game = new TuxWarsGame(stage);
+			 stage.addEventListener(Event.RESIZE, this.onStageResize, false, 0, true);
+		 }
 
-         stage.scaleMode = "noScale"; // needed for login page to support resizing the window
-         stage.nativeWindow.maximize();
-         loginUI = new LoginService(stage);
-         loginUI.addEventListener(Event.COMPLETE, onLoginFinished);
-         loginUI.showLogin();
+		 CONFIG::BUILD_FOR_PC {
+			 stage.scaleMode = "noScale"; // needed for login page to support resizing the window
+			 stage.nativeWindow.maximize();
+			 loginUI = new LoginService(stage);
+			 loginUI.addEventListener(Event.COMPLETE, onLoginFinished);
+			 loginUI.startLogin();
+		 }
       }
 
       private function onLoginFinished(event:Event):void {
          Config.setGameCreatedDate(new Date());
-         if (Capabilities.playerType != "Desktop") {
-            stage.scaleMode = "showAll"; // reset scale mode for the game: only in browser
-         }
          LogUtils.log("Creating game after login.","GameLauncher",1,"Game",true,false,true);
          this.game = new TuxWarsGame(stage);
-         if (Capabilities.playerType == "Desktop") { // Desktop = AIR
-            stage.addEventListener(Event.RESIZE, this.onStageResize, false, 0, true);
-         } else {
-            stage.addEventListener(FullScreenEvent.FULL_SCREEN, onFullScreenChange);
-         }
-      }
-
-      // Should only run in browser flash
-      private function onFullScreenChange(event: FullScreenEvent) : void {
-         if (event.fullScreen) {
-            stage.scaleMode = "noScale";
-         } else {
-            stage.scaleMode = "showAll";
-         }
+		 stage.addEventListener(Event.RESIZE, this.onStageResize, false, 0, true);
       }
 
       // Should only run in AIR

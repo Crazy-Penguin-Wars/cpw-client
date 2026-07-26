@@ -61,14 +61,24 @@ package com.dchoc.game
       
       public static function isFullScreen() : Boolean
       {
-         return DCGame.getStage().displayState == "fullScreenInteractive";
+         CONFIG::BUILD_FOR_BROWSER {
+            return DCGame.getStage().displayState == "fullScreen";
+         }
+         CONFIG::BUILD_FOR_PC {
+            return DCGame.getStage().displayState == "fullScreenInteractive";
+         }
       }
       
       public static function setFullScreen(param1:Boolean) : void
       {
          if(param1)
          {
-            DCGame.getStage().displayState = "fullScreenInteractive";
+            CONFIG::BUILD_FOR_BROWSER {
+               DCGame.getStage().displayState = "fullScreen";
+            }
+            CONFIG::BUILD_FOR_PC {
+               DCGame.getStage().displayState = "fullScreenInteractive";
+            }
          }
          else
          {
