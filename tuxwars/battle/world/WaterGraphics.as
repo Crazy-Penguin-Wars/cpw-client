@@ -32,14 +32,14 @@ package tuxwars.battle.world
          while(_loc2_ < param1.width)
          {
             this.addTile(_loc2_,param1.theme);
-            _loc2_ += 198;
+            _loc2_ += TILE_WIDTH;
          }
          this.addTile(_loc2_,param1.theme);
          var _loc3_:int = param1.height - param1.waterLine;
-         if(_loc3_ > 106)
+         if(_loc3_ > TILE_HEIGHT)
          {
             graphics.beginFill(param1.theme.waterColor);
-            graphics.drawRect(0,106,param1.width,_loc3_);
+            graphics.drawRect(0,TILE_HEIGHT,param1.width,_loc3_);
             graphics.endFill();
          }
       }
@@ -50,7 +50,7 @@ package tuxwars.battle.world
          if(_loc3_)
          {
             _loc3_.x = param1;
-            _loc3_.y = 106 * 0.7;
+            _loc3_.y = TILE_HEIGHT * 0.7;
             addChild(_loc3_);
          }
          else

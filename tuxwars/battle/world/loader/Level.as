@@ -4,6 +4,7 @@ package tuxwars.battle.world.loader
    import nape.geom.*;
    import tuxwars.battle.data.*;
    import tuxwars.battle.data.parallaxes.*;
+   import com.dchoc.resources.*;
    
    public class Level
    {
@@ -44,6 +45,10 @@ package tuxwars.battle.world.loader
       private var _parallaxLayers:Vector.<ParallaxLayer>;
       
       private var _parallaxData:Object;
+
+      // Stores SWF files that are mentioned in the parallax layers of the level
+      // This allows to use parallax layers of a different material than the current map type
+      private const _parallaxSWFs:Vector.<String> = new Vector.<String>();
       
       private var _id:String;
       
@@ -79,6 +84,7 @@ package tuxwars.battle.world.loader
          this._joints.splice(0,this._joints.length);
          this._spawnPoints.splice(0,this._spawnPoints.length);
          this._parallaxData = null;
+         this._parallaxSWFs.splice(0, this._parallaxSWFs.length);
       }
       
       public function disposeParallaxLayers() : void
@@ -196,7 +202,7 @@ package tuxwars.battle.world.loader
       
       public function isLoaded() : Boolean
       {
-         return Boolean(this._theme.isLoaded()) && Boolean(this.elementsAreLoaded());
+         return Boolean(this._theme.isLoaded()) && Boolean(this.elementsAreLoaded()) && Boolean(this.parallaxesAreLoaded());
       }
       
       private function elementsAreLoaded() : Boolean
@@ -213,6 +219,19 @@ package tuxwars.battle.world.loader
          for each(_loc2_ in this._powerUps)
          {
             if(!_loc2_.isLoaded())
+            {
+               return false;
+            }
+         }
+         return true;
+      }
+
+      private function parallaxesAreLoaded() : Boolean
+      {
+         var swf:String = null;
+         for each(swf in this._parallaxSWFs)
+         {
+            if(!DCResourceManager.instance.isLoaded(swf))
             {
                return false;
             }
@@ -237,8 +256,36 @@ package tuxwars.battle.world.loader
          this._levelWaterAngularDrag = param1.water_angulardrag != null ? int(param1.water_angulardrag) : 1;
          this._levelWaterVelocity = param1.water_velocity_x != null ? new Point(param1.water_velocity_x,param1.water_velocity_y) : new Point(0,0);
          this._parallaxData = param1.parallax_layers;
+         this.loadParallaxSWFs();
          this.parseParallaxes();
          this.parseJoints(param1.joints);
+      }
+
+      private function loadParallaxSWFs() : void
+      {
+         var layer:Object = null;
+         var layers:Array = null;
+         var swf:String = null;
+
+         if(!this._parallaxData)
+         {
+            return;
+         }
+
+         layers = this._parallaxData is Array ? this._parallaxData as Array : [this._parallaxData];
+
+         for each(layer in layers)
+         {
+            swf = layer["graphics_swf"];
+            if(swf && this._parallaxSWFs.indexOf(swf) == -1)
+            {
+               this._parallaxSWFs.push(swf);
+               if(!DCResourceManager.instance.isLoaded(swf))
+               {
+                  DCResourceManager.instance.load(Config.getDataDir() + swf,swf,null,true);
+               }
+            }
+         }
       }
       
       private function parseSpawnPoints(param1:Object) : void
