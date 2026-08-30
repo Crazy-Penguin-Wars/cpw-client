@@ -185,7 +185,7 @@ package tuxwars.battle.ui.screen.chat
       
       override public function fullscreenChanged(param1:Boolean) : void
       {
-         if(param1)
+         if(param1 && CONFIG::BUILD_FOR_BROWSER)
          {
             this.addMessage(null,null,ProjectManager.getText("NO_KEYBOARD_IN_FULLSCREEN"),true);
          }

@@ -51,9 +51,9 @@ package tuxwars.home.ui.screen.customgame
       
       private function initInputTextField(param1:Boolean) : void
       {
-         this.input.getTextField().mouseEnabled = !param1;
-         this.input.getTextField().selectable = !param1;
-         if(param1)
+         this.input.getTextField().mouseEnabled = !(param1 && CONFIG::BUILD_FOR_BROWSER);
+         this.input.getTextField().selectable = !(param1 && CONFIG::BUILD_FOR_BROWSER);
+         if(param1 && CONFIG::BUILD_FOR_BROWSER)
          {
             this.input.setText(ProjectManager.getText("NO_KEYBOARD_IN_FULLSCREEN"));
          }
