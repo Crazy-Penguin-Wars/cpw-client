@@ -1,5 +1,6 @@
 package tuxwars.home.ui.screen.matchloading
 {
+   import com.dchoc.game.DCGame;
    import com.dchoc.projectdata.*;
    import com.dchoc.resources.*;
    import com.dchoc.ui.buttons.*;
@@ -63,6 +64,8 @@ package tuxwars.home.ui.screen.matchloading
       private var _moneyScreen:MoneyResourceElementScreen;
       
       private var bettingAvailable:Boolean;
+
+      private var _whiteBackground:Shape;
       
       public function MatchLoadingScreen(param1:TuxWarsGame)
       {
@@ -95,6 +98,10 @@ package tuxwars.home.ui.screen.matchloading
             _loc2_ = DCResourceManager.instance.getFromSWF("flash/ui/popups.swf","popup_loading");
          }
          super(param1,_loc2_);
+         CONFIG::MAPTESTER_SKIPTOPRACTICE
+         {
+            this.addWhiteBackground(param1,_loc2_);
+         }
          this._closeButton = TuxUiUtils.createButton(UIButton,_loc2_,"Button_Close",this.closeCallback);
          this.headerText.setTextField(_loc2_.Text_Header);
          if(_loc3_)
@@ -136,6 +143,18 @@ package tuxwars.home.ui.screen.matchloading
          {
             this._moneyScreen.logic = this.loadingLogic.moneyLogic;
          }
+      }
+
+      CONFIG::MAPTESTER_SKIPTOPRACTICE
+      private function addWhiteBackground(param1:TuxWarsGame, param2:MovieClip) : void
+      {
+         this._whiteBackground = new Shape();
+         var _loc2_:int = DCGame.getStage() ? DCGame.getStage().stageWidth : 1920;
+         var _loc3_:int = DCGame.getStage() ? DCGame.getStage().stageHeight : 1080;
+         this._whiteBackground.graphics.beginFill(0xFFFFFF);
+         this._whiteBackground.graphics.drawRect(-_loc2_,-_loc3_,_loc2_ * 2,_loc3_ * 2);
+         this._whiteBackground.graphics.endFill();
+         param2.addChildAt(this._whiteBackground,0);
       }
       
       private function initBets() : void
@@ -320,6 +339,17 @@ package tuxwars.home.ui.screen.matchloading
             this._moneyScreen = null;
          }
          RematchData.setCustomGameName(null);
+         CONFIG::MAPTESTER_SKIPTOPRACTICE
+         {
+            if(this._whiteBackground)
+            {
+               if(this._whiteBackground.parent)
+               {
+                  this._whiteBackground.parent.removeChild(this._whiteBackground);
+               }
+               this._whiteBackground = null;
+            }
+         }
          super.dispose();
       }
       

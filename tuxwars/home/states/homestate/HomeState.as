@@ -15,6 +15,7 @@ package tuxwars.home.states.homestate
    import tuxwars.home.states.dailynews.*;
    import tuxwars.home.states.equipment.*;
    import tuxwars.home.states.gifts.*;
+   import tuxwars.home.states.matchloading.PracticeMatchLoadingSubState;
    import tuxwars.home.states.oldcustomgame.*;
    import tuxwars.home.states.shop.*;
    import tuxwars.home.states.slotmachine.*;
@@ -50,6 +51,9 @@ package tuxwars.home.states.homestate
       
       override public function enter() : void
       {
+         CONFIG::MAPTESTER_SKIPTOPRACTICE {
+            changeState(new PracticeMatchLoadingSubState(tuxGame));
+         }
          super.enter();
          if(tuxGame.battleServer.isConnected())
          {
