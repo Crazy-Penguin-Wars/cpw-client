@@ -136,8 +136,8 @@
                devMode = true;
                platform = "FB";
                env = "dev";
-               DCResourceManager.instance.load("../config.txt","Config","VariablesTextFile",true);
-               DCResourceManager.instance.addCustomEventListener("complete",loadConfigComplete,"Config");
+               //DCResourceManager.instance.load("../config.txt","Config","VariablesTextFile",true);
+               //DCResourceManager.instance.addCustomEventListener("complete",loadConfigComplete,"Config");
                serverURL = "http:/127.0.0.1:8000/api/";
                offlineMode = false;
                MessageCenter.sendMessage("ConfigLoaded");
