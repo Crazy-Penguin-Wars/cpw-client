@@ -26,7 +26,7 @@
             if (CONFIG::LOCAL_SERVER_MODE){
                 this.serverurl = "http://127.0.0.1:8000"
             } else {
-                this.serverurl = "https://cpw-server.onrender.com"
+                this.serverurl = "https://web.crazypenguinwars.app"
             }
         }
 
@@ -68,7 +68,6 @@
 
         private function resizeWebView() : void {
             if (webView) {
-                trace("hi?");
                 webView.viewPort = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
             }
         }

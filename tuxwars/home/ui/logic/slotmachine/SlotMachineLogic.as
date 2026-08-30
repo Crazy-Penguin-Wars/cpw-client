@@ -236,7 +236,6 @@
       
       public function getReel(param1:int, param2:int) : GraphicsReference
       {
-         trace("GetReel: " + param1 + " for reel: " + param2);
          var _loc5_:String = null;
          var _loc6_:* = undefined;
          var _loc7_:String = null;
@@ -259,7 +258,6 @@
             _loc8_ = ProjectManager.findTable(_loc7_);
             param1 = _loc8_._rows.length - 1;
          }
-		 trace("Set" + (param1 + 1) + 1)
          return (this._slots[this._slots.indexOf("Set" + (param1 + 1)) + 1] as SlotMachineReference).getResult(param2);
       }
       

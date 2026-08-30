@@ -100,7 +100,7 @@ package tuxwars.ui.containers.slotitem.uicontainers.container
       private function enableButton(param1:Message) : void
       {
          MessageCenter.removeListener("ItemBought",this.enableButton);
-         button.setVisible(false);
+         button.setEnabled(canAffordItem());
       }
    }
 }

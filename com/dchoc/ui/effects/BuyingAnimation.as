@@ -81,7 +81,7 @@ package com.dchoc.ui.effects
          animIcon.addChild(param3);
          mainClip.addEventListener("enterFrame",playAnimation);
          mainClip.gotoAndPlay(1);
-         trace("Modified to support scaling and rotating, see Github for the original version");
+         // Modified to support scaling and rotating, see Github for the original version
          param1.addChild(mainClip);
          var _loc6_:Point = mainClip.localToGlobal(new Point(0,0));
          var _loc7_:Point = param1.globalToLocal(_loc6_);

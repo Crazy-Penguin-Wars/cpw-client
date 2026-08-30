@@ -54,7 +54,6 @@ package tuxwars.home.ui.logic.slotmachine
             }
             _loc2_ = this._row.getCache[_loc3_];
          }
-         trace(this._row);
          return !!_loc2_ ? new GraphicsReference(_loc2_.overrideValue != null ? _loc2_.overrideValue : _loc2_._value) : null;
       }
       
