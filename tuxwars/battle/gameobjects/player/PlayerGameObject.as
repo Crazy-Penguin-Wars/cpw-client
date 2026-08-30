@@ -806,9 +806,9 @@
             case "jump":
             case "damagehit":
             case "landjump":
+               idleMode = false;
                if(this._weapon)
                {
-                  idleMode = false;
                   return new AvatarAnimation(_loc4_ + "_" + this._weapon.animationType,param2,param3);
                }
                break;
