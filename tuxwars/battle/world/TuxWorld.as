@@ -496,7 +496,11 @@ package tuxwars.battle.world
       
       public function calculateNormalZoomLevel() : Number
       {
-         return 668 / this.physicsWorld.level.height;
+         var level:Level = this.physicsWorld.level;
+
+         return level.zoomSide == "height"
+            ? 668 / level.height
+            : 760 / level.width;
       }
       
       override protected function postInputUpdate(param1:int) : void
@@ -809,7 +813,9 @@ package tuxwars.battle.world
       
       private function calculateZoomLevel(param1:Level) : Number
       {
-         return DCGame.getStage().stageHeight / param1.height;
+         return param1.zoomSide == "height"
+            ? DCGame.getStage().stageHeight / param1.height
+            : DCGame.getStage().stageWidth / param1.width;
       }
    }
 }
