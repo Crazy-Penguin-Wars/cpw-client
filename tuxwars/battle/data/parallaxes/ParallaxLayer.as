@@ -23,6 +23,8 @@ package tuxwars.battle.data.parallaxes
       
       private static const GAP:String = "gap";
       
+      private static const ZOOM:String = "zoom";
+      
       private var _originalX:int;
       
       private var _originalY:int;
@@ -34,6 +36,8 @@ package tuxwars.battle.data.parallaxes
       private var _tile_horizontally:Boolean;
       
       private var _gap:int;
+      
+      private var _zoom:Number;
       
       private var _graphics:Vector.<BitmapData>;
       
@@ -51,6 +55,7 @@ package tuxwars.battle.data.parallaxes
          this._cameraYPan = param1["camera_y_pan"];
          this._tile_horizontally = param1["tile_horizontally"];
          this._gap = param1["gap"];
+         this._zoom = param1["zoom"] != undefined ? Number(param1["zoom"]) : 1.0;
          this._level = param2;
          this._graphics = new Vector.<BitmapData>();
          _loc3_ = 0;
@@ -130,6 +135,11 @@ package tuxwars.battle.data.parallaxes
          return this._gap;
       }
       
+      public function get zoom() : Number
+      {
+         return this._zoom;
+      }
+      
       private function get graphics() : Vector.<BitmapData>
       {
          return this._graphics;
@@ -163,13 +173,15 @@ package tuxwars.battle.data.parallaxes
             {
                _loc1_ = new ParallaxSprite();
                _loc1_.setRegistration(_loc2_.width >> 1,_loc2_.height);
+               _loc1_.scaleX = this._zoom;
+               _loc1_.scaleY = this._zoom;
                _loc1_.graphics.beginBitmapFill(_loc2_,null,true,true);
                _loc1_.graphics.drawRect(0,0,_loc2_.width,_loc2_.height);
                _loc1_.graphics.endFill();
+               this._layerClip.addChild(_loc1_);
                _loc1_.setX(_loc3_);
                _loc1_.setY(0);
                _loc3_ += this.gap;
-               this._layerClip.addChild(_loc1_);
             }
             if(this.gap == 0)
             {
