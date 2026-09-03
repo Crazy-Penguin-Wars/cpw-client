@@ -12,6 +12,8 @@ package tuxwars.battle.world
       private static const TILE_WIDTH:int = 198;
       
       public static const TILE_HEIGHT:int = 106;
+
+      public static const WATER_SURFACE_OFFSET:Number = TILE_HEIGHT * 0.7;
       
       public function WaterGraphics(param1:Level)
       {
@@ -50,7 +52,7 @@ package tuxwars.battle.world
          if(_loc3_)
          {
             _loc3_.x = param1;
-            _loc3_.y = TILE_HEIGHT * 0.7;
+            _loc3_.y = WATER_SURFACE_OFFSET;
             addChild(_loc3_);
          }
          else

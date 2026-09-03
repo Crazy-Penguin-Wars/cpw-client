@@ -79,14 +79,14 @@ package tuxwars.battle.world
       
       private function createBody(param1:PhysicsWorld, param2:Number) : void
       {
-         var _loc3_:Number = param1.level.height - param1.level.waterLine;
+         var _loc3_:Number = param1.level.height - param1.level.waterLine - WaterGraphics.WATER_SURFACE_OFFSET;
          this.water = new Polygon(Polygon.rect(0,0,param1.level.width,_loc3_,true));
          this.water.fluidEnabled = true;
          this.water.fluidProperties.density = param2;
          this.water.filter.collisionMask = 0;
          this.water.filter.fluidMask = 2;
          this.body = new Body(BodyType.STATIC);
-         this.body.position = Vec2.weak(0,param1.level.waterLine);
+         this.body.position = Vec2.weak(0,param1.level.waterLine + WaterGraphics.WATER_SURFACE_OFFSET);
          this.body.userData.gameObject = this;
          this.body.shapes.add(this.water);
          this.body.space = param1.space;
