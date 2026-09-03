@@ -25,6 +25,10 @@
             <name>CONFIG::LOCAL_SERVER_MODE</name>
             <value>true</value>
         </define>
+        <define>
+            <name>CONFIG::FPS_COUNTER</name>
+            <value>false</value>
+        </define>
         <strict>false</strict>
     </compiler>
     <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>

@@ -3,7 +3,10 @@ package com.dchoc.game
    import com.dchoc.states.*;
    import com.dchoc.utils.*;
    import flash.display.*;
-   import flash.events.Event;
+      import flash.events.Event;
+   import flash.text.TextField;
+   import flash.text.TextFormat;
+   import flash.text.TextFieldAutoSize;
    import flash.utils.*;
    
    public class DCGame implements IStateMachine
@@ -25,6 +28,11 @@ package com.dchoc.game
       private var _world:GameWorld;
       
       private var _updateWorld:Boolean;
+      CONFIG::FPS_COUNTER {
+         private var fpsCounter:TextField;
+         private var fpsFrameCount:int;
+         private var fpsLastTime:int;
+      }
       
       public function DCGame(param1:Stage)
       {
@@ -41,6 +49,21 @@ package com.dchoc.game
          _infoLayer.mouseEnabled = false;
          mainMovieClip.addChild(_infoLayer);
          gameTime = getTimer();
+         CONFIG::FPS_COUNTER {
+            this.fpsCounter = new TextField();
+            this.fpsCounter.x = 4;
+            this.fpsCounter.y = 4;
+            this.fpsCounter.autoSize = TextFieldAutoSize.LEFT;
+            this.fpsCounter.selectable = false;
+            this.fpsCounter.mouseEnabled = false;
+            this.fpsCounter.background = true;
+            this.fpsCounter.backgroundColor = 0;
+            this.fpsCounter.textColor = 16777215;
+            this.fpsCounter.defaultTextFormat = new TextFormat("_sans",12,16777215,true);
+            this.fpsCounter.text = "FPS: --";
+            _infoLayer.addChild(this.fpsCounter);
+            this.fpsLastTime = getTimer();
+         }
          param1.addEventListener("enterFrame",this.runGame,false,1000,true);
       }
       
@@ -171,6 +194,15 @@ package com.dchoc.game
          var _loc3_:int = _loc2_ - gameTime;
          gameTime = _loc2_;
          this.logicUpdate(_loc3_);
+         CONFIG::FPS_COUNTER {
+            ++this.fpsFrameCount;
+            if(_loc2_ - this.fpsLastTime >= 1000)
+            {
+               this.fpsCounter.text = "FPS: " + this.fpsFrameCount;
+               this.fpsFrameCount = 0;
+               this.fpsLastTime = _loc2_;
+            }
+         }
          if(mainMovieClip.contains(_infoLayer))
          {
             DCUtils.bringToFront(mainMovieClip,_infoLayer);
