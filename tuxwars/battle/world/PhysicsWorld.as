@@ -141,10 +141,18 @@ package tuxwars.battle.world
       
       public function fullscreenChanged(param1:Boolean) : void
       {
-         var _loc2_:TuxWorld = this.world;
+         var background:Image = param1 ? this._fullscreenBG : this._normalBG;
+         var viewportWidth:Number = DCGame.getStage().stageWidth;
+         var viewportHeight:Number = DCGame.getStage().stageHeight;
+         var aspectRatio:Number = background.width / background.height;
+
+         background.width = viewportHeight * aspectRatio;
+         background.height = viewportHeight;
+         background.x = (viewportWidth - background.width) * 0.5;
+         background.y = 0;
+
          (Starling.current.root as WorldContainer).backgroundContainer.removeChildren();
-         var _loc3_:TuxWorld = this.world;
-         (Starling.current.root as WorldContainer).backgroundContainer.addChild(param1 ? this._fullscreenBG : this._normalBG);
+         (Starling.current.root as WorldContainer).backgroundContainer.addChild(background);
       }
       
       public function setDebugMode(param1:Boolean) : void
@@ -578,8 +586,12 @@ package tuxwars.battle.world
       private function setBackground(param1:Level) : void
       {
          var _loc2_:Bitmap = this.createParallaxes(param1.theme.getBackground());
-         this._normalBG = this.createBGImage(_loc2_,DCGame.getStage().stageHeight / _loc2_.height);
-         this._fullscreenBG = this.createBGImage(_loc2_,DCGame.getStage().fullScreenHeight / _loc2_.height);
+         var normalScale:Number = DCGame.getStage().stageHeight / _loc2_.height;
+         var fullscreenScale:Number = DCGame.getStage().fullScreenHeight / _loc2_.height;
+         this._normalBG = this.createBGImage(_loc2_,normalScale);
+         this._normalBG.x = (DCGame.getStage().stageWidth - _loc2_.width * normalScale) * 0.5;
+         this._fullscreenBG = this.createBGImage(_loc2_,fullscreenScale);
+         this._fullscreenBG.x = (DCGame.getStage().fullScreenWidth - _loc2_.width * fullscreenScale) * 0.5;
          var _loc3_:TuxWorld = this.world;
          (Starling.current.root as WorldContainer).backgroundContainer.addChild(this._normalBG);
          _loc2_.bitmapData.dispose();
@@ -589,7 +601,9 @@ package tuxwars.battle.world
       {
          var _loc3_:Matrix = new Matrix();
          _loc3_.scale(param2,param2);
-         var _loc4_:BitmapData = new BitmapData(param1.width < 2048 ? int(param1.width) : 2048,param1.height < 2048 ? int(param1.height) : 2048);
+         var targetW:int = int(param1.width * param2);
+         var targetH:int = int(param1.height * param2);
+         var _loc4_:BitmapData = new BitmapData(targetW < 2048 ? targetW : 2048,targetH < 2048 ? targetH : 2048);
          _loc4_.draw(param1,_loc3_,null,null,null,true);
          var _loc5_:Image = new Image(Texture.fromBitmapData(_loc4_));
          _loc4_.dispose();
