@@ -56,12 +56,13 @@ package tuxwars.battle.graphics
          _loc4_.translate(25,25);
          var _loc5_:BitmapData = new BitmapData(this.canvas.width,this.canvas.height,true,0);
          _loc5_.draw(this.canvas,_loc4_,null,null,null,true);
+         var _loc6_:ColorTransform = new ColorTransform();
+         var _loc8_:int = param1.getTint() - param1.getShade();
+         _loc6_.redOffset = param1.getRed() + _loc8_;
+         _loc6_.greenOffset = param1.getGreen() + _loc8_;
+         _loc6_.blueOffset = param1.getBlue() + _loc8_;
+         _loc5_.colorTransform(_loc5_.rect, _loc6_);
          this._terrainBitmap.bitmapData = _loc5_;
-         var _loc6_:ColorTransform = this._terrainBitmap.transform.colorTransform;
-         var _loc7_:uint = _loc6_.color;
-         _loc6_.redOffset = ((_loc7_ & 0xFF0000) >>> 16) + param1.getRed() + (param1.getTint() - param1.getShade());
-         _loc6_.greenOffset = ((_loc7_ & 0xFF00) >>> 8) + param1.getGreen() + (param1.getTint() - param1.getShade());
-         _loc6_.blueOffset = (_loc7_ & 0xFF) + param1.getBlue() + (param1.getTint() - param1.getShade());
          this._terrainBitmap.transform.colorTransform = _loc6_;
       }
       

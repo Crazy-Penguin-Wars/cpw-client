@@ -75,6 +75,11 @@ package tuxwars.battle.gameobjects
       {
          return this.element.isTerrainElementDynamic();
       }
+
+      public function get noFixtures() : Boolean
+      {
+         return this.element.isNoFixtures();
+      }
    }
 }
 

@@ -44,6 +44,8 @@ package tuxwars.battle.world.loader
       private var terrainBlue:int;
       
       private var _unBreakable:Boolean;
+
+      private var _noFixtures:Boolean;
       
       public function Element(param1:Object)
       {
@@ -72,8 +74,16 @@ package tuxwars.battle.world.loader
          if(this.type == "TerrainBlockEntity")
          {
             this.terrainElementPhysics = new TerrainElementPhysics(param1);
-            this.terrainElementIsDynamic = param1.dynamic;
-            this.terrainElementBordersDisabled = param1.disable_borders;
+            this.terrainElementIsDynamic = param1.dynamic != null ? Boolean(param1.dynamic) : false;
+            this._noFixtures = param1.no_fixtures != null ? Boolean(param1.no_fixtures) : false;
+            if(param1.outline != null)
+            {
+               this.terrainElementBordersDisabled = !param1.outline;
+            }
+            else
+            {
+               this.terrainElementBordersDisabled = param1.disable_borders != null ? Boolean(param1.disable_borders) : false;
+            }
             this.terrainTexture = new TerrainTexture(param1.texture_swf,param1.texture_export);
             this.terrainTextureRotation = !!param1.texture_rotation ? int(param1.texture_rotation) : 0;
             this.terrainShade = !!param1.shade ? int(param1.shade) : 0;
@@ -255,6 +265,11 @@ package tuxwars.battle.world.loader
       public function canTakeDamage() : Boolean
       {
          return !this._unBreakable;
+      }
+
+      public function isNoFixtures() : Boolean
+      {
+         return this._noFixtures;
       }
    }
 }

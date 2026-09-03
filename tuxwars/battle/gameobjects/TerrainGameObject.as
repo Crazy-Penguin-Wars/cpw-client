@@ -4,7 +4,7 @@ package tuxwars.battle.gameobjects
    import com.dchoc.messages.*;
    import com.dchoc.utils.*;
    import earcutting.*;
-   import flash.geom.Rectangle;
+   import flash.geom.*;
    import nape.dynamics.*;
    import nape.geom.*;
    import nape.phys.*;
@@ -45,13 +45,20 @@ package tuxwars.battle.gameobjects
       private var lastTotalArea:Number;
       
       private var _lastDestroyedArea:Number = 0;
+
+      private var _noFixtures:Boolean;
       
       public function TerrainGameObject(param1:TerrainGameObjectDef, param2:TuxWarsGame)
       {
          this._position = param1.position.copy();
          this._terrainModels.push(param1.getTerrainModel());
+         this._isDynamic = param1.isDynamic();
+         this._noFixtures = param1.noFixtures;
          super(param1,param2);
-         this.createNewBodies();
+         if(!this._noFixtures)
+         {
+            this.createNewBodies();
+         }
          this.terrainDisplayObject = new TerrainDisplayObject(param1.getTerrainDisplayObjectDef());
          graphicsLoaded = true;
          this._material = param1.getTheme().getName();
@@ -98,7 +105,7 @@ package tuxwars.battle.gameobjects
       
       override public function get bodyLocation() : Vec2
       {
-         return this._position;
+         return this.body ? this.body.position : this._position;
       }
       
       public function getBodyAt(param1:int, param2:int) : Body
@@ -143,9 +150,26 @@ package tuxwars.battle.gameobjects
          {
             return;
          }
-         var _loc5_:Vec2 = param1.sub(new Vec2(this.displayObject.x,this.displayObject.y));
-         var _loc6_:Vector.<Vec2> = GeomUtils.duplicatePolygon(param2.getPoints());
-         GeomUtils.translatePolygon(_loc6_,_loc5_);
+
+         // Save current dynamic physics state before destroying bodies
+         var _savedPos:Vec2 = this.body ? this.body.position.copy() : (this.displayObject ? new Vec2(this.displayObject.x, this.displayObject.y) : this._position.copy());
+         var _savedRot:Number = this.body ? this.body.rotation : (this.displayObject ? this.displayObject.rotation : 0);
+         var _savedVel:Vec2 = this.body ? this.body.velocity.copy() : new Vec2();
+         var _savedAngVel:Number = this.body ? this.body.angularVel : 0;
+
+         // Transform world-space explosion vertices into the terrain's local coordinate space
+         var _locMat:Matrix = new Matrix();
+         _locMat.translate(-this.displayObject.x, -this.displayObject.y);
+         _locMat.rotate(-this.displayObject.rotation);
+
+         var _loc6_:Vector.<Vec2> = new Vector.<Vec2>();
+         var _pts:Vector.<Vec2> = param2.getPoints();
+         for each(var _pt:Vec2 in _pts)
+         {
+            var _transformed:Point = _locMat.transformPoint(new Point(param1.x + _pt.x, param1.y + _pt.y));
+            _loc6_.push(new Vec2(_transformed.x, _transformed.y));
+         }
+
          for each(_loc7_ in this._terrainModels)
          {
             _loc7_.applyExplosion(GeomUtils.toPointVector(_loc6_));
@@ -158,7 +182,7 @@ package tuxwars.battle.gameobjects
             markForRemoval();
             return;
          }
-         this.createNewBodies();
+         this.createNewBodies(_savedPos, _savedRot, _savedVel, _savedAngVel);
          this.terrainDisplayObject.drawExplosion(_loc6_,this._terrainModels);
          _loc3_ = 0;
          while(_loc3_ < this.displayObject.numChildren)
@@ -176,7 +200,7 @@ package tuxwars.battle.gameobjects
          this.displayObject.addChild(_loc9_);
          MessageCenter.sendEvent(new ReportTerrainDestroyedMessage(this));
          (this.game as TuxWarsGame).tuxWorld.addParticle(Particles.getParticlesReference("MissileExplosion" + this._material),param1.x,param1.y);
-         if(this._bodies.length == 0)
+         if(!this._noFixtures && this._bodies.length == 0)
          {
             markForRemoval();
          }
@@ -419,25 +443,41 @@ package tuxwars.battle.gameobjects
             _loc1_.shapes.clear();
          }
          this._bodies.splice(0,this._bodies.length);
+         this.body = null;
       }
       
-      private function createNewBodies() : void
+      private function createNewBodies(paramPos:Vec2 = null, paramRot:Number = 0, paramVel:Vec2 = null, paramAngVel:Number = 0) : void
       {
          var _loc1_:int = 0;
          var _loc2_:Body = null;
          var _loc3_:Number = Number(NaN);
          var _loc4_:Space = (this.game as TuxWarsGame).tuxWorld.physicsWorld.space;
          _loc1_ = 0;
+         if(this._noFixtures)
+         {
+            return;
+         }
+         var targetPos:Vec2 = paramPos ? paramPos : this._position;
          while(_loc1_ < this._terrainModels.length)
          {
-            _loc2_ = new Body(BodyType.STATIC);
-            _loc2_.position = this._position.copy(true);
+            _loc2_ = new Body(this.isDynamic() ? BodyType.DYNAMIC : BodyType.STATIC);
+            _loc2_.position = targetPos.copy(true);
+            _loc2_.rotation = paramRot;
+            if(paramVel && this.isDynamic())
+            {
+               _loc2_.velocity = paramVel.copy(true);
+               _loc2_.angularVel = paramAngVel;
+            }
             _loc2_.userData.gameObject = this;
             this.addShapes(_loc2_,this._terrainModels[_loc1_].points);
             if(_loc2_.shapes.length > 0)
             {
                _loc2_.space = _loc4_;
                this._bodies.push(_loc2_);
+               if(this.body == null)
+               {
+                  this.body = _loc2_;
+               }
             }
             _loc1_++;
          }
