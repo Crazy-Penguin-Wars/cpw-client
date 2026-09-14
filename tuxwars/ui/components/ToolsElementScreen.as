@@ -252,19 +252,21 @@
       
       private function qualityOn(param1:MouseEvent) : void
       {
-         /*
+         ///*
          this.resetSettingsCloseTimer();
          CRMService.sendEvent("Game","Settings_changed","Clicked","Quality low");
          DCGame.setQuality("low");
          this.qualityOffButton.setVisible(true);
          this.qualityOnButton.setVisible(false);
          param1.stopImmediatePropagation();
-         */
+         //*/
+        /*
          var sharedobj:SharedObject = SharedObject.getLocal("CPWClientData");
          sharedobj.data.userid = ""
          sharedobj.data.client_password = ""
          sharedobj.data.expiration = ""
          NativeApplication.nativeApplication.exit();
+         */
       }
       
       private function qualityOff(param1:MouseEvent) : void

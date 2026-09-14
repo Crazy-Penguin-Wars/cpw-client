@@ -17,6 +17,7 @@ package tuxwars.home.states.matchloading.connecting
    import tuxwars.tutorial.*;
    import tuxwars.ui.popups.*;
    import tuxwars.ui.popups.states.serverconnectionfailed.*;
+   import tuxwars.ui.popups.states.error.*
    
    public class ConnectToBattleServerSubState extends TuxState
    {
@@ -136,6 +137,10 @@ package tuxwars.home.states.matchloading.connecting
             {
                tuxGame.homeState.changeState(new MultiplayerMatchLoadingSubState(tuxGame,new ServerRequest("PlayNow")));
             }
+         }
+         else if(param1.responseType == 25)
+         {
+            MessageCenter.sendEvent(new ErrorMessage(null,param1.data.code,param1.data.description));
          }
       }
       
