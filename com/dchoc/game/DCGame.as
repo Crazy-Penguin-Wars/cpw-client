@@ -3,7 +3,7 @@ package com.dchoc.game
    import com.dchoc.states.*;
    import com.dchoc.utils.*;
    import flash.display.*;
-      import flash.events.Event;
+   import flash.events.Event;
    import flash.text.TextField;
    import flash.text.TextFormat;
    import flash.text.TextFieldAutoSize;
@@ -15,7 +15,7 @@ package com.dchoc.game
       
       private static var _stage:Stage;
       
-      private static const FRAME_RATE:int = 25;
+      private static const FRAME_RATE:int = 120;
       
       private static const mainMovieClip:MovieClip = new MovieClip();
       
@@ -43,7 +43,7 @@ package com.dchoc.game
          param1.stageFocusRect = false;
          param1.tabChildren = false;
          param1.align = "TL";
-         param1.frameRate = 25;
+         param1.frameRate = FRAME_RATE;
          param1.addChild(mainMovieClip);
          _infoLayer.mouseChildren = false;
          _infoLayer.mouseEnabled = false;

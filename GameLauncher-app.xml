@@ -39,7 +39,9 @@
   <windows>
     <UseWebView2>true</UseWebView2>
   </windows>
-  <icon/>
+  <icon>
+    <image128x128>icons/icon.png</image128x128>
+  </icon>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
   <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice </supportedProfiles>
