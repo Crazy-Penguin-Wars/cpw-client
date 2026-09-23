@@ -1,0 +1,9 @@
+{
+  "config": "flex",
+  "compilerOptions": {
+    "load-config": [ "cli-compiler-opts.xml" ],
+    "source-path": ["tuxwars"],
+    "output": "output/tux.swf"
+  },
+  "mainClass": "GameLauncher"
+}
