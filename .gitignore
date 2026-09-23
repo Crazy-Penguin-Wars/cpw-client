@@ -1,1 +1,12 @@
+# map editor
 mapeditor/*
+
+# build output
+out/
+output/
+
+# vscode
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
