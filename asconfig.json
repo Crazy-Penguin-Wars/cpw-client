@@ -3,7 +3,7 @@
   "compilerOptions": {
     "load-config": [ "cli-compiler-opts.xml" ],
     "source-path": ["."],
-    "output": "output/tux.swf"
+    "output": "output/GameLauncher.swf"
   },
   "mainClass": "GameLauncher"
 }
