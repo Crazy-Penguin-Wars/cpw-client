@@ -60,7 +60,9 @@ package tuxwars.battle.world
             {
                sortActiveList();
                needsSorting = false;
-               printActiveList();
+               CONFIG::PHYSICS_LOGGING {
+                  printActiveList();
+               }
             }
             update(deltaTime);
          }

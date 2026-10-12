@@ -30,12 +30,15 @@
             <value>false</value>
         </define>
         <define>
+            <name>CONFIG::PHYSICS_LOGGING</name>
+            <value>false</value>
+        </define>
+        <define>
             <name>CONFIG::MAPTESTER_SKIPTOPRACTICE</name>
             <value>false</value>
         </define>
         <strict>false</strict>
     </compiler>
-    <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
     <warnings>true</warnings>
     <target-player>32.0</target-player>
     <swf-version>43</swf-version>

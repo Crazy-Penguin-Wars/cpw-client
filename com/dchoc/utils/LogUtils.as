@@ -84,6 +84,10 @@ package com.dchoc.utils
          {
             return;
          }
+         if(!Config.debugMode && !DebugCategories.PROD_LOG[param4])
+         {
+            return;
+         }
          param5 &&= param3 > 0;
          param6 &&= param3 > 0;
          if(param1.toString() == "[object Object]")

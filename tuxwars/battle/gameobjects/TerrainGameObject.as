@@ -47,6 +47,8 @@ package tuxwars.battle.gameobjects
       private var _lastDestroyedArea:Number = 0;
 
       private var _noFixtures:Boolean;
+
+      private var _terrainImage:Image;
       
       public function TerrainGameObject(param1:TerrainGameObjectDef, param2:TuxWarsGame)
       {
@@ -62,11 +64,10 @@ package tuxwars.battle.gameobjects
          this.terrainDisplayObject = new TerrainDisplayObject(param1.getTerrainDisplayObjectDef());
          graphicsLoaded = true;
          this._material = param1.getTheme().getName();
-         var _loc3_:Texture = Texture.fromBitmapData(this.terrainDisplayObject.terrainBitmap.bitmapData);
-         var _loc4_:Image = new Image(_loc3_);
-         _loc4_.x -= 25;
-         _loc4_.y -= 25;
-         this.displayObject.addChild(_loc4_);
+         this._terrainImage = new Image(Texture.fromBitmapData(this.terrainDisplayObject.terrainBitmap.bitmapData));
+         this._terrainImage.x -= 25;
+         this._terrainImage.y -= 25;
+         this.displayObject.addChild(this._terrainImage);
          setCanTakeDamage(param1.canTakeDamage());
          this.lastTotalArea = this.calculateTotalArea();
       }
@@ -184,20 +185,7 @@ package tuxwars.battle.gameobjects
          }
          this.createNewBodies(_savedPos, _savedRot, _savedVel, _savedAngVel);
          this.terrainDisplayObject.drawExplosion(_loc6_,this._terrainModels);
-         _loc3_ = 0;
-         while(_loc3_ < this.displayObject.numChildren)
-         {
-            _loc4_ = this.displayObject.getChildAt(_loc3_) as Image;
-            _loc4_.texture.dispose();
-            _loc4_.texture.base.dispose();
-            _loc3_++;
-         }
-         this.displayObject.removeChildren(0,-1,true);
-         var _loc8_:Texture = Texture.fromBitmapData(this.terrainDisplayObject.terrainBitmap.bitmapData);
-         var _loc9_:Image = new Image(_loc8_);
-         _loc9_.x -= 25;
-         _loc9_.y -= 25;
-         this.displayObject.addChild(_loc9_);
+         this._terrainImage.texture.root.uploadBitmapData(this.terrainDisplayObject.terrainBitmap.bitmapData);
          MessageCenter.sendEvent(new ReportTerrainDestroyedMessage(this));
          (this.game as TuxWarsGame).tuxWorld.addParticle(Particles.getParticlesReference("MissileExplosion" + this._material),param1.x,param1.y);
          if(!this._noFixtures && this._bodies.length == 0)

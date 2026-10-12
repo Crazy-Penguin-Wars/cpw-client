@@ -255,9 +255,13 @@ package tuxwars.battle.world
       {
          var _loc2_:int = param1 / 22.22222222222222;
          var _loc3_:int = _loc2_ * 22.22222222222222;
-         LogUtils.log("Updating physics world. stepCount = " + this.stepCount + " num: " + _loc2_ + " actualTime: " + _loc3_,this,1,"PhysicsWorld",false,false,false);
+         CONFIG::PHYSICS_LOGGING {
+            LogUtils.log("Updating physics world. stepCount = " + this.stepCount + " num: " + _loc2_ + " actualTime: " + _loc3_,this,1,"PhysicsWorld",false,false,false);
+         }
          this.updatePhysicsGameObjects(_loc3_);
+         CONFIG::PHYSICS_LOGGING {
          LogUtils.log("Updating PhysicsUpdater.",this,1,"PhysicsWorld",false,false,false);
+         }
          PhysicsUpdater.physicsUpdate(_loc3_);
          this.updateSimulation(_loc2_);
          if(this.debugMode)
@@ -277,11 +281,13 @@ package tuxwars.battle.world
          while(_loc2_ < param1)
          {
             this.checkJoints();
-            this._space.step(0.022222222222222223,30,20);
+            this._space.step(0.022222222222222223,10,10); // deltaTime, velocityIterations (default 10), positionIterations (default 10)
             this.water.physicsUpdate();
             this.roundPlayers();
             this.slowDownLevelObjects();
-            this.logLevelData(false);
+            CONFIG::PHYSICS_LOGGING {
+               this.logLevelData(false);
+            }
             _loc2_++;
          }
       }

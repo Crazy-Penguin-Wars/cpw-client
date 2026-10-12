@@ -15,7 +15,7 @@ package com.dchoc.game
       
       private static var _stage:Stage;
       
-      private static const FRAME_RATE:int = 120;
+      private static const FRAME_RATE:int = 60;
       
       private static const mainMovieClip:MovieClip = new MovieClip();
       
